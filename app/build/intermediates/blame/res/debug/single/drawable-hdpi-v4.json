@@ -292,6 +292,10 @@
         "source": "/home/gousebabjan/AndroidStudioProjects/tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/res/drawable-hdpi/common_signin_btn_icon_disabled_dark.9.png"
     },
     {
+        "merged": "/home/gousebabjan/AndroidStudioProjects/tracker/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_lock.png",
+        "source": "/home/gousebabjan/AndroidStudioProjects/tracker/app/build/generated/res/pngs/debug/drawable-hdpi/ic_lock.png"
+    },
+    {
         "merged": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/com_facebook_tooltip_black_bottomnub.png",
         "source": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.5.0/res/drawable-hdpi/com_facebook_tooltip_black_bottomnub.png"
     },
@@ -492,6 +496,10 @@
         "source": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/drawable-hdpi/abc_scrubber_primary_mtrl_alpha.9.png"
     },
     {
+        "merged": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_lock.png",
+        "source": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/build/generated/res/pngs/debug/drawable-hdpi/ic_lock.png"
+    },
+    {
         "merged": "/home/gousebabjan/AndroidStudioProjects/tracker/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_ic_menu_copy_mtrl_am_alpha.png",
         "source": "/home/gousebabjan/AndroidStudioProjects/tracker/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/drawable-hdpi/abc_ic_menu_copy_mtrl_am_alpha.png"
     },
@@ -540,12 +548,12 @@
         "source": "/home/gousebabjan/AndroidStudioProjects/tracker/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.5.0/res/drawable-hdpi/com_facebook_tooltip_blue_bottomnub.png"
     },
     {
-        "merged": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_spinner_mtrl_am_alpha.9.png",
-        "source": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/drawable-hdpi/abc_spinner_mtrl_am_alpha.9.png"
-    },
-    {
         "merged": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/common_signin_btn_text_pressed_dark.9.png",
         "source": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/res/drawable-hdpi/common_signin_btn_text_pressed_dark.9.png"
+    },
+    {
+        "merged": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_spinner_mtrl_am_alpha.9.png",
+        "source": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/drawable-hdpi/abc_spinner_mtrl_am_alpha.9.png"
     },
     {
         "merged": "/home/gousebabjan/AndroidStudioProjects/tracker/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/common_signin_btn_icon_focus_dark.9.png",

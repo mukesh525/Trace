@@ -8,12 +8,12 @@
         "source": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.5.0/res/drawable/messenger_button_blue_bg_round.xml"
     },
     {
-        "merged": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/build/intermediates/res/merged/debug/drawable/start.png",
-        "source": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/src/main/res/drawable/start.png"
-    },
-    {
         "merged": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/build/intermediates/res/merged/debug/drawable/sym_call_missed.png",
         "source": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/src/main/res/drawable/sym_call_missed.png"
+    },
+    {
+        "merged": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/build/intermediates/res/merged/debug/drawable/start.png",
+        "source": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/src/main/res/drawable/start.png"
     },
     {
         "merged": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/build/intermediates/res/merged/debug/drawable/mr_ic_media_route_mono_light.xml",

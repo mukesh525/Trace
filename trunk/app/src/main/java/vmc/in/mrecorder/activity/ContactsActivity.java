@@ -69,22 +69,6 @@ public class ContactsActivity extends AppCompatActivity {
         });
 
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Intent.ACTION_SEND);
-                intent.setType("text/plain");
-                intent.putExtra(Intent.EXTRA_SUBJECT, "Sharing App");
-                intent.putExtra(Intent.EXTRA_TEXT, "Hello I am using Call Recorder. You can also try at https://play.google.com/store/apps/details?id=" + getPackageName());
-                SharedPreferences sharedpreferences = getSharedPreferences(getPackageName(), Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor = sharedpreferences.edit();
-                editor.putInt("share_count", sharedpreferences.getInt("share_count", 0) + 1);
-                editor.commit();
-                startActivityForResult(intent, 1285);
-
-            }
-        });
 
 
     }

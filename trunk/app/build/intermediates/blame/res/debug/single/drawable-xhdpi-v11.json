@@ -6,5 +6,13 @@
     {
         "merged": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/build/intermediates/res/merged/debug/drawable-xhdpi-v11/ic_stat_play_store.png",
         "source": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/build/intermediates/exploded-aar/com.github.rampo.updatechecker/library/2.1.8/res/drawable-xhdpi-v11/ic_stat_play_store.png"
+    },
+    {
+        "merged": "/home/gousebabjan/AndroidStudioProjects/tracker/app/build/intermediates/res/merged/debug/drawable-xhdpi-v11/ic_stat_play_store.png",
+        "source": "/home/gousebabjan/AndroidStudioProjects/tracker/app/build/intermediates/exploded-aar/com.github.rampo.updatechecker/library/2.1.8/res/drawable-xhdpi-v11/ic_stat_play_store.png"
+    },
+    {
+        "merged": "/home/gousebabjan/AndroidStudioProjects/tracker/app/build/intermediates/res/merged/debug/drawable-xhdpi-v11/ic_stat_amazon.png",
+        "source": "/home/gousebabjan/AndroidStudioProjects/tracker/app/build/intermediates/exploded-aar/com.github.rampo.updatechecker/library/2.1.8/res/drawable-xhdpi-v11/ic_stat_amazon.png"
     }
 ]

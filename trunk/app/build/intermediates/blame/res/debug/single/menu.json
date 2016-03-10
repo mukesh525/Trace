@@ -4,8 +4,20 @@
         "source": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/src/main/res/menu/popup1.xml"
     },
     {
+        "merged": "/home/gousebabjan/AndroidStudioProjects/tracker/app/build/intermediates/res/merged/debug/menu/popup2.xml",
+        "source": "/home/gousebabjan/AndroidStudioProjects/tracker/app/src/main/res/menu/popup2.xml"
+    },
+    {
+        "merged": "/home/gousebabjan/AndroidStudioProjects/tracker/app/build/intermediates/res/merged/debug/menu/activity_contacts_menu.xml",
+        "source": "/home/gousebabjan/AndroidStudioProjects/tracker/app/src/main/res/menu/activity_contacts_menu.xml"
+    },
+    {
         "merged": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/build/intermediates/res/merged/debug/menu/popup2.xml",
         "source": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/src/main/res/menu/popup2.xml"
+    },
+    {
+        "merged": "/home/gousebabjan/AndroidStudioProjects/tracker/app/build/intermediates/res/merged/debug/menu/popup1.xml",
+        "source": "/home/gousebabjan/AndroidStudioProjects/tracker/app/src/main/res/menu/popup1.xml"
     },
     {
         "merged": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/build/intermediates/res/merged/debug/menu/activity_contacts_menu.xml",

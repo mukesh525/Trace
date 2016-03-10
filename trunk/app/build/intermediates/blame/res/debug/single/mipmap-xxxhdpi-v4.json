@@ -2,5 +2,9 @@
     {
         "merged": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi-v4/ic_launcher.png",
         "source": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/home/gousebabjan/AndroidStudioProjects/tracker/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi-v4/ic_launcher.png",
+        "source": "/home/gousebabjan/AndroidStudioProjects/tracker/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png"
     }
 ]

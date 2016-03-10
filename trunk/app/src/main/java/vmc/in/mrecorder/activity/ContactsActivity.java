@@ -37,10 +37,12 @@ public class ContactsActivity extends AppCompatActivity {
     private Fragment mDialledCallsFragment;
     private Fragment mReceivedCallsFragment;
     private Fragment missedCallsFragment;
+
     private final String ALL_CALLS_FRAGMENT_KEY = "all_calls_fragment";
     private final String DIALLED_CALLS_FRAGMENT_KEY = "dialed_calls_fragment";
     private final String RECEIVED_CALLS_FRAGMENT_KEY = "received_calls_fragment";
     private final String MISSED_CALLS_FRAGMENT_KEY = "missed_calls_fragment";
+    private InterstitialAd mInterstitialAd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +50,7 @@ public class ContactsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_contacts_layout);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        setUpReview();
         ViewPager mViewPager = (ViewPager) findViewById(R.id.viewpager);
         if (mViewPager != null) {
             initializeFragments(savedInstanceState);
@@ -74,7 +76,7 @@ public class ContactsActivity extends AppCompatActivity {
                 Intent intent = new Intent(Intent.ACTION_SEND);
                 intent.setType("text/plain");
                 intent.putExtra(Intent.EXTRA_SUBJECT, "Sharing App");
-                intent.putExtra(Intent.EXTRA_TEXT, "Hello I am using Call Recorder. You can also try at https://play.google.com/store/apps/details?id=" + getPackageName());
+                intent.putExtra(Intent.EXTRA_TEXT, "Hello I am using MCube Tracker. You can also try at https://play.google.com/store/apps/details?id=" + getPackageName());
                 SharedPreferences sharedpreferences = getSharedPreferences(getPackageName(), Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedpreferences.edit();
                 editor.putInt("share_count", sharedpreferences.getInt("share_count", 0) + 1);
@@ -94,6 +96,7 @@ public class ContactsActivity extends AppCompatActivity {
 
         if (mAllCallsFragment != null) {
 
+            /* Bug? -> https://code.google.com/p/android/issues/detail?id=77285 */
             try {
                 getFragmentManager().putFragment(outState, ALL_CALLS_FRAGMENT_KEY, mAllCallsFragment);
             } catch (IllegalStateException e) {

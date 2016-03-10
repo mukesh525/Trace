@@ -8,8 +8,8 @@ package com.rampo.updatechecker;
 
 public final class R {
 	public static final class drawable {
-		public static final int ic_stat_amazon = 0x7f020097;
-		public static final int ic_stat_play_store = 0x7f020098;
+		public static final int ic_stat_amazon = 0x7f02009a;
+		public static final int ic_stat_play_store = 0x7f02009b;
 	}
 	public static final class string {
 		public static final int amazonStore = 0x7f08004f;

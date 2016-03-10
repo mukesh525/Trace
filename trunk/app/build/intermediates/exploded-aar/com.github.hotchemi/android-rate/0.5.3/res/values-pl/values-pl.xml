@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- From: file:/Users/hotchemi/Dropbox/code/android/Android-Rate/library/src/main/res/values-pl/strings.xml -->
+    <eat-comment/>
+    <string name="rate_dialog_cancel">Przypomnij mi później</string>
+    <string name="rate_dialog_message">Jeśli podoba Ci ta się aplikacja, to czy poświęcisz chwilę, aby ją ocenić? Nie zajmie Ci to dłużej niż minutę. Dziękujemy za Twoje wsparcie! </string>
+    <string name="rate_dialog_no">Nie, dziękuję</string>
+    <string name="rate_dialog_ok">Oceń teraz</string>
+    <string name="rate_dialog_title">Oceń aplikację</string>
+</resources>

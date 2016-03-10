@@ -235,8 +235,8 @@ public class SpeedDialAdapter extends RecyclerView.Adapter<SpeedDialAdapter.View
         {
             Random r = new Random();
             int a = r.nextInt(255);
-            holder.contactphoto.setBackgroundColor(Color.rgb(r.nextInt(255), r.nextInt(255), r.nextInt(255)));
-            holder.contactphoto.setImageResource(R.drawable.def_img);
+            //holder.contactphoto.setBackgroundColor(Color.rgb(r.nextInt(255), r.nextInt(255), r.nextInt(255)));
+            holder.contactphoto.setImageResource(R.drawable.ic_person);
         }
 
         //Log.e("position", ""+position);

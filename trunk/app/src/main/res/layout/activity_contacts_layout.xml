@@ -38,9 +38,10 @@
         android:id="@+id/viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
         android:layout_above="@+id/startAppBanner"
-        android:layout_below="@+id/startAppBannerTop" />
+        android:layout_below="@+id/startAppBannerTop"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        />
 
 
     <android.support.design.widget.FloatingActionButton

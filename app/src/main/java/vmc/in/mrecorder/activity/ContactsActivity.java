@@ -37,7 +37,7 @@ public class ContactsActivity extends AppCompatActivity {
     private Fragment mDialledCallsFragment;
     private Fragment mReceivedCallsFragment;
     private Fragment missedCallsFragment;
-
+//test
     private final String ALL_CALLS_FRAGMENT_KEY = "all_calls_fragment";
     private final String DIALLED_CALLS_FRAGMENT_KEY = "dialed_calls_fragment";
     private final String RECEIVED_CALLS_FRAGMENT_KEY = "received_calls_fragment";

@@ -1,10 +1,18 @@
 [
     {
+        "merged": "/home/gousebabjan/AndroidStudioProjects/tracker/app/build/intermediates/res/merged/debug/xml/syncadapter.xml",
+        "source": "/home/gousebabjan/AndroidStudioProjects/tracker/app/src/main/res/xml/syncadapter.xml"
+    },
+    {
         "merged": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/build/intermediates/res/merged/debug/xml/syncadapter.xml",
         "source": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/src/main/res/xml/syncadapter.xml"
     },
     {
         "merged": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/build/intermediates/res/merged/debug/xml/authenticator.xml",
         "source": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/src/main/res/xml/authenticator.xml"
+    },
+    {
+        "merged": "/home/gousebabjan/AndroidStudioProjects/tracker/app/build/intermediates/res/merged/debug/xml/authenticator.xml",
+        "source": "/home/gousebabjan/AndroidStudioProjects/tracker/app/src/main/res/xml/authenticator.xml"
     }
 ]

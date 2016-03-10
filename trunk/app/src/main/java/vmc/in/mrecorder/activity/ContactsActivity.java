@@ -37,12 +37,10 @@ public class ContactsActivity extends AppCompatActivity {
     private Fragment mDialledCallsFragment;
     private Fragment mReceivedCallsFragment;
     private Fragment missedCallsFragment;
-//test
     private final String ALL_CALLS_FRAGMENT_KEY = "all_calls_fragment";
     private final String DIALLED_CALLS_FRAGMENT_KEY = "dialed_calls_fragment";
     private final String RECEIVED_CALLS_FRAGMENT_KEY = "received_calls_fragment";
     private final String MISSED_CALLS_FRAGMENT_KEY = "missed_calls_fragment";
-    private InterstitialAd mInterstitialAd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,7 +94,6 @@ public class ContactsActivity extends AppCompatActivity {
 
         if (mAllCallsFragment != null) {
 
-            /* Bug? -> https://code.google.com/p/android/issues/detail?id=77285 */
             try {
                 getFragmentManager().putFragment(outState, ALL_CALLS_FRAGMENT_KEY, mAllCallsFragment);
             } catch (IllegalStateException e) {

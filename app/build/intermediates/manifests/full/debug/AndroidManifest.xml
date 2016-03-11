@@ -114,6 +114,13 @@
             </intent-filter>
         </receiver>
 
+        <activity android:name="vmc.in.mrecorder.activity.Welcome" />
+        <activity android:name="vmc.in.mrecorder.activity.Login" />
+        <activity
+            android:name="vmc.in.mrecorder.activity.Home"
+            android:label="@string/title_activity_home"
+            android:theme="@style/AppTheme" />
+
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" /> <!-- Include the AdActivity and InAppPurchaseActivity configChanges and themes. -->

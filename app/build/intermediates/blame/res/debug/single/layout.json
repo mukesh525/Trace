@@ -132,12 +132,12 @@
         "source": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/notification_template_part_chronometer.xml"
     },
     {
-        "merged": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/res/merged/debug/layout/abc_search_dropdown_item_icons_2line.xml",
-        "source": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_search_dropdown_item_icons_2line.xml"
-    },
-    {
         "merged": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/build/intermediates/res/merged/debug/layout/abc_action_menu_item_layout.xml",
         "source": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_action_menu_item_layout.xml"
+    },
+    {
+        "merged": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/res/merged/debug/layout/abc_search_dropdown_item_icons_2line.xml",
+        "source": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_search_dropdown_item_icons_2line.xml"
     },
     {
         "merged": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/res/merged/debug/layout/design_layout_snackbar.xml",
@@ -296,12 +296,20 @@
         "source": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_action_mode_close_item_material.xml"
     },
     {
+        "merged": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/res/merged/debug/layout/content_main.xml",
+        "source": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/res/layout/content_main.xml"
+    },
+    {
         "merged": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/res/merged/debug/layout/select_dialog_multichoice_material.xml",
         "source": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/select_dialog_multichoice_material.xml"
     },
     {
         "merged": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/build/intermediates/res/merged/debug/layout/recentdial_item_layout.xml",
         "source": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/src/main/res/layout/recentdial_item_layout.xml"
+    },
+    {
+        "merged": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/res/merged/debug/layout/app_bar_main.xml",
+        "source": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/res/layout/app_bar_main.xml"
     },
     {
         "merged": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/build/intermediates/res/merged/debug/layout/design_layout_snackbar_include.xml",

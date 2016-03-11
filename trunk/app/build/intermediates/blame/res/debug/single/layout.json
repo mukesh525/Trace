@@ -4,12 +4,16 @@
         "source": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.5.0/res/layout/messenger_button_send_white_small.xml"
     },
     {
+        "merged": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/res/merged/debug/layout/abc_action_menu_item_layout.xml",
+        "source": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_action_menu_item_layout.xml"
+    },
+    {
         "merged": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/build/intermediates/res/merged/debug/layout/messenger_button_send_white_large.xml",
         "source": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.5.0/res/layout/messenger_button_send_white_large.xml"
     },
     {
-        "merged": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/res/merged/debug/layout/abc_action_menu_item_layout.xml",
-        "source": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_action_menu_item_layout.xml"
+        "merged": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/res/merged/debug/layout/activity_home.xml",
+        "source": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/res/layout/activity_home.xml"
     },
     {
         "merged": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/build/intermediates/res/merged/debug/layout/design_menu_item_action_area.xml",
@@ -24,16 +28,20 @@
         "source": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/notification_template_big_media_narrow.xml"
     },
     {
-        "merged": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/build/intermediates/res/merged/debug/layout/messenger_button_send_blue_round.xml",
-        "source": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.5.0/res/layout/messenger_button_send_blue_round.xml"
-    },
-    {
         "merged": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/res/merged/debug/layout/messenger_button_send_blue_small.xml",
         "source": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.5.0/res/layout/messenger_button_send_blue_small.xml"
     },
     {
+        "merged": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/build/intermediates/res/merged/debug/layout/messenger_button_send_blue_round.xml",
+        "source": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.5.0/res/layout/messenger_button_send_blue_round.xml"
+    },
+    {
         "merged": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/build/intermediates/res/merged/debug/layout/abc_action_bar_up_container.xml",
         "source": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_action_bar_up_container.xml"
+    },
+    {
+        "merged": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/res/merged/debug/layout/nav_header_home.xml",
+        "source": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/res/layout/nav_header_home.xml"
     },
     {
         "merged": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/res/merged/debug/layout/messenger_button_send_blue_large.xml",
@@ -124,12 +132,12 @@
         "source": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/notification_template_part_chronometer.xml"
     },
     {
-        "merged": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/build/intermediates/res/merged/debug/layout/abc_action_menu_item_layout.xml",
-        "source": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_action_menu_item_layout.xml"
-    },
-    {
         "merged": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/res/merged/debug/layout/abc_search_dropdown_item_icons_2line.xml",
         "source": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_search_dropdown_item_icons_2line.xml"
+    },
+    {
+        "merged": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/build/intermediates/res/merged/debug/layout/abc_action_menu_item_layout.xml",
+        "source": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_action_menu_item_layout.xml"
     },
     {
         "merged": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/res/merged/debug/layout/design_layout_snackbar.xml",
@@ -344,6 +352,10 @@
         "source": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_action_menu_layout.xml"
     },
     {
+        "merged": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/res/merged/debug/layout/activity_login.xml",
+        "source": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/res/layout/activity_login.xml"
+    },
+    {
         "merged": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/build/intermediates/res/merged/debug/layout/select_dialog_item_material.xml",
         "source": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/select_dialog_item_material.xml"
     },
@@ -390,6 +402,10 @@
     {
         "merged": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/res/merged/debug/layout/com_facebook_activity_layout.xml",
         "source": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.5.0/res/layout/com_facebook_activity_layout.xml"
+    },
+    {
+        "merged": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/res/merged/debug/layout/activity_welcome.xml",
+        "source": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/res/layout/activity_welcome.xml"
     },
     {
         "merged": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/build/intermediates/res/merged/debug/layout/abc_screen_simple.xml",

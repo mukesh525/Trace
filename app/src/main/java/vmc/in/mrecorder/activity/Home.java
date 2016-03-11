@@ -12,6 +12,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import vmc.in.mrecorder.R;
 import vmc.in.mrecorder.entity.Util;
@@ -26,6 +27,7 @@ public class Home extends AppCompatActivity
     private NavigationView navigationView;
     private FloatingActionButton floatingActionButton;
     ContactsActivity ca;
+    TextView tv_name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +35,7 @@ public class Home extends AppCompatActivity
         setContentView(R.layout.activity_home);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
         floatingActionButton = (FloatingActionButton) findViewById(R.id.fab);
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override

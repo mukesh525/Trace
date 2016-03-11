@@ -15,4 +15,6 @@
     <color name="text_color">#ffffffff</color>
 
     <color name="window_background">#ffebeff1</color>
+    <color name="white">#FFFFFF</color>
+
 </resources>

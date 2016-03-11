@@ -15,7 +15,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="true"
-            android:text="Record All Calls" />
+            android:text="Record All Calls"
+            android:textColor="#000"/>
 
         <TextView
             android:id="@+id/r0"
@@ -28,7 +29,8 @@
             android:id="@+id/radio1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Don't record any call" />
+            android:text="Don't record any call"
+            android:textColor="#000"/>
 <TextView
             android:id="@+id/r1"
             android:layout_width="wrap_content"
@@ -101,6 +103,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Save"/>
+        android:text="Save"
+        android:textColor="#FFF"/>
 
 </LinearLayout>

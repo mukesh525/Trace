@@ -18,4 +18,8 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="myBackgroundStyle" parent="@android:style/Theme.Dialog">
+        <item name="android:background">#FFFFFF</item>
+    </style>
+
 </resources>

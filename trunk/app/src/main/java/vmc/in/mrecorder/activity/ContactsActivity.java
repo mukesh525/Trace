@@ -11,8 +11,10 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -59,7 +61,7 @@ public class ContactsActivity extends AppCompatActivity {
             tabLayout.setupWithViewPager(mViewPager);
         }
 
-        toolbar.setTitle("Call Recorder");
+        toolbar.setTitle("MCube Tracker");
         FloatingActionButton actionButton = (FloatingActionButton) findViewById(R.id.fabBtn);
         actionButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,8 +69,6 @@ public class ContactsActivity extends AppCompatActivity {
                 setRecording();
             }
         });
-
-
 
 
     }
@@ -174,9 +174,10 @@ public class ContactsActivity extends AppCompatActivity {
         CallApplication.sp = getApplicationContext().getSharedPreferences("com.example.call", Context.MODE_PRIVATE);
 
         CallApplication.e = CallApplication.sp.edit();
-        final Dialog dialog = new Dialog(ContactsActivity.this);
+        final Dialog dialog = new Dialog(ContactsActivity.this,R.style.myBackgroundStyle);
         dialog.setContentView(R.layout.layout_dialog);
-        dialog.setTitle("Set Your Record Preference");
+     // dialog.setTitle("Set Your Record Preference");
+        dialog.setTitle( Html.fromHtml("<font color='black'>Set Record Preference</font>"));
         RadioGroup group = (RadioGroup) dialog.findViewById(R.id.radioGroup1);
         //  final RelativeLayout rl = (RelativeLayout) dialog.findViewById(R.id.ask_layout);
         final TextView tv1 = (TextView) dialog.findViewById(R.id.r0);

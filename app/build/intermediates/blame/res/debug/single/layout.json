@@ -152,10 +152,6 @@
         "source": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.5.0/res/layout/messenger_button_send_white_small.xml"
     },
     {
-        "merged": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/res/merged/debug/layout/custom_title.xml",
-        "source": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/res/layout/custom_title.xml"
-    },
-    {
         "merged": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/build/intermediates/res/merged/debug/layout/abc_search_view.xml",
         "source": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_search_view.xml"
     },

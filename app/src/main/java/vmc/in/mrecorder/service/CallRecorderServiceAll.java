@@ -141,13 +141,16 @@ public class CallRecorderServiceAll extends Service implements TAG {
 
             String manufacturer = Build.MANUFACTURER;
             Log.e("AudioSource", manufacturer);
-            if (Build.VERSION.SDK_INT == Build.VERSION_CODES.JELLY_BEAN_MR1 || Build.VERSION.SDK_INT == Build.VERSION_CODES.JELLY_BEAN) {
+            if (Build.VERSION.SDK_INT == Build.VERSION_CODES.JELLY_BEAN_MR1 ||
+                    Build.VERSION.SDK_INT == Build.VERSION_CODES.JELLY_BEAN
+                    || Build.VERSION.SDK_INT == Build.VERSION_CODES.KITKAT) {
                 audiofile = new File(sample.getAbsolutePath() + "/sound" + fileName + ".3gp");
+
                 if (Build.MANUFACTURER.equals("VIKIN")) {
                     recorder.setAudioSource(MediaRecorder.AudioSource.DEFAULT);
                     Log.e("AudioSource", "JELLY_BEAN" + "VOICE_RECOGNITION" + " " + "3gp");
                 } else {
-                    recorder.setAudioSource(MediaRecorder.AudioSource.VOICE_CALL);
+                    recorder.setAudioSource(MediaRecorder.AudioSource.DEFAULT);
                     Log.e("AudioSource", "JELLY_BEAN" + "VOICE_CALL" + " " + "3gp");
                 }
                 recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
@@ -171,7 +174,7 @@ public class CallRecorderServiceAll extends Service implements TAG {
                 Log.e("recording", "started");
                 recorder.start();
             } else
-                Log.e("not ", "recording");
+                Log.e("recording ", "recording");
 
             recording = true;
 

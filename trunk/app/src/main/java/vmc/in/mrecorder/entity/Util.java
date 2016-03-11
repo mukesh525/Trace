@@ -1,16 +1,24 @@
 package vmc.in.mrecorder.entity;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.database.Cursor;
+import android.text.Html;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.RadioGroup;
+import android.widget.TextView;
 
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import vmc.in.mrecorder.R;
 import vmc.in.mrecorder.callbacks.TAG;
 import vmc.in.mrecorder.datahandler.HelperCallRecordings;
+import vmc.in.mrecorder.myapplication.CallApplication;
 
 /**
  * Created by gousebabjan on 7/3/16.
@@ -67,6 +75,71 @@ public class Util implements TAG {
         return list;
     }
 
+    public static void setRecording(Context context) {
+        CallApplication.sp = context.getApplicationContext().getSharedPreferences("com.example.call", Context.MODE_PRIVATE);
+
+        CallApplication.e = CallApplication.sp.edit();
+        final Dialog dialog = new Dialog(context, R.style.myBackgroundStyle);
+        dialog.setContentView(R.layout.layout_dialog);
+        // dialog.setTitle("Set Your Record Preference");
+        dialog.setTitle(Html.fromHtml("<font color='black'>Set Record Preference</font>"));
+        RadioGroup group = (RadioGroup) dialog.findViewById(R.id.radioGroup1);
+        //  final RelativeLayout rl = (RelativeLayout) dialog.findViewById(R.id.ask_layout);
+        final TextView tv1 = (TextView) dialog.findViewById(R.id.r0);
+        final TextView tv2 = (TextView) dialog.findViewById(R.id.r1);
+        switch (CallApplication.sp.getInt("type", 0)) {
+            case 0:
+                group.check(R.id.radio0);
+                break;
+
+            case 1:
+                group.check(R.id.radio1);
+                break;
 
 
+            default:
+                break;
+        }
+
+
+        group.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                // TODO Auto-generated method stub
+                switch (checkedId) {
+                    case R.id.radio0:
+                        CallApplication.e.putInt("type", 0);
+                        // rl.setVisibility(View.GONE);
+                        tv1.setVisibility(View.VISIBLE);
+                        tv2.setVisibility(View.GONE);
+                        break;
+                    case R.id.radio1:
+                        CallApplication.e.putInt("type", 1);
+                        // rl.setVisibility(View.GONE);
+                        tv1.setVisibility(View.GONE);
+                        tv2.setVisibility(View.VISIBLE);
+                        break;
+
+
+                    default:
+                        break;
+                }
+            }
+        });
+        Button save = (Button) dialog.findViewById(R.id.button1);
+        save.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                CallApplication.e.commit();
+                CallApplication.getInstance().resetService();
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
+    }
+
+    ;
 }

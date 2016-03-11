@@ -25,6 +25,7 @@ import hotchemi.android.rate.AppRate;
 import hotchemi.android.rate.OnClickButtonListener;
 import vmc.in.mrecorder.R;
 import vmc.in.mrecorder.adapter.ContactsPagerAdapter;
+import vmc.in.mrecorder.entity.Util;
 import vmc.in.mrecorder.fragment.AllCallsFragment;
 import vmc.in.mrecorder.fragment.DialledCallFragment;
 import vmc.in.mrecorder.fragment.MissedCallFragment;
@@ -66,7 +67,7 @@ public class ContactsActivity extends AppCompatActivity {
         actionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setRecording();
+                Util.setRecording(ContactsActivity.this);
             }
         });
 
@@ -170,70 +171,70 @@ public class ContactsActivity extends AppCompatActivity {
         viewPager.setAdapter(mAdapter);
     }
 
-    public void setRecording() {
-        CallApplication.sp = getApplicationContext().getSharedPreferences("com.example.call", Context.MODE_PRIVATE);
-
-        CallApplication.e = CallApplication.sp.edit();
-        final Dialog dialog = new Dialog(ContactsActivity.this,R.style.myBackgroundStyle);
-        dialog.setContentView(R.layout.layout_dialog);
-     // dialog.setTitle("Set Your Record Preference");
-        dialog.setTitle( Html.fromHtml("<font color='black'>Set Record Preference</font>"));
-        RadioGroup group = (RadioGroup) dialog.findViewById(R.id.radioGroup1);
-        //  final RelativeLayout rl = (RelativeLayout) dialog.findViewById(R.id.ask_layout);
-        final TextView tv1 = (TextView) dialog.findViewById(R.id.r0);
-        final TextView tv2 = (TextView) dialog.findViewById(R.id.r1);
-        switch (CallApplication.sp.getInt("type", 0)) {
-            case 0:
-                group.check(R.id.radio0);
-                break;
-
-            case 1:
-                group.check(R.id.radio1);
-                break;
-
-
-            default:
-                break;
-        }
-
-        group.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                // TODO Auto-generated method stub
-                switch (checkedId) {
-                    case R.id.radio0:
-                        CallApplication.e.putInt("type", 0);
-                        // rl.setVisibility(View.GONE);
-                        tv1.setVisibility(View.VISIBLE);
-                        tv2.setVisibility(View.GONE);
-                        break;
-                    case R.id.radio1:
-                        CallApplication.e.putInt("type", 1);
-                        // rl.setVisibility(View.GONE);
-                        tv1.setVisibility(View.GONE);
-                        tv2.setVisibility(View.VISIBLE);
-                        break;
-
-
-                    default:
-                        break;
-                }
-            }
-        });
-        Button save = (Button) dialog.findViewById(R.id.button1);
-        save.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                // TODO Auto-generated method stub
-                CallApplication.e.commit();
-                CallApplication.getInstance().resetService();
-                dialog.dismiss();
-            }
-        });
-        dialog.show();
-    }
+//    public void setRecording() {
+//        CallApplication.sp = getApplicationContext().getSharedPreferences("com.example.call", Context.MODE_PRIVATE);
+//
+//        CallApplication.e = CallApplication.sp.edit();
+//        final Dialog dialog = new Dialog(ContactsActivity.this,R.style.myBackgroundStyle);
+//        dialog.setContentView(R.layout.layout_dialog);
+//     // dialog.setTitle("Set Your Record Preference");
+//        dialog.setTitle( Html.fromHtml("<font color='black'>Set Record Preference</font>"));
+//        RadioGroup group = (RadioGroup) dialog.findViewById(R.id.radioGroup1);
+//        //  final RelativeLayout rl = (RelativeLayout) dialog.findViewById(R.id.ask_layout);
+//        final TextView tv1 = (TextView) dialog.findViewById(R.id.r0);
+//        final TextView tv2 = (TextView) dialog.findViewById(R.id.r1);
+//        switch (CallApplication.sp.getInt("type", 0)) {
+//            case 0:
+//                group.check(R.id.radio0);
+//                break;
+//
+//            case 1:
+//                group.check(R.id.radio1);
+//                break;
+//
+//
+//            default:
+//                break;
+//        }
+//
+//        group.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+//
+//            @Override
+//            public void onCheckedChanged(RadioGroup group, int checkedId) {
+//                // TODO Auto-generated method stub
+//                switch (checkedId) {
+//                    case R.id.radio0:
+//                        CallApplication.e.putInt("type", 0);
+//                        // rl.setVisibility(View.GONE);
+//                        tv1.setVisibility(View.VISIBLE);
+//                        tv2.setVisibility(View.GONE);
+//                        break;
+//                    case R.id.radio1:
+//                        CallApplication.e.putInt("type", 1);
+//                        // rl.setVisibility(View.GONE);
+//                        tv1.setVisibility(View.GONE);
+//                        tv2.setVisibility(View.VISIBLE);
+//                        break;
+//
+//
+//                    default:
+//                        break;
+//                }
+//            }
+//        });
+//        Button save = (Button) dialog.findViewById(R.id.button1);
+//        save.setOnClickListener(new View.OnClickListener() {
+//
+//            @Override
+//            public void onClick(View v) {
+//                // TODO Auto-generated method stub
+//                CallApplication.e.commit();
+//                CallApplication.getInstance().resetService();
+//                dialog.dismiss();
+//            }
+//        });
+//        dialog.show();
+//    }
 
 
     public void setUpReview() {

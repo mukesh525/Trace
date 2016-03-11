@@ -360,7 +360,7 @@ ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidM
 	android:name
 		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:106:19-49
 activity#vmc.in.mrecorder.activity.Home
-ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:107:9-110:56
+ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:107:9-110:47
 	android:label
 		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:109:13-56
 	android:theme

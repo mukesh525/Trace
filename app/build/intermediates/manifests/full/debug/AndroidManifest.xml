@@ -58,11 +58,6 @@
             android:name="vmc.in.mrecorder.activity.ContactsActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <provider
@@ -114,8 +109,18 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name="vmc.in.mrecorder.activity.Welcome" />
-        <activity android:name="vmc.in.mrecorder.activity.Login" />
+        <activity
+            android:name="vmc.in.mrecorder.activity.Welcome"
+            android:noHistory="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="vmc.in.mrecorder.activity.Login"
+            android:noHistory="true" />
         <activity
             android:name="vmc.in.mrecorder.activity.Home"
             android:label="@string/title_activity_home"

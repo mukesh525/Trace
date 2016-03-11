@@ -48,9 +48,8 @@
         android:id="@+id/fabBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|right"
-        android:layout_marginBottom="@dimen/codelab_fab_margin_bottom"
-        android:layout_marginRight="@dimen/codelab_fab_margin_right"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
         android:src="@drawable/ic_lock"
         app:fabSize="normal" />
 

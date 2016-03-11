@@ -15,6 +15,7 @@
         android:text="Login"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        />
+        android:background="@drawable/rounded_corners"
+        android:textColor="#FFF"/>
 
 </RelativeLayout>

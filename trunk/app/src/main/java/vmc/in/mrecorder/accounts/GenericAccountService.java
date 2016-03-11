@@ -33,12 +33,6 @@ public class GenericAccountService extends Service {
     public static final String ACCOUNT_NAME = "sync";
     private Authenticator mAuthenticator;
 
-    /**
-     * Obtain a handle to the {@link Account} used for sync in this application.
-     *
-     * @return Handle to application's account (not guaranteed to resolve unless CreateSyncAccount()
-     *         has been called)
-     */
     public static Account GetAccount() {
         // Note: Normally the account name is set to the user's identity (username or email
         // address). However, since we aren't actually using any user accounts, it makes more sense

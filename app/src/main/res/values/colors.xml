@@ -1,20 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="primary">#3F51B5</color>
+
     <color name="primary_dark">#303F9F</color>
     <color name="primary_light">#C5CAE9</color>
     <color name="accent">#009688</color>
     <color name="primary_text">#212121</color>
     <color name="secondary_text">#727272</color>
-    <color name="icons">#FFFFFF</color>
+    <color name="icons">#000</color>
     <color name="divider">#B6B6B6</color>
 
-    <color name="primary_text_color">#fff</color>
+    <color name="primary_text_color">#000</color>
     <color name="secondary_text_color">#ffc2c2c2</color>
     <color name="divider_color">#ffb6b6b6</color>
-    <color name="text_color">#ffffffff</color>
+    <color name="text_color">#FCD80FDF</color>
 
     <color name="window_background">#ffebeff1</color>
     <color name="white">#FFFFFF</color>
+    <color name="colorPrimary">#FF0824C2</color>
+    <color name="colorPrimaryDark">#C51162</color>
+    <color name="textColorPrimary">#FFDC91CA</color>
+    <color name="windowBackground">#FFFFFF</color>
+    <color name="navigationBarColor">#000000</color>
+    <color name="colorAccent">#FCD80FDF</color>
 
 </resources>

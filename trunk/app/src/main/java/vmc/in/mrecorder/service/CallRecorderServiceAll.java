@@ -144,18 +144,30 @@ public class CallRecorderServiceAll extends Service implements TAG {
             if (Build.VERSION.SDK_INT == Build.VERSION_CODES.JELLY_BEAN_MR1 ||
                     Build.VERSION.SDK_INT == Build.VERSION_CODES.JELLY_BEAN
                     || Build.VERSION.SDK_INT == Build.VERSION_CODES.KITKAT) {
-                audiofile = new File(sample.getAbsolutePath() + "/sound" + fileName + ".3gp");
 
-                if (Build.MANUFACTURER.equals("VIKIN")) {
-                    recorder.setAudioSource(MediaRecorder.AudioSource.DEFAULT);
-                    Log.e("AudioSource", "JELLY_BEAN" + "VOICE_RECOGNITION" + " " + "3gp");
+
+//                if (Build.MANUFACTURER.equals("VIKIN")) {
+//                    audiofile = new File(sample.getAbsolutePath() + "/sound" + fileName + ".3gp");
+//                    recorder.setAudioSource(MediaRecorder.AudioSource.DEFAULT);
+//                    recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
+//                    recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
+//                    recorder.setOutputFile(audiofile.getAbsolutePath());
+//                    Log.e("AudioSource", "JELLY_BEAN" + "VOICE_RECOGNITION" + " " + "3gp");
+//                } else
+                if (Build.MANUFACTURER.equalsIgnoreCase("Xiaomi")) {
+                    audiofile = new File(sample.getAbsolutePath() + "/sound" + fileName + ".amr");
+                    recorder.setAudioSource(MediaRecorder.AudioSource.VOICE_CALL);
+                    recorder.setOutputFormat(MediaRecorder.OutputFormat.AMR_NB);
+                    recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
+                    recorder.setOutputFile(audiofile.getAbsolutePath());
+                    Log.e("AudioSource", "JELLY_BEAN" + "VOICE_CALL" + " " + "3gp");
                 } else {
                     recorder.setAudioSource(MediaRecorder.AudioSource.DEFAULT);
-                    Log.e("AudioSource", "JELLY_BEAN" + "VOICE_CALL" + " " + "3gp");
+                    audiofile = new File(sample.getAbsolutePath() + "/sound" + fileName + ".3gp");
+                    recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
+                    recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
+                    recorder.setOutputFile(audiofile.getAbsolutePath());
                 }
-                recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
-                recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
-                recorder.setOutputFile(audiofile.getAbsolutePath());
             } else {
                 audiofile = new File(sample.getAbsolutePath() + "/sound" + fileName + ".amr");
                 recorder.setAudioSource(MediaRecorder.AudioSource.VOICE_CALL);

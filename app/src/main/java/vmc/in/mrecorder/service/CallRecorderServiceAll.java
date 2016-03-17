@@ -145,15 +145,6 @@ public class CallRecorderServiceAll extends Service implements TAG {
                     Build.VERSION.SDK_INT == Build.VERSION_CODES.JELLY_BEAN
                     || Build.VERSION.SDK_INT == Build.VERSION_CODES.KITKAT) {
 
-
-//                if (Build.MANUFACTURER.equals("VIKIN")) {
-//                    audiofile = new File(sample.getAbsolutePath() + "/sound" + fileName + ".3gp");
-//                    recorder.setAudioSource(MediaRecorder.AudioSource.DEFAULT);
-//                    recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
-//                    recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
-//                    recorder.setOutputFile(audiofile.getAbsolutePath());
-//                    Log.e("AudioSource", "JELLY_BEAN" + "VOICE_RECOGNITION" + " " + "3gp");
-//                } else
                 if (Build.MANUFACTURER.equalsIgnoreCase("Xiaomi")) {
                     audiofile = new File(sample.getAbsolutePath() + "/sound" + fileName + ".amr");
                     recorder.setAudioSource(MediaRecorder.AudioSource.VOICE_CALL);

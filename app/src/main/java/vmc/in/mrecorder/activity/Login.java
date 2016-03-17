@@ -1,6 +1,7 @@
 package vmc.in.mrecorder.activity;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,140 +9,100 @@ import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import vmc.in.mrecorder.R;
+import vmc.in.mrecorder.gcm.GCMClientManager;
+import vmc.in.mrecorder.myapplication.CallApplication;
+import vmc.in.mrecorder.util.utils;
 
-public class Login extends AppCompatActivity {
+public class Login extends AppCompatActivity implements View.OnClickListener {
 
-    private Toolbar toolbar;
-    private EditText inputName,inputEmail,inputPassword;
-    private TextInputLayout inputLayoutName,inputLayoutEmail,inputLayoutPassword;
-    private Button btn_submit;
-
-
+    Button btn_login;
+    TextView link_signup, link_forgot_password;
+    String PROJECT_NUMBER = "26701829862";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        btn_login = (Button) findViewById(R.id.btn_login);
+        link_signup = (TextView) findViewById(R.id.link_signup);
+        link_forgot_password = (TextView) findViewById(R.id.link_forgot);
+        btn_login.setOnClickListener(this);
+        link_signup.setOnClickListener(this);
+        link_forgot_password.setOnClickListener(this);
 
-
-        toolbar= (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        inputLayoutName= (TextInputLayout) findViewById(R.id.input_layout_name);
-        inputLayoutEmail= (TextInputLayout) findViewById(R.id.input_layout_email);
-        inputLayoutPassword= (TextInputLayout) findViewById(R.id.input_layout_password);
-        inputName= (EditText) findViewById(R.id.input_name);
-        inputEmail= (EditText) findViewById(R.id.input_email);
-        inputPassword= (EditText) findViewById(R.id.input_password);
-        btn_submit= (Button) findViewById(R.id.btn_signup);
-
-        inputName.addTextChangedListener(new MyTextWacher(inputName));
-        inputEmail.addTextChangedListener(new MyTextWacher(inputEmail));
-        inputPassword.addTextChangedListener(new MyTextWacher(inputPassword));
-
-        btn_submit.setOnClickListener(new View.OnClickListener() {
+        GCMClientManager pushClientManager = new GCMClientManager(this, PROJECT_NUMBER);
+        pushClientManager.registerIfNeeded(new GCMClientManager.RegistrationCompletedHandler() {
             @Override
-            public void onClick(View v) {
-                submitForm();
+            public void onSuccess(String registrationId, boolean isNewRegistration) {
+                Log.d("Registration id", registrationId);
+                if (isNewRegistration) {
+                    onRegisterGcm(registrationId);
+                }
             }
+
+
         });
-
-
-
-    }
-    private void submitForm(){
-        if(!validateName()){
-            return;
-        }
-        if(!validateEmail()){
-            return;
-        }
-        if(!validatePassword()){
-            return;
-        }
-        Toast.makeText(getApplicationContext(), "Thank You", Toast.LENGTH_SHORT).show();
-        startActivity(new Intent(Login.this,Home.class));
-    }
-    private static boolean isValidEmail(String email){
-        return !TextUtils.isEmpty(email)&& Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
 
-    private boolean validateName(){
-        if(inputName.getText().toString().trim().isEmpty()){
-            inputLayoutName.setError(getString(R.string.err_msg_name));
-            requestFocus(inputName);
-            return false;
-        }else {
-            inputLayoutName.setErrorEnabled(false);
-        }
-        return true;
-    }
-    private boolean validateEmail(){
-        String email=inputEmail.getText().toString().trim();
-        if(email.isEmpty() || !isValidEmail(email)){
-            inputLayoutEmail.setError(getString(R.string.err_msg_email));
-            requestFocus(inputEmail);
-            return false;
-        }else {
-            inputLayoutEmail.setErrorEnabled(false);
-        }
-        return true;
-    }
-    private boolean validatePassword(){
+    public void onRegisterGcm(final String regid) {
 
-        if(inputPassword.getText().toString().trim().isEmpty()||6>inputPassword.getText().toString().trim().length() ||
-                10<inputPassword.getText().toString().trim().length()){
-            inputLayoutPassword.setError(getString(R.string.err_msg_password));
-            requestFocus(inputPassword);
-            return false;
-        }else {
-            inputLayoutPassword.setErrorEnabled(false);
+        if (utils.onlineStatus2(Login.this)) {
+            new RegisterGcm(regid).execute();
+        } else {
+            Toast.makeText(Login.this, "No Internet Connection", Toast.LENGTH_SHORT).show();
         }
-        return true;
+
     }
-    private void requestFocus(View view) {
-        if (view.requestFocus()) {
-            getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
-        }
-    }
-    private  class MyTextWacher implements TextWatcher {
 
-        private View view;
+    class RegisterGcm extends AsyncTask<Void, Void, String> {
+        private String regid;
 
-        private MyTextWacher(View view){
-            this.view=view;
-        }
-        @Override
-        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
+        public RegisterGcm(String regid) {
+            this.regid = regid;
         }
 
         @Override
-        public void onTextChanged(CharSequence s, int start, int before, int count) {
-
+        protected String doInBackground(Void... params) {
+            return null;
         }
 
         @Override
-        public void afterTextChanged(Editable s) {
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
 
-            switch (view.getId()) {
-                case R.id.input_name:
-                    validateName();
-                    break;
-                case R.id.input_email:
-                    validateEmail();
-                    break;
-                case  R.id.input_password:
-                    validatePassword();
-                    break;
-            }
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+        }
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.btn_login:
+                //startActivity(new Intent(getApplicationContext(), Home.class));
+               // finish();
+                Log.d("android_id", CallApplication.getDeviceId());
+                break;
+            case R.id.link_signup:
+                startActivity(new Intent(getApplicationContext(), SignupActivity.class));
+                finish();
+                break;
+            case R.id.link_forgot:
+                startActivity(new Intent(getApplicationContext(), ForgotPasword.class));
+                finish();
+                break;
         }
     }
 }

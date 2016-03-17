@@ -2178,17 +2178,17 @@
                     "startLine": 37,
                     "startColumn": 4,
                     "startOffset": 3409,
-                    "endColumn": 175,
-                    "endOffset": 3580
+                    "endColumn": 262,
+                    "endOffset": 3667
                 },
                 "from": {
-                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/res/values-th/common_strings.xml",
+                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/res/values-th/base_strings.xml",
                     "position": {
-                        "startLine": 5,
+                        "startLine": 24,
                         "startColumn": 4,
-                        "startOffset": 488,
-                        "endColumn": 179,
-                        "endOffset": 663
+                        "startOffset": 3360,
+                        "endColumn": 266,
+                        "endOffset": 3622
                     }
                 }
             },
@@ -2196,18 +2196,18 @@
                 "to": {
                     "startLine": 38,
                     "startColumn": 4,
-                    "startOffset": 3585,
-                    "endColumn": 167,
-                    "endOffset": 3748
+                    "startOffset": 3672,
+                    "endColumn": 125,
+                    "endOffset": 3793
                 },
                 "from": {
-                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/res/values-th/common_strings.xml",
+                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/res/values-th/base_strings.xml",
                     "position": {
-                        "startLine": 18,
+                        "startLine": 10,
                         "startColumn": 4,
-                        "startOffset": 2515,
-                        "endColumn": 171,
-                        "endOffset": 2682
+                        "startOffset": 1282,
+                        "endColumn": 125,
+                        "endOffset": 1403
                     }
                 }
             },
@@ -2215,18 +2215,18 @@
                 "to": {
                     "startLine": 39,
                     "startColumn": 4,
-                    "startOffset": 3753,
-                    "endColumn": 110,
-                    "endOffset": 3859
+                    "startOffset": 3798,
+                    "endColumn": 178,
+                    "endOffset": 3972
                 },
                 "from": {
-                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/res/values-th/common_strings.xml",
+                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/res/values-th/base_strings.xml",
                     "position": {
-                        "startLine": 16,
+                        "startLine": 9,
                         "startColumn": 4,
-                        "startOffset": 2222,
-                        "endColumn": 110,
-                        "endOffset": 2328
+                        "startOffset": 1099,
+                        "endColumn": 182,
+                        "endOffset": 1277
                     }
                 }
             },
@@ -2234,18 +2234,18 @@
                 "to": {
                     "startLine": 40,
                     "startColumn": 4,
-                    "startOffset": 3864,
-                    "endColumn": 262,
-                    "endOffset": 4122
+                    "startOffset": 3977,
+                    "endColumn": 124,
+                    "endOffset": 4097
                 },
                 "from": {
-                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/res/values-th/common_strings.xml",
+                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/res/values-th/base_strings.xml",
                     "position": {
-                        "startLine": 32,
+                        "startLine": 8,
                         "startColumn": 4,
-                        "startOffset": 4502,
-                        "endColumn": 266,
-                        "endOffset": 4764
+                        "startOffset": 974,
+                        "endColumn": 124,
+                        "endOffset": 1094
                     }
                 }
             },
@@ -2253,18 +2253,18 @@
                 "to": {
                     "startLine": 41,
                     "startColumn": 4,
-                    "startOffset": 4127,
-                    "endColumn": 128,
-                    "endOffset": 4251
+                    "startOffset": 4102,
+                    "endColumn": 126,
+                    "endOffset": 4224
                 },
                 "from": {
-                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/res/values-th/common_strings.xml",
+                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/res/values-th/base_strings.xml",
                     "position": {
-                        "startLine": 14,
+                        "startLine": 7,
                         "startColumn": 4,
-                        "startOffset": 1969,
-                        "endColumn": 128,
-                        "endOffset": 2093
+                        "startOffset": 847,
+                        "endColumn": 126,
+                        "endOffset": 969
                     }
                 }
             },
@@ -2272,18 +2272,18 @@
                 "to": {
                     "startLine": 42,
                     "startColumn": 4,
-                    "startOffset": 4256,
-                    "endColumn": 178,
-                    "endOffset": 4430
+                    "startOffset": 4229,
+                    "endColumn": 201,
+                    "endOffset": 4426
                 },
                 "from": {
-                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/res/values-th/common_strings.xml",
+                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/res/values-th/base_strings.xml",
                     "position": {
-                        "startLine": 13,
+                        "startLine": 5,
                         "startColumn": 4,
-                        "startOffset": 1786,
-                        "endColumn": 182,
-                        "endOffset": 1964
+                        "startOffset": 434,
+                        "endColumn": 205,
+                        "endOffset": 635
                     }
                 }
             },
@@ -2291,18 +2291,18 @@
                 "to": {
                     "startLine": 43,
                     "startColumn": 4,
-                    "startOffset": 4435,
-                    "endColumn": 126,
-                    "endOffset": 4557
+                    "startOffset": 4431,
+                    "endColumn": 202,
+                    "endOffset": 4629
                 },
                 "from": {
-                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/res/values-th/common_strings.xml",
+                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/res/values-th/base_strings.xml",
                     "position": {
-                        "startLine": 12,
+                        "startLine": 6,
                         "startColumn": 4,
-                        "startOffset": 1659,
-                        "endColumn": 126,
-                        "endOffset": 1781
+                        "startOffset": 640,
+                        "endColumn": 206,
+                        "endOffset": 842
                     }
                 }
             },
@@ -2310,18 +2310,18 @@
                 "to": {
                     "startLine": 44,
                     "startColumn": 4,
-                    "startOffset": 4562,
-                    "endColumn": 161,
-                    "endOffset": 4719
+                    "startOffset": 4634,
+                    "endColumn": 125,
+                    "endOffset": 4755
                 },
                 "from": {
-                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/res/values-th/common_strings.xml",
+                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/res/values-th/base_strings.xml",
                     "position": {
-                        "startLine": 7,
+                        "startLine": 4,
                         "startColumn": 4,
-                        "startOffset": 838,
-                        "endColumn": 165,
-                        "endOffset": 999
+                        "startOffset": 308,
+                        "endColumn": 125,
+                        "endOffset": 429
                     }
                 }
             },
@@ -2329,18 +2329,18 @@
                 "to": {
                     "startLine": 45,
                     "startColumn": 4,
-                    "startOffset": 4724,
-                    "endColumn": 122,
-                    "endOffset": 4842
+                    "startOffset": 4760,
+                    "endColumn": 159,
+                    "endOffset": 4915
                 },
                 "from": {
-                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/res/values-th/common_strings.xml",
+                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/res/values-th/base_strings.xml",
                     "position": {
-                        "startLine": 11,
+                        "startLine": 19,
                         "startColumn": 4,
-                        "startOffset": 1536,
-                        "endColumn": 122,
-                        "endOffset": 1654
+                        "startOffset": 2644,
+                        "endColumn": 159,
+                        "endOffset": 2799
                     }
                 }
             },
@@ -2348,18 +2348,18 @@
                 "to": {
                     "startLine": 46,
                     "startColumn": 4,
-                    "startOffset": 4847,
-                    "endColumn": 201,
-                    "endOffset": 5044
+                    "startOffset": 4920,
+                    "endColumn": 120,
+                    "endOffset": 5036
                 },
                 "from": {
-                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/res/values-th/common_strings.xml",
+                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/res/values-th/base_strings.xml",
                     "position": {
-                        "startLine": 9,
+                        "startLine": 18,
                         "startColumn": 4,
-                        "startOffset": 1124,
-                        "endColumn": 205,
-                        "endOffset": 1325
+                        "startOffset": 2523,
+                        "endColumn": 120,
+                        "endOffset": 2639
                     }
                 }
             },
@@ -2367,18 +2367,18 @@
                 "to": {
                     "startLine": 47,
                     "startColumn": 4,
-                    "startOffset": 5049,
-                    "endColumn": 201,
-                    "endOffset": 5246
+                    "startOffset": 5041,
+                    "endColumn": 164,
+                    "endOffset": 5201
                 },
                 "from": {
-                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/res/values-th/common_strings.xml",
+                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/res/values-th/base_strings.xml",
                     "position": {
-                        "startLine": 10,
+                        "startLine": 17,
                         "startColumn": 4,
-                        "startOffset": 1330,
-                        "endColumn": 205,
-                        "endOffset": 1531
+                        "startOffset": 2358,
+                        "endColumn": 164,
+                        "endOffset": 2518
                     }
                 }
             },
@@ -2386,18 +2386,18 @@
                 "to": {
                     "startLine": 48,
                     "startColumn": 4,
-                    "startOffset": 5251,
-                    "endColumn": 119,
-                    "endOffset": 5366
+                    "startOffset": 5206,
+                    "endColumn": 128,
+                    "endOffset": 5330
                 },
                 "from": {
-                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/res/values-th/common_strings.xml",
+                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/res/values-th/base_strings.xml",
                     "position": {
-                        "startLine": 8,
+                        "startLine": 16,
                         "startColumn": 4,
-                        "startOffset": 1004,
-                        "endColumn": 119,
-                        "endOffset": 1119
+                        "startOffset": 2229,
+                        "endColumn": 128,
+                        "endOffset": 2353
                     }
                 }
             },
@@ -2405,126 +2405,12 @@
                 "to": {
                     "startLine": 49,
                     "startColumn": 4,
-                    "startOffset": 5371,
-                    "endColumn": 159,
-                    "endOffset": 5526
-                },
-                "from": {
-                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/res/values-th/common_strings.xml",
-                    "position": {
-                        "startLine": 24,
-                        "startColumn": 4,
-                        "startOffset": 3438,
-                        "endColumn": 159,
-                        "endOffset": 3593
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 50,
-                    "startColumn": 4,
-                    "startOffset": 5531,
-                    "endColumn": 123,
-                    "endOffset": 5650
-                },
-                "from": {
-                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/res/values-th/common_strings.xml",
-                    "position": {
-                        "startLine": 23,
-                        "startColumn": 4,
-                        "startOffset": 3314,
-                        "endColumn": 123,
-                        "endOffset": 3433
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 51,
-                    "startColumn": 4,
-                    "startOffset": 5655,
-                    "endColumn": 169,
-                    "endOffset": 5820
-                },
-                "from": {
-                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/res/values-th/common_strings.xml",
-                    "position": {
-                        "startLine": 6,
-                        "startColumn": 4,
-                        "startOffset": 668,
-                        "endColumn": 169,
-                        "endOffset": 833
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 52,
-                    "startColumn": 4,
-                    "startOffset": 5825,
-                    "endColumn": 164,
-                    "endOffset": 5985
-                },
-                "from": {
-                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/res/values-th/common_strings.xml",
-                    "position": {
-                        "startLine": 22,
-                        "startColumn": 4,
-                        "startOffset": 3149,
-                        "endColumn": 164,
-                        "endOffset": 3309
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 53,
-                    "startColumn": 4,
-                    "startOffset": 5990,
-                    "endColumn": 128,
-                    "endOffset": 6114
-                },
-                "from": {
-                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/res/values-th/common_strings.xml",
-                    "position": {
-                        "startLine": 21,
-                        "startColumn": 4,
-                        "startOffset": 3020,
-                        "endColumn": 128,
-                        "endOffset": 3144
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 54,
-                    "startColumn": 4,
-                    "startOffset": 6119,
-                    "endColumn": 179,
-                    "endOffset": 6294
-                },
-                "from": {
-                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/res/values-th/common_strings.xml",
-                    "position": {
-                        "startLine": 4,
-                        "startColumn": 4,
-                        "startOffset": 308,
-                        "endColumn": 179,
-                        "endOffset": 483
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 55,
-                    "startColumn": 4,
-                    "startOffset": 6299,
+                    "startOffset": 5335,
                     "endColumn": 137,
-                    "endOffset": 6432
+                    "endOffset": 5468
                 },
                 "from": {
-                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/res/values-th/common_strings.xml",
+                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/res/values-th/base_strings.xml",
                     "position": {
                         "startLine": 3,
                         "startColumn": 4,
@@ -2536,20 +2422,134 @@
             },
             {
                 "to": {
-                    "startLine": 56,
+                    "startLine": 50,
                     "startColumn": 4,
-                    "startOffset": 6437,
-                    "endColumn": 169,
-                    "endOffset": 6602
+                    "startOffset": 5473,
+                    "endColumn": 157,
+                    "endOffset": 5626
                 },
                 "from": {
-                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/res/values-th/common_strings.xml",
+                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/res/values-th/base_strings.xml",
                     "position": {
-                        "startLine": 34,
+                        "startLine": 28,
                         "startColumn": 4,
-                        "startOffset": 4900,
-                        "endColumn": 169,
-                        "endOffset": 5065
+                        "startOffset": 4056,
+                        "endColumn": 157,
+                        "endOffset": 4209
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 51,
+                    "startColumn": 4,
+                    "startOffset": 5631,
+                    "endColumn": 129,
+                    "endOffset": 5756
+                },
+                "from": {
+                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/res/values-th/base_strings.xml",
+                    "position": {
+                        "startLine": 27,
+                        "startColumn": 4,
+                        "startOffset": 3926,
+                        "endColumn": 129,
+                        "endOffset": 4051
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 52,
+                    "startColumn": 4,
+                    "startOffset": 5761,
+                    "endColumn": 167,
+                    "endOffset": 5924
+                },
+                "from": {
+                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/res/values-th/base_strings.xml",
+                    "position": {
+                        "startLine": 26,
+                        "startColumn": 4,
+                        "startOffset": 3758,
+                        "endColumn": 167,
+                        "endOffset": 3921
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 53,
+                    "startColumn": 4,
+                    "startOffset": 5929,
+                    "endColumn": 130,
+                    "endOffset": 6055
+                },
+                "from": {
+                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/res/values-th/base_strings.xml",
+                    "position": {
+                        "startLine": 25,
+                        "startColumn": 4,
+                        "startOffset": 3627,
+                        "endColumn": 130,
+                        "endOffset": 3753
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 54,
+                    "startColumn": 4,
+                    "startOffset": 6060,
+                    "endColumn": 239,
+                    "endOffset": 6295
+                },
+                "from": {
+                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/res/values-th/common_strings.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 170,
+                        "endColumn": 243,
+                        "endOffset": 409
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 55,
+                    "startColumn": 4,
+                    "startOffset": 6300,
+                    "endColumn": 229,
+                    "endOffset": 6525
+                },
+                "from": {
+                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/res/values-th/base_strings.xml",
+                    "position": {
+                        "startLine": 21,
+                        "startColumn": 4,
+                        "startOffset": 2926,
+                        "endColumn": 233,
+                        "endOffset": 3155
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 56,
+                    "startColumn": 4,
+                    "startOffset": 6530,
+                    "endColumn": 121,
+                    "endOffset": 6647
+                },
+                "from": {
+                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/res/values-th/base_strings.xml",
+                    "position": {
+                        "startLine": 20,
+                        "startColumn": 4,
+                        "startOffset": 2804,
+                        "endColumn": 121,
+                        "endOffset": 2921
                     }
                 }
             },
@@ -2557,18 +2557,18 @@
                 "to": {
                     "startLine": 57,
                     "startColumn": 4,
-                    "startOffset": 6607,
-                    "endColumn": 130,
-                    "endOffset": 6733
+                    "startOffset": 6652,
+                    "endColumn": 106,
+                    "endOffset": 6754
                 },
                 "from": {
-                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/res/values-th/common_strings.xml",
+                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/res/values-th/base_strings.xml",
                     "position": {
-                        "startLine": 33,
+                        "startLine": 22,
                         "startColumn": 4,
-                        "startOffset": 4769,
-                        "endColumn": 130,
-                        "endOffset": 4895
+                        "startOffset": 3160,
+                        "endColumn": 106,
+                        "endOffset": 3262
                     }
                 }
             },
@@ -2576,18 +2576,18 @@
                 "to": {
                     "startLine": 58,
                     "startColumn": 4,
-                    "startOffset": 6738,
-                    "endColumn": 138,
-                    "endOffset": 6872
+                    "startOffset": 6759,
+                    "endColumn": 177,
+                    "endOffset": 6932
                 },
                 "from": {
-                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/res/values-th/common_strings.xml",
+                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/res/values-th/base_strings.xml",
                     "position": {
-                        "startLine": 25,
+                        "startLine": 12,
                         "startColumn": 4,
-                        "startOffset": 3598,
-                        "endColumn": 138,
-                        "endOffset": 3732
+                        "startOffset": 1532,
+                        "endColumn": 181,
+                        "endOffset": 1709
                     }
                 }
             },
@@ -2595,18 +2595,18 @@
                 "to": {
                     "startLine": 59,
                     "startColumn": 4,
-                    "startOffset": 6877,
-                    "endColumn": 229,
-                    "endOffset": 7102
+                    "startOffset": 6937,
+                    "endColumn": 123,
+                    "endOffset": 7056
                 },
                 "from": {
-                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/res/values-th/common_strings.xml",
+                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/res/values-th/base_strings.xml",
                     "position": {
-                        "startLine": 27,
+                        "startLine": 11,
                         "startColumn": 4,
-                        "startOffset": 3860,
-                        "endColumn": 233,
-                        "endOffset": 4089
+                        "startOffset": 1408,
+                        "endColumn": 123,
+                        "endOffset": 1527
                     }
                 }
             },
@@ -2614,18 +2614,18 @@
                 "to": {
                     "startLine": 60,
                     "startColumn": 4,
-                    "startOffset": 7107,
-                    "endColumn": 122,
-                    "endOffset": 7225
+                    "startOffset": 7061,
+                    "endColumn": 198,
+                    "endOffset": 7255
                 },
                 "from": {
-                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/res/values-th/common_strings.xml",
+                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/res/values-th/base_strings.xml",
                     "position": {
-                        "startLine": 26,
+                        "startLine": 15,
                         "startColumn": 4,
-                        "startOffset": 3737,
-                        "endColumn": 122,
-                        "endOffset": 3855
+                        "startOffset": 2026,
+                        "endColumn": 202,
+                        "endOffset": 2224
                     }
                 }
             },
@@ -2633,18 +2633,18 @@
                 "to": {
                     "startLine": 61,
                     "startColumn": 4,
-                    "startOffset": 7230,
-                    "endColumn": 106,
-                    "endOffset": 7332
+                    "startOffset": 7260,
+                    "endColumn": 130,
+                    "endOffset": 7386
                 },
                 "from": {
-                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/res/values-th/common_strings.xml",
+                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/res/values-th/base_strings.xml",
                     "position": {
-                        "startLine": 28,
+                        "startLine": 14,
                         "startColumn": 4,
-                        "startOffset": 4094,
-                        "endColumn": 106,
-                        "endOffset": 4196
+                        "startOffset": 1895,
+                        "endColumn": 130,
+                        "endOffset": 2021
                     }
                 }
             },
@@ -2652,18 +2652,18 @@
                 "to": {
                     "startLine": 62,
                     "startColumn": 4,
-                    "startOffset": 7337,
-                    "endColumn": 177,
-                    "endOffset": 7510
+                    "startOffset": 7391,
+                    "endColumn": 180,
+                    "endOffset": 7567
                 },
                 "from": {
-                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/res/values-th/common_strings.xml",
+                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/res/values-th/base_strings.xml",
                     "position": {
-                        "startLine": 17,
+                        "startLine": 13,
                         "startColumn": 4,
-                        "startOffset": 2333,
-                        "endColumn": 181,
-                        "endOffset": 2510
+                        "startOffset": 1714,
+                        "endColumn": 180,
+                        "endOffset": 1890
                     }
                 }
             },
@@ -2671,18 +2671,18 @@
                 "to": {
                     "startLine": 63,
                     "startColumn": 4,
-                    "startOffset": 7515,
-                    "endColumn": 123,
-                    "endOffset": 7634
+                    "startOffset": 7572,
+                    "endColumn": 92,
+                    "endOffset": 7660
                 },
                 "from": {
-                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/res/values-th/common_strings.xml",
+                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/res/values-th/base_strings.xml",
                     "position": {
-                        "startLine": 15,
+                        "startLine": 23,
                         "startColumn": 4,
-                        "startOffset": 2098,
-                        "endColumn": 123,
-                        "endOffset": 2217
+                        "startOffset": 3267,
+                        "endColumn": 92,
+                        "endOffset": 3355
                     }
                 }
             },
@@ -2690,18 +2690,18 @@
                 "to": {
                     "startLine": 64,
                     "startColumn": 4,
-                    "startOffset": 7639,
-                    "endColumn": 198,
-                    "endOffset": 7833
+                    "startOffset": 7665,
+                    "endColumn": 97,
+                    "endOffset": 7758
                 },
                 "from": {
-                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/res/values-th/common_strings.xml",
+                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/res/values-th/base_strings.xml",
                     "position": {
-                        "startLine": 20,
+                        "startLine": 29,
                         "startColumn": 4,
-                        "startOffset": 2817,
-                        "endColumn": 202,
-                        "endOffset": 3015
+                        "startOffset": 4214,
+                        "endColumn": 97,
+                        "endOffset": 4307
                     }
                 }
             },
@@ -2709,18 +2709,18 @@
                 "to": {
                     "startLine": 65,
                     "startColumn": 4,
-                    "startOffset": 7838,
-                    "endColumn": 129,
-                    "endOffset": 7963
+                    "startOffset": 7763,
+                    "endColumn": 113,
+                    "endOffset": 7872
                 },
                 "from": {
-                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/res/values-th/common_strings.xml",
+                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/res/values-th/base_strings.xml",
                     "position": {
-                        "startLine": 19,
+                        "startLine": 30,
                         "startColumn": 4,
-                        "startOffset": 2687,
-                        "endColumn": 129,
-                        "endOffset": 2812
+                        "startOffset": 4312,
+                        "endColumn": 113,
+                        "endOffset": 4421
                     }
                 }
             },
@@ -2728,66 +2728,9 @@
                 "to": {
                     "startLine": 66,
                     "startColumn": 4,
-                    "startOffset": 7968,
-                    "endColumn": 92,
-                    "endOffset": 8056
-                },
-                "from": {
-                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/res/values-th/common_strings.xml",
-                    "position": {
-                        "startLine": 31,
-                        "startColumn": 4,
-                        "startOffset": 4409,
-                        "endColumn": 92,
-                        "endOffset": 4497
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 67,
-                    "startColumn": 4,
-                    "startOffset": 8061,
-                    "endColumn": 93,
-                    "endOffset": 8150
-                },
-                "from": {
-                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/res/values-th/common_strings.xml",
-                    "position": {
-                        "startLine": 29,
-                        "startColumn": 4,
-                        "startOffset": 4201,
-                        "endColumn": 93,
-                        "endOffset": 4290
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 68,
-                    "startColumn": 4,
-                    "startOffset": 8155,
-                    "endColumn": 113,
-                    "endOffset": 8264
-                },
-                "from": {
-                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/res/values-th/common_strings.xml",
-                    "position": {
-                        "startLine": 30,
-                        "startColumn": 4,
-                        "startOffset": 4295,
-                        "endColumn": 113,
-                        "endOffset": 4404
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 69,
-                    "startColumn": 4,
-                    "startOffset": 8269,
+                    "startOffset": 7877,
                     "endColumn": 58,
-                    "endOffset": 8323
+                    "endOffset": 7931
                 },
                 "from": {
                     "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.5.0/res/values-th/values-th.xml",
@@ -2802,20 +2745,77 @@
             },
             {
                 "to": {
-                    "startLine": 70,
+                    "startLine": 67,
                     "startColumn": 4,
-                    "startOffset": 8328,
-                    "endColumn": 103,
-                    "endOffset": 8427
+                    "startOffset": 7936,
+                    "endColumn": 105,
+                    "endOffset": 8037
                 },
                 "from": {
-                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/22.0.0/res/values-th/values.xml",
+                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/23.0.0/res/values-th/values-th.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,
                         "startOffset": 278,
-                        "endColumn": 103,
-                        "endOffset": 377
+                        "endColumn": 105,
+                        "endOffset": 379
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 68,
+                    "startColumn": 4,
+                    "startOffset": 8042,
+                    "endColumn": 109,
+                    "endOffset": 8147
+                },
+                "from": {
+                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/23.0.0/res/values-th/values-th.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 384,
+                        "endColumn": 109,
+                        "endOffset": 489
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 69,
+                    "startColumn": 4,
+                    "startOffset": 8152,
+                    "endColumn": 106,
+                    "endOffset": 8254
+                },
+                "from": {
+                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/23.0.0/res/values-th/values-th.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 494,
+                        "endColumn": 106,
+                        "endOffset": 596
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 70,
+                    "startColumn": 4,
+                    "startOffset": 8259,
+                    "endColumn": 112,
+                    "endOffset": 8367
+                },
+                "from": {
+                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/23.0.0/res/values-th/values-th.xml",
+                    "position": {
+                        "startLine": 7,
+                        "startColumn": 4,
+                        "startOffset": 601,
+                        "endColumn": 112,
+                        "endOffset": 709
                     }
                 }
             },
@@ -2823,18 +2823,18 @@
                 "to": {
                     "startLine": 71,
                     "startColumn": 4,
-                    "startOffset": 8432,
-                    "endColumn": 109,
-                    "endOffset": 8537
+                    "startOffset": 8372,
+                    "endColumn": 113,
+                    "endOffset": 8481
                 },
                 "from": {
-                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/22.0.0/res/values-th/values.xml",
+                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/23.0.0/res/values-th/values-th.xml",
                     "position": {
-                        "startLine": 5,
+                        "startLine": 8,
                         "startColumn": 4,
-                        "startOffset": 382,
-                        "endColumn": 109,
-                        "endOffset": 487
+                        "startOffset": 714,
+                        "endColumn": 113,
+                        "endOffset": 823
                     }
                 }
             },
@@ -2842,18 +2842,18 @@
                 "to": {
                     "startLine": 72,
                     "startColumn": 4,
-                    "startOffset": 8542,
-                    "endColumn": 106,
-                    "endOffset": 8644
+                    "startOffset": 8486,
+                    "endColumn": 102,
+                    "endOffset": 8584
                 },
                 "from": {
-                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/22.0.0/res/values-th/values.xml",
+                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/23.0.0/res/values-th/values-th.xml",
                     "position": {
-                        "startLine": 6,
+                        "startLine": 9,
                         "startColumn": 4,
-                        "startOffset": 492,
-                        "endColumn": 106,
-                        "endOffset": 594
+                        "startOffset": 828,
+                        "endColumn": 102,
+                        "endOffset": 926
                     }
                 }
             },
@@ -2861,18 +2861,18 @@
                 "to": {
                     "startLine": 73,
                     "startColumn": 4,
-                    "startOffset": 8649,
-                    "endColumn": 112,
-                    "endOffset": 8757
+                    "startOffset": 8589,
+                    "endColumn": 93,
+                    "endOffset": 8678
                 },
                 "from": {
-                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/22.0.0/res/values-th/values.xml",
+                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/23.0.0/res/values-th/values-th.xml",
                     "position": {
-                        "startLine": 7,
+                        "startLine": 10,
                         "startColumn": 4,
-                        "startOffset": 599,
-                        "endColumn": 112,
-                        "endOffset": 707
+                        "startOffset": 931,
+                        "endColumn": 93,
+                        "endOffset": 1020
                     }
                 }
             },
@@ -2880,18 +2880,18 @@
                 "to": {
                     "startLine": 74,
                     "startColumn": 4,
-                    "startOffset": 8762,
-                    "endColumn": 102,
-                    "endOffset": 8860
+                    "startOffset": 8683,
+                    "endColumn": 121,
+                    "endOffset": 8800
                 },
                 "from": {
-                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/22.0.0/res/values-th/values.xml",
+                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/23.0.0/res/values-th/values-th.xml",
                     "position": {
-                        "startLine": 8,
+                        "startLine": 11,
                         "startColumn": 4,
-                        "startOffset": 712,
-                        "endColumn": 102,
-                        "endOffset": 810
+                        "startOffset": 1025,
+                        "endColumn": 121,
+                        "endOffset": 1142
                     }
                 }
             },
@@ -2899,18 +2899,18 @@
                 "to": {
                     "startLine": 75,
                     "startColumn": 4,
-                    "startOffset": 8865,
-                    "endColumn": 93,
-                    "endOffset": 8954
+                    "startOffset": 8805,
+                    "endColumn": 99,
+                    "endOffset": 8900
                 },
                 "from": {
-                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/22.0.0/res/values-th/values.xml",
+                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/23.0.0/res/values-th/values-th.xml",
                     "position": {
-                        "startLine": 9,
+                        "startLine": 12,
                         "startColumn": 4,
-                        "startOffset": 815,
-                        "endColumn": 93,
-                        "endOffset": 904
+                        "startOffset": 1147,
+                        "endColumn": 99,
+                        "endOffset": 1242
                     }
                 }
             },
@@ -2918,18 +2918,18 @@
                 "to": {
                     "startLine": 76,
                     "startColumn": 4,
-                    "startOffset": 8959,
-                    "endColumn": 121,
-                    "endOffset": 9076
+                    "startOffset": 8905,
+                    "endColumn": 83,
+                    "endOffset": 8984
                 },
                 "from": {
-                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/22.0.0/res/values-th/values.xml",
+                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/23.0.0/res/values-th/values-th.xml",
                     "position": {
-                        "startLine": 10,
+                        "startLine": 13,
                         "startColumn": 4,
-                        "startOffset": 909,
-                        "endColumn": 121,
-                        "endOffset": 1026
+                        "startOffset": 1247,
+                        "endColumn": 83,
+                        "endOffset": 1326
                     }
                 }
             },
@@ -2937,18 +2937,18 @@
                 "to": {
                     "startLine": 77,
                     "startColumn": 4,
-                    "startOffset": 9081,
-                    "endColumn": 99,
-                    "endOffset": 9176
+                    "startOffset": 8989,
+                    "endColumn": 93,
+                    "endOffset": 9078
                 },
                 "from": {
-                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/22.0.0/res/values-th/values.xml",
+                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/23.0.0/res/values-th/values-th.xml",
                     "position": {
-                        "startLine": 11,
+                        "startLine": 14,
                         "startColumn": 4,
-                        "startOffset": 1031,
-                        "endColumn": 99,
-                        "endOffset": 1126
+                        "startOffset": 1331,
+                        "endColumn": 93,
+                        "endOffset": 1420
                     }
                 }
             },
@@ -2956,18 +2956,18 @@
                 "to": {
                     "startLine": 78,
                     "startColumn": 4,
-                    "startOffset": 9181,
-                    "endColumn": 83,
-                    "endOffset": 9260
+                    "startOffset": 9083,
+                    "endColumn": 102,
+                    "endOffset": 9181
                 },
                 "from": {
-                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/22.0.0/res/values-th/values.xml",
+                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-location/8.4.0/res/values-th/location_strings.xml",
                     "position": {
-                        "startLine": 12,
+                        "startLine": 6,
                         "startColumn": 4,
-                        "startOffset": 1131,
-                        "endColumn": 83,
-                        "endOffset": 1210
+                        "startOffset": 325,
+                        "endColumn": 102,
+                        "endOffset": 423
                     }
                 }
             },
@@ -2975,18 +2975,18 @@
                 "to": {
                     "startLine": 79,
                     "startColumn": 4,
-                    "startOffset": 9265,
-                    "endColumn": 93,
-                    "endOffset": 9354
+                    "startOffset": 9186,
+                    "endColumn": 94,
+                    "endOffset": 9276
                 },
                 "from": {
-                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/22.0.0/res/values-th/values.xml",
+                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-location/8.4.0/res/values-th/location_strings.xml",
                     "position": {
-                        "startLine": 13,
+                        "startLine": 5,
                         "startColumn": 4,
-                        "startOffset": 1215,
-                        "endColumn": 93,
-                        "endOffset": 1304
+                        "startOffset": 230,
+                        "endColumn": 94,
+                        "endOffset": 320
                     }
                 }
             },
@@ -2994,9 +2994,9 @@
                 "to": {
                     "startLine": 80,
                     "startColumn": 4,
-                    "startOffset": 9359,
+                    "startOffset": 9281,
                     "endColumn": 100,
-                    "endOffset": 9455
+                    "endOffset": 9377
                 },
                 "from": {
                     "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values-th/values-th.xml",
@@ -3006,6 +3006,25 @@
                         "startOffset": 2143,
                         "endColumn": 100,
                         "endOffset": 2239
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 81,
+                    "startColumn": 4,
+                    "startOffset": 9382,
+                    "endColumn": 104,
+                    "endOffset": 9482
+                },
+                "from": {
+                    "file": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-wallet/8.4.0/res/values-th/wallet_strings.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 230,
+                        "endColumn": 104,
+                        "endOffset": 330
                     }
                 }
             }

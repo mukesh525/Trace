@@ -6,11 +6,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.telephony.TelephonyManager;
 import android.util.Log;
 
 import com.facebook.FacebookSdk;
 import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.Tracker;
+
+import java.util.UUID;
 
 import vmc.in.mrecorder.datahandler.HelperCallRecordings;
 import vmc.in.mrecorder.service.CallIconService;
@@ -25,7 +28,7 @@ public class CallApplication extends Application {
     public static int opt;
     private static GoogleAnalytics analytics;
 
-
+    private static String DeviceID;
     private static Tracker tracker;
     private static HelperCallRecordings mDatabase;
 
@@ -45,6 +48,7 @@ public class CallApplication extends Application {
         super.onCreate();
         SyncUtils.CreateSyncAccount(getBaseContext());
         Log.e("application", "created");
+        DeviceID = GetDeviceId();
         mApplication = this;
         //try{
         sp = getApplicationContext().getSharedPreferences("com.example.call", Context.MODE_PRIVATE);
@@ -81,6 +85,13 @@ public class CallApplication extends Application {
 
         // Enable automatic activity tracking for your app
         tracker.enableAutoActivityTracking(true);
+    }
+
+
+    public synchronized static String getDeviceId() {
+
+        return DeviceID;
+
     }
 
 
@@ -121,6 +132,24 @@ public class CallApplication extends Application {
         } catch (Exception e) {
             Log.e("application", "reset service");
         }
+    }
+
+    public synchronized String GetDeviceId() {
+        //android_id = Settings.Secure.getString(getApplicationContext().getContentResolver(),
+//        Settings.Secure.ANDROID_ID);
+//        Log.d("android_id",android_id);
+        final TelephonyManager tm = (TelephonyManager) getBaseContext().getSystemService(Context.TELEPHONY_SERVICE);
+
+        final String tmDevice, tmSerial, androidId;
+        tmDevice = "" + tm.getDeviceId();
+        tmSerial = "" + tm.getSimSerialNumber();
+        androidId = "" + android.provider.Settings.Secure.getString(getContentResolver(), android.provider.Settings.Secure.ANDROID_ID);
+
+        UUID deviceUuid = new UUID(androidId.hashCode(), ((long) tmDevice.hashCode() << 32) | tmSerial.hashCode());
+        String deviceId = deviceUuid.toString();
+        Log.d("android_id", deviceId);
+        return deviceId;
+
     }
 
 }

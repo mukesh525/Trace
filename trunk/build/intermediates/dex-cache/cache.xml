@@ -1,2 +1,278 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" />
+<items version="2" >
+
+    <item
+        jar="/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="b5e7892fb0708e792e0e933c4c0a0ca0ac7831fb">
+        <dex dex="/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-ads-8.4.0_1f073a60ec52668e56ef340e710c84f86b9a40bc.jar" />
+    </item>
+    <item
+        jar="/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-wallet/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="f2df436a8f02ce7e4d7d209671fc45f97c470f0e">
+        <dex dex="/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-wallet-8.4.0_66b36e9b2b7981607b338d9e30d56a155855b05b.jar" />
+    </item>
+    <item
+        jar="/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-identity/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="b82b8e847173c28efffcd291b2a0b1ae9ad17fa4">
+        <dex dex="/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-identity-8.4.0_491eb977e986235ee88d34337b40119264e2743a.jar" />
+    </item>
+    <item
+        jar="/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.5.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="15ad6a46fb8e2ed86556e0b330d738b589dc62c7">
+        <dex dex="/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/pre-dexed/debug/com.facebook.android-facebook-android-sdk-4.5.0_e61ad1cce90845f6ff097a7ad958b4b057765ccc.jar" />
+    </item>
+    <item
+        jar="/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/jars/libs/internal_impl-23.1.1.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="a4de9c81ae239414e1ed0f86441b02abaf29bca9">
+        <dex dex="/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/pre-dexed/debug/internal_impl-23.1.1_addf5af565b157adc4a38b030fa643932e81bdf5.jar" />
+    </item>
+    <item
+        jar="/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appindexing/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="65d086ee9daaf87b5af62ad24471edafa433354c">
+        <dex dex="/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-appindexing-8.4.0_296cd55af42bb87e9ef4ff37938a89deb230523d.jar" />
+    </item>
+    <item
+        jar="/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/23.0.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="d358b3dd49a7c67844622dcbc9cf4339e13952ce">
+        <dex dex="/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/pre-dexed/debug/com.android.support-mediarouter-v7-23.0.0_8aa200142e800e2fe6e19618f318d5b5573998af.jar" />
+    </item>
+    <item
+        jar="/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-vision/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="dfecc4d835cdabcdecf7e95f0d20a3ef1e9d8ef4">
+        <dex dex="/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-vision-8.4.0_e1386bfc5cf1c0117476dca7c9377e6e34eb63dd.jar" />
+    </item>
+    <item
+        jar="/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/support-v13/23.1.1/jars/libs/internal_impl-23.1.1.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="f4d7a07120e76988f3a15403838d323c2400db83">
+        <dex dex="/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/pre-dexed/debug/internal_impl-23.1.1_ca853806bdb810ef9ae73a3ea52966ed27c2dbbb.jar" />
+    </item>
+    <item
+        jar="/home/gousebabjan/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/23.1.1/support-annotations-23.1.1.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="8d680ba5a623724d1fb0e81c36a790f023a6cede">
+        <dex dex="/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/pre-dexed/debug/support-annotations-23.1.1_0747ac5e1b417696e2c4428439753a5954ad1412.jar" />
+    </item>
+    <item
+        jar="/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/23.1.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="5e412e954a24c5310a459c09870e4e2081aceb03">
+        <dex dex="/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/pre-dexed/debug/com.android.support-cardview-v7-23.1.1_7d5f8d22a33b84a34b7f4e78c69ac7acc848ebe7.jar" />
+    </item>
+    <item
+        jar="/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-gcm/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="2d7fe76982677315c4dc4edfb459c8ca718a9d4c">
+        <dex dex="/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-gcm-8.4.0_b189a7f6b18585704bb56a2ac0d75d067c9a1594.jar" />
+    </item>
+    <item
+        jar="/home/gousebabjan/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-android/1.2.0/6ee2953ccf51ce72b6d548c30c4633b99eb4f9dd/bolts-android-1.2.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="6ee2953ccf51ce72b6d548c30c4633b99eb4f9dd">
+        <dex dex="/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/pre-dexed/debug/bolts-android-1.2.0_13b9ace45154c080deb6a04d483f2e482dbf3a23.jar" />
+    </item>
+    <item
+        jar="/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.1.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="09c5e804bc67fc0580360043dff067df574a60d4">
+        <dex dex="/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/pre-dexed/debug/com.android.support-recyclerview-v7-23.1.1_8a62a9c1d09889318e06f0ea344853f151d01319.jar" />
+    </item>
+    <item
+        jar="/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-auth/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="966e5771a5a2ebfb31bf00d7cd6cd2546d245517">
+        <dex dex="/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-auth-8.4.0_ca2d5ebf7d64abf0bc1e5b99661f05211a0359c0.jar" />
+    </item>
+    <item
+        jar="/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-fitness/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="c54246475c1bb64ac6857d1320364bfbfeda2c46">
+        <dex dex="/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-fitness-8.4.0_d00222a528174a5bb1d6f39ffec717628b18b568.jar" />
+    </item>
+    <item
+        jar="/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/design/23.1.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="379471b2bd17d9737c050345c08e8c7d16589784">
+        <dex dex="/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/pre-dexed/debug/com.android.support-design-23.1.1_e385ab4219957f659af1fbeeab87fb031bb863c5.jar" />
+    </item>
+    <item
+        jar="/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-wearable/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="e167a34eaca0b31704212f43f9576ea84e05046f">
+        <dex dex="/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-wearable-8.4.0_717612c10118073486bd74f26a150d1f5656c2ad.jar" />
+    </item>
+    <item
+        jar="/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/support-v13/23.1.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="5ddf5f4817565c9db82613c16093f76640a54e15">
+        <dex dex="/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/pre-dexed/debug/com.android.support-support-v13-23.1.1_2dd4ede1a0b2eb54c9fc780c521be2eae915e7ec.jar" />
+    </item>
+    <item
+        jar="/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="5c5699834e9722f1c288fea2de82725d078ba127">
+        <dex dex="/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-23.1.1_ec471e32047730c855ed845822a17821c4e91cf3.jar" />
+    </item>
+    <item
+        jar="/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="fef2b3e4b6b1b0e5fe7b69fa137a5fa55a3182ab">
+        <dex dex="/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-base-8.4.0_2feb493d25b437b1a97a22b5a15ce1edc3af6c6b.jar" />
+    </item>
+    <item
+        jar="/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="04de44f90606c77f3b28cf44861f306290505aac">
+        <dex dex="/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-maps-8.4.0_6cc791d8b3f80eedf89e9ea2ae647a213129196f.jar" />
+    </item>
+    <item
+        jar="/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.github.rampo.updatechecker/library/2.1.8/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="eb5c07f3d6f461eb6f7662ad57dec8630d1ed688">
+        <dex dex="/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/pre-dexed/debug/com.github.rampo.updatechecker-library-2.1.8_012de754e9233de2e23a50930e31931e8a5fae86.jar" />
+    </item>
+    <item
+        jar="/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-drive/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="b36f30ac5ee5d5214f4b1e2ac49f11889d58e71a">
+        <dex dex="/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-drive-8.4.0_67c37b0749ae70d657caf492e56205f02334e9cc.jar" />
+    </item>
+    <item
+        jar="/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-safetynet/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="0194a7409c40de94fb539d4ad9928ec5d47afeb7">
+        <dex dex="/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-safetynet-8.4.0_75be9c7eb53e07e706cc8e7cae427e5d5fd46b84.jar" />
+    </item>
+    <item
+        jar="/home/gousebabjan/.gradle/caches/modules-2/files-2.1/com.nostra13.universalimageloader/universal-image-loader/1.9.4/dd9eeb557650c4ad7394df23f0f5cf27a7cfc697/universal-image-loader-1.9.4.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="dd9eeb557650c4ad7394df23f0f5cf27a7cfc697">
+        <dex dex="/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/pre-dexed/debug/universal-image-loader-1.9.4_5ec6769bfe0214cb2378648c03b56c21ad6b2b0d.jar" />
+    </item>
+    <item
+        jar="/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/23.0.0/jars/libs/internal_impl-23.0.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="03d38bb042efe3e5ce27ba66b729a9523c36d8fe">
+        <dex dex="/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/pre-dexed/debug/internal_impl-23.0.0_48aafa579f4708449578ba79b1d31cb295b772c8.jar" />
+    </item>
+    <item
+        jar="/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="6cbc7773921fcfedbe55657578f0cbfe614778dc">
+        <dex dex="/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/pre-dexed/debug/com.android.support-support-v4-23.1.1_553d2f826c9d2129760962d55a5bd18bd230a4f8.jar" />
+    </item>
+    <item
+        jar="/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-measurement/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="613298b7aa012f121ce542881c0a599ebd8078f2">
+        <dex dex="/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-measurement-8.4.0_60a9b9b2079ae92365e39ab018ffc842eca984da.jar" />
+    </item>
+    <item
+        jar="/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-nearby/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="9cad249cf62751a323d9af568caf12284b7d6062">
+        <dex dex="/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-nearby-8.4.0_f278daa96bdc03b1be7f2a23e7e1d1f235f64f9a.jar" />
+    </item>
+    <item
+        jar="/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-cast/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="551e78f21acf69ebfb489c0e79647824c838013e">
+        <dex dex="/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-cast-8.4.0_4beb1c3a976b9cfc43495648481989d1f759e47d.jar" />
+    </item>
+    <item
+        jar="/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-analytics/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="1c9f35e952b212c843f7bd2c7eec8e82ad95602e">
+        <dex dex="/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-analytics-8.4.0_563d27499a193e29c3cdfd2e3424f2df1b78b8af.jar" />
+    </item>
+    <item
+        jar="/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-panorama/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="08d34b2d135c1cc96ab506fd8bf6916d1e2f391a">
+        <dex dex="/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-panorama-8.4.0_ff17d7e7a81edb1da9ee159e9fa509c9ca9c61c8.jar" />
+    </item>
+    <item
+        jar="/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="8e673cdfadd8f2d98fdb2fda2285c30f6e449782">
+        <dex dex="/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-basement-8.4.0_b9c0c491dcc693e37e61d1efdc02bd4bd1916f4d.jar" />
+    </item>
+    <item
+        jar="/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-location/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="a8412b654dab86d57bf90683367488211c8a81f1">
+        <dex dex="/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-location-8.4.0_bbb20cab88d4fb44ed8d7f6a9248c131dc1c0da7.jar" />
+    </item>
+    <item
+        jar="/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-games/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="3a364cc6b698d1b3b2d284f64618daaa7fe77ddf">
+        <dex dex="/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-games-8.4.0_55721163a4d3028b19113203d4b17ad7ec66da9e.jar" />
+    </item>
+    <item
+        jar="/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appinvite/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="9fe026fb4c7fce21bc5142f6e1bdf844f28061ac">
+        <dex dex="/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-appinvite-8.4.0_ce28c19a999e3eb7a3b7fecc7ce8c6170aeccb03.jar" />
+    </item>
+    <item
+        jar="/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.github.hotchemi/android-rate/0.5.3/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="d31d90b1468a79f5d179b3e7a199cd5244122844">
+        <dex dex="/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/pre-dexed/debug/com.github.hotchemi-android-rate-0.5.3_4afc2039c31034467aca902d111444c738738f46.jar" />
+    </item>
+    <item
+        jar="/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-plus/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="1a78298e7724d5440d210bcb946b3493250d354d">
+        <dex dex="/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-plus-8.4.0_09c3151191814bd436dbc0c6e38a2f434acbf9d4.jar" />
+    </item>
+
+</items>

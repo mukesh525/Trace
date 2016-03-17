@@ -34,4 +34,10 @@ dependencies {
     compile 'com.github.hotchemi:android-rate:0.5.3'
     compile 'com.github.rampo.updatechecker:library:2.1.8'
 
+    compile 'com.google.android.gms:play-services:+'
+    compile 'com.google.android.gms:play-services-ads:+'
+    compile 'com.google.android.gms:play-services-analytics:+'
+    compile 'com.google.android.gms:play-services-identity:+'
+    compile 'com.google.android.gms:play-services-gcm:+'
+
 }

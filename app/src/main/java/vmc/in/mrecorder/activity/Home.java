@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import vmc.in.mrecorder.R;
 import vmc.in.mrecorder.entity.Util;
+import vmc.in.mrecorder.util.utils;
 
 
 public class Home extends AppCompatActivity
@@ -78,6 +79,9 @@ public class Home extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+
+            utils.isLogout(this);
+
             return true;
         }
 

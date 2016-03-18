@@ -104,10 +104,6 @@
         "source": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/src/main/res/drawable/stop.png"
     },
     {
-        "merged": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/res/merged/debug/drawable/ic_error.png",
-        "source": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/res/drawable/ic_error.png"
-    },
-    {
         "merged": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/res/merged/debug/drawable/sym_call_incoming.png",
         "source": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/res/drawable/sym_call_incoming.png"
     },

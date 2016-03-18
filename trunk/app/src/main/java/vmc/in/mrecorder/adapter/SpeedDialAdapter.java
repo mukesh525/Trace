@@ -78,7 +78,7 @@ public class SpeedDialAdapter extends RecyclerView.Adapter<SpeedDialAdapter.View
             options = new DisplayImageOptions.Builder()
                     .showImageOnLoading(R.drawable.def_img)
                     .showImageForEmptyUri(R.drawable.def_img)
-                    .showImageOnFail(R.drawable.ic_error)
+                    .showImageOnFail(R.drawable.error)
                     .cacheInMemory(true)
                     .cacheOnDisc(true)
                     .considerExifParams(true)

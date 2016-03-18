@@ -25,7 +25,7 @@ public class Welcome extends AppCompatActivity {
 
                 Intent i = new Intent(Welcome.this, Login.class);
                 startActivity(i);
-                finish();
+
             }
         }, SPLASH_TIME_OUT);
 

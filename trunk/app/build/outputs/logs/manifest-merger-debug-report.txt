@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:2:1-152:12
+ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:2:1-162:12
 	package
 		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:3:5-31
 		INJECTED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml
@@ -55,17 +55,6 @@ MERGED from [com.google.android.gms:play-services-maps:8.4.0] /home/gousebabjan/
 MERGED from [com.google.android.gms:play-services-measurement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-measurement/8.4.0/AndroidManifest.xml:21:5-67
 MERGED from [com.google.android.gms:play-services-maps:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/8.4.0/AndroidManifest.xml:21:5-66
 MERGED from [com.google.android.gms:play-services-ads:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads/8.4.0/AndroidManifest.xml:20:5-66
-MERGED from [com.google.android.gms:play-services-analytics:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-analytics/8.4.0/AndroidManifest.xml:21:5-67
-MERGED from [com.google.android.gms:play-services-appinvite:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appinvite/8.4.0/AndroidManifest.xml:19:5-67
-MERGED from [com.google.android.gms:play-services-maps:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/8.4.0/AndroidManifest.xml:21:5-66
-MERGED from [com.google.android.gms:play-services-gcm:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-gcm/8.4.0/AndroidManifest.xml:22:5-67
-MERGED from [com.google.android.gms:play-services-measurement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-measurement/8.4.0/AndroidManifest.xml:21:5-67
-MERGED from [com.google.android.gms:play-services-maps:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/8.4.0/AndroidManifest.xml:21:5-66
-MERGED from [com.google.android.gms:play-services-maps:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/8.4.0/AndroidManifest.xml:21:5-66
-MERGED from [com.google.android.gms:play-services-measurement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-measurement/8.4.0/AndroidManifest.xml:21:5-67
-MERGED from [com.google.android.gms:play-services-maps:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/8.4.0/AndroidManifest.xml:21:5-66
-MERGED from [com.google.android.gms:play-services-ads:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads/8.4.0/AndroidManifest.xml:20:5-66
-MERGED from [com.google.android.gms:play-services-analytics:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-analytics/8.4.0/AndroidManifest.xml:21:5-67
 MERGED from [com.google.android.gms:play-services-gcm:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-gcm/8.4.0/AndroidManifest.xml:22:5-67
 MERGED from [com.google.android.gms:play-services-measurement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-measurement/8.4.0/AndroidManifest.xml:21:5-67
 	android:name
@@ -83,16 +72,6 @@ MERGED from [com.google.android.gms:play-services-measurement:8.4.0] /home/gouse
 MERGED from [com.google.android.gms:play-services-nearby:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-nearby/8.4.0/AndroidManifest.xml:19:5-79
 MERGED from [com.google.android.gms:play-services-maps:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/8.4.0/AndroidManifest.xml:20:5-78
 MERGED from [com.google.android.gms:play-services-ads:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads/8.4.0/AndroidManifest.xml:21:5-78
-MERGED from [com.google.android.gms:play-services-analytics:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-analytics/8.4.0/AndroidManifest.xml:22:5-79
-MERGED from [com.google.android.gms:play-services-maps:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/8.4.0/AndroidManifest.xml:20:5-78
-MERGED from [com.google.android.gms:play-services-measurement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-measurement/8.4.0/AndroidManifest.xml:22:5-79
-MERGED from [com.google.android.gms:play-services-maps:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/8.4.0/AndroidManifest.xml:20:5-78
-MERGED from [com.google.android.gms:play-services-maps:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/8.4.0/AndroidManifest.xml:20:5-78
-MERGED from [com.google.android.gms:play-services-measurement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-measurement/8.4.0/AndroidManifest.xml:22:5-79
-MERGED from [com.google.android.gms:play-services-nearby:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-nearby/8.4.0/AndroidManifest.xml:19:5-79
-MERGED from [com.google.android.gms:play-services-maps:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/8.4.0/AndroidManifest.xml:20:5-78
-MERGED from [com.google.android.gms:play-services-ads:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads/8.4.0/AndroidManifest.xml:21:5-78
-MERGED from [com.google.android.gms:play-services-analytics:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-analytics/8.4.0/AndroidManifest.xml:22:5-79
 MERGED from [com.google.android.gms:play-services-measurement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-measurement/8.4.0/AndroidManifest.xml:22:5-79
 	android:name
 		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:13:22-76
@@ -121,8 +100,6 @@ ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidM
 MERGED from [com.google.android.gms:play-services-measurement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-measurement/8.4.0/AndroidManifest.xml:24:5-67
 MERGED from [com.google.android.gms:play-services-measurement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-measurement/8.4.0/AndroidManifest.xml:24:5-67
 MERGED from [com.google.android.gms:play-services-measurement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-measurement/8.4.0/AndroidManifest.xml:24:5-67
-MERGED from [com.google.android.gms:play-services-measurement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-measurement/8.4.0/AndroidManifest.xml:24:5-67
-MERGED from [com.google.android.gms:play-services-measurement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-measurement/8.4.0/AndroidManifest.xml:24:5-67
 	android:name
 		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:19:22-65
 uses-permission#android.permission.GET_ACCOUNTS
@@ -133,61 +110,58 @@ uses-permission#com.google.android.c2dm.permission.RECEIVE
 ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:21:5-82
 MERGED from [com.google.android.gms:play-services-gcm:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-gcm/8.4.0/AndroidManifest.xml:21:5-82
 MERGED from [com.google.android.gms:play-services-gcm:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-gcm/8.4.0/AndroidManifest.xml:21:5-82
-MERGED from [com.google.android.gms:play-services-gcm:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-gcm/8.4.0/AndroidManifest.xml:21:5-82
 	android:name
 		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:21:22-79
-uses-permission#android.permission.SET_WALLPAPER
-ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:22:5-72
-	android:name
-		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:22:22-69
 uses-permission#android.permission.READ_EXTERNAL_STORAGE
-ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:23:5-80
+ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:22:5-80
 	android:name
-		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:23:22-77
+		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:22:22-77
 uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
-ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:24:5-81
+ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:23:5-81
 	android:name
-		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:24:22-78
+		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:23:22-78
 uses-permission#android.permission.SYSTEM_ALERT_WINDOW
-ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:25:5-78
+ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:24:5-78
 	android:name
-		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:25:22-75
+		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:24:22-75
 uses-permission#android.permission.ACCESS_LOCATION_EXTRA_COMMANDS
-ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:26:5-89
+ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:25:5-89
 	android:name
-		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:26:22-86
+		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:25:22-86
 uses-permission#android.permission.ACCESS_COARSE_LOCATION
-ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:27:5-81
+ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:26:5-81
 	android:name
-		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:27:22-78
+		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:26:22-78
 uses-permission#android.permission.ACCESS_FINE_LOCATION
-ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:28:5-79
+ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:27:5-79
 	android:name
-		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:28:22-76
+		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:27:22-76
+uses-permission#android.permission.RECEIVE_SMS
+ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:28:5-70
+	android:name
+		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:28:22-67
+uses-permission#android.permission.SEND_SMS
+ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:30:5-67
+	android:name
+		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:30:22-64
 uses-permission#android.permission.READ_SYNC_STATS
-ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:31:5-74
+ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:34:5-74
 	android:name
-		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:31:22-71
+		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:34:22-71
 uses-permission#android.permission.WRITE_SYNC_SETTINGS
-ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:33:5-78
+ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:36:5-78
 	android:name
-		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:33:22-75
+		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:36:22-75
 uses-permission#android.permission.AUTHENTICATE_ACCOUNTS
-ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:35:5-80
+ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:38:5-80
 	android:name
-		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:35:22-77
-permission#com.example.gcm.permission.C2D_MESSAGE
-ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:41:5-43:47
-	android:protectionLevel
-		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:43:9-44
-	android:name
-		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:42:9-62
+		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:38:22-77
 uses-permission#com.example.gcm.permission.C2D_MESSAGE
-ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:45:5-78
+ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:48:5-78
 	android:name
-		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:45:22-75
+		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:48:22-75
 application
-ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:48:5-150:19
+ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:51:5-160:19
 MERGED from [com.android.support:appcompat-v7:23.1.1] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:support-v4:23.1.1] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:design:23.1.1] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/design/23.1.1/AndroidManifest.xml:22:5-20
@@ -300,104 +274,7 @@ MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebab
 MERGED from [com.android.support:support-v4:23.1.1] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:22:5-20
 MERGED from [com.github.hotchemi:android-rate:0.5.3] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.github.hotchemi/android-rate/0.5.3/AndroidManifest.xml:10:5-20
 MERGED from [com.android.support:support-v4:23.1.1] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:22:5-20
-MERGED from [com.google.android.gms:play-services:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/8.4.0/AndroidManifest.xml:19:5-20
 MERGED from [com.google.android.gms:play-services-ads:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads/8.4.0/AndroidManifest.xml:24:5-32:19
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:20:5-24:19
-MERGED from [com.android.support:support-v4:23.1.1] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:22:5-20
-MERGED from [com.google.android.gms:play-services-analytics:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-analytics/8.4.0/AndroidManifest.xml:24:5-20
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:20:5-24:19
-MERGED from [com.android.support:support-v4:23.1.1] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:22:5-20
-MERGED from [com.google.android.gms:play-services-appindexing:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appindexing/8.4.0/AndroidManifest.xml:19:5-20
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:20:5-24:19
-MERGED from [com.android.support:support-v4:23.1.1] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:22:5-20
-MERGED from [com.google.android.gms:play-services-appinvite:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appinvite/8.4.0/AndroidManifest.xml:20:5-30:19
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:20:5-24:19
-MERGED from [com.android.support:support-v4:23.1.1] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:22:5-20
-MERGED from [com.google.android.gms:play-services-appstate:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appstate/8.4.0/AndroidManifest.xml:19:5-20
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:20:5-24:19
-MERGED from [com.android.support:support-v4:23.1.1] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:22:5-20
-MERGED from [com.google.android.gms:play-services-auth:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-auth/8.4.0/AndroidManifest.xml:20:5-32:19
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:20:5-24:19
-MERGED from [com.android.support:support-v4:23.1.1] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:22:5-20
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:20:5-24:19
-MERGED from [com.android.support:support-v4:23.1.1] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:22:5-20
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:20:5-24:19
-MERGED from [com.android.support:support-v4:23.1.1] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:22:5-20
-MERGED from [com.google.android.gms:play-services-cast:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-cast/8.4.0/AndroidManifest.xml:19:5-20
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:20:5-24:19
-MERGED from [com.android.support:support-v4:23.1.1] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:mediarouter-v7:23.0.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/23.0.0/AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:appcompat-v7:23.1.1] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:support-v4:23.1.1] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:22:5-20
-MERGED from [com.google.android.gms:play-services-drive:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-drive/8.4.0/AndroidManifest.xml:19:5-20
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:20:5-24:19
-MERGED from [com.android.support:support-v4:23.1.1] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:22:5-20
-MERGED from [com.google.android.gms:play-services-fitness:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-fitness/8.4.0/AndroidManifest.xml:19:5-20
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:20:5-24:19
-MERGED from [com.android.support:support-v4:23.1.1] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:22:5-20
-MERGED from [com.google.android.gms:play-services-location:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-location/8.4.0/AndroidManifest.xml:19:5-20
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:20:5-24:19
-MERGED from [com.android.support:support-v4:23.1.1] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:22:5-20
-MERGED from [com.google.android.gms:play-services-maps:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/8.4.0/AndroidManifest.xml:27:5-20
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:20:5-24:19
-MERGED from [com.android.support:support-v4:23.1.1] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:22:5-20
-MERGED from [com.google.android.gms:play-services-games:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-games/8.4.0/AndroidManifest.xml:19:5-20
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:20:5-24:19
-MERGED from [com.android.support:support-v4:23.1.1] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:22:5-20
-MERGED from [com.google.android.gms:play-services-drive:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-drive/8.4.0/AndroidManifest.xml:19:5-20
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:20:5-24:19
-MERGED from [com.android.support:support-v4:23.1.1] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:22:5-20
-MERGED from [com.google.android.gms:play-services-gcm:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-gcm/8.4.0/AndroidManifest.xml:24:5-20
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:20:5-24:19
-MERGED from [com.android.support:support-v4:23.1.1] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:22:5-20
-MERGED from [com.google.android.gms:play-services-measurement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-measurement/8.4.0/AndroidManifest.xml:26:5-46:19
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:20:5-24:19
-MERGED from [com.android.support:support-v4:23.1.1] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:22:5-20
-MERGED from [com.google.android.gms:play-services-identity:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-identity/8.4.0/AndroidManifest.xml:19:5-20
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:20:5-24:19
-MERGED from [com.android.support:support-v4:23.1.1] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:22:5-20
-MERGED from [com.google.android.gms:play-services-location:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-location/8.4.0/AndroidManifest.xml:19:5-20
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:20:5-24:19
-MERGED from [com.android.support:support-v4:23.1.1] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:22:5-20
-MERGED from [com.google.android.gms:play-services-maps:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/8.4.0/AndroidManifest.xml:27:5-20
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:20:5-24:19
-MERGED from [com.android.support:support-v4:23.1.1] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:22:5-20
-MERGED from [com.google.android.gms:play-services-maps:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/8.4.0/AndroidManifest.xml:27:5-20
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:20:5-24:19
-MERGED from [com.android.support:support-v4:23.1.1] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:22:5-20
-MERGED from [com.google.android.gms:play-services-measurement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-measurement/8.4.0/AndroidManifest.xml:26:5-46:19
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:20:5-24:19
-MERGED from [com.android.support:support-v4:23.1.1] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:22:5-20
-MERGED from [com.google.android.gms:play-services-nearby:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-nearby/8.4.0/AndroidManifest.xml:20:5-20
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:20:5-24:19
-MERGED from [com.android.support:support-v4:23.1.1] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:22:5-20
-MERGED from [com.google.android.gms:play-services-panorama:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-panorama/8.4.0/AndroidManifest.xml:19:5-20
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:20:5-24:19
-MERGED from [com.android.support:support-v4:23.1.1] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:22:5-20
-MERGED from [com.google.android.gms:play-services-plus:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-plus/8.4.0/AndroidManifest.xml:19:5-20
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:20:5-24:19
-MERGED from [com.android.support:support-v4:23.1.1] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:22:5-20
-MERGED from [com.google.android.gms:play-services-safetynet:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-safetynet/8.4.0/AndroidManifest.xml:19:5-20
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:20:5-24:19
-MERGED from [com.android.support:support-v4:23.1.1] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:22:5-20
-MERGED from [com.google.android.gms:play-services-vision:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-vision/8.4.0/AndroidManifest.xml:5:5-20
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:20:5-24:19
-MERGED from [com.android.support:support-v4:23.1.1] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:22:5-20
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:20:5-24:19
-MERGED from [com.android.support:support-v4:23.1.1] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:22:5-20
-MERGED from [com.google.android.gms:play-services-identity:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-identity/8.4.0/AndroidManifest.xml:19:5-20
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:20:5-24:19
-MERGED from [com.android.support:support-v4:23.1.1] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:22:5-20
-MERGED from [com.google.android.gms:play-services-maps:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/8.4.0/AndroidManifest.xml:27:5-20
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:20:5-24:19
-MERGED from [com.android.support:support-v4:23.1.1] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:22:5-20
-MERGED from [com.google.android.gms:play-services-wearable:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-wearable/8.4.0/AndroidManifest.xml:19:5-20
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:20:5-24:19
-MERGED from [com.android.support:support-v4:23.1.1] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:22:5-20
-MERGED from [com.google.android.gms:play-services-ads:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads/8.4.0/AndroidManifest.xml:24:5-32:19
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:20:5-24:19
-MERGED from [com.android.support:support-v4:23.1.1] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:22:5-20
-MERGED from [com.google.android.gms:play-services-analytics:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-analytics/8.4.0/AndroidManifest.xml:24:5-20
 MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:20:5-24:19
 MERGED from [com.android.support:support-v4:23.1.1] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.gms:play-services-identity:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-identity/8.4.0/AndroidManifest.xml:19:5-20
@@ -408,193 +285,172 @@ MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebab
 MERGED from [com.android.support:support-v4:23.1.1] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.gms:play-services-measurement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-measurement/8.4.0/AndroidManifest.xml:26:5-46:19
 MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:20:5-24:19
+MERGED from [com.android.support:support-v4:23.1.1] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:support-v4:23.1.1] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:22:5-20
 	android:label
-		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:52:9-41
+		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:55:9-41
 	android:supportsRtl
-		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:53:9-35
+		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:56:9-35
 	android:allowBackup
-		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:50:9-35
+		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:53:9-35
 	android:icon
-		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:51:9-43
+		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:54:9-43
 	android:theme
-		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:54:9-47
+		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:57:9-47
 	android:name
-		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:49:9-54
+		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:52:9-54
 activity#vmc.in.mrecorder.activity.ContactsActivity
-ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:55:9-58:52
+ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:58:9-61:52
 	android:screenOrientation
-		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:58:13-49
+		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:61:13-49
 	android:label
-		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:57:13-45
+		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:60:13-45
 	android:name
-		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:56:13-54
+		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:59:13-54
 provider#vmc.in.mrecorder.provider.FeedProvider
-ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:60:9-63:40
+ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:63:9-66:40
 	android:authorities
-		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:62:13-51
+		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:65:13-51
 	android:exported
-		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:63:13-37
+		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:66:13-37
 	android:name
-		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:61:13-50
+		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:64:13-50
 service#vmc.in.mrecorder.service.SyncService
-ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:69:9-84:19
+ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:72:9-87:19
 	android:exported
-		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:71:13-36
+		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:74:13-36
 	android:name
-		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:70:13-48
+		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:73:13-48
 intent-filter#android.content.SyncAdapter
-ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:77:13-79:29
+ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:80:13-82:29
 action#android.content.SyncAdapter
-ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:78:17-70
+ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:81:17-70
 	android:name
-		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:78:25-67
+		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:81:25-67
 meta-data#android.content.SyncAdapter
-ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:81:13-83:55
+ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:84:13-86:55
 	android:resource
-		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:83:17-52
+		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:86:17-52
 	android:name
-		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:82:17-59
+		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:85:17-59
 service#vmc.in.mrecorder.accounts.GenericAccountService
-ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:85:9-95:19
+ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:88:9-98:19
 	android:name
-		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:85:18-64
+		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:88:18-64
 intent-filter#android.accounts.AccountAuthenticator
-ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:88:13-90:29
+ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:91:13-93:29
 action#android.accounts.AccountAuthenticator
-ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:89:17-80
+ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:92:17-80
 	android:name
-		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:89:25-77
+		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:92:25-77
 meta-data#android.accounts.AccountAuthenticator
-ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:92:13-94:57
+ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:95:13-97:57
 	android:resource
-		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:94:17-54
+		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:97:17-54
 	android:name
-		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:93:17-69
+		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:96:17-69
 service#vmc.in.mrecorder.service.CallIconService
-ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:96:9-60
+ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:99:9-60
 	android:name
-		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:96:18-57
+		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:99:18-57
 service#vmc.in.mrecorder.service.CallRecorderServiceAll
-ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:97:9-67
+ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:100:9-67
 	android:name
-		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:97:18-64
+		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:100:18-64
 service#vmc.in.mrecorder.service.CallRecorderServiceOptional
-ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:98:9-72
+ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:101:9-72
 	android:name
-		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:98:18-69
+		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:101:18-69
 receiver#vmc.in.mrecorder.receiver.BootBroadcastReceiver
-ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:100:9-107:20
+ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:103:9-110:20
 	android:enabled
-		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:102:13-35
+		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:105:13-35
 	android:exported
-		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:103:13-37
+		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:106:13-37
 	android:name
-		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:101:13-59
+		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:104:13-59
 intent-filter#android.intent.action.BOOT_COMPLETED
-ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:104:13-106:29
+ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:107:13-109:29
 action#android.intent.action.BOOT_COMPLETED
-ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:105:17-79
+ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:108:17-79
 	android:name
-		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:105:25-76
+		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:108:25-76
+receiver#vmc.in.mrecorder.receiver.IncomingSms
+ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:111:9-115:20
+	android:name
+		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:111:19-55
+intent-filter#android.provider.Telephony.SMS_RECEIVED
+ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:112:13-114:29
+action#android.provider.Telephony.SMS_RECEIVED
+ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:113:17-82
+	android:name
+		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:113:25-79
 activity#vmc.in.mrecorder.activity.Welcome
-ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:109:9-117:20
+ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:119:9-127:20
 	android:noHistory
-		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:111:13-37
+		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:121:13-37
 	android:name
-		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:110:13-45
+		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:120:13-45
 intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
-ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:112:13-116:29
+ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:122:13-126:29
 action#android.intent.action.MAIN
-ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:113:17-69
+ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:123:17-69
 	android:name
-		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:113:25-66
+		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:123:25-66
 category#android.intent.category.LAUNCHER
-ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:115:17-77
+ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:125:17-77
 	android:name
-		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:115:27-74
+		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:125:27-74
 activity#vmc.in.mrecorder.activity.Login
-ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:118:9-120:40
+ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:128:9-130:40
 	android:noHistory
-		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:120:13-37
-	android:name
-		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:119:13-43
-activity#vmc.in.mrecorder.activity.Home
-ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:121:9-124:47
-	android:label
-		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:123:13-56
-	android:theme
-		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:124:13-44
-	android:name
-		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:122:13-42
-activity#vmc.in.mrecorder.activity.SignupActivity
-ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:125:9-61
-	android:name
-		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:125:19-58
-activity#vmc.in.mrecorder.activity.ForgotPasword
-ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:126:9-69
-	android:name
-		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:126:19-57
-service#vmc.in.mrecorder.gcm.PushNotificationService
-ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:128:9-134:19
-	android:exported
 		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:130:13-37
 	android:name
-		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:129:13-56
-intent-filter#com.google.android.c2dm.intent.RECEIVE
-ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:131:13-133:29
-action#com.google.android.c2dm.intent.RECEIVE
-ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:132:17-81
+		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:129:13-43
+activity#vmc.in.mrecorder.activity.Home
+ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:131:9-134:47
+	android:label
+		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:133:13-56
+	android:theme
+		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:134:13-44
 	android:name
-		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:132:25-78
-receiver#com.google.android.gms.gcm.GcmReceiver
-ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:136:9-145:20
+		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:132:13-42
+activity#vmc.in.mrecorder.activity.SignupActivity
+ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:135:9-61
+	android:name
+		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:135:19-58
+activity#vmc.in.mrecorder.activity.ForgotPasword
+ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:136:9-69
+	android:name
+		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:136:19-57
+service#vmc.in.mrecorder.gcm.PushNotificationService
+ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:138:9-144:19
 	android:exported
-		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:138:13-36
+		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:140:13-37
+	android:name
+		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:139:13-56
+intent-filter#com.google.android.c2dm.intent.RECEIVE
+ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:141:13-143:29
+action#com.google.android.c2dm.intent.RECEIVE
+ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:142:17-81
+	android:name
+		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:142:25-78
+receiver#com.google.android.gms.gcm.GcmReceiver
+ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:146:9-155:20
+	android:exported
+		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:148:13-36
 	android:permission
-		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:139:13-73
+		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:149:13-73
 	android:name
-		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:137:13-66
-intent-filter#androidwarriors.gcmdemo+com.google.android.c2dm.intent.RECEIVE
-ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:140:13-144:29
-category#androidwarriors.gcmdemo
-ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:143:17-68
+		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:147:13-66
+intent-filter#com.google.android.c2dm.intent.RECEIVE+vmc.in.mrecorder
+ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:150:13-154:29
+category#vmc.in.mrecorder
+ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:153:17-61
 	android:name
-		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:143:27-65
+		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:153:27-58
 meta-data#com.google.android.gms.version
-ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:147:9-149:69
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:21:9-23:69
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:21:9-23:69
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:21:9-23:69
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:21:9-23:69
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:21:9-23:69
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:21:9-23:69
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:21:9-23:69
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:21:9-23:69
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:21:9-23:69
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:21:9-23:69
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:21:9-23:69
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:21:9-23:69
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:21:9-23:69
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:21:9-23:69
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:21:9-23:69
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:21:9-23:69
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:21:9-23:69
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:21:9-23:69
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:21:9-23:69
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:21:9-23:69
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:21:9-23:69
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:21:9-23:69
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:21:9-23:69
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:21:9-23:69
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:21:9-23:69
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:21:9-23:69
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:21:9-23:69
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:21:9-23:69
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:21:9-23:69
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:21:9-23:69
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:21:9-23:69
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:21:9-23:69
+ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:157:9-159:69
 MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:21:9-23:69
 MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:21:9-23:69
 MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:21:9-23:69
@@ -632,9 +488,9 @@ MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebab
 MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:21:9-23:69
 MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:21:9-23:69
 	android:value
-		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:149:13-66
+		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:159:13-66
 	android:name
-		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:148:13-58
+		ADDED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml:158:13-58
 uses-sdk
 INJECTED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.android.support:appcompat-v7:23.1.1] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/AndroidManifest.xml:20:5-43
@@ -779,131 +635,7 @@ MERGED from [com.android.support:support-v4:23.1.1] /home/gousebabjan/AndroidStu
 MERGED from [com.github.hotchemi:android-rate:0.5.3] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.github.hotchemi/android-rate/0.5.3/AndroidManifest.xml:6:5-8:41
 MERGED from [com.github.rampo.updatechecker:library:2.1.8] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.github.rampo.updatechecker/library/2.1.8/AndroidManifest.xml:7:5-9:41
 MERGED from [com.android.support:support-v4:23.1.1] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:20:5-43
-MERGED from [com.google.android.gms:play-services:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/8.4.0/AndroidManifest.xml:18:5-42
 MERGED from [com.google.android.gms:play-services-ads:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads/8.4.0/AndroidManifest.xml:23:5-42
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:18:5-42
-MERGED from [com.android.support:support-v4:23.1.1] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:20:5-43
-MERGED from [com.google.android.gms:play-services-analytics:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-analytics/8.4.0/AndroidManifest.xml:18:5-42
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:18:5-42
-MERGED from [com.android.support:support-v4:23.1.1] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:20:5-43
-MERGED from [com.google.android.gms:play-services-appindexing:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appindexing/8.4.0/AndroidManifest.xml:18:5-42
-MERGED from [com.google.android.gms:play-services-base:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/AndroidManifest.xml:18:5-42
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:18:5-42
-MERGED from [com.android.support:support-v4:23.1.1] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:20:5-43
-MERGED from [com.google.android.gms:play-services-appinvite:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appinvite/8.4.0/AndroidManifest.xml:18:5-42
-MERGED from [com.google.android.gms:play-services-base:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/AndroidManifest.xml:18:5-42
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:18:5-42
-MERGED from [com.android.support:support-v4:23.1.1] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:20:5-43
-MERGED from [com.google.android.gms:play-services-appstate:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appstate/8.4.0/AndroidManifest.xml:18:5-42
-MERGED from [com.google.android.gms:play-services-base:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/AndroidManifest.xml:18:5-42
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:18:5-42
-MERGED from [com.android.support:support-v4:23.1.1] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:20:5-43
-MERGED from [com.google.android.gms:play-services-auth:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-auth/8.4.0/AndroidManifest.xml:18:5-43
-MERGED from [com.google.android.gms:play-services-base:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/AndroidManifest.xml:18:5-42
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:18:5-42
-MERGED from [com.android.support:support-v4:23.1.1] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:20:5-43
-MERGED from [com.google.android.gms:play-services-base:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/AndroidManifest.xml:18:5-42
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:18:5-42
-MERGED from [com.android.support:support-v4:23.1.1] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:20:5-43
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:18:5-42
-MERGED from [com.android.support:support-v4:23.1.1] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:20:5-43
-MERGED from [com.google.android.gms:play-services-cast:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-cast/8.4.0/AndroidManifest.xml:18:5-42
-MERGED from [com.google.android.gms:play-services-base:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/AndroidManifest.xml:18:5-42
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:18:5-42
-MERGED from [com.android.support:support-v4:23.1.1] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:mediarouter-v7:23.0.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/23.0.0/AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:appcompat-v7:23.1.1] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:support-v4:23.1.1] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:20:5-43
-MERGED from [com.google.android.gms:play-services-drive:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-drive/8.4.0/AndroidManifest.xml:18:5-42
-MERGED from [com.google.android.gms:play-services-base:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/AndroidManifest.xml:18:5-42
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:18:5-42
-MERGED from [com.android.support:support-v4:23.1.1] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:20:5-43
-MERGED from [com.google.android.gms:play-services-fitness:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-fitness/8.4.0/AndroidManifest.xml:18:5-42
-MERGED from [com.google.android.gms:play-services-base:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/AndroidManifest.xml:18:5-42
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:18:5-42
-MERGED from [com.android.support:support-v4:23.1.1] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:20:5-43
-MERGED from [com.google.android.gms:play-services-location:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-location/8.4.0/AndroidManifest.xml:18:5-42
-MERGED from [com.google.android.gms:play-services-base:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/AndroidManifest.xml:18:5-42
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:18:5-42
-MERGED from [com.android.support:support-v4:23.1.1] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:20:5-43
-MERGED from [com.google.android.gms:play-services-maps:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/8.4.0/AndroidManifest.xml:26:5-42
-MERGED from [com.google.android.gms:play-services-base:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/AndroidManifest.xml:18:5-42
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:18:5-42
-MERGED from [com.android.support:support-v4:23.1.1] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:20:5-43
-MERGED from [com.google.android.gms:play-services-games:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-games/8.4.0/AndroidManifest.xml:18:5-42
-MERGED from [com.google.android.gms:play-services-base:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/AndroidManifest.xml:18:5-42
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:18:5-42
-MERGED from [com.android.support:support-v4:23.1.1] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:20:5-43
-MERGED from [com.google.android.gms:play-services-drive:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-drive/8.4.0/AndroidManifest.xml:18:5-42
-MERGED from [com.google.android.gms:play-services-base:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/AndroidManifest.xml:18:5-42
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:18:5-42
-MERGED from [com.android.support:support-v4:23.1.1] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:20:5-43
-MERGED from [com.google.android.gms:play-services-gcm:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-gcm/8.4.0/AndroidManifest.xml:18:5-42
-MERGED from [com.google.android.gms:play-services-base:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/AndroidManifest.xml:18:5-42
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:18:5-42
-MERGED from [com.android.support:support-v4:23.1.1] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:20:5-43
-MERGED from [com.google.android.gms:play-services-measurement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-measurement/8.4.0/AndroidManifest.xml:18:5-42
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:18:5-42
-MERGED from [com.android.support:support-v4:23.1.1] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:20:5-43
-MERGED from [com.google.android.gms:play-services-identity:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-identity/8.4.0/AndroidManifest.xml:18:5-42
-MERGED from [com.google.android.gms:play-services-base:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/AndroidManifest.xml:18:5-42
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:18:5-42
-MERGED from [com.android.support:support-v4:23.1.1] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:20:5-43
-MERGED from [com.google.android.gms:play-services-location:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-location/8.4.0/AndroidManifest.xml:18:5-42
-MERGED from [com.google.android.gms:play-services-base:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/AndroidManifest.xml:18:5-42
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:18:5-42
-MERGED from [com.android.support:support-v4:23.1.1] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:20:5-43
-MERGED from [com.google.android.gms:play-services-maps:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/8.4.0/AndroidManifest.xml:26:5-42
-MERGED from [com.google.android.gms:play-services-base:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/AndroidManifest.xml:18:5-42
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:18:5-42
-MERGED from [com.android.support:support-v4:23.1.1] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:20:5-43
-MERGED from [com.google.android.gms:play-services-maps:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/8.4.0/AndroidManifest.xml:26:5-42
-MERGED from [com.google.android.gms:play-services-base:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/AndroidManifest.xml:18:5-42
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:18:5-42
-MERGED from [com.android.support:support-v4:23.1.1] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:20:5-43
-MERGED from [com.google.android.gms:play-services-measurement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-measurement/8.4.0/AndroidManifest.xml:18:5-42
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:18:5-42
-MERGED from [com.android.support:support-v4:23.1.1] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:20:5-43
-MERGED from [com.google.android.gms:play-services-nearby:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-nearby/8.4.0/AndroidManifest.xml:18:5-42
-MERGED from [com.google.android.gms:play-services-base:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/AndroidManifest.xml:18:5-42
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:18:5-42
-MERGED from [com.android.support:support-v4:23.1.1] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:20:5-43
-MERGED from [com.google.android.gms:play-services-panorama:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-panorama/8.4.0/AndroidManifest.xml:18:5-42
-MERGED from [com.google.android.gms:play-services-base:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/AndroidManifest.xml:18:5-42
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:18:5-42
-MERGED from [com.android.support:support-v4:23.1.1] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:20:5-43
-MERGED from [com.google.android.gms:play-services-plus:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-plus/8.4.0/AndroidManifest.xml:18:5-42
-MERGED from [com.google.android.gms:play-services-base:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/AndroidManifest.xml:18:5-42
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:18:5-42
-MERGED from [com.android.support:support-v4:23.1.1] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:20:5-43
-MERGED from [com.google.android.gms:play-services-safetynet:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-safetynet/8.4.0/AndroidManifest.xml:18:5-42
-MERGED from [com.google.android.gms:play-services-base:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/AndroidManifest.xml:18:5-42
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:18:5-42
-MERGED from [com.android.support:support-v4:23.1.1] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:20:5-43
-MERGED from [com.google.android.gms:play-services-vision:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-vision/8.4.0/AndroidManifest.xml:4:5-42
-MERGED from [com.google.android.gms:play-services-base:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/AndroidManifest.xml:18:5-42
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:18:5-42
-MERGED from [com.android.support:support-v4:23.1.1] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:20:5-43
-MERGED from [com.google.android.gms:play-services-wallet:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-wallet/8.4.0/AndroidManifest.xml:19:5-42
-MERGED from [com.google.android.gms:play-services-base:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/AndroidManifest.xml:18:5-42
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:18:5-42
-MERGED from [com.android.support:support-v4:23.1.1] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:20:5-43
-MERGED from [com.google.android.gms:play-services-identity:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-identity/8.4.0/AndroidManifest.xml:18:5-42
-MERGED from [com.google.android.gms:play-services-base:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/AndroidManifest.xml:18:5-42
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:18:5-42
-MERGED from [com.android.support:support-v4:23.1.1] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:20:5-43
-MERGED from [com.google.android.gms:play-services-maps:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/8.4.0/AndroidManifest.xml:26:5-42
-MERGED from [com.google.android.gms:play-services-base:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/AndroidManifest.xml:18:5-42
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:18:5-42
-MERGED from [com.android.support:support-v4:23.1.1] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:20:5-43
-MERGED from [com.google.android.gms:play-services-wearable:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-wearable/8.4.0/AndroidManifest.xml:18:5-42
-MERGED from [com.google.android.gms:play-services-base:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/AndroidManifest.xml:18:5-42
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:18:5-42
-MERGED from [com.android.support:support-v4:23.1.1] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:20:5-43
-MERGED from [com.google.android.gms:play-services-ads:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads/8.4.0/AndroidManifest.xml:23:5-42
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:18:5-42
-MERGED from [com.android.support:support-v4:23.1.1] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:20:5-43
-MERGED from [com.google.android.gms:play-services-analytics:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-analytics/8.4.0/AndroidManifest.xml:18:5-42
 MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:18:5-42
 MERGED from [com.android.support:support-v4:23.1.1] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:20:5-43
 MERGED from [com.google.android.gms:play-services-identity:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-identity/8.4.0/AndroidManifest.xml:18:5-42
@@ -916,6 +648,7 @@ MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebab
 MERGED from [com.android.support:support-v4:23.1.1] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:20:5-43
 MERGED from [com.google.android.gms:play-services-measurement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-measurement/8.4.0/AndroidManifest.xml:18:5-42
 MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:18:5-42
+MERGED from [com.android.support:support-v4:23.1.1] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:20:5-43
 MERGED from [com.android.support:support-v4:23.1.1] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:20:5-43
 	android:targetSdkVersion
 		INJECTED from /home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/AndroidManifest.xml
@@ -926,7 +659,6 @@ MERGED from [com.android.support:support-v4:23.1.1] /home/gousebabjan/AndroidStu
 activity#com.google.android.gms.ads.AdActivity
 ADDED from [com.google.android.gms:play-services-ads:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads/8.4.0/AndroidManifest.xml:26:9-29:64
 MERGED from [com.google.android.gms:play-services-ads:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads/8.4.0/AndroidManifest.xml:26:9-29:64
-MERGED from [com.google.android.gms:play-services-ads:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads/8.4.0/AndroidManifest.xml:26:9-29:64
 	android:configChanges
 		ADDED from [com.google.android.gms:play-services-ads:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads/8.4.0/AndroidManifest.xml:28:13-122
 	android:theme
@@ -936,14 +668,12 @@ MERGED from [com.google.android.gms:play-services-ads:8.4.0] /home/gousebabjan/A
 activity#com.google.android.gms.ads.purchase.InAppPurchaseActivity
 ADDED from [com.google.android.gms:play-services-ads:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads/8.4.0/AndroidManifest.xml:30:9-31:52
 MERGED from [com.google.android.gms:play-services-ads:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads/8.4.0/AndroidManifest.xml:30:9-31:52
-MERGED from [com.google.android.gms:play-services-ads:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads/8.4.0/AndroidManifest.xml:30:9-31:52
 	android:theme
 		ADDED from [com.google.android.gms:play-services-ads:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads/8.4.0/AndroidManifest.xml:31:13-50
 	android:name
 		ADDED from [com.google.android.gms:play-services-ads:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads/8.4.0/AndroidManifest.xml:30:19-91
 activity#com.google.android.gms.appinvite.PreviewActivity
 ADDED from [com.google.android.gms:play-services-appinvite:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appinvite/8.4.0/AndroidManifest.xml:21:9-29:20
-MERGED from [com.google.android.gms:play-services-appinvite:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appinvite/8.4.0/AndroidManifest.xml:21:9-29:20
 	android:exported
 		ADDED from [com.google.android.gms:play-services-appinvite:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appinvite/8.4.0/AndroidManifest.xml:23:17-40
 	android:theme
@@ -962,7 +692,6 @@ ADDED from [com.google.android.gms:play-services-appinvite:8.4.0] /home/gousebab
 		ADDED from [com.google.android.gms:play-services-appinvite:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appinvite/8.4.0/AndroidManifest.xml:27:27-73
 activity#com.google.android.gms.auth.api.signin.internal.SignInHubActivity
 ADDED from [com.google.android.gms:play-services-auth:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-auth/8.4.0/AndroidManifest.xml:21:9-24:46
-MERGED from [com.google.android.gms:play-services-auth:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-auth/8.4.0/AndroidManifest.xml:21:9-24:46
 	android:excludeFromRecents
 		ADDED from [com.google.android.gms:play-services-auth:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-auth/8.4.0/AndroidManifest.xml:23:19-52
 	android:exported
@@ -973,7 +702,6 @@ MERGED from [com.google.android.gms:play-services-auth:8.4.0] /home/gousebabjan/
 		ADDED from [com.google.android.gms:play-services-auth:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-auth/8.4.0/AndroidManifest.xml:21:19-72
 service#com.google.android.gms.auth.api.signin.RevocationBoundService
 ADDED from [com.google.android.gms:play-services-auth:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-auth/8.4.0/AndroidManifest.xml:28:9-31:110
-MERGED from [com.google.android.gms:play-services-auth:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-auth/8.4.0/AndroidManifest.xml:28:9-31:110
 	android:exported
 		ADDED from [com.google.android.gms:play-services-auth:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-auth/8.4.0/AndroidManifest.xml:30:13-36
 	android:permission
@@ -985,18 +713,12 @@ ADDED from [com.google.android.gms:play-services-maps:8.4.0] /home/gousebabjan/A
 MERGED from [com.google.android.gms:play-services-maps:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/8.4.0/AndroidManifest.xml:22:5-24:33
 MERGED from [com.google.android.gms:play-services-maps:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/8.4.0/AndroidManifest.xml:22:5-24:33
 MERGED from [com.google.android.gms:play-services-maps:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/8.4.0/AndroidManifest.xml:22:5-24:33
-MERGED from [com.google.android.gms:play-services-maps:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/8.4.0/AndroidManifest.xml:22:5-24:33
-MERGED from [com.google.android.gms:play-services-maps:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/8.4.0/AndroidManifest.xml:22:5-24:33
-MERGED from [com.google.android.gms:play-services-maps:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/8.4.0/AndroidManifest.xml:22:5-24:33
-MERGED from [com.google.android.gms:play-services-maps:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/8.4.0/AndroidManifest.xml:22:5-24:33
 	android:glEsVersion
 		ADDED from [com.google.android.gms:play-services-maps:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/8.4.0/AndroidManifest.xml:23:8-40
 	android:required
 		ADDED from [com.google.android.gms:play-services-maps:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/8.4.0/AndroidManifest.xml:24:8-31
 provider#com.google.android.gms.measurement.AppMeasurementContentProvider
 ADDED from [com.google.android.gms:play-services-measurement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-measurement/8.4.0/AndroidManifest.xml:28:7-31:37
-MERGED from [com.google.android.gms:play-services-measurement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-measurement/8.4.0/AndroidManifest.xml:28:7-31:37
-MERGED from [com.google.android.gms:play-services-measurement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-measurement/8.4.0/AndroidManifest.xml:28:7-31:37
 MERGED from [com.google.android.gms:play-services-measurement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-measurement/8.4.0/AndroidManifest.xml:28:7-31:37
 MERGED from [com.google.android.gms:play-services-measurement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-measurement/8.4.0/AndroidManifest.xml:28:7-31:37
 	android:authorities
@@ -1007,8 +729,6 @@ MERGED from [com.google.android.gms:play-services-measurement:8.4.0] /home/gouse
 		ADDED from [com.google.android.gms:play-services-measurement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-measurement/8.4.0/AndroidManifest.xml:30:11-90
 receiver#com.google.android.gms.measurement.AppMeasurementReceiver
 ADDED from [com.google.android.gms:play-services-measurement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-measurement/8.4.0/AndroidManifest.xml:33:7-39:18
-MERGED from [com.google.android.gms:play-services-measurement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-measurement/8.4.0/AndroidManifest.xml:33:7-39:18
-MERGED from [com.google.android.gms:play-services-measurement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-measurement/8.4.0/AndroidManifest.xml:33:7-39:18
 MERGED from [com.google.android.gms:play-services-measurement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-measurement/8.4.0/AndroidManifest.xml:33:7-39:18
 MERGED from [com.google.android.gms:play-services-measurement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-measurement/8.4.0/AndroidManifest.xml:33:7-39:18
 	android:enabled
@@ -1023,8 +743,6 @@ ADDED from [com.google.android.gms:play-services-measurement:8.4.0] /home/gouseb
 		ADDED from [com.google.android.gms:play-services-measurement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-measurement/8.4.0/AndroidManifest.xml:37:19-75
 service#com.google.android.gms.measurement.AppMeasurementService
 ADDED from [com.google.android.gms:play-services-measurement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-measurement/8.4.0/AndroidManifest.xml:41:7-44:37
-MERGED from [com.google.android.gms:play-services-measurement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-measurement/8.4.0/AndroidManifest.xml:41:7-44:37
-MERGED from [com.google.android.gms:play-services-measurement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-measurement/8.4.0/AndroidManifest.xml:41:7-44:37
 MERGED from [com.google.android.gms:play-services-measurement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-measurement/8.4.0/AndroidManifest.xml:41:7-44:37
 MERGED from [com.google.android.gms:play-services-measurement:8.4.0] /home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-measurement/8.4.0/AndroidManifest.xml:41:7-44:37
 	android:enabled

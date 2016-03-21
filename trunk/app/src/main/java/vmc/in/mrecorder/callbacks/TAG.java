@@ -27,5 +27,7 @@ public interface TAG {
     public String UPLOAD_URL = "http://192.168.1.133/tracker/upload.php";
     public String GET_OTP = "http://192.168.1.118/newdesigen/mtrackapp/login_mtrack";
     public String LOGIN_URL = "http://192.168.1.118/newdesigen/mtrackapp/check_auth";
+    public String FORGOT_OTP_URL = "";
+    public String CHANGED_PASS = "";
 
 }

@@ -12,20 +12,16 @@ import android.os.AsyncTask;
 import android.preference.PreferenceManager;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
-import android.support.design.widget.TextInputLayout;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
-import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.util.Patterns;
 import android.view.View;
-import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -40,7 +36,7 @@ import vmc.in.mrecorder.fragment.OTPDialogFragment;
 import vmc.in.mrecorder.gcm.GCMClientManager;
 import vmc.in.mrecorder.myapplication.CallApplication;
 import vmc.in.mrecorder.util.JSONParser;
-import vmc.in.mrecorder.util.utils;
+import vmc.in.mrecorder.util.Utils;
 
 public class Login extends AppCompatActivity implements View.OnClickListener, OTPDialogFragment.OTPDialogListener, TAG {
 
@@ -55,6 +51,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
     private Toolbar toolbar;
     private String OTP_Sms = "N/A", OTP_resp, gcmkey;
     private ProgressDialog progressDialog;
+    public static final String DEAFULT = "";
 
 
     @Override
@@ -80,14 +77,16 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
         et_email.addTextChangedListener(new MyTextWacher(et_email));
         et_password.addTextChangedListener(new MyTextWacher(et_password));
 
-        btn_getOtp.setText("GET_OTP");
+
+
+        load();
 
         GCMClientManager pushClientManager = new GCMClientManager(this, PROJECT_NUMBER);
         pushClientManager.registerIfNeeded(new GCMClientManager.RegistrationCompletedHandler() {
             @Override
             public void onSuccess(String registrationId, boolean isNewRegistration) {
                 Log.d("Registration id", registrationId);
-                gcmkey=registrationId;
+                gcmkey = registrationId;
                 if (isNewRegistration) {
                     onRegisterGcm(registrationId);
 
@@ -101,10 +100,9 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
     }
 
 
-
     public void onRegisterGcm(final String regid) {
 
-        if (utils.onlineStatus2(Login.this)) {
+        if (Utils.onlineStatus2(Login.this)) {
             new RegisterGcm(regid).execute();
         } else {
             Toast.makeText(Login.this, "No Internet Connection", Toast.LENGTH_SHORT).show();
@@ -136,7 +134,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
     }
 
 
-
     public static Login instance() {
         return inst;
     }
@@ -163,10 +160,12 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
         switch (v.getId()) {
             case R.id.btn_login:
                 Login();
-               // StartLogin();
+                // StartLogin();
                 break;
 
             case R.id.btn_get_otp:
+
+              //  btn_getOtp.setBackgroundColor(Color.parseColor("#FFDC4545"));
                 if (validateOTP()) {
                     GetOtp();
                 }
@@ -187,26 +186,14 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
                 //  startActivity(new Intent(getApplicationContext(), Home.class));
                 //Toast.makeText(getApplicationContext(), "OTP Verfied", Toast.LENGTH_SHORT).show();
                 StartLogin();
-            }
-
-            else {
+            } else {
 
                 btn_login.setEnabled(false);
                 onLoginFailed();
             }
-
-
-//        otp = tv_otp.getText().toString().trim();
-//        submitForm();
-//        if (OTP_Sms != null && OTP_Sms.length() <= 0) {
-//            Toast.makeText(getApplicationContext(), "Wait for OTP Message", Toast.LENGTH_SHORT).show();
-//        } else if (OTP_resp.equals(OTP_Sms)) {
-//            startActivity(new Intent(getApplicationContext(), Home.class));
-//        } else {
-//            Toast.makeText(getApplicationContext(), "OTP Miss Match", Toast.LENGTH_SHORT).show();
-//        }
         }
     }
+
     public void onLoginFailed() {
         Toast.makeText(getBaseContext(), "Login failed", Toast.LENGTH_LONG).show();
         btn_login.setEnabled(true);
@@ -333,6 +320,21 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
         }
     }
 
+    public void load() {
+        SharedPreferences pref = getSharedPreferences("Mydata", Context.MODE_PRIVATE);
+        String name = pref.getString("name", DEAFULT);
+        String password = pref.getString("password", DEAFULT);
+
+        if (!name.equals(DEAFULT) || !password.equals(DEAFULT)) {
+            et_email.setText(name);
+            et_password.setText(password);
+        }
+        if (password.equals("")) {
+            et_password.requestFocus();
+            //  getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+        }
+    }
+
     public void save() {
         if (check_box.isChecked()) {
             String email = et_email.getText().toString();
@@ -356,12 +358,11 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
     }
 
 
-
     public void GetOtp() {
         btn_getOtp.setText("RESEND");
         email = et_email.getText().toString().trim();
         password = et_password.getText().toString().trim();
-        if (utils.onlineStatus2(Login.this)) {
+        if (Utils.onlineStatus2(Login.this)) {
             new GetOtp(email, password).execute();
         } else {
             Snackbar snack = Snackbar.make(coordinatorLayout, "No Internet Connection", Snackbar.LENGTH_SHORT)
@@ -456,7 +457,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
 
 
     public void StartLogin() {
-        if (utils.onlineStatus2(Login.this)) {
+        if (Utils.onlineStatus2(Login.this)) {
             new StartLogin().execute();
         } else {
             Snackbar snack = Snackbar.make(coordinatorLayout, "No Internet Connection", Snackbar.LENGTH_SHORT)
@@ -487,7 +488,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
 
         @Override
         protected void onPreExecute() {
-
+            super.onPreExecute();
             progressDialog = new ProgressDialog(Login.this,
                     R.style.MyMaterialTheme);
             progressDialog.setIndeterminate(true);
@@ -495,7 +496,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
             progressDialog.setCancelable(false);
             progressDialog.show();
 
-            super.onPreExecute();
+
         }
 
 
@@ -504,7 +505,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
             // TODO Auto-generated method stub
 
             try {
-                response = JSONParser.login(LOGIN_URL,email,password,CallApplication.getDeviceId(),gcmkey);
+                response = JSONParser.login(LOGIN_URL, email, password, CallApplication.getDeviceId(), gcmkey);
                 if (response.has(CODE))
                     code = response.getString(CODE);
                 if (response.has(MESSAGE))
@@ -544,8 +545,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
             }
             if (code.equals("400")) {
                 save();
-                utils.saveToPrefs(Login.this, AUTHKEY, authcode);
-                utils.saveToPrefs(Login.this, EMAIL, email);
+                Utils.saveToPrefs(Login.this, AUTHKEY, authcode);
+                Utils.saveToPrefs(Login.this, EMAIL, email);
                 Intent intent = new Intent(Login.this, Home.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |
                         Intent.FLAG_ACTIVITY_CLEAR_TASK |
@@ -560,7 +561,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
                         .setAction(getString(R.string.text_tryAgain), new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                               StartLogin();
+                                StartLogin();
 
                             }
                         }).

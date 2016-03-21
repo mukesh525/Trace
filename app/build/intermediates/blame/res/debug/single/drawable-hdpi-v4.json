@@ -16,12 +16,12 @@
         "source": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/res/drawable-hdpi/common_plus_signin_btn_text_dark_focused.9.png"
     },
     {
-        "merged": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/common_plus_signin_btn_icon_dark_focused.9.png",
-        "source": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/res/drawable-hdpi/common_plus_signin_btn_icon_dark_focused.9.png"
-    },
-    {
         "merged": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_tab_indicator_mtrl_alpha.9.png",
         "source": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/drawable-hdpi/abc_tab_indicator_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/common_plus_signin_btn_icon_dark_focused.9.png",
+        "source": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/res/drawable-hdpi/common_plus_signin_btn_icon_dark_focused.9.png"
     },
     {
         "merged": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_pause_light.png",
@@ -32,12 +32,12 @@
         "source": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/res/drawable-hdpi/common_google_signin_btn_text_light_focused.9.png"
     },
     {
-        "merged": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/common_signin_btn_text_disabled_focus_dark.9.png",
-        "source": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/res/drawable-hdpi/common_signin_btn_text_disabled_focus_dark.9.png"
-    },
-    {
         "merged": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_btn_check_to_on_mtrl_000.png",
         "source": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/drawable-hdpi/abc_btn_check_to_on_mtrl_000.png"
+    },
+    {
+        "merged": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/common_signin_btn_text_disabled_focus_dark.9.png",
+        "source": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/res/drawable-hdpi/common_signin_btn_text_disabled_focus_dark.9.png"
     },
     {
         "merged": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/common_google_signin_btn_icon_dark_disabled.9.png",
@@ -48,12 +48,12 @@
         "source": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/23.0.0/res/drawable-hdpi/ic_setting_dark.png"
     },
     {
-        "merged": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_ic_commit_search_api_mtrl_alpha.png",
-        "source": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/drawable-hdpi/abc_ic_commit_search_api_mtrl_alpha.png"
-    },
-    {
         "merged": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_ic_menu_moreoverflow_mtrl_alpha.png",
         "source": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/drawable-hdpi/abc_ic_menu_moreoverflow_mtrl_alpha.png"
+    },
+    {
+        "merged": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_ic_commit_search_api_mtrl_alpha.png",
+        "source": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/drawable-hdpi/abc_ic_commit_search_api_mtrl_alpha.png"
     },
     {
         "merged": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/common_plus_signin_btn_icon_light_normal.9.png",
@@ -80,24 +80,24 @@
         "source": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/res/drawable-hdpi/ic_plusone_standard_off_client.png"
     },
     {
-        "merged": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/common_plus_signin_btn_icon_light_pressed.9.png",
-        "source": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/res/drawable-hdpi/common_plus_signin_btn_icon_light_pressed.9.png"
+        "merged": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_media_route_disabled_mono_dark.png",
+        "source": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/22.0.0/res/drawable-hdpi-v4/ic_media_route_disabled_mono_dark.png"
     },
     {
         "merged": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_cast_on_0_light.png",
         "source": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/22.0.0/res/drawable-hdpi-v4/ic_cast_on_0_light.png"
     },
     {
-        "merged": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_media_route_disabled_mono_dark.png",
-        "source": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/22.0.0/res/drawable-hdpi-v4/ic_media_route_disabled_mono_dark.png"
-    },
-    {
-        "merged": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/cast_ic_notification_2.png",
-        "source": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-cast/8.4.0/res/drawable-hdpi/cast_ic_notification_2.png"
+        "merged": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/common_plus_signin_btn_icon_light_pressed.9.png",
+        "source": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/res/drawable-hdpi/common_plus_signin_btn_icon_light_pressed.9.png"
     },
     {
         "merged": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_ic_clear_mtrl_alpha.png",
         "source": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/drawable-hdpi/abc_ic_clear_mtrl_alpha.png"
+    },
+    {
+        "merged": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/cast_ic_notification_2.png",
+        "source": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-cast/8.4.0/res/drawable-hdpi/cast_ic_notification_2.png"
     },
     {
         "merged": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_scrubber_control_to_pressed_mtrl_000.png",
@@ -128,16 +128,16 @@
         "source": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/res/drawable-hdpi/common_google_signin_btn_icon_light_disabled.9.png"
     },
     {
-        "merged": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/messenger_bubble_small_white.png",
-        "source": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.5.0/res/drawable-hdpi/messenger_bubble_small_white.png"
+        "merged": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_btn_rating_star_off_mtrl_alpha.png",
+        "source": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/drawable-hdpi/abc_btn_rating_star_off_mtrl_alpha.png"
     },
     {
         "merged": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_play_light.png",
         "source": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/23.0.0/res/drawable-hdpi/ic_play_light.png"
     },
     {
-        "merged": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_btn_rating_star_off_mtrl_alpha.png",
-        "source": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/drawable-hdpi/abc_btn_rating_star_off_mtrl_alpha.png"
+        "merged": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/messenger_bubble_small_white.png",
+        "source": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.5.0/res/drawable-hdpi/messenger_bubble_small_white.png"
     },
     {
         "merged": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/common_google_signin_btn_text_light_disabled.9.png",
@@ -148,12 +148,12 @@
         "source": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/22.0.0/res/drawable-hdpi-v4/ic_media_route_on_2_mono_dark.png"
     },
     {
-        "merged": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_textfield_activated_mtrl_alpha.9.png",
-        "source": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/drawable-hdpi/abc_textfield_activated_mtrl_alpha.9.png"
-    },
-    {
         "merged": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/common_signin_btn_text_pressed_light.9.png",
         "source": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/res/drawable-hdpi/common_signin_btn_text_pressed_light.9.png"
+    },
+    {
+        "merged": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_textfield_activated_mtrl_alpha.9.png",
+        "source": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/drawable-hdpi/abc_textfield_activated_mtrl_alpha.9.png"
     },
     {
         "merged": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/common_google_signin_btn_icon_light_pressed.9.png",
@@ -238,6 +238,10 @@
     {
         "merged": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_menu_hardkey_panel_mtrl_mult.9.png",
         "source": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/drawable-hdpi/abc_menu_hardkey_panel_mtrl_mult.9.png"
+    },
+    {
+        "merged": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_menu_gallery.png",
+        "source": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/generated/res/pngs/debug/drawable-hdpi/ic_menu_gallery.png"
     },
     {
         "merged": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_ic_menu_copy_mtrl_am_alpha.png",
@@ -332,6 +336,10 @@
         "source": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/drawable-hdpi/abc_btn_switch_to_on_mtrl_00012.9.png"
     },
     {
+        "merged": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_menu_manage.png",
+        "source": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/generated/res/pngs/debug/drawable-hdpi/ic_menu_manage.png"
+    },
+    {
         "merged": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_btn_switch_to_on_mtrl_00001.9.png",
         "source": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/drawable-hdpi/abc_btn_switch_to_on_mtrl_00001.9.png"
     },
@@ -386,6 +394,10 @@
     {
         "merged": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_play_light.png",
         "source": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/22.0.0/res/drawable-hdpi-v4/ic_play_light.png"
+    },
+    {
+        "merged": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_menu_camera.png",
+        "source": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/generated/res/pngs/debug/drawable-hdpi/ic_menu_camera.png"
     },
     {
         "merged": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/common_google_signin_btn_text_dark_disabled.9.png",
@@ -534,6 +546,10 @@
     {
         "merged": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/messenger_bubble_large_white.png",
         "source": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.5.0/res/drawable-hdpi/messenger_bubble_large_white.png"
+    },
+    {
+        "merged": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_menu_share.png",
+        "source": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/generated/res/pngs/debug/drawable-hdpi/ic_menu_share.png"
     },
     {
         "merged": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/com_facebook_tooltip_blue_xout.png",
@@ -984,6 +1000,10 @@
         "source": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.5.0/res/drawable-hdpi/com_facebook_tooltip_blue_bottomnub.png"
     },
     {
+        "merged": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_menu_slideshow.png",
+        "source": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/generated/res/pngs/debug/drawable-hdpi/ic_menu_slideshow.png"
+    },
+    {
         "merged": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/com_facebook_button_send_icon.png",
         "source": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.5.0/res/drawable-hdpi/com_facebook_button_send_icon.png"
     },
@@ -1010,6 +1030,10 @@
     {
         "merged": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_switch_track_mtrl_alpha.9.png",
         "source": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/drawable-hdpi/abc_switch_track_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_menu_send.png",
+        "source": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/generated/res/pngs/debug/drawable-hdpi/ic_menu_send.png"
     },
     {
         "merged": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/powered_by_google_light.png",

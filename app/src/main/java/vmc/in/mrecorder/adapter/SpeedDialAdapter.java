@@ -158,7 +158,7 @@ public class SpeedDialAdapter extends RecyclerView.Adapter<SpeedDialAdapter.View
                                 String mypath=c.getString(2);
                                 Intent share = new Intent(Intent.ACTION_SEND);
                                 share.setType("audio/*");
-                                share.putExtra(Intent.EXTRA_TEXT, "I Recorded this audio using iManiac Call Recorder .\n https://play.google.com/store/apps/details?id=com.imaniac.callrecorder");
+                                share.putExtra(Intent.EXTRA_TEXT, "I Recorded this audio using MTracker Call Recorder .\n https://play.google.com/store/apps/details?id=vmc.in.mrecorder");
                                 share.putExtra(Intent.EXTRA_STREAM,Uri.parse("file:///"+mypath));
                                 context.startActivity(Intent.createChooser(share, "Share Sound File"));
                                 break;

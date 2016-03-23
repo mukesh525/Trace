@@ -29,15 +29,6 @@ public class Welcome extends AppCompatActivity implements TAG{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
-      //  sendStickyNotification("Loged in");
-//        CallApplication.sp.edit().putInt(TYPE, 1).commit();
-//        if ( CallApplication.sp.getInt(TYPE, 0) == 0) {
-//            startService(CallApplication.all);
-//        } else if ( CallApplication.sp.getInt(TYPE, 0) == 1) {
-//            stopService(CallApplication.all);
-//            //  stopService(opt);
-//        }
-
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {

@@ -28,28 +28,19 @@ import android.util.Log;
 import org.apache.http.HttpEntity;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.mime.HttpMultipartMode;
-import org.apache.http.entity.mime.MultipartEntity;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
 import org.apache.http.entity.mime.content.FileBody;
 import org.apache.http.entity.mime.content.StringBody;
 
 import java.io.BufferedReader;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
-import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLEncoder;
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.Map;
 
 import vmc.in.mrecorder.callbacks.TAG;
 import vmc.in.mrecorder.entity.Model;
@@ -75,121 +66,121 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
         mContentResolver = context.getContentResolver();
     }
 
-    private synchronized void doFileUpload(Model model) {
-
-
-        HttpURLConnection conn = null;
-        DataOutputStream dos = null;
-        DataInputStream dis = null;
-        String lineEnd = "\r\n";
-        String twoHyphens = "--";
-        String boundary = "*****";
-        int bytesRead, bytesAvailable, bufferSize;
-        byte[] buffer;
-        int maxBufferSize = 1 * 1024 * 1024;
-        String responseFromServer = "";
-        //  String urlString = "http://mywebsite.com/directory/upload.php";
-
-        try {
-
-            //------------------ CLIENT REQUEST
-            FileInputStream fileInputStream = new FileInputStream(new File(model.getFilePath()));
-            // open a URL connection to the Servlet
-            URL url = new URL(UPLOAD_URL);
-            // Open a HTTP connection to the URL authkey, deviceid, callto, starttime, calltype, duration
-
-//            Map<String, Object> params = new LinkedHashMap<>();
-//            params.put(AUTHKEY, Utils.getFromPrefs(getContext(),AUTHKEY,"n"));
-//            params.put(DEVICE_ID, CallApplication.getDeviceId());
-//            params.put(CALLTO, model.getPhoneNumber());
-//            params.put(STARTTIME,model.getTime());
-//            params.put(CALLTYPEE,model.getCallType());
-//            params.put(DURATION, model.getFile().length());
-//            StringBuilder postData = new StringBuilder();
-//            for (Map.Entry<String, Object> param : params.entrySet()) {
-//                if (postData.length() != 0) postData.append('&');
-//                postData.append(URLEncoder.encode(param.getKey(), "UTF-8"));
-//                postData.append('=');
-//                postData.append(URLEncoder.encode(String.valueOf(param.getValue()), "UTF-8"));
+//    private synchronized void doFileUpload(Model model) {
+//
+//
+//        HttpURLConnection conn = null;
+//        DataOutputStream dos = null;
+//        DataInputStream dis = null;
+//        String lineEnd = "\r\n";
+//        String twoHyphens = "--";
+//        String boundary = "*****";
+//        int bytesRead, bytesAvailable, bufferSize;
+//        byte[] buffer;
+//        int maxBufferSize = 1 * 1024 * 1024;
+//        String responseFromServer = "";
+//        //  String urlString = "http://mywebsite.com/directory/upload.php";
+//
+//        try {
+//
+//            //------------------ CLIENT REQUEST
+//            FileInputStream fileInputStream = new FileInputStream(new File(model.getFilePath()));
+//            // open a URL connection to the Servlet
+//            URL url = new URL(UPLOAD_URL);
+//            // Open a HTTP connection to the URL authkey, deviceid, callto, starttime, calltype, duration
+//
+////            Map<String, Object> params = new LinkedHashMap<>();
+////            params.put(AUTHKEY, Utils.getFromPrefs(getContext(),AUTHKEY,"n"));
+////            params.put(DEVICE_ID, CallApplication.getDeviceId());
+////            params.put(CALLTO, model.getPhoneNumber());
+////            params.put(STARTTIME,model.getTime());
+////            params.put(CALLTYPEE,model.getCallType());
+////            params.put(DURATION, model.getFile().length());
+////            StringBuilder postData = new StringBuilder();
+////            for (Map.Entry<String, Object> param : params.entrySet()) {
+////                if (postData.length() != 0) postData.append('&');
+////                postData.append(URLEncoder.encode(param.getKey(), "UTF-8"));
+////                postData.append('=');
+////                postData.append(URLEncoder.encode(String.valueOf(param.getValue()), "UTF-8"));
+////            }
+////            byte[] postDataBytes = postData.toString().getBytes("UTF-8");
+//            conn = (HttpURLConnection) url.openConnection();
+//            // Allow Inputs
+//            conn.setDoInput(true);
+//            // Allow Outputs
+//            conn.setDoOutput(true);
+//            // Don't use a cached copy.
+//            conn.setUseCaches(false);
+//            // Use a post method.
+//            conn.setRequestMethod("POST");
+//            conn.setRequestProperty("Connection", "Keep-Alive");
+//            conn.setRequestProperty("Content-Type", "multipart/form-data;boundary=" + boundary);
+//            //  conn.setRequestProperty("Content-Length", String.valueOf(postDataBytes.length));
+//            dos = new DataOutputStream(conn.getOutputStream());
+//            dos.writeBytes(twoHyphens + boundary + lineEnd);
+//            dos.writeBytes("Content-Disposition: form-data; name=\"uploadedfile\";filename=\"" + model.getFilePath() + "\"" + lineEnd);
+//            dos.writeBytes(lineEnd);
+//            //       conn.getOutputStream().write(postDataBytes);
+//            // create a buffer of maximum size
+//            bytesAvailable = fileInputStream.available();
+//            bufferSize = Math.min(bytesAvailable, maxBufferSize);
+//            buffer = new byte[bufferSize];
+//            // read file and write it into form...
+//            bytesRead = fileInputStream.read(buffer, 0, bufferSize);
+//
+//            while (bytesRead > 0) {
+//
+//                dos.write(buffer, 0, bufferSize);
+//                bytesAvailable = fileInputStream.available();
+//                bufferSize = Math.min(bytesAvailable, maxBufferSize);
+//                bytesRead = fileInputStream.read(buffer, 0, bufferSize);
+//
 //            }
-//            byte[] postDataBytes = postData.toString().getBytes("UTF-8");
-            conn = (HttpURLConnection) url.openConnection();
-            // Allow Inputs
-            conn.setDoInput(true);
-            // Allow Outputs
-            conn.setDoOutput(true);
-            // Don't use a cached copy.
-            conn.setUseCaches(false);
-            // Use a post method.
-            conn.setRequestMethod("POST");
-            conn.setRequestProperty("Connection", "Keep-Alive");
-            conn.setRequestProperty("Content-Type", "multipart/form-data;boundary=" + boundary);
-            //  conn.setRequestProperty("Content-Length", String.valueOf(postDataBytes.length));
-            dos = new DataOutputStream(conn.getOutputStream());
-            dos.writeBytes(twoHyphens + boundary + lineEnd);
-            dos.writeBytes("Content-Disposition: form-data; name=\"uploadedfile\";filename=\"" + model.getFilePath() + "\"" + lineEnd);
-            dos.writeBytes(lineEnd);
-            //       conn.getOutputStream().write(postDataBytes);
-            // create a buffer of maximum size
-            bytesAvailable = fileInputStream.available();
-            bufferSize = Math.min(bytesAvailable, maxBufferSize);
-            buffer = new byte[bufferSize];
-            // read file and write it into form...
-            bytesRead = fileInputStream.read(buffer, 0, bufferSize);
-
-            while (bytesRead > 0) {
-
-                dos.write(buffer, 0, bufferSize);
-                bytesAvailable = fileInputStream.available();
-                bufferSize = Math.min(bytesAvailable, maxBufferSize);
-                bytesRead = fileInputStream.read(buffer, 0, bufferSize);
-
-            }
-
-            // send multipart form data necesssary after file data...
-            dos.writeBytes(lineEnd);
-            dos.writeBytes(twoHyphens + boundary + twoHyphens + lineEnd);
-            // close streams
-            Log.e("Debug", "File is written");
-            fileInputStream.close();
-            dos.flush();
-            dos.close();
-
-        } catch (MalformedURLException ex) {
-            Log.e("Debug", "error: " + ex.getMessage(), ex);
-        } catch (IOException ioe) {
-            Log.e("Debug", "error: " + ioe.getMessage(), ioe);
-        }
-
-        //------------------ read the SERVER RESPONSE
-        try {
-            dis = new DataInputStream(conn.getInputStream());
-            StringBuilder response = new StringBuilder();
-
-            String line;
-            while ((line = dis.readLine()) != null) {
-                response.append(line).append('\n');
-            }
-
-            responseFromServer = response.toString();
-            if (responseFromServer.contains("has been uploaded")) {
-
-                CallApplication.getWritableDatabase().delete(model.getId());//from db
-                if (new File(model.getFilePath()).exists()) {
-                    new File(model.getFilePath()).delete();//from in
-                }
-            }
-            Log.d(TAG, responseFromServer);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (dis != null) try {
-                dis.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
+//
+//            // send multipart form data necesssary after file data...
+//            dos.writeBytes(lineEnd);
+//            dos.writeBytes(twoHyphens + boundary + twoHyphens + lineEnd);
+//            // close streams
+//            Log.e("Debug", "File is written");
+//            fileInputStream.close();
+//            dos.flush();
+//            dos.close();
+//
+//        } catch (MalformedURLException ex) {
+//            Log.e("Debug", "error: " + ex.getMessage(), ex);
+//        } catch (IOException ioe) {
+//            Log.e("Debug", "error: " + ioe.getMessage(), ioe);
+//        }
+//
+//        //------------------ read the SERVER RESPONSE
+//        try {
+//            dis = new DataInputStream(conn.getInputStream());
+//            StringBuilder response = new StringBuilder();
+//
+//            String line;
+//            while ((line = dis.readLine()) != null) {
+//                response.append(line).append('\n');
+//            }
+//
+//            responseFromServer = response.toString();
+//            if (responseFromServer.contains("has been uploaded")) {
+//
+//                CallApplication.getWritableDatabase().delete(model.getId());//from db
+//                if (new File(model.getFilePath()).exists()) {
+//                    new File(model.getFilePath()).delete();//from in
+//                }
+//            }
+//            Log.d(TAG, responseFromServer);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        } finally {
+//            if (dis != null) try {
+//                dis.close();
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//    }
 
     @Override
     public void onPerformSync(Account account, Bundle extras, String authority,
@@ -201,9 +192,9 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
                 if (!CallRecorderServiceAll.recording && Utils.isLogin(getContext())) {
 
                     if (new File(callList.get(i).getFilePath()).exists()) {
-                        uploadMultipartData(callList.get(i));
+                        uploadMultipartData(callList.get(i), true);
                     } else {
-                        //CallApplication.getWritableDatabase().delete(callList.get(i).getId());
+                        uploadMultipartData(callList.get(i), false);
 
                     }
 
@@ -217,12 +208,14 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
 
     }
 
-    private synchronized void uploadMultipartData(Model model) throws IOException {
+    private synchronized void uploadMultipartData(Model model, boolean fileExist) throws IOException {
 
         String boundary = "*************";
         MultipartEntityBuilder builder = MultipartEntityBuilder.create();
         builder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE);
-        builder.addPart(UPLOADEDFILE, new FileBody(model.getFile()));
+        if (fileExist) {
+            builder.addPart(UPLOADEDFILE, new FileBody(model.getFile()));
+        }
         builder.addPart(AUTHKEY, new StringBody(Utils.getFromPrefs(getContext(), AUTHKEY, "n"), ContentType.TEXT_PLAIN));
         builder.addPart(DEVICE_ID, new StringBody(CallApplication.getDeviceId(), ContentType.TEXT_PLAIN));
         builder.addPart(CALLTO, new StringBody(model.getPhoneNumber(), ContentType.TEXT_PLAIN));
@@ -257,8 +250,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
             Log.d(TAG, "Response :" + serverResponseMessage);
 
 
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             Log.d(TAG, e.getMessage());
         }
 

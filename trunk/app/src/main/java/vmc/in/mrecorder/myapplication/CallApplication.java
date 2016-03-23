@@ -9,18 +9,19 @@ import android.content.SharedPreferences.Editor;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 
-import com.facebook.FacebookSdk;
+
 import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.Tracker;
 
 import java.util.UUID;
 
+import vmc.in.mrecorder.callbacks.TAG;
 import vmc.in.mrecorder.datahandler.HelperCallRecordings;
 import vmc.in.mrecorder.service.CallIconService;
 import vmc.in.mrecorder.service.CallRecorderServiceAll;
 import vmc.in.mrecorder.syncadapter.SyncUtils;
 
-public class CallApplication extends Application {
+public class CallApplication extends Application implements TAG {
     public static CallApplication mApplication;
     public static CallIconService mMainService;
     public static SharedPreferences sp;//to prevent concurrent creation of shared pref and editor
@@ -31,6 +32,7 @@ public class CallApplication extends Application {
     private static String DeviceID;
     private static Tracker tracker;
     private static HelperCallRecordings mDatabase;
+    public static Intent all;
 
 
     public static GoogleAnalytics analytics() {
@@ -58,11 +60,11 @@ public class CallApplication extends Application {
         try {
 
 
-            Intent all = new Intent(this, CallRecorderServiceAll.class);
+            all = new Intent(this, CallRecorderServiceAll.class);
             //  Intent opt = new Intent(this, CallRecorderServiceOptional.class);
-            if (sp.getInt("type", 0) == 0) {
+            if (sp.getInt(TYPE, 0) == 0) {
                 startService(all);
-            } else if (sp.getInt("type", 0) == 1) {
+            } else if (sp.getInt(TYPE, 0) == 1) {
                 stopService(all);
                 //  stopService(opt);
             }
@@ -72,7 +74,7 @@ public class CallApplication extends Application {
         }
 
         analytics = GoogleAnalytics.getInstance(this);
-        FacebookSdk.sdkInitialize(getApplicationContext());
+       // FacebookSdk.sdkInitialize(getApplicationContext());
         // TODO: Replace the tracker-id with your app one from https://www.google.com/analytics/web/
         tracker = analytics.newTracker("UA-67048716-8");
 
@@ -147,7 +149,7 @@ public class CallApplication extends Application {
 
         UUID deviceUuid = new UUID(androidId.hashCode(), ((long) tmDevice.hashCode() << 32) | tmSerial.hashCode());
         String deviceId = deviceUuid.toString();
-      //  Log.d("android_id", deviceId);
+        //  Log.d("android_id", deviceId);
         return deviceId;
 
     }

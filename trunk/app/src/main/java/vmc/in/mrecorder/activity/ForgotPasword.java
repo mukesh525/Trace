@@ -69,8 +69,8 @@ public class ForgotPasword extends AppCompatActivity implements TAG, OTPDialogFr
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forgot_pasword);
         ButterKnife.inject(this);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
 
         _phone.requestFocus();
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
@@ -87,6 +87,7 @@ public class ForgotPasword extends AppCompatActivity implements TAG, OTPDialogFr
             @Override
             public void onClick(View v) {
                 // Finish the registration screen and return to the Login activity
+                startActivity(new Intent(ForgotPasword.this,Login.class));
                 finish();
             }
         });

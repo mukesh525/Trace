@@ -13,6 +13,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
+import android.util.Log;
 
 import com.google.android.gms.gcm.GcmListenerService;
 
@@ -21,25 +22,34 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+
 import vmc.in.mrecorder.R;
 import vmc.in.mrecorder.activity.Login;
+import vmc.in.mrecorder.callbacks.TAG;
+import vmc.in.mrecorder.util.Utils;
 
 /**
  * Created by gousebabjan on 17/3/16.
  */
-public class PushNotificationService extends GcmListenerService {
+public class PushNotificationService extends GcmListenerService implements vmc.in.mrecorder.callbacks.TAG {
     private NotificationManager mNotificationManager;
-    public static int NOTIFICATION_ID = 1;
+   // public static int NOTIFICATION_ID = 1;
     private String TAG = "GCMPRO";
     private String url;
+
     @Override
     public void onMessageReceived(String from, Bundle data) {
         super.onMessageReceived(from, data);
         String message = data.getString("message");
-        url = data.getString("img");
-        sendNotification(message);
+        Log.d(TAG,message);
+
+        if (Utils.isLogin(getApplicationContext())) {
+            Utils.isLogout(getApplicationContext());
+            sendStickyNotification(message);
+        }
 
     }
+
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     private void sendNotification(String msg) {
         Intent resultIntent = new Intent(this, Login.class);
@@ -86,6 +96,7 @@ public class PushNotificationService extends GcmListenerService {
 
 
     }
+
     private void sendNotification1(String message) {
         Intent intent = new Intent(this, Login.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -119,8 +130,9 @@ public class PushNotificationService extends GcmListenerService {
                 .setContentText(message)
                 .setContentIntent(PendingIntent.getActivity(this, 0, new Intent(this, Login.class), 0));
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        notificationManager.notify(0, mBuilder.build());
+        notificationManager.notify(NOTIFICATION_ID, mBuilder.build());
     }
+
 
     public Bitmap getBitmapFromURL(String strURL) {
         try {

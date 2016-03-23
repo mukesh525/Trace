@@ -22,26 +22,21 @@ import android.content.ContentProviderClient;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.SyncResult;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Toast;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
 import vmc.in.mrecorder.callbacks.TAG;
-import vmc.in.mrecorder.datahandler.HelperCallRecordings;
 import vmc.in.mrecorder.entity.Model;
-import vmc.in.mrecorder.entity.Util;
 import vmc.in.mrecorder.myapplication.CallApplication;
 import vmc.in.mrecorder.service.CallRecorderServiceAll;
 
@@ -144,9 +139,9 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
             responseFromServer = response.toString();
             if (responseFromServer.contains("has been uploaded")) {
 
-                CallApplication.getWritableDatabase().delete(model.getId());
+                CallApplication.getWritableDatabase().delete(model.getId());//from db
                 if (new File(model.getFilePath()).exists()) {
-                    new File(model.getFilePath()).delete();
+                    new File(model.getFilePath()).delete();//from in
                 }
             }
             Log.d("Debug", responseFromServer);
@@ -165,6 +160,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
     public void onPerformSync(Account account, Bundle extras, String authority,
                               ContentProviderClient provider, SyncResult syncResult) {
         Log.d(TAG, "Beginning network synchronization");
+        try{
         callList = CallApplication.getWritableDatabase().GetAllCalls();
         for (int i = 0; i < callList.size(); i++) {
             if (!CallRecorderServiceAll.recording) {
@@ -177,9 +173,12 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
 
 
             }
+        }}catch(Exception e){
+                Log.d(TAG,e.getMessage().toString());
+            }
 
 
-        }
+
 
     }
 

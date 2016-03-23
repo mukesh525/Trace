@@ -1,37 +1,24 @@
 package vmc.in.mrecorder.activity;
 
-import android.app.Dialog;
 import android.app.Fragment;
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.Html;
 import android.util.Log;
 import android.view.View;
-import android.view.Window;
-import android.widget.Button;
-import android.widget.RadioGroup;
-import android.widget.TextView;
 
 import com.google.android.gms.ads.InterstitialAd;
 
-import hotchemi.android.rate.AppRate;
-import hotchemi.android.rate.OnClickButtonListener;
 import vmc.in.mrecorder.R;
 import vmc.in.mrecorder.adapter.ContactsPagerAdapter;
-import vmc.in.mrecorder.entity.Util;
 import vmc.in.mrecorder.fragment.AllCallsFragment;
 import vmc.in.mrecorder.fragment.DialledCallFragment;
 import vmc.in.mrecorder.fragment.MissedCallFragment;
 import vmc.in.mrecorder.fragment.ReceivedCallFragment;
-import vmc.in.mrecorder.myapplication.CallApplication;
-import vmc.in.mrecorder.syncadapter.SyncUtils;
+import vmc.in.mrecorder.util.Utils;
 
 
 public class ContactsActivity extends AppCompatActivity {
@@ -67,7 +54,7 @@ public class ContactsActivity extends AppCompatActivity {
         actionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Util.setRecording(ContactsActivity.this);
+                Utils.setRecording(ContactsActivity.this);
             }
         });
 
@@ -237,25 +224,25 @@ public class ContactsActivity extends AppCompatActivity {
 //    }
 
 
-    public void setUpReview() {
-
-        AppRate.with(this)
-                .setInstallDays(0) // default 10, 0 means install day.
-                .setLaunchTimes(2) // default 10
-                .setRemindInterval(1) // default 1
-                .setDebug(false) // default false
-                .setOnClickButtonListener(new OnClickButtonListener() { // callback listener.
-                    @Override
-                    public void onClickButton(int which) {
-                        Log.d(ContactsActivity.class.getName(), Integer.toString(which));
-                    }
-                })
-                .monitor();
-
-        // Show a dialog if meets conditions
-        AppRate.showRateDialogIfMeetsConditions(this);
-
-    }
+//    public void setUpReview() {
+//
+//        AppRate.with(this)
+//                .setInstallDays(0) // default 10, 0 means install day.
+//                .setLaunchTimes(2) // default 10
+//                .setRemindInterval(1) // default 1
+//                .setDebug(false) // default false
+//                .setOnClickButtonListener(new OnClickButtonListener() { // callback listener.
+//                    @Override
+//                    public void onClickButton(int which) {
+//                        Log.d(ContactsActivity.class.getName(), Integer.toString(which));
+//                    }
+//                })
+//                .monitor();
+//
+//        // Show a dialog if meets conditions
+//        AppRate.showRateDialogIfMeetsConditions(this);
+//
+//    }
 
 
 }

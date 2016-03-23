@@ -1,6 +1,7 @@
 package vmc.in.mrecorder.activity;
 
 
+import android.app.NotificationManager;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -61,6 +62,16 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
         coordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordi_layout);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+//        CallApplication.sp.edit().putInt(TYPE, 1).commit();
+//        if ( CallApplication.sp.getInt(TYPE, 0) == 0) {
+//            startService(CallApplication.all);
+//        } else if ( CallApplication.sp.getInt(TYPE, 0) == 1) {
+//            stopService(CallApplication.all);
+//            //  stopService(opt);
+//        }
+       Utils.stopRecording(Login.this);
+
+
 
         tv_otp = (TextView) findViewById(R.id.input_OTP);
         btn_getOtp = (Button) findViewById(R.id.btn_get_otp);
@@ -80,6 +91,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
 
 
         load();
+      //  cancelNotification(Login.this,NOTIFICATION_ID);
 
         GCMClientManager pushClientManager = new GCMClientManager(this, PROJECT_NUMBER);
         pushClientManager.registerIfNeeded(new GCMClientManager.RegistrationCompletedHandler() {
@@ -151,6 +163,9 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
 
         // Log.d("SMS", OTP1+" "+OTP);
         tv_otp.setText(OTP_Sms);
+        if (progressDialog != null && progressDialog.isShowing()) {
+            progressDialog.dismiss();
+        }
 
 
     }
@@ -322,11 +337,11 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
 
     public void load() {
         SharedPreferences pref = getSharedPreferences("Mydata", Context.MODE_PRIVATE);
-        String name = pref.getString("name", DEAFULT);
+        String email = pref.getString("email", DEAFULT);
         String password = pref.getString("password", DEAFULT);
 
-        if (!name.equals(DEAFULT) || !password.equals(DEAFULT)) {
-            et_email.setText(name);
+        if (!email.equals(DEAFULT) || !password.equals(DEAFULT)) {
+            et_email.setText(email);
             et_password.setText(password);
         }
         if (password.equals("")) {
@@ -401,6 +416,12 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
 //             showProgress("Login Please Wait.."); progressDialog.setIndeterminate(true);
 //             progressDialog.setMessage("Generating OTP...");
 //               progressDialog.show();
+            progressDialog = new ProgressDialog(Login.this,
+                    R.style.AppTheme_Dark_Dialog);
+            progressDialog.setIndeterminate(true);
+            progressDialog.setMessage("Generating OTP...");
+            progressDialog.setCancelable(false);
+            progressDialog.show();
 
             super.onPreExecute();
         }
@@ -413,6 +434,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
 
             try {
                 response = JSONParser.getOTP(GET_OTP, email, password);
+
                 if (response != null) {
                     if (response.has(CODE)) {
                         code = response.getString(CODE);
@@ -437,7 +459,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
         @Override
         protected void onPostExecute(JSONObject data) {
             if (data != null) {
-
+                if (progressDialog != null && progressDialog.isShowing()) {
+                    progressDialog.dismiss();}
                 Log.d("OTP", data.toString());
 
 
@@ -490,7 +513,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
         protected void onPreExecute() {
             super.onPreExecute();
             progressDialog = new ProgressDialog(Login.this,
-                    R.style.MyMaterialTheme);
+                    R.style.AppTheme_Dark_Dialog);
             progressDialog.setIndeterminate(true);
             progressDialog.setMessage("Authenticating...");
             progressDialog.setCancelable(false);
@@ -506,6 +529,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
 
             try {
                 response = JSONParser.login(LOGIN_URL, email, password, CallApplication.getDeviceId(), gcmkey);
+                Log.d("GCMPRO",response.toString());
                 if (response.has(CODE))
                     code = response.getString(CODE);
                 if (response.has(MESSAGE))
@@ -528,9 +552,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
                 Log.d("LOG", data.toString());
             }
             btn_login.setEnabled(true);
-            if (progressDialog != null && progressDialog.isShowing()) {
-                progressDialog.dismiss();
-            }
+
             if (code.equals("202")) {
 
                 Snackbar.make(coordinatorLayout, message, Snackbar.LENGTH_SHORT)
@@ -569,6 +591,11 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
             }
         }
 
+    }
+    public static void cancelNotification(Context ctx, int notifyId) {
+        String ns = Context.NOTIFICATION_SERVICE;
+        NotificationManager nMgr = (NotificationManager) ctx.getSystemService(ns);
+        nMgr.cancel(notifyId);
     }
 
 }

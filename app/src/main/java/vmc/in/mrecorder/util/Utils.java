@@ -181,7 +181,6 @@ public class Utils implements TAG {
 
     public static void setRecording(Context context) {
         CallApplication.sp = context.getApplicationContext().getSharedPreferences("com.example.call", Context.MODE_PRIVATE);
-
         CallApplication.e = CallApplication.sp.edit();
         final Dialog dialog = new Dialog(context, R.style.myBackgroundStyle);
         dialog.setContentView(R.layout.layout_dialog);

@@ -15,6 +15,7 @@ public interface TAG {
     public String TIME = "Time";
     public String ID = "_id";
     public String TYPE = "type";
+    public String UPLOADEDFILE = "uploadedfile";
 
     public String EMAIL = "email";
     public String PASSWORD = "password";
@@ -24,9 +25,17 @@ public interface TAG {
     public String DEVICE_ID = "deviceid";
     public String GCM_KEY = "gcmkey";
     public String AUTHKEY = "authkey";
+    public String CALLTO = "callto";
+    public String STARTTIME = "starttime";
+    public String CALLTYPEE = "calltype";
+    public String DURATION = "duration";
+
     public int NOTIFICATION_ID = 0;
+
+
+
     //public  String UPLOAD_URL="http://192.168.1.118/mconnect/upload.php";
-    public String UPLOAD_URL = "http://192.168.1.133/tracker/upload.php";
+    public String UPLOAD_URL = "http://192.168.1.118/newdesigen/mtrackapp/insert_calldetail";
     public String GET_OTP = "http://192.168.1.118/newdesigen/mtrackapp/login_mtrack";
     public String LOGIN_URL = "http://192.168.1.118/newdesigen/mtrackapp/check_auth";
     public String FORGOT_OTP_URL = "";

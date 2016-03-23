@@ -13,14 +13,18 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
+
 
 import vmc.in.mrecorder.R;
-import vmc.in.mrecorder.entity.Util;
+import vmc.in.mrecorder.callbacks.TAG;
+import vmc.in.mrecorder.myapplication.CallApplication;
+import vmc.in.mrecorder.service.CallRecorderServiceAll;
 import vmc.in.mrecorder.util.Utils;
 
 
 public class Home extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener,TAG {
 
     private Toolbar toolbar;
     private DrawerLayout drawer;
@@ -37,11 +41,13 @@ public class Home extends AppCompatActivity
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        Utils.startRecording(Home.this);
+
         floatingActionButton = (FloatingActionButton) findViewById(R.id.fab);
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Util.setRecording(Home.this);
+                Utils.setRecording(Home.this);
             }
         });
 
@@ -52,7 +58,16 @@ public class Home extends AppCompatActivity
         toggle.syncState();
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+//
+//        if (!Utils.isMyServiceRunning(CallRecorderServiceAll.class, Home.this)) {
+//            Intent all = new Intent(this, CallRecorderServiceAll.class);
+//            startService(all);
+//        }
+
+
     }
+
+
 
     @Override
     public void onBackPressed() {
@@ -79,7 +94,9 @@ public class Home extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-
+//            SharedPreferences pref = getSharedPreferences("Mydata", Context.MODE_PRIVATE);
+//            pref.edit().clear().commit();
+            //CallApplication.sp.edit().putInt("type", 1);
             Utils.isLogout(this);
 
             return true;

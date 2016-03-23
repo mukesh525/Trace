@@ -60,10 +60,10 @@ public class AllCallsFragment extends Fragment implements SpeedDialAdapter.Adapt
         super.onActivityCreated(savedInstanceState);
         // c=hcr.display();
 
-//        missedlist= Util.getMissedCall(getActivity());
+//        missedlist= Utils.getMissedCall(getActivity());
 //        if(missedlist!=null&&missedlist.size()>0){
 //
-//            Log.e("Missedcall; is ", "" + missedlist.get(0).getPhoneNumber());
+//            Log.e("Missedcall; is ", " + missedlist.get(0).getPhoneNumber());
 //
 //
 //

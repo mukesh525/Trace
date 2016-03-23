@@ -6,13 +6,16 @@ import android.app.PendingIntent;
 import android.app.TaskStackBuilder;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.NotificationCompat;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 
 import com.google.android.gms.gcm.GcmListenerService;
@@ -26,6 +29,7 @@ import java.net.URL;
 import vmc.in.mrecorder.R;
 import vmc.in.mrecorder.activity.Login;
 import vmc.in.mrecorder.callbacks.TAG;
+import vmc.in.mrecorder.myapplication.CallApplication;
 import vmc.in.mrecorder.util.Utils;
 
 /**
@@ -33,7 +37,7 @@ import vmc.in.mrecorder.util.Utils;
  */
 public class PushNotificationService extends GcmListenerService implements vmc.in.mrecorder.callbacks.TAG {
     private NotificationManager mNotificationManager;
-   // public static int NOTIFICATION_ID = 1;
+    // public static int NOTIFICATION_ID = 1;
     private String TAG = "GCMPRO";
     private String url;
 
@@ -41,11 +45,13 @@ public class PushNotificationService extends GcmListenerService implements vmc.i
     public void onMessageReceived(String from, Bundle data) {
         super.onMessageReceived(from, data);
         String message = data.getString("message");
-        Log.d(TAG,message);
-
+        Log.d(TAG, message);
+     //   sendStickyNotification(message);
         if (Utils.isLogin(getApplicationContext())) {
-            Utils.isLogout(getApplicationContext());
-            sendStickyNotification(message);
+            CallApplication.sp.edit().putInt(TYPE, 1).commit();
+            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+            prefs.edit().clear().commit();
+             sendStickyNotification(message);
         }
 
     }
@@ -119,14 +125,16 @@ public class PushNotificationService extends GcmListenerService implements vmc.i
     }
 
     private void sendStickyNotification(String message) {
-
+        Bitmap bm = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher);
         Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this)
-                .setSmallIcon(R.drawable.cube)
-                .setContentTitle("title")
+                .setSmallIcon(R.mipmap.ic_launcher)
+                .setColor(ContextCompat.getColor(getApplicationContext(), R.color.accent))
+                .setContentTitle("MTrack")
                 .setAutoCancel(false)
                 .setOngoing(true)
                 .setSound(defaultSoundUri)
+                .setLargeIcon(bm)
                 .setContentText(message)
                 .setContentIntent(PendingIntent.getActivity(this, 0, new Intent(this, Login.class), 0));
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);

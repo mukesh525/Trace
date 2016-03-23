@@ -118,22 +118,33 @@
 
         <activity
             android:name=".activity.Welcome"
-            android:noHistory="true">
+            android:noHistory="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".activity.Login"
-            android:noHistory="true" />
+            android:noHistory="true"
+            android:screenOrientation="portrait"/>
+
         <activity
             android:name=".activity.Home"
             android:label="@string/title_activity_home"
-            android:theme="@style/AppTheme" />
-        <activity android:name=".activity.SignupActivity" />
-        <activity android:name=".activity.ForgotPasword"></activity>
+            android:theme="@style/AppTheme"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".activity.SignupActivity"
+            android:noHistory="true"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".activity.ForgotPasword"
+            android:noHistory="true"
+            android:screenOrientation="portrait"></activity>
 
         <service
             android:name=".gcm.PushNotificationService"

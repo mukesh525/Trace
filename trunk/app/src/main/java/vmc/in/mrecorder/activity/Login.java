@@ -91,7 +91,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
 
 
         load();
-      //  cancelNotification(Login.this,NOTIFICATION_ID);
+       cancelNotification(Login.this,NOTIFICATION_ID);
 
         GCMClientManager pushClientManager = new GCMClientManager(this, PROJECT_NUMBER);
         pushClientManager.registerIfNeeded(new GCMClientManager.RegistrationCompletedHandler() {
@@ -547,7 +547,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
 
         @Override
         protected void onPostExecute(JSONObject data) {
-
+            if (progressDialog != null && progressDialog.isShowing()) {
+                progressDialog.dismiss();}
             if (data != null) {
                 Log.d("LOG", data.toString());
             }

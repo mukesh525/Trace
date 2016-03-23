@@ -1,10 +1,6 @@
 [
     {
-        "merged": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/build/intermediates/res/merged/debug/mipmap-hdpi-v4/ic_launcher.png",
-        "source": "/home/gousebabjan/AndroidStudioProjects/Tracker/app/src/main/res/mipmap-hdpi/ic_launcher.png"
-    },
-    {
-        "merged": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/build/intermediates/res/merged/debug/mipmap-hdpi-v4/ic_launcher.png",
-        "source": "/home/gousebabjan/AndroidStudioProjects/MRecorder/app/src/main/res/mipmap-hdpi/ic_launcher.png"
+        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\ic_launcher.png",
+        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
     }
 ]

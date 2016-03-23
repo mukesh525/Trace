@@ -22,6 +22,8 @@ import android.content.ContentProviderClient;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.SyncResult;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -214,13 +216,15 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
         MultipartEntityBuilder builder = MultipartEntityBuilder.create();
         builder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE);
         if (fileExist) {
+            MediaPlayer mp = MediaPlayer.create(getContext(), Uri.fromFile(model.getFile()));
+            int duration = mp.getDuration();
             builder.addPart(UPLOADEDFILE, new FileBody(model.getFile()));
+            builder.addPart(DURATION, new StringBody(duration + "", ContentType.TEXT_PLAIN));
         }
         builder.addPart(AUTHKEY, new StringBody(Utils.getFromPrefs(getContext(), AUTHKEY, "n"), ContentType.TEXT_PLAIN));
         builder.addPart(DEVICE_ID, new StringBody(CallApplication.getDeviceId(), ContentType.TEXT_PLAIN));
         builder.addPart(CALLTO, new StringBody(model.getPhoneNumber(), ContentType.TEXT_PLAIN));
         builder.addPart(STARTTIME, new StringBody(model.getTime(), ContentType.TEXT_PLAIN));
-        builder.addPart(DURATION, new StringBody(model.getFile().length() + "", ContentType.TEXT_PLAIN));
         HttpEntity entity = builder.build();
 
         URL url = null;

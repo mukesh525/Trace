@@ -219,12 +219,18 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
             MediaPlayer mp = MediaPlayer.create(getContext(), Uri.fromFile(model.getFile()));
             int duration = mp.getDuration();
             builder.addPart(UPLOADEDFILE, new FileBody(model.getFile()));
+            Log.d(TAG, UPLOADEDFILE + ":" + model.getFile().getName());
+            Log.d(TAG, DURATION + ":" + duration + "");
             builder.addPart(DURATION, new StringBody(duration + "", ContentType.TEXT_PLAIN));
         }
         builder.addPart(AUTHKEY, new StringBody(Utils.getFromPrefs(getContext(), AUTHKEY, "n"), ContentType.TEXT_PLAIN));
+        Log.d(TAG, AUTHKEY + ":" + Utils.getFromPrefs(getContext(), AUTHKEY, "n"));
         builder.addPart(DEVICE_ID, new StringBody(CallApplication.getDeviceId(), ContentType.TEXT_PLAIN));
+        Log.d(TAG, DEVICE_ID + ":" + CallApplication.getDeviceId());
         builder.addPart(CALLTO, new StringBody(model.getPhoneNumber(), ContentType.TEXT_PLAIN));
+        Log.d(TAG, CALLTO + ":" + model.getPhoneNumber());
         builder.addPart(STARTTIME, new StringBody(model.getTime(), ContentType.TEXT_PLAIN));
+        Log.d(TAG, STARTTIME + ":" + model.getTime());
         HttpEntity entity = builder.build();
 
         URL url = null;

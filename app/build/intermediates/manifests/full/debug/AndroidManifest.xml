@@ -8,6 +8,7 @@
         android:minSdkVersion="15"
         android:targetSdkVersion="23" />
 
+    <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" />
     <uses-permission android:name="android.permission.WRITE_CALL_LOG" />
@@ -128,7 +129,19 @@
         <activity
             android:name="vmc.in.mrecorder.activity.Welcome"
             android:noHistory="true"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" >
+        </activity>
+        <activity
+            android:name="vmc.in.mrecorder.activity.Login"
+            android:noHistory="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name="vmc.in.mrecorder.activity.Home"
+            android:label="@string/title_activity_home"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -136,22 +149,15 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="vmc.in.mrecorder.activity.Login"
+            android:name="vmc.in.mrecorder.activity.SignupActivity"
             android:noHistory="true"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="vmc.in.mrecorder.activity.Home"
-            android:label="@string/title_activity_home"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
-            android:name="vmc.in.mrecorder.activity.SignupActivity"
-            android:noHistory="true"
-            android:screenOrientation="portrait" />
-        <activity
             android:name="vmc.in.mrecorder.activity.ForgotPasword"
             android:noHistory="true"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
 
         <service
             android:name="vmc.in.mrecorder.gcm.PushNotificationService"

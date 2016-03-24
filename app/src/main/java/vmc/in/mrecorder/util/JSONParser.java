@@ -131,4 +131,45 @@ public class JSONParser implements TAG{
     }
 
 
+    public static JSONObject InsertJSONToUrlFollowUpDetail(String url1, String authKey, String type, String callId, String groupName) throws Exception {
+
+        StringBuilder result = new StringBuilder();
+        URL url = new URL(url1);
+        Map<String, Object> params = new LinkedHashMap<>();
+        params.put("authKey", authKey);
+        params.put("type", type);
+        params.put("callid", callId);
+        params.put("groupname", groupName);
+        Log.d("TEST22", "url  " + url);
+        Log.d("TEST22", "Post Parameters................!!");
+        Log.d("TEST22", "authKey  " + authKey);
+        Log.d("TEST22", "type " + type);
+        Log.d("TEST22", "callid " + callId);
+        Log.d("TEST22", "groupname " + groupName);
+        StringBuilder postData = new StringBuilder();
+        for (Map.Entry<String, Object> param : params.entrySet()) {
+            if (postData.length() != 0) postData.append('&');
+            postData.append(URLEncoder.encode(param.getKey(), "UTF-8"));
+            postData.append('=');
+            postData.append(URLEncoder.encode(String.valueOf(param.getValue()), "UTF-8"));
+        }
+        byte[] postDataBytes = postData.toString().getBytes("UTF-8");
+
+        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        conn.setRequestMethod("POST");
+        conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+        conn.setRequestProperty("Content-Length", String.valueOf(postDataBytes.length));
+        conn.setDoOutput(true);
+        conn.getOutputStream().write(postDataBytes);
+        InputStream in = new BufferedInputStream(conn.getInputStream());
+        BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+        String line;
+        while ((line = reader.readLine()) != null) {
+            result.append(line);
+        }
+        JSONObject jObj = new JSONObject(result.toString());
+        return jObj;
+
+
+    }
 }

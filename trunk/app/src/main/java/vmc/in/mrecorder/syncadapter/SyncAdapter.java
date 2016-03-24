@@ -33,6 +33,9 @@ import org.apache.http.entity.mime.HttpMultipartMode;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
 import org.apache.http.entity.mime.content.FileBody;
 import org.apache.http.entity.mime.content.StringBody;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -42,7 +45,10 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Objects;
 
 import vmc.in.mrecorder.callbacks.TAG;
 import vmc.in.mrecorder.entity.Model;
@@ -67,122 +73,6 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
         super(context, autoInitialize, allowParallelSyncs);
         mContentResolver = context.getContentResolver();
     }
-
-//    private synchronized void doFileUpload(Model model) {
-//
-//
-//        HttpURLConnection conn = null;
-//        DataOutputStream dos = null;
-//        DataInputStream dis = null;
-//        String lineEnd = "\r\n";
-//        String twoHyphens = "--";
-//        String boundary = "*****";
-//        int bytesRead, bytesAvailable, bufferSize;
-//        byte[] buffer;
-//        int maxBufferSize = 1 * 1024 * 1024;
-//        String responseFromServer = "";
-//        //  String urlString = "http://mywebsite.com/directory/upload.php";
-//
-//        try {
-//
-//            //------------------ CLIENT REQUEST
-//            FileInputStream fileInputStream = new FileInputStream(new File(model.getFilePath()));
-//            // open a URL connection to the Servlet
-//            URL url = new URL(UPLOAD_URL);
-//            // Open a HTTP connection to the URL authkey, deviceid, callto, starttime, calltype, duration
-//
-////            Map<String, Object> params = new LinkedHashMap<>();
-////            params.put(AUTHKEY, Utils.getFromPrefs(getContext(),AUTHKEY,"n"));
-////            params.put(DEVICE_ID, CallApplication.getDeviceId());
-////            params.put(CALLTO, model.getPhoneNumber());
-////            params.put(STARTTIME,model.getTime());
-////            params.put(CALLTYPEE,model.getCallType());
-////            params.put(DURATION, model.getFile().length());
-////            StringBuilder postData = new StringBuilder();
-////            for (Map.Entry<String, Object> param : params.entrySet()) {
-////                if (postData.length() != 0) postData.append('&');
-////                postData.append(URLEncoder.encode(param.getKey(), "UTF-8"));
-////                postData.append('=');
-////                postData.append(URLEncoder.encode(String.valueOf(param.getValue()), "UTF-8"));
-////            }
-////            byte[] postDataBytes = postData.toString().getBytes("UTF-8");
-//            conn = (HttpURLConnection) url.openConnection();
-//            // Allow Inputs
-//            conn.setDoInput(true);
-//            // Allow Outputs
-//            conn.setDoOutput(true);
-//            // Don't use a cached copy.
-//            conn.setUseCaches(false);
-//            // Use a post method.
-//            conn.setRequestMethod("POST");
-//            conn.setRequestProperty("Connection", "Keep-Alive");
-//            conn.setRequestProperty("Content-Type", "multipart/form-data;boundary=" + boundary);
-//            //  conn.setRequestProperty("Content-Length", String.valueOf(postDataBytes.length));
-//            dos = new DataOutputStream(conn.getOutputStream());
-//            dos.writeBytes(twoHyphens + boundary + lineEnd);
-//            dos.writeBytes("Content-Disposition: form-data; name=\"uploadedfile\";filename=\"" + model.getFilePath() + "\"" + lineEnd);
-//            dos.writeBytes(lineEnd);
-//            //       conn.getOutputStream().write(postDataBytes);
-//            // create a buffer of maximum size
-//            bytesAvailable = fileInputStream.available();
-//            bufferSize = Math.min(bytesAvailable, maxBufferSize);
-//            buffer = new byte[bufferSize];
-//            // read file and write it into form...
-//            bytesRead = fileInputStream.read(buffer, 0, bufferSize);
-//
-//            while (bytesRead > 0) {
-//
-//                dos.write(buffer, 0, bufferSize);
-//                bytesAvailable = fileInputStream.available();
-//                bufferSize = Math.min(bytesAvailable, maxBufferSize);
-//                bytesRead = fileInputStream.read(buffer, 0, bufferSize);
-//
-//            }
-//
-//            // send multipart form data necesssary after file data...
-//            dos.writeBytes(lineEnd);
-//            dos.writeBytes(twoHyphens + boundary + twoHyphens + lineEnd);
-//            // close streams
-//            Log.e("Debug", "File is written");
-//            fileInputStream.close();
-//            dos.flush();
-//            dos.close();
-//
-//        } catch (MalformedURLException ex) {
-//            Log.e("Debug", "error: " + ex.getMessage(), ex);
-//        } catch (IOException ioe) {
-//            Log.e("Debug", "error: " + ioe.getMessage(), ioe);
-//        }
-//
-//        //------------------ read the SERVER RESPONSE
-//        try {
-//            dis = new DataInputStream(conn.getInputStream());
-//            StringBuilder response = new StringBuilder();
-//
-//            String line;
-//            while ((line = dis.readLine()) != null) {
-//                response.append(line).append('\n');
-//            }
-//
-//            responseFromServer = response.toString();
-//            if (responseFromServer.contains("has been uploaded")) {
-//
-//                CallApplication.getWritableDatabase().delete(model.getId());//from db
-//                if (new File(model.getFilePath()).exists()) {
-//                    new File(model.getFilePath()).delete();//from in
-//                }
-//            }
-//            Log.d(TAG, responseFromServer);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        } finally {
-//            if (dis != null) try {
-//                dis.close();
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//        }
-//    }
 
     @Override
     public void onPerformSync(Account account, Bundle extras, String authority,
@@ -213,6 +103,8 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
     private synchronized void uploadMultipartData(Model model, boolean fileExist) throws IOException {
 
         String boundary = "*************";
+        DateTimeFormatter formatter = DateTimeFormat.forPattern("YYYY-MM-dd HH:mm:ss.SSS");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss.SS");
         MultipartEntityBuilder builder = MultipartEntityBuilder.create();
         builder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE);
         if (fileExist) {
@@ -222,6 +114,10 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
             Log.d(TAG, UPLOADEDFILE + ":" + model.getFile().getName());
             Log.d(TAG, DURATION + ":" + duration + "");
             builder.addPart(DURATION, new StringBody(duration + "", ContentType.TEXT_PLAIN));
+            Long time = Long.valueOf(model.getTime()).longValue();
+            long endtime = time + duration;
+            builder.addPart(ENDTIME, new StringBody(sdf.format(new Date(endtime)), ContentType.TEXT_PLAIN));
+            Log.d(TAG, ENDTIME + ":" + sdf.format(new Date(endtime)));
         }
         builder.addPart(AUTHKEY, new StringBody(Utils.getFromPrefs(getContext(), AUTHKEY, "n"), ContentType.TEXT_PLAIN));
         Log.d(TAG, AUTHKEY + ":" + Utils.getFromPrefs(getContext(), AUTHKEY, "n"));
@@ -229,8 +125,14 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
         Log.d(TAG, DEVICE_ID + ":" + CallApplication.getDeviceId());
         builder.addPart(CALLTO, new StringBody(model.getPhoneNumber(), ContentType.TEXT_PLAIN));
         Log.d(TAG, CALLTO + ":" + model.getPhoneNumber());
-        builder.addPart(STARTTIME, new StringBody(model.getTime(), ContentType.TEXT_PLAIN));
-        Log.d(TAG, STARTTIME + ":" + model.getTime());
+        builder.addPart(STARTTIME, new StringBody(sdf.format(new Date(Long.parseLong(model.getTime()))), ContentType.TEXT_PLAIN));
+        Log.d(TAG, STARTTIME + ":" + sdf.format(new Date(Long.parseLong(model.getTime()))));
+        builder.addPart(CALLTYPEE, new StringBody(model.getCallType(), ContentType.TEXT_PLAIN));
+        Log.d(TAG, CALLTYPEE + ":" + model.getCallType());
+        if (!fileExist) {
+            builder.addPart(ENDTIME, new StringBody("0000000", ContentType.TEXT_PLAIN));
+            Log.d(TAG, ENDTIME + ":" + "0000000");
+        }
         HttpEntity entity = builder.build();
 
         URL url = null;
@@ -256,6 +158,22 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
                 stringBuilder.append(s);
             }
             String serverResponseMessage = stringBuilder.toString();
+            String code;
+            JSONObject obj = new JSONObject(serverResponseMessage);
+            if (obj.has(CODE)) {
+                code = obj.getString(CODE);
+
+                if (code.equals("400")) {
+                    CallApplication.getWritableDatabase().delete(model.getId());//from db
+                    if (new File(model.getFilePath()).exists()) {
+                        new File(model.getFilePath()).delete();//from in
+                        Log.d(TAG, "FILE DELETED" + ":" + model.getFile().getName());
+                    }
+                    Log.d(TAG, "RECODRD DELETED" + ":" + model.getFile().getName());
+                }
+
+            }
+
 
             Log.d(TAG, "Response :" + serverResponseMessage);
 

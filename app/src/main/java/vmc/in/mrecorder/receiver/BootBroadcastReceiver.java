@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.util.Log;
 
 import vmc.in.mrecorder.service.CallRecorderServiceAll;
+import vmc.in.mrecorder.util.Utils;
 
 /**
  * Created by gousebabjan on 9/3/16.
@@ -13,9 +14,12 @@ import vmc.in.mrecorder.service.CallRecorderServiceAll;
 public class BootBroadcastReceiver extends BroadcastReceiver {
     public BootBroadcastReceiver() {
     }
+
     @Override
     public void onReceive(Context context, Intent intent) {
-        context.startService(new Intent(context, CallRecorderServiceAll.class));
-        Log.d("TempLog", "BootBroadcastReceiver");
+        if (Utils.isLogin(context)) {
+            context.startService(new Intent(context, CallRecorderServiceAll.class));
+            Log.d("SyncAdapter", "BootBroadcastReceiver");
+        }
     }
 }

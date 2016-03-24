@@ -15,7 +15,8 @@ public interface TAG {
     public String TIME = "Time";
     public String ID = "_id";
     public String TYPE = "type";
-    public String UPLOADEDFILE = "uploadedfile";
+    public String UPLOADEDFILE ="uploadedfile";
+    public String ENDTIME ="endtime";
 
     public String EMAIL = "email";
     public String PASSWORD = "password";

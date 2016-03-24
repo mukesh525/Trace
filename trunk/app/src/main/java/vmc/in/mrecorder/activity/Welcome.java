@@ -20,7 +20,7 @@ import vmc.in.mrecorder.callbacks.TAG;
 import vmc.in.mrecorder.myapplication.CallApplication;
 import vmc.in.mrecorder.util.Utils;
 
-public class Welcome extends AppCompatActivity implements TAG{
+public class Welcome extends AppCompatActivity implements TAG {
     private static int SPLASH_TIME_OUT = 3000;
     Button btn;
     private Intent i;
@@ -29,6 +29,8 @@ public class Welcome extends AppCompatActivity implements TAG{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
+        startActivity(new Intent(Welcome.this, Home.class));
+
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -43,19 +45,5 @@ public class Welcome extends AppCompatActivity implements TAG{
             }
         }, SPLASH_TIME_OUT);
 
-    }
-    private void sendStickyNotification(String message) {
-
-        Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this)
-                .setSmallIcon(R.drawable.cube)
-                .setContentTitle("title")
-                .setAutoCancel(false)
-                .setOngoing(true)
-                .setSound(defaultSoundUri)
-                .setContentText(message)
-                .setContentIntent(PendingIntent.getActivity(this, 0, new Intent(this, Login.class), 0));
-        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        notificationManager.notify(NOTIFICATION_ID, mBuilder.build());
     }
 }

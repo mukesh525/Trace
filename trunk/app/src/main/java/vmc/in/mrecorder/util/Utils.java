@@ -1,15 +1,23 @@
 package vmc.in.mrecorder.util;
 
+import android.Manifest;
+import android.annotation.TargetApi;
+import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.Network;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.Build;
 import android.preference.PreferenceManager;
+import android.support.v4.app.ActivityCompat;
+import android.support.v7.app.AlertDialog;
 import android.text.Html;
 import android.view.View;
 import android.widget.Button;
@@ -67,7 +75,44 @@ public class Utils implements TAG {
         }
         return false;
     }
+    public static void makeAcall(String number, final Activity mActivity) {
+        Intent callIntent = new Intent(Intent.ACTION_CALL);
+        callIntent.setData(Uri.parse("tel:" + number));
+        callIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        if (ActivityCompat.checkSelfPermission(mActivity, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            showMessageOKCancel("You need to allow access to Calls",
+                    new DialogInterface.OnClickListener() {
+                        @TargetApi(Build.VERSION_CODES.M)
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            mActivity.requestPermissions(new String[]{Manifest.permission.WRITE_CONTACTS},
+                                    MY_PERMISSIONS_CALL);
+                        }
+                    }, mActivity);
+            return;
 
+        }
+        mActivity.startActivity(callIntent);
+
+    }
+    private static void showMessageOKCancel(String message, DialogInterface.OnClickListener okListener, Context mActivity) {
+        new AlertDialog.Builder(mActivity)
+                .setMessage(message)
+                .setPositiveButton("OK", okListener)
+                .setNegativeButton("Cancel", null)
+                .create()
+                .show();
+    }
+
+    public static void sendSms(String number, Activity mActivity) {
+        Intent sendIntent = new Intent(Intent.ACTION_VIEW);
+        sendIntent.putExtra("sms_body", " ");
+        sendIntent.putExtra("address", number);
+        sendIntent.setType("vnd.android-dir/mms-sms");
+        mActivity.startActivity(sendIntent);
+
+    }
     public static void saveToPrefs(Context context, String key, String value) {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         final SharedPreferences.Editor editor = prefs.edit();

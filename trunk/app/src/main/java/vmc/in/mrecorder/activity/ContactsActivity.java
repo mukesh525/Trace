@@ -10,7 +10,6 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 
-import com.google.android.gms.ads.InterstitialAd;
 
 import vmc.in.mrecorder.R;
 import vmc.in.mrecorder.adapter.ContactsPagerAdapter;
@@ -32,7 +31,6 @@ public class ContactsActivity extends AppCompatActivity {
     private final String DIALLED_CALLS_FRAGMENT_KEY = "dialed_calls_fragment";
     private final String RECEIVED_CALLS_FRAGMENT_KEY = "received_calls_fragment";
     private final String MISSED_CALLS_FRAGMENT_KEY = "missed_calls_fragment";
-    private InterstitialAd mInterstitialAd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

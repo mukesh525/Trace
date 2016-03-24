@@ -41,13 +41,11 @@ import vmc.in.mrecorder.util.Utils;
 
 
 public class AllCalls extends Fragment implements SwipeRefreshLayout.OnRefreshListener, TAG, Calls_Adapter.CallClickedListner {
-    View view;
     private Calls_Adapter adapter;
     public RecyclerView recyclerView;
     private SwipeRefreshLayout swipeRefreshLayout;
     private String recordLimit;
     private LinearLayout mprogressLayout, retrylayout;
-    private RelativeLayout rootlayout;
     private LinearLayout pdloadmore;
     private LinearLayoutManager mLayoutManager;
     private RelativeLayout mroot;
@@ -77,32 +75,33 @@ public class AllCalls extends Fragment implements SwipeRefreshLayout.OnRefreshLi
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        view = inflater.inflate(R.layout.fragment_all_calls, container, false);
+        View view = inflater.inflate(R.layout.fragment_all_calls, container, false);
         swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.SwipefollowUp);
         mroot = (RelativeLayout) view.findViewById(R.id.fragment_followup);
         mprogressLayout = (LinearLayout) view.findViewById(R.id.mprogressLayout);
         retrylayout = (LinearLayout) view.findViewById(R.id.retryLayout);
-        rootlayout = (RelativeLayout) view.findViewById(R.id.fragment_followup);
-        recyclerView = (RecyclerView) view.findViewById(R.id.recyclerview);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         pdloadmore = (LinearLayout) view.findViewById(R.id.loadmorepd1);
-        mLayoutManager = new LinearLayoutManager(getActivity());
         swipeRefreshLayout.setOnRefreshListener(this);
         recordLimit = "10";
+        recyclerView = (RecyclerView) view.findViewById(R.id.recyclerview);
+        mLayoutManager = new LinearLayoutManager(getActivity());
+        mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        recyclerView.setLayoutManager(mLayoutManager);
         callDataArrayList = new ArrayList<CallData>();
-
         for (int i = 0; i < 10; i++) {
             CallData callData = new CallData();
             callData.setCallerName("MUKESH");
             callData.setCallFrom("9886282641");
             callData.setCallId("1445442525");
             callData.setCallTime(new Date());
+            callData.setStatus("OUTGOING");
             callDataArrayList.add(callData);
         }
 
 
         adapter = new Calls_Adapter(getActivity(), callDataArrayList, mroot, AllCalls.this);
         adapter.setClickedListner(AllCalls.this);
+        recyclerView.setAdapter(adapter);
 
         return view;
 
@@ -128,6 +127,13 @@ public class AllCalls extends Fragment implements SwipeRefreshLayout.OnRefreshLi
         });
     }
 
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+    }
+
     @Override
     public void onRefresh() {
         if (swipeRefreshLayout.isRefreshing()) {
@@ -151,7 +157,7 @@ public class AllCalls extends Fragment implements SwipeRefreshLayout.OnRefreshLi
                 recyclerView.setVisibility(View.GONE);
             }
             if (getActivity() != null) {
-                Snackbar snack = Snackbar.make(rootlayout, "No Internet Connection", Snackbar.LENGTH_SHORT)
+                Snackbar snack = Snackbar.make(mroot, "No Internet Connection", Snackbar.LENGTH_SHORT)
                         .setAction(getString(R.string.text_tryAgain), new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
@@ -177,7 +183,7 @@ public class AllCalls extends Fragment implements SwipeRefreshLayout.OnRefreshLi
                 swipeRefreshLayout.setRefreshing(false);
             }
             if (getActivity() != null) {
-                Snackbar snack = Snackbar.make(rootlayout, "No Internet Connection", Snackbar.LENGTH_SHORT)
+                Snackbar snack = Snackbar.make(mroot, "No Internet Connection", Snackbar.LENGTH_SHORT)
                         .setAction(getString(R.string.text_tryAgain), new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
@@ -422,7 +428,7 @@ public class AllCalls extends Fragment implements SwipeRefreshLayout.OnRefreshLi
                 if (getActivity() != null && Constants.position == 0) {
                     offset = offset - Integer.parseInt(Utils.getFromPrefs(getActivity(), "recordLimit", "10"));
                     loading = false;
-                    Snackbar snack = Snackbar.make(rootlayout, "No More Records Available", Snackbar.LENGTH_SHORT)
+                    Snackbar snack = Snackbar.make(mroot, "No More Records Available", Snackbar.LENGTH_SHORT)
                             .setAction(getString(R.string.text_tryAgain), new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {

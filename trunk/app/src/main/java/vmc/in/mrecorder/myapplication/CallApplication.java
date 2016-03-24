@@ -32,7 +32,7 @@ public class CallApplication extends Application implements TAG {
     private static String DeviceID;
     private static Tracker tracker;
     private static HelperCallRecordings mDatabase;
-    public static Intent all;
+    public Intent all;
 
 
     public static GoogleAnalytics analytics() {
@@ -74,7 +74,7 @@ public class CallApplication extends Application implements TAG {
         }
 
         analytics = GoogleAnalytics.getInstance(this);
-       // FacebookSdk.sdkInitialize(getApplicationContext());
+        // FacebookSdk.sdkInitialize(getApplicationContext());
         // TODO: Replace the tracker-id with your app one from https://www.google.com/analytics/web/
         tracker = analytics.newTracker("UA-67048716-8");
 
@@ -95,7 +95,6 @@ public class CallApplication extends Application implements TAG {
         return DeviceID;
 
     }
-
 
     public static Context getAplicationContext() {
         return mApplication.getApplicationContext();
@@ -152,6 +151,26 @@ public class CallApplication extends Application implements TAG {
         //  Log.d("android_id", deviceId);
         return deviceId;
 
+    }
+
+    public void startRecording() {
+        CallApplication.sp.edit().putInt(TYPE, 0).commit();
+        if (CallApplication.sp.getInt(TYPE, 0) == 0) {
+            startService(all);
+        } else if (CallApplication.sp.getInt(TYPE, 0) == 1) {
+            stopService(all);
+            //  stopService(opt);
+        }
+    }
+
+    public void stopRecording() {
+        CallApplication.sp.edit().putInt(TYPE, 1).commit();
+        if (CallApplication.sp.getInt(TYPE, 0) == 0) {
+            startService(all);
+        } else if (CallApplication.sp.getInt(TYPE, 0) == 1) {
+            stopService(all);
+            //  stopService(opt);
+        }
     }
 
 }

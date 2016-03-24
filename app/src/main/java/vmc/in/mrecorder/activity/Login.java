@@ -62,17 +62,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
         coordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordi_layout);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-//        CallApplication.sp.edit().putInt(TYPE, 1).commit();
-//        if ( CallApplication.sp.getInt(TYPE, 0) == 0) {
-//            startService(CallApplication.all);
-//        } else if ( CallApplication.sp.getInt(TYPE, 0) == 1) {
-//            stopService(CallApplication.all);
-//            //  stopService(opt);
-//        }
-       Utils.stopRecording(Login.this);
-
-
-
+        CallApplication.getInstance().stopRecording();
         tv_otp = (TextView) findViewById(R.id.input_OTP);
         btn_getOtp = (Button) findViewById(R.id.btn_get_otp);
         btn_login = (Button) findViewById(R.id.btn_login);
@@ -89,9 +79,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
         et_password.addTextChangedListener(new MyTextWacher(et_password));
 
 
-
         load();
-       cancelNotification(Login.this,NOTIFICATION_ID);
+        cancelNotification(Login.this, NOTIFICATION_ID);
 
         GCMClientManager pushClientManager = new GCMClientManager(this, PROJECT_NUMBER);
         pushClientManager.registerIfNeeded(new GCMClientManager.RegistrationCompletedHandler() {
@@ -180,7 +169,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
 
             case R.id.btn_get_otp:
 
-              //  btn_getOtp.setBackgroundColor(Color.parseColor("#FFDC4545"));
+                //  btn_getOtp.setBackgroundColor(Color.parseColor("#FFDC4545"));
                 if (validateOTP()) {
                     GetOtp();
                 }
@@ -460,7 +449,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
         protected void onPostExecute(JSONObject data) {
             if (data != null) {
                 if (progressDialog != null && progressDialog.isShowing()) {
-                    progressDialog.dismiss();}
+                    progressDialog.dismiss();
+                }
                 Log.d("OTP", data.toString());
 
 
@@ -529,7 +519,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
 
             try {
                 response = JSONParser.login(LOGIN_URL, email, password, CallApplication.getDeviceId(), gcmkey);
-                Log.d("GCMPRO",response.toString());
+                Log.d("GCMPRO", response.toString());
                 if (response.has(CODE))
                     code = response.getString(CODE);
                 if (response.has(MESSAGE))
@@ -548,7 +538,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
         @Override
         protected void onPostExecute(JSONObject data) {
             if (progressDialog != null && progressDialog.isShowing()) {
-                progressDialog.dismiss();}
+                progressDialog.dismiss();
+            }
             if (data != null) {
                 Log.d("LOG", data.toString());
             }
@@ -593,6 +584,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
         }
 
     }
+
     public static void cancelNotification(Context ctx, int notifyId) {
         String ns = Context.NOTIFICATION_SERVICE;
         NotificationManager nMgr = (NotificationManager) ctx.getSystemService(ns);

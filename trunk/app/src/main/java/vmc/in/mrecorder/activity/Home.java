@@ -27,6 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import vmc.in.mrecorder.R;
+import vmc.in.mrecorder.callbacks.Constants;
 import vmc.in.mrecorder.callbacks.TAG;
 import vmc.in.mrecorder.fragment.AllCalls;
 import vmc.in.mrecorder.fragment.InboundCalls;
@@ -41,14 +42,8 @@ public class Home extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, TAG {
 
     private Toolbar mToolbar;
-    private ActionBarDrawerToggle toggle;
-    private NavigationView navigationView;
     private FloatingActionButton floatingActionButton;
-    ContactsActivity ca;
-    TextView tv_name;
     private String titles[] = {"ALL", "INBOUND", "OUTBOUND", "MISSED"};
-    private ViewPager viewPager;
-    private TabLayout tabLayout;
     private NavigationView mDrawer;
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle drawerToggle;
@@ -86,6 +81,26 @@ public class Home extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 Utils.setRecording(Home.this);
+            }
+        });
+        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                Constants.position = position;
+                onNavigationItemSelected(mDrawer.getMenu().getItem(position));
+
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+
             }
         });
 
@@ -133,58 +148,17 @@ public class Home extends AppCompatActivity
     }
 
 
-    private void setupViewPager(ViewPager viewPager) {
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new AllCalls(), "ALL");
-        adapter.addFragment(new InboundCalls(), "INBOUND");
-        adapter.addFragment(new OutboundCalls(), "OUTBOUND");
-        adapter.addFragment(new MissedCalls(), "MISSED");
-        viewPager.setAdapter(adapter);
-
-    }
-
-    class ViewPagerAdapter extends FragmentPagerAdapter {
-        private final List<Fragment> mFragmentList = new ArrayList<>();
-        private final List<String> mFragmentTitleList = new ArrayList<>();
-
-        public ViewPagerAdapter(FragmentManager manager) {
-            super(manager);
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-            return mFragmentList.get(position);
-        }
-
-        @Override
-        public int getCount() {
-            return mFragmentList.size();
-        }
-
-        public void addFragment(Fragment fragment, String title) {
-            mFragmentList.add(fragment);
-            mFragmentTitleList.add(title);
-        }
-
-        @Override
-        public CharSequence getPageTitle(int position) {
-            return mFragmentTitleList.get(position);
-            // return null to display only the icon
-            //return null;
-        }
-    }
-
     @Override
     protected void onResume() {
         super.onResume();
 
-        if (!Utils.isLogin(Home.this)) {
-            Intent intent = new Intent(Home.this, Login.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |
-                    Intent.FLAG_ACTIVITY_CLEAR_TASK |
-                    Intent.FLAG_ACTIVITY_NEW_TASK);
-            Home.this.startActivity(intent);
-        }
+//        if (!Utils.isLogin(Home.this)) {
+//            Intent intent = new Intent(Home.this, Login.class);
+//            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |
+//                    Intent.FLAG_ACTIVITY_CLEAR_TASK |
+//                    Intent.FLAG_ACTIVITY_NEW_TASK);
+//            Home.this.startActivity(intent);
+//        }
 
     }
 
@@ -206,16 +180,9 @@ public class Home extends AppCompatActivity
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
+        int id = item.getItemId();
         if (id == R.id.action_settings) {
-//            SharedPreferences pref = getSharedPreferences("Mydata", Context.MODE_PRIVATE);
-//            pref.edit().clear().commit();
-            //CallApplication.sp.edit().putInt("type", 1);
             Utils.isLogout(this);
 
             return true;
@@ -258,7 +225,6 @@ public class Home extends AppCompatActivity
         hideDrawer();
         mTabLayout.setScrollPosition(item, 0f, true);
         mViewPager.setCurrentItem(item);
-// onNavigationItemSelected(mDrawer.getMenu().getItem(0));
     }
 
     private void showDrawer() {

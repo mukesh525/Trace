@@ -184,7 +184,7 @@ public class Calls_Adapter extends RecyclerView.Adapter<Calls_Adapter.CallViewHo
         private ArrayList<CallData> CallDataArrayList;
         private CallClickedListner callClickedListner;
 
-        public CallViewHolder(View v, ArrayList<CallData> followUpDataArrayList, CallClickedListner callClickedListner) {
+        public CallViewHolder(View v, ArrayList<CallData> callDataArrayList, CallClickedListner callClickedListner) {
             super(v);
 
             callFromTextView = (TextView) v.findViewById(R.id.fCallFromTextView);
@@ -197,7 +197,7 @@ public class Calls_Adapter extends RecyclerView.Adapter<Calls_Adapter.CallViewHo
 
             //callFromTextView=(TextView) v.findViewById(R.id.ch);
             this.callClickedListner = callClickedListner;
-            this.CallDataArrayList =CallDataArrayList;
+            this.CallDataArrayList =callDataArrayList;
             v.setClickable(true);
             v.setOnClickListener(this);
         }

@@ -9,10 +9,6 @@ import android.content.SharedPreferences.Editor;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 
-
-import com.google.android.gms.analytics.GoogleAnalytics;
-import com.google.android.gms.analytics.Tracker;
-
 import java.util.UUID;
 
 import vmc.in.mrecorder.callbacks.TAG;
@@ -27,22 +23,14 @@ public class CallApplication extends Application implements TAG {
     public static SharedPreferences sp;//to prevent concurrent creation of shared pref and editor
     public static Editor e;
     public static int opt;
-    private static GoogleAnalytics analytics;
+
 
     private static String DeviceID;
-    private static Tracker tracker;
-    private static HelperCallRecordings mDatabase;
+  private static HelperCallRecordings mDatabase;
     public Intent all;
 
 
-    public static GoogleAnalytics analytics() {
-        return analytics;
-    }
 
-
-    public static Tracker tracker() {
-        return tracker;
-    }
 
     @Override
     public void onCreate() {
@@ -73,20 +61,6 @@ public class CallApplication extends Application implements TAG {
             Log.e("application", "service");
         }
 
-        analytics = GoogleAnalytics.getInstance(this);
-        // FacebookSdk.sdkInitialize(getApplicationContext());
-        // TODO: Replace the tracker-id with your app one from https://www.google.com/analytics/web/
-        tracker = analytics.newTracker("UA-67048716-8");
-
-        // Provide unhandled exceptions reports. Do that first after creating the tracker
-        tracker.enableExceptionReporting(true);
-
-        // Enable Remarketing, Demographics & Interests reports
-        // https://developers.google.com/analytics/devguides/collection/android/display-features
-        tracker.enableAdvertisingIdCollection(true);
-
-        // Enable automatic activity tracking for your app
-        tracker.enableAutoActivityTracking(true);
     }
 
 

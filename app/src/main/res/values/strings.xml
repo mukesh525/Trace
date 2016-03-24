@@ -5,13 +5,14 @@
     <string name="action_settings">Logout</string>
     <string name="drawer_open">OPEN</string>
     <string name="drawer_close">CLOSE</string>
+    <string name="R.string.google_app_id">596968407103</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string name="auth_type">com.cb.callrecorder</string>
     <string name="content_authority">com.cb.callrecorder</string>
-    <string name="title_activity_home">Home</string>
+    <string name="title_activity_home">MTracker</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>

@@ -253,6 +253,7 @@ public class SpeedDialAdapter extends RecyclerView.Adapter<SpeedDialAdapter.View
         holder.number.setText(c.getString(numberindex));
 
         SimpleDateFormat sdf=new SimpleDateFormat("hh:mm");
+      //  String stime=sdf.format(new Date(Long.parseLong(c.getString(timeindex))));
         String stime=sdf.format(new Date(Long.parseLong(c.getString(timeindex))));
 
         holder.time.setText(stime);

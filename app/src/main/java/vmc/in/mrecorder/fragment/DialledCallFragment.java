@@ -85,7 +85,7 @@ public class DialledCallFragment extends Fragment implements SpeedDialAdapter.Ad
         else
             default_text.setVisibility(View.GONE);
         mRecyclerView.setAdapter(mAdapter);
-        hcr.closeDatabase();
+       // hcr.closeDatabase();
 
         if(file.exists())
         {

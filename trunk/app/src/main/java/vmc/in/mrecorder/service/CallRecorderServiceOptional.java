@@ -94,7 +94,7 @@ public class CallRecorderServiceOptional extends Service{
 		try
 		{
 			unregisterReceiver(cbr);
-			hcr.closeDatabase();
+			//hcr.closeDatabase();
 		}catch(Exception e)
 		{
 			e.printStackTrace();

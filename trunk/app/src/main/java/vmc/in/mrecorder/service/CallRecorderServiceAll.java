@@ -17,6 +17,8 @@ import android.util.Log;
 import android.widget.Toast;
 
 import java.io.File;
+import java.text.DateFormat;
+import java.util.Date;
 
 import vmc.in.mrecorder.callbacks.TAG;
 import vmc.in.mrecorder.datahandler.HelperCallRecordings;
@@ -92,7 +94,7 @@ public class CallRecorderServiceAll extends Service implements TAG {
 
             unregisterReceiver(cbr);
 
-            CallApplication.getWritableDatabase().closeDatabase();
+          //  CallApplication.getWritableDatabase().closeDatabase();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -130,15 +132,8 @@ public class CallRecorderServiceAll extends Service implements TAG {
             sample.mkdirs();
 
             String fileName = String.valueOf(System.currentTimeMillis());
+           // String fileName = DateFormat.getDateTimeInstance().format(new Date());
             File audiofile;
-
-//            recorder.setAudioSource(MediaRecorder.AudioSource.VOICE_RECOGNITION);
-//            recorder.setOutputFormat(MediaRecorder.OutputFormat.DEFAULT);
-//            recorder.setAudioEncoder(MediaRecorder.AudioEncoder.HE_AAC);
-//			 //recorder.setAudioEncoder(MediaRecorder.getAudioSourceMax());
-//            recorder.setAudioEncodingBitRate(16);
-//            recorder.setAudioSamplingRate(44100);
-
             String manufacturer = Build.MANUFACTURER;
             Log.e("AudioSource", manufacturer);
             if (Build.VERSION.SDK_INT == Build.VERSION_CODES.JELLY_BEAN_MR1 ||

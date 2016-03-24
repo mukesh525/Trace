@@ -34,7 +34,7 @@ public class CallRecorderServiceAll extends Service implements TAG {
     static boolean shown = false;
 
     //Broadcast receiver for calls
-    CallBroadcastReceiver cbr;
+    private CallBroadcastReceiver cbr;
 
     //Phone number
     String phoneNumber;

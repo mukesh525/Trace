@@ -89,7 +89,7 @@ public class ReceivedCallFragment extends Fragment implements SpeedDialAdapter.A
         else
             default_text.setVisibility(View.GONE);
         mRecyclerView.setAdapter(mAdapter);
-        hcr.closeDatabase();
+        //hcr.closeDatabase();
 
         if(file.exists())
         {

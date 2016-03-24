@@ -110,7 +110,7 @@ public class AllCallsFragment extends Fragment implements SpeedDialAdapter.Adapt
         else
             default_text.setVisibility(View.GONE);
         mRecyclerView.setAdapter(mAdapter);
-        hcr.closeDatabase();
+       // hcr.closeDatabase();
 
         if(file.exists())
         {

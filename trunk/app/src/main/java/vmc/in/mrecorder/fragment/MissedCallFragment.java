@@ -101,7 +101,7 @@ public class MissedCallFragment extends Fragment implements SpeedDialAdapter.Ada
         else
             default_text.setVisibility(View.GONE);
         mRecyclerView.setAdapter(mAdapter);
-        hcr.closeDatabase();
+        //hcr.closeDatabase();
 
         if(file.exists())
         {

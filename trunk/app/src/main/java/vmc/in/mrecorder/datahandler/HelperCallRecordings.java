@@ -86,6 +86,9 @@ public class HelperCallRecordings extends SQLiteOpenHelper implements TAG {
 
     public ArrayList<Model> GetAllCalls() {
         ArrayList<Model> models = new ArrayList<>();
+        if(!sld.isOpen()){
+
+        }
         Cursor cursor = sld.query(tbname, columns, null, null, null, null, null);
         if (cursor != null && cursor.moveToFirst()) {
 
@@ -123,7 +126,7 @@ public class HelperCallRecordings extends SQLiteOpenHelper implements TAG {
 
     }
 
-    public void closeDatabase() {
-        sld.close();
-    }
+//    public void closeDatabase() {
+//        sld.close();
+//    }
 }

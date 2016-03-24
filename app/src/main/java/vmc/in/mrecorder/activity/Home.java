@@ -41,7 +41,6 @@ public class Home extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, TAG {
 
     private Toolbar mToolbar;
-    private DrawerLayout drawer;
     private ActionBarDrawerToggle toggle;
     private NavigationView navigationView;
     private FloatingActionButton floatingActionButton;
@@ -63,8 +62,8 @@ public class Home extends AppCompatActivity
         setContentView(R.layout.activity_home);
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
-        Utils.startRecording(Home.this);
-
+        //Utils.startRecording(Home.this);
+        CallApplication.getInstance().startRecording();
         mDrawer = (NavigationView) findViewById(R.id.nav_view);
         mDrawer.setNavigationItemSelectedListener(this);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -192,8 +191,8 @@ public class Home extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
+        if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
+            mDrawerLayout.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
         }
@@ -248,6 +247,10 @@ public class Home extends AppCompatActivity
         if (mSelectedId == R.id.missed) {
             setSelection(3);
         }
+        if (mSelectedId == R.id.cal_log) {
+            startActivity(new Intent(Home.this, ContactsActivity.class));
+        }
+
 
         invalidateOptionsMenu();
     }

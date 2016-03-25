@@ -56,48 +56,6 @@
             android:layout_height="wrap_content"
             android:text="Selecting this option will display a recording button widget every time you dial or receive a call. Widget can be dragged to any location." />
 
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_below="@+id/textView1"
-            android:id="@+id/rl1"
-            >
-
-            <ImageView
-                android:id="@+id/imageView1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/stop" />
-
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/imageView1"
-                android:text="Red denotes that recording is OFF" />
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/rl1">
-
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/start" />
-
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/imageView2"
-                android:text="Green denotes that recording is ON. You can toggle between ON/OFF by clicking on the icon." />
-
-        </RelativeLayout>
     </RelativeLayout>
 
     <Button
@@ -110,7 +68,7 @@
         android:paddingRight="20dp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
-        android:background="@drawable/rounded_corners"
+        android:background="@drawable/button_background"
         android:textColor="#FFF"/>
 
 </LinearLayout>

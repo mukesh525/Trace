@@ -163,6 +163,15 @@
                 android:text="Not Available"
                 android:textColor="@color/accent" />
 
+            <ImageView
+                android:id="@+id/df"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:alpha="0.5"
+                android:background="@drawable/def_img"
+                android:layout_above="@+id/fStatusLabel"
+                android:layout_centerHorizontal="true" />
+
         </RelativeLayout>
 
         <LinearLayout

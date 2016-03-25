@@ -1791,25 +1791,6 @@
                         "endOffset": 19843
                     }
                 }
-            },
-            {
-                "to": {
-                    "startLine": 243,
-                    "startColumn": 4,
-                    "startOffset": 17792,
-                    "endColumn": 121,
-                    "endOffset": 17909
-                },
-                "from": {
-                    "file": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-appinvite\\8.4.0\\res\\values-v21\\appinvite_styles.xml",
-                    "position": {
-                        "startLine": 4,
-                        "startColumn": 4,
-                        "startOffset": 101,
-                        "endColumn": 121,
-                        "endOffset": 218
-                    }
-                }
             }
         ]
     }

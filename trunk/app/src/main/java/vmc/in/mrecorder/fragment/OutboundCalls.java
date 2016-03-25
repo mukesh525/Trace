@@ -27,6 +27,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import vmc.in.mrecorder.R;
+import vmc.in.mrecorder.activity.Home;
 import vmc.in.mrecorder.adapter.Calls_Adapter;
 import vmc.in.mrecorder.callbacks.Constants;
 import vmc.in.mrecorder.callbacks.EndlessScrollListener;
@@ -83,7 +84,40 @@ public class OutboundCalls extends Fragment implements SwipeRefreshLayout.OnRefr
             callData.setStatus(OUTGOING);
             callDataArrayList.add(callData);
         }
+        recyclerView.addOnScrollListener(new EndlessScrollListener() {
+            @Override
+            public void onLoadMore() {
+                ((Home) getActivity()).floatingActionButton.hide();
+                if (pdloadmore.getVisibility() == View.GONE) {
+                    pdloadmore.setVisibility(View.VISIBLE);
+                }
+                if (!loading) {
+                    // DownloadMore();
+                }
 
+            }
+
+            @Override
+            public void onLoadUp() {
+                ((Home) getActivity()).floatingActionButton.hide();
+                // if (VisitData != null && VisitData.size() >= MAX) {
+                if (pdloadmore.getVisibility() == View.VISIBLE) {
+                    pdloadmore.setVisibility(View.GONE);
+
+
+                }
+
+            }
+
+            @Override
+            public void onIdle() {
+                ((Home) getActivity()).floatingActionButton.show();
+            }
+        });
+        swipeRefreshLayout.setColorSchemeResources(
+                R.color.refresh_progress_1,
+                R.color.refresh_progress_2,
+                R.color.refresh_progress_3);
 
         adapter = new Calls_Adapter(getActivity(), callDataArrayList, mroot, OutboundCalls.this);
         adapter.setClickedListner(OutboundCalls.this);
@@ -96,21 +130,7 @@ public class OutboundCalls extends Fragment implements SwipeRefreshLayout.OnRefr
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        recyclerView.addOnScrollListener(new EndlessScrollListener() {
-            @Override
-            public void onLoadMore() {
-                if (!loading) {
-                    //  DownloadMore();
-                }
-            }
 
-            @Override
-            public void onLoadUp() {
-                if (pdloadmore.getVisibility() == View.VISIBLE) {
-                    pdloadmore.setVisibility(View.GONE);
-                }
-            }
-        });
     }
 
 
@@ -122,6 +142,7 @@ public class OutboundCalls extends Fragment implements SwipeRefreshLayout.OnRefr
 
     @Override
     public void onRefresh() {
+        ((Home) getActivity()).floatingActionButton.show();
         if (swipeRefreshLayout.isRefreshing()) {
             swipeRefreshLayout.setRefreshing(false);
 

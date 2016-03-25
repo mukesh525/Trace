@@ -70,7 +70,7 @@ public class PushNotificationService extends GcmListenerService implements vmc.i
 
         //Create notification object and set the content.
         NotificationCompat.Builder nb = new NotificationCompat.Builder(this);
-        nb.setSmallIcon(R.drawable.cube);
+        nb.setSmallIcon(R.drawable.mcube);
         nb.setContentTitle("Set your title");
         nb.setContentText("Set Content text");
         nb.setTicker("Set Ticker text");
@@ -111,7 +111,7 @@ public class PushNotificationService extends GcmListenerService implements vmc.i
 
         Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
-                .setSmallIcon(R.drawable.cube)
+                .setSmallIcon(R.drawable.mcube)
                 .setContentTitle("GCM Message")
                 .setContentText(message)
                 .setAutoCancel(true)

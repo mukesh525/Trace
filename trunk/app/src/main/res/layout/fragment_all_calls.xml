@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
-    android:background="@drawable/background_port"
     tools:context="vmc.mcube.in.fragment.followUp.FollowUp">
 
     <android.support.v4.widget.SwipeRefreshLayout

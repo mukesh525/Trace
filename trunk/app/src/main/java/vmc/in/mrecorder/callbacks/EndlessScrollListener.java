@@ -3,6 +3,7 @@ package vmc.in.mrecorder.callbacks;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.widget.AbsListView;
 
 
 /**
@@ -34,11 +35,23 @@ public abstract class EndlessScrollListener extends RecyclerView.OnScrollListene
         }
 
 
+
+
         super.onScrolled(recyclerView, dx, dy);
+    }
+
+    @Override
+    public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+
+        if(newState== AbsListView.OnScrollListener.SCROLL_STATE_IDLE){
+            onIdle();
+        }
+        super.onScrollStateChanged(recyclerView, newState);
     }
 
     public abstract void onLoadMore();
     public abstract void onLoadUp();
+    public abstract void onIdle();
 
 
 }

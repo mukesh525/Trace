@@ -137,7 +137,6 @@
             android:label="@string/title_activity_home"
             android:screenOrientation="portrait"
             android:theme="@style/MyMaterialTheme" />
-
         <activity
             android:name=".activity.SignupActivity"
             android:noHistory="true"
@@ -171,6 +170,16 @@
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
+
+        <activity
+            android:name=".activity.Feedback"
+            android:label="@string/title_activity_feedback"
+            android:parentActivityName=".activity.Home"
+            android:theme="@style/MyMaterialTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="vmc.in.mrecorder.activity.Home" />
+        </activity>
     </application>
 
 </manifest>

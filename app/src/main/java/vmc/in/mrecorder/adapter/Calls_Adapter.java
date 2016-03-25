@@ -37,7 +37,7 @@ public class Calls_Adapter extends RecyclerView.Adapter<Calls_Adapter.CallViewHo
     private LayoutInflater inflator;
     private ArrayList<CallData> CallDataArrayList;
     private CallClickedListner callClickedListner;
-    SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd");
+    SimpleDateFormat sdfDate = new SimpleDateFormat("dd-MM-yyyy");
     SimpleDateFormat sdfTime = new SimpleDateFormat("HH:mm:ss");
     private int previousPosition = 0;
     public RelativeLayout mroot;
@@ -83,7 +83,9 @@ public class Calls_Adapter extends RecyclerView.Adapter<Calls_Adapter.CallViewHo
             holder.groupNameTextView.setText(Utils.isEmpty(ci.getGroupName()) ? UNKNOWN : ci.getGroupName());
 
             holder.statusTextView.setText(Utils.isEmpty(ci.getStatus()) ? UNKNOWN : ci.getStatus());
+            Log.d("TAG",ci.getStatus());
         } catch (Exception e) {
+            Log.d("TAG",e.getMessage());
         }
         ;
         /*if (position > previousPosition) {

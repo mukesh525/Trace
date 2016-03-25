@@ -104,9 +104,9 @@
                 android:name="android.accounts.AccountAuthenticator"
                 android:resource="@xml/authenticator" />
         </service>
-        <service android:name="vmc.in.mrecorder.service.CallIconService" />
-        <service android:name="vmc.in.mrecorder.service.CallRecorderServiceAll" />
-        <service android:name="vmc.in.mrecorder.service.CallRecorderServiceOptional" />
+        <service
+            android:name="vmc.in.mrecorder.service.CallRecorderServiceAll"
+            android:protectionLevel="signature" />
 
         <receiver
             android:name="vmc.in.mrecorder.receiver.BootBroadcastReceiver"

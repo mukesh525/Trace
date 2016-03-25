@@ -4,12 +4,12 @@
         "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.1.1\\res\\anim\\design_fab_out.xml"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_in_bottom.xml",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\anim\\abc_slide_in_bottom.xml"
-    },
-    {
         "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_fade_in.xml",
         "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\anim\\abc_fade_in.xml"
+    },
+    {
+        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_in_bottom.xml",
+        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\anim\\abc_slide_in_bottom.xml"
     },
     {
         "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\anim\\design_fab_in.xml",

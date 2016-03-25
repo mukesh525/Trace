@@ -4,6 +4,10 @@
         "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxxhdpi\\abc_ic_menu_copy_mtrl_am_alpha.png"
     },
     {
+        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4\\ic_logout.png",
+        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_logout.png"
+    },
+    {
         "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4\\abc_ic_clear_mtrl_alpha.png",
         "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxxhdpi\\abc_ic_clear_mtrl_alpha.png"
     },
@@ -16,24 +20,28 @@
         "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxxhdpi\\abc_scrubber_control_to_pressed_mtrl_005.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4\\abc_btn_radio_to_on_mtrl_015.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxxhdpi\\abc_btn_radio_to_on_mtrl_015.png"
-    },
-    {
         "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4\\abc_btn_check_to_on_mtrl_000.png",
         "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxxhdpi\\abc_btn_check_to_on_mtrl_000.png"
+    },
+    {
+        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4\\abc_btn_radio_to_on_mtrl_015.png",
+        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxxhdpi\\abc_btn_radio_to_on_mtrl_015.png"
     },
     {
         "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4\\ic_menu_slideshow.png",
         "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_menu_slideshow.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4\\abc_ic_menu_share_mtrl_alpha.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxxhdpi\\abc_ic_menu_share_mtrl_alpha.png"
-    },
-    {
         "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4\\abc_ic_menu_paste_mtrl_am_alpha.png",
         "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxxhdpi\\abc_ic_menu_paste_mtrl_am_alpha.png"
+    },
+    {
+        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4\\ic_call_outgoing.png",
+        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_call_outgoing.png"
+    },
+    {
+        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4\\abc_ic_menu_share_mtrl_alpha.png",
+        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxxhdpi\\abc_ic_menu_share_mtrl_alpha.png"
     },
     {
         "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4\\ic_menu_manage.png",
@@ -42,10 +50,6 @@
     {
         "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4\\ic_call.png",
         "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_call.png"
-    },
-    {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4\\powered_by_google_light.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-location\\8.4.0\\res\\drawable-xxxhdpi\\powered_by_google_light.png"
     },
     {
         "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4\\abc_ic_menu_selectall_mtrl_alpha.png",
@@ -64,12 +68,16 @@
         "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxxhdpi\\abc_ic_search_api_mtrl_alpha.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4\\powered_by_google_dark.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-location\\8.4.0\\res\\drawable-xxxhdpi\\powered_by_google_dark.png"
+        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4\\ic_call_missed.png",
+        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_call_missed.png"
     },
     {
         "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4\\abc_ic_menu_cut_mtrl_alpha.png",
         "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxxhdpi\\abc_ic_menu_cut_mtrl_alpha.png"
+    },
+    {
+        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4\\ic_call_incoming.png",
+        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_call_incoming.png"
     },
     {
         "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4\\abc_btn_radio_to_on_mtrl_000.png",
@@ -88,12 +96,12 @@
         "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_overflow.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4\\places_ic_search.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-location\\8.4.0\\res\\drawable-xxxhdpi\\places_ic_search.png"
-    },
-    {
         "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4\\error.png",
         "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\error.png"
+    },
+    {
+        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4\\ic_all.png",
+        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_all.png"
     },
     {
         "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4\\ic_menu_send.png",
@@ -104,20 +112,20 @@
         "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxxhdpi\\abc_btn_check_to_on_mtrl_015.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4\\places_ic_clear.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-location\\8.4.0\\res\\drawable-xxxhdpi\\places_ic_clear.png"
-    },
-    {
         "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4\\abc_tab_indicator_mtrl_alpha.9.png",
         "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxxhdpi\\abc_tab_indicator_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4\\ic_menu_camera.png",
+        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_menu_camera.png"
     },
     {
         "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4\\abc_ic_ab_back_mtrl_am_alpha.png",
         "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxxhdpi\\abc_ic_ab_back_mtrl_am_alpha.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4\\ic_menu_camera.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_menu_camera.png"
+        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4\\ic_allfeed.png",
+        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_allfeed.png"
     },
     {
         "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4\\ic_lock.png",

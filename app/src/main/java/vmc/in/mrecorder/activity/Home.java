@@ -2,6 +2,7 @@ package vmc.in.mrecorder.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.Parcelable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -42,7 +43,7 @@ public class Home extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, TAG {
 
     private Toolbar mToolbar;
-    private FloatingActionButton floatingActionButton;
+    public FloatingActionButton floatingActionButton;
     private String titles[] = {"ALL", "INBOUND", "OUTBOUND", "MISSED"};
     private NavigationView mDrawer;
     private DrawerLayout mDrawerLayout;
@@ -50,6 +51,7 @@ public class Home extends AppCompatActivity
     private TabLayout mTabLayout;
     private ViewPager mViewPager;
     private MyPagerAdapter myPagerAdapter;
+    private boolean doubleBackToExitPressedOnce;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -167,7 +169,20 @@ public class Home extends AppCompatActivity
         if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
             mDrawerLayout.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            if (doubleBackToExitPressedOnce) {
+                super.onBackPressed();
+                return;
+            }
+            this.doubleBackToExitPressedOnce = true;
+            Toast.makeText(this, "Press again to exit.", Toast.LENGTH_SHORT).show();
+            new Handler().postDelayed(new Runnable() {
+
+                @Override
+                public void run() {
+                    doubleBackToExitPressedOnce = false;
+                }
+            }, 2000);
+           
         }
     }
 
@@ -215,6 +230,8 @@ public class Home extends AppCompatActivity
         }
         if (mSelectedId == R.id.cal_log) {
             startActivity(new Intent(Home.this, ContactsActivity.class));
+        } if (mSelectedId == R.id.nav_help_feedback) {
+            startActivity(new Intent(Home.this, Feedback.class));
         }
 
 

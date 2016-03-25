@@ -14,14 +14,10 @@ import android.os.Environment;
 import android.os.IBinder;
 import android.telephony.TelephonyManager;
 import android.util.Log;
-import android.widget.Toast;
 
 import java.io.File;
-import java.text.DateFormat;
-import java.util.Date;
 
 import vmc.in.mrecorder.callbacks.TAG;
-import vmc.in.mrecorder.datahandler.HelperCallRecordings;
 import vmc.in.mrecorder.myapplication.CallApplication;
 
 public class CallRecorderServiceAll extends Service implements TAG {

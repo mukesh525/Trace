@@ -75,6 +75,7 @@ public class Utils implements TAG {
         }
         return false;
     }
+
     public static void makeAcall(String number, final Activity mActivity) {
         Intent callIntent = new Intent(Intent.ACTION_CALL);
         callIntent.setData(Uri.parse("tel:" + number));
@@ -96,6 +97,7 @@ public class Utils implements TAG {
         mActivity.startActivity(callIntent);
 
     }
+
     private static void showMessageOKCancel(String message, DialogInterface.OnClickListener okListener, Context mActivity) {
         new AlertDialog.Builder(mActivity)
                 .setMessage(message)
@@ -113,6 +115,7 @@ public class Utils implements TAG {
         mActivity.startActivity(sendIntent);
 
     }
+
     public static void saveToPrefs(Context context, String key, String value) {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         final SharedPreferences.Editor editor = prefs.edit();
@@ -192,8 +195,8 @@ public class Utils implements TAG {
     }
 
     public static boolean isEmpty(String msg) {
-        return msg.trim().equals("")
-                || msg == null
+        return msg == null
+                || msg.trim().equals("")
                 || msg.isEmpty();
     }
 

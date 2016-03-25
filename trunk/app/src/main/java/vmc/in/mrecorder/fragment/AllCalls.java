@@ -96,6 +96,7 @@ public class AllCalls extends Fragment implements SwipeRefreshLayout.OnRefreshLi
             callData.setCallId("1445442525");
             callData.setCallTime(new Date());
             callData.setStatus("OUTGOING");
+            callData.setGroupName("OUTGOING");
             callDataArrayList.add(callData);
         }
 

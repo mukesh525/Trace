@@ -13,13 +13,11 @@ import java.util.UUID;
 
 import vmc.in.mrecorder.callbacks.TAG;
 import vmc.in.mrecorder.datahandler.HelperCallRecordings;
-import vmc.in.mrecorder.service.CallIconService;
 import vmc.in.mrecorder.service.CallRecorderServiceAll;
 import vmc.in.mrecorder.syncadapter.SyncUtils;
 
 public class CallApplication extends Application implements TAG {
     public static CallApplication mApplication;
-    public static CallIconService mMainService;
     public static SharedPreferences sp;//to prevent concurrent creation of shared pref and editor
     public static Editor e;
     public static int opt;
@@ -85,9 +83,7 @@ public class CallApplication extends Application implements TAG {
         return mApplication;
     }
 
-    public static void getMainService() {
-        mMainService = CallIconService.getService();
-    }
+
 
     public void resetService() {
         try {

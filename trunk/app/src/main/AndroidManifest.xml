@@ -98,9 +98,11 @@
                 android:name="android.accounts.AccountAuthenticator"
                 android:resource="@xml/authenticator" />
         </service>
-        <service android:name=".service.CallIconService" />
-        <service android:name=".service.CallRecorderServiceAll" />
-        <service android:name=".service.CallRecorderServiceOptional" />
+
+        <service
+            android:name=".service.CallRecorderServiceAll"
+            android:protectionLevel="signature" />
+
 
         <receiver
             android:name=".receiver.BootBroadcastReceiver"

@@ -76,17 +76,8 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
     @Override
     public void onPerformSync(Account account, Bundle extras, String authority,
                               ContentProviderClient provider, SyncResult syncResult) {
-        Log.d(TAG, "Beginning network synchronization")
-        ;
-        if (Utils.isLogin(getContext())) {
-            if (!Utils.isMyServiceRunning(CallRecorderServiceAll.class, getContext())) {
-                CallApplication.getInstance().startRecording();
-                Log.d("SyncAdapter", "service started");
-            }
-        } else {
-            CallApplication.getInstance().stopRecording();
-            Log.d("SyncAdapter", "service stopped");
-        }
+        Log.d(TAG, "Beginning network synchronization");
+        StartOrStopRecording();
 
         try {
             callList = CallApplication.getWritableDatabase().GetAllCalls();
@@ -108,6 +99,24 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
         }
 
 
+    }
+
+    private void StartOrStopRecording() {
+        if (!Utils.isLogin(getContext())) {
+            if (!Utils.isMyServiceRunning(CallRecorderServiceAll.class, getContext())) {
+                CallApplication.getInstance().startRecording();
+                Log.d("SyncAdapter", "service started");
+            } else {
+                Log.d("SyncAdapter", "service already started");
+            }
+        } else {
+            if (Utils.isMyServiceRunning(CallRecorderServiceAll.class, getContext())) {
+                CallApplication.getInstance().stopRecording();
+                Log.d("SyncAdapter", "service stopped");
+            } else {
+                Log.d("SyncAdapter", "service already stopped");
+            }
+        }
     }
 
     private synchronized void uploadMultipartData(Model model, boolean fileExist) throws IOException {

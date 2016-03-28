@@ -75,8 +75,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
         btn_login.setOnClickListener(this);
         btn_getOtp.setOnClickListener(this);
         link_forgot_password.setOnClickListener(this);
-        et_email.addTextChangedListener(new MyTextWacher(et_email));
-        et_password.addTextChangedListener(new MyTextWacher(et_password));
+//        et_email.addTextChangedListener(new MyTextWacher(et_email));
+//        et_password.addTextChangedListener(new MyTextWacher(et_password));
 
 
         load();
@@ -292,37 +292,37 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
     }
 
 
-    private class MyTextWacher implements TextWatcher {
-
-        private View view;
-
-        private MyTextWacher(View view) {
-            this.view = view;
-        }
-
-        @Override
-        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-        }
-
-        @Override
-        public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-        }
-
-        @Override
-        public void afterTextChanged(Editable s) {
-
-            switch (view.getId()) {
-                case R.id.input_email:
-                    //   validateEmail();
-                    break;
-                case R.id.input_password:
-                    ///  validatePassword();
-                    break;
-            }
-        }
-    }
+//    private class MyTextWacher implements TextWatcher {
+//
+//        private View view;
+//
+//        private MyTextWacher(View view) {
+//            this.view = view;
+//        }
+//
+//        @Override
+//        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//
+//        }
+//
+//        @Override
+//        public void onTextChanged(CharSequence s, int start, int before, int count) {
+//
+//        }
+//
+//        @Override
+//        public void afterTextChanged(Editable s) {
+//
+//            switch (view.getId()) {
+//                case R.id.input_email:
+//                    //   validateEmail();
+//                    break;
+//                case R.id.input_password:
+//                    ///  validatePassword();
+//                    break;
+//            }
+//        }
+//    }
 
     public void load() {
         SharedPreferences pref = getSharedPreferences("Mydata", Context.MODE_PRIVATE);

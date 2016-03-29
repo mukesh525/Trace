@@ -27,6 +27,7 @@
     <string name="err_msg_email">Enter valid email address</string>
     <string name="err_msg_password">Enter the password</string>
     <string name="text_tryAgain">Try again</string>
+    <string name="login">Login</string>
     <string name="title_activity_feedback">Feedback</string>
 
 

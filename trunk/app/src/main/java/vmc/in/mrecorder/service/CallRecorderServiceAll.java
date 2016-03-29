@@ -131,7 +131,7 @@ public class CallRecorderServiceAll extends Service implements TAG {
            // String fileName = DateFormat.getDateTimeInstance().format(new Date());
             File audiofile;
             String manufacturer = Build.MANUFACTURER;
-            Log.e("AudioSource", manufacturer);
+            Log.e(TAG, manufacturer);
             if (Build.VERSION.SDK_INT == Build.VERSION_CODES.JELLY_BEAN_MR1 ||
                     Build.VERSION.SDK_INT == Build.VERSION_CODES.JELLY_BEAN
                     || Build.VERSION.SDK_INT == Build.VERSION_CODES.KITKAT) {
@@ -142,7 +142,7 @@ public class CallRecorderServiceAll extends Service implements TAG {
                     recorder.setOutputFormat(MediaRecorder.OutputFormat.AMR_NB);
                     recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
                     recorder.setOutputFile(audiofile.getAbsolutePath());
-                    Log.e("AudioSource", "JELLY_BEAN" + "VOICE_CALL" + " " + "3gp");
+                    Log.e(TAG, "JELLY_BEAN" + "VOICE_CALL" + " " + "3gp");
                 } else {
                     recorder.setAudioSource(MediaRecorder.AudioSource.DEFAULT);
                     audiofile = new File(sample.getAbsolutePath() + "/sound" + fileName + ".3gp");

@@ -33,6 +33,7 @@ import vmc.in.mrecorder.callbacks.Constants;
 import vmc.in.mrecorder.callbacks.EndlessScrollListener;
 import vmc.in.mrecorder.callbacks.TAG;
 import vmc.in.mrecorder.entity.CallData;
+import vmc.in.mrecorder.myapplication.CallApplication;
 import vmc.in.mrecorder.util.JSONParser;
 import vmc.in.mrecorder.util.Utils;
 
@@ -52,6 +53,7 @@ public class InboundCalls extends Fragment implements SwipeRefreshLayout.OnRefre
     private ArrayList<CallData> callDataArrayList;
     private int offset = 0;
     private int totalCount = 0;
+    private String authkey;
 
     public InboundCalls() {
         // Required empty public constructor
@@ -74,16 +76,18 @@ public class InboundCalls extends Fragment implements SwipeRefreshLayout.OnRefre
         mLayoutManager = new LinearLayoutManager(getActivity());
         mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(mLayoutManager);
+        authkey = Utils.getFromPrefs(getActivity(), AUTHKEY, "N/A");
+        Log.d("AUTHKEY", authkey);
         callDataArrayList = new ArrayList<CallData>();
-        for (int i = 0; i < 10; i++) {
-            CallData callData = new CallData();
-            callData.setCallerName("MUKESH");
-            callData.setCallFrom("+919886282641");
-            callData.setCallId("1445442525");
-            callData.setCallTime(new Date());
-            callData.setStatus(OUTGOING);
-            callDataArrayList.add(callData);
-        }
+//        for (int i = 0; i < 10; i++) {
+//            CallData callData = new CallData();
+//            callData.setCallerName("MUKESH");
+//            callData.setCallFrom("+919886282641");
+//            callData.setCallId("1445442525");
+//            callData.setCallTime(new Date());
+//            callData.setStatus(OUTGOING);
+//            callDataArrayList.add(callData);
+//        }
         recyclerView.addOnScrollListener(new EndlessScrollListener() {
             @Override
             public void onLoadMore() {
@@ -92,7 +96,7 @@ public class InboundCalls extends Fragment implements SwipeRefreshLayout.OnRefre
                     pdloadmore.setVisibility(View.VISIBLE);
                 }
                 if (!loading) {
-                    // DownloadMore();
+                    DownloadMore();
                 }
 
             }
@@ -122,7 +126,7 @@ public class InboundCalls extends Fragment implements SwipeRefreshLayout.OnRefre
         adapter = new Calls_Adapter(getActivity(), callDataArrayList, mroot, InboundCalls.this);
         adapter.setClickedListner(InboundCalls.this);
         recyclerView.setAdapter(adapter);
-
+        DownloadCalls();
         return view;
 
     }
@@ -142,6 +146,7 @@ public class InboundCalls extends Fragment implements SwipeRefreshLayout.OnRefre
 
     @Override
     public void onRefresh() {
+        offset = 0;
         ((Home) getActivity()).floatingActionButton.show();
         if (swipeRefreshLayout.isRefreshing()) {
             swipeRefreshLayout.setRefreshing(false);
@@ -183,7 +188,7 @@ public class InboundCalls extends Fragment implements SwipeRefreshLayout.OnRefre
 
     protected void DownloadMore() {
         if (Utils.onlineStatus1(getActivity())) {
-            offset = offset + Integer.parseInt(Utils.getFromPrefs(getActivity(), "recordLimit", "10"));
+
             new DownloadMoreData().execute();
         } else {
             if (swipeRefreshLayout.isRefreshing()) {
@@ -215,6 +220,8 @@ public class InboundCalls extends Fragment implements SwipeRefreshLayout.OnRefre
     }
 
     class DownloadCallData extends AsyncTask<Void, Void, ArrayList<CallData>> {
+        private String code, msg;
+
         @Override
         protected void onPreExecute() {
             if (mprogressLayout.getVisibility() == View.GONE) {
@@ -241,57 +248,84 @@ public class InboundCalls extends Fragment implements SwipeRefreshLayout.OnRefre
             /// TODO Auto-generated method stub
             JSONObject response = null;
             try {
-                response = JSONParser.InsertJSONToUrlFollowUpDetail("HomeActivity.BASE_URL + GET_LIST_URL",
-                        "HomeActivity.userData.getAUTHKEY()", " 10",
-                        "FOLLOWUP", " offset");
-                Log.d("TEST21", response.toString());
+                response = JSONParser.getCallsData(GETLIST, authkey, "10", offset + "",
+                        CallApplication.getDeviceId(), TYPE_INCOMING);
+                Log.d(TAG, response.toString());
             } catch (Exception e) {
             }
             if (response != null) {
 
 
                 System.out.println(response);
-                int noOfRecords = 0;
                 JSONArray recordsArray = null;
                 SimpleDateFormat sdf = new SimpleDateFormat(DateTimeFormat);
-                //Utils.followUpDataArrayList = new ArrayList<FollowUpData>();
-                // Utils.followUpoptions = new ArrayList<OptionsData>();
-                callDataArrayList.clear();
-                if (response != null) {
+                try {
 
-
-                    try {
-                        totalCount = Integer.parseInt(response.getString(COUNT));
-                        if (response.has(RECORDS)) {
-                            recordsArray = response.getJSONArray(RECORDS);
-                            for (int i = 0; i < recordsArray.length(); i++) {
-                                JSONObject record = (JSONObject) recordsArray.get(i);
-                                CallData callData = new CallData(record.getString(CALLID), record.getString(GROUPNAME));
-                                callData.setCallId(record.getString(CALLID));
-                                callData.setCallFrom(record.getString(CALLFROM));
-                                callData.setDataId(record.getString(DATAID));
-                                callData.setCallerName(record.getString(CALLERNAME));
-                                callData.setGroupName(record.getString(GROUPNAME));
-                                callData.setStatus(record.getString(STATUS));
-                                callData.setCallTimeString((record.getString(CALLTIMESTRING)));
-
-                                Date callTime = null;
-                                try {
-                                    callTime = sdf.parse(record.getString(CALLTIMESTRING));
-                                } catch (ParseException e) {
-                                    e.printStackTrace();
-                                }
-                                callData.setCallTime(callTime);
-                                callDataArrayList.add(callData);
-
-                            }
-                        }
-
-
-                    } catch (JSONException e) {
-                        e.printStackTrace();
+                    if (response.has(CODE)) {
+                        code = response.getString(CODE);
                     }
+                    if (response.has(MESSAGE)) {
+                        msg = response.getString(MESSAGE);
+                    }
+
+
+                    if (response.has(RECORDS)) {
+                        callDataArrayList = new ArrayList<CallData>();
+                        recordsArray = response.getJSONArray(RECORDS);
+                        for (int i = 0; i < recordsArray.length(); i++) {
+                            CallData callData = new CallData();
+                            JSONObject record = (JSONObject) recordsArray.get(i);
+                            if (record.has(CALLID)) {
+                                callData.setCallid(record.getString(CALLID));
+                            }
+                            if (record.has(BID)) {
+                                callData.setBid(record.getString(BID));
+                            }
+                            if (record.has(EID)) {
+                                callData.setEid(record.getString(EID));
+                            }
+                            if (record.has(CALLFROM)) {
+                                callData.setCallfrom(record.getString(CALLFROM));
+                            }
+                            if (record.has(CALLTO)) {
+                                callData.setCallto(record.getString(CALLTO));
+                            }
+                            if (record.has(EMPNAME)) {
+                                callData.setEmpname(record.getString(EMPNAME));
+                            }
+                            if (record.has(CALLTYPEE)) {
+                                callData.setCalltype(record.getString(CALLTYPEE));
+                            }
+
+                            if (record.has(STARTTIME)) {
+                                callData.setStarttime(record.getString(STARTTIME));
+                            }
+                            if (record.has(ENDTIME)) {
+                                callData.setEndtime(record.getString(ENDTIME));
+                            }
+
+
+                            Date startTime = null;
+                            Date endTime = null;
+                            try {
+                                startTime = sdf.parse(record.getString(STARTTIME));
+                                endTime = sdf.parse(record.getString(ENDTIME));
+                            } catch (ParseException e) {
+                                e.printStackTrace();
+                            }
+                            callData.setStartTime(startTime);
+                            callData.setEndTime(endTime);
+
+                            callDataArrayList.add(callData);
+
+                        }
+                    }
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
+
             }
 
             return callDataArrayList;
@@ -314,19 +348,42 @@ public class InboundCalls extends Fragment implements SwipeRefreshLayout.OnRefre
             }
             loading = false;
 
+
             if (data != null && getActivity() != null && data.size() > 0) {
                 adapter = new Calls_Adapter(getActivity(), data, mroot, InboundCalls.this);
                 adapter.setClickedListner(InboundCalls.this);
                 callDataArrayList = data;
                 // MyApplication.getWritableDatabase().insertFollowup(data, true);
-                // Utils.followUpDataArrayList = data;
                 recyclerView.setAdapter(adapter);
 
-            } else {
-
+            } else if (code.equals("202") || code.equals("401")) {
                 if (retrylayout.getVisibility() == View.GONE) {
                     retrylayout.setVisibility(View.VISIBLE);
                 }
+                if (getActivity() != null && Constants.position == 0) {
+                    try {
+                        Snackbar snack = Snackbar.make(getView(), "Login to Continue", Snackbar.LENGTH_SHORT)
+                                .setAction(getString(R.string.login), new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        Utils.isLogout(getActivity());
+
+                                    }
+                                })
+                                .setActionTextColor(getResources().getColor(R.color.accent));
+                        TextView tv = (TextView) snack.getView().findViewById(android.support.design.R.id.snackbar_text);
+                        tv.setTextColor(Color.WHITE);
+                        snack.show();
+                    } catch (Exception e) {
+
+                    }
+                }
+
+            } else {
+                if (retrylayout.getVisibility() == View.GONE) {
+                    retrylayout.setVisibility(View.VISIBLE);
+                }
+
                 if (getActivity() != null && Constants.position == 0) {
                     try {
                         Snackbar snack = Snackbar.make(getView(), "No Data Available", Snackbar.LENGTH_SHORT)
@@ -351,12 +408,16 @@ public class InboundCalls extends Fragment implements SwipeRefreshLayout.OnRefre
     }
 
     class DownloadMoreData extends AsyncTask<Void, Void, ArrayList<CallData>> {
+        private String code, msg;
+
         @Override
         protected void onPreExecute() {
+            offset = callDataArrayList.size();
             if (pdloadmore.getVisibility() == View.GONE) {
                 pdloadmore.setVisibility(View.VISIBLE);
             }
             loading = true;
+
             super.onPreExecute();
         }
 
@@ -366,53 +427,82 @@ public class InboundCalls extends Fragment implements SwipeRefreshLayout.OnRefre
             /// TODO Auto-generated method stub
             JSONObject response = null;
             try {
-                response = JSONParser.InsertJSONToUrlFollowUpDetail("HomeActivity.BASE_URL + GET_LIST_URL",
-                        "HomeActivity.userData.getAUTHKEY()", " 10",
-                        "FOLLOWUP", " offset");
-                Log.d("TEST21", response.toString());
+                response = JSONParser.getCallsData(GETLIST, authkey, "10", offset + "",
+                        CallApplication.getDeviceId(), TYPE_INCOMING);
+                Log.d(TAG, response.toString());
             } catch (Exception e) {
             }
             if (response != null) {
 
-
                 System.out.println(response);
-                int noOfRecords = 0;
                 JSONArray recordsArray = null;
                 SimpleDateFormat sdf = new SimpleDateFormat(DateTimeFormat);
-                if (response != null) {
+                try {
 
-
-                    try {
-                        totalCount = Integer.parseInt(response.getString(COUNT));
-                        if (response.has(RECORDS)) {
-                            recordsArray = response.getJSONArray(RECORDS);
-                            for (int i = 0; i < recordsArray.length(); i++) {
-                                JSONObject record = (JSONObject) recordsArray.get(i);
-                                CallData callData = new CallData(record.getString(CALLID), record.getString(GROUPNAME));
-                                callData.setCallId(record.getString(CALLID));
-                                callData.setCallFrom(record.getString(CALLFROM));
-                                callData.setDataId(record.getString(DATAID));
-                                callData.setCallerName(record.getString(CALLERNAME));
-                                callData.setGroupName(record.getString(GROUPNAME));
-                                callData.setStatus(record.getString(STATUS));
-                                callData.setCallTimeString((record.getString(CALLTIMESTRING)));
-
-                                Date callTime = null;
-                                try {
-                                    callTime = sdf.parse(record.getString(CALLTIMESTRING));
-                                } catch (ParseException e) {
-                                    e.printStackTrace();
-                                }
-                                callData.setCallTime(callTime);
-                                callDataArrayList.add(callData);
-
-                            }
-                        }
-
-                    } catch (JSONException e) {
-                        e.printStackTrace();
+                    if (response.has(CODE)) {
+                        code = response.getString(CODE);
                     }
+                    if (response.has(MESSAGE)) {
+                        msg = response.getString(MESSAGE);
+                    }
+
+
+                    if (response.has(RECORDS)) {
+                        recordsArray = response.getJSONArray(RECORDS);
+                        for (int i = 0; i < recordsArray.length(); i++) {
+                            CallData callData = new CallData();
+                            JSONObject record = (JSONObject) recordsArray.get(i);
+                            if (record.has(CALLID)) {
+                                callData.setCallid(record.getString(CALLID));
+                            }
+                            if (record.has(BID)) {
+                                callData.setBid(record.getString(BID));
+                            }
+                            if (record.has(EID)) {
+                                callData.setEid(record.getString(EID));
+                            }
+                            if (record.has(CALLFROM)) {
+                                callData.setCallfrom(record.getString(CALLFROM));
+                            }
+                            if (record.has(CALLTO)) {
+                                callData.setCallto(record.getString(CALLTO));
+                            }
+                            if (record.has(EMPNAME)) {
+                                callData.setEmpname(record.getString(EMPNAME));
+                            }
+                            if (record.has(CALLTYPEE)) {
+                                callData.setCalltype(record.getString(CALLTYPEE));
+                            }
+
+                            if (record.has(STARTTIME)) {
+                                callData.setStarttime(record.getString(STARTTIME));
+                            }
+                            if (record.has(ENDTIME)) {
+                                callData.setEndtime(record.getString(ENDTIME));
+                            }
+
+
+                            Date startTime = null;
+                            Date endTime = null;
+                            try {
+                                startTime = sdf.parse(record.getString(STARTTIME));
+                                endTime = sdf.parse(record.getString(ENDTIME));
+                            } catch (ParseException e) {
+                                e.printStackTrace();
+                            }
+                            callData.setStartTime(startTime);
+                            callData.setEndTime(endTime);
+
+                            callDataArrayList.add(callData);
+
+                        }
+                    }
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
+
             }
 
             return callDataArrayList;
@@ -425,28 +515,52 @@ public class InboundCalls extends Fragment implements SwipeRefreshLayout.OnRefre
                 pdloadmore.setVisibility(View.GONE);
             }
 
-            if (data != null && getActivity() != null && data.size() > Integer.parseInt(Utils.getFromPrefs(getActivity(), "recordLimit", "10"))) {
+            if (data != null && getActivity() != null && data.size() > callDataArrayList.size()) {
                 // MyApplication.getWritableDatabase().insertFollowup(data, false);
                 adapter.notifyDataSetChanged();
 
 
-            } else {
+            } else if (code.equals("202") || code.equals("401")) {
 
                 if (getActivity() != null && Constants.position == 0) {
-                    offset = offset - Integer.parseInt(Utils.getFromPrefs(getActivity(), "recordLimit", "10"));
-                    loading = false;
-                    Snackbar snack = Snackbar.make(mroot, "No More Records Available", Snackbar.LENGTH_SHORT)
-                            .setAction(getString(R.string.text_tryAgain), new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    DownloadMore();
+                    try {
+                        Snackbar snack = Snackbar.make(getView(), "Login to Continue", Snackbar.LENGTH_SHORT)
+                                .setAction(getString(R.string.login), new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        Utils.isLogout(getActivity());
 
-                                }
-                            })
-                            .setActionTextColor(getResources().getColor(R.color.accent));
-                    TextView tv = (TextView) snack.getView().findViewById(android.support.design.R.id.snackbar_text);
-                    tv.setTextColor(Color.WHITE);
-                    snack.show();
+                                    }
+                                })
+                                .setActionTextColor(getResources().getColor(R.color.accent));
+                        TextView tv = (TextView) snack.getView().findViewById(android.support.design.R.id.snackbar_text);
+                        tv.setTextColor(Color.WHITE);
+                        snack.show();
+                    } catch (Exception e) {
+
+                    }
+                }
+
+            } else {
+
+
+                if (getActivity() != null && Constants.position == 0) {
+                    try {
+                        Snackbar snack = Snackbar.make(getView(), "No Data Available", Snackbar.LENGTH_SHORT)
+                                .setAction(getString(R.string.text_tryAgain), new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        DownloadCalls();
+
+                                    }
+                                })
+                                .setActionTextColor(getResources().getColor(R.color.accent));
+                        TextView tv = (TextView) snack.getView().findViewById(android.support.design.R.id.snackbar_text);
+                        tv.setTextColor(Color.WHITE);
+                        snack.show();
+                    } catch (Exception e) {
+
+                    }
                 }
             }
         }

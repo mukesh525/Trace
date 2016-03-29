@@ -145,7 +145,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
         builder.addPart(STARTTIME, new StringBody(sdf.format(new Date(Long.parseLong(model.getTime()))), ContentType.TEXT_PLAIN));
         Log.d(TAG, STARTTIME + ":" + sdf.format(new Date(Long.parseLong(model.getTime()))));
         builder.addPart(CALLTYPEE, new StringBody(model.getCallType(), ContentType.TEXT_PLAIN));
-        // builder.addPart("CONTACTNAME", new StringBody(getContactName(model.getPhoneNumber()), ContentType.TEXT_PLAIN));
+        builder.addPart(CONTACTNAME, new StringBody(getContactName(model.getPhoneNumber()), ContentType.TEXT_PLAIN));
         Log.d(TAG, CALLTYPEE + ":" + model.getCallType());
         Log.d(TAG, "CONTACTNAME" + ":" + getContactName(model.getPhoneNumber()));
         if (!fileExist) {
@@ -214,7 +214,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
         if (cursor == null) {
             return null;
         }
-        String contactName = snumber;
+        String contactName = "";
         if (cursor.moveToFirst()) {
             contactName = cursor.getString(cursor.getColumnIndex(ContactsContract.PhoneLookup.DISPLAY_NAME));
         }

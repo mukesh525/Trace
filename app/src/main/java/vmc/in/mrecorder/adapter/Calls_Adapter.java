@@ -96,7 +96,7 @@ public class Calls_Adapter extends RecyclerView.Adapter<Calls_Adapter.CallViewHo
     public void onBindViewHolder(CallViewHolder holder, int position) {
         try {
             final CallData ci = CallDataArrayList.get(position);
-            holder.callerNameTextView.setText(Utils.isEmpty(ci.getEmpname()) ? UNKNOWN : ci.getEmpname());
+            holder.callerNameTextView.setText(Utils.isEmpty(ci.getName()) ? UNKNOWN : ci.getName());
             holder.callFromTextView.setText(Utils.isEmpty(ci.getCallto()) ? UNKNOWN : ci.getCallto());
             holder.overflow.setOnClickListener(new OnOverflowSelectedListener(context, holder.getAdapterPosition(), CallDataArrayList, mroot, fragment));
 

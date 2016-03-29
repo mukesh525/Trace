@@ -95,9 +95,7 @@ public class HelperCallRecordings extends SQLiteOpenHelper implements TAG {
                 model.setPhoneNumber(cursor.getString(cursor.getColumnIndex(NUMBER)));
                 model.setTime(cursor.getString(cursor.getColumnIndex(TIME)));
                 model.setFilePath(cursor.getString(cursor.getColumnIndex(FILEPATH)));
-                if (model.getFilePath().equalsIgnoreCase("n/a")) {
-                    model.setFile(new File(model.getFilePath()));
-                }
+                model.setFile(new File(model.getFilePath()));
                 model.setCallType(cursor.getString(cursor.getColumnIndex(CALLTYPE)));
                 models.add(model);
             }

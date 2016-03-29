@@ -30,7 +30,7 @@ public interface TAG {
     public String DEVICE_ID = "deviceid";
     public String GCM_KEY = "gcmkey";
 
-
+    public String CONTACTNAME="name";
 
     public String DURATION = "duration";
 
@@ -75,7 +75,7 @@ public interface TAG {
     public String TYPE_OUTGOING = "2";
     public String TYPE_ALL = "all";
 
-    public String GETLIST = "http://192.168.1.118/newdesigen/mtrackapp/getList";
+    public String GET_CALL_LIST = "http://192.168.1.118/newdesigen/mtrackapp/getList";
 
 
     //public  String UPLOAD_URL="http://192.168.1.118/mconnect/upload.php";

@@ -106,7 +106,7 @@ public class CallRecorderServiceAll extends Service implements TAG {
             try {
                 answered = checkAnswered(arg1);
 
-                Log.e("answer", "" + String.valueOf(answered));
+                Log.d(TAG, "" + String.valueOf(answered));
                 if (answered == true) {
                     Log.e("answer", "" + String.valueOf(answered));
                     startRecording();
@@ -162,13 +162,13 @@ public class CallRecorderServiceAll extends Service implements TAG {
             AudioManager audioManager = (AudioManager) getApplicationContext().getSystemService(Context.AUDIO_SERVICE);
             int deviceCallVol = audioManager.getStreamVolume(AudioManager.STREAM_VOICE_CALL);
             audioManager.setStreamVolume(AudioManager.STREAM_VOICE_CALL, audioManager.getStreamMaxVolume(AudioManager.STREAM_VOICE_CALL), 0);
-            Log.e("recorder", "" + String.valueOf(recording));
+            Log.d(TAG, " " + String.valueOf(recording));
 
             if (recording == false) {
-                Log.e("recording", "started");
+                Log.d(TAG, "started");
                 recorder.start();
             } else
-                Log.e("recording ", "recording");
+                Log.d(TAG, "recording");
 
             recording = true;
 
@@ -184,7 +184,7 @@ public class CallRecorderServiceAll extends Service implements TAG {
         }
 
         public boolean checkAnswered(Intent i) throws Exception {
-            Log.e("call intent", "testing");
+            Log.d(TAG, "testing");
             if (i.getAction().equals(Intent.ACTION_NEW_OUTGOING_CALL)) {
                 phoneNumber = i.getStringExtra(Intent.EXTRA_PHONE_NUMBER);
 
@@ -194,7 +194,7 @@ public class CallRecorderServiceAll extends Service implements TAG {
                 Bundle b = i.getExtras();
                 String state = b.getString(TelephonyManager.EXTRA_STATE);
 
-                Log.d("aa", state);
+                Log.d(TAG, state);
 
                 if (state.equals(TelephonyManager.EXTRA_STATE_RINGING)) {
                     //Check to see if call was answered later
@@ -203,7 +203,7 @@ public class CallRecorderServiceAll extends Service implements TAG {
                     shown = false;
                     callReceived = false;
 
-                    Log.d("MISSED", "Ringing true");
+                    Log.d(TAG, "Ringing true");
 
                     phoneNumber = b.getString(TelephonyManager.EXTRA_INCOMING_NUMBER);
 
@@ -229,7 +229,7 @@ public class CallRecorderServiceAll extends Service implements TAG {
                     if (ring == true && callReceived == false) {
                         if (!shown) {
                             String fileName = String.valueOf(System.currentTimeMillis());
-                            Log.d("MISSED", "Missed call from : " + phoneNumber);
+                            Log.d(TAG, "Missed call from : " + phoneNumber);
                             // Toast.makeText(getApplicationContext(),"Missed call from : " + phoneNumber,Toast.LENGTH_SHORT).show();
 
                             CallApplication.getWritableDatabase().insert(phoneNumber, fileName, DEFAULT, MISSED);

@@ -81,7 +81,8 @@
                 android:layout_marginTop="5dp"
                 android:text="Group"
                 android:textColor="@color/background_floating_material_dark"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/fGroupNameTextView"
@@ -92,7 +93,8 @@
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/fGroupNameLabel"
                 android:text="Not Available"
-                android:textColor="@color/accent" />
+                android:textColor="@color/accent"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/fDateLabel"
@@ -150,7 +152,8 @@
                 android:layout_alignTop="@+id/fGroupNameLabel"
                 android:text="Type"
                 android:textColor="@color/background_floating_material_dark"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/fStatusTextView"
@@ -161,7 +164,8 @@
                 android:layout_alignParentRight="true"
                 android:layout_below="@+id/fStatusLabel"
                 android:text="Not Available"
-                android:textColor="@color/accent" />
+                android:textColor="@color/accent"
+                android:visibility="gone" />
 
             <ImageView
                 android:id="@+id/df"
@@ -169,7 +173,7 @@
                 android:layout_height="wrap_content"
                 android:alpha="0.5"
                 android:background="@drawable/def_img"
-                android:layout_above="@+id/fStatusLabel"
+                android:layout_alignTop="@+id/fDateTextView"
                 android:layout_centerHorizontal="true" />
 
         </RelativeLayout>

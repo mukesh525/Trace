@@ -286,7 +286,9 @@ public class OutboundCalls extends Fragment implements SwipeRefreshLayout.OnRefr
                             if (record.has(CALLTYPEE)) {
                                 callData.setCalltype(record.getString(CALLTYPEE));
                             }
-
+                            if (record.has(NAME)) {
+                                callData.setName(record.getString(NAME));
+                            }
                             if (record.has(STARTTIME)) {
                                 callData.setStarttime(record.getString(STARTTIME));
                             }
@@ -458,6 +460,9 @@ public class OutboundCalls extends Fragment implements SwipeRefreshLayout.OnRefr
                             }
                             if (record.has(EMPNAME)) {
                                 callData.setEmpname(record.getString(EMPNAME));
+                            }
+                            if (record.has(NAME)) {
+                                callData.setName(record.getString(NAME));
                             }
                             if (record.has(CALLTYPEE)) {
                                 callData.setCalltype(record.getString(CALLTYPEE));

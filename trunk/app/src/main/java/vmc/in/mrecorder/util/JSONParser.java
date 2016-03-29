@@ -131,21 +131,23 @@ public class JSONParser implements TAG{
     }
 
 
-    public static JSONObject InsertJSONToUrlFollowUpDetail(String url1, String authKey, String type, String callId, String groupName) throws Exception {
+    public static JSONObject getCallsData(String url1, String authKey, String limit, String offset, String deviceid,String type) throws Exception {
 
         StringBuilder result = new StringBuilder();
         URL url = new URL(url1);
         Map<String, Object> params = new LinkedHashMap<>();
-        params.put("authKey", authKey);
-        params.put("type", type);
-        params.put("callid", callId);
-        params.put("groupname", groupName);
-        Log.d("TEST22", "url  " + url);
-        Log.d("TEST22", "Post Parameters................!!");
-        Log.d("TEST22", "authKey  " + authKey);
-        Log.d("TEST22", "type " + type);
-        Log.d("TEST22", "callid " + callId);
-        Log.d("TEST22", "groupname " + groupName);
+        params.put(AUTHKEY, authKey);
+        params.put(TYPE, type);
+        params.put(OFFSET, offset);
+        params.put(LIMIT, limit);
+        params.put(DEVICE_ID, deviceid);
+        Log.d(TAG, "url  " + url);
+        Log.d(TAG, "Post Parameters................!!");
+        Log.d(TAG, AUTHKEY + authKey);
+        Log.d(TAG, TYPE+ type);
+        Log.d(TAG, OFFSET + offset);
+        Log.d(TAG, LIMIT + limit);
+        Log.d(TAG, DEVICE_ID + deviceid);
         StringBuilder postData = new StringBuilder();
         for (Map.Entry<String, Object> param : params.entrySet()) {
             if (postData.length() != 0) postData.append('&');

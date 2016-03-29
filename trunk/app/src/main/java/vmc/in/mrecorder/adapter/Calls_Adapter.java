@@ -1,8 +1,11 @@
 package vmc.in.mrecorder.adapter;
 
+import android.content.ContentResolver;
 import android.content.ContentUris;
 import android.content.Context;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.provider.ContactsContract;
 import android.support.v4.app.Fragment;
@@ -99,6 +102,8 @@ public class Calls_Adapter extends RecyclerView.Adapter<Calls_Adapter.CallViewHo
             holder.callerNameTextView.setText(Utils.isEmpty(ci.getName()) ? UNKNOWN : ci.getName());
             holder.callFromTextView.setText(Utils.isEmpty(ci.getCallto()) ? UNKNOWN : ci.getCallto());
             holder.overflow.setOnClickListener(new OnOverflowSelectedListener(context, holder.getAdapterPosition(), CallDataArrayList, mroot, fragment));
+            holder.callFrom.setText(ci.getCalltype().equals("0") ? "Call From" : ci.getCalltype().equals("1") ? "Call From" : "Call To");
+
 
             try {
                 holder.dateTextView.setText(sdfDate.format(ci.getStartTime()));
@@ -109,14 +114,16 @@ public class Calls_Adapter extends RecyclerView.Adapter<Calls_Adapter.CallViewHo
             holder.groupNameTextView.setText(Utils.isEmpty(ci.getEmail()) ? UNKNOWN : ci.getEmail());
 
             holder.statusTextView.setText(ci.getCalltype().equals("0") ? MISSED : ci.getCalltype().equals("1") ? INCOMING : OUTGOING);
-            Log.d("TAG", ci.getStatus());
+            // Log.d("TAG", ci.getStatus());
 
             Uri bmpUri = null;
 
             try {
-                bmpUri = getContactPhoto(ci.getCallto());
+                bmpUri = getContactPhoto(ci.getCallfrom());
+
             } catch (Exception e) {
                 e.printStackTrace();
+                Log.d("TAG", e.getMessage());
             }
 
             if (bmpUri != null) {
@@ -129,15 +136,13 @@ public class Calls_Adapter extends RecyclerView.Adapter<Calls_Adapter.CallViewHo
             }
 
 
+            holder.contactphoto.setImageBitmap(getFacebookPhoto(ci.getCallto()));
+
+
         } catch (Exception e) {
             Log.d("TAG", e.getMessage());
         }
         ;
-        /*if (position > previousPosition) {
-            AnimationUtils.animate(holder, true);
-        } else
-            AnimationUtils.animate(holder, false);
-*/
         previousPosition = position;
 
     }
@@ -226,7 +231,7 @@ public class Calls_Adapter extends RecyclerView.Adapter<Calls_Adapter.CallViewHo
     public static class CallViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private final ImageView overflow;
         protected TextView callFromTextView, callerNameTextView,
-                groupNameTextView, dateTextView, timeTextView, statusTextView;
+                groupNameTextView, dateTextView, timeTextView, statusTextView, callFrom;
         protected ImageButton ibcall, ibmessage;
         private ArrayList<CallData> CallDataArrayList;
         private CallClickedListner callClickedListner;
@@ -236,6 +241,8 @@ public class Calls_Adapter extends RecyclerView.Adapter<Calls_Adapter.CallViewHo
             super(v);
 
             callFromTextView = (TextView) v.findViewById(R.id.fCallFromTextView);
+            callFrom = (TextView) v.findViewById(R.id.fCallFromLabel);
+
             callerNameTextView = (TextView) v.findViewById(R.id.fCallerNameTextView);
             groupNameTextView = (TextView) v.findViewById(R.id.fGroupNameTextView);
             dateTextView = (TextView) v.findViewById(R.id.fDateTextView);
@@ -304,5 +311,35 @@ public class Calls_Adapter extends RecyclerView.Adapter<Calls_Adapter.CallViewHo
 
     public interface CallClickedListner {
         public void OnItemClick(CallData callData, int position);
+    }
+
+
+    public Bitmap getFacebookPhoto(String phoneNumber) {
+        Uri phoneUri = Uri.withAppendedPath(ContactsContract.PhoneLookup.CONTENT_FILTER_URI, Uri.encode(phoneNumber));
+        Uri photoUri = null;
+        ContentResolver cr = context.getContentResolver();
+        Cursor contact = cr.query(phoneUri,
+                new String[]{ContactsContract.Contacts._ID}, null, null, null);
+
+        if (contact.moveToFirst()) {
+            long userId = contact.getLong(contact.getColumnIndex(ContactsContract.Contacts._ID));
+            photoUri = ContentUris.withAppendedId(ContactsContract.Contacts.CONTENT_URI, userId);
+
+        } else {
+            Bitmap defaultPhoto = BitmapFactory.decodeResource(context.getResources(), R.drawable.def_img);
+            return defaultPhoto;
+        }
+        if (photoUri != null) {
+            InputStream input = ContactsContract.Contacts.openContactPhotoInputStream(
+                    cr, photoUri);
+            if (input != null) {
+                return BitmapFactory.decodeStream(input);
+            }
+        } else {
+            Bitmap defaultPhoto = BitmapFactory.decodeResource(context.getResources(), R.drawable.def_img);
+            return defaultPhoto;
+        }
+        Bitmap defaultPhoto = BitmapFactory.decodeResource(context.getResources(), R.drawable.def_img);
+        return defaultPhoto;
     }
 }

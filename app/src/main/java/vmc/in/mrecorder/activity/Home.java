@@ -59,7 +59,9 @@ public class Home extends AppCompatActivity
         setContentView(R.layout.activity_home);
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
-        CallApplication.getInstance().startRecording();
+        if (!Utils.isMyServiceRunning(CallRecorderServiceAll.class, Home.this)) {
+            CallApplication.getInstance().startRecording();
+        }
         mDrawer = (NavigationView) findViewById(R.id.nav_view);
         mDrawer.setNavigationItemSelectedListener(this);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -154,13 +156,13 @@ public class Home extends AppCompatActivity
     protected void onResume() {
         super.onResume();
 
-//        if (!Utils.isLogin(Home.this)) {
-//            Intent intent = new Intent(Home.this, Login.class);
-//            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |
-//                    Intent.FLAG_ACTIVITY_CLEAR_TASK |
-//                    Intent.FLAG_ACTIVITY_NEW_TASK);
-//            Home.this.startActivity(intent);
-//        }
+        if (!Utils.isLogin(Home.this)) {
+            Intent intent = new Intent(Home.this, Login.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |
+                    Intent.FLAG_ACTIVITY_CLEAR_TASK |
+                    Intent.FLAG_ACTIVITY_NEW_TASK);
+            Home.this.startActivity(intent);
+        }
 
     }
 
@@ -182,7 +184,7 @@ public class Home extends AppCompatActivity
                     doubleBackToExitPressedOnce = false;
                 }
             }, 2000);
-           
+
         }
     }
 
@@ -230,7 +232,8 @@ public class Home extends AppCompatActivity
         }
         if (mSelectedId == R.id.cal_log) {
             startActivity(new Intent(Home.this, ContactsActivity.class));
-        } if (mSelectedId == R.id.nav_help_feedback) {
+        }
+        if (mSelectedId == R.id.nav_help_feedback) {
             startActivity(new Intent(Home.this, Feedback.class));
         }
 

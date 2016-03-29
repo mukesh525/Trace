@@ -32,21 +32,21 @@ public class Welcome extends AppCompatActivity implements TAG {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_welcome);
-        startActivity(new Intent(Welcome.this, Home.class));
+      //  startActivity(new Intent(Welcome.this, Home.class));
 
-//        new Handler().postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//
-//                if (Utils.isLogin(Welcome.this)) {
-//                    i = new Intent(Welcome.this, Home.class);
-//                } else {
-//                    i = new Intent(Welcome.this, Login.class);
-//                }
-//                startActivity(i);
-//
-//            }
-//        }, SPLASH_TIME_OUT);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+
+                if (Utils.isLogin(Welcome.this)) {
+                    i = new Intent(Welcome.this, Home.class);
+                } else {
+                    i = new Intent(Welcome.this, Login.class);
+                }
+                startActivity(i);
+
+            }
+        }, SPLASH_TIME_OUT);
 
     }
 }

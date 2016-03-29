@@ -86,9 +86,6 @@ public class HelperCallRecordings extends SQLiteOpenHelper implements TAG {
 
     public ArrayList<Model> GetAllCalls() {
         ArrayList<Model> models = new ArrayList<>();
-        if(!sld.isOpen()){
-
-        }
         Cursor cursor = sld.query(tbname, columns, null, null, null, null, null);
         if (cursor != null && cursor.moveToFirst()) {
 
@@ -98,7 +95,9 @@ public class HelperCallRecordings extends SQLiteOpenHelper implements TAG {
                 model.setPhoneNumber(cursor.getString(cursor.getColumnIndex(NUMBER)));
                 model.setTime(cursor.getString(cursor.getColumnIndex(TIME)));
                 model.setFilePath(cursor.getString(cursor.getColumnIndex(FILEPATH)));
-                model.setFile(new File(model.getFilePath()));
+                if (model.getFilePath().equalsIgnoreCase("n/a")) {
+                    model.setFile(new File(model.getFilePath()));
+                }
                 model.setCallType(cursor.getString(cursor.getColumnIndex(CALLTYPE)));
                 models.add(model);
             }
@@ -121,8 +120,9 @@ public class HelperCallRecordings extends SQLiteOpenHelper implements TAG {
         sld.execSQL("delete from " + tbname + " where Time='" + s + "';");
 
     }
+
     public void delete(String id) {
-        sld.execSQL("delete from " + tbname + " where "+ID+"='" + id + "';");
+        sld.execSQL("delete from " + tbname + " where " + ID + "='" + id + "';");
 
     }
 

@@ -231,7 +231,7 @@ public class AllCalls extends Fragment implements SwipeRefreshLayout.OnRefreshLi
     }
 
     class DownloadCallData extends AsyncTask<Void, Void, ArrayList<CallData>> {
-        private String code, msg;
+        private String code="n/a", msg="n/a";
 
         @Override
         protected void onPreExecute() {
@@ -259,7 +259,7 @@ public class AllCalls extends Fragment implements SwipeRefreshLayout.OnRefreshLi
             /// TODO Auto-generated method stub
             JSONObject response = null;
             try {
-                response = JSONParser.getCallsData(GETLIST, authkey, "10", offset + "",
+                response = JSONParser.getCallsData(GET_CALL_LIST, authkey, "10", offset + "",
                         CallApplication.getDeviceId(), TYPE_ALL);
                 Log.d(TAG, response.toString());
             } catch (Exception e) {
@@ -419,7 +419,7 @@ public class AllCalls extends Fragment implements SwipeRefreshLayout.OnRefreshLi
     }
 
     class DownloadMoreData extends AsyncTask<Void, Void, ArrayList<CallData>> {
-        private String code, msg;
+        private String code="n/a", msg="n/a";
 
         @Override
         protected void onPreExecute() {
@@ -438,7 +438,7 @@ public class AllCalls extends Fragment implements SwipeRefreshLayout.OnRefreshLi
             /// TODO Auto-generated method stub
             JSONObject response = null;
             try {
-                response = JSONParser.getCallsData(GETLIST, authkey, "10", offset + "",
+                response = JSONParser.getCallsData(GET_CALL_LIST, authkey, "10", offset + "",
                         CallApplication.getDeviceId(), TYPE_ALL);
                 Log.d(TAG, response.toString());
             } catch (Exception e) {

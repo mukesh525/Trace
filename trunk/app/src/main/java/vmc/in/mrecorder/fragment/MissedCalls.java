@@ -301,6 +301,9 @@ public class MissedCalls extends Fragment  implements SwipeRefreshLayout.OnRefre
                             if (record.has(ENDTIME)) {
                                 callData.setEndtime(record.getString(ENDTIME));
                             }
+                            if (record.has(NAME)) {
+                                callData.setName(record.getString(NAME));
+                            }
 
 
                             Date startTime = null;
@@ -469,6 +472,9 @@ public class MissedCalls extends Fragment  implements SwipeRefreshLayout.OnRefre
                             }
                             if (record.has(CALLTYPEE)) {
                                 callData.setCalltype(record.getString(CALLTYPEE));
+                            }
+                            if (record.has(NAME)) {
+                                callData.setName(record.getString(NAME));
                             }
 
                             if (record.has(STARTTIME)) {

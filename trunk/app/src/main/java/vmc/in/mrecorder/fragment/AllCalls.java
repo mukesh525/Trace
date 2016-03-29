@@ -231,7 +231,7 @@ public class AllCalls extends Fragment implements SwipeRefreshLayout.OnRefreshLi
     }
 
     class DownloadCallData extends AsyncTask<Void, Void, ArrayList<CallData>> {
-        private String code="n/a", msg="n/a";
+        private String code = "n/a", msg = "n/a";
 
         @Override
         protected void onPreExecute() {
@@ -306,6 +306,9 @@ public class AllCalls extends Fragment implements SwipeRefreshLayout.OnRefreshLi
                             }
                             if (record.has(CALLTYPEE)) {
                                 callData.setCalltype(record.getString(CALLTYPEE));
+                            }
+                            if (record.has(NAME)) {
+                                callData.setName(record.getString(NAME));
                             }
 
                             if (record.has(STARTTIME)) {
@@ -419,7 +422,7 @@ public class AllCalls extends Fragment implements SwipeRefreshLayout.OnRefreshLi
     }
 
     class DownloadMoreData extends AsyncTask<Void, Void, ArrayList<CallData>> {
-        private String code="n/a", msg="n/a";
+        private String code = "n/a", msg = "n/a";
 
         @Override
         protected void onPreExecute() {
@@ -480,6 +483,9 @@ public class AllCalls extends Fragment implements SwipeRefreshLayout.OnRefreshLi
                             }
                             if (record.has(EMPNAME)) {
                                 callData.setEmpname(record.getString(EMPNAME));
+                            }
+                            if (record.has(NAME)) {
+                                callData.setName(record.getString(NAME));
                             }
                             if (record.has(CALLTYPEE)) {
                                 callData.setCalltype(record.getString(CALLTYPEE));

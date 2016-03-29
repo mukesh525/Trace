@@ -23,9 +23,11 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SyncResult;
+import android.database.Cursor;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.util.Log;
 
 import org.apache.http.HttpEntity;
@@ -57,7 +59,6 @@ import vmc.in.mrecorder.util.Utils;
 
 
 public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
-    public static final String TAG = "SyncAdapter";
     private final ContentResolver mContentResolver;
     private ArrayList<Model> callList;
 
@@ -102,24 +103,24 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
     }
 
     private void StartOrStopRecording() {
-        if (!Utils.isLogin(getContext())) {
+        if (Utils.isLogin(getContext())) {
             if (!Utils.isMyServiceRunning(CallRecorderServiceAll.class, getContext())) {
                 CallApplication.getInstance().startRecording();
-                Log.d("SyncAdapter", "service started");
+                Log.d(TAG, "service started");
             } else {
-                Log.d("SyncAdapter", "service already started");
+                Log.d(TAG, "service already started");
             }
         } else {
             if (Utils.isMyServiceRunning(CallRecorderServiceAll.class, getContext())) {
                 CallApplication.getInstance().stopRecording();
-                Log.d("SyncAdapter", "service stopped");
+                Log.d(TAG, "service stopped");
             } else {
-                Log.d("SyncAdapter", "service already stopped");
+                Log.d(TAG, "service already stopped");
             }
         }
     }
 
-    private synchronized void uploadMultipartData(Model model, boolean fileExist) throws IOException {
+    private synchronized void uploadMultipartData(Model model, boolean fileExist) throws Exception {
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss.SS");
         MultipartEntityBuilder builder = MultipartEntityBuilder.create();
         builder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE);
@@ -144,7 +145,9 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
         builder.addPart(STARTTIME, new StringBody(sdf.format(new Date(Long.parseLong(model.getTime()))), ContentType.TEXT_PLAIN));
         Log.d(TAG, STARTTIME + ":" + sdf.format(new Date(Long.parseLong(model.getTime()))));
         builder.addPart(CALLTYPEE, new StringBody(model.getCallType(), ContentType.TEXT_PLAIN));
+        // builder.addPart("CONTACTNAME", new StringBody(getContactName(model.getPhoneNumber()), ContentType.TEXT_PLAIN));
         Log.d(TAG, CALLTYPEE + ":" + model.getCallType());
+        Log.d(TAG, "CONTACTNAME" + ":" + getContactName(model.getPhoneNumber()));
         if (!fileExist) {
             builder.addPart(ENDTIME, new StringBody("0000000", ContentType.TEXT_PLAIN));
             Log.d(TAG, ENDTIME + ":" + "0000000");
@@ -182,11 +185,15 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
                 if (code.equals("400")) {
                     CallApplication.getWritableDatabase().delete(model.getId());//from db
                     if (new File(model.getFilePath()).exists()) {
-                        new File(model.getFilePath()).delete();//from in
+                        new File(model.getFilePath()).delete();//from internal storage
                         Log.d(TAG, "FILE DELETED" + ":" + model.getFile().getName());
                     }
                     Log.d(TAG, "RECODRD DELETED" + ":" + model.getFile().getName());
                 }
+                if (code.equals("202") || code.equals("401")) {
+                    Utils.isLogout(getContext());
+                }
+
 
             }
 
@@ -198,5 +205,24 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
             Log.d(TAG, e.getMessage());
         }
 
+    }
+
+    public String getContactName(String snumber) throws Exception {
+        ContentResolver cr = getContext().getContentResolver();
+        Uri uri = Uri.withAppendedPath(ContactsContract.PhoneLookup.CONTENT_FILTER_URI, Uri.encode(snumber));
+        Cursor cursor = cr.query(uri, new String[]{ContactsContract.PhoneLookup.DISPLAY_NAME}, null, null, null);
+        if (cursor == null) {
+            return null;
+        }
+        String contactName = snumber;
+        if (cursor.moveToFirst()) {
+            contactName = cursor.getString(cursor.getColumnIndex(ContactsContract.PhoneLookup.DISPLAY_NAME));
+        }
+
+        if (cursor != null && !cursor.isClosed()) {
+            cursor.close();
+        }
+
+        return contactName;
     }
 }

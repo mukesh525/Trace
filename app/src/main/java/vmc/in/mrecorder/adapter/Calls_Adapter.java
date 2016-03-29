@@ -96,25 +96,25 @@ public class Calls_Adapter extends RecyclerView.Adapter<Calls_Adapter.CallViewHo
     public void onBindViewHolder(CallViewHolder holder, int position) {
         try {
             final CallData ci = CallDataArrayList.get(position);
-            holder.callerNameTextView.setText(Utils.isEmpty(ci.getCallerName()) ? UNKNOWN : ci.getCallerName());
-            holder.callFromTextView.setText(Utils.isEmpty(ci.getCallFrom()) ? UNKNOWN : ci.getCallFrom());
+            holder.callerNameTextView.setText(Utils.isEmpty(ci.getEmpname()) ? UNKNOWN : ci.getEmpname());
+            holder.callFromTextView.setText(Utils.isEmpty(ci.getCallto()) ? UNKNOWN : ci.getCallto());
             holder.overflow.setOnClickListener(new OnOverflowSelectedListener(context, holder.getAdapterPosition(), CallDataArrayList, mroot, fragment));
 
             try {
-                holder.dateTextView.setText(sdfDate.format(ci.getCallTime()));
-                holder.timeTextView.setText(sdfTime.format(ci.getCallTime()));
+                holder.dateTextView.setText(sdfDate.format(ci.getStartTime()));
+                holder.timeTextView.setText(sdfTime.format(ci.getStartTime()));
             } catch (Exception e) {
 
             }
-            holder.groupNameTextView.setText(Utils.isEmpty(ci.getGroupName()) ? UNKNOWN : ci.getGroupName());
+            holder.groupNameTextView.setText(Utils.isEmpty(ci.getEmail()) ? UNKNOWN : ci.getEmail());
 
-            holder.statusTextView.setText(Utils.isEmpty(ci.getStatus()) ? UNKNOWN : ci.getStatus());
+            holder.statusTextView.setText(ci.getCalltype().equals("0") ? MISSED : ci.getCalltype().equals("1") ? INCOMING : OUTGOING);
             Log.d("TAG", ci.getStatus());
 
             Uri bmpUri = null;
 
             try {
-                bmpUri = getContactPhoto(ci.getCallFrom());
+                bmpUri = getContactPhoto(ci.getCallto());
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -171,15 +171,15 @@ public class Calls_Adapter extends RecyclerView.Adapter<Calls_Adapter.CallViewHo
                 public boolean onMenuItemSelected(MenuBuilder menu, MenuItem item) {
                     switch (item.getItemId()) {
                         case R.id.call:
-                            if (!Utils.isEmpty(callDatas.get(position).getCallFrom())) {
-                                Utils.makeAcall(callDatas.get(position).getCallFrom(), (Home) mContext);
+                            if (!Utils.isEmpty(callDatas.get(position).getCallto())) {
+                                Utils.makeAcall(callDatas.get(position).getCallto(), (Home) mContext);
                             } else {
                                 Toast.makeText(mContext, "Invalid Number", Toast.LENGTH_SHORT).show();
                             }
                             return true;
                         case R.id.sms:
-                            if (!Utils.isEmpty(callDatas.get(position).getCallFrom())) {
-                                Utils.sendSms(callDatas.get(position).getCallFrom(), (Home) mContext);
+                            if (!Utils.isEmpty(callDatas.get(position).getCallto())) {
+                                Utils.sendSms(callDatas.get(position).getCallto(), (Home) mContext);
                             } else {
                                 Toast.makeText(mContext, "Invalid Number", Toast.LENGTH_SHORT).show();
                             }

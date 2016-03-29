@@ -526,7 +526,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
                     message = response.getString(MESSAGE);
                 if (response.has(AUTHKEY))
                     authcode = response.getString(AUTHKEY);
-
+                Log.d("LOG", authcode);
             } catch (Exception e) {
                 e.printStackTrace();
             }

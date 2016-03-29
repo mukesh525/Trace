@@ -6,70 +6,167 @@ import java.util.Date;
  * Created by mukesh on 3/24/2016.
  */
 public class CallData {
-    private String callId;
-    private String callFrom;
-    private String callerName;
-    private String groupName;
-    private Date callTime;
+    private String callid;
+    private String bid;
+    private String eid;
+    private String callfrom;
+    private String callto;
+    private String starttime;
+    private String endtime;
+    private String pulse;
+    private String calltype;
+    private String filename;
+    private String name;
+    private String business;
+    private String address;
+    private String email;
+    private String remark;
     private String status;
-    private String dataId;
-    private String callTimeString;
+    private String keyword;
+    private String assignto;
+    private String leadid;
+    private String tktid;
+    private String source;
+    private String last_modified;
+    private String empname;
+    private Date StartTime;
+    private Date EndTime;
 
-    public String getCallTimeString() {
-        return callTimeString;
+    public Date getStartTime() {
+        return StartTime;
     }
 
-    public void setCallTimeString(String callTimeString) {
-        this.callTimeString = callTimeString;
+    public void setStartTime(Date startTime) {
+        StartTime = startTime;
     }
 
-    public CallData() {
+    public Date getEndTime() {
+        return EndTime;
     }
 
-    public CallData(String callId, String groupName) {
-        this.callId = callId;
-        this.groupName = groupName;
+    public void setEndTime(Date endTime) {
+        EndTime = endTime;
     }
 
+    public String getCallid() {
 
-    public String getCallFrom() {
-        return callFrom;
+        return callid;
     }
 
-    public void setCallFrom(String callFrom) {
-        this.callFrom = callFrom;
+    public void setCallid(String callid) {
+        this.callid = callid;
     }
 
-    public String getDataId() {
-        return dataId;
+    public String getBid() {
+        return bid;
     }
 
-    public void setDataId(String dataId) {
-        this.dataId = dataId;
+    public void setBid(String bid) {
+        this.bid = bid;
     }
 
-    public String getCallerName() {
-        return callerName;
+    public String getEid() {
+        return eid;
     }
 
-    public void setCallerName(String callerName) {
-        this.callerName = callerName;
+    public void setEid(String eid) {
+        this.eid = eid;
     }
 
-    public String getGroupName() {
-        return groupName;
+    public String getCallfrom() {
+        return callfrom;
     }
 
-    public void setGroupName(String groupName) {
-        this.groupName = groupName;
+    public void setCallfrom(String callfrom) {
+        this.callfrom = callfrom;
     }
 
-    public Date getCallTime() {
-        return callTime;
+    public String getCallto() {
+        return callto;
     }
 
-    public void setCallTime(Date callTime) {
-        this.callTime = callTime;
+    public void setCallto(String callto) {
+        this.callto = callto;
+    }
+
+    public String getStarttime() {
+        return starttime;
+    }
+
+    public void setStarttime(String starttime) {
+        this.starttime = starttime;
+    }
+
+    public String getEndtime() {
+        return endtime;
+    }
+
+    public void setEndtime(String endtime) {
+        this.endtime = endtime;
+    }
+
+    public String getPulse() {
+        return pulse;
+    }
+
+    public void setPulse(String pulse) {
+        this.pulse = pulse;
+    }
+
+    public String getCalltype() {
+        return calltype;
+    }
+
+    public void setCalltype(String calltype) {
+        this.calltype = calltype;
+    }
+
+    public String getFilename() {
+        return filename;
+    }
+
+    public void setFilename(String filename) {
+        this.filename = filename;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getBusiness() {
+        return business;
+    }
+
+    public void setBusiness(String business) {
+        this.business = business;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
     }
 
     public String getStatus() {
@@ -80,12 +177,59 @@ public class CallData {
         this.status = status;
     }
 
-
-    public String getCallId() {
-        return callId;
+    public String getKeyword() {
+        return keyword;
     }
 
-    public void setCallId(String callId) {
-        this.callId = callId;
+    public void setKeyword(String keyword) {
+        this.keyword = keyword;
+    }
+
+    public String getAssignto() {
+        return assignto;
+    }
+
+    public void setAssignto(String assignto) {
+        this.assignto = assignto;
+    }
+
+    public String getLeadid() {
+        return leadid;
+    }
+
+    public void setLeadid(String leadid) {
+        this.leadid = leadid;
+    }
+
+    public String getTktid() {
+        return tktid;
+    }
+
+    public void setTktid(String tktid) {
+        this.tktid = tktid;
+    }
+
+    public String getSource() {
+        return source;
+    }
+
+    public void setSource(String source) {
+        this.source = source;
+    }
+
+    public String getLast_modified() {
+        return last_modified;
+    }
+
+    public void setLast_modified(String last_modified) {
+        this.last_modified = last_modified;
+    }
+
+    public String getEmpname() {
+        return empname;
+    }
+
+    public void setEmpname(String empname) {
+        this.empname = empname;
     }
 }

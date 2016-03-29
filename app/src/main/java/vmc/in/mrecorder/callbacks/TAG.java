@@ -1,40 +1,81 @@
 package vmc.in.mrecorder.callbacks;
 
+import java.util.Date;
+
 /**
  * Created by gousebabjan on 4/3/16.
  */
 public interface TAG {
     int MY_PERMISSIONS_CALL = 0;
     public static final String UNKNOWN = "UnKnown";
-    public static final String DateTimeFormat = "yyyy-MM-dd HH:mm:ss";
+    public static final String DateTimeFormat = "dd-MM-yyyy HH:mm:ss";
     public String PROJECT_NUMBER = "596968407103";
     public String MISSED = "missed";
     public String DEFAULT = "n/a";
     public String INCOMING = "incoming";
     public String OUTGOING = "outgoing";
-    public String CALLTYPE = "CallType";
+
     public String NUMBER = "Number";
     public String FILEPATH = "FilePath";
     public String TIME = "Time";
     public String ID = "_id";
-    public String TYPE = "type";
-    public String UPLOADEDFILE = "uploadedfile";
-    public String ENDTIME = "endtime";
 
-    public String EMAIL = "email";
+    public String UPLOADEDFILE = "uploadedfile";
+
+
     public String PASSWORD = "password";
     public String CODE = "code";
     public String MESSAGE = "msg";
     public String OTP = "otp";
     public String DEVICE_ID = "deviceid";
     public String GCM_KEY = "gcmkey";
-    public String AUTHKEY = "authkey";
-    public String CALLTO = "callto";
-    public String STARTTIME = "starttime";
-    public String CALLTYPEE = "calltype";
+
+
+
     public String DURATION = "duration";
 
     public int NOTIFICATION_ID = 0;
+
+
+    ///NEw parametre
+
+    public String BID = "bid";
+    public String EID = "eid";
+
+    public String CALLTO = "callto";
+    public String STARTTIME = "starttime";
+    public String ENDTIME = "endtime";
+    public String PULSE = "pulse";
+    public String CALLTYPEE = "calltype";
+    public String CALLTYPE = "CallType";
+    public String FILENAME = "filename";
+    public String NAME = "name";
+    public String BUSINESS = "business";
+    public String ADDRESS = "address";
+    public String EMAIL = "email";
+    public String REMARK = "remark";
+
+    public String KEYWORD = "keyword";
+    public String ASSIGNTO = "assignto";
+    public String LEADID = "leadid";
+    public String TKTID = "tktid";
+    public String SOURCE = "source";
+    public String LASTMODIFIED = "last_modified";
+    public String EMPNAME = "empname";
+
+    public String AUTHKEY = "authkey";
+    public String TAG = "TEST_LOG";
+    public String OFFSET = "offset";
+    public String LIMIT = "limit";
+    public String TYPE = "type";
+    public String DEVICEID = "deviceid";
+
+    public String TYPE_MISSED = "0";
+    public String TYPE_INCOMING = "1";
+    public String TYPE_OUTGOING = "2";
+    public String TYPE_ALL = "all";
+
+    public String GETLIST = "http://192.168.1.118/newdesigen/mtrackapp/getList";
 
 
     //public  String UPLOAD_URL="http://192.168.1.118/mconnect/upload.php";
@@ -43,7 +84,6 @@ public interface TAG {
     public String LOGIN_URL = "http://192.168.1.118/newdesigen/mtrackapp/check_auth";
     public String FORGOT_OTP_URL = "";
     public String CHANGED_PASS = "";
-
 
 
     //TEMP
@@ -60,7 +100,6 @@ public interface TAG {
     public static final String GROUPS = "groups";
     public static final String VAL = "val";
     public static final String KEY = "key";
-
 
 
     public static final String FIELDS = "fields";

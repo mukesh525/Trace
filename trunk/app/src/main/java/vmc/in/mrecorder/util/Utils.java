@@ -15,6 +15,7 @@ import android.net.Network;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
@@ -25,6 +26,10 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import org.json.JSONObject;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 import vmc.in.mrecorder.R;
 import vmc.in.mrecorder.activity.Login;
@@ -133,7 +138,11 @@ public class Utils implements TAG {
     public static void isLogout(Context context) {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         prefs.edit().clear().commit();
-
+        File sampleDir = Environment.getExternalStorageDirectory();
+        List<File> files = getListFiles(new File(sampleDir.getAbsolutePath() + "/Call Recorder"));
+        for (int i = 0; i < files.size(); i++) {
+            files.get(i).delete();
+        }
         CallApplication.getWritabledatabase().DeleteAllData();
         CallApplication.getInstance().stopRecording();
         Intent intent = new Intent(context, Login.class);
@@ -143,6 +152,22 @@ public class Utils implements TAG {
         context.startActivity(intent);
 
 
+    }
+
+    private static List<File> getListFiles(File parentDir) {
+        ArrayList<File> inFiles = new ArrayList<File>();
+
+        File[] files = parentDir.listFiles();
+        for (File file : files) {
+            if (file.isDirectory()) {
+                inFiles.addAll(getListFiles(file));
+            } else {
+                if (file.getName().endsWith(".3gp") || file.getName().endsWith(".amr")) {
+                    inFiles.add(file);
+                }
+            }
+        }
+        return inFiles;
     }
 
     public static boolean contains(JSONObject jsonObject, String key) {

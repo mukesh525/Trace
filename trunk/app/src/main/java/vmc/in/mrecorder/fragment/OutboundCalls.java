@@ -308,7 +308,7 @@ public class OutboundCalls extends Fragment implements SwipeRefreshLayout.OnRefr
                 if (retrylayout.getVisibility() == View.GONE) {
                     retrylayout.setVisibility(View.VISIBLE);
                 }
-                if (getActivity() != null && Constants.position == 0) {
+                if (getActivity() != null && Constants.position == 2) {
                     try {
                         Snackbar snack = Snackbar.make(getView(), "Login to Continue", Snackbar.LENGTH_SHORT)
                                 .setAction(getString(R.string.login), new View.OnClickListener() {
@@ -332,7 +332,7 @@ public class OutboundCalls extends Fragment implements SwipeRefreshLayout.OnRefr
                     retrylayout.setVisibility(View.VISIBLE);
                 }
 
-                if (getActivity() != null && Constants.position == 0) {
+                if (getActivity() != null && Constants.position == 2) {
                     try {
                         Snackbar snack = Snackbar.make(getView(), "No Data Available", Snackbar.LENGTH_SHORT)
                                 .setAction(getString(R.string.text_tryAgain), new View.OnClickListener() {
@@ -419,7 +419,7 @@ public class OutboundCalls extends Fragment implements SwipeRefreshLayout.OnRefr
 
             } else if (code.equals("202") || code.equals("401")) {
 
-                if (getActivity() != null && Constants.position == 0) {
+                if (getActivity() != null && Constants.position == 2) {
                     try {
                         Snackbar snack = Snackbar.make(getView(), "Login to Continue", Snackbar.LENGTH_SHORT)
                                 .setAction(getString(R.string.login), new View.OnClickListener() {
@@ -441,7 +441,7 @@ public class OutboundCalls extends Fragment implements SwipeRefreshLayout.OnRefr
             } else {
 
 
-                if (getActivity() != null && Constants.position == 0) {
+                if (getActivity() != null && Constants.position == 2) {
                     try {
                         Snackbar snack = Snackbar.make(getView(), "No Data Available", Snackbar.LENGTH_SHORT)
                                 .setAction(getString(R.string.text_tryAgain), new View.OnClickListener() {

@@ -259,11 +259,12 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
                 stringBuilder.append(s);
             }
             String serverResponseMessage = stringBuilder.toString();
+            Log.d(TAG, "RESPONSE:"+serverResponseMessage);
             String code;
             JSONObject obj = new JSONObject(serverResponseMessage);
             if (obj.has(CODE)) {
                 code = obj.getString(CODE);
-
+                Log.d(TAG, "RESPONSE CODE:"+code);
                 if (code.equals("400")) {
                     CallApplication.getWritableDatabase().delete(model.getId());//from db
                     if (new File(model.getFilePath()).exists()) {

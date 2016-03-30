@@ -74,8 +74,10 @@ public interface TAG {
     public String TYPE_INCOMING = "1";
     public String TYPE_OUTGOING = "2";
     public String TYPE_ALL = "all";
+    public String FEEDBACK = "feedback";
 
     public String GET_CALL_LIST = "http://192.168.1.118/newdesigen/mtrackapp/getList";
+    public String GET_FEED_BACK_URL = "http://192.168.1.118/newdesigen/mtrackapp/feedback_mtrack";
 
 
     //public  String UPLOAD_URL="http://192.168.1.118/mconnect/upload.php";

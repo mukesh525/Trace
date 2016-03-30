@@ -52,15 +52,23 @@ import java.util.Date;
 import java.util.Objects;
 
 import vmc.in.mrecorder.callbacks.TAG;
+import vmc.in.mrecorder.datahandler.MDatabase;
+import vmc.in.mrecorder.entity.CallData;
 import vmc.in.mrecorder.entity.Model;
 import vmc.in.mrecorder.myapplication.CallApplication;
 import vmc.in.mrecorder.service.CallRecorderServiceAll;
+import vmc.in.mrecorder.util.JSONParser;
 import vmc.in.mrecorder.util.Utils;
 
 
 public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
     private final ContentResolver mContentResolver;
     private ArrayList<Model> callList;
+    private JSONObject response;
+    private String authkey;
+    private int offset = 0;
+    private ArrayList<CallData> callDataArrayList;
+    private String code;
 
 
     public SyncAdapter(Context context, boolean autoInitialize) {
@@ -81,6 +89,9 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
         StartOrStopRecording();
 
         try {
+            if (!CallRecorderServiceAll.recording && Utils.isLogin(getContext())) {
+                LoadCalls();
+            }
             callList = CallApplication.getWritableDatabase().GetAllCalls();
             for (int i = 0; i < callList.size(); i++) {
                 if (!CallRecorderServiceAll.recording && Utils.isLogin(getContext())) {
@@ -101,6 +112,77 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
 
 
     }
+
+    private synchronized void LoadCalls() {
+
+        authkey = Utils.getFromPrefs(getContext(), AUTHKEY, "N/A");
+        try {
+            response = JSONParser.getCallsData(GET_CALL_LIST, authkey, "10", offset + "",
+                    CallApplication.getDeviceId(), TYPE_ALL);
+            if (response.has(CODE)) {
+                code = response.getString(CODE);
+            }
+            callDataArrayList = new ArrayList<CallData>();
+            callDataArrayList = vmc.in.mrecorder.util.Parser.ParseData(response);
+            Log.d(TAG, "ALL_CALLS " + callDataArrayList.size());
+            CallApplication.getWritabledatabase().insertCallRecords(MDatabase.ALL, callDataArrayList, true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            response = JSONParser.getCallsData(GET_CALL_LIST, authkey, "10", offset + "",
+                    CallApplication.getDeviceId(), TYPE_OUTGOING);
+            if (response.has(CODE)) {
+                code = response.getString(CODE);
+                if (code.equals("202") || code.equals("401")) {
+                    Utils.isLogout(getContext());
+                }
+            }
+
+            callDataArrayList = new ArrayList<CallData>();
+            callDataArrayList = vmc.in.mrecorder.util.Parser.ParseData(response);
+            Log.d(TAG, OUTGOING + callDataArrayList.size());
+            CallApplication.getWritabledatabase().insertCallRecords(MDatabase.OUTBOUND, callDataArrayList, true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            response = JSONParser.getCallsData(GET_CALL_LIST, authkey, "10", offset + "",
+                    CallApplication.getDeviceId(), TYPE_INCOMING);
+            if (response.has(CODE)) {
+                code = response.getString(CODE);
+                if (code.equals("202") || code.equals("401")) {
+                    Utils.isLogout(getContext());
+                }
+            }
+            callDataArrayList = new ArrayList<CallData>();
+            callDataArrayList = vmc.in.mrecorder.util.Parser.ParseData(response);
+            Log.d(TAG, INCOMING + callDataArrayList.size());
+            CallApplication.getWritabledatabase().insertCallRecords(MDatabase.INBOUND, callDataArrayList, true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            response = JSONParser.getCallsData(GET_CALL_LIST, authkey, "10", offset + "",
+                    CallApplication.getDeviceId(), TYPE_MISSED);
+            if (response.has(CODE)) {
+                code = response.getString(CODE);
+                if (code.equals("202") || code.equals("401")) {
+                    Utils.isLogout(getContext());
+                }
+            }
+            callDataArrayList = new ArrayList<CallData>();
+
+            callDataArrayList = vmc.in.mrecorder.util.Parser.ParseData(response);
+            CallApplication.getWritabledatabase().insertCallRecords(MDatabase.MISSED, callDataArrayList, true);
+            Log.d(TAG, MISSED + callDataArrayList.size());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
 
     private void StartOrStopRecording() {
         if (Utils.isLogin(getContext())) {

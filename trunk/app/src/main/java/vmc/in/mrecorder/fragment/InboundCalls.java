@@ -32,6 +32,7 @@ import vmc.in.mrecorder.adapter.Calls_Adapter;
 import vmc.in.mrecorder.callbacks.Constants;
 import vmc.in.mrecorder.callbacks.EndlessScrollListener;
 import vmc.in.mrecorder.callbacks.TAG;
+import vmc.in.mrecorder.datahandler.MDatabase;
 import vmc.in.mrecorder.entity.CallData;
 import vmc.in.mrecorder.myapplication.CallApplication;
 import vmc.in.mrecorder.util.JSONParser;
@@ -126,7 +127,7 @@ public class InboundCalls extends Fragment implements SwipeRefreshLayout.OnRefre
         adapter = new Calls_Adapter(getActivity(), callDataArrayList, mroot, InboundCalls.this);
         adapter.setClickedListner(InboundCalls.this);
         recyclerView.setAdapter(adapter);
-        DownloadCalls();
+        //DownloadCalls();
         return view;
 
     }
@@ -134,6 +135,15 @@ public class InboundCalls extends Fragment implements SwipeRefreshLayout.OnRefre
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        callDataArrayList = CallApplication.getWritabledatabase().getAllCalls(MDatabase.INBOUND);
+        if (callDataArrayList != null && callDataArrayList.size() > 0) {
+            Log.d("TABLE", callDataArrayList.size()+"");
+            adapter = new Calls_Adapter(getActivity(), callDataArrayList, mroot, InboundCalls.this);
+            adapter.setClickedListner(InboundCalls.this);
+            recyclerView.setAdapter(adapter);
+        } else {
+            DownloadCalls();
+        }
 
     }
 
@@ -267,62 +277,8 @@ public class InboundCalls extends Fragment implements SwipeRefreshLayout.OnRefre
                     if (response.has(MESSAGE)) {
                         msg = response.getString(MESSAGE);
                     }
+                    callDataArrayList = vmc.in.mrecorder.util.Parser.ParseData(response);
 
-
-                    if (response.has(RECORDS)) {
-                        callDataArrayList = new ArrayList<CallData>();
-                        recordsArray = response.getJSONArray(RECORDS);
-                        for (int i = 0; i < recordsArray.length(); i++) {
-                            CallData callData = new CallData();
-                            JSONObject record = (JSONObject) recordsArray.get(i);
-                            if (record.has(CALLID)) {
-                                callData.setCallid(record.getString(CALLID));
-                            }
-                            if (record.has(BID)) {
-                                callData.setBid(record.getString(BID));
-                            }
-                            if (record.has(EID)) {
-                                callData.setEid(record.getString(EID));
-                            }
-                            if (record.has(CALLFROM)) {
-                                callData.setCallfrom(record.getString(CALLFROM));
-                            }
-                            if (record.has(CALLTO)) {
-                                callData.setCallto(record.getString(CALLTO));
-                            }
-                            if (record.has(EMPNAME)) {
-                                callData.setEmpname(record.getString(EMPNAME));
-                            }
-                            if (record.has(CALLTYPEE)) {
-                                callData.setCalltype(record.getString(CALLTYPEE));
-                            }
-                            if (record.has(NAME)) {
-                                callData.setName(record.getString(NAME));
-                            }
-
-                            if (record.has(STARTTIME)) {
-                                callData.setStarttime(record.getString(STARTTIME));
-                            }
-                            if (record.has(ENDTIME)) {
-                                callData.setEndtime(record.getString(ENDTIME));
-                            }
-
-
-                            Date startTime = null;
-                            Date endTime = null;
-                            try {
-                                startTime = sdf.parse(record.getString(STARTTIME));
-                                endTime = sdf.parse(record.getString(ENDTIME));
-                            } catch (ParseException e) {
-                                e.printStackTrace();
-                            }
-                            callData.setStartTime(startTime);
-                            callData.setEndTime(endTime);
-
-                            callDataArrayList.add(callData);
-
-                        }
-                    }
 
 
                 } catch (JSONException e) {
@@ -354,6 +310,7 @@ public class InboundCalls extends Fragment implements SwipeRefreshLayout.OnRefre
 
             if (data != null && getActivity() != null && data.size() > 0) {
                 adapter = new Calls_Adapter(getActivity(), data, mroot, InboundCalls.this);
+                CallApplication.getWritabledatabase().insertCallRecords(MDatabase.INBOUND, data, true);
                 adapter.setClickedListner(InboundCalls.this);
                 callDataArrayList = data;
                 // MyApplication.getWritableDatabase().insertFollowup(data, true);
@@ -448,61 +405,8 @@ public class InboundCalls extends Fragment implements SwipeRefreshLayout.OnRefre
                     if (response.has(MESSAGE)) {
                         msg = response.getString(MESSAGE);
                     }
+                    callDataArrayList = vmc.in.mrecorder.util.Parser.ParseData(response);
 
-
-                    if (response.has(RECORDS)) {
-                        recordsArray = response.getJSONArray(RECORDS);
-                        for (int i = 0; i < recordsArray.length(); i++) {
-                            CallData callData = new CallData();
-                            JSONObject record = (JSONObject) recordsArray.get(i);
-                            if (record.has(CALLID)) {
-                                callData.setCallid(record.getString(CALLID));
-                            }
-                            if (record.has(BID)) {
-                                callData.setBid(record.getString(BID));
-                            }
-                            if (record.has(EID)) {
-                                callData.setEid(record.getString(EID));
-                            }
-                            if (record.has(CALLFROM)) {
-                                callData.setCallfrom(record.getString(CALLFROM));
-                            }
-                            if (record.has(CALLTO)) {
-                                callData.setCallto(record.getString(CALLTO));
-                            }
-                            if (record.has(EMPNAME)) {
-                                callData.setEmpname(record.getString(EMPNAME));
-                            }
-                            if (record.has(NAME)) {
-                                callData.setName(record.getString(NAME));
-                            }
-                            if (record.has(CALLTYPEE)) {
-                                callData.setCalltype(record.getString(CALLTYPEE));
-                            }
-
-                            if (record.has(STARTTIME)) {
-                                callData.setStarttime(record.getString(STARTTIME));
-                            }
-                            if (record.has(ENDTIME)) {
-                                callData.setEndtime(record.getString(ENDTIME));
-                            }
-
-
-                            Date startTime = null;
-                            Date endTime = null;
-                            try {
-                                startTime = sdf.parse(record.getString(STARTTIME));
-                                endTime = sdf.parse(record.getString(ENDTIME));
-                            } catch (ParseException e) {
-                                e.printStackTrace();
-                            }
-                            callData.setStartTime(startTime);
-                            callData.setEndTime(endTime);
-
-                            callDataArrayList.add(callData);
-
-                        }
-                    }
 
 
                 } catch (JSONException e) {
@@ -523,6 +427,7 @@ public class InboundCalls extends Fragment implements SwipeRefreshLayout.OnRefre
 
             if (data != null && getActivity() != null && data.size() > callDataArrayList.size()) {
                 // MyApplication.getWritableDatabase().insertFollowup(data, false);
+                CallApplication.getWritabledatabase().insertCallRecords(MDatabase.INBOUND, data, true);
                 adapter.notifyDataSetChanged();
 
 

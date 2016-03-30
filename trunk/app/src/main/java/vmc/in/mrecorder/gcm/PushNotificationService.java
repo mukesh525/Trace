@@ -46,12 +46,14 @@ public class PushNotificationService extends GcmListenerService implements vmc.i
         super.onMessageReceived(from, data);
         String message = data.getString("message");
         Log.d(TAG, message);
-     //   sendStickyNotification(message);
+        //   sendStickyNotification(message);
         if (Utils.isLogin(getApplicationContext())) {
-            CallApplication.sp.edit().putInt(TYPE, 1).commit();
+            sendStickyNotification(message);
+            CallApplication.getWritabledatabase().DeleteAllData();
+            CallApplication.getInstance().stopRecording();
             SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
             prefs.edit().clear().commit();
-             sendStickyNotification(message);
+
         }
 
     }

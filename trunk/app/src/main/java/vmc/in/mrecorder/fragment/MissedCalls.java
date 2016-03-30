@@ -32,6 +32,7 @@ import vmc.in.mrecorder.adapter.Calls_Adapter;
 import vmc.in.mrecorder.callbacks.Constants;
 import vmc.in.mrecorder.callbacks.EndlessScrollListener;
 import vmc.in.mrecorder.callbacks.TAG;
+import vmc.in.mrecorder.datahandler.MDatabase;
 import vmc.in.mrecorder.entity.CallData;
 import vmc.in.mrecorder.myapplication.CallApplication;
 import vmc.in.mrecorder.util.JSONParser;
@@ -79,15 +80,6 @@ public class MissedCalls extends Fragment  implements SwipeRefreshLayout.OnRefre
         authkey =Utils.getFromPrefs(getActivity(),AUTHKEY,"N/A");
         Log.d("AUTHKEY",authkey);
         callDataArrayList = new ArrayList<CallData>();
-//        for (int i = 0; i < 10; i++) {
-//            CallData callData = new CallData();
-//            callData.setCallerName("MUKESH");
-//            callData.setCallFrom("+919886282641");
-//            callData.setCallId("1445442525");
-//            callData.setCallTime(new Date());
-//            callData.setStatus(OUTGOING);
-//            callDataArrayList.add(callData);
-//        }
         recyclerView.addOnScrollListener(new EndlessScrollListener() {
             @Override
             public void onLoadMore() {
@@ -96,7 +88,7 @@ public class MissedCalls extends Fragment  implements SwipeRefreshLayout.OnRefre
                     pdloadmore.setVisibility(View.VISIBLE);
                 }
                 if (!loading) {
-                     DownloadMore();
+                    DownloadMore();
                 }
 
             }
@@ -126,7 +118,7 @@ public class MissedCalls extends Fragment  implements SwipeRefreshLayout.OnRefre
         adapter = new Calls_Adapter(getActivity(), callDataArrayList, mroot, MissedCalls.this);
         adapter.setClickedListner(MissedCalls.this);
         recyclerView.setAdapter(adapter);
-        DownloadCalls();
+        //DownloadCalls();
         return view;
 
     }
@@ -134,6 +126,16 @@ public class MissedCalls extends Fragment  implements SwipeRefreshLayout.OnRefre
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        callDataArrayList = CallApplication.getWritabledatabase().getAllCalls(MDatabase.MISSED);
+        if (callDataArrayList != null && callDataArrayList.size() > 0) {
+            Log.d("TABLE", callDataArrayList.size()+"");
+            adapter = new Calls_Adapter(getActivity(), callDataArrayList, mroot, MissedCalls.this);
+            adapter.setClickedListner(MissedCalls.this);
+            recyclerView.setAdapter(adapter);
+        } else {
+            DownloadCalls();
+        }
+
     }
 
 
@@ -265,62 +267,8 @@ public class MissedCalls extends Fragment  implements SwipeRefreshLayout.OnRefre
                     if (response.has(MESSAGE)) {
                         msg = response.getString(MESSAGE);
                     }
+                    callDataArrayList = vmc.in.mrecorder.util.Parser.ParseData(response);
 
-
-                    if (response.has(RECORDS)) {
-                        callDataArrayList = new ArrayList<CallData>();
-                        recordsArray = response.getJSONArray(RECORDS);
-                        for (int i = 0; i < recordsArray.length(); i++) {
-                            CallData callData = new CallData();
-                            JSONObject record = (JSONObject) recordsArray.get(i);
-                            if (record.has(CALLID)) {
-                                callData.setCallid(record.getString(CALLID));
-                            }
-                            if (record.has(BID)) {
-                                callData.setBid(record.getString(BID));
-                            }
-                            if (record.has(EID)) {
-                                callData.setEid(record.getString(EID));
-                            }
-                            if (record.has(CALLFROM)) {
-                                callData.setCallfrom(record.getString(CALLFROM));
-                            }
-                            if (record.has(CALLTO)) {
-                                callData.setCallto(record.getString(CALLTO));
-                            }
-                            if (record.has(EMPNAME)) {
-                                callData.setEmpname(record.getString(EMPNAME));
-                            }
-                            if (record.has(CALLTYPEE)) {
-                                callData.setCalltype(record.getString(CALLTYPEE));
-                            }
-
-                            if (record.has(STARTTIME)) {
-                                callData.setStarttime(record.getString(STARTTIME));
-                            }
-                            if (record.has(ENDTIME)) {
-                                callData.setEndtime(record.getString(ENDTIME));
-                            }
-                            if (record.has(NAME)) {
-                                callData.setName(record.getString(NAME));
-                            }
-
-
-                            Date startTime = null;
-                            Date endTime = null;
-                            try {
-                                startTime = sdf.parse(record.getString(STARTTIME));
-                                endTime = sdf.parse(record.getString(ENDTIME));
-                            } catch (ParseException e) {
-                                e.printStackTrace();
-                            }
-                            callData.setStartTime(startTime);
-                            callData.setEndTime(endTime);
-
-                            callDataArrayList.add(callData);
-
-                        }
-                    }
 
 
                 } catch (JSONException e) {
@@ -355,6 +303,7 @@ public class MissedCalls extends Fragment  implements SwipeRefreshLayout.OnRefre
                 adapter.setClickedListner(MissedCalls.this);
                 callDataArrayList = data;
                 // MyApplication.getWritableDatabase().insertFollowup(data, true);
+                CallApplication.getWritabledatabase().insertCallRecords(MDatabase.MISSED, data, true);
                 recyclerView.setAdapter(adapter);
 
             } else if (code.equals("202") || code.equals("401")) {
@@ -445,62 +394,7 @@ public class MissedCalls extends Fragment  implements SwipeRefreshLayout.OnRefre
                     if (response.has(MESSAGE)) {
                         msg = response.getString(MESSAGE);
                     }
-
-
-                    if (response.has(RECORDS)) {
-                        recordsArray = response.getJSONArray(RECORDS);
-                        for (int i = 0; i < recordsArray.length(); i++) {
-                            CallData callData = new CallData();
-                            JSONObject record = (JSONObject) recordsArray.get(i);
-                            if (record.has(CALLID)) {
-                                callData.setCallid(record.getString(CALLID));
-                            }
-                            if (record.has(BID)) {
-                                callData.setBid(record.getString(BID));
-                            }
-                            if (record.has(EID)) {
-                                callData.setEid(record.getString(EID));
-                            }
-                            if (record.has(CALLFROM)) {
-                                callData.setCallfrom(record.getString(CALLFROM));
-                            }
-                            if (record.has(CALLTO)) {
-                                callData.setCallto(record.getString(CALLTO));
-                            }
-                            if (record.has(EMPNAME)) {
-                                callData.setEmpname(record.getString(EMPNAME));
-                            }
-                            if (record.has(CALLTYPEE)) {
-                                callData.setCalltype(record.getString(CALLTYPEE));
-                            }
-                            if (record.has(NAME)) {
-                                callData.setName(record.getString(NAME));
-                            }
-
-                            if (record.has(STARTTIME)) {
-                                callData.setStarttime(record.getString(STARTTIME));
-                            }
-                            if (record.has(ENDTIME)) {
-                                callData.setEndtime(record.getString(ENDTIME));
-                            }
-
-
-                            Date startTime = null;
-                            Date endTime = null;
-                            try {
-                                startTime = sdf.parse(record.getString(STARTTIME));
-                                endTime = sdf.parse(record.getString(ENDTIME));
-                            } catch (ParseException e) {
-                                e.printStackTrace();
-                            }
-                            callData.setStartTime(startTime);
-                            callData.setEndTime(endTime);
-
-                            callDataArrayList.add(callData);
-
-                        }
-                    }
-
+                    callDataArrayList = vmc.in.mrecorder.util.Parser.ParseData(response);
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -520,6 +414,7 @@ public class MissedCalls extends Fragment  implements SwipeRefreshLayout.OnRefre
 
             if (data != null && getActivity() != null && data.size() > callDataArrayList.size()) {
                 // MyApplication.getWritableDatabase().insertFollowup(data, false);
+                CallApplication.getWritabledatabase().insertCallRecords(MDatabase.MISSED, data, true);
                 adapter.notifyDataSetChanged();
 
 

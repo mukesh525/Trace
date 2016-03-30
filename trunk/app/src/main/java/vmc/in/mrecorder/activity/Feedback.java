@@ -9,21 +9,25 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONObject;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import vmc.in.mrecorder.R;
+import vmc.in.mrecorder.callbacks.TAG;
+import vmc.in.mrecorder.util.JSONParser;
 import vmc.in.mrecorder.util.Utils;
 
-public class Feedback extends AppCompatActivity {
+public class Feedback extends AppCompatActivity implements TAG {
     @InjectView(R.id.etfeedback)
     EditText etFeedback;
     @InjectView(R.id.button)
@@ -44,13 +48,19 @@ public class Feedback extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         hideKeyboard();
-       // authkey = getIntent().getExtras().getString(AUTHKEY);
-
+        //authkey = getIntent().getExtras().getString(AUTHKEY);
+        authkey = Utils.getFromPrefs(this, AUTHKEY, "N/A");
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 feedbackmsg = etFeedback.getText().toString();
-               // UpdateFeedBack();
+                if (!(feedbackmsg.length()==0||feedbackmsg.isEmpty()||feedbackmsg.equals(""))){
+                    UpdateFeedBack();
+                }else{
+                    Toast.makeText(getApplication(),"Enter FeedBack Message",Toast.LENGTH_SHORT).show();
+                }
+
+
 
             }
         });
@@ -73,78 +83,78 @@ public class Feedback extends AppCompatActivity {
         }
     }
 //
-//    public void UpdateFeedBack() {
-//
-//        if (Utils.onlineStatus2(Feedback.this)) {
-//            new SubmitUpdateFeedBack().execute();
-//        } else {
-//            Snackbar snack = Snackbar.make(mroot, "No Internet Connection", Snackbar.LENGTH_SHORT)
-//                    .setAction(getString(R.string.text_tryAgain), new View.OnClickListener() {
-//                        @Override
-//                        public void onClick(View v) {
-//                            UpdateFeedBack();
-//
-//                        }
-//                    })
-//                    .setActionTextColor(ContextCompat.getColor(Feedback.this, R.color.accent));
-//            View view = snack.getView();
-//            TextView tv = (TextView) view.findViewById(android.support.design.R.id.snackbar_text);
-//            tv.setTextColor(Color.WHITE);
-//            snack.show();
-//        }
-//
-//    }
-//
-//
-//    class SubmitUpdateFeedBack extends AsyncTask<Void, Void, String> {
-//        String message = "n";
-//        String code = "n";
-//        JSONObject response = null;
-//
-//        @Override
-//        protected void onPreExecute() {
-//            super.onPreExecute();
-//
-//        }
-//
-//
-//        @Override
-//        protected String doInBackground(Void... params) {
-//            // TODO Auto-generated method stub
-//
-//            try {
-//                response = JSONParser.SubmitFeedBack(SEND_FEEDBACK, authkey, feedbackmsg);
-//                Log.d("RESPONSE", response.toString());
-//
-//
-//                if (response.has(CODE)) {
-//                    code = response.getString(CODE);
-//
-//                }
-//                if (response.has(MESSAGE)) {
-//                    message = response.getString(MESSAGE);
-//                }
-//
-//
-//            } catch (Exception e) {
-//                Log.d("RESPONSE", e.getMessage());
-//            }
-//            return code;
-//        }
-//
-//        @Override
-//        protected void onPostExecute(String data) {
-//
-//            if (data.equals("400")) {
-//                Toast.makeText(FeedBack.this, "Fedback Submitted Sucessfully", Toast.LENGTH_SHORT).show();
-//
-//            } else {
-//                Toast.makeText(FeedBack.this, "Server busy! Please Try again Later", Toast.LENGTH_SHORT).show();
-//            }
-//
-//
-//        }
-//
-//
-//    }
+    public void UpdateFeedBack() {
+
+        if (Utils.onlineStatus2(Feedback.this)) {
+            new SubmitUpdateFeedBack().execute();
+        } else {
+            Snackbar snack = Snackbar.make(mroot, "No Internet Connection", Snackbar.LENGTH_SHORT)
+                    .setAction(getString(R.string.text_tryAgain), new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            UpdateFeedBack();
+
+                        }
+                    })
+                    .setActionTextColor(ContextCompat.getColor(Feedback.this, R.color.accent));
+            View view = snack.getView();
+            TextView tv = (TextView) view.findViewById(android.support.design.R.id.snackbar_text);
+            tv.setTextColor(Color.WHITE);
+            snack.show();
+        }
+
+    }
+
+
+    class SubmitUpdateFeedBack extends AsyncTask<Void, Void, String> {
+        String message = "n";
+        String code = "n";
+        JSONObject response = null;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+        }
+
+
+        @Override
+        protected String doInBackground(Void... params) {
+            // TODO Auto-generated method stub
+
+            try {
+                response = JSONParser.SubmitFeedBack(GET_FEED_BACK_URL, authkey, feedbackmsg);
+                Log.d(TAG, response.toString());
+
+
+                if (response.has(CODE)) {
+                    code = response.getString(CODE);
+
+                }
+                if (response.has(MESSAGE)) {
+                    message = response.getString(MESSAGE);
+                }
+
+
+            } catch (Exception e) {
+                Log.d(TAG, e.getMessage());
+            }
+            return code;
+        }
+
+        @Override
+        protected void onPostExecute(String data) {
+
+            if (data.equals("400")) {
+                Toast.makeText(Feedback.this, "Fedback Submitted Sucessfully", Toast.LENGTH_SHORT).show();
+
+            } else {
+                Toast.makeText(Feedback.this, "Server busy! Please Try again Later", Toast.LENGTH_SHORT).show();
+            }
+
+
+        }
+
+
+    }
 }

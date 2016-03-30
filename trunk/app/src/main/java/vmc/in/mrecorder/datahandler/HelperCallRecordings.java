@@ -18,9 +18,87 @@ public class HelperCallRecordings extends SQLiteOpenHelper implements TAG {
 
     static String tbname = "CallRecords";
     static String dbname = "Database";
-    static int ver = 3;
+    static int ver = 4;
     SQLiteDatabase sld;
     Context c;
+    public static final String TABLE_ALL ="all_calls";
+    public static final String TABLE_INBOUND ="inbound";
+    public static final String TABLE_OUTBOUND ="outbound";
+    public static final String TABLE_MISSED ="missed";
+    public static final String COLUMN_UID ="_id";
+    public static final String COLUMN_CALLID = CALLID;
+    public static final String COLUMN_BID = BID;
+    public static final String COLUMN_EID = EID;
+    public static final String COLUMN_CALLFROM = CALLFROM;
+    public static final String COLUMN_CALLTO = CALLTO;
+    public static final String COLUMN_EMPNAME = EMPNAME;
+    public static final String COLUMN_CALLTYPEE = CALLTYPEE;
+    public static final String COLUMN_NAME = NAME;
+    public static final String COLUMN_STARTTIME = STARTTIME;
+    public static final String COLUMN_ENDTIME = ENDTIME;
+
+
+    private static final String CREATE_TABLE_ALL_CALLS = "CREATE TABLE " + TABLE_ALL + " (" +
+            COLUMN_UID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+            COLUMN_CALLID + " TEXT," +
+            COLUMN_BID+ " TEXT," +
+            COLUMN_EID + " TEXT," +
+            COLUMN_CALLFROM + " TEXT," +
+            COLUMN_CALLTO + " TEXT," +
+            COLUMN_EMPNAME + " TEXT," +
+            COLUMN_CALLTYPEE + " TEXT," +
+            COLUMN_NAME+ " TEXT," +
+            COLUMN_STARTTIME + " TEXT," +
+            COLUMN_ENDTIME + " TEXT" +
+            ");";
+
+     private static final String CREATE_TABLE_INBOUND = "CREATE TABLE " + TABLE_INBOUND + " (" +
+            COLUMN_UID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+            COLUMN_CALLID + " TEXT," +
+            COLUMN_BID+ " TEXT," +
+            COLUMN_EID + " TEXT," +
+            COLUMN_CALLFROM + " TEXT," +
+            COLUMN_CALLTO + " TEXT," +
+            COLUMN_EMPNAME + " TEXT," +
+            COLUMN_CALLTYPEE + " TEXT," +
+            COLUMN_NAME+ " TEXT," +
+            COLUMN_STARTTIME + " TEXT," +
+            COLUMN_ENDTIME + " TEXT" +
+            ");";
+
+     private static final String CREATE_TABLE_OUTBOUND = "CREATE TABLE " + TABLE_OUTBOUND + " (" +
+            COLUMN_UID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+            COLUMN_CALLID + " TEXT," +
+            COLUMN_BID+ " TEXT," +
+            COLUMN_EID + " TEXT," +
+            COLUMN_CALLFROM + " TEXT," +
+            COLUMN_CALLTO + " TEXT," +
+            COLUMN_EMPNAME + " TEXT," +
+            COLUMN_CALLTYPEE + " TEXT," +
+            COLUMN_NAME+ " TEXT," +
+            COLUMN_STARTTIME + " TEXT," +
+            COLUMN_ENDTIME + " TEXT" +
+            ");";
+
+     private static final String CREATE_TABLE_MISSED = "CREATE TABLE " + TABLE_MISSED + " (" +
+            COLUMN_UID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+            COLUMN_CALLID + " TEXT," +
+            COLUMN_BID+ " TEXT," +
+            COLUMN_EID + " TEXT," +
+            COLUMN_CALLFROM + " TEXT," +
+            COLUMN_CALLTO + " TEXT," +
+            COLUMN_EMPNAME + " TEXT," +
+            COLUMN_CALLTYPEE + " TEXT," +
+            COLUMN_NAME+ " TEXT," +
+            COLUMN_STARTTIME + " TEXT," +
+            COLUMN_ENDTIME + " TEXT" +
+            ");";
+
+
+
+
+
+
 
     private String[] columns = {ID, NUMBER, TIME, FILEPATH, CALLTYPE};
     private static final String CREATE_TABLE = "CREATE TABLE " + tbname + " (" +
@@ -45,10 +123,11 @@ public class HelperCallRecordings extends SQLiteOpenHelper implements TAG {
 
         if (counter == 0) {
             db.execSQL(CREATE_TABLE);
-//            db.execSQL("create table " + tbname + "(" + ID
-//                    + " INTEGER PRIMARY KEY AUTOINCREMENT," + NUMBER
-//                    + " TEXT NOT NULL, " + TIME + " TEXT NOT NULL, " + FILEPATH
-//                    + " TEXT NOT NULL, " + CALLTYPE + " TEXT NOT NULL);");
+            db.execSQL(CREATE_TABLE_ALL_CALLS);
+            db.execSQL(CREATE_TABLE_INBOUND);
+            db.execSQL(CREATE_TABLE_OUTBOUND);
+            db.execSQL(CREATE_TABLE_MISSED);
+            Log.d("TABLE", "onCreate Called");
         }
         counter++;
 
@@ -58,6 +137,10 @@ public class HelperCallRecordings extends SQLiteOpenHelper implements TAG {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         try {
             db.execSQL(" DROP TABLE " + tbname + " IF EXISTS;");
+            db.execSQL(" DROP TABLE " + TABLE_ALL + " IF EXISTS;");
+            db.execSQL(" DROP TABLE " + TABLE_INBOUND + " IF EXISTS;");
+            db.execSQL(" DROP TABLE " + TABLE_OUTBOUND + " IF EXISTS;");
+            db.execSQL(" DROP TABLE " + TABLE_MISSED+ " IF EXISTS;");
         } catch (Exception e) {
             Log.d("database", e.getMessage());
         }

@@ -131,14 +131,11 @@ public class Utils implements TAG {
     }
 
     public static void isLogout(Context context) {
-
-//        if (Utils.isMyServiceRunning(CallRecorderServiceAll.class, context)) {
-//            Intent all = new Intent(context, CallRecorderServiceAll.class);
-//            context.stopService(all);
-//        }
-        CallApplication.sp.edit().putInt(TYPE, 1).commit();
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         prefs.edit().clear().commit();
+
+        CallApplication.getWritabledatabase().DeleteAllData();
+        CallApplication.getInstance().stopRecording();
         Intent intent = new Intent(context, Login.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |
                 Intent.FLAG_ACTIVITY_CLEAR_TASK |
@@ -147,26 +144,6 @@ public class Utils implements TAG {
 
 
     }
-
-//    public static void startRecording(Context context) {
-//        CallApplication.sp.edit().putInt(TYPE, 0).commit();
-//        if (CallApplication.sp.getInt(TYPE, 0) == 0) {
-//            context.startService(CallApplication.all);
-//        } else if (CallApplication.sp.getInt(TYPE, 0) == 1) {
-//            context.stopService(CallApplication.all);
-//            //  stopService(opt);
-//        }
-//    }
-//
-//    public static void stopRecording(Context context) {
-//        CallApplication.sp.edit().putInt(TYPE, 1).commit();
-//        if (CallApplication.sp.getInt(TYPE, 0) == 0) {
-//            context.startService(CallApplication.all);
-//        } else if (CallApplication.sp.getInt(TYPE, 0) == 1) {
-//            context.stopService(CallApplication.all);
-//            //  stopService(opt);
-//        }
-//    }
 
     public static boolean contains(JSONObject jsonObject, String key) {
         return jsonObject != null && jsonObject.has(key) && !jsonObject.isNull(key) ? true : false;

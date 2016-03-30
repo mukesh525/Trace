@@ -1,6 +1,8 @@
 package vmc.in.mrecorder.activity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Parcelable;
@@ -52,6 +54,7 @@ public class Home extends AppCompatActivity
     private ViewPager mViewPager;
     private MyPagerAdapter myPagerAdapter;
     private boolean doubleBackToExitPressedOnce;
+    private TextView user, email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,6 +81,12 @@ public class Home extends AppCompatActivity
         mTabLayout.setupWithViewPager(mViewPager);
         mDrawer.setItemIconTintList(null);
         View header = mDrawer.getHeaderView(0);
+        user = (TextView) header.findViewById(R.id.tv_name);
+        email = (TextView) header.findViewById(R.id.tv_email);
+        String useremail =Utils.getFromPrefs(this, EMAIL, DEFAULT);
+        String username = Utils.getFromPrefs(this, NAME, DEFAULT);
+        user.setText("Hi " + username);
+        email.setText(useremail);
         mDrawer.setNavigationItemSelectedListener(this);
 
         floatingActionButton = (FloatingActionButton) findViewById(R.id.fab);

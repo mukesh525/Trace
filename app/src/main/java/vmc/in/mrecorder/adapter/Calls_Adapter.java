@@ -273,6 +273,7 @@ public class Calls_Adapter extends RecyclerView.Adapter<Calls_Adapter.CallViewHo
         Cursor cursor = context.getContentResolver().query(uri,
                 new String[]{ContactsContract.PhoneLookup.DISPLAY_NAME, ContactsContract.PhoneLookup._ID},
                 null, null, null);
+        cursor.close();
 
         long contactId = 0;
 
@@ -320,7 +321,7 @@ public class Calls_Adapter extends RecyclerView.Adapter<Calls_Adapter.CallViewHo
         ContentResolver cr = context.getContentResolver();
         Cursor contact = cr.query(phoneUri,
                 new String[]{ContactsContract.Contacts._ID}, null, null, null);
-
+              contact.close();
         if (contact.moveToFirst()) {
             long userId = contact.getLong(contact.getColumnIndex(ContactsContract.Contacts._ID));
             photoUri = ContentUris.withAppendedId(ContactsContract.Contacts.CONTENT_URI, userId);

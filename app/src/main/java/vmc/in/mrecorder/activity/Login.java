@@ -23,6 +23,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -161,6 +162,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
 
     @Override
     public void onClick(View v) {
+        hideKeyboard();
         switch (v.getId()) {
             case R.id.btn_login:
                 Login();
@@ -199,7 +201,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
     }
 
     public void onLoginFailed() {
-        Toast.makeText(getBaseContext(), "Login failed", Toast.LENGTH_LONG).show();
+        Toast.makeText(getBaseContext(), "Invalid OTP try again", Toast.LENGTH_SHORT).show();
         btn_login.setEnabled(true);
     }
 
@@ -292,38 +294,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
     }
 
 
-//    private class MyTextWacher implements TextWatcher {
-//
-//        private View view;
-//
-//        private MyTextWacher(View view) {
-//            this.view = view;
-//        }
-//
-//        @Override
-//        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-//
-//        }
-//
-//        @Override
-//        public void onTextChanged(CharSequence s, int start, int before, int count) {
-//
-//        }
-//
-//        @Override
-//        public void afterTextChanged(Editable s) {
-//
-//            switch (view.getId()) {
-//                case R.id.input_email:
-//                    //   validateEmail();
-//                    break;
-//                case R.id.input_password:
-//                    ///  validatePassword();
-//                    break;
-//            }
-//        }
-//    }
-
     public void load() {
         SharedPreferences pref = getSharedPreferences("Mydata", Context.MODE_PRIVATE);
         String email = pref.getString("email", DEAFULT);
@@ -391,7 +361,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
         String code = "N";
         String email = "n";
         String password = "n";
-
         String msg, Otp;
         JSONObject response = null;
 
@@ -402,6 +371,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
 
         @Override
         protected void onPreExecute() {
+            super.onPreExecute();
 //             showProgress("Login Please Wait.."); progressDialog.setIndeterminate(true);
 //             progressDialog.setMessage("Generating OTP...");
 //               progressDialog.show();
@@ -412,7 +382,9 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
             progressDialog.setCancelable(false);
             progressDialog.show();
 
-            super.onPreExecute();
+
+
+
         }
 
 
@@ -435,6 +407,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
                         OTP_resp = response.getString(OTP);
                         Log.d("OTP", OTP_resp);
                     }
+
                 }
 
             } catch (Exception e) {
@@ -455,13 +428,21 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
 
 
                 if (code.equals("202")) {
-                    //  Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_SHORT).show();
+//                    if (progressDialog != null && progressDialog.isShowing()) {
+//                        progressDialog.dismiss();
+//                    }
 
                 } else {
+
                     //showOTPDialog();
 
                 }
 
+            } else {
+                if (progressDialog != null && progressDialog.isShowing()) {
+                    progressDialog.dismiss();
+                }
             }
         }
 
@@ -492,6 +473,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
     class StartLogin extends AsyncTask<Void, Void, JSONObject> {
         String message = "n";
         String code = "n";
+        String username = "n";
         String authcode = "n", name = "n";
 
         JSONObject response = null;
@@ -526,6 +508,9 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
                     message = response.getString(MESSAGE);
                 if (response.has(AUTHKEY))
                     authcode = response.getString(AUTHKEY);
+                if (response.has(NAME)) {
+                    username = response.getString(NAME);
+                }
                 Log.d("LOG", authcode);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -560,6 +545,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
             if (code.equals("400")) {
                 save();
                 Utils.saveToPrefs(Login.this, AUTHKEY, authcode);
+                Utils.saveToPrefs(Login.this, NAME, username);
                 Utils.saveToPrefs(Login.this, EMAIL, email);
                 Intent intent = new Intent(Login.this, Home.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |
@@ -590,5 +576,16 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
         NotificationManager nMgr = (NotificationManager) ctx.getSystemService(ns);
         nMgr.cancel(notifyId);
     }
+    public void hideKeyboard() {
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 
+        if (imm.isAcceptingText()) {
+            View view = this.getCurrentFocus();
+            if (view != null) {
+                imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+            }
+        } else {
+            // writeToLog("Software Keyboard was not shown");
+        }
+    }
 }

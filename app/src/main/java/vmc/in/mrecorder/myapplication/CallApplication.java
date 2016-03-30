@@ -13,6 +13,7 @@ import java.util.UUID;
 
 import vmc.in.mrecorder.callbacks.TAG;
 import vmc.in.mrecorder.datahandler.HelperCallRecordings;
+import vmc.in.mrecorder.datahandler.MDatabase;
 import vmc.in.mrecorder.service.CallRecorderServiceAll;
 import vmc.in.mrecorder.syncadapter.SyncUtils;
 
@@ -25,6 +26,7 @@ public class CallApplication extends Application implements TAG {
 
     private static String DeviceID;
   private static HelperCallRecordings mDatabase;
+  private static MDatabase mdatabase;
     public Intent all;
 
 
@@ -141,6 +143,12 @@ public class CallApplication extends Application implements TAG {
             stopService(all);
             //  stopService(opt);
         }
+    }
+    public synchronized static MDatabase getWritabledatabase() {
+        if (mdatabase == null) {
+            mdatabase = new MDatabase(getAplicationContext());
+        }
+        return mdatabase;
     }
 
 }

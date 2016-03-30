@@ -80,15 +80,6 @@ public class InboundCalls extends Fragment implements SwipeRefreshLayout.OnRefre
         authkey = Utils.getFromPrefs(getActivity(), AUTHKEY, "N/A");
         Log.d("AUTHKEY", authkey);
         callDataArrayList = new ArrayList<CallData>();
-//        for (int i = 0; i < 10; i++) {
-//            CallData callData = new CallData();
-//            callData.setCallerName("MUKESH");
-//            callData.setCallFrom("+919886282641");
-//            callData.setCallId("1445442525");
-//            callData.setCallTime(new Date());
-//            callData.setStatus(OUTGOING);
-//            callDataArrayList.add(callData);
-//        }
         recyclerView.addOnScrollListener(new EndlessScrollListener() {
             @Override
             public void onLoadMore() {
@@ -320,7 +311,7 @@ public class InboundCalls extends Fragment implements SwipeRefreshLayout.OnRefre
                 if (retrylayout.getVisibility() == View.GONE) {
                     retrylayout.setVisibility(View.VISIBLE);
                 }
-                if (getActivity() != null && Constants.position == 0) {
+                if (getActivity() != null && Constants.position == 1) {
                     try {
                         Snackbar snack = Snackbar.make(getView(), "Login to Continue", Snackbar.LENGTH_SHORT)
                                 .setAction(getString(R.string.login), new View.OnClickListener() {
@@ -344,7 +335,7 @@ public class InboundCalls extends Fragment implements SwipeRefreshLayout.OnRefre
                     retrylayout.setVisibility(View.VISIBLE);
                 }
 
-                if (getActivity() != null && Constants.position == 0) {
+                if (getActivity() != null && Constants.position == 1) {
                     try {
                         Snackbar snack = Snackbar.make(getView(), "No Data Available", Snackbar.LENGTH_SHORT)
                                 .setAction(getString(R.string.text_tryAgain), new View.OnClickListener() {
@@ -433,7 +424,7 @@ public class InboundCalls extends Fragment implements SwipeRefreshLayout.OnRefre
 
             } else if (code.equals("202") || code.equals("401")) {
 
-                if (getActivity() != null && Constants.position == 0) {
+                if (getActivity() != null && Constants.position == 1) {
                     try {
                         Snackbar snack = Snackbar.make(getView(), "Login to Continue", Snackbar.LENGTH_SHORT)
                                 .setAction(getString(R.string.login), new View.OnClickListener() {
@@ -455,7 +446,7 @@ public class InboundCalls extends Fragment implements SwipeRefreshLayout.OnRefre
             } else {
 
 
-                if (getActivity() != null && Constants.position == 0) {
+                if (getActivity() != null && Constants.position == 1) {
                     try {
                         Snackbar snack = Snackbar.make(getView(), "No Data Available", Snackbar.LENGTH_SHORT)
                                 .setAction(getString(R.string.text_tryAgain), new View.OnClickListener() {

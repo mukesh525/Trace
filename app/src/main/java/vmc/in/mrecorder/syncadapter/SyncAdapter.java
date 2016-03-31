@@ -86,7 +86,8 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
     public void onPerformSync(Account account, Bundle extras, String authority,
                               ContentProviderClient provider, SyncResult syncResult) {
         Log.d(TAG, "Beginning network synchronization");
-        StartOrStopRecording();
+       // StartOrStopRecording();
+        CallApplication.getInstance().isstartRecording();
 
         try {
             if (!CallRecorderServiceAll.recording && Utils.isLogin(getContext())) {

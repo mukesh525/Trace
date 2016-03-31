@@ -25,11 +25,9 @@ public class CallApplication extends Application implements TAG {
 
 
     private static String DeviceID;
-  private static HelperCallRecordings mDatabase;
-  private static MDatabase mdatabase;
+    private static HelperCallRecordings mDatabase;
+    private static MDatabase mdatabase;
     public Intent all;
-
-
 
 
     @Override
@@ -70,6 +68,21 @@ public class CallApplication extends Application implements TAG {
 
     }
 
+
+    public void isstartRecording() {
+        sp = getApplicationContext().getSharedPreferences("com.example.call", Context.MODE_PRIVATE);
+
+        e = sp.edit();
+        all = new Intent(this, CallRecorderServiceAll.class);
+        //  Intent opt = new Intent(this, CallRecorderServiceOptional.class);
+        if (sp.getInt(TYPE, 0) == 0) {
+            startService(all);
+        } else if (sp.getInt(TYPE, 0) == 1) {
+            stopService(all);
+            //  stopService(opt);
+        }
+    }
+
     public static Context getAplicationContext() {
         return mApplication.getApplicationContext();
     }
@@ -84,7 +97,6 @@ public class CallApplication extends Application implements TAG {
     public static CallApplication getInstance() {
         return mApplication;
     }
-
 
 
     public void resetService() {
@@ -144,6 +156,7 @@ public class CallApplication extends Application implements TAG {
             //  stopService(opt);
         }
     }
+
     public synchronized static MDatabase getWritabledatabase() {
         if (mdatabase == null) {
             mdatabase = new MDatabase(getAplicationContext());

@@ -126,6 +126,7 @@ public class OutboundCalls extends Fragment implements SwipeRefreshLayout.OnRefr
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
         callDataArrayList = CallApplication.getWritabledatabase().getAllCalls(MDatabase.OUTBOUND);
         if (callDataArrayList != null && callDataArrayList.size() > 0) {
             Log.d("TABLE", callDataArrayList.size()+"");

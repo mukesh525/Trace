@@ -116,24 +116,24 @@ public class Calls_Adapter extends RecyclerView.Adapter<Calls_Adapter.CallViewHo
             holder.statusTextView.setText(ci.getCalltype().equals("0") ? MISSED : ci.getCalltype().equals("1") ? INCOMING : OUTGOING);
             // Log.d("TAG", ci.getStatus());
 
-            Uri bmpUri = null;
-
-            try {
-                bmpUri = getContactPhoto(ci.getCallfrom());
-
-            } catch (Exception e) {
-                e.printStackTrace();
-                Log.d("TAG", e.getMessage());
-            }
-
-            if (bmpUri != null) {
-                imageLoader.displayImage(bmpUri.toString(), holder.contactphoto, options);
-            } else {
-                Random r = new Random();
-                int a = r.nextInt(255);
-                //holder.contactphoto.setBackgroundColor(Color.rgb(r.nextInt(255), r.nextInt(255), r.nextInt(255)));
-                holder.contactphoto.setImageResource(R.drawable.def_img);
-            }
+//            Uri bmpUri = null;
+//
+//            try {
+//                bmpUri = getContactPhoto(ci.getCallfrom());
+//
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//                Log.d("TAG", e.getMessage());
+//            }
+//
+//            if (bmpUri != null) {
+//                imageLoader.displayImage(bmpUri.toString(), holder.contactphoto, options);
+//            } else {
+//                Random r = new Random();
+//                int a = r.nextInt(255);
+//                //holder.contactphoto.setBackgroundColor(Color.rgb(r.nextInt(255), r.nextInt(255), r.nextInt(255)));
+//                holder.contactphoto.setImageResource(R.drawable.def_img);
+//            }
 
 
             holder.contactphoto.setImageBitmap(getFacebookPhoto(ci.getCallto()));
@@ -321,7 +321,7 @@ public class Calls_Adapter extends RecyclerView.Adapter<Calls_Adapter.CallViewHo
         ContentResolver cr = context.getContentResolver();
         Cursor contact = cr.query(phoneUri,
                 new String[]{ContactsContract.Contacts._ID}, null, null, null);
-              contact.close();
+             // contact.close();
         if (contact.moveToFirst()) {
             long userId = contact.getLong(contact.getColumnIndex(ContactsContract.Contacts._ID));
             photoUri = ContentUris.withAppendedId(ContactsContract.Contacts.CONTENT_URI, userId);

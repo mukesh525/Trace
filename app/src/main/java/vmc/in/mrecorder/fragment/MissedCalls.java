@@ -126,6 +126,7 @@ public class MissedCalls extends Fragment  implements SwipeRefreshLayout.OnRefre
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
         callDataArrayList = CallApplication.getWritabledatabase().getAllCalls(MDatabase.MISSED);
         if (callDataArrayList != null && callDataArrayList.size() > 0) {
             Log.d("TABLE", callDataArrayList.size()+"");

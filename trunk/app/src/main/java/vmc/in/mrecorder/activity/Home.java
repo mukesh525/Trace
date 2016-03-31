@@ -62,8 +62,14 @@ public class Home extends AppCompatActivity
         setContentView(R.layout.activity_home);
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
-        if (!Utils.isMyServiceRunning(CallRecorderServiceAll.class, Home.this)) {
-            CallApplication.getInstance().startRecording();
+        String Firsttym = Utils.getFromPrefs(Home.this, FIRST_TYME, DEFAULT);
+
+        if (Firsttym.equals(DEFAULT)) {
+
+            if (!Utils.isMyServiceRunning(CallRecorderServiceAll.class, Home.this)) {
+                CallApplication.getInstance().startRecording();
+            }
+            Utils.saveToPrefs(Home.this, FIRST_TYME, "TRUE");
         }
         mDrawer = (NavigationView) findViewById(R.id.nav_view);
         mDrawer.setNavigationItemSelectedListener(this);
@@ -83,7 +89,7 @@ public class Home extends AppCompatActivity
         View header = mDrawer.getHeaderView(0);
         user = (TextView) header.findViewById(R.id.tv_name);
         email = (TextView) header.findViewById(R.id.tv_email);
-        String useremail =Utils.getFromPrefs(this, EMAIL, DEFAULT);
+        String useremail = Utils.getFromPrefs(this, EMAIL, DEFAULT);
         String username = Utils.getFromPrefs(this, NAME, DEFAULT);
         user.setText("Hi " + username);
         email.setText(useremail);

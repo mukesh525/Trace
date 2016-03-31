@@ -69,6 +69,7 @@ public interface TAG {
     public String LIMIT = "limit";
     public String TYPE = "type";
     public String DEVICEID = "deviceid";
+    public String FIRST_TYME = "firstime";
 
     public String TYPE_MISSED = "0";
     public String TYPE_INCOMING = "1";

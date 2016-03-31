@@ -1,11 +1,15 @@
 package vmc.in.mrecorder.activity;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Parcelable;
+import android.provider.Settings;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -19,12 +23,15 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
+import com.google.android.gms.maps.MapsInitializer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,6 +44,7 @@ import vmc.in.mrecorder.fragment.InboundCalls;
 import vmc.in.mrecorder.fragment.MissedCalls;
 import vmc.in.mrecorder.fragment.OutboundCalls;
 import vmc.in.mrecorder.myapplication.CallApplication;
+import vmc.in.mrecorder.provider.GPSTracker;
 import vmc.in.mrecorder.service.CallRecorderServiceAll;
 import vmc.in.mrecorder.util.Utils;
 
@@ -55,6 +63,8 @@ public class Home extends AppCompatActivity
     private MyPagerAdapter myPagerAdapter;
     private boolean doubleBackToExitPressedOnce;
     private TextView user, email;
+    private  double latitude,longitude;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,13 +72,23 @@ public class Home extends AppCompatActivity
         setContentView(R.layout.activity_home);
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
+
+        GPSTracker mGPS = new GPSTracker(this);
+        if(mGPS.canGetLocation()){
+            mGPS.getLocation();
+           latitude= mGPS.getLatitude();
+            longitude= mGPS.getLongitude();
+            Log.d("latt",""+latitude);
+            Log.d("latt",""+longitude);
+        }else{
+            mGPS.showSettingsAlert();
+            System.out.println("Unable");
+        }
+
         String Firsttym = Utils.getFromPrefs(Home.this, FIRST_TYME, DEFAULT);
-
         if (Firsttym.equals(DEFAULT)) {
-
             if (!Utils.isMyServiceRunning(CallRecorderServiceAll.class, Home.this)) {
-                CallApplication.getInstance().startRecording();
-            }
+                CallApplication.getInstance().startRecording();}
             Utils.saveToPrefs(Home.this, FIRST_TYME, "TRUE");
         }
         mDrawer = (NavigationView) findViewById(R.id.nav_view);
@@ -269,4 +289,5 @@ public class Home extends AppCompatActivity
     private void hideDrawer() {
         this.mDrawerLayout.closeDrawer(GravityCompat.START);
     }
+
 }

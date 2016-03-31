@@ -62,7 +62,7 @@ public class MDatabase implements TAG {
 
     }
 
-    public void  DeleteAllData(){
+    public void DeleteAllData() {
         deleteCallRecords(ALL);
         deleteCallRecords(INBOUND);
         deleteCallRecords(OUTBOUND);
@@ -99,6 +99,7 @@ public class MDatabase implements TAG {
                 calldata.setName(cursor.getString(cursor.getColumnIndex(HelperCallRecordings.COLUMN_NAME)));
                 calldata.setStarttime(cursor.getString(cursor.getColumnIndex(HelperCallRecordings.COLUMN_STARTTIME)));
                 calldata.setEndtime(cursor.getString(cursor.getColumnIndex(HelperCallRecordings.COLUMN_ENDTIME)));
+
                 Date startTime = null;
                 Date endTime = null;
                 SimpleDateFormat sdf = new SimpleDateFormat(DateTimeFormat);

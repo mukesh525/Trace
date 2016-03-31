@@ -148,7 +148,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
 
     public void updateList(final String smsMessage) {
         //update otp Your one time passwod for Mconnect is: 356958
-        OTP_Sms = smsMessage.substring(42);
+        OTP_Sms = smsMessage.substring(33);
         //  String OTP1=smsMessage.split(": ")[0];
 
         // Log.d("SMS", OTP1+" "+OTP);
@@ -197,6 +197,9 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
                 btn_login.setEnabled(false);
                 onLoginFailed();
             }
+        }
+        else {
+            Toast.makeText(getBaseContext(), "validate failed", Toast.LENGTH_SHORT).show();
         }
     }
 

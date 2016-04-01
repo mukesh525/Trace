@@ -4,18 +4,15 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Parcelable;
-import android.provider.Settings;
-import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
@@ -23,18 +20,15 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
-import com.google.android.gms.maps.MapsInitializer;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.getbase.floatingactionbutton.FloatingActionsMenu;
 
 import vmc.in.mrecorder.R;
 import vmc.in.mrecorder.callbacks.Constants;
@@ -44,16 +38,18 @@ import vmc.in.mrecorder.fragment.InboundCalls;
 import vmc.in.mrecorder.fragment.MissedCalls;
 import vmc.in.mrecorder.fragment.OutboundCalls;
 import vmc.in.mrecorder.myapplication.CallApplication;
-import vmc.in.mrecorder.provider.GPSTracker;
 import vmc.in.mrecorder.service.CallRecorderServiceAll;
+import vmc.in.mrecorder.syncadapter.SyncUtils;
 import vmc.in.mrecorder.util.Utils;
+
+import com.getbase.floatingactionbutton.FloatingActionButton;
 
 
 public class Home extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, TAG {
 
     private Toolbar mToolbar;
-    public FloatingActionButton floatingActionButton;
+    public FloatingActionButton floatingActionButton, floatingActionButtonSync;
     private String titles[] = {"ALL", "INBOUND", "OUTBOUND", "MISSED"};
     private NavigationView mDrawer;
     private DrawerLayout mDrawerLayout;
@@ -63,7 +59,10 @@ public class Home extends AppCompatActivity
     private MyPagerAdapter myPagerAdapter;
     private boolean doubleBackToExitPressedOnce;
     private TextView user, email;
-    private  double latitude,longitude;
+    private double latitude, longitude;
+    public FloatingActionsMenu fabMenu;
+    public CoordinatorLayout coordinatorLayout;
+    private Snackbar snack;
 
 
     @Override
@@ -73,22 +72,24 @@ public class Home extends AppCompatActivity
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
 
-        GPSTracker mGPS = new GPSTracker(this);
-        if(mGPS.canGetLocation()){
-            mGPS.getLocation();
-           latitude= mGPS.getLatitude();
-            longitude= mGPS.getLongitude();
-            Log.d("latt",""+latitude);
-            Log.d("latt",""+longitude);
-        }else{
-            mGPS.showSettingsAlert();
-            System.out.println("Unable");
-        }
+//        GPSTracker mGPS = new GPSTracker(this);
+//        if(mGPS.canGetLocation()){
+//            mGPS.getLocation();
+//           latitude= mGPS.getLatitude();
+//            longitude= mGPS.getLongitude();
+//            Log.d("latt",""+latitude);
+//            Log.d("latt",""+longitude);
+//        }else{
+//            mGPS.showSettingsAlert();
+//            System.out.println("Unable");
+//        }
+        coordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordi_layout);
 
         String Firsttym = Utils.getFromPrefs(Home.this, FIRST_TYME, DEFAULT);
         if (Firsttym.equals(DEFAULT)) {
             if (!Utils.isMyServiceRunning(CallRecorderServiceAll.class, Home.this)) {
-                CallApplication.getInstance().startRecording();}
+                CallApplication.getInstance().startRecording();
+            }
             Utils.saveToPrefs(Home.this, FIRST_TYME, "TRUE");
         }
         mDrawer = (NavigationView) findViewById(R.id.nav_view);
@@ -116,12 +117,26 @@ public class Home extends AppCompatActivity
         mDrawer.setNavigationItemSelectedListener(this);
 
         floatingActionButton = (FloatingActionButton) findViewById(R.id.fab);
+        floatingActionButtonSync = (FloatingActionButton) findViewById(R.id.fab_sync);
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Utils.setRecording(Home.this);
+                fabMenu.collapse();
             }
         });
+        floatingActionButtonSync.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SyncUtils.TriggerRefresh();
+                fabMenu.collapse();
+            }
+        });
+
+
+
+
+
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -142,8 +157,54 @@ public class Home extends AppCompatActivity
 
             }
         });
+        final FrameLayout frameLayout = (FrameLayout) findViewById(R.id.frame_layout);
+        frameLayout.getBackground().setAlpha(0);
+        fabMenu = (FloatingActionsMenu) findViewById(R.id.fab_menu);
+        fabMenu.setOnFloatingActionsMenuUpdateListener(new FloatingActionsMenu.OnFloatingActionsMenuUpdateListener() {
+            @Override
+            public void onMenuExpanded() {
+                frameLayout.getBackground().setAlpha(240);
+                frameLayout.setOnTouchListener(new View.OnTouchListener() {
+                    @Override
+                    public boolean onTouch(View v, MotionEvent event) {
+                        fabMenu.collapse();
+                        return true;
+                    }
+                });
+            }
+
+            @Override
+            public void onMenuCollapsed() {
+                frameLayout.getBackground().setAlpha(0);
+                frameLayout.setOnTouchListener(null);
+            }
+        });
+
+    }
 
 
+    public void showSettingsAlert() {
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(Home.this);
+        alertDialog.setTitle("Logout Alert");
+        // Setting Dialog Message
+        alertDialog.setMessage("Do you want to logout?");
+
+        // On pressing Settings button
+        alertDialog.setPositiveButton("Logout", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                Utils.isLogout(Home.this);
+            }
+        });
+
+        // on pressing cancel button
+        alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        // Showing Alert Message
+        alertDialog.show();
     }
 
     class MyPagerAdapter extends FragmentStatePagerAdapter {
@@ -235,7 +296,7 @@ public class Home extends AppCompatActivity
 
         int id = item.getItemId();
         if (id == R.id.action_settings) {
-            Utils.isLogout(this);
+            showSettingsAlert();
 
             return true;
         }

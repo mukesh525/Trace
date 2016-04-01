@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group
+        android:id="@+id/my_id1"
+        android:checkableBehavior="single">
 
         <item
             android:id="@+id/all"
@@ -19,18 +22,19 @@
             android:icon="@drawable/ic_call_missed"
             android:title="MISSED" />
 
-
-
-    <item android:title="Prefrences">
-        <menu>
-            <item
-                android:id="@+id/nav_help_feedback"
-                android:icon="@drawable/ic_allfeed"
-                android:title="Help Feedback" />
-            <item
-                android:id="@+id/cal_log"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Call Log" />
-        </menu>
-    </item>
+    </group>
+    <group android:id="@+id/my_id">
+        <item android:title="Prefrences">
+            <menu>
+                <item
+                    android:id="@+id/nav_help_feedback"
+                    android:icon="@drawable/ic_allfeed"
+                    android:title="Help Feedback" />
+                <item
+                    android:id="@+id/cal_log"
+                    android:icon="@drawable/ic_menu_send"
+                    android:title="Call Log" />
+            </menu>
+        </item>
+    </group>
 </menu>

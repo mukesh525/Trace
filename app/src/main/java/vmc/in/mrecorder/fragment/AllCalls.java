@@ -7,6 +7,8 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -20,6 +22,8 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.getbase.floatingactionbutton.FloatingActionsMenu;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -53,7 +57,7 @@ public class AllCalls extends Fragment implements SwipeRefreshLayout.OnRefreshLi
     private LinearLayout mprogressLayout, retrylayout;
     private LinearLayout pdloadmore;
     private LinearLayoutManager mLayoutManager;
-    private RelativeLayout mroot;
+    private FloatingActionsMenu mroot;
     private boolean loading;
     private ArrayList<CallData> callDataArrayList;
     private int offset = 0;
@@ -86,7 +90,8 @@ public class AllCalls extends Fragment implements SwipeRefreshLayout.OnRefreshLi
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_all_calls, container, false);
         swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.SwipefollowUp);
-        mroot = (RelativeLayout) view.findViewById(R.id.fragment_followup);
+        //  mroot = (RelativeLayout) view.findViewById(R.id.fragment_followup);
+        mroot = ((Home) getActivity()).fabMenu;
         mprogressLayout = (LinearLayout) view.findViewById(R.id.mprogressLayout);
         retrylayout = (LinearLayout) view.findViewById(R.id.retryLayout);
         pdloadmore = (LinearLayout) view.findViewById(R.id.loadmorepd1);
@@ -102,7 +107,7 @@ public class AllCalls extends Fragment implements SwipeRefreshLayout.OnRefreshLi
         recyclerView.addOnScrollListener(new EndlessScrollListener() {
             @Override
             public void onLoadMore() {
-                ((Home) getActivity()).floatingActionButton.hide();
+                //  ((Home) getActivity()).floatingActionButton.hide();
                 if (pdloadmore.getVisibility() == View.GONE) {
                     pdloadmore.setVisibility(View.VISIBLE);
                 }
@@ -114,7 +119,7 @@ public class AllCalls extends Fragment implements SwipeRefreshLayout.OnRefreshLi
 
             @Override
             public void onLoadUp() {
-                ((Home) getActivity()).floatingActionButton.hide();
+                //  ((Home) getActivity()).floatingActionButton.hide();
                 // if (VisitData != null && VisitData.size() >= MAX) {
                 if (pdloadmore.getVisibility() == View.VISIBLE) {
                     pdloadmore.setVisibility(View.GONE);
@@ -126,7 +131,7 @@ public class AllCalls extends Fragment implements SwipeRefreshLayout.OnRefreshLi
 
             @Override
             public void onIdle() {
-                ((Home) getActivity()).floatingActionButton.show();
+                // ((Home) getActivity()).floatingActionButton.show();
             }
         });
         swipeRefreshLayout.setColorSchemeResources(
@@ -169,7 +174,7 @@ public class AllCalls extends Fragment implements SwipeRefreshLayout.OnRefreshLi
     @Override
     public void onRefresh() {
         offset = 0;
-        ((Home) getActivity()).floatingActionButton.show();
+        //  ((Home) getActivity()).floatingActionButton.show();
         if (swipeRefreshLayout.isRefreshing()) {
             swipeRefreshLayout.setRefreshing(false);
 
@@ -332,7 +337,7 @@ public class AllCalls extends Fragment implements SwipeRefreshLayout.OnRefreshLi
                 }
                 if (getActivity() != null && Constants.position == 0) {
                     try {
-                        Snackbar snack = Snackbar.make(getView(), "Login to Continue", Snackbar.LENGTH_SHORT)
+                        Snackbar snack = Snackbar.make(mroot, "Login to Continue", Snackbar.LENGTH_SHORT)
                                 .setAction(getString(R.string.login), new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
@@ -356,7 +361,7 @@ public class AllCalls extends Fragment implements SwipeRefreshLayout.OnRefreshLi
                 }
                 if (getActivity() != null && Constants.position == 0) {
                     try {
-                        Snackbar snack = Snackbar.make(getView(), "No Data Available", Snackbar.LENGTH_SHORT)
+                        Snackbar snack = Snackbar.make(mroot, "No Data Available", Snackbar.LENGTH_SHORT)
                                 .setAction(getString(R.string.text_tryAgain), new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
@@ -429,6 +434,8 @@ public class AllCalls extends Fragment implements SwipeRefreshLayout.OnRefreshLi
 
         @Override
         protected void onPostExecute(ArrayList<CallData> data) {
+
+            loading = false;
 
             if (pdloadmore.getVisibility() == View.VISIBLE) {
                 pdloadmore.setVisibility(View.GONE);

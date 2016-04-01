@@ -153,6 +153,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
 
         // Log.d("SMS", OTP1+" "+OTP);
         tv_otp.setText(OTP_Sms);
+        btn_login.setText("Login");
         if (progressDialog != null && progressDialog.isShowing()) {
             progressDialog.dismiss();
         }
@@ -165,16 +166,20 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
         hideKeyboard();
         switch (v.getId()) {
             case R.id.btn_login:
+                if (validateOTP()) {
+                    GetOtp();
+                }
+                if(tv_otp.length()==0||tv_otp.equals("")){
+                    btn_login.setText("Resend");
+                }
                 Login();
                 // StartLogin();
                 break;
 
             case R.id.btn_get_otp:
-
-                //  btn_getOtp.setBackgroundColor(Color.parseColor("#FFDC4545"));
-                if (validateOTP()) {
-                    GetOtp();
-                }
+//                if (validateOTP()) {
+//                    GetOtp();
+//                }
                 break;
 
             case R.id.link_forgot:
@@ -199,7 +204,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
             }
         }
         else {
-            Toast.makeText(getBaseContext(), "validate failed", Toast.LENGTH_SHORT).show();
+           // Toast.makeText(getBaseContext(), "validate failed", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -235,11 +240,11 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
             et_password.setError(null);
         }
         if (OTP.isEmpty() || OTP.length() < 6) {
-            tv_otp.setError("Wait for OTP Message", drawable);
+           // tv_otp.setError("Wait for OTP Message", drawable);
             // errormsg = "Password must be between 4 and 10 alphanumeric characters";
             valid = false;
         } else {
-            tv_otp.setError(null);
+           // tv_otp.setError(null);
         }
 
 //        if (!terms.isChecked()) {

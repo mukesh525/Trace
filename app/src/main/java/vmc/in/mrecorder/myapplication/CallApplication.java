@@ -16,6 +16,7 @@ import vmc.in.mrecorder.datahandler.HelperCallRecordings;
 import vmc.in.mrecorder.datahandler.MDatabase;
 import vmc.in.mrecorder.service.CallRecorderServiceAll;
 import vmc.in.mrecorder.syncadapter.SyncUtils;
+import vmc.in.mrecorder.util.Utils;
 
 public class CallApplication extends Application implements TAG {
     public static CallApplication mApplication;
@@ -76,9 +77,13 @@ public class CallApplication extends Application implements TAG {
         all = new Intent(this, CallRecorderServiceAll.class);
         //  Intent opt = new Intent(this, CallRecorderServiceOptional.class);
         if (sp.getInt(TYPE, 0) == 0) {
-            startService(all);
+            if (!Utils.isMyServiceRunning(CallRecorderServiceAll.class, getAplicationContext())) {
+                startService(all);
+            }
         } else if (sp.getInt(TYPE, 0) == 1) {
-            stopService(all);
+            if (Utils.isMyServiceRunning(CallRecorderServiceAll.class, getAplicationContext())) {
+                stopService(all);
+            }
             //  stopService(opt);
         }
     }

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawer_layout"
 
@@ -11,9 +12,9 @@
 
     <LinearLayout
         android:id="@+id/rootLayout"
-        android:background="@drawable/background_port"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/background_port"
         android:orientation="vertical">
 
         <android.support.design.widget.CoordinatorLayout
@@ -56,15 +57,56 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:layout_behavior="@string/appbar_scrolling_view_behavior" />
-            <android.support.design.widget.FloatingActionButton
-                android:id="@+id/fab"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom|end"
-                android:layout_margin="@dimen/fab_margin"
-                android:src="@drawable/ic_lock" />
+
+            <FrameLayout
+                android:id="@+id/frame_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white_overlay">
+                <!--  floating action menu with buttons -->
+
+                <com.getbase.floatingactionbutton.FloatingActionsMenu
+                    android:id="@+id/fab_menu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right|bottom"
+                    app:layout_anchorGravity="bottom|end"
+                    app:layout_behavior="vmc.in.mrecorder.activity.FABScrollBehavior"
+                    fab:fab_addButtonColorNormal="@color/accent"
+                    fab:fab_addButtonColorPressed="@color/accent_dark"
+                    fab:fab_addButtonPlusIconColor="@color/white"
+                    fab:fab_addButtonStrokeVisible="false"
+                    fab:fab_labelStyle="@style/menu_labels_style"
+                    fab:fab_labelsPosition="left">
+
+                    <com.getbase.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/fab_sync"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        fab:fab_colorNormal="@color/accent"
+                        fab:fab_colorPressed="@color/accent_dark"
+                        fab:fab_icon="@drawable/ic_sync"
+                        fab:fab_plusIconColor="@color/white"
+                        fab:fab_size="mini"
+                        fab:fab_title="Sync Now" />
+
+                    <com.getbase.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/fab"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        fab:fab_colorNormal="@color/accent"
+                        fab:fab_colorPressed="@color/accent_dark"
+                        fab:fab_icon="@drawable/ic_settings"
+                        fab:fab_plusIconColor="@color/white"
+                        fab:fab_size="mini"
+                        fab:fab_title="Settings" />
+                </com.getbase.floatingactionbutton.FloatingActionsMenu>
+
+            </FrameLayout>
 
         </android.support.design.widget.CoordinatorLayout>
+
+
     </LinearLayout>
 
 
@@ -74,9 +116,10 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
-       app:theme="@style/navigationviewstyle"
-        app:itemTextColor="@color/secondary_text"
         app:headerLayout="@layout/nav_header_home"
-        app:menu="@menu/activity_home_drawer" />
+        app:itemTextColor="@color/secondary_text"
+        app:menu="@menu/activity_home_drawer"
+        app:theme="@style/navigationviewstyle" />
+
 
 </android.support.v4.widget.DrawerLayout>

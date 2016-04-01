@@ -161,7 +161,7 @@ public class GPSTracker extends Service implements LocationListener {
      * Function to show settings alert dialog
      * On pressing Settings button will lauch Settings Options
      * */
-    
+
     @Override
     public void onLocationChanged(Location location) {
 // TODO Auto-generated method stub

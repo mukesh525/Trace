@@ -73,10 +73,7 @@ public class Home extends AppCompatActivity
         setContentView(R.layout.activity_home);
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
-
-        GPSTracker mGPS = new GPSTracker(this);
         coordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordi_layout);
-
         String Firsttym = Utils.getFromPrefs(Home.this, FIRST_TYME, DEFAULT);
         if (Firsttym.equals(DEFAULT)) {
             if (!Utils.isMyServiceRunning(CallRecorderServiceAll.class, Home.this)) {

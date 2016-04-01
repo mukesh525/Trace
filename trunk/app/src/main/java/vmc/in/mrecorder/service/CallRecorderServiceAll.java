@@ -19,6 +19,7 @@ import java.io.File;
 
 import vmc.in.mrecorder.callbacks.TAG;
 import vmc.in.mrecorder.myapplication.CallApplication;
+import vmc.in.mrecorder.provider.GPSTracker;
 
 public class CallRecorderServiceAll extends Service implements TAG {
 
@@ -90,13 +91,15 @@ public class CallRecorderServiceAll extends Service implements TAG {
 
             unregisterReceiver(cbr);
 
-          //  CallApplication.getWritableDatabase().closeDatabase();
+            //  CallApplication.getWritableDatabase().closeDatabase();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     public class CallBroadcastReceiver extends BroadcastReceiver {
+
+        private GPSTracker mGPS;
 
         public CallBroadcastReceiver() {
         }
@@ -128,7 +131,7 @@ public class CallRecorderServiceAll extends Service implements TAG {
             sample.mkdirs();
 
             String fileName = String.valueOf(System.currentTimeMillis());
-           // String fileName = DateFormat.getDateTimeInstance().format(new Date());
+            // String fileName = DateFormat.getDateTimeInstance().format(new Date());
             File audiofile;
             String manufacturer = Build.MANUFACTURER;
             Log.e(TAG, manufacturer);
@@ -230,8 +233,9 @@ public class CallRecorderServiceAll extends Service implements TAG {
                         if (!shown) {
                             String fileName = String.valueOf(System.currentTimeMillis());
                             Log.d(TAG, "Missed call from : " + phoneNumber);
-                            // Toast.makeText(getApplicationContext(),"Missed call from : " + phoneNumber,Toast.LENGTH_SHORT).show();
-
+                            mGPS = new GPSTracker(getApplicationContext());
+                            Log.d(TAG, "Latitude" + mGPS.getLatitude() + "");
+                            Log.d(TAG, "Longitude" + mGPS.getLongitude() + "");
                             CallApplication.getWritableDatabase().insert(phoneNumber, fileName, DEFAULT, MISSED);
                             shown = true;
                         }

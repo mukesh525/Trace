@@ -166,14 +166,14 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
         hideKeyboard();
         switch (v.getId()) {
             case R.id.btn_login:
-                if (validateOTP()) {
+                if (btn_login.getText().toString().equals("Login")) {
+                    Login();
+                } else if (validateOTP()) {
                     GetOtp();
+                    if (tv_otp.getText().toString().length() == 0 || tv_otp.getText().toString().equals("")) {
+                        btn_login.setText("Resend OTP");
+                    }
                 }
-                if(tv_otp.length()==0||tv_otp.equals("")){
-                    btn_login.setText("Resend");
-                }
-                Login();
-                // StartLogin();
                 break;
 
             case R.id.btn_get_otp:
@@ -193,7 +193,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
 
 
         if (validate()) {
-            if (OTP_resp.equals(OTP_Sms)) {
+
+            if (OTP_resp != null && OTP_resp.equals(OTP_Sms)) {
                 //  startActivity(new Intent(getApplicationContext(), Home.class));
                 //Toast.makeText(getApplicationContext(), "OTP Verfied", Toast.LENGTH_SHORT).show();
                 StartLogin();
@@ -202,9 +203,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
                 btn_login.setEnabled(false);
                 onLoginFailed();
             }
-        }
-        else {
-           // Toast.makeText(getBaseContext(), "validate failed", Toast.LENGTH_SHORT).show();
+        } else {
+            // Toast.makeText(getBaseContext(), "validate failed", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -240,11 +240,11 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
             et_password.setError(null);
         }
         if (OTP.isEmpty() || OTP.length() < 6) {
-           // tv_otp.setError("Wait for OTP Message", drawable);
+            // tv_otp.setError("Wait for OTP Message", drawable);
             // errormsg = "Password must be between 4 and 10 alphanumeric characters";
             valid = false;
         } else {
-           // tv_otp.setError(null);
+            // tv_otp.setError(null);
         }
 
 //        if (!terms.isChecked()) {
@@ -340,7 +340,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
     }
 
 
-    public void GetOtp() {
+    public synchronized void GetOtp() {
         btn_getOtp.setText("RESEND");
         email = et_email.getText().toString().trim();
         password = et_password.getText().toString().trim();
@@ -391,8 +391,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
             progressDialog.show();
 
 
-
-
         }
 
 
@@ -434,7 +432,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
                 }
                 Log.d("OTP", data.toString());
 
-
+                tv_otp.setHint("Waiting for OTP");
                 if (code.equals("202")) {
                     Toast.makeText(getBaseContext(), msg, Toast.LENGTH_SHORT).show();
 //                    if (progressDialog != null && progressDialog.isShowing()) {
@@ -584,6 +582,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
         NotificationManager nMgr = (NotificationManager) ctx.getSystemService(ns);
         nMgr.cancel(notifyId);
     }
+
     public void hideKeyboard() {
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 

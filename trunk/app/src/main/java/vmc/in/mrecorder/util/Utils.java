@@ -49,6 +49,7 @@ public class Utils implements TAG {
         styledAttributes.recycle();
         return toolbarHeight;
     }
+
     public static int getTabsHeight(Context context) {
         return (int) context.getResources().getDimension(R.dimen.tabsHeight);
     }
@@ -169,15 +170,16 @@ public class Utils implements TAG {
         ArrayList<File> inFiles = new ArrayList<File>();
 
         File[] files = parentDir.listFiles();
-        for (File file : files) {
-            if (file.isDirectory()) {
-                inFiles.addAll(getListFiles(file));
-            } else {
-                if (file.getName().endsWith(".3gp") || file.getName().endsWith(".amr")) {
-                    inFiles.add(file);
+        if (files != null && files.length >0)
+            for (File file : files) {
+                if (file.isDirectory()) {
+                    inFiles.addAll(getListFiles(file));
+                } else {
+                    if (file.getName().endsWith(".3gp") || file.getName().endsWith(".amr")) {
+                        inFiles.add(file);
+                    }
                 }
             }
-        }
         return inFiles;
     }
 

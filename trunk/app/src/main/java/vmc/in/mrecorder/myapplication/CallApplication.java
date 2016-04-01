@@ -9,11 +9,13 @@ import android.content.SharedPreferences.Editor;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 
+import java.util.ArrayList;
 import java.util.UUID;
 
 import vmc.in.mrecorder.callbacks.TAG;
 import vmc.in.mrecorder.datahandler.HelperCallRecordings;
 import vmc.in.mrecorder.datahandler.MDatabase;
+import vmc.in.mrecorder.provider.GPSTracker;
 import vmc.in.mrecorder.service.CallRecorderServiceAll;
 import vmc.in.mrecorder.syncadapter.SyncUtils;
 import vmc.in.mrecorder.util.Utils;
@@ -29,6 +31,8 @@ public class CallApplication extends Application implements TAG {
     private static HelperCallRecordings mDatabase;
     private static MDatabase mdatabase;
     public Intent all;
+    private double latitude, longitude;
+    private GPSTracker mGPS;
 
 
     @Override
@@ -37,6 +41,8 @@ public class CallApplication extends Application implements TAG {
         super.onCreate();
         SyncUtils.CreateSyncAccount(getBaseContext());
         Log.e("application", "created");
+
+
         DeviceID = GetDeviceId();
         mApplication = this;
         //try{

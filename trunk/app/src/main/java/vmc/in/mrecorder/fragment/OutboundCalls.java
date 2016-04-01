@@ -83,7 +83,7 @@ public class OutboundCalls extends Fragment implements SwipeRefreshLayout.OnRefr
         recyclerView.addOnScrollListener(new EndlessScrollListener() {
             @Override
             public void onLoadMore() {
-                ((Home) getActivity()).floatingActionButton.hide();
+               // ((Home) getActivity()).floatingActionButton.hide();
                 if (pdloadmore.getVisibility() == View.GONE) {
                     pdloadmore.setVisibility(View.VISIBLE);
                 }
@@ -95,7 +95,7 @@ public class OutboundCalls extends Fragment implements SwipeRefreshLayout.OnRefr
 
             @Override
             public void onLoadUp() {
-                ((Home) getActivity()).floatingActionButton.hide();
+               // ((Home) getActivity()).floatingActionButton.hide();
                 // if (VisitData != null && VisitData.size() >= MAX) {
                 if (pdloadmore.getVisibility() == View.VISIBLE) {
                     pdloadmore.setVisibility(View.GONE);
@@ -107,7 +107,7 @@ public class OutboundCalls extends Fragment implements SwipeRefreshLayout.OnRefr
 
             @Override
             public void onIdle() {
-                ((Home) getActivity()).floatingActionButton.show();
+                //((Home) getActivity()).floatingActionButton.show();
             }
         });
         swipeRefreshLayout.setColorSchemeResources(
@@ -149,7 +149,7 @@ public class OutboundCalls extends Fragment implements SwipeRefreshLayout.OnRefr
     @Override
     public void onRefresh() {
         offset = 0;
-        ((Home) getActivity()).floatingActionButton.show();
+    //    ((Home) getActivity()).floatingActionButton.show();
         if (swipeRefreshLayout.isRefreshing()) {
             swipeRefreshLayout.setRefreshing(false);
 
@@ -407,7 +407,7 @@ public class OutboundCalls extends Fragment implements SwipeRefreshLayout.OnRefr
 
         @Override
         protected void onPostExecute(ArrayList<CallData> data) {
-
+            loading = false;
             if (pdloadmore.getVisibility() == View.VISIBLE) {
                 pdloadmore.setVisibility(View.GONE);
             }

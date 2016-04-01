@@ -58,11 +58,11 @@ public class Calls_Adapter extends RecyclerView.Adapter<Calls_Adapter.CallViewHo
     SimpleDateFormat sdfDate = new SimpleDateFormat("dd-MM-yyyy");
     SimpleDateFormat sdfTime = new SimpleDateFormat("HH:mm:ss");
     private int previousPosition = 0;
-    public RelativeLayout mroot;
+    public View mroot;
     public Fragment fragment;
 
 
-    public Calls_Adapter(Context context, ArrayList<CallData> CallDataArrayList, RelativeLayout mroot, Fragment fragment) {
+    public Calls_Adapter(Context context, ArrayList<CallData> CallDataArrayList, View mroot, Fragment fragment) {
         this.context = context;
         this.CallDataArrayList = CallDataArrayList;
         this.mroot = mroot;
@@ -101,7 +101,7 @@ public class Calls_Adapter extends RecyclerView.Adapter<Calls_Adapter.CallViewHo
             final CallData ci = CallDataArrayList.get(position);
             holder.callerNameTextView.setText(Utils.isEmpty(ci.getName()) ? UNKNOWN : ci.getName());
             holder.callFromTextView.setText(Utils.isEmpty(ci.getCallto()) ? UNKNOWN : ci.getCallto());
-            holder.overflow.setOnClickListener(new OnOverflowSelectedListener(context, holder.getAdapterPosition(), CallDataArrayList, mroot, fragment));
+            holder.overflow.setOnClickListener(new OnOverflowSelectedListener(context, holder.getAdapterPosition(), CallDataArrayList));
             holder.callFrom.setText(ci.getCalltype().equals("0") ? "Call From" : ci.getCalltype().equals("1") ? "Call From" : "Call To");
 
 
@@ -157,16 +157,14 @@ public class Calls_Adapter extends RecyclerView.Adapter<Calls_Adapter.CallViewHo
         private Context mContext;
         private int position;
         private ArrayList<CallData> callDatas;
-        private RelativeLayout mroot;
-        private Fragment fragment;
 
 
-        public OnOverflowSelectedListener(Context context, int pos, ArrayList<CallData> callDatas, RelativeLayout mroot, Fragment fragment) {
+
+        public OnOverflowSelectedListener(Context context, int pos, ArrayList<CallData> callDatas) {
             mContext = context;
             this.position = pos;
             this.callDatas = callDatas;
-            this.mroot = mroot;
-            this.fragment = fragment;
+
         }
 
         @Override

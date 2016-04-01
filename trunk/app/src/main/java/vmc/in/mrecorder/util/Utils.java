@@ -10,6 +10,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.content.res.TypedArray;
 import android.net.ConnectivityManager;
 import android.net.Network;
 import android.net.NetworkInfo;
@@ -41,6 +42,16 @@ import vmc.in.mrecorder.service.CallRecorderServiceAll;
  * Created by gousebabjan on 17/3/16.
  */
 public class Utils implements TAG {
+    public static int getToolbarHeight(Context context) {
+        final TypedArray styledAttributes = context.getTheme().obtainStyledAttributes(
+                new int[]{R.attr.actionBarSize});
+        int toolbarHeight = (int) styledAttributes.getDimension(0, 0);
+        styledAttributes.recycle();
+        return toolbarHeight;
+    }
+    public static int getTabsHeight(Context context) {
+        return (int) context.getResources().getDimension(R.dimen.tabsHeight);
+    }
 
     public static boolean onlineStatus2(Context activityContext) {
         ConnectivityManager connectivityManager = (ConnectivityManager) activityContext.getSystemService(Context.CONNECTIVITY_SERVICE);

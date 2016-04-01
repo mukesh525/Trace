@@ -20,6 +20,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -38,6 +39,7 @@ import vmc.in.mrecorder.fragment.InboundCalls;
 import vmc.in.mrecorder.fragment.MissedCalls;
 import vmc.in.mrecorder.fragment.OutboundCalls;
 import vmc.in.mrecorder.myapplication.CallApplication;
+import vmc.in.mrecorder.provider.GPSTracker;
 import vmc.in.mrecorder.service.CallRecorderServiceAll;
 import vmc.in.mrecorder.syncadapter.SyncUtils;
 import vmc.in.mrecorder.util.Utils;
@@ -72,17 +74,7 @@ public class Home extends AppCompatActivity
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
 
-//        GPSTracker mGPS = new GPSTracker(this);
-//        if(mGPS.canGetLocation()){
-//            mGPS.getLocation();
-//           latitude= mGPS.getLatitude();
-//            longitude= mGPS.getLongitude();
-//            Log.d("latt",""+latitude);
-//            Log.d("latt",""+longitude);
-//        }else{
-//            mGPS.showSettingsAlert();
-//            System.out.println("Unable");
-//        }
+        GPSTracker mGPS = new GPSTracker(this);
         coordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordi_layout);
 
         String Firsttym = Utils.getFromPrefs(Home.this, FIRST_TYME, DEFAULT);

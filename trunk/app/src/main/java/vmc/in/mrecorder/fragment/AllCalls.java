@@ -92,6 +92,7 @@ public class AllCalls extends Fragment implements SwipeRefreshLayout.OnRefreshLi
         swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.SwipefollowUp);
         //  mroot = (RelativeLayout) view.findViewById(R.id.fragment_followup);
         mroot = ((Home) getActivity()).fabMenu;
+
         mprogressLayout = (LinearLayout) view.findViewById(R.id.mprogressLayout);
         retrylayout = (LinearLayout) view.findViewById(R.id.retryLayout);
         pdloadmore = (LinearLayout) view.findViewById(R.id.loadmorepd1);
@@ -133,6 +134,8 @@ public class AllCalls extends Fragment implements SwipeRefreshLayout.OnRefreshLi
             public void onIdle() {
                 // ((Home) getActivity()).floatingActionButton.show();
             }
+
+
         });
         swipeRefreshLayout.setColorSchemeResources(
                 R.color.refresh_progress_1,
@@ -451,7 +454,7 @@ public class AllCalls extends Fragment implements SwipeRefreshLayout.OnRefreshLi
 
                 if (getActivity() != null && Constants.position == 0) {
                     try {
-                        Snackbar snack = Snackbar.make(getView(), "Login to Continue", Snackbar.LENGTH_SHORT)
+                        Snackbar snack = Snackbar.make(mroot, "Login to Continue", Snackbar.LENGTH_SHORT)
                                 .setAction(getString(R.string.login), new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
@@ -471,7 +474,7 @@ public class AllCalls extends Fragment implements SwipeRefreshLayout.OnRefreshLi
             } else {
                 if (getActivity() != null && Constants.position == 0) {
                     try {
-                        Snackbar snack = Snackbar.make(getView(), "No Data Available", Snackbar.LENGTH_SHORT)
+                        Snackbar snack = Snackbar.make(mroot, "No Data Available", Snackbar.LENGTH_SHORT)
                                 .setAction(getString(R.string.text_tryAgain), new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {

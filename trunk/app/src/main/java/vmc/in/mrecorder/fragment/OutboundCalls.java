@@ -81,6 +81,8 @@ public class OutboundCalls extends Fragment implements SwipeRefreshLayout.OnRefr
         Log.d("AUTHKEY",authkey);
         callDataArrayList = new ArrayList<CallData>();
         recyclerView.addOnScrollListener(new EndlessScrollListener() {
+
+
             @Override
             public void onLoadMore() {
                // ((Home) getActivity()).floatingActionButton.hide();
@@ -311,7 +313,7 @@ public class OutboundCalls extends Fragment implements SwipeRefreshLayout.OnRefr
                 }
                 if (getActivity() != null && Constants.position == 2) {
                     try {
-                        Snackbar snack = Snackbar.make(getView(), "Login to Continue", Snackbar.LENGTH_SHORT)
+                        Snackbar snack = Snackbar.make(((Home)getActivity()).fabMenu, "Login to Continue", Snackbar.LENGTH_SHORT)
                                 .setAction(getString(R.string.login), new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
@@ -335,7 +337,7 @@ public class OutboundCalls extends Fragment implements SwipeRefreshLayout.OnRefr
 
                 if (getActivity() != null && Constants.position == 2) {
                     try {
-                        Snackbar snack = Snackbar.make(getView(), "No Data Available", Snackbar.LENGTH_SHORT)
+                        Snackbar snack = Snackbar.make(((Home)getActivity()).fabMenu, "No Data Available", Snackbar.LENGTH_SHORT)
                                 .setAction(getString(R.string.text_tryAgain), new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
@@ -422,7 +424,7 @@ public class OutboundCalls extends Fragment implements SwipeRefreshLayout.OnRefr
 
                 if (getActivity() != null && Constants.position == 2) {
                     try {
-                        Snackbar snack = Snackbar.make(getView(), "Login to Continue", Snackbar.LENGTH_SHORT)
+                        Snackbar snack = Snackbar.make(((Home)getActivity()).fabMenu, "Login to Continue", Snackbar.LENGTH_SHORT)
                                 .setAction(getString(R.string.login), new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
@@ -444,7 +446,7 @@ public class OutboundCalls extends Fragment implements SwipeRefreshLayout.OnRefr
 
                 if (getActivity() != null && Constants.position == 2) {
                     try {
-                        Snackbar snack = Snackbar.make(getView(), "No Data Available", Snackbar.LENGTH_SHORT)
+                        Snackbar snack = Snackbar.make(((Home)getActivity()).fabMenu, "No Data Available", Snackbar.LENGTH_SHORT)
                                 .setAction(getString(R.string.text_tryAgain), new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {

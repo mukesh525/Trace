@@ -44,6 +44,7 @@ public abstract class EndlessScrollListener extends RecyclerView.OnScrollListene
     public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
 
         if(newState== AbsListView.OnScrollListener.SCROLL_STATE_IDLE){
+
             onIdle();
         }
         super.onScrollStateChanged(recyclerView, newState);
@@ -52,6 +53,7 @@ public abstract class EndlessScrollListener extends RecyclerView.OnScrollListene
     public abstract void onLoadMore();
     public abstract void onLoadUp();
     public abstract void onIdle();
+
 
 
 }

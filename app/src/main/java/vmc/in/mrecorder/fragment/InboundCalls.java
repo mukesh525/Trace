@@ -109,6 +109,8 @@ public class InboundCalls extends Fragment implements SwipeRefreshLayout.OnRefre
             public void onIdle() {
                // ((Home) getActivity()).floatingActionButton.show();
             }
+
+
         });
         swipeRefreshLayout.setColorSchemeResources(
                 R.color.refresh_progress_1,
@@ -313,7 +315,7 @@ public class InboundCalls extends Fragment implements SwipeRefreshLayout.OnRefre
                 }
                 if (getActivity() != null && Constants.position == 1) {
                     try {
-                        Snackbar snack = Snackbar.make(getView(), "Login to Continue", Snackbar.LENGTH_SHORT)
+                        Snackbar snack = Snackbar.make(((Home)getActivity()).fabMenu, "Login to Continue", Snackbar.LENGTH_SHORT)
                                 .setAction(getString(R.string.login), new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
@@ -337,7 +339,7 @@ public class InboundCalls extends Fragment implements SwipeRefreshLayout.OnRefre
 
                 if (getActivity() != null && Constants.position == 1) {
                     try {
-                        Snackbar snack = Snackbar.make(getView(), "No Data Available", Snackbar.LENGTH_SHORT)
+                        Snackbar snack = Snackbar.make(((Home)getActivity()).fabMenu, "No Data Available", Snackbar.LENGTH_SHORT)
                                 .setAction(getString(R.string.text_tryAgain), new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
@@ -426,7 +428,7 @@ public class InboundCalls extends Fragment implements SwipeRefreshLayout.OnRefre
 
                 if (getActivity() != null && Constants.position == 1) {
                     try {
-                        Snackbar snack = Snackbar.make(getView(), "Login to Continue", Snackbar.LENGTH_SHORT)
+                        Snackbar snack = Snackbar.make(((Home)getActivity()).fabMenu, "Login to Continue", Snackbar.LENGTH_SHORT)
                                 .setAction(getString(R.string.login), new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
@@ -448,7 +450,7 @@ public class InboundCalls extends Fragment implements SwipeRefreshLayout.OnRefre
 
                 if (getActivity() != null && Constants.position == 1) {
                     try {
-                        Snackbar snack = Snackbar.make(getView(), "No Data Available", Snackbar.LENGTH_SHORT)
+                        Snackbar snack = Snackbar.make(((Home)getActivity()).fabMenu, "No Data Available", Snackbar.LENGTH_SHORT)
                                 .setAction(getString(R.string.text_tryAgain), new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {

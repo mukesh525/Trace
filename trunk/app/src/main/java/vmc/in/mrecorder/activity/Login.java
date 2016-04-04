@@ -1,19 +1,25 @@
 package vmc.in.mrecorder.activity;
 
 
+import android.Manifest;
+import android.annotation.TargetApi;
 import android.app.NotificationManager;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.preference.PreferenceManager;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -31,6 +37,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import vmc.in.mrecorder.R;
 import vmc.in.mrecorder.callbacks.TAG;
@@ -72,14 +81,10 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
         et_email = (EditText) findViewById(R.id.input_email);
         et_password = (EditText) findViewById(R.id.input_password);
 
-
+        getAllPermision();
         btn_login.setOnClickListener(this);
         btn_getOtp.setOnClickListener(this);
         link_forgot_password.setOnClickListener(this);
-//        et_email.addTextChangedListener(new MyTextWacher(et_email));
-//        et_password.addTextChangedListener(new MyTextWacher(et_password));
-
-
         load();
         cancelNotification(Login.this, NOTIFICATION_ID);
 
@@ -167,6 +172,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
         switch (v.getId()) {
             case R.id.btn_login:
                 if (btn_login.getText().toString().equals("Login")) {
+
                     Login();
                 } else if (validateOTP()) {
                     GetOtp();
@@ -506,7 +512,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
             // TODO Auto-generated method stub
 
             try {
-                response = JSONParser.login(LOGIN_URL, email, password, CallApplication.getDeviceId(), gcmkey);
+                response = JSONParser.login(LOGIN_URL, email, password, CallApplication.getInstance().getDeviceId(), gcmkey);
                 Log.d("GCMPRO", response.toString());
                 if (response.has(CODE))
                     code = response.getString(CODE);
@@ -594,5 +600,111 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
         } else {
             // writeToLog("Software Keyboard was not shown");
         }
+    }
+
+    final private int REQUEST_CODE_ASK_MULTIPLE_PERMISSIONS = 124;
+
+    @TargetApi(Build.VERSION_CODES.M)
+    private void getAllPermision() {
+        List<String> permissionsNeeded = new ArrayList<String>();
+
+        final List<String> permissionsList = new ArrayList<String>();
+        if (!addPermission(permissionsList, Manifest.permission.CALL_PHONE))
+            permissionsNeeded.add("CALL PHONE");
+        if (!addPermission(permissionsList, Manifest.permission.RECORD_AUDIO))
+            permissionsNeeded.add("RECORD AUDIO");
+        if (!addPermission(permissionsList, Manifest.permission.PROCESS_OUTGOING_CALLS))
+            permissionsNeeded.add("PROCESS OUTGOING CALLS ");
+        if (!addPermission(permissionsList, Manifest.permission.WRITE_CALL_LOG))
+            permissionsNeeded.add("WRITE CALL LOG");
+        if (!addPermission(permissionsList, Manifest.permission.READ_SMS))
+            permissionsNeeded.add("READ SMS");
+        if (!addPermission(permissionsList, Manifest.permission.READ_CONTACTS))
+            permissionsNeeded.add("READ CONTACTS");
+        if (!addPermission(permissionsList, Manifest.permission.READ_CALL_LOG))
+            permissionsNeeded.add("READ CALL LOG");
+        if (!addPermission(permissionsList, Manifest.permission.INTERNET))
+            permissionsNeeded.add("INTERNET");
+        if (!addPermission(permissionsList, Manifest.permission.ACCESS_NETWORK_STATE))
+            permissionsNeeded.add("ACCESS NETWORK STATE");
+        if (!addPermission(permissionsList, Manifest.permission.ACCESS_WIFI_STATE))
+            permissionsNeeded.add("ACCESS WIFI STATE");
+        if (!addPermission(permissionsList, Manifest.permission.READ_PHONE_STATE))
+            permissionsNeeded.add("READ PHONE STATE");
+        if (!addPermission(permissionsList, Manifest.permission.MODIFY_AUDIO_SETTINGS))
+            permissionsNeeded.add("MODIFY AUDIO SETTINGS");
+        if (!addPermission(permissionsList, Manifest.permission.RECEIVE_BOOT_COMPLETED))
+            permissionsNeeded.add("RECEIVE BOOT COMPLETED");
+        if (!addPermission(permissionsList, Manifest.permission.VIBRATE))
+            permissionsNeeded.add("VIBRATE");
+        if (!addPermission(permissionsList, Manifest.permission.WAKE_LOCK))
+            permissionsNeeded.add("WAKE LOCK");
+        if (!addPermission(permissionsList, Manifest.permission.GET_ACCOUNTS))
+            permissionsNeeded.add("GET ACCOUNTS");
+        if (!addPermission(permissionsList, Manifest.permission.READ_EXTERNAL_STORAGE))
+            permissionsNeeded.add("READ EXTERNAL STORAGE");
+        if (!addPermission(permissionsList, Manifest.permission.WRITE_EXTERNAL_STORAGE))
+            permissionsNeeded.add("WRITE EXTERNAL STORAGE");
+        if (!addPermission(permissionsList, Manifest.permission.ACCESS_LOCATION_EXTRA_COMMANDS))
+            permissionsNeeded.add("ACCESS LOCATION EXTRA COMMANDS");
+        if (!addPermission(permissionsList, Manifest.permission.ACCESS_COARSE_LOCATION))
+            permissionsNeeded.add("ACCESS COARSE LOCATION");
+        if (!addPermission(permissionsList, Manifest.permission.ACCESS_FINE_LOCATION))
+            permissionsNeeded.add("ACCESS FINE LOCATION");
+        if (!addPermission(permissionsList, Manifest.permission.RECEIVE_SMS))
+            permissionsNeeded.add("RECEIVE SMS");
+        if (!addPermission(permissionsList, Manifest.permission.READ_SMS))
+            permissionsNeeded.add("READ SMS");
+        if (!addPermission(permissionsList, Manifest.permission.SEND_SMS))
+            permissionsNeeded.add("SEND SMS");
+        if (!addPermission(permissionsList, Manifest.permission.READ_SYNC_STATS))
+            permissionsNeeded.add("READ SYNC STATS");
+        if (!addPermission(permissionsList, Manifest.permission.WRITE_SYNC_SETTINGS))
+            permissionsNeeded.add("WRITE SYNC SETTINGS");
+        if (!addPermission(permissionsList, Manifest.permission.ACCESS_NETWORK_STATE))
+            permissionsNeeded.add("ACCESS NETWORK STATE");
+
+        if (permissionsList.size() > 0) {
+            if (permissionsNeeded.size() > 0) {
+                // Need Rationale
+                String message = "You need to grant access to " + permissionsNeeded.get(0);
+                for (int i = 1; i < permissionsNeeded.size(); i++)
+                    message = message + ", " + permissionsNeeded.get(i);
+                showMessageOKCancel(message,
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                requestPermissions(permissionsList.toArray(new String[permissionsList.size()]),
+                                        REQUEST_CODE_ASK_MULTIPLE_PERMISSIONS);
+                            }
+                        });
+                return;
+            }
+            requestPermissions(permissionsList.toArray(new String[permissionsList.size()]),
+                    REQUEST_CODE_ASK_MULTIPLE_PERMISSIONS);
+            return;
+        }
+
+
+    }
+
+    private void showMessageOKCancel(String message, DialogInterface.OnClickListener okListener) {
+        new AlertDialog.Builder(Login.this)
+                .setMessage(message)
+                .setPositiveButton("OK", okListener)
+                .setNegativeButton("Cancel", null)
+                .create()
+                .show();
+    }
+
+    @TargetApi(Build.VERSION_CODES.M)
+    private boolean addPermission(List<String> permissionsList, String permission) {
+        if (checkSelfPermission(permission) != PackageManager.PERMISSION_GRANTED) {
+            permissionsList.add(permission);
+            // Check for Rationale Option
+            if (!shouldShowRequestPermissionRationale(permission))
+                return false;
+        }
+        return true;
     }
 }

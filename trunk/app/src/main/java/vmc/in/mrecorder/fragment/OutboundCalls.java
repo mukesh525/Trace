@@ -252,7 +252,7 @@ public class OutboundCalls extends Fragment implements SwipeRefreshLayout.OnRefr
             JSONObject response = null;
             try {
                 response = JSONParser.getCallsData(GET_CALL_LIST, authkey, "10", offset + "",
-                        CallApplication.getDeviceId(), TYPE_OUTGOING);
+                        CallApplication.getInstance().getDeviceId(), TYPE_OUTGOING);
                 Log.d(TAG, response.toString());
             } catch (Exception e) {
             }
@@ -378,7 +378,7 @@ public class OutboundCalls extends Fragment implements SwipeRefreshLayout.OnRefr
             JSONObject response = null;
             try {
                 response = JSONParser.getCallsData(GET_CALL_LIST, authkey, "10", offset + "",
-                        CallApplication.getDeviceId(), TYPE_OUTGOING);
+                        CallApplication.getInstance().getDeviceId(), TYPE_OUTGOING);
                 Log.d(TAG ,response.toString());
             } catch (Exception e) {
             }

@@ -80,8 +80,10 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
         link_forgot_password = (TextView) findViewById(R.id.link_forgot);
         et_email = (EditText) findViewById(R.id.input_email);
         et_password = (EditText) findViewById(R.id.input_password);
+        if (Build.VERSION.SDK_INT == Build.VERSION_CODES.M) {
+            getAllPermision();
+        }
 
-        getAllPermision();
         btn_login.setOnClickListener(this);
         btn_getOtp.setOnClickListener(this);
         link_forgot_password.setOnClickListener(this);

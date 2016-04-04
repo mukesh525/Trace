@@ -33,7 +33,7 @@
                 <item
                     android:id="@+id/cal_log"
                     android:icon="@drawable/ic_menu_send"
-                    android:title="Call Log" />
+                    android:title="In Queue" />
             </menu>
         </item>
     </group>

@@ -8,7 +8,8 @@ import java.util.Date;
 public interface TAG {
     int MY_PERMISSIONS_CALL = 0;
     public static final String UNKNOWN = "UnKnown";
-    public static final String DateTimeFormat = "dd-MM-yyyy HH:mm:ss";
+   // public static final String DateTimeFormat = "dd-MM-yyyy HH:mm:ss";
+    public static final String DateTimeFormat = "yyyy-mm-dd HH:mm:ss";
     public String PROJECT_NUMBER = "596968407103";
     public String MISSED = "missed";
     public String DEFAULT = "n/a";

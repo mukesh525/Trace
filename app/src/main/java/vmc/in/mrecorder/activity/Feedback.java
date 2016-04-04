@@ -146,7 +146,7 @@ public class Feedback extends AppCompatActivity implements TAG {
         protected void onPostExecute(String data) {
 
             if (data.equals("400")) {
-                Toast.makeText(Feedback.this, "Fedback Submitted Sucessfully", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Feedback.this, "Feedback Submitted Sucessfully", Toast.LENGTH_SHORT).show();
 
             } else {
                 Toast.makeText(Feedback.this, "Server busy! Please Try again Later", Toast.LENGTH_SHORT).show();
@@ -157,4 +157,5 @@ public class Feedback extends AppCompatActivity implements TAG {
 
 
     }
+
 }

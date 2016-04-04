@@ -50,15 +50,18 @@ public class FloatingActionButtonBehavior extends android.support.design.widget.
         if (dependency instanceof Snackbar.SnackbarLayout) {
             updateFabTranslationForSnackbar(child, dependency);
         }
-        if (dependency instanceof RecyclerView) {
-            updateFabTranslationForSnackbar(child, dependency);
-        }
+//        if (dependency instanceof RecyclerView) {
+//            updateFabTranslationForSnackbar(child, dependency);
+//        }
         return false;
+
     }
+
 
 
     @Override
     public boolean onStartNestedScroll(CoordinatorLayout coordinatorLayout, FloatingActionsMenu child, View directTargetChild, View target, int nestedScrollAxes) {
+
         return nestedScrollAxes == ViewCompat.SCROLL_AXIS_VERTICAL;
     }
 

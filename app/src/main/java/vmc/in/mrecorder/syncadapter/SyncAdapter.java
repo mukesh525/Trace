@@ -119,7 +119,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
         authkey = Utils.getFromPrefs(getContext(), AUTHKEY, "N/A");
         try {
             response = JSONParser.getCallsData(GET_CALL_LIST, authkey, "10", offset + "",
-                    CallApplication.getDeviceId(), TYPE_ALL);
+                    CallApplication.getInstance().getDeviceId(), TYPE_ALL);
             if (response.has(CODE)) {
                 code = response.getString(CODE);
             }
@@ -132,7 +132,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
         }
         try {
             response = JSONParser.getCallsData(GET_CALL_LIST, authkey, "10", offset + "",
-                    CallApplication.getDeviceId(), TYPE_OUTGOING);
+                    CallApplication.getInstance().getDeviceId(), TYPE_OUTGOING);
             if (response.has(CODE)) {
                 code = response.getString(CODE);
                 if (code.equals("202") || code.equals("401")) {
@@ -149,7 +149,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
         }
         try {
             response = JSONParser.getCallsData(GET_CALL_LIST, authkey, "10", offset + "",
-                    CallApplication.getDeviceId(), TYPE_INCOMING);
+                    CallApplication.getInstance().getDeviceId(), TYPE_INCOMING);
             if (response.has(CODE)) {
                 code = response.getString(CODE);
                 if (code.equals("202") || code.equals("401")) {
@@ -165,7 +165,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
         }
         try {
             response = JSONParser.getCallsData(GET_CALL_LIST, authkey, "10", offset + "",
-                    CallApplication.getDeviceId(), TYPE_MISSED);
+                    CallApplication.getInstance().getDeviceId(), TYPE_MISSED);
             if (response.has(CODE)) {
                 code = response.getString(CODE);
                 if (code.equals("202") || code.equals("401")) {
@@ -221,8 +221,8 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
         }
         builder.addPart(AUTHKEY, new StringBody(Utils.getFromPrefs(getContext(), AUTHKEY, "n"), ContentType.TEXT_PLAIN));
         Log.d(TAG, AUTHKEY + ":" + Utils.getFromPrefs(getContext(), AUTHKEY, "n"));
-        builder.addPart(DEVICE_ID, new StringBody(CallApplication.getDeviceId(), ContentType.TEXT_PLAIN));
-        Log.d(TAG, DEVICE_ID + ":" + CallApplication.getDeviceId());
+        builder.addPart(DEVICE_ID, new StringBody(CallApplication.getInstance().getDeviceId(), ContentType.TEXT_PLAIN));
+        Log.d(TAG, DEVICE_ID + ":" + CallApplication.getInstance().getDeviceId());
         builder.addPart(CALLTO, new StringBody(model.getPhoneNumber(), ContentType.TEXT_PLAIN));
         Log.d(TAG, CALLTO + ":" + model.getPhoneNumber());
         builder.addPart(STARTTIME, new StringBody(sdf.format(new Date(Long.parseLong(model.getTime()))), ContentType.TEXT_PLAIN));

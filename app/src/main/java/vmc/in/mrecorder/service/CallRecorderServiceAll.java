@@ -27,6 +27,7 @@ public class CallRecorderServiceAll extends Service implements TAG {
     public static boolean recording;
     public boolean ringing, answered, outgoing;
     static boolean ring = false;
+    String TAG = "SERVICE";
     static boolean callReceived = false;
     static boolean shown = false;
 
@@ -226,7 +227,7 @@ public class CallRecorderServiceAll extends Service implements TAG {
                     // Log.d("MISSED", "ring true");
                     // Toast.makeText(getApplicationContext(),"ring true",Toast.LENGTH_SHORT).show();}
                     //if(callReceived){
-                    //Log.d("MISSED", "callReceived true");
+                    Log.d("MISSED", "callReceived true");
                     //Toast.makeText(getApplicationContext(),"ring ",Toast.LENGTH_SHORT).show();}
 
                     if (ring == true && callReceived == false) {

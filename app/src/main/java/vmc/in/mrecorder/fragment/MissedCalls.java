@@ -251,7 +251,7 @@ public class MissedCalls extends Fragment  implements SwipeRefreshLayout.OnRefre
             JSONObject response = null;
             try {
                 response = JSONParser.getCallsData(GET_CALL_LIST, authkey, "10", offset + "",
-                        CallApplication.getDeviceId(), TYPE_MISSED);
+                        CallApplication.getInstance().getDeviceId(), TYPE_MISSED);
                 Log.d(TAG, response.toString());
             } catch (Exception e) {
             }
@@ -379,7 +379,7 @@ public class MissedCalls extends Fragment  implements SwipeRefreshLayout.OnRefre
             JSONObject response = null;
             try {
                 response = JSONParser.getCallsData(GET_CALL_LIST, authkey, "10", offset + "",
-                        CallApplication.getDeviceId(), TYPE_MISSED);
+                        CallApplication.getInstance().getDeviceId(), TYPE_MISSED);
                 Log.d(TAG, response.toString());
             } catch (Exception e) {
             }

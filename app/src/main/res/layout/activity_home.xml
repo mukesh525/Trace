@@ -64,44 +64,48 @@
                 android:layout_height="match_parent"
                 android:background="@color/white_overlay">
                 <!--  floating action menu with buttons -->
+                <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-                <com.getbase.floatingactionbutton.FloatingActionsMenu
-                    android:id="@+id/fab_menu"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="right|bottom"
-                    app:layout_anchorGravity="bottom|end"
-                    app:layout_behavior="vmc.in.mrecorder.activity.FABScrollBehavior"
-                    fab:fab_addButtonColorNormal="@color/accent"
-                    fab:fab_addButtonColorPressed="@color/accent_dark"
-                    fab:fab_addButtonPlusIconColor="@color/white"
-                    fab:fab_addButtonStrokeVisible="false"
-                    fab:fab_labelStyle="@style/menu_labels_style"
-                    fab:fab_labelsPosition="left">
-
-                    <com.getbase.floatingactionbutton.FloatingActionButton
-                        android:id="@+id/fab_sync"
+                    <com.getbase.floatingactionbutton.FloatingActionsMenu
+                        android:id="@+id/fab_menu"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        fab:fab_colorNormal="@color/accent"
-                        fab:fab_colorPressed="@color/accent_dark"
-                        fab:fab_icon="@drawable/ic_sync"
-                        fab:fab_plusIconColor="@color/white"
-                        fab:fab_size="mini"
-                        fab:fab_title="Sync Now" />
+                        android:layout_gravity="right|bottom"
+                        app:layout_anchorGravity="bottom|end"
+                        app:layout_behavior="vmc.in.mrecorder.activity.FloatingActionButtonBehavior"
+                        fab:fab_addButtonColorNormal="@color/accent"
+                        fab:fab_addButtonColorPressed="@color/accent_dark"
+                        fab:fab_addButtonPlusIconColor="@color/white"
+                        fab:fab_addButtonStrokeVisible="false"
+                        fab:fab_labelStyle="@style/menu_labels_style"
+                        fab:fab_labelsPosition="left">
 
-                    <com.getbase.floatingactionbutton.FloatingActionButton
-                        android:id="@+id/fab"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        fab:fab_colorNormal="@color/accent"
-                        fab:fab_colorPressed="@color/accent_dark"
-                        fab:fab_icon="@drawable/ic_settings"
-                        fab:fab_plusIconColor="@color/white"
-                        fab:fab_size="mini"
-                        fab:fab_title="Settings" />
-                </com.getbase.floatingactionbutton.FloatingActionsMenu>
+                        <com.getbase.floatingactionbutton.FloatingActionButton
+                            android:id="@+id/fab_sync"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            fab:fab_colorNormal="@color/accent"
+                            fab:fab_colorPressed="@color/accent_dark"
+                            fab:fab_icon="@drawable/ic_sync"
+                            fab:fab_plusIconColor="@color/white"
+                            fab:fab_size="mini"
+                            fab:fab_title="Sync Now" />
 
+                        <com.getbase.floatingactionbutton.FloatingActionButton
+                            android:id="@+id/fab"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            fab:fab_colorNormal="@color/accent"
+                            fab:fab_colorPressed="@color/accent_dark"
+                            fab:fab_icon="@drawable/ic_settings"
+                            fab:fab_plusIconColor="@color/white"
+                            fab:fab_size="mini"
+                            fab:fab_title="Settings" />
+                    </com.getbase.floatingactionbutton.FloatingActionsMenu>
+                </android.support.design.widget.CoordinatorLayout>
             </FrameLayout>
 
         </android.support.design.widget.CoordinatorLayout>

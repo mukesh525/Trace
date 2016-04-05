@@ -6,25 +6,22 @@ import android.content.Intent;
 import android.util.Log;
 
 import vmc.in.mrecorder.myapplication.CallApplication;
-import vmc.in.mrecorder.service.CallRecorderServiceAll;
 import vmc.in.mrecorder.util.Utils;
 
 /**
- * Created by gousebabjan on 9/3/16.
+ * Created by gousebabjan on 5/4/16.
  */
-public class BootBroadcastReceiver extends BroadcastReceiver {
-    public BootBroadcastReceiver() {
-    }
-
-    @Override
+public class PhoneStateReceiver extends BroadcastReceiver {
+    //This Method automatically Executed when Phone State Change is Detected
     public void onReceive(Context context, Intent intent) {
+        Log.d("SERVICE", "PhoneStateReceiver");
         if (Utils.isLogin(context)) {
             CallApplication.getInstance().isstartRecording();
-            // context.startService(new Intent(context, CallRecorderServiceAll.class));
-            Log.d("SyncAdapter", "BootBroadcastReceiver");
-        }else {
+            Log.d("SERVICE", "PhoneStateReceiver Login");
 
+        } else {
             CallApplication.getInstance().stopRecording();
         }
+
     }
 }

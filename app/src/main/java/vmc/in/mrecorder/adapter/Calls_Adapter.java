@@ -159,7 +159,6 @@ public class Calls_Adapter extends RecyclerView.Adapter<Calls_Adapter.CallViewHo
         private ArrayList<CallData> callDatas;
 
 
-
         public OnOverflowSelectedListener(Context context, int pos, ArrayList<CallData> callDatas) {
             mContext = context;
             this.position = pos;
@@ -319,9 +318,10 @@ public class Calls_Adapter extends RecyclerView.Adapter<Calls_Adapter.CallViewHo
         ContentResolver cr = context.getContentResolver();
         Cursor contact = cr.query(phoneUri,
                 new String[]{ContactsContract.Contacts._ID}, null, null, null);
-             // contact.close();
+
         if (contact.moveToFirst()) {
             long userId = contact.getLong(contact.getColumnIndex(ContactsContract.Contacts._ID));
+            contact.close();
             photoUri = ContentUris.withAppendedId(ContactsContract.Contacts.CONTENT_URI, userId);
 
         } else {
@@ -338,6 +338,7 @@ public class Calls_Adapter extends RecyclerView.Adapter<Calls_Adapter.CallViewHo
             Bitmap defaultPhoto = BitmapFactory.decodeResource(context.getResources(), R.drawable.def_img);
             return defaultPhoto;
         }
+
         Bitmap defaultPhoto = BitmapFactory.decodeResource(context.getResources(), R.drawable.def_img);
         return defaultPhoto;
     }

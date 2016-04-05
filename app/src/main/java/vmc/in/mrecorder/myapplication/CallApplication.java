@@ -93,10 +93,16 @@ public class CallApplication extends Application implements TAG {
         if (sp.getInt(TYPE, 0) == 0) {
             if (!Utils.isMyServiceRunning(CallRecorderServiceAll.class, getAplicationContext())) {
                 startService(all);
+                Log.d("SERVICE", "Service Started by CallApplication");
+            } else {
+                Log.d("SERVICE", "Service  already Started by CallApplication");
             }
         } else if (sp.getInt(TYPE, 0) == 1) {
             if (Utils.isMyServiceRunning(CallRecorderServiceAll.class, getAplicationContext())) {
                 stopService(all);
+                Log.d("SERVICE", "Service Stopped by CallApplication");
+            } else {
+                Log.d("SERVICE", "Service  already stopped by CallApplication");
             }
             //  stopService(opt);
         }
@@ -159,19 +165,26 @@ public class CallApplication extends Application implements TAG {
     public void startRecording() {
         CallApplication.sp.edit().putInt(TYPE, 0).commit();
         if (CallApplication.sp.getInt(TYPE, 0) == 0) {
-            startService(all);
+            if (!Utils.isMyServiceRunning(CallRecorderServiceAll.class, getAplicationContext())) {
+                startService(all);
+            }
         } else if (CallApplication.sp.getInt(TYPE, 0) == 1) {
-            stopService(all);
-            //  stopService(opt);
+            if (Utils.isMyServiceRunning(CallRecorderServiceAll.class, getAplicationContext())) {
+                stopService(all);
+            }
         }
     }
 
     public void stopRecording() {
         CallApplication.sp.edit().putInt(TYPE, 1).commit();
         if (CallApplication.sp.getInt(TYPE, 0) == 0) {
-            startService(all);
+            if (!Utils.isMyServiceRunning(CallRecorderServiceAll.class, getAplicationContext())) {
+                startService(all);
+            }
         } else if (CallApplication.sp.getInt(TYPE, 0) == 1) {
-            stopService(all);
+            if (Utils.isMyServiceRunning(CallRecorderServiceAll.class, getAplicationContext())) {
+                stopService(all);
+            }
             //  stopService(opt);
         }
     }

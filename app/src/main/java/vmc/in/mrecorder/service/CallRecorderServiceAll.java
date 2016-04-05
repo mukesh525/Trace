@@ -109,11 +109,27 @@ public class CallRecorderServiceAll extends Service implements TAG {
         public void onReceive(Context arg0, Intent arg1) {
             try {
                 answered = checkAnswered(arg1);
-
+                String fileName = String.valueOf(System.currentTimeMillis());
                 Log.d(TAG, "" + String.valueOf(answered));
                 if (answered == true) {
+                    Log.e("answer", "" + String.valueOf(Build.MANUFACTURER));
                     Log.e("answer", "" + String.valueOf(answered));
-                    startRecording();
+                    Log.e("answer", "" + String.valueOf(ringing));
+                    Log.e("answer", "" + String.valueOf(phoneNumber));
+                    if (Build.MANUFACTURER.equalsIgnoreCase("motorola")) {
+                        if (answered && ringing) {
+                            CallApplication.getWritableDatabase().insert(phoneNumber, fileName, "empty", INCOMING);
+                            Log.e("answer", "" + "incoming inserted");
+                        }
+                        if (answered && !ringing) {
+                            CallApplication.getWritableDatabase().insert(phoneNumber, fileName, "empty", OUTGOING);
+                            Log.e("answer", "" + "outgoing inserted");
+                        }
+
+                    } else {
+                        startRecording();
+
+                    }
                     ringing = false;
                     outgoing = false;
                 }
@@ -136,7 +152,16 @@ public class CallRecorderServiceAll extends Service implements TAG {
             File audiofile;
             String manufacturer = Build.MANUFACTURER;
             Log.e(TAG, manufacturer);
-            if (Build.VERSION.SDK_INT == Build.VERSION_CODES.JELLY_BEAN_MR1 ||
+            if (Build.MANUFACTURER.equals("motorola")){
+                recorder.setAudioSource(MediaRecorder.AudioSource.DEFAULT);
+                audiofile = new File(sample.getAbsolutePath() + "/sound" + fileName + ".wav");
+
+                recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
+                recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
+                recorder.setAudioSamplingRate(48000);
+                recorder.setOutputFile(audiofile.getAbsolutePath());
+            }
+           else if (Build.VERSION.SDK_INT == Build.VERSION_CODES.JELLY_BEAN_MR1 ||
                     Build.VERSION.SDK_INT == Build.VERSION_CODES.JELLY_BEAN
                     || Build.VERSION.SDK_INT == Build.VERSION_CODES.KITKAT) {
 
@@ -215,7 +240,7 @@ public class CallRecorderServiceAll extends Service implements TAG {
                 } else if (state.equals(TelephonyManager.EXTRA_STATE_OFFHOOK)) {
                     //call to be recorded if it was ringing or new outgoing
                     callReceived = true;
-                    //Log.d("MISSED", "callReceived = true");
+                    Log.d(TAG, "OFFHOOK" + phoneNumber);
                     if (ringing == true || outgoing == true) {
                         //ringing=false;
                         //outgoing=false;
@@ -227,6 +252,7 @@ public class CallRecorderServiceAll extends Service implements TAG {
                     // Log.d("MISSED", "ring true");
                     // Toast.makeText(getApplicationContext(),"ring true",Toast.LENGTH_SHORT).show();}
                     //if(callReceived){
+                    Log.d(TAG, "IDLE");
                     Log.d("MISSED", "callReceived true");
                     //Toast.makeText(getApplicationContext(),"ring ",Toast.LENGTH_SHORT).show();}
 

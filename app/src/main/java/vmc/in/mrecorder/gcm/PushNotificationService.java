@@ -53,6 +53,7 @@ public class PushNotificationService extends GcmListenerService implements vmc.i
             CallApplication.getInstance().stopRecording();
             SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
             prefs.edit().clear().commit();
+            Log.d("Logout", "LOgout on gcm");
 
         }
 

@@ -248,6 +248,7 @@ public class Home extends AppCompatActivity
                     Intent.FLAG_ACTIVITY_CLEAR_TASK |
                     Intent.FLAG_ACTIVITY_NEW_TASK);
             Home.this.startActivity(intent);
+            Log.d("Logout","LOgout on resume");
         }
 
     }

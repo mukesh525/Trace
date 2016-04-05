@@ -136,7 +136,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
             if (response.has(CODE)) {
                 code = response.getString(CODE);
                 if (code.equals("202") || code.equals("401")) {
-                    Utils.isLogout(getContext());
+                   // Utils.isLogout(getContext());
                 }
             }
 
@@ -153,7 +153,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
             if (response.has(CODE)) {
                 code = response.getString(CODE);
                 if (code.equals("202") || code.equals("401")) {
-                    Utils.isLogout(getContext());
+                   // Utils.isLogout(getContext());
                 }
             }
             callDataArrayList = new ArrayList<CallData>();
@@ -169,7 +169,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
             if (response.has(CODE)) {
                 code = response.getString(CODE);
                 if (code.equals("202") || code.equals("401")) {
-                    Utils.isLogout(getContext());
+                    //Utils.isLogout(getContext());
                 }
             }
             callDataArrayList = new ArrayList<CallData>();
@@ -275,7 +275,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
                     Log.d(TAG, "RECODRD DELETED" + ":" + model.getFile().getName());
                 }
                 if (code.equals("202") || code.equals("401")) {
-                    Utils.isLogout(getContext());
+                    //Utils.isLogout(getContext());
                 }
 
 

@@ -79,7 +79,7 @@ public class CallApplication extends Application implements TAG {
 
     public synchronized String getDeviceId() {
 
-        return DeviceID;
+        return GetDeviceId();
 
     }
 

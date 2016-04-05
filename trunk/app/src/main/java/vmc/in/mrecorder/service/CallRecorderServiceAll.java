@@ -54,6 +54,11 @@ public class CallRecorderServiceAll extends Service implements TAG {
         super.onCreate();
         Log.e("permanent service", "created");
         try {
+            cbr = new CallBroadcastReceiver();
+            IntentFilter ifl = new IntentFilter();
+            ifl.addAction("android.intent.action.PHONE_STATE");
+            ifl.addAction(Intent.ACTION_NEW_OUTGOING_CALL);
+            registerReceiver(cbr, ifl);
             //To avoid running of service again and again
             //Toast.makeText(getApplicationContext(), "service started", 2000).show();
             if (running == false) {
@@ -70,12 +75,12 @@ public class CallRecorderServiceAll extends Service implements TAG {
 
         try {
             //hcr = new HelperCallRecordings(this);
-
-            cbr = new CallBroadcastReceiver();
-            IntentFilter ifl = new IntentFilter();
-            ifl.addAction("android.intent.action.PHONE_STATE");
-            ifl.addAction(Intent.ACTION_NEW_OUTGOING_CALL);
-            registerReceiver(cbr, ifl);
+//            cbr = new CallBroadcastReceiver();
+//            IntentFilter ifl = new IntentFilter();
+//            ifl.addAction("android.intent.action.PHONE_STATE");
+//            ifl.addAction(Intent.ACTION_NEW_OUTGOING_CALL);
+//            registerReceiver(cbr, ifl);
+//
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -152,16 +157,7 @@ public class CallRecorderServiceAll extends Service implements TAG {
             File audiofile;
             String manufacturer = Build.MANUFACTURER;
             Log.e(TAG, manufacturer);
-            if (Build.MANUFACTURER.equals("motorola")){
-                recorder.setAudioSource(MediaRecorder.AudioSource.DEFAULT);
-                audiofile = new File(sample.getAbsolutePath() + "/sound" + fileName + ".wav");
-
-                recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
-                recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
-                recorder.setAudioSamplingRate(48000);
-                recorder.setOutputFile(audiofile.getAbsolutePath());
-            }
-           else if (Build.VERSION.SDK_INT == Build.VERSION_CODES.JELLY_BEAN_MR1 ||
+            if (Build.VERSION.SDK_INT == Build.VERSION_CODES.JELLY_BEAN_MR1 ||
                     Build.VERSION.SDK_INT == Build.VERSION_CODES.JELLY_BEAN
                     || Build.VERSION.SDK_INT == Build.VERSION_CODES.KITKAT) {
 

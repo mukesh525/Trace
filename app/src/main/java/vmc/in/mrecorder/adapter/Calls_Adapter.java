@@ -56,7 +56,8 @@ public class Calls_Adapter extends RecyclerView.Adapter<Calls_Adapter.CallViewHo
     private ArrayList<CallData> CallDataArrayList;
     private CallClickedListner callClickedListner;
     SimpleDateFormat sdfDate = new SimpleDateFormat("dd-MM-yyyy");
-    SimpleDateFormat sdfTime = new SimpleDateFormat("HH:mm:ss");
+    //SimpleDateFormat sdfTime = new SimpleDateFormat("HH:mm:ss");
+    SimpleDateFormat sdfTime = new SimpleDateFormat("hh:mm aa");
     private int previousPosition = 0;
     public View mroot;
     public Fragment fragment;
@@ -109,6 +110,7 @@ public class Calls_Adapter extends RecyclerView.Adapter<Calls_Adapter.CallViewHo
                 holder.dateTextView.setText(sdfDate.format(ci.getStartTime()));
                 holder.timeTextView.setText(sdfTime.format(ci.getStartTime()));
             } catch (Exception e) {
+                Log.d(TAG,e.getMessage().toString());
 
             }
             holder.groupNameTextView.setText(Utils.isEmpty(ci.getEmail()) ? UNKNOWN : ci.getEmail());

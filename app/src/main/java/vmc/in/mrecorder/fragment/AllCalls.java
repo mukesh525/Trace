@@ -57,7 +57,7 @@ public class AllCalls extends Fragment implements SwipeRefreshLayout.OnRefreshLi
     private LinearLayout mprogressLayout, retrylayout;
     private LinearLayout pdloadmore;
     private LinearLayoutManager mLayoutManager;
-    private FloatingActionsMenu mroot;
+    //private FloatingActionsMenu mroot;
     private boolean loading;
     private ArrayList<CallData> callDataArrayList;
     private int offset = 0;
@@ -65,6 +65,7 @@ public class AllCalls extends Fragment implements SwipeRefreshLayout.OnRefreshLi
 
     private String authkey;
     private SharedPreferences prefs;
+    private FloatingActionsMenu mroot;
 
     public AllCalls() {
         // Required empty public constructor
@@ -387,6 +388,7 @@ public class AllCalls extends Fragment implements SwipeRefreshLayout.OnRefreshLi
 
     class DownloadMoreData extends AsyncTask<Void, Void, ArrayList<CallData>> {
         private String code = "n/a", msg = "n/a";
+        private ArrayList<CallData> data;
 
         @Override
         protected void onPreExecute() {
@@ -411,9 +413,8 @@ public class AllCalls extends Fragment implements SwipeRefreshLayout.OnRefreshLi
             } catch (Exception e) {
             }
             if (response != null) {
-
+                data = new ArrayList<CallData>();
                 System.out.println(response);
-                JSONArray recordsArray = null;
                 SimpleDateFormat sdf = new SimpleDateFormat(DateTimeFormat);
                 try {
 
@@ -425,14 +426,14 @@ public class AllCalls extends Fragment implements SwipeRefreshLayout.OnRefreshLi
                     }
 
 
-                    callDataArrayList = vmc.in.mrecorder.util.Parser.ParseData(response);
+                    data = vmc.in.mrecorder.util.Parser.ParseData(response);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
 
             }
 
-            return callDataArrayList;
+            return data;
         }
 
         @Override
@@ -444,7 +445,13 @@ public class AllCalls extends Fragment implements SwipeRefreshLayout.OnRefreshLi
                 pdloadmore.setVisibility(View.GONE);
             }
 
-            if (data != null && getActivity() != null && data.size() > callDataArrayList.size()) {
+            if (data != null && getActivity() != null && data.size() > 0) {
+//                
+                callDataArrayList.addAll(data);
+
+
+
+
                 // MyApplication.getWritableDatabase().insertFollowup(data, false);
                 CallApplication.getWritabledatabase().insertCallRecords(MDatabase.ALL, data, false);
                 adapter.notifyDataSetChanged();

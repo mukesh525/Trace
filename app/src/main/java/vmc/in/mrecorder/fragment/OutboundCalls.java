@@ -17,6 +17,8 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.getbase.floatingactionbutton.FloatingActionsMenu;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -49,7 +51,7 @@ public class OutboundCalls extends Fragment implements SwipeRefreshLayout.OnRefr
     private LinearLayout mprogressLayout, retrylayout;
     private LinearLayout pdloadmore;
     private LinearLayoutManager mLayoutManager;
-    private RelativeLayout mroot;
+    private FloatingActionsMenu mroot;
     private boolean loading;
     private ArrayList<CallData> callDataArrayList;
     private int offset = 0;
@@ -67,7 +69,8 @@ public class OutboundCalls extends Fragment implements SwipeRefreshLayout.OnRefr
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_all_calls, container, false);
         swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.SwipefollowUp);
-        mroot = (RelativeLayout) view.findViewById(R.id.fragment_followup);
+      //  mroot = (RelativeLayout) view.findViewById(R.id.fragment_followup);
+        mroot = ((Home) getActivity()).fabMenu;
         mprogressLayout = (LinearLayout) view.findViewById(R.id.mprogressLayout);
         retrylayout = (LinearLayout) view.findViewById(R.id.retryLayout);
         pdloadmore = (LinearLayout) view.findViewById(R.id.loadmorepd1);
@@ -313,7 +316,7 @@ public class OutboundCalls extends Fragment implements SwipeRefreshLayout.OnRefr
                 }
                 if (getActivity() != null && Constants.position == 2) {
                     try {
-                        Snackbar snack = Snackbar.make(((Home)getActivity()).fabMenu, "Login to Continue", Snackbar.LENGTH_SHORT)
+                        Snackbar snack = Snackbar.make(mroot, "Login to Continue", Snackbar.LENGTH_SHORT)
                                 .setAction(getString(R.string.login), new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
@@ -337,7 +340,7 @@ public class OutboundCalls extends Fragment implements SwipeRefreshLayout.OnRefr
 
                 if (getActivity() != null && Constants.position == 2) {
                     try {
-                        Snackbar snack = Snackbar.make(((Home)getActivity()).fabMenu, "No Data Available", Snackbar.LENGTH_SHORT)
+                        Snackbar snack = Snackbar.make(mroot, "No Data Available", Snackbar.LENGTH_SHORT)
                                 .setAction(getString(R.string.text_tryAgain), new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
@@ -360,6 +363,7 @@ public class OutboundCalls extends Fragment implements SwipeRefreshLayout.OnRefr
 
     class DownloadMoreData extends AsyncTask<Void, Void, ArrayList<CallData>> {
         private String code="n/a", msg="n/a";
+        private ArrayList<CallData> data;
         @Override
         protected void onPreExecute() {
             offset=callDataArrayList.size();
@@ -383,7 +387,7 @@ public class OutboundCalls extends Fragment implements SwipeRefreshLayout.OnRefr
             } catch (Exception e) {
             }
             if (response != null) {
-
+                data = new ArrayList<CallData>();
                 System.out.println(response);
                 JSONArray recordsArray = null;
                 SimpleDateFormat sdf = new SimpleDateFormat(DateTimeFormat);
@@ -396,7 +400,7 @@ public class OutboundCalls extends Fragment implements SwipeRefreshLayout.OnRefr
                         msg = response.getString(MESSAGE);
                     }
 
-                    callDataArrayList = vmc.in.mrecorder.util.Parser.ParseData(response);
+                    data = vmc.in.mrecorder.util.Parser.ParseData(response);
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -404,7 +408,7 @@ public class OutboundCalls extends Fragment implements SwipeRefreshLayout.OnRefr
 
             }
 
-            return callDataArrayList;
+            return data;
         }
 
         @Override
@@ -414,7 +418,8 @@ public class OutboundCalls extends Fragment implements SwipeRefreshLayout.OnRefr
                 pdloadmore.setVisibility(View.GONE);
             }
 
-            if (data != null && getActivity() != null && data.size() > callDataArrayList.size()) {
+            if (data != null && getActivity() != null && data.size() > 0) {
+                callDataArrayList.addAll(data);
                 // MyApplication.getWritableDatabase().insertFollowup(data, false);
                 CallApplication.getWritabledatabase().insertCallRecords(MDatabase.OUTBOUND, data, true);
                 adapter.notifyDataSetChanged();
@@ -424,7 +429,7 @@ public class OutboundCalls extends Fragment implements SwipeRefreshLayout.OnRefr
 
                 if (getActivity() != null && Constants.position == 2) {
                     try {
-                        Snackbar snack = Snackbar.make(((Home)getActivity()).fabMenu, "Login to Continue", Snackbar.LENGTH_SHORT)
+                        Snackbar snack = Snackbar.make(mroot, "Login to Continue", Snackbar.LENGTH_SHORT)
                                 .setAction(getString(R.string.login), new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
@@ -446,7 +451,7 @@ public class OutboundCalls extends Fragment implements SwipeRefreshLayout.OnRefr
 
                 if (getActivity() != null && Constants.position == 2) {
                     try {
-                        Snackbar snack = Snackbar.make(((Home)getActivity()).fabMenu, "No Data Available", Snackbar.LENGTH_SHORT)
+                        Snackbar snack = Snackbar.make(mroot, "No Data Available", Snackbar.LENGTH_SHORT)
                                 .setAction(getString(R.string.text_tryAgain), new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {

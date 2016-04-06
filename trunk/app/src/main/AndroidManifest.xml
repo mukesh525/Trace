@@ -140,6 +140,7 @@
             </intent-filter>
         </activity>
         <activity
+            android:launchMode="singleInstance"
             android:name=".activity.Login"
             android:noHistory="true"
             android:screenOrientation="portrait"

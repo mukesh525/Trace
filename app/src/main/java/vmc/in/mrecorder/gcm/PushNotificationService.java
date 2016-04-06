@@ -40,21 +40,40 @@ public class PushNotificationService extends GcmListenerService implements vmc.i
     // public static int NOTIFICATION_ID = 1;
     private String TAG = "GCMPRO";
     private String url;
+    private String message = "n/a";
+    private String enable = "n/a";
 
     @Override
     public void onMessageReceived(String from, Bundle data) {
         super.onMessageReceived(from, data);
-        String message = data.getString("message");
-        Log.d(TAG, message);
-        //   sendStickyNotification(message);
-        if (Utils.isLogin(getApplicationContext())) {
-            sendStickyNotification(message);
-            CallApplication.getWritabledatabase().DeleteAllData();
-            CallApplication.getInstance().stopRecording();
-            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-            prefs.edit().clear().commit();
-            Log.d("Logout", "LOgout on gcm");
+     //by admin to enable disable
+        if (data.containsKey("enable")) {
+            enable = data.getString("enable");
 
+            if (enable.equalsIgnoreCase("true")) {
+                CallApplication.getInstance().startRecording();
+            } else if (enable.equalsIgnoreCase("false")) {
+                CallApplication.getInstance().stopRecording();
+            }
+        }
+
+        if (data.containsKey("message")) {
+            message = data.getString("message");
+
+            Log.d(TAG, message);
+            //   sendStickyNotification(message);
+            if (message != null && message.length() > 5) {
+                if (Utils.isLogin(getApplicationContext())) {
+                    sendStickyNotification(message);
+                    CallApplication.getWritabledatabase().DeleteAllData();
+                    CallApplication.getInstance().stopRecording();
+                    SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                    prefs.edit().clear().commit();
+                    Log.d("Logout", "LOgout on gcm");
+
+                }
+
+            }
         }
 
     }

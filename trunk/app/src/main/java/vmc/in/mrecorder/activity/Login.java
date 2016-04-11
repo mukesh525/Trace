@@ -626,8 +626,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
             permissionsNeeded.add("READ CONTACTS");
         if (!addPermission(permissionsList, Manifest.permission.READ_CALL_LOG))
             permissionsNeeded.add("READ CALL LOG");
-        if (!addPermission(permissionsList, Manifest.permission.INTERNET))
-            permissionsNeeded.add("INTERNET");
         if (!addPermission(permissionsList, Manifest.permission.ACCESS_NETWORK_STATE))
             permissionsNeeded.add("ACCESS NETWORK STATE");
         if (!addPermission(permissionsList, Manifest.permission.ACCESS_WIFI_STATE))

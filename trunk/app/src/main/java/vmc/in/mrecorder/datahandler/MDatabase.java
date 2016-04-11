@@ -33,7 +33,7 @@ public class MDatabase implements TAG {
         if (clearPrevious) {
             deleteCallRecords(table);
         }
-        String sql = "INSERT INTO " + (table == ALL ? HelperCallRecordings.TABLE_ALL : table == INBOUND ? HelperCallRecordings.TABLE_INBOUND : table == OUTBOUND ? HelperCallRecordings.TABLE_OUTBOUND : HelperCallRecordings.TABLE_MISSED) + " VALUES (?,?,?,?,?,?,?,?,?,?,?);";
+        String sql = "INSERT INTO " + (table == ALL ? HelperCallRecordings.TABLE_ALL : table == INBOUND ? HelperCallRecordings.TABLE_INBOUND : table == OUTBOUND ? HelperCallRecordings.TABLE_OUTBOUND : HelperCallRecordings.TABLE_MISSED) + " VALUES (?,?,?,?,?,?,?,?,?,?,?,?);";
         SQLiteStatement statement = mDatabase.compileStatement(sql);
         mDatabase.beginTransaction();
         for (int i = 0; i < listCalls.size(); i++) {
@@ -49,6 +49,7 @@ public class MDatabase implements TAG {
             statement.bindString(9, calldata.getName());
             statement.bindString(10, calldata.getStarttime());
             statement.bindString(11, calldata.getEndtime());
+            statement.bindString(12, calldata.getFilename());
             statement.execute();
         }
         mDatabase.setTransactionSuccessful();
@@ -82,7 +83,8 @@ public class MDatabase implements TAG {
                 HelperCallRecordings.COLUMN_CALLTYPEE,
                 HelperCallRecordings.COLUMN_NAME,
                 HelperCallRecordings.COLUMN_STARTTIME,
-                HelperCallRecordings.COLUMN_ENDTIME
+                HelperCallRecordings.COLUMN_ENDTIME,
+                HelperCallRecordings.COLUMN_FILENAME
 
         };
         Cursor cursor = mDatabase.query((table == ALL ? HelperCallRecordings.TABLE_ALL : table == INBOUND ? HelperCallRecordings.TABLE_INBOUND : table == OUTBOUND ? HelperCallRecordings.TABLE_OUTBOUND : HelperCallRecordings.TABLE_MISSED), null, null, null, null, null, null);
@@ -99,6 +101,7 @@ public class MDatabase implements TAG {
                 calldata.setName(cursor.getString(cursor.getColumnIndex(HelperCallRecordings.COLUMN_NAME)));
                 calldata.setStarttime(cursor.getString(cursor.getColumnIndex(HelperCallRecordings.COLUMN_STARTTIME)));
                 calldata.setEndtime(cursor.getString(cursor.getColumnIndex(HelperCallRecordings.COLUMN_ENDTIME)));
+                calldata.setFilename(cursor.getString(cursor.getColumnIndex(HelperCallRecordings.COLUMN_FILENAME)));
 
                 Date startTime = null;
                 Date endTime = null;

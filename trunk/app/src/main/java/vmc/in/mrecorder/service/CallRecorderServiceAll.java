@@ -162,12 +162,12 @@ public class CallRecorderServiceAll extends Service implements TAG {
                     || Build.VERSION.SDK_INT == Build.VERSION_CODES.KITKAT) {
 
                 if (Build.MANUFACTURER.equalsIgnoreCase("Xiaomi")) {
-                    audiofile = new File(sample.getAbsolutePath() + "/sound" + fileName + ".amr");
+                    audiofile = new File(sample.getAbsolutePath() + "/sound" + fileName + ".3gp");
                     recorder.setAudioSource(MediaRecorder.AudioSource.VOICE_CALL);
-                    recorder.setOutputFormat(MediaRecorder.OutputFormat.AMR_NB);
+                    recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
                     recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
                     recorder.setOutputFile(audiofile.getAbsolutePath());
-                    Log.e(TAG, "JELLY_BEAN" + "VOICE_CALL" + " " + "3gp");
+                    Log.e(TAG, "xiami" + "VOICE_CALL" + " " + "3gp");
                 } else {
                     recorder.setAudioSource(MediaRecorder.AudioSource.DEFAULT);
                     audiofile = new File(sample.getAbsolutePath() + "/sound" + fileName + ".3gp");
@@ -176,9 +176,9 @@ public class CallRecorderServiceAll extends Service implements TAG {
                     recorder.setOutputFile(audiofile.getAbsolutePath());
                 }
             } else {
-                audiofile = new File(sample.getAbsolutePath() + "/sound" + fileName + ".amr");
+                audiofile = new File(sample.getAbsolutePath() + "/sound" + fileName + ".3gp");
                 recorder.setAudioSource(MediaRecorder.AudioSource.VOICE_CALL);
-                recorder.setOutputFormat(MediaRecorder.OutputFormat.AMR_NB);
+                recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
                 recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
                 recorder.setOutputFile(audiofile.getAbsolutePath());
             }

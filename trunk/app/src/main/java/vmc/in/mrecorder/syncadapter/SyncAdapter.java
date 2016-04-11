@@ -86,7 +86,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
     public void onPerformSync(Account account, Bundle extras, String authority,
                               ContentProviderClient provider, SyncResult syncResult) {
         Log.d(TAG, "Beginning network synchronization");
-       // StartOrStopRecording();
+        // StartOrStopRecording();
         CallApplication.getInstance().isstartRecording();
 
         try {
@@ -136,7 +136,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
             if (response.has(CODE)) {
                 code = response.getString(CODE);
                 if (code.equals("202") || code.equals("401")) {
-                   // Utils.isLogout(getContext());
+                    // Utils.isLogout(getContext());
                 }
             }
 
@@ -153,7 +153,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
             if (response.has(CODE)) {
                 code = response.getString(CODE);
                 if (code.equals("202") || code.equals("401")) {
-                   // Utils.isLogout(getContext());
+                    // Utils.isLogout(getContext());
                 }
             }
             callDataArrayList = new ArrayList<CallData>();
@@ -207,9 +207,14 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss.SS");
         MultipartEntityBuilder builder = MultipartEntityBuilder.create();
         builder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE);
+        int duration;
         if (fileExist) {
-            MediaPlayer mp = MediaPlayer.create(getContext(), Uri.fromFile(model.getFile()));
-            int duration = mp.getDuration();
+            try {
+                MediaPlayer mp = MediaPlayer.create(getContext(), Uri.fromFile(model.getFile()));
+                duration = mp.getDuration();
+            } catch (Exception e) {
+                duration = 0;
+            }
             builder.addPart(UPLOADEDFILE, new FileBody(model.getFile()));
             Log.d(TAG, UPLOADEDFILE + ":" + model.getFile().getName());
             Log.d(TAG, DURATION + ":" + duration + "");
@@ -260,12 +265,12 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
                 stringBuilder.append(s);
             }
             String serverResponseMessage = stringBuilder.toString();
-            Log.d(TAG, "RESPONSE:"+serverResponseMessage);
+            Log.d(TAG, "RESPONSE:" + serverResponseMessage);
             String code;
             JSONObject obj = new JSONObject(serverResponseMessage);
             if (obj.has(CODE)) {
                 code = obj.getString(CODE);
-                Log.d(TAG, "RESPONSE CODE:"+code);
+                Log.d(TAG, "RESPONSE CODE:" + code);
                 if (code.equals("400")) {
                     CallApplication.getWritableDatabase().delete(model.getId());//from db
                     if (new File(model.getFilePath()).exists()) {

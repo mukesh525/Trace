@@ -45,6 +45,7 @@ public interface TAG {
 
     public String CALLTO = "callto";
     public String STARTTIME = "starttime";
+
     public String ENDTIME = "endtime";
     public String PULSE = "pulse";
     public String CALLTYPEE = "calltype";
@@ -80,6 +81,7 @@ public interface TAG {
 
     public String GET_CALL_LIST = "http://mcube.vmctechnologies.com//mtrackapp/getList";
     public String GET_FEED_BACK_URL = "http://mcube.vmctechnologies.com//mtrackapp/feedback_mtrack";
+    public static final String STREAM_TRACKER = "http://mcube.vmctechnologies.com/sounds/";
 
 
     //public  String UPLOAD_URL="http://192.168.1.118/mconnect/upload.php";

@@ -224,6 +224,10 @@ public class AllCalls extends Fragment implements SwipeRefreshLayout.OnRefreshLi
             if (swipeRefreshLayout.isRefreshing()) {
                 swipeRefreshLayout.setRefreshing(false);
             }
+
+            if (pdloadmore.getVisibility() == View.VISIBLE) {
+                pdloadmore.setVisibility(View.GONE);
+            }
             if (getActivity() != null) {
                 Snackbar snack = Snackbar.make(mroot, "No Internet Connection", Snackbar.LENGTH_SHORT)
                         .setAction(getString(R.string.text_tryAgain), new View.OnClickListener() {
@@ -446,12 +450,8 @@ public class AllCalls extends Fragment implements SwipeRefreshLayout.OnRefreshLi
             }
 
             if (data != null && getActivity() != null && data.size() > 0) {
-//                
+
                 callDataArrayList.addAll(data);
-
-
-
-
                 // MyApplication.getWritableDatabase().insertFollowup(data, false);
                 CallApplication.getWritabledatabase().insertCallRecords(MDatabase.ALL, data, false);
                 adapter.notifyDataSetChanged();

@@ -5,7 +5,7 @@
     android:id="@+id/root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_port"
+    android:background="@drawable/backporttr"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="in.vmc.mcubeconnect.activity.FeedBack"
     tools:showIn="@layout/activity_feedback">
@@ -45,7 +45,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/etfeedback"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="40dp"
         android:background="@drawable/button_background"
         android:padding="10dp"
         android:text="Submit"

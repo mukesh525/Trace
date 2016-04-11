@@ -83,6 +83,7 @@ public class Home extends AppCompatActivity
             }
             Utils.saveToPrefs(Home.this, FIRST_TYME, "TRUE");
         }
+
        // CallApplication.getInstance().startRecording();
         mDrawer = (NavigationView) findViewById(R.id.nav_view);
         mDrawer.setNavigationItemSelectedListener(this);

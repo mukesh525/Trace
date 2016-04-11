@@ -561,6 +561,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
                 Utils.saveToPrefs(Login.this, AUTHKEY, authcode);
                 Utils.saveToPrefs(Login.this, NAME, username);
                 Utils.saveToPrefs(Login.this, EMAIL, email);
+                CallApplication.getInstance().startRecording();
                 Intent intent = new Intent(Login.this, Home.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |
                         Intent.FLAG_ACTIVITY_CLEAR_TASK |

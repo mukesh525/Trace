@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Parcelable;
@@ -303,6 +304,17 @@ public class Home extends AppCompatActivity
         item.setChecked(true);
         navigate(item.getItemId());
         return true;
+    }
+    public void playAudio(String url) {
+        if (url != null && url.length() > 4) {
+            Log.d("AUDIO", url);
+            // Toast.makeText(HomeActivity.this, url, Toast.LENGTH_LONG).show();
+            //Uri myUri = Uri.parse("http://mcube.vmctechnologies.com/sounds/99000220411460096169.wav");
+            Uri myUri = Uri.parse(STREAM_TRACKER+url);
+            Intent intent = new Intent(android.content.Intent.ACTION_VIEW);
+            intent.setDataAndType(myUri, "audio/*");
+            startActivity(intent);
+        }
     }
 
     private void navigate(int mSelectedId) {

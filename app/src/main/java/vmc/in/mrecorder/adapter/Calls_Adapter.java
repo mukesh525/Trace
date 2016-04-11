@@ -105,12 +105,24 @@ public class Calls_Adapter extends RecyclerView.Adapter<Calls_Adapter.CallViewHo
             holder.overflow.setOnClickListener(new OnOverflowSelectedListener(context, holder.getAdapterPosition(), CallDataArrayList));
             holder.callFrom.setText(ci.getCalltype().equals("0") ? "Call From" : ci.getCalltype().equals("1") ? "Call From" : "Call To");
 
-
+            holder.img_play.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (!Utils.isEmpty(ci.getFilename())) {
+                        ((Home) context).playAudio(ci.getFilename());
+                    }
+                }
+            });
+            if (ci.getCalltype().equals("0")) {
+                holder.img_play.setVisibility(View.GONE);
+            } else {
+                holder.img_play.setVisibility(View.VISIBLE);
+            }
             try {
                 holder.dateTextView.setText(sdfDate.format(ci.getStartTime()));
                 holder.timeTextView.setText(sdfTime.format(ci.getStartTime()));
             } catch (Exception e) {
-                Log.d(TAG,e.getMessage().toString());
+                Log.d(TAG, e.getMessage().toString());
 
             }
             holder.groupNameTextView.setText(Utils.isEmpty(ci.getEmail()) ? UNKNOWN : ci.getEmail());
@@ -234,14 +246,14 @@ public class Calls_Adapter extends RecyclerView.Adapter<Calls_Adapter.CallViewHo
         protected ImageButton ibcall, ibmessage;
         private ArrayList<CallData> CallDataArrayList;
         private CallClickedListner callClickedListner;
-        public ImageView contactphoto;
+        public ImageView contactphoto, img_play;
 
         public CallViewHolder(View v, ArrayList<CallData> callDataArrayList, CallClickedListner callClickedListner) {
             super(v);
 
             callFromTextView = (TextView) v.findViewById(R.id.fCallFromTextView);
             callFrom = (TextView) v.findViewById(R.id.fCallFromLabel);
-
+            img_play = (ImageView) v.findViewById(R.id.ivplay);
             callerNameTextView = (TextView) v.findViewById(R.id.fCallerNameTextView);
             groupNameTextView = (TextView) v.findViewById(R.id.fGroupNameTextView);
             dateTextView = (TextView) v.findViewById(R.id.fDateTextView);

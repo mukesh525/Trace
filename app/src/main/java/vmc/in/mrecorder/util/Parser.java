@@ -1,5 +1,7 @@
 package vmc.in.mrecorder.util;
 
+import android.util.Log;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -23,6 +25,7 @@ public class Parser implements TAG {
         JSONArray recordsArray = null;
         SimpleDateFormat sdf = new SimpleDateFormat(DateTimeFormat);
         if (response.has(RECORDS)) {
+            Log.d("RESPONSE",response.toString());
             recordsArray = response.getJSONArray(RECORDS);
             for (int i = 0; i < recordsArray.length(); i++) {
                 CallData callData = new CallData();
@@ -57,6 +60,10 @@ public class Parser implements TAG {
                 }
                 if (record.has(ENDTIME)) {
                     callData.setEndtime(record.getString(ENDTIME));
+                }
+                if (record.has(FILENAME)) {
+                    callData.setFilename(record.getString(FILENAME));
+                    Log.d(TAG,callData.getFilename());
                 }
 
 

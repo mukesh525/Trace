@@ -48,6 +48,8 @@ import vmc.in.mrecorder.util.Utils;
 
 import com.getbase.floatingactionbutton.FloatingActionButton;
 
+import java.io.File;
+
 
 public class Home extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, TAG {
@@ -84,7 +86,7 @@ public class Home extends AppCompatActivity
             Utils.saveToPrefs(Home.this, FIRST_TYME, "TRUE");
         }
 
-       // CallApplication.getInstance().startRecording();
+        // CallApplication.getInstance().startRecording();
         mDrawer = (NavigationView) findViewById(R.id.nav_view);
         mDrawer.setNavigationItemSelectedListener(this);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -125,9 +127,6 @@ public class Home extends AppCompatActivity
                 fabMenu.collapse();
             }
         });
-
-
-
 
 
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -251,7 +250,7 @@ public class Home extends AppCompatActivity
                     Intent.FLAG_ACTIVITY_CLEAR_TASK |
                     Intent.FLAG_ACTIVITY_NEW_TASK);
             Home.this.startActivity(intent);
-            Log.d("Logout","LOgout on resume");
+            Log.d("Logout", "LOgout on resume");
         }
 
     }
@@ -306,17 +305,21 @@ public class Home extends AppCompatActivity
         navigate(item.getItemId());
         return true;
     }
+
     public void playAudio(String url) {
         if (url != null && url.length() > 4) {
             Log.d("AUDIO", url);
             // Toast.makeText(HomeActivity.this, url, Toast.LENGTH_LONG).show();
             //Uri myUri = Uri.parse("http://mcube.vmctechnologies.com/sounds/99000220411460096169.wav");
-            Uri myUri = Uri.parse(STREAM_TRACKER+url);
+            Uri myUri = Uri.parse(STREAM_TRACKER + url);
             Intent intent = new Intent(android.content.Intent.ACTION_VIEW);
             intent.setDataAndType(myUri, "audio/*");
             startActivity(intent);
         }
     }
+
+
+
 
     private void navigate(int mSelectedId) {
         if (mSelectedId == R.id.all) {

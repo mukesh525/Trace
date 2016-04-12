@@ -9,7 +9,6 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.provider.ContactsContract;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v7.view.menu.MenuBuilder;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
@@ -20,43 +19,29 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
-import com.nostra13.universalimageloader.core.display.RoundedBitmapDisplayer;
-
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Field;
-import java.security.cert.X509Certificate;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Random;
 
 import vmc.in.mrecorder.R;
 import vmc.in.mrecorder.activity.Home;
 import vmc.in.mrecorder.callbacks.TAG;
 import vmc.in.mrecorder.entity.CallData;
-import vmc.in.mrecorder.fragment.AllCalls;
 import vmc.in.mrecorder.util.Utils;
 
 /**
  * Created by mukesh on 3/24/2016.
  */
 public class Calls_Adapter extends RecyclerView.Adapter<Calls_Adapter.CallViewHolder> implements TAG {
-    private final ImageLoader imageLoader;
-    private final DisplayImageOptions options;
+
     private Context context;
-    private LayoutInflater inflator;
     private ArrayList<CallData> CallDataArrayList;
     private CallClickedListner callClickedListner;
     SimpleDateFormat sdfDate = new SimpleDateFormat("dd-MM-yyyy");
-    //SimpleDateFormat sdfTime = new SimpleDateFormat("HH:mm:ss");
     SimpleDateFormat sdfTime = new SimpleDateFormat("hh:mm aa");
     private int previousPosition = 0;
     public View mroot;
@@ -68,19 +53,6 @@ public class Calls_Adapter extends RecyclerView.Adapter<Calls_Adapter.CallViewHo
         this.CallDataArrayList = CallDataArrayList;
         this.mroot = mroot;
         this.fragment = fragment;
-        imageLoader = ImageLoader.getInstance();
-        options = new DisplayImageOptions.Builder()
-                .showImageOnLoading(R.drawable.def_img)
-                .showImageForEmptyUri(R.drawable.def_img)
-                .showImageOnFail(R.drawable.error)
-                .cacheInMemory(true)
-                .cacheOnDisc(true)
-                .considerExifParams(true)
-                .displayer(new RoundedBitmapDisplayer(20))
-                .build();
-
-        imageLoader.init(ImageLoaderConfiguration.createDefault(context));
-
     }
 
 
@@ -128,27 +100,6 @@ public class Calls_Adapter extends RecyclerView.Adapter<Calls_Adapter.CallViewHo
             holder.groupNameTextView.setText(Utils.isEmpty(ci.getEmail()) ? UNKNOWN : ci.getEmail());
 
             holder.statusTextView.setText(ci.getCalltype().equals("0") ? MISSED : ci.getCalltype().equals("1") ? INCOMING : OUTGOING);
-            // Log.d("TAG", ci.getStatus());
-
-//            Uri bmpUri = null;
-//
-//            try {
-//                bmpUri = getContactPhoto(ci.getCallfrom());
-//
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//                Log.d("TAG", e.getMessage());
-//            }
-//
-//            if (bmpUri != null) {
-//                imageLoader.displayImage(bmpUri.toString(), holder.contactphoto, options);
-//            } else {
-//                Random r = new Random();
-//                int a = r.nextInt(255);
-//                //holder.contactphoto.setBackgroundColor(Color.rgb(r.nextInt(255), r.nextInt(255), r.nextInt(255)));
-//                holder.contactphoto.setImageResource(R.drawable.def_img);
-//            }
-
 
             holder.contactphoto.setImageBitmap(getFacebookPhoto(ci.getCallto()));
 
@@ -278,48 +229,8 @@ public class Calls_Adapter extends RecyclerView.Adapter<Calls_Adapter.CallViewHo
         }
     }
 
-    public Uri getContactPhoto(String phoneNumber) throws Exception {
-        Uri uri = Uri.withAppendedPath(ContactsContract.PhoneLookup.CONTENT_FILTER_URI,
-                Uri.encode(phoneNumber));
-        Cursor cursor = context.getContentResolver().query(uri,
-                new String[]{ContactsContract.PhoneLookup.DISPLAY_NAME, ContactsContract.PhoneLookup._ID},
-                null, null, null);
-        cursor.close();
 
-        long contactId = 0;
 
-        if (cursor.moveToFirst()) {
-            do {
-                contactId = cursor.getLong(cursor
-                        .getColumnIndex(ContactsContract.PhoneLookup._ID));
-            } while (cursor.moveToNext());
-        }
-
-        return getUserPictureUri(contactId);
-
-    }
-
-    private Uri getUserPictureUri(long id) throws Exception {
-        Uri person = ContentUris.withAppendedId(
-                ContactsContract.Contacts.CONTENT_URI, id);
-
-        Uri picUri = ContentUris.withAppendedId(ContactsContract.Contacts.CONTENT_URI, id);
-        try {
-            InputStream is = ContactsContract.Contacts.openContactPhotoInputStream(
-                    context.getContentResolver(), picUri);
-            is.close();
-        } catch (FileNotFoundException e) {
-            //Contact image does not exist
-            return null;
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            //Log.d(" picture exception", "called");
-            return null;
-        }
-
-        return picUri;
-    }
 
     public interface CallClickedListner {
         public void OnItemClick(CallData callData, int position);

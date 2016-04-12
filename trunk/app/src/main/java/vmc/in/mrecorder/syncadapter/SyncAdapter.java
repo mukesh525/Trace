@@ -93,7 +93,9 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
             if (!CallRecorderServiceAll.recording && Utils.isLogin(getContext())) {
                 LoadCalls();
             }
-            callList = CallApplication.getWritableDatabase().GetAllCalls();
+            //callList = CallApplication.getWritableDatabase().GetAllCalls();
+            callList = CallApplication.getWritabledatabase().getAllOfflineCalls();
+           // Log.d(TAG, "offline data Size" + callList.size());
             for (int i = 0; i < callList.size(); i++) {
                 if (!CallRecorderServiceAll.recording && Utils.isLogin(getContext())) {
 
@@ -272,7 +274,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
                 code = obj.getString(CODE);
                 Log.d(TAG, "RESPONSE CODE:" + code);
                 if (code.equals("400")) {
-                    CallApplication.getWritableDatabase().delete(model.getId());//from db
+                    CallApplication.getWritabledatabase().delete(model.getId());//from db
                     if (new File(model.getFilePath()).exists()) {
                         new File(model.getFilePath()).delete();//from internal storage
                         Log.d(TAG, "FILE DELETED" + ":" + model.getFile().getName());

@@ -35,7 +35,7 @@ public class CallRecorderServiceAll extends Service implements TAG {
     private CallBroadcastReceiver cbr;
 
     //Phone number
-    String phoneNumber;
+    String phoneNumber,currentnumber;
 
     //Database class
     // HelperCallRecordings hcr;
@@ -123,11 +123,11 @@ public class CallRecorderServiceAll extends Service implements TAG {
                     Log.e("answer", "" + String.valueOf(phoneNumber));
                     if (Build.MANUFACTURER.equalsIgnoreCase("motorola")) {
                         if (answered && ringing) {
-                            CallApplication.getWritableDatabase().insert(phoneNumber, fileName, "empty", INCOMING);
+                            CallApplication.getWritabledatabase().insert(phoneNumber, fileName, "empty", INCOMING);
                             Log.e("answer", "" + "incoming inserted");
                         }
                         if (answered && !ringing) {
-                            CallApplication.getWritableDatabase().insert(phoneNumber, fileName, "empty", OUTGOING);
+                            CallApplication.getWritabledatabase().insert(phoneNumber, fileName, "empty", OUTGOING);
                             Log.e("answer", "" + "outgoing inserted");
                         }
 
@@ -199,16 +199,18 @@ public class CallRecorderServiceAll extends Service implements TAG {
 
             if (phoneNumber != null) {
                 if (ringing == true)
-                    CallApplication.getWritableDatabase().insert(phoneNumber, fileName, audiofile.getAbsolutePath(), INCOMING);
+                    CallApplication.getWritabledatabase().insert(phoneNumber, fileName, audiofile.getAbsolutePath(), INCOMING);
                 else if (outgoing == true)
                     //hcr.insert(phoneNumber, fileName, audiofile.getAbsolutePath(), OUTGOING);
-                    CallApplication.getWritableDatabase().insert(phoneNumber, fileName, audiofile.getAbsolutePath(), OUTGOING);
+                    CallApplication.getWritabledatabase().insert(phoneNumber, fileName, audiofile.getAbsolutePath(), OUTGOING);
+
 
             }
 
         }
 
         public boolean checkAnswered(Intent i) throws Exception {
+              String lastKnownPhoneState = null;
             Log.d(TAG, "testing");
             if (i.getAction().equals(Intent.ACTION_NEW_OUTGOING_CALL)) {
                 phoneNumber = i.getStringExtra(Intent.EXTRA_PHONE_NUMBER);
@@ -222,20 +224,46 @@ public class CallRecorderServiceAll extends Service implements TAG {
                 Log.d(TAG, state);
 
                 if (state.equals(TelephonyManager.EXTRA_STATE_RINGING)) {
-                    //Check to see if call was answered later
+
+
+                        //Check to see if call was answered later
                     ringing = true;
                     ring = true;
                     shown = false;
                     callReceived = false;
-
                     Log.d(TAG, "Ringing true");
-
                     phoneNumber = b.getString(TelephonyManager.EXTRA_INCOMING_NUMBER);
 
+//                    if(lastKnownPhoneState != null && lastKnownPhoneState.equals(TelephonyManager.EXTRA_STATE_OFFHOOK)){
+//                        String fileName = String.valueOf(System.currentTimeMillis());
+//                        CallApplication.getWritableDatabase().insert(phoneNumber, fileName, DEFAULT, MISSED);
+//                    }
+//                    lastKnownPhoneState = state;
                     return false;
                 } else if (state.equals(TelephonyManager.EXTRA_STATE_OFFHOOK)) {
                     //call to be recorded if it was ringing or new outgoing
                     callReceived = true;
+
+                    currentnumber = phoneNumber;
+//                    if (recording == true) {
+//                        callReceived = false;
+//                    } else {
+//                        currentnumber = phoneNumber;
+//                        callReceived = true;
+//                    }
+
+                    //if (!currentnumber.equals(phoneNumber)) {
+
+//                        if (recording==true&& callReceived==false) {
+//                            Log.d(TAG, "numbers are different"+currentnumber);
+//                        String fileName = String.valueOf(System.currentTimeMillis());
+//                        CallApplication.getWritableDatabase().insert(phoneNumber, fileName, DEFAULT, MISSED);
+//                        Log.d(TAG, "missed call from  incoming" + phoneNumber);
+//                        // return false;
+//                        }
+                   // }
+
+
                     Log.d(TAG, "OFFHOOK" + phoneNumber);
                     if (ringing == true || outgoing == true) {
                         //ringing=false;
@@ -257,13 +285,24 @@ public class CallRecorderServiceAll extends Service implements TAG {
                             String fileName = String.valueOf(System.currentTimeMillis());
                             Log.d(TAG, "Missed call from : " + phoneNumber);
                             mGPS = new GPSTracker(getApplicationContext());
-                            Log.d(TAG, "Latitude" + mGPS.getLatitude() + "");
-                            Log.d(TAG, "Longitude" + mGPS.getLongitude() + "");
-                            CallApplication.getWritableDatabase().insert(phoneNumber, fileName, DEFAULT, MISSED);
+                          //  Log.d(TAG, "Latitude" + mGPS.getLatitude() + "");
+                            //Log.d(TAG, "Longitude" + mGPS.getLongitude() + "");
+                            CallApplication.getWritabledatabase().insert(phoneNumber, fileName, DEFAULT, MISSED);
                             shown = true;
                         }
 
                     }
+//                    if (!currentnumber.equals(phoneNumber)) {
+//                        Log.d(TAG, "numbers are different"+currentnumber);
+//                        if (ring == true && callReceived == false) {
+//
+//                        String fileName = String.valueOf(System.currentTimeMillis());
+//                        CallApplication.getWritableDatabase().insert(phoneNumber, fileName, DEFAULT, MISSED);
+//                        Log.d(TAG, "missed call from  incoming" + phoneNumber);
+//                        // return false;
+//
+//                    }
+//                    }
 
 
                     ringing = false;

@@ -1,6 +1,8 @@
 package vmc.in.mrecorder.activity;
 
 import android.app.Fragment;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
@@ -10,6 +12,8 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 
+
+import java.io.File;
 
 import vmc.in.mrecorder.R;
 import vmc.in.mrecorder.adapter.ContactsPagerAdapter;
@@ -57,6 +61,16 @@ public class ContactsActivity extends AppCompatActivity {
         });
 
 
+    }
+
+    public void playAudioPath(String path) {
+
+        // Toast.makeText(HomeActivity.this, url, Toast.LENGTH_LONG).show();//Uri myUri = Uri.parse("http://mcube.vmctechnologies.com/sounds/99000220411460096169.wav");
+        File file = new File(path);
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_VIEW);
+        intent.setDataAndType(Uri.fromFile(file), "audio/*");
+        startActivity(intent);
     }
 
     @Override

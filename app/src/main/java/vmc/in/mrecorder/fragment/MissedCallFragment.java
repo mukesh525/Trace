@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import vmc.in.mrecorder.R;
 import vmc.in.mrecorder.adapter.NewSpeedDialAdpter;
@@ -51,6 +52,9 @@ public class MissedCallFragment extends Fragment implements TAG {
 
         Calllist = CallApplication.getWritabledatabase().getAllOfflineCalls();
         Calllist = getSortList("missed", Calllist);
+        if (Calllist.size() > 0) {
+            Collections.sort(Calllist, Collections.reverseOrder());
+        }
         mAdapter = new NewSpeedDialAdpter(getActivity(), Calllist);
         if (Calllist.size() == 0) {
             default_text.setVisibility(View.VISIBLE);

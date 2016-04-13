@@ -10,6 +10,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 
 import vmc.in.mrecorder.R;
 import vmc.in.mrecorder.adapter.NewSpeedDialAdpter;
@@ -50,10 +53,12 @@ public class AllCallsFragment extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         Calllist = CallApplication.getWritabledatabase().getAllOfflineCalls();
+        if (Calllist.size() > 0) {
+            Collections.sort(Calllist, Collections.reverseOrder());
+        }
 
         mAdapter = new NewSpeedDialAdpter(getActivity(), Calllist);
         mRecyclerView.setAdapter(mAdapter);
-
 
 
     }

@@ -80,8 +80,12 @@ public class Calls_Adapter extends RecyclerView.Adapter<Calls_Adapter.CallViewHo
             holder.img_play.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    if(Utils.onlineStatus1(context)){
                     if (!Utils.isEmpty(ci.getFilename())) {
                         ((Home) context).playAudio(ci.getFilename());
+                    }
+                    }else {
+                        Toast.makeText(context,"Check Internet Connection..",Toast.LENGTH_SHORT).show();
                     }
                 }
             });
@@ -101,7 +105,7 @@ public class Calls_Adapter extends RecyclerView.Adapter<Calls_Adapter.CallViewHo
 
             holder.statusTextView.setText(ci.getCalltype().equals("0") ? MISSED : ci.getCalltype().equals("1") ? INCOMING : OUTGOING);
 
-            holder.contactphoto.setImageBitmap(getFacebookPhoto(ci.getCallto()));
+        //    holder.contactphoto.setImageBitmap(getFacebookPhoto(ci.getCallto()));
 
 
         } catch (Exception e) {
@@ -237,34 +241,34 @@ public class Calls_Adapter extends RecyclerView.Adapter<Calls_Adapter.CallViewHo
     }
 
 
-    public Bitmap getFacebookPhoto(String phoneNumber) {
-        Uri phoneUri = Uri.withAppendedPath(ContactsContract.PhoneLookup.CONTENT_FILTER_URI, Uri.encode(phoneNumber));
-        Uri photoUri = null;
-        ContentResolver cr = context.getContentResolver();
-        Cursor contact = cr.query(phoneUri,
-                new String[]{ContactsContract.Contacts._ID}, null, null, null);
-
-        if (contact.moveToFirst()) {
-            long userId = contact.getLong(contact.getColumnIndex(ContactsContract.Contacts._ID));
-            contact.close();
-            photoUri = ContentUris.withAppendedId(ContactsContract.Contacts.CONTENT_URI, userId);
-
-        } else {
-            Bitmap defaultPhoto = BitmapFactory.decodeResource(context.getResources(), R.drawable.def_img);
-            return defaultPhoto;
-        }
-        if (photoUri != null) {
-            InputStream input = ContactsContract.Contacts.openContactPhotoInputStream(
-                    cr, photoUri);
-            if (input != null) {
-                return BitmapFactory.decodeStream(input);
-            }
-        } else {
-            Bitmap defaultPhoto = BitmapFactory.decodeResource(context.getResources(), R.drawable.def_img);
-            return defaultPhoto;
-        }
-
-        Bitmap defaultPhoto = BitmapFactory.decodeResource(context.getResources(), R.drawable.def_img);
-        return defaultPhoto;
-    }
+//    public Bitmap getFacebookPhoto(String phoneNumber) {
+//        Uri phoneUri = Uri.withAppendedPath(ContactsContract.PhoneLookup.CONTENT_FILTER_URI, Uri.encode(phoneNumber));
+//        Uri photoUri = null;
+//        ContentResolver cr = context.getContentResolver();
+//        Cursor contact = cr.query(phoneUri,
+//                new String[]{ContactsContract.Contacts._ID}, null, null, null);
+//
+//        if (contact.moveToFirst()) {
+//            long userId = contact.getLong(contact.getColumnIndex(ContactsContract.Contacts._ID));
+//            contact.close();
+//            photoUri = ContentUris.withAppendedId(ContactsContract.Contacts.CONTENT_URI, userId);
+//
+//        } else {
+//            Bitmap defaultPhoto = BitmapFactory.decodeResource(context.getResources(), R.drawable.def_img);
+//            return defaultPhoto;
+//        }
+//        if (photoUri != null) {
+//            InputStream input = ContactsContract.Contacts.openContactPhotoInputStream(
+//                    cr, photoUri);
+//            if (input != null) {
+//                return BitmapFactory.decodeStream(input);
+//            }
+//        } else {
+//            Bitmap defaultPhoto = BitmapFactory.decodeResource(context.getResources(), R.drawable.def_img);
+//            return defaultPhoto;
+//        }
+//
+//        Bitmap defaultPhoto = BitmapFactory.decodeResource(context.getResources(), R.drawable.def_img);
+//        return defaultPhoto;
+//    }
 }

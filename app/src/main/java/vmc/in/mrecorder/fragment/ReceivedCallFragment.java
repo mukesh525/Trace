@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import vmc.in.mrecorder.R;
 import vmc.in.mrecorder.adapter.NewSpeedDialAdpter;
@@ -50,6 +51,10 @@ public class ReceivedCallFragment extends Fragment implements TAG {
         super.onActivityCreated(savedInstanceState);
         Calllist = CallApplication.getWritabledatabase().getAllOfflineCalls();
         Calllist = getSortList("incoming", Calllist);
+        if (Calllist.size() > 0) {
+            Collections.sort(Calllist, Collections.reverseOrder());
+        }
+
         mAdapter = new NewSpeedDialAdpter(getActivity(), Calllist);
         if (Calllist.size() == 0) {
             default_text.setVisibility(View.VISIBLE);

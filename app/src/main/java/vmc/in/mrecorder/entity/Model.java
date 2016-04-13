@@ -1,16 +1,18 @@
 package vmc.in.mrecorder.entity;
 
 import java.io.File;
+import java.util.Comparator;
+import java.util.Date;
 
 /**
  * Created by gousebabjan on 4/3/16.
  */
-public class Model {
+public class Model implements Comparable<Model> {
 
     private String phoneNumber;
     private String time;
-    private  String filePath;
-    private  String callType;
+    private String filePath;
+    private String callType;
     private File file;
 
     public String getId() {
@@ -64,4 +66,9 @@ public class Model {
         this.callType = callType;
     }
 
+
+    @Override
+    public int compareTo(Model another) {
+        return new Date(Long.parseLong(getTime())).compareTo(new Date(Long.parseLong(another.getTime())));
+    }
 }

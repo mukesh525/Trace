@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import vmc.in.mrecorder.R;
 import vmc.in.mrecorder.adapter.NewSpeedDialAdpter;
@@ -52,7 +53,9 @@ public class DialledCallFragment extends Fragment implements TAG {
 
         Calllist = CallApplication.getWritabledatabase().getAllOfflineCalls();
         Calllist = getSortList("outgoing", Calllist);
-
+        if (Calllist.size() > 0) {
+            Collections.sort(Calllist, Collections.reverseOrder());
+        }
         // Log.e("dailled call count is ", "" + c.getCount());
         mAdapter = new NewSpeedDialAdpter(getActivity(), Calllist);
         if (Calllist.size() == 0) {

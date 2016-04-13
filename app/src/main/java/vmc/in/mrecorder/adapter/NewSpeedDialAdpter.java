@@ -23,6 +23,7 @@ import java.io.File;
 import java.lang.reflect.Field;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Date;
 
 import vmc.in.mrecorder.R;
@@ -60,11 +61,14 @@ public class NewSpeedDialAdpter extends RecyclerView.Adapter<NewSpeedDialAdpter.
 
         final Model ci = CallDataArrayList.get(position);
         if (ci.getCallType().equals("incoming"))
-            holder.calltype.setBackgroundResource(R.drawable.sym_call_incoming);
+           // holder.calltype.setBackgroundResource(R.drawable.sym_call_incoming);
+            holder.calltype.setBackgroundResource(R.drawable.ic_call_incoming);
         else if (ci.getCallType().equals("outgoing"))
-            holder.calltype.setBackgroundResource(R.drawable.sym_call_outgoing);
+           // holder.calltype.setBackgroundResource(R.drawable.sym_call_outgoing);
+            holder.calltype.setBackgroundResource(R.drawable.ic_call_outgoing);
         else if (ci.getCallType().equals("missed"))
-            holder.calltype.setBackgroundResource(R.drawable.sym_call_missed);
+           // holder.calltype.setBackgroundResource(R.drawable.sym_call_missed);
+            holder.calltype.setBackgroundResource(R.drawable.ic_call_missed);
         String sname = null;
 
         try {
@@ -74,19 +78,20 @@ public class NewSpeedDialAdpter extends RecyclerView.Adapter<NewSpeedDialAdpter.
         }
         holder.iboverflow.setOnClickListener(new OnOverflowSelectedListener(context, holder.getAdapterPosition(), CallDataArrayList));
         holder.nameTextView.setText(sname != null ? sname : ci.getPhoneNumber());
-        SimpleDateFormat sdf = new SimpleDateFormat("hh:mm");
+        SimpleDateFormat sdf = new SimpleDateFormat("hh:mm aa" );
         //  String stime=sdf.format(new Date(Long.parseLong(c.getString(timeindex))));
         String stime = sdf.format(new Date(Long.parseLong(ci.getTime())));
 
         holder.timeTextView.setText(stime);
 
-        sdf = new SimpleDateFormat("dd/MM/yyyy");
+        sdf = new SimpleDateFormat("dd-MM-yyyy");
         String sdate = sdf.format(new Date(Long.parseLong(ci.getTime())));
 
         holder.dateTextView.setText(sdate);
 
 
     }
+//
 
     public String getContactName(String snumber) throws Exception {
         ContentResolver cr = context.getContentResolver();

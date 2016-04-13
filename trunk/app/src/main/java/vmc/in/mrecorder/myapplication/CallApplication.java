@@ -1,29 +1,18 @@
 package vmc.in.mrecorder.myapplication;
 
 
-import android.Manifest;
-import android.annotation.TargetApi;
 import android.app.Application;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.content.pm.PackageManager;
-import android.os.Build;
-import android.support.v7.app.AlertDialog;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
-import vmc.in.mrecorder.activity.Login;
 import vmc.in.mrecorder.callbacks.TAG;
-import vmc.in.mrecorder.datahandler.HelperCallRecordings;
 import vmc.in.mrecorder.datahandler.MDatabase;
-import vmc.in.mrecorder.provider.GPSTracker;
 import vmc.in.mrecorder.service.CallRecorderServiceAll;
 import vmc.in.mrecorder.syncadapter.SyncUtils;
 import vmc.in.mrecorder.util.Utils;
@@ -32,15 +21,8 @@ public class CallApplication extends Application implements TAG {
     public static CallApplication mApplication;
     public static SharedPreferences sp;//to prevent concurrent creation of shared pref and editor
     public static Editor e;
-    public static int opt;
-
-
-    private String DeviceID;
-    private static HelperCallRecordings mDatabase;
     private static MDatabase mdatabase;
     public Intent all;
-    private double latitude, longitude;
-    private GPSTracker mGPS;
 
 
     @Override
@@ -49,9 +31,6 @@ public class CallApplication extends Application implements TAG {
         super.onCreate();
         SyncUtils.CreateSyncAccount(getBaseContext());
         Log.e("application", "created");
-
-        /// getAllPermision
-        // DeviceID = GetDeviceId();
         mApplication = this;
         //try{
         sp = getApplicationContext().getSharedPreferences("com.example.call", Context.MODE_PRIVATE);
@@ -112,12 +91,6 @@ public class CallApplication extends Application implements TAG {
         return mApplication.getApplicationContext();
     }
 
-    public synchronized static HelperCallRecordings getWritableDatabase() {
-        if (mDatabase == null) {
-            mDatabase = new HelperCallRecordings(getAplicationContext());
-        }
-        return mDatabase;
-    }
 
     public static CallApplication getInstance() {
         return mApplication;

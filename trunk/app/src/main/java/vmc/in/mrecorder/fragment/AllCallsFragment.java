@@ -58,6 +58,10 @@ public class AllCallsFragment extends Fragment {
         }
 
         mAdapter = new NewSpeedDialAdpter(getActivity(), Calllist);
+        if (Calllist.size() == 0) {
+            default_text.setVisibility(View.VISIBLE);
+        } else
+            default_text.setVisibility(View.GONE);
         mRecyclerView.setAdapter(mAdapter);
 
 

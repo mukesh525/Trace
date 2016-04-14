@@ -79,15 +79,15 @@ public interface TAG {
     public String TYPE_ALL = "all";
     public String FEEDBACK = "feedback";
 
-    public String GET_CALL_LIST = "http://mcube.vmctechnologies.com//mtrackapp/getList";
-    public String GET_FEED_BACK_URL = "http://mcube.vmctechnologies.com//mtrackapp/feedback_mtrack";
+    public String GET_CALL_LIST = "http://mcube.vmctechnologies.com/mtrackapp/getList";
+    public String GET_FEED_BACK_URL = "http://mcube.vmctechnologies.com/mtrackapp/feedback_mtrack";
     public static final String STREAM_TRACKER = "http://mcube.vmctechnologies.com/sounds/";
 
 
     //public  String UPLOAD_URL="http://192.168.1.118/mconnect/upload.php";
-    public String UPLOAD_URL = "http://mcube.vmctechnologies.com//mtrackapp/insert_calldetail";
-    public String GET_OTP = "http://mcube.vmctechnologies.com//mtrackapp/login_mtrack";
-    public String LOGIN_URL = "http://mcube.vmctechnologies.com//mtrackapp/check_auth";
+    public String UPLOAD_URL = "http://mcube.vmctechnologies.com/mtrackapp/insert_calldetail";
+    public String GET_OTP = "http://mcube.vmctechnologies.com/mtrackapp/login_mtrack";
+    public String LOGIN_URL = "http://mcube.vmctechnologies.com/mtrackapp/check_auth";
     public String FORGOT_OTP_URL = "";
     public String CHANGED_PASS = "";
 

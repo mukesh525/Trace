@@ -4,10 +4,12 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Parcelable;
+import android.preference.PreferenceManager;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
@@ -128,7 +130,7 @@ public class Home extends AppCompatActivity
             }
         });
 
-
+        showprefrenceValues();
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -243,7 +245,7 @@ public class Home extends AppCompatActivity
     @Override
     protected void onResume() {
         super.onResume();
-
+        showprefrenceValues();
         if (!Utils.isLogin(Home.this)) {
             Intent intent = new Intent(Home.this, Login.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |
@@ -319,8 +321,6 @@ public class Home extends AppCompatActivity
     }
 
 
-
-
     private void navigate(int mSelectedId) {
         if (mSelectedId == R.id.all) {
             setSelection(0);
@@ -340,6 +340,9 @@ public class Home extends AppCompatActivity
         if (mSelectedId == R.id.nav_help_feedback) {
             startActivity(new Intent(Home.this, Feedback.class));
         }
+        if (mSelectedId == R.id.settings) {
+            startActivity(new Intent(Home.this, Settings.class));
+        }
 
 
         invalidateOptionsMenu();
@@ -357,6 +360,24 @@ public class Home extends AppCompatActivity
 
     private void hideDrawer() {
         this.mDrawerLayout.closeDrawer(GravityCompat.START);
+    }
+
+
+    public void showprefrenceValues() {
+        SharedPreferences sharedPrefs = PreferenceManager
+                .getDefaultSharedPreferences(this);
+        StringBuilder builder = new StringBuilder();
+
+        builder.append("\n Audio Source: "
+                + sharedPrefs.getString("audiosource", "NULL"));
+
+        builder.append("\n Audio Format:"
+                + sharedPrefs.getString("audioformat", "NULL"));
+
+        builder.append("\n Sync Frequency: "
+                + sharedPrefs.getString("prefSyncFrequency", "NULL"));
+
+        Log.d("SETTINGS", builder.toString());
     }
 
 }

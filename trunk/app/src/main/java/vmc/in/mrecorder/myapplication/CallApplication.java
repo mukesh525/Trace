@@ -17,7 +17,7 @@ import vmc.in.mrecorder.service.CallRecorderServiceAll;
 import vmc.in.mrecorder.syncadapter.SyncUtils;
 import vmc.in.mrecorder.util.Utils;
 
-public class CallApplication extends Application implements TAG {
+public class CallApplication extends Application implements TAG, SharedPreferences.OnSharedPreferenceChangeListener {
     public static CallApplication mApplication;
     public static SharedPreferences sp;//to prevent concurrent creation of shared pref and editor
     public static Editor e;
@@ -169,4 +169,8 @@ public class CallApplication extends Application implements TAG {
         return mdatabase;
     }
 
+    @Override
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+        SyncUtils.CreateSyncAccount(getBaseContext());
+    }
 }

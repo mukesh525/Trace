@@ -88,7 +88,8 @@ public class Settings extends AppCompatActivity {
                                               String key) {
             Preference pref = findPreference(key);
             updatePreference(pref, key);
-            // SyncUtils.CreateSyncAccount(getActivity());
+            SyncUtils.CreateSyncAccount(getActivity());
+            SyncUtils.updateSync();
 
 
         }

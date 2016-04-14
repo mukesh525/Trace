@@ -15,12 +15,14 @@ import vmc.in.mrecorder.provider.FeedProvider;
 
 
 public class SyncUtils {
-    private static long SYNC_FREQUENCY ;  // 1 hour (in seconds)
+    private static long SYNC_FREQUENCY;  // 1 hour (in seconds)
     private static final String CONTENT_AUTHORITY = FeedProvider.CONTENT_AUTHORITY;
     private static final String PREF_SETUP_COMPLETE = "setup_complete";
-    private static  Context mContext;
+    private static Context mContext;
+    private static Account account;
+
     public static void CreateSyncAccount(Context context) {
-        mContext=context;
+        mContext = context;
         SharedPreferences sharedPrefs = PreferenceManager
                 .getDefaultSharedPreferences(context);
         int value = Integer.parseInt(sharedPrefs.getString("prefSyncFrequency", "10"));
@@ -28,7 +30,7 @@ public class SyncUtils {
         boolean newAccount = false;
         boolean setupComplete = PreferenceManager
                 .getDefaultSharedPreferences(context).getBoolean(PREF_SETUP_COMPLETE, false);
-        Account account = GenericAccountService.GetAccount();
+        account = GenericAccountService.GetAccount();
         AccountManager accountManager = (AccountManager) context.getSystemService(Context.ACCOUNT_SERVICE);
         if (accountManager.addAccountExplicitly(account, null, null)) {
             ContentResolver.setIsSyncable(account, CONTENT_AUTHORITY, 1);
@@ -61,7 +63,14 @@ public class SyncUtils {
     }
 
 
-
+    public static void updateSync() {
+        SharedPreferences sharedPrefs = PreferenceManager
+                .getDefaultSharedPreferences(mContext);
+        int value = Integer.parseInt(sharedPrefs.getString("prefSyncFrequency", "10"));
+        SYNC_FREQUENCY = value;
+        ContentResolver.addPeriodicSync(
+                account, CONTENT_AUTHORITY, new Bundle(), SYNC_FREQUENCY);
+    }
 
 
 }

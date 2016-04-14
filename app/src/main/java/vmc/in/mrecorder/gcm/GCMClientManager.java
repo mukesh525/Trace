@@ -9,6 +9,7 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 import com.google.android.gms.iid.InstanceID;
@@ -150,6 +151,7 @@ public class GCMClientManager {
      * the Google Play Store or enable it in the device's system settings.
      */
     private boolean checkPlayServices() {
+       // int res=GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(getContext());
         int resultCode = GooglePlayServicesUtil.isGooglePlayServicesAvailable(getContext());
         if (resultCode != ConnectionResult.SUCCESS) {
             if (GooglePlayServicesUtil.isUserRecoverableError(resultCode)) {
@@ -158,6 +160,20 @@ public class GCMClientManager {
             } else {
                 Log.i(TAG, "This device is not supported.");
             }
+            return false;
+        }
+        return true;
+    }
+
+    
+    protected boolean IsPlayServicesAvailable ()
+    {
+        int resultCode = GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(getContext());
+        if (resultCode == ConnectionResult.SUCCESS){
+            // msgText.setText("isGooglePlayServicesAvailable SUCCESS");
+        }
+        else{
+            GoogleApiAvailability.getInstance().getErrorDialog(getActivity(), resultCode, 1).show();
             return false;
         }
         return true;

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="@string/audiosource">
+        <ListPreference
+            android:entries="@array/audiosource"
+            android:entryValues="@array/audiosourceValues"
+            android:key="audiosource"
+            android:summary="@string/pref_audiosource_summary"
+            android:title="@string/audiosourcetitle" />
+        <ListPreference
+            android:entries="@array/audioformat"
+            android:entryValues="@array/audiovalues"
+            android:key="audioformat"
+            android:summary="@string/pref_audioformat_summary"
+            android:title="@string/audioformattitle" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/syncfrequency">
+        <ListPreference
+            android:entries="@array/syncFrequency"
+            android:entryValues="@array/syncFrequencyValues"
+            android:key="prefSyncFrequency"
+            android:summary="@string/pref_sync_frequency"
+            android:title="@string/pref_sync_title_frequency" />
+    </PreferenceCategory> <PreferenceCategory android:title="@string/notification">
+    <CheckBoxPreference
+        android:defaultValue="false"
+        android:key="prefNotify"
+        android:summary="@string/notify_report_summary"
+        android:title="@string/notify"></CheckBoxPreference>
+    </PreferenceCategory>
+</PreferenceScreen>

@@ -19,9 +19,7 @@
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
-
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
-
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
@@ -31,6 +29,8 @@
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
     <uses-permission android:name="android.permission.READ_SMS" />
     <uses-permission android:name="android.permission.SEND_SMS" />
+
+
 
     <!-- Required to register a SyncStatusObserver to display a "syncing..." progress indicator. -->
     <uses-permission android:name="android.permission.READ_SYNC_STATS" />
@@ -42,7 +42,6 @@
     <!-- gcm -->
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
-
 
     <!--
         <permission
@@ -78,7 +77,6 @@
             android:name=".service.SyncService"
             android:exported="true">
 
-
             <!--
             This intent filter is required. It allows the system to launch our sync service
             as needed.
@@ -102,12 +100,9 @@
                 android:name="android.accounts.AccountAuthenticator"
                 android:resource="@xml/authenticator" />
         </service>
-
-
         <service
             android:name=".service.CallRecorderServiceAll"
             android:protectionLevel="signature" />
-
 
         <receiver
             android:name=".receiver.BootBroadcastReceiver"
@@ -140,8 +135,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:launchMode="singleInstance"
             android:name=".activity.Login"
+            android:launchMode="singleInstance"
             android:noHistory="true"
             android:screenOrientation="portrait"
             android:theme="@style/MyMaterialTheme" />
@@ -187,6 +182,15 @@
         <activity
             android:name=".activity.Feedback"
             android:label="@string/title_activity_feedback"
+            android:parentActivityName=".activity.Home"
+            android:theme="@style/MyMaterialTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="vmc.in.mrecorder.activity.Home" />
+        </activity>
+        <activity
+            android:name=".activity.Settings"
+            android:label="@string/title_activity_settings"
             android:parentActivityName=".activity.Home"
             android:theme="@style/MyMaterialTheme">
             <meta-data

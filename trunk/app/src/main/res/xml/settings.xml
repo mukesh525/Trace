@@ -22,11 +22,23 @@
             android:key="prefSyncFrequency"
             android:summary="@string/pref_sync_frequency"
             android:title="@string/pref_sync_title_frequency" />
-    </PreferenceCategory> <PreferenceCategory android:title="@string/notification">
-    <CheckBoxPreference
-        android:defaultValue="false"
-        android:key="prefNotify"
-        android:summary="@string/notify_report_summary"
-        android:title="@string/notify"></CheckBoxPreference>
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/recorsettings">
+
+
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="prefRecording"
+            android:summary="@string/pref_record_settings"
+            android:title="@string/pref_title_record" />
+
+
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/notification">
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="prefNotify"
+            android:summary="@string/notify_report_summary"
+            android:title="@string/notify"></CheckBoxPreference>
     </PreferenceCategory>
 </PreferenceScreen>

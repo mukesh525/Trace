@@ -36,7 +36,7 @@
                     android:title="Help Feedback" />
                 <item
                     android:id="@+id/cal_log"
-                    android:icon="@drawable/ic_menu_send"
+                    android:icon="@drawable/settings"
                     android:title="Offline Records" />
             </menu>
         </item>

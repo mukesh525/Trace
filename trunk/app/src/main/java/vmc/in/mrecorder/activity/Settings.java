@@ -7,10 +7,12 @@ import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceGroup;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
 import vmc.in.mrecorder.R;
+import vmc.in.mrecorder.myapplication.CallApplication;
 import vmc.in.mrecorder.syncadapter.SyncUtils;
 
 public class Settings extends AppCompatActivity {
@@ -87,6 +89,14 @@ public class Settings extends AppCompatActivity {
         public void onSharedPreferenceChanged(SharedPreferences sharedPreferences,
                                               String key) {
             Preference pref = findPreference(key);
+            boolean recording = sharedPreferences.getBoolean("prefRecording", true);
+
+            if (recording) {
+                CallApplication.getInstance().startRecording();
+            } else {
+                CallApplication.getInstance().stopRecording();
+            }
+
             updatePreference(pref, key);
             SyncUtils.CreateSyncAccount(getActivity());
             SyncUtils.updateSync();

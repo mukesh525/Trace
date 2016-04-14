@@ -143,14 +143,14 @@ public class NewSpeedDialAdpter extends RecyclerView.Adapter<NewSpeedDialAdpter.
                             ((ContactsActivity) mContext).playAudioPath(callDatas.get(position).getFilePath());
                             return true;
                         case R.id.delete:
-                            CallApplication.getWritabledatabase().delete(callDatas.get(position).getId());
-                            File file = new File(callDatas.get(position).getFilePath());
-                            if (file.exists()) {
-                                file.delete();
-                                Toast.makeText(mContext, "File deleted", Toast.LENGTH_SHORT).show();
-                            } else {
-                                Toast.makeText(mContext, "File does not exist", Toast.LENGTH_SHORT).show();
-                            }
+//                            CallApplication.getWritabledatabase().delete(callDatas.get(position).getId());
+//                            File file = new File(callDatas.get(position).getFilePath());
+//                            if (file.exists()) {
+//                                file.delete();
+//                                Toast.makeText(mContext, "File deleted", Toast.LENGTH_SHORT).show();
+//                            } else {
+//                                Toast.makeText(mContext, "File does not exist", Toast.LENGTH_SHORT).show();
+//                            }
                             return true;
                         case R.id.share:
                             String mypath = callDatas.get(position).getFilePath();

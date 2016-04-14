@@ -118,7 +118,8 @@ public class Home extends AppCompatActivity
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Utils.setRecording(Home.this);
+              //  Utils.setRecording(Home.this);
+                startActivity(new Intent(Home.this,Settings.class));
                 fabMenu.collapse();
             }
         });

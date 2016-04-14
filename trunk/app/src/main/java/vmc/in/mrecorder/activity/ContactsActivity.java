@@ -56,7 +56,8 @@ public class ContactsActivity extends AppCompatActivity {
         actionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Utils.setRecording(ContactsActivity.this);
+              //  Utils.setRecording(ContactsActivity.this);
+                startActivity(new Intent(ContactsActivity.this,Settings.class));
             }
         });
 

@@ -18,6 +18,8 @@ import android.widget.CompoundButton;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
+import java.util.prefs.Preferences;
+
 import vmc.in.mrecorder.R;
 import vmc.in.mrecorder.callbacks.TAG;
 import vmc.in.mrecorder.myapplication.CallApplication;
@@ -60,6 +62,7 @@ public class Settings extends AppCompatActivity implements View.OnClickListener,
         getFragmentManager().beginTransaction()
                 .replace(R.id.content_frame, new MyPreferenceFragment())
                 .commit();
+
 
     }
 
@@ -171,6 +174,7 @@ public class Settings extends AppCompatActivity implements View.OnClickListener,
             callPreference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
                 @Override
                 public boolean onPreferenceChange(Preference preference, Object newValue) {
+
                     if (newValue instanceof Boolean) {
                         boolean selected = Boolean.parseBoolean(newValue.toString());
                         if (selected) {

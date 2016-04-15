@@ -43,8 +43,11 @@
     <string name="notify">Notify</string>
     <string name="notify_report_summary">Notify while recording</string>
     <string name="recorsettings">Record Setting</string>
-    <string name="pref_record_settings">Enable or Disable</string>
+    <string name="pref_record_settings">Enable recording</string>
     <string name="pref_title_record">Recording</string>
+    <string name="updatecallList">Update Call List</string>
+    <string name="pref_update_call">Monitor Calls (No Recording)</string>
+    <string name="pref_title_updateCall">Call Monitor</string>
 
 
 </resources>

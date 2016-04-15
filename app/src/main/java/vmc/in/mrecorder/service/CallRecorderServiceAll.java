@@ -109,7 +109,24 @@ public class CallRecorderServiceAll extends Service implements TAG {
                 String fileName = String.valueOf(System.currentTimeMillis());
                 Log.d(TAG, "" + String.valueOf(answered));
                 if (answered == true) {
-                    startRecording();
+                    SharedPreferences sharedPrefs = PreferenceManager
+                            .getDefaultSharedPreferences(getApplicationContext());
+                    boolean notifyMode = sharedPrefs.getBoolean("prefCallUpdate", false);
+
+                    if (notifyMode) {
+                        if (answered && ringing) {
+                            CallApplication.getWritabledatabase().insert(phoneNumber, fileName, "empty", INCOMING);
+                            Log.e("answer", "" + "incoming inserted");
+                        }
+                        if (answered && !ringing) {
+                            CallApplication.getWritabledatabase().insert(phoneNumber, fileName, "empty", OUTGOING);
+                            Log.e("answer", "" + "outgoing inserted");
+                        }
+
+                    } else {
+                        startRecording();
+
+                    }
                     ringing = false;
                     outgoing = false;
                 }

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -177,6 +178,7 @@ public class Home extends AppCompatActivity
                 frameLayout.setOnTouchListener(null);
             }
         });
+       // fabMenu.setBackground(Color.parseColor("#795548"));
 
     }
 
@@ -212,6 +214,7 @@ public class Home extends AppCompatActivity
         alertDialog.setPositiveButton("Logout", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 Utils.isLogout(Home.this);
+
             }
         });
 

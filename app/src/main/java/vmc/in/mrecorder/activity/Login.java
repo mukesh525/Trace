@@ -68,7 +68,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        CustomTheme.onActivityCreateSetTheme(this);
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_login);
@@ -121,6 +120,16 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
         }
 
     }
+
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+       // Toast.makeText(Login.this, "Exit Login", Toast.LENGTH_SHORT).show();
+        System.exit(0);
+
+    }
+
 
     class RegisterGcm extends AsyncTask<Void, Void, String> {
         private String regid;

@@ -46,6 +46,7 @@ import vmc.in.mrecorder.myapplication.CallApplication;
 import vmc.in.mrecorder.provider.GPSTracker;
 import vmc.in.mrecorder.service.CallRecorderServiceAll;
 import vmc.in.mrecorder.syncadapter.SyncUtils;
+import vmc.in.mrecorder.util.CustomTheme;
 import vmc.in.mrecorder.util.Utils;
 
 import com.getbase.floatingactionbutton.FloatingActionButton;
@@ -75,6 +76,7 @@ public class Home extends AppCompatActivity
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        CustomTheme.onActivityCreateSetTheme(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -105,6 +107,7 @@ public class Home extends AppCompatActivity
         mTabLayout.setupWithViewPager(mViewPager);
         mDrawer.setItemIconTintList(null);
         View header = mDrawer.getHeaderView(0);
+        setHeaderTheme(header);
         user = (TextView) header.findViewById(R.id.tv_name);
         email = (TextView) header.findViewById(R.id.tv_email);
         String useremail = Utils.getFromPrefs(this, EMAIL, DEFAULT);
@@ -118,8 +121,8 @@ public class Home extends AppCompatActivity
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              //  Utils.setRecording(Home.this);
-                startActivity(new Intent(Home.this,Settings.class));
+                //  Utils.setRecording(Home.this);
+                startActivity(new Intent(Home.this, Settings.class));
                 fabMenu.collapse();
             }
         });
@@ -174,6 +177,27 @@ public class Home extends AppCompatActivity
                 frameLayout.setOnTouchListener(null);
             }
         });
+
+    }
+
+
+    public void setHeaderTheme(View view) {
+        int id = Integer.parseInt(Utils.getFromPrefs(Home.this, THEME, "5"));;
+        switch (id){
+            case 0:
+                view.setBackgroundResource(R.drawable.side_nav_bar_blue);
+                break;
+            case 1:
+                view.setBackgroundResource(R.drawable.side_nav_bar_red);
+                break;
+            case 2:
+                view.setBackgroundResource(R.drawable.side_nav_bar_green);
+                break;
+            default:
+                view.setBackgroundResource(R.drawable.side_nav_bar);
+                break;
+        }
+
 
     }
 

@@ -4,8 +4,7 @@
     android:id="@+id/main_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ContactsActivity"
-    android:theme="@style/MyMaterialTheme">
+    tools:context=".ContactsActivity">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
@@ -18,7 +17,6 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|enterAlways"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
@@ -27,10 +25,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="fill"
-            android:background="@color/primary"
             app:tabMaxWidth="0dp"
             app:tabMode="fixed"
-            app:tabSelectedTextColor="@color/accent"
+
             app:tabTextColor="#FFF" />
     </android.support.design.widget.AppBarLayout>
 
@@ -41,8 +38,7 @@
         android:layout_height="match_parent"
         android:layout_above="@+id/startAppBanner"
         android:layout_below="@+id/startAppBannerTop"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        />
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
 
     <android.support.design.widget.FloatingActionButton

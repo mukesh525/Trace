@@ -24,6 +24,7 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import vmc.in.mrecorder.R;
 import vmc.in.mrecorder.callbacks.TAG;
+import vmc.in.mrecorder.util.CustomTheme;
 import vmc.in.mrecorder.util.JSONParser;
 import vmc.in.mrecorder.util.Utils;
 
@@ -39,6 +40,7 @@ public class Feedback extends AppCompatActivity implements TAG {
     private String authkey;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        CustomTheme.onActivityCreateSetTheme(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feedback);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -53,6 +55,8 @@ public class Feedback extends AppCompatActivity implements TAG {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                CustomTheme.changeToTheme(Feedback.this,2);
+
                 feedbackmsg = etFeedback.getText().toString();
                 if (!(feedbackmsg.length()==0||feedbackmsg.isEmpty()||feedbackmsg.equals(""))){
                     UpdateFeedBack();

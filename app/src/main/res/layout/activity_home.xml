@@ -30,7 +30,7 @@
                     android:id="@+id/toolbar"
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
-                    android:background="@color/primary"
+
                     app:layout_scrollFlags="scroll|enterAlways"
                     app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
@@ -41,11 +41,11 @@
                     android:id="@+id/tabs"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/primary"
+
                     app:tabGravity="fill"
                     app:tabMaxWidth="0dp"
                     app:tabMode="fixed"
-                    app:tabSelectedTextColor="@color/accent"
+
                     app:tabTextAppearance="@style/MyTabLayoutTextAppearance"
                     app:tabTextColor="@color/white" />
 
@@ -76,7 +76,7 @@
                         android:layout_gravity="right|bottom"
                         app:layout_anchorGravity="bottom|end"
                         app:layout_behavior="vmc.in.mrecorder.activity.FloatingActionButtonBehavior"
-                        fab:fab_addButtonColorNormal="@color/accent"
+
                         fab:fab_addButtonColorPressed="@color/accent_dark"
                         fab:fab_addButtonPlusIconColor="@color/white"
                         fab:fab_addButtonStrokeVisible="false"
@@ -87,7 +87,8 @@
                             android:id="@+id/fab_sync"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            fab:fab_colorNormal="@color/accent"
+
+
                             fab:fab_colorPressed="@color/accent_dark"
                             fab:fab_icon="@drawable/ic_sync"
                             fab:fab_plusIconColor="@color/white"
@@ -98,7 +99,7 @@
                             android:id="@+id/fab"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            fab:fab_colorNormal="@color/accent"
+
                             fab:fab_colorPressed="@color/accent_dark"
                             fab:fab_icon="@drawable/ic_settings"
                             fab:fab_plusIconColor="@color/white"

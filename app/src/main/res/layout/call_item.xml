@@ -181,7 +181,7 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:id="@+id/ivplay"
-                android:background="@drawable/ic_play_circle_outline"
+                android:background="@drawable/ic_play"
                 android:layout_alignTop="@+id/fDateTextView"
                 android:layout_centerHorizontal="true" />
 

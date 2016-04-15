@@ -2,6 +2,7 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
     <PreferenceCategory android:title="@string/audiosource">
+
         <ListPreference
             android:entries="@array/audiosource"
             android:entryValues="@array/audiosourceValues"

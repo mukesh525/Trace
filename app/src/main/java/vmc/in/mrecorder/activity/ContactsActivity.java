@@ -21,6 +21,7 @@ import vmc.in.mrecorder.fragment.AllCallsFragment;
 import vmc.in.mrecorder.fragment.DialledCallFragment;
 import vmc.in.mrecorder.fragment.MissedCallFragment;
 import vmc.in.mrecorder.fragment.ReceivedCallFragment;
+import vmc.in.mrecorder.util.CustomTheme;
 import vmc.in.mrecorder.util.Utils;
 
 
@@ -38,7 +39,9 @@ public class ContactsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        CustomTheme.onActivityCreateSetTheme(this);
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_contacts_layout);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -56,8 +59,8 @@ public class ContactsActivity extends AppCompatActivity {
         actionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              //  Utils.setRecording(ContactsActivity.this);
-                startActivity(new Intent(ContactsActivity.this,Settings.class));
+                //  Utils.setRecording(ContactsActivity.this);
+                startActivity(new Intent(ContactsActivity.this, Settings.class));
             }
         });
 

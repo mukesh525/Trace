@@ -46,6 +46,7 @@ import vmc.in.mrecorder.callbacks.TAG;
 import vmc.in.mrecorder.fragment.OTPDialogFragment;
 import vmc.in.mrecorder.gcm.GCMClientManager;
 import vmc.in.mrecorder.myapplication.CallApplication;
+import vmc.in.mrecorder.util.CustomTheme;
 import vmc.in.mrecorder.util.JSONParser;
 import vmc.in.mrecorder.util.Utils;
 
@@ -67,7 +68,9 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        CustomTheme.onActivityCreateSetTheme(this);
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_login);
         coordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordi_layout);
         toolbar = (Toolbar) findViewById(R.id.toolbar);

@@ -8,6 +8,7 @@ import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceGroup;
 import android.preference.PreferenceManager;
+import android.preference.SwitchPreference;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
@@ -41,6 +42,40 @@ public class Settings extends AppCompatActivity {
         public void onCreate(final Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.settings);
+            final SwitchPreference recordingPreference = (SwitchPreference) findPreference("prefRecording");
+            final SwitchPreference callPreference = (SwitchPreference) findPreference("prefCallUpdate");
+
+            callPreference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                @Override
+                public boolean onPreferenceChange(Preference preference, Object newValue) {
+                    if (newValue instanceof Boolean) {
+                        boolean selected = Boolean.parseBoolean(newValue.toString());
+                        if (selected) {
+                            recordingPreference.setChecked(false);
+                        } else {
+                            recordingPreference.setChecked(true);
+                        }
+                        return true;
+                    }
+                    return false;
+                }
+            });
+
+            recordingPreference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                @Override
+                public boolean onPreferenceChange(Preference preference, Object newValue) {
+                    if (newValue instanceof Boolean) {
+                        boolean selected = Boolean.parseBoolean(newValue.toString());
+                        if (selected) {
+                            callPreference.setChecked(false);
+                        } else {
+                            callPreference.setChecked(true);
+                        }
+                        return true;
+                    }
+                    return false;
+                }
+            });
 
 
         }
@@ -71,8 +106,8 @@ public class Settings extends AppCompatActivity {
                 listPreference.setSummary(listPreference.getEntry());
                 return;
             }
-            if (preference instanceof CheckBoxPreference) {
-                CheckBoxPreference checkPreference = (CheckBoxPreference) preference;
+            if (preference instanceof SwitchPreference) {
+                SwitchPreference checkPreference = (SwitchPreference) preference;
                 checkPreference.setSummary(checkPreference.getSummary());
                 return;
             }
@@ -90,11 +125,11 @@ public class Settings extends AppCompatActivity {
                                               String key) {
             Preference pref = findPreference(key);
             boolean recording = sharedPreferences.getBoolean("prefRecording", true);
-
+            CallApplication.getInstance().startRecording();
             if (recording) {
-                CallApplication.getInstance().startRecording();
+              //  CallApplication.getInstance().startRecording();
             } else {
-                CallApplication.getInstance().stopRecording();
+              //  CallApplication.getInstance().stopRecording();
             }
 
             updatePreference(pref, key);

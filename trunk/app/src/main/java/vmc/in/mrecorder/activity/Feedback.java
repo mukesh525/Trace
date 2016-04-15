@@ -38,6 +38,7 @@ public class Feedback extends AppCompatActivity implements TAG {
     String feedbackmsg;
     private Toolbar toolbar;
     private String authkey;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         CustomTheme.onActivityCreateSetTheme(this);
@@ -52,18 +53,18 @@ public class Feedback extends AppCompatActivity implements TAG {
         hideKeyboard();
         //authkey = getIntent().getExtras().getString(AUTHKEY);
         authkey = Utils.getFromPrefs(this, AUTHKEY, "N/A");
+        setButtonTheme(button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CustomTheme.changeToTheme(Feedback.this,2);
+                CustomTheme.changeToTheme(Feedback.this, 2);
 
                 feedbackmsg = etFeedback.getText().toString();
-                if (!(feedbackmsg.length()==0||feedbackmsg.isEmpty()||feedbackmsg.equals(""))){
+                if (!(feedbackmsg.length() == 0 || feedbackmsg.isEmpty() || feedbackmsg.equals(""))) {
                     UpdateFeedBack();
-                }else{
-                    Toast.makeText(getApplication(),"Enter FeedBack Message",Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getApplication(), "Enter FeedBack Message", Toast.LENGTH_SHORT).show();
                 }
-
 
 
             }
@@ -72,6 +73,26 @@ public class Feedback extends AppCompatActivity implements TAG {
 
     }
 
+    public void setButtonTheme(Button view) {
+        int id = Integer.parseInt(Utils.getFromPrefs(Feedback.this, THEME, "5"));
+        ;
+        switch (id) {
+            case 0:
+                view.setBackgroundResource(R.drawable.button_background_blue);
+                break;
+            case 1:
+                view.setBackgroundResource(R.drawable.button_background_red);
+                break;
+            case 2:
+                view.setBackgroundResource(R.drawable.button_background_green);
+                break;
+            default:
+                view.setBackgroundResource(R.drawable.button_background);
+                break;
+        }
+
+
+    }
 
     public void hideKeyboard() {
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -86,7 +107,8 @@ public class Feedback extends AppCompatActivity implements TAG {
             // writeToLog("Software Keyboard was not shown");
         }
     }
-//
+
+    //
     public void UpdateFeedBack() {
 
         if (Utils.onlineStatus2(Feedback.this)) {

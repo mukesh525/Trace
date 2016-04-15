@@ -40,40 +40,66 @@
             android:text="Select Theme"
             android:textColor="@color/accent" />
 
-        <LinearLayout
-            android:id="@+id/l2"
+        <RelativeLayout
+            android:id="@+id/l3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/appbar"
-            android:layout_margin="10dp"
-            android:orientation="horizontal">
+            android:layout_margin="10dp">
 
-            <CheckBox
+            <RadioButton
                 android:id="@+id/orange"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:buttonTint="#FF5722" />
+                android:buttonTint="#FF5722"
+                android:text="Default"
+                android:layout_weight=".5"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
 
-            <CheckBox
+            <RadioButton
                 android:id="@+id/blue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:buttonTint="#1976D2" />
-
-            <CheckBox
+                android:buttonTint="#1976D2"
+                android:text="Blue"
+                android:layout_weight="0.71"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/l2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/appbar"
+                android:layout_marginLeft="10dp"
+                android:orientation="horizontal"
+                android:layout_weight="1">
+            <RadioButton
                 android:id="@+id/red"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:buttonTint="#D32F2F" />
+                android:buttonTint="#D32F2F"
+                android:text="Red"
+                android:layout_weight=".5"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
 
-            <CheckBox
+            <RadioButton
                 android:id="@+id/green"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:buttonTint="#689F38" />
+                android:buttonTint="#689F38"
+                android:text="Green"
+                android:layout_weight=".5"
+                android:checked="false"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true" />
 
 
-        </LinearLayout>
+        </RelativeLayout>
 
 
     </LinearLayout>

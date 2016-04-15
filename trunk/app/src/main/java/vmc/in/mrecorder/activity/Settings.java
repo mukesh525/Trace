@@ -15,6 +15,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 import vmc.in.mrecorder.R;
@@ -27,7 +28,7 @@ import vmc.in.mrecorder.util.Utils;
 public class Settings extends AppCompatActivity implements View.OnClickListener, TAG {
 
     private Toolbar toolbar;
-    private CheckBox red, green, blue, orange;
+    private RadioButton red, green, blue, orange;
     private TextView themetext;
 
 
@@ -46,13 +47,13 @@ public class Settings extends AppCompatActivity implements View.OnClickListener,
 
         setTextTheme(themetext);
 
-        red = (CheckBox) findViewById(R.id.red);
+        red = (RadioButton) findViewById(R.id.red);
         red.setOnClickListener(this);
-        green = (CheckBox) findViewById(R.id.green);
+        green = (RadioButton) findViewById(R.id.green);
         green.setOnClickListener(this);
-        blue = (CheckBox) findViewById(R.id.blue);
+        blue = (RadioButton) findViewById(R.id.blue);
         blue.setOnClickListener(this);
-        orange = (CheckBox) findViewById(R.id.orange);
+        orange = (RadioButton) findViewById(R.id.orange);
         orange.setOnClickListener(this);
 
         setSelection();

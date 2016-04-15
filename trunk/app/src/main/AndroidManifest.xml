@@ -192,6 +192,7 @@
         <activity
             android:name=".activity.Settings"
             android:label="@string/title_activity_settings"
+            android:screenOrientation="portrait"
             android:parentActivityName=".activity.Home"
             android:theme="@style/MyMaterialTheme">
             <meta-data

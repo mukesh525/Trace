@@ -339,6 +339,9 @@ public class CallRecorderServiceAll extends Service implements TAG {
             from = "to";
         }
         Log.d(TAG, name);
+		NotificationCompat.BigTextStyle s = new NotificationCompat.BigTextStyle();
+        s.setBigContentTitle("MTracker");
+        s.bigText("Last call " + from + " " + name + " " + "is recorded successfully.");
         Bitmap bm = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher);
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this)
                 .setSmallIcon(R.mipmap.ic_launcher)
@@ -346,6 +349,7 @@ public class CallRecorderServiceAll extends Service implements TAG {
                 .setContentTitle("MTracker")
                 .setAutoCancel(false)
                 .setLargeIcon(bm)
+				.setStyle(s);
                 .setContentText("Last call " + from + " " + name + " " + "is recorded successfully.");
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.notify(NOTIFICATION_ID, mBuilder.build());

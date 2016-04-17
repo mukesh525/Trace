@@ -2,11 +2,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="horizontal">
 
     <LinearLayout
-        android:id="@+id/l1"
-        android:layout_width="match_parent"
+        android:layout_width="165dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/appbar"
         android:layout_margin="10dp"
@@ -16,74 +15,67 @@
             android:id="@+android:id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Select Theme"
+            android:fadingEdge="horizontal"
+            android:singleLine="true"
             android:layout_marginLeft="7dp"
             android:textColor="@color/black"
-           />
+            android:text="Select Theme"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
 
-        <RelativeLayout
-            android:id="@+id/l3"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/summary"
+            android:layout_marginLeft="7dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/appbar"
-            android:layout_margin="10dp">
+            android:layout_alignLeft="@android:id/title"
+            android:layout_below="@android:id/title"
+            android:maxLines="2"
+            android:text="Select theme for Mtracker"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+    </LinearLayout>
 
-            <RadioButton
-                android:id="@+id/orange"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_weight=".5"
-                android:buttonTint="#FF5722"
-                android:text="Default" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/appbar"
+        android:layout_margin="10dp"
+        android:orientation="horizontal"
+        android:layout_weight="1">
 
-            <RadioButton
-                android:id="@+id/blue"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:layout_weight="0.71"
-                android:buttonTint="#1976D2"
-                android:text="Blue" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/l2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/appbar"
-            android:layout_marginLeft="10dp"
-            android:layout_weight="1"
-            android:orientation="horizontal">
-
-            <RadioButton
-                android:id="@+id/red"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_weight=".5"
-                android:buttonTint="#D32F2F"
-                android:text="Red" />
-
-            <RadioButton
-                android:id="@+id/green"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:layout_weight=".5"
-                android:buttonTint="#689F38"
-                android:checked="false"
-                android:text="Green" />
+        <ImageButton
+            android:id="@+id/orange"
+            android:layout_width="25dp"
+            android:layout_marginTop="10dp"
+            android:layout_height="25dp"
+            android:layout_marginRight="5dp"
+            android:background="@color/primary" />
 
 
-        </RelativeLayout>
+        <ImageButton
+            android:id="@+id/blue"
+            android:layout_width="25dp"
+            android:layout_marginTop="10dp"
+            android:layout_height="25dp"
+            android:layout_marginRight="5dp"
+            android:background="#1976D2" />
+
+        <ImageButton
+            android:id="@+id/red"
+            android:layout_width="25dp"
+            android:layout_marginTop="10dp"
+            android:layout_height="25dp"
+            android:layout_marginRight="5dp"
+            android:background="#D32F2F" />
+
+        <ImageButton
+            android:id="@+id/green"
+            android:layout_width="25dp"
+            android:layout_marginTop="10dp"
+            android:layout_height="25dp"
+            android:layout_marginRight="5dp"
+            android:background="#689F38" />
 
 
     </LinearLayout>
+
 </LinearLayout>

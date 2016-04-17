@@ -51,6 +51,7 @@
     <string name="display">Display</string>
     <string name="pref_theme_title">Theme</string>
     <string name="pref_theme">preftheme</string>
+    <string name="pref_theme_summary">Set app theme</string>
     <string name="no_playstore" />
     <string name="share">Share</string>
 

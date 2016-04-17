@@ -72,7 +72,7 @@ public class Feedback extends AppCompatActivity implements TAG {
 
     }
 
-   
+
 
     public void hideKeyboard() {
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);

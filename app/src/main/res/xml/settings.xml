@@ -1,18 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--<PreferenceCategory android:title="@string/display">-->
 
+        <!--<vmc.in.mrecorder.util.ThemePreference-->
+            <!--android:defaultValue="light"-->
+            <!--android:key="@string/pref_theme"-->
+            <!--android:title="@string/pref_theme_title" />-->
+    <!--</PreferenceCategory>-->
     <PreferenceCategory android:title="@string/audiosource">
 
         <ListPreference
             android:entries="@array/audiosource"
             android:entryValues="@array/audiosourceValues"
             android:key="audiosource"
+            android:defaultValue="1"
             android:summary="@string/pref_audiosource_summary"
             android:title="@string/audiosourcetitle" />
         <ListPreference
             android:entries="@array/audioformat"
             android:entryValues="@array/audiovalues"
             android:key="audioformat"
+            android:defaultValue="1"
             android:summary="@string/pref_audioformat_summary"
             android:title="@string/audioformattitle" />
     </PreferenceCategory>
@@ -21,6 +29,7 @@
             android:entries="@array/syncFrequency"
             android:entryValues="@array/syncFrequencyValues"
             android:key="prefSyncFrequency"
+            android:defaultValue="10"
             android:summary="@string/pref_sync_frequency"
             android:title="@string/pref_sync_title_frequency" />
     </PreferenceCategory>
@@ -36,8 +45,7 @@
             android:defaultValue="false"
             android:key="prefCallUpdate"
             android:summary="@string/pref_update_call"
-            android:title="@string/pref_title_updateCall"
-            />
+            android:title="@string/pref_title_updateCall" />
     </PreferenceCategory>
 
     <PreferenceCategory android:title="@string/notification">

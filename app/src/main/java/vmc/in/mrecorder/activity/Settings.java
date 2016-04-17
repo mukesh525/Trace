@@ -62,7 +62,7 @@ public class Settings extends AppCompatActivity implements View.OnClickListener,
         getFragmentManager().beginTransaction()
                 .replace(R.id.content_frame, new MyPreferenceFragment())
                 .commit();
-
+       PreferenceManager.setDefaultValues(Settings.this, R.xml.settings, false);
 
     }
 
@@ -168,6 +168,7 @@ public class Settings extends AppCompatActivity implements View.OnClickListener,
         public void onCreate(final Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.settings);
+
             final SwitchPreference recordingPreference = (SwitchPreference) findPreference("prefRecording");
             final SwitchPreference callPreference = (SwitchPreference) findPreference("prefCallUpdate");
 

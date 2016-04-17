@@ -349,7 +349,7 @@ public class CallRecorderServiceAll extends Service implements TAG {
                 .setContentTitle("MTracker")
                 .setAutoCancel(false)
                 .setLargeIcon(bm)
-				.setStyle(s);
+				.setStyle(s)
                 .setContentText("Last call " + from + " " + name + " " + "is recorded successfully.");
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.notify(NOTIFICATION_ID, mBuilder.build());

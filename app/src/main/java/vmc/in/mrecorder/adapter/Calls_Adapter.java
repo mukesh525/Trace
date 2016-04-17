@@ -74,11 +74,10 @@ public class Calls_Adapter extends RecyclerView.Adapter<Calls_Adapter.CallViewHo
     public void onBindViewHolder(CallViewHolder holder, int position) {
         try {
             final CallData ci = CallDataArrayList.get(position);
-            setTextTheme(holder.callFromTextView);
-            setTextTheme(holder.callerNameTextView);
-            setTextTheme(holder.dateTextView);
-            setTextTheme(holder.timeTextView);
-            setPlayTheme(holder.img_play);
+          //  setTextTheme(holder.callFromTextView);
+          //  setTextTheme(holder.callerNameTextView);
+           // setTextTheme(holder.dateTextView);
+         //   setTextTheme(holder.timeTextView);
 
             holder.callerNameTextView.setText(Utils.isEmpty(ci.getName()) ? UNKNOWN : ci.getName());
             holder.callFromTextView.setText(Utils.isEmpty(ci.getCallto()) ? UNKNOWN : ci.getCallto());
@@ -265,23 +264,5 @@ public class Calls_Adapter extends RecyclerView.Adapter<Calls_Adapter.CallViewHo
         }
     }
 
-    public void setPlayTheme(ImageView view) {
-        int id = Integer.parseInt(Utils.getFromPrefs(context, THEME, "5"));
-        ;
-        switch (id) {
-            case 0:
-                view.setBackgroundResource(R.drawable.ic_play_blue);
-                break;
-            case 1:
-                view.setBackgroundResource(R.drawable.ic_play_red);
-                break;
-            case 2:
-                view.setBackgroundResource(R.drawable.ic_play_green);
-                break;
-            default:
-                view.setBackgroundResource(R.drawable.ic_play);
-                break;
-        }
-    }
 
 }

@@ -48,6 +48,24 @@
     <string name="updatecallList">Update Call List</string>
     <string name="pref_update_call">Monitor Calls (No Recording)</string>
     <string name="pref_title_updateCall">Call Monitor</string>
+    <string name="display">Display</string>
+    <string name="pref_theme_title">Theme</string>
+    <string name="pref_theme">preftheme</string>
+    <string name="no_playstore" />
+    <string name="share">Share</string>
 
+
+
+
+
+
+
+    <string name="theme_light">Light</string>
+    <string name="theme_dark">Dark</string>
+    <string name="theme_black">Black</string>
+    <string name="theme_sepia">Sepia</string>
+    <string name="theme_green">Green</string>
+    <string name="theme_solarized_dark">Solarized Dark</string>
+    <string name="theme_solarized">Solarized</string>
 
 </resources>

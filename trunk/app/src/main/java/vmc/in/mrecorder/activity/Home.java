@@ -108,7 +108,6 @@ public class Home extends AppCompatActivity
         mTabLayout.setupWithViewPager(mViewPager);
         mDrawer.setItemIconTintList(null);
         View header = mDrawer.getHeaderView(0);
-        setHeaderTheme(header);
         user = (TextView) header.findViewById(R.id.tv_name);
         email = (TextView) header.findViewById(R.id.tv_email);
         String useremail = Utils.getFromPrefs(this, EMAIL, DEFAULT);
@@ -183,25 +182,6 @@ public class Home extends AppCompatActivity
     }
 
 
-    public void setHeaderTheme(View view) {
-        int id = Integer.parseInt(Utils.getFromPrefs(Home.this, THEME, "5"));;
-        switch (id){
-            case 0:
-                view.setBackgroundResource(R.drawable.side_nav_bar_blue);
-                break;
-            case 1:
-                view.setBackgroundResource(R.drawable.side_nav_bar_red);
-                break;
-            case 2:
-                view.setBackgroundResource(R.drawable.side_nav_bar_green);
-                break;
-            default:
-                view.setBackgroundResource(R.drawable.side_nav_bar);
-                break;
-        }
-
-
-    }
 
 
     public void showSettingsAlert() {

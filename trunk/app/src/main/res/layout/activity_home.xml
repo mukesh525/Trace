@@ -76,7 +76,7 @@
                         android:layout_gravity="right|bottom"
                         app:layout_anchorGravity="bottom|end"
                         app:layout_behavior="vmc.in.mrecorder.activity.FloatingActionButtonBehavior"
-
+                        fab:fab_addButtonColorNormal="?attr/colorAccent"
                         fab:fab_addButtonColorPressed="@color/accent_dark"
                         fab:fab_addButtonPlusIconColor="@color/white"
                         fab:fab_addButtonStrokeVisible="false"
@@ -87,8 +87,7 @@
                             android:id="@+id/fab_sync"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-
-
+                            fab:fab_colorNormal="?attr/colorAccent"
                             fab:fab_colorPressed="@color/accent_dark"
                             fab:fab_icon="@drawable/ic_sync"
                             fab:fab_plusIconColor="@color/white"
@@ -99,7 +98,7 @@
                             android:id="@+id/fab"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-
+                            fab:fab_colorNormal="?attr/colorAccent"
                             fab:fab_colorPressed="@color/accent_dark"
                             fab:fab_icon="@drawable/ic_settings"
                             fab:fab_plusIconColor="@color/white"

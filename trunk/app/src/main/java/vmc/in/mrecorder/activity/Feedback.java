@@ -53,7 +53,6 @@ public class Feedback extends AppCompatActivity implements TAG {
         hideKeyboard();
         //authkey = getIntent().getExtras().getString(AUTHKEY);
         authkey = Utils.getFromPrefs(this, AUTHKEY, "N/A");
-        setButtonTheme(button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,26 +72,7 @@ public class Feedback extends AppCompatActivity implements TAG {
 
     }
 
-    public void setButtonTheme(Button view) {
-        int id = Integer.parseInt(Utils.getFromPrefs(Feedback.this, THEME, "5"));
-        ;
-        switch (id) {
-            case 0:
-                view.setBackgroundResource(R.drawable.button_background_blue);
-                break;
-            case 1:
-                view.setBackgroundResource(R.drawable.button_background_red);
-                break;
-            case 2:
-                view.setBackgroundResource(R.drawable.button_background_green);
-                break;
-            default:
-                view.setBackgroundResource(R.drawable.button_background);
-                break;
-        }
-
-
-    }
+   
 
     public void hideKeyboard() {
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);

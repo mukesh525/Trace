@@ -12,7 +12,9 @@ import android.preference.PreferenceManager;
 import android.preference.SwitchPreference;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.RadioButton;
@@ -27,11 +29,9 @@ import vmc.in.mrecorder.syncadapter.SyncUtils;
 import vmc.in.mrecorder.util.CustomTheme;
 import vmc.in.mrecorder.util.Utils;
 
-public class Settings extends AppCompatActivity implements View.OnClickListener, TAG {
+public class Settings extends AppCompatActivity implements TAG {
 
     private Toolbar toolbar;
-    private RadioButton red, green, blue, orange;
-    private TextView themetext;
 
 
     @Override
@@ -44,124 +44,16 @@ public class Settings extends AppCompatActivity implements View.OnClickListener,
         setSupportActionBar(toolbar);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        themetext = (TextView) findViewById(R.id.settheme);
-
-        setTextTheme(themetext);
-
-        red = (RadioButton) findViewById(R.id.red);
-        red.setOnClickListener(this);
-        green = (RadioButton) findViewById(R.id.green);
-        green.setOnClickListener(this);
-        blue = (RadioButton) findViewById(R.id.blue);
-        blue.setOnClickListener(this);
-        orange = (RadioButton) findViewById(R.id.orange);
-        orange.setOnClickListener(this);
-
-        setSelection();
         getFragmentManager().beginTransaction()
                 .replace(R.id.content_frame, new MyPreferenceFragment())
                 .commit();
-       PreferenceManager.setDefaultValues(Settings.this, R.xml.settings, false);
+        PreferenceManager.setDefaultValues(Settings.this, R.xml.settings, false);
 
     }
-
-
-    @Override
-    public void onClick(View v) {
-        int id = v.getId();
-
-        switch (id) {
-
-            case R.id.red:
-                Utils.saveToPrefs(Settings.this, THEME, "1");
-                CustomTheme.changeToTheme(Settings.this, 1);
-                red.setChecked(true);
-                blue.setChecked(false);
-                green.setChecked(false);
-                orange.setChecked(false);
-                break;
-            case R.id.blue:
-                Utils.saveToPrefs(Settings.this, THEME, "0");
-                CustomTheme.changeToTheme(Settings.this, 0);
-                red.setChecked(false);
-                blue.setChecked(true);
-                green.setChecked(false);
-                orange.setChecked(false);
-                break;
-            case R.id.green:
-                Utils.saveToPrefs(Settings.this, THEME, "2");
-                CustomTheme.changeToTheme(Settings.this, 2);
-                red.setChecked(false);
-                blue.setChecked(false);
-                green.setChecked(true);
-                orange.setChecked(false);
-                break;
-            default:
-                Utils.saveToPrefs(Settings.this, THEME, "5");
-                CustomTheme.changeToTheme(Settings.this, 5);
-                red.setChecked(false);
-                blue.setChecked(false);
-                green.setChecked(false);
-                orange.setChecked(true);
-                break;
-        }
-
-    }
-
-    public void setSelection() {
-        int id = Integer.parseInt(Utils.getFromPrefs(Settings.this, THEME, "5"));
-        switch (id) {
-
-            case 1:
-                red.setChecked(true);
-                blue.setChecked(false);
-                green.setChecked(false);
-                orange.setChecked(false);
-                break;
-            case 0:
-                red.setChecked(false);
-                blue.setChecked(true);
-                green.setChecked(false);
-                orange.setChecked(false);
-                break;
-            case 2:
-                red.setChecked(false);
-                blue.setChecked(false);
-                green.setChecked(true);
-                orange.setChecked(false);
-                break;
-            default:
-                red.setChecked(false);
-                blue.setChecked(false);
-                green.setChecked(false);
-                orange.setChecked(true);
-                break;
-        }
-    }
-
-    public void setTextTheme(TextView view) {
-        int id = Integer.parseInt(Utils.getFromPrefs(Settings.this, THEME, "5"));
-        ;
-        switch (id) {
-            case 0:
-                view.setTextColor(Color.parseColor("#8BC34A"));
-                break;
-            case 1:
-                view.setTextColor(Color.parseColor("#795548"));
-                break;
-            case 2:
-                view.setTextColor(Color.parseColor("#536DFE"));
-                break;
-            default:
-                view.setTextColor(Color.parseColor("#03A9F4"));
-                break;
-        }
-    }
-
 
     public static class MyPreferenceFragment extends PreferenceFragment implements
             SharedPreferences.OnSharedPreferenceChangeListener {
+
 
 
         @Override
@@ -171,6 +63,8 @@ public class Settings extends AppCompatActivity implements View.OnClickListener,
 
             final SwitchPreference recordingPreference = (SwitchPreference) findPreference("prefRecording");
             final SwitchPreference callPreference = (SwitchPreference) findPreference("prefCallUpdate");
+            final Preference themePrefrence = (Preference) findPreference("preftheme");
+//
 
             callPreference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
                 @Override
@@ -243,6 +137,14 @@ public class Settings extends AppCompatActivity implements View.OnClickListener,
 //            preference.setSummary(sharedPrefs.getString(key, "Default"));
         }
 
+
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+            View v = super.onCreateView(inflater, container, savedInstanceState);
+
+            return v;
+        }
+
         @Override
         public void onPause() {
             getPreferenceManager().getSharedPreferences().unregisterOnSharedPreferenceChangeListener(this);
@@ -266,6 +168,9 @@ public class Settings extends AppCompatActivity implements View.OnClickListener,
 
 
         }
+
+
+
     }
 
 

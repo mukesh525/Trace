@@ -1,35 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <!--<PreferenceCategory android:title="@string/display">-->
-
-        <!--<vmc.in.mrecorder.util.ThemePreference-->
-            <!--android:defaultValue="light"-->
-            <!--android:key="@string/pref_theme"-->
-            <!--android:title="@string/pref_theme_title" />-->
-    <!--</PreferenceCategory>-->
+    <PreferenceCategory android:title="@string/display">
+        <vmc.in.mrecorder.util.ThemePreference
+            android:key="@string/pref_theme"
+            android:layout="@layout/theme_pref"
+            android:title="@string/pref_theme_title"
+            android:summary="@string/pref_theme_summary"/>
+    </PreferenceCategory>
     <PreferenceCategory android:title="@string/audiosource">
 
         <ListPreference
+            android:defaultValue="1"
             android:entries="@array/audiosource"
             android:entryValues="@array/audiosourceValues"
             android:key="audiosource"
-            android:defaultValue="1"
             android:summary="@string/pref_audiosource_summary"
             android:title="@string/audiosourcetitle" />
         <ListPreference
+            android:defaultValue="1"
             android:entries="@array/audioformat"
             android:entryValues="@array/audiovalues"
             android:key="audioformat"
-            android:defaultValue="1"
             android:summary="@string/pref_audioformat_summary"
             android:title="@string/audioformattitle" />
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/syncfrequency">
         <ListPreference
+            android:defaultValue="10"
             android:entries="@array/syncFrequency"
             android:entryValues="@array/syncFrequencyValues"
             android:key="prefSyncFrequency"
-            android:defaultValue="10"
             android:summary="@string/pref_sync_frequency"
             android:title="@string/pref_sync_title_frequency" />
     </PreferenceCategory>

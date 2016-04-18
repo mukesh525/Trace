@@ -14,6 +14,8 @@ public class CustomTheme implements TAG {
     public final static int THEME_BLUE = 0;
     public final static int THEME_RED = 1;
     public final static int THEME_GREEN = 2;
+    public final static int THEME_PURPLE = 3;
+    public final static int THEME_INDIGO = 4;
 
     /**
      * Set the theme of the Activity, and restart it by creating a new Activity of the same type.
@@ -41,6 +43,12 @@ public class CustomTheme implements TAG {
                 break;
             case THEME_GREEN:
                 activity.setTheme(R.style.greentheme);
+                break;
+            case THEME_PURPLE:
+                activity.setTheme(R.style.deeppurple);
+                break;
+            case THEME_INDIGO:
+                activity.setTheme(R.style.indigo);
                 break;
             default:
                 activity.setTheme(R.style.MyMaterialTheme);

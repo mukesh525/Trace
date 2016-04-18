@@ -22,11 +22,13 @@ import android.content.ContentProviderClient;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.SyncResult;
 import android.database.Cursor;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.provider.ContactsContract;
 import android.util.Log;
 
@@ -68,7 +70,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
     private String authkey;
     private int offset = 0;
     private ArrayList<CallData> callDataArrayList;
-    private String code;
+    private String code, recording;
 
 
     public SyncAdapter(Context context, boolean autoInitialize) {
@@ -95,7 +97,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
             }
             //callList = CallApplication.getWritableDatabase().GetAllCalls();
             callList = CallApplication.getWritabledatabase().getAllOfflineCalls();
-           // Log.d(TAG, "offline data Size" + callList.size());
+            // Log.d(TAG, "offline data Size" + callList.size());
             for (int i = 0; i < callList.size(); i++) {
                 if (!CallRecorderServiceAll.recording && Utils.isLogin(getContext())) {
 
@@ -117,6 +119,10 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
     }
 
     private synchronized void LoadCalls() {
+        SharedPreferences sharedPrefs = PreferenceManager
+                .getDefaultSharedPreferences(getContext());
+        SharedPreferences.Editor ed = sharedPrefs.edit();
+        CallApplication.getInstance().startRecording();
 
         authkey = Utils.getFromPrefs(getContext(), AUTHKEY, "N/A");
         try {
@@ -124,21 +130,52 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
                     CallApplication.getInstance().getDeviceId(), TYPE_ALL);
             if (response.has(CODE)) {
                 code = response.getString(CODE);
+
+                if (response.has(RECORDING)) {
+
+                    recording = response.getString(RECORDING);
+                    if (recording.equals("1")) {
+                        ed.putBoolean("prefRecording", true);
+                        ed.putBoolean("prefCallUpdate", false);
+                        ed.commit();
+                    } else if (recording.equals("0")) {
+                        ed.putBoolean("prefRecording", false);
+                        ed.putBoolean("prefCallUpdate", true);
+                        ed.commit();
+                    }
+                }
+                if (code.equals("202") || code.equals("401")) {
+                    Utils.isLogoutBackground(getContext());
+                }
+
             }
             callDataArrayList = new ArrayList<CallData>();
             callDataArrayList = vmc.in.mrecorder.util.Parser.ParseData(response);
             Log.d(TAG, "ALL_CALLS " + callDataArrayList.size());
             CallApplication.getWritabledatabase().insertCallRecords(MDatabase.ALL, callDataArrayList, true);
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.d(TAG,"Error "+e.getMessage().toString());
         }
         try {
             response = JSONParser.getCallsData(GET_CALL_LIST, authkey, "10", offset + "",
                     CallApplication.getInstance().getDeviceId(), TYPE_OUTGOING);
             if (response.has(CODE)) {
                 code = response.getString(CODE);
+                if (response.has(RECORDING)) {
+
+                    recording = response.getString(RECORDING);
+                    if (recording.equals("1")) {
+                        ed.putBoolean("prefRecording", true);
+                        ed.putBoolean("prefCallUpdate", false);
+                        ed.commit();
+                    } else if (recording.equals("0")) {
+                        ed.putBoolean("prefRecording", false);
+                        ed.putBoolean("prefCallUpdate", true);
+                        ed.commit();
+                    }
+                }
                 if (code.equals("202") || code.equals("401")) {
-                    // Utils.isLogout(getContext());
+                    Utils.isLogoutBackground(getContext());
                 }
             }
 
@@ -154,8 +191,20 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
                     CallApplication.getInstance().getDeviceId(), TYPE_INCOMING);
             if (response.has(CODE)) {
                 code = response.getString(CODE);
+                if (response.has(RECORDING)) {
+                    recording = response.getString(RECORDING);
+                    if (recording.equals("1")) {
+                        ed.putBoolean("prefRecording", true);
+                        ed.putBoolean("prefCallUpdate", false);
+                        ed.commit();
+                    } else if (recording.equals("0")) {
+                        ed.putBoolean("prefRecording", false);
+                        ed.putBoolean("prefCallUpdate", true);
+                        ed.commit();
+                    }
+                }
                 if (code.equals("202") || code.equals("401")) {
-                    // Utils.isLogout(getContext());
+                    Utils.isLogoutBackground(getContext());
                 }
             }
             callDataArrayList = new ArrayList<CallData>();
@@ -170,8 +219,20 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
                     CallApplication.getInstance().getDeviceId(), TYPE_MISSED);
             if (response.has(CODE)) {
                 code = response.getString(CODE);
+                if (response.has(RECORDING)) {
+                    recording = response.getString(RECORDING);
+                    if (recording.equals("1")) {
+                        ed.putBoolean("prefRecording", true);
+                        ed.putBoolean("prefCallUpdate", false);
+                        ed.commit();
+                    } else if (recording.equals("0")) {
+                        ed.putBoolean("prefRecording", false);
+                        ed.putBoolean("prefCallUpdate", true);
+                        ed.commit();
+                    }
+                }
                 if (code.equals("202") || code.equals("401")) {
-                    //Utils.isLogout(getContext());
+                    Utils.isLogoutBackground(getContext());
                 }
             }
             callDataArrayList = new ArrayList<CallData>();
@@ -206,6 +267,9 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
     }
 
     private synchronized void uploadMultipartData(Model model, boolean fileExist) throws Exception {
+        SharedPreferences sharedPrefs = PreferenceManager
+                .getDefaultSharedPreferences(getContext());
+        SharedPreferences.Editor ed = sharedPrefs.edit();
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss.SS");
         MultipartEntityBuilder builder = MultipartEntityBuilder.create();
         builder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE);
@@ -272,6 +336,20 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
             JSONObject obj = new JSONObject(serverResponseMessage);
             if (obj.has(CODE)) {
                 code = obj.getString(CODE);
+
+                if (response.has(RECORDING)) {
+                    recording = response.getString(RECORDING);
+                    if (recording.equals("1")) {
+                        ed.putBoolean("prefRecording", true);
+                        ed.putBoolean("prefCallUpdate", false);
+                        ed.commit();
+                    } else if (recording.equals("0")) {
+                        ed.putBoolean("prefRecording", false);
+                        ed.putBoolean("prefCallUpdate", true);
+                        ed.commit();
+                    }
+                }
+
                 Log.d(TAG, "RESPONSE CODE:" + code);
                 if (code.equals("400")) {
                     CallApplication.getWritabledatabase().delete(model.getId());//from db
@@ -282,7 +360,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
                     Log.d(TAG, "RECODRD DELETED" + ":" + model.getFile().getName());
                 }
                 if (code.equals("202") || code.equals("401")) {
-                    //Utils.isLogout(getContext());
+                    Utils.isLogoutBackground(getContext());
                 }
 
 

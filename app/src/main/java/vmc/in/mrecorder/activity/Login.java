@@ -85,7 +85,10 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
         if (Build.VERSION.SDK_INT == Build.VERSION_CODES.M) {
             getAllPermision();
         }
+        if (android.os.Build.VERSION.SDK_INT > 19) {
+            btn_login.setBackgroundResource(R.drawable.button_background);
 
+        }
         btn_login.setOnClickListener(this);
         btn_getOtp.setOnClickListener(this);
         link_forgot_password.setOnClickListener(this);
@@ -125,7 +128,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-       // Toast.makeText(Login.this, "Exit Login", Toast.LENGTH_SHORT).show();
+        // Toast.makeText(Login.this, "Exit Login", Toast.LENGTH_SHORT).show();
         System.exit(0);
 
     }
@@ -167,7 +170,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
 
     public void updateList(final String smsMessage) {
         //update otp Your one time passwod for Mconnect is: 356958
-        OTP_Sms = smsMessage.substring(33);
+        OTP_Sms = smsMessage.substring(9, 15);
         //  String OTP1=smsMessage.split(": ")[0];
 
         // Log.d("SMS", OTP1+" "+OTP);
@@ -190,9 +193,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
                     Login();
                 } else if (validateOTP()) {
                     GetOtp();
-                    if (tv_otp.getText().toString().length() == 0 || tv_otp.getText().toString().equals("")) {
-                        btn_login.setText("Resend OTP");
-                    }
+
                 }
                 break;
 
@@ -361,10 +362,12 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
 
 
     public synchronized void GetOtp() {
-        btn_getOtp.setText("RESEND");
         email = et_email.getText().toString().trim();
         password = et_password.getText().toString().trim();
         if (Utils.onlineStatus2(Login.this)) {
+            if (tv_otp.getText().toString().length() == 0 || tv_otp.getText().toString().equals("")) {
+                btn_login.setText("Resend OTP");
+            }
             new GetOtp(email, password).execute();
         } else {
             Snackbar snack = Snackbar.make(coordinatorLayout, "No Internet Connection", Snackbar.LENGTH_SHORT)
@@ -454,10 +457,9 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
 
                 tv_otp.setHint("Waiting for OTP");
                 if (code.equals("202")) {
-                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_SHORT).show();
-//                    if (progressDialog != null && progressDialog.isShowing()) {
-//                        progressDialog.dismiss();
-//                    }
+                    btn_login.setText("Get OTP");
+                    Snackbar.make(coordinatorLayout, msg, Snackbar.LENGTH_LONG).show();
+                    //tv_otp.setHint("Login");
 
                 } else {
 
@@ -480,10 +482,12 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
         if (Utils.onlineStatus2(Login.this)) {
             new StartLogin().execute();
         } else {
+
             Snackbar snack = Snackbar.make(coordinatorLayout, "No Internet Connection", Snackbar.LENGTH_SHORT)
                     .setAction(getString(R.string.text_tryAgain), new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
+
                             StartLogin();
 
                         }
@@ -499,7 +503,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
     class StartLogin extends AsyncTask<Void, Void, JSONObject> {
         String message = "n";
         String code = "n";
-        String username = "n";
+        String username = "n", recording = "n";
         String authcode = "n", name = "n";
 
         JSONObject response = null;
@@ -537,6 +541,9 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
                 if (response.has(NAME)) {
                     username = response.getString(NAME);
                 }
+                if (response.has(RECORDING)) {
+                    recording = response.getString(RECORDING);
+                }
                 Log.d("LOG", authcode);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -557,6 +564,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
             btn_login.setEnabled(true);
 
             if (code.equals("202")) {
+                btn_login.setText("Get OTP");
 
                 Snackbar.make(coordinatorLayout, message, Snackbar.LENGTH_SHORT)
                         .setAction(getString(R.string.text_tryAgain), new View.OnClickListener() {
@@ -573,7 +581,21 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
                 Utils.saveToPrefs(Login.this, AUTHKEY, authcode);
                 Utils.saveToPrefs(Login.this, NAME, username);
                 Utils.saveToPrefs(Login.this, EMAIL, email);
+                SharedPreferences sharedPrefs = PreferenceManager
+                        .getDefaultSharedPreferences(getApplicationContext());
+                SharedPreferences.Editor ed = sharedPrefs.edit();
+                if (recording.equals("1")) {
+                    ed.putBoolean("prefRecording", true);
+                    ed.putBoolean("prefCallUpdate", false);
+                } else if (recording.equals("0")) {
+                    ed.putBoolean("prefRecording", false);
+                    ed.putBoolean("prefCallUpdate", true);
+                }
+
+                ed.commit();
                 CallApplication.getInstance().startRecording();
+
+
                 Intent intent = new Intent(Login.this, Home.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |
                         Intent.FLAG_ACTIVITY_CLEAR_TASK |

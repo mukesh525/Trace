@@ -182,6 +182,7 @@
         <activity
             android:name=".activity.Feedback"
             android:label="@string/title_activity_feedback"
+            android:screenOrientation="portrait"
             android:parentActivityName=".activity.Home"
             android:theme="@style/MyMaterialTheme">
             <meta-data

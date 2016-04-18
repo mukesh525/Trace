@@ -51,7 +51,7 @@ public class MissedCallFragment extends Fragment implements TAG {
         super.onActivityCreated(savedInstanceState);
 
         Calllist = CallApplication.getWritabledatabase().getAllOfflineCalls();
-        Calllist = getSortList("missed", Calllist);
+        Calllist = getSortList(MISSED, Calllist);
         if (Calllist.size() > 0) {
             Collections.sort(Calllist, Collections.reverseOrder());
         }

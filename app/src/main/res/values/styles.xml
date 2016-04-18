@@ -17,11 +17,6 @@
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 
-
-
-
-
-
     <!-- Base application theme. -->
     <style name="MyMaterialTheme" parent="MyMaterialTheme.Base">
 
@@ -51,44 +46,39 @@
         <item name="colorPrimary">#F44336</item>
         <item name="colorPrimaryDark">#D32F2F</item>
         <item name="colorAccent">#795548</item>
+        <item name="android:textColorPrimary">@color/deeppurple_primary_text</item>
         <item name="android:textSize">16sp</item>
     </style>
 
     <style name="greentheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
-        <item name="colorPrimary">#8BC34A</item>
-        <item name="colorPrimaryDark">#689F38</item>
-        <item name="colorAccent">#536DFE</item>
+        <item name="colorPrimary">@color/green_primary</item>
+        <item name="colorPrimaryDark">@color/green_primary_dark</item>
+        <item name="colorAccent">@color/green_accent</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColorPrimary">@color/deeppurple_primary_text</item>
+    </style>
+
+    <style name="deeppurple" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="colorPrimary">@color/deeppurple_primary</item>
+        <item name="colorPrimaryDark">@color/deeppurple_primary_dark</item>
+        <item name="colorAccent">@color/deeppurple_accent</item>
+        <item name="android:textColorPrimary">@color/deeppurple_primary_text</item>
         <item name="android:textSize">16sp</item>
     </style>
 
-
-
-
-
-
-
-    <style name="AppDrawerArrowToggle" parent="Widget.AppCompat.DrawerArrowToggle">
-        <item name="color">?android:attr/textColorPrimary</item>
+    <style name="indigo" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="colorPrimary">@color/indigo_primary</item>
+        <item name="colorPrimaryDark">@color/indigo_primary_dark</item>
+        <item name="colorAccent">@color/indigo_accent</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColorPrimary">@color/deeppurple_primary_text</item>
     </style>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -116,11 +106,12 @@
         <!--<item name="android:listPreferredItemHeightSmall">0dp</item>-->
 
     </style>
+
     <style name="AppAlertDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
         <item name="colorPrimary">@color/primary</item>
         <item name="colorAccent">@color/accent</item>
-        <item name="android:textColorPrimary">@color/primary_text_color</item>
-        <item name="android:textColorSecondary">@color/secondary_text_color</item>
+        <item name="android:textColorPrimary">?attr/colorPrimary</item>
+        <item name="android:textColorSecondary">?attr/colorPrimaryDark</item>
         <item name="android:textColorTertiary">?android:textColorPrimary</item>
         <item name="android:textColorLink">?colorAccent</item>
     </style>

@@ -50,7 +50,7 @@ public class ReceivedCallFragment extends Fragment implements TAG {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         Calllist = CallApplication.getWritabledatabase().getAllOfflineCalls();
-        Calllist = getSortList("incoming", Calllist);
+        Calllist = getSortList(INCOMING, Calllist);
         if (Calllist.size() > 0) {
             Collections.sort(Calllist, Collections.reverseOrder());
         }

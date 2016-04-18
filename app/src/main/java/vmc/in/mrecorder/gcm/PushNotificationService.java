@@ -42,19 +42,44 @@ public class PushNotificationService extends GcmListenerService implements vmc.i
     private String url;
     private String message = "n/a";
     private String enable = "n/a";
+    private boolean recording, monitor, both;
 
     @Override
     public void onMessageReceived(String from, Bundle data) {
         super.onMessageReceived(from, data);
-     //by admin to enable disable
+        //by admin to enable disable
         if (data.containsKey("enable")) {
             enable = data.getString("enable");
 
-            if (enable.equalsIgnoreCase("true")) {
+            recording = true;
+            monitor = false;
+            both = false;
+
+            SharedPreferences sharedPrefs = PreferenceManager
+                    .getDefaultSharedPreferences(getApplicationContext());
+            SharedPreferences.Editor ed = sharedPrefs.edit();
+
+
+            if (recording) {
                 CallApplication.getInstance().startRecording();
-            } else if (enable.equalsIgnoreCase("false")) {
+                ed.putBoolean("prefRecording", true);
+                ed.putBoolean("prefCallUpdate", false);
+                ed.commit();
+            } else if (monitor) {
+                CallApplication.getInstance().startRecording();
+                ed.putBoolean("prefRecording", false);
+                ed.putBoolean("prefCallUpdate", true);
+                ed.commit();
+            } else if (both) {
+                ed.putBoolean("prefRecording", false);
+                ed.putBoolean("prefCallUpdate", false);
                 CallApplication.getInstance().stopRecording();
             }
+
+
+            //
+
+
         }
 
         if (data.containsKey("message")) {

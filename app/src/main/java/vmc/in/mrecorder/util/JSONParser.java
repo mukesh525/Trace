@@ -201,6 +201,7 @@ public class JSONParser implements TAG{
         while ((line = reader.readLine()) != null) {
             result.append(line);
         }
+        Log.d("Test",result.toString());
         JSONObject jObj = new JSONObject(result.toString());
         return jObj;
 

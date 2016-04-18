@@ -37,7 +37,7 @@ import vmc.in.mrecorder.provider.GPSTracker;
 
 public class CallRecorderServiceAll extends Service implements TAG {
 
-    static MediaRecorder recorder;
+    private MediaRecorder recorder;
     public static boolean recording;
     public boolean ringing, answered, outgoing;
     static boolean ring = false;
@@ -111,6 +111,7 @@ public class CallRecorderServiceAll extends Service implements TAG {
                 if (answered == true) {
                     SharedPreferences sharedPrefs = PreferenceManager
                             .getDefaultSharedPreferences(getApplicationContext());
+
                     boolean notifyMode = sharedPrefs.getBoolean("prefCallUpdate", false);
 
                     if (notifyMode) {
@@ -254,6 +255,14 @@ public class CallRecorderServiceAll extends Service implements TAG {
             int selection = Integer.parseInt(sharedPrefs.getString("audioformat", "1"));
             File sampleDir = Environment.getExternalStorageDirectory();
             File sample = new File(sampleDir.getAbsolutePath() + "/Call Recorder");
+            if (!sample.exists()) {
+                boolean sucess = sample.mkdir();
+                if(sucess){
+                    Log.d(TAG, "Folder Created");
+                }else {
+                    Log.d(TAG, "Unable to create Folder");
+                }
+            }
             fileName = String.valueOf(System.currentTimeMillis());
             setRecordingsource(sharedPrefs);
 

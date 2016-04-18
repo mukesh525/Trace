@@ -14,7 +14,7 @@ import vmc.in.mrecorder.callbacks.TAG;
 
 
 public class ThemePreference extends Preference implements View.OnClickListener, TAG {
-    private ImageButton red, green, blue, orange;
+    private ImageButton red, green, blue, orange, deeppurple, indigo;
     private TextView summary;
     private Context mContext;
 
@@ -36,6 +36,10 @@ public class ThemePreference extends Preference implements View.OnClickListener,
         blue.setOnClickListener(this);
         orange = (ImageButton) view.findViewById(R.id.orange);
         orange.setOnClickListener(this);
+        deeppurple = (ImageButton) view.findViewById(R.id.deeppurple);
+        deeppurple.setOnClickListener(this);
+        indigo = (ImageButton) view.findViewById(R.id.indigo);
+        indigo.setOnClickListener(this);
         setSelection();
     }
 
@@ -60,6 +64,16 @@ public class ThemePreference extends Preference implements View.OnClickListener,
                 CustomTheme.changeToTheme((AppCompatActivity) mContext, 2);
 
                 break;
+            case R.id.deeppurple:
+                Utils.saveToPrefs(mContext, THEME, "3");
+                CustomTheme.changeToTheme((AppCompatActivity) mContext, 3);
+
+                break;
+            case R.id.indigo:
+                Utils.saveToPrefs(mContext, THEME, "4");
+                CustomTheme.changeToTheme((AppCompatActivity) mContext, 4);
+
+                break;
             default:
                 Utils.saveToPrefs(mContext, THEME, "5");
                 CustomTheme.changeToTheme((AppCompatActivity) mContext, 5);
@@ -74,17 +88,23 @@ public class ThemePreference extends Preference implements View.OnClickListener,
         switch (id) {
 
             case 1:
-                summary.setText("RED");
+                summary.setText("Red");
                 break;
             case 0:
-                summary.setText("BLUE");
+                summary.setText("Blue");
 
                 break;
             case 2:
-                summary.setText("GREEN");
+                summary.setText("Green");
+                break;
+            case 3:
+                summary.setText("Deep Purple");
+                break;
+            case 4:
+                summary.setText("Indigo");
                 break;
             default:
-                summary.setText("DEFAULT");
+                summary.setText("Default");
                 break;
         }
     }

@@ -5,7 +5,7 @@
     android:orientation="horizontal">
 
     <LinearLayout
-        android:layout_width="165dp"
+        android:layout_width="110dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/appbar"
         android:layout_margin="10dp"
@@ -15,67 +15,88 @@
             android:id="@+android:id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="7dp"
             android:fadingEdge="horizontal"
             android:singleLine="true"
-            android:layout_marginLeft="7dp"
-            android:textColor="@color/black"
             android:text="Select Theme"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/black" />
 
         <TextView
             android:id="@+id/summary"
-            android:layout_marginLeft="7dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignLeft="@android:id/title"
             android:layout_below="@android:id/title"
+            android:layout_marginLeft="7dp"
             android:maxLines="2"
             android:text="Select theme for Mtracker"
             android:textAppearance="?android:attr/textAppearanceSmall" />
     </LinearLayout>
 
-    <LinearLayout
+
+    <HorizontalScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/appbar"
-        android:layout_margin="10dp"
-        android:orientation="horizontal"
-        android:layout_weight="1">
+        android:layout_height="wrap_content">
 
-        <ImageButton
-            android:id="@+id/orange"
-            android:layout_width="25dp"
-            android:layout_marginTop="10dp"
-            android:layout_height="25dp"
-            android:layout_marginRight="5dp"
-            android:background="@color/primary" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/appbar"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
 
-
-        <ImageButton
-            android:id="@+id/blue"
-            android:layout_width="25dp"
-            android:layout_marginTop="10dp"
-            android:layout_height="25dp"
-            android:layout_marginRight="5dp"
-            android:background="#1976D2" />
-
-        <ImageButton
-            android:id="@+id/red"
-            android:layout_width="25dp"
-            android:layout_marginTop="10dp"
-            android:layout_height="25dp"
-            android:layout_marginRight="5dp"
-            android:background="#D32F2F" />
-
-        <ImageButton
-            android:id="@+id/green"
-            android:layout_width="25dp"
-            android:layout_marginTop="10dp"
-            android:layout_height="25dp"
-            android:layout_marginRight="5dp"
-            android:background="#689F38" />
+            <ImageButton
+                android:id="@+id/orange"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/primary" />
 
 
-    </LinearLayout>
+            <ImageButton
+                android:id="@+id/blue"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="10dp"
+                android:background="#1976D2" />
 
+            <ImageButton
+                android:id="@+id/red"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="10dp"
+                android:background="#D32F2F" />
+
+            <ImageButton
+                android:id="@+id/green"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="10dp"
+                android:background="#689F38" />
+
+            <ImageButton
+                android:id="@+id/deeppurple"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/deeppurple_primary" />
+
+            <ImageButton
+                android:id="@+id/indigo"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/indigo_primary" />
+
+
+        </LinearLayout>
+    </HorizontalScrollView>
 </LinearLayout>

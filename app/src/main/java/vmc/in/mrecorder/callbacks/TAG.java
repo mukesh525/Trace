@@ -107,6 +107,7 @@ public interface TAG {
     public static final String GROUPS = "groups";
     public static final String VAL = "val";
     public static final String KEY = "key";
+    public static final String RECORDING = "record";
 
 
     public static final String FIELDS = "fields";

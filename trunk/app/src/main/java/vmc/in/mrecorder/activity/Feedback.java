@@ -51,6 +51,12 @@ public class Feedback extends AppCompatActivity implements TAG {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         hideKeyboard();
+        if (android.os.Build.VERSION.SDK_INT > 19) {
+            button.setBackgroundResource(R.drawable.button_background);
+
+        }
+
+
         //authkey = getIntent().getExtras().getString(AUTHKEY);
         authkey = Utils.getFromPrefs(this, AUTHKEY, "N/A");
         button.setOnClickListener(new View.OnClickListener() {
@@ -71,7 +77,6 @@ public class Feedback extends AppCompatActivity implements TAG {
 
 
     }
-
 
 
     public void hideKeyboard() {

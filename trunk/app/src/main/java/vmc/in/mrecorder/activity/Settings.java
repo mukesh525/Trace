@@ -10,6 +10,7 @@ import android.preference.PreferenceFragment;
 import android.preference.PreferenceGroup;
 import android.preference.PreferenceManager;
 import android.preference.SwitchPreference;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
@@ -35,6 +36,11 @@ public class Settings extends AppCompatActivity implements TAG {
 
 
     @Override
+    public void onBackPressed() {
+        NavUtils.navigateUpFromSameTask(this);
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         CustomTheme.onActivityCreateSetTheme(this);
         super.onCreate(savedInstanceState);
@@ -55,7 +61,6 @@ public class Settings extends AppCompatActivity implements TAG {
             SharedPreferences.OnSharedPreferenceChangeListener {
 
 
-
         @Override
         public void onCreate(final Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
@@ -63,21 +68,38 @@ public class Settings extends AppCompatActivity implements TAG {
 
             final SwitchPreference recordingPreference = (SwitchPreference) findPreference("prefRecording");
             final SwitchPreference callPreference = (SwitchPreference) findPreference("prefCallUpdate");
-            final Preference themePrefrence = (Preference) findPreference("preftheme");
-//
+
+
+            SharedPreferences sharedPrefs = PreferenceManager
+                    .getDefaultSharedPreferences(getActivity());
+
+            boolean notifyMode = sharedPrefs.getBoolean("prefCallUpdate", false);
+            boolean recording = sharedPrefs.getBoolean("prefRecording", true);
+
+            if (recording) {
+                recordingPreference.setChecked(true);
+                callPreference.setChecked(false);
+            } else if (notifyMode) {
+                recordingPreference.setChecked(false);
+                callPreference.setChecked(true);
+            } else {
+                recordingPreference.setChecked(false);
+                callPreference.setChecked(false);
+            }
+
 
             callPreference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
                 @Override
                 public boolean onPreferenceChange(Preference preference, Object newValue) {
 
                     if (newValue instanceof Boolean) {
-                        boolean selected = Boolean.parseBoolean(newValue.toString());
-                        if (selected) {
-                            recordingPreference.setChecked(false);
-                        } else {
-                            recordingPreference.setChecked(true);
-                        }
-                        return true;
+//                        boolean selected = Boolean.parseBoolean(newValue.toString());
+//                        if (selected) {
+//                            recordingPreference.setChecked(false);
+//                        } else {
+//                            recordingPreference.setChecked(true);
+//                        }
+                        return false;
                     }
                     return false;
                 }
@@ -88,12 +110,12 @@ public class Settings extends AppCompatActivity implements TAG {
                 public boolean onPreferenceChange(Preference preference, Object newValue) {
                     if (newValue instanceof Boolean) {
                         boolean selected = Boolean.parseBoolean(newValue.toString());
-                        if (selected) {
-                            callPreference.setChecked(false);
-                        } else {
-                            callPreference.setChecked(true);
-                        }
-                        return true;
+//                        if (selected) {
+//                            callPreference.setChecked(false);
+//                        } else {
+//                            callPreference.setChecked(true);
+//                        }
+                        return false;
                     }
                     return false;
                 }
@@ -168,7 +190,6 @@ public class Settings extends AppCompatActivity implements TAG {
 
 
         }
-
 
 
     }

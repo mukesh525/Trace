@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Parcelable;
@@ -108,6 +109,13 @@ public class Home extends AppCompatActivity
         mTabLayout.setupWithViewPager(mViewPager);
         mDrawer.setItemIconTintList(null);
         View header = mDrawer.getHeaderView(0);
+
+        if (android.os.Build.VERSION.SDK_INT > 19) {
+            header.setBackgroundResource(R.drawable.side_nav_bar);
+
+        }
+
+
         user = (TextView) header.findViewById(R.id.tv_name);
         email = (TextView) header.findViewById(R.id.tv_email);
         String useremail = Utils.getFromPrefs(this, EMAIL, DEFAULT);
@@ -177,16 +185,14 @@ public class Home extends AppCompatActivity
                 frameLayout.setOnTouchListener(null);
             }
         });
-       // fabMenu.setBackground(Color.parseColor("#795548"));
+        // fabMenu.setBackground(Color.parseColor("#795548"));
 
     }
 
 
-
-
     public void showSettingsAlert() {
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(Home.this);
-        alertDialog.setTitle("Logout Alert");
+        alertDialog.setTitle("MTrack");
         // Setting Dialog Message
         alertDialog.setMessage("Do you want to logout?");
 

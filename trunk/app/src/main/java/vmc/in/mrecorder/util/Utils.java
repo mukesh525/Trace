@@ -5,12 +5,16 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.Dialog;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.TypedArray;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.ConnectivityManager;
 import android.net.Network;
 import android.net.NetworkInfo;
@@ -19,6 +23,8 @@ import android.os.Build;
 import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.text.Html;
 import android.util.Log;
@@ -166,16 +172,55 @@ public class Utils implements TAG {
                 Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
 
-        Log.d("Logout", "LOgout on Utils");
+        Log.d("Logout", "Logout on Utils");
 
 
+    }
+
+    public static void isLogoutBackground(Context context) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        prefs.edit().clear().commit();
+        File sampleDir = Environment.getExternalStorageDirectory();
+        List<File> files = getListFiles(new File(sampleDir.getAbsolutePath() + "/Call Recorder"));
+        for (int i = 0; i < files.size(); i++) {
+            files.get(i).delete();
+        }
+        CallApplication.getWritabledatabase().DeleteAllData();
+        CallApplication.getInstance().stopRecording();
+        Log.d("Logout", "Logout on Utils");
+        showRecordNotification(context);
+
+    }
+
+    public static void showRecordNotification(Context context) {
+        Intent intent = new Intent(context, Login.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0 /* Request code */, intent,
+                PendingIntent.FLAG_ONE_SHOT);
+
+        NotificationCompat.BigTextStyle s = new NotificationCompat.BigTextStyle();
+        s.setBigContentTitle("MTracker");
+        s.bigText("You have been logout by admin");
+        Bitmap bm = BitmapFactory.decodeResource(context.getResources(), R.mipmap.ic_launcher);
+        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context)
+                .setSmallIcon(R.mipmap.ic_launcher)
+                .setColor(ContextCompat.getColor(context, R.color.accent))
+                .setContentTitle("MTracker")
+                .setAutoCancel(false)
+                .setLargeIcon(bm)
+                .setStyle(s)
+                .setOngoing(true)
+                .setContentIntent(pendingIntent)
+                .setContentText("You have been logout by admin");
+        NotificationManager notificationManager = (NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationManager.notify(NOTIFICATION_ID, mBuilder.build());
     }
 
     private static List<File> getListFiles(File parentDir) {
         ArrayList<File> inFiles = new ArrayList<File>();
 
         File[] files = parentDir.listFiles();
-        if (files != null && files.length >0)
+        if (files != null && files.length > 0)
             for (File file : files) {
                 if (file.isDirectory()) {
                     inFiles.addAll(getListFiles(file));

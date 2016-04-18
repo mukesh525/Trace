@@ -60,15 +60,14 @@ public class NewSpeedDialAdpter extends RecyclerView.Adapter<NewSpeedDialAdpter.
     public void onBindViewHolder(CallViewHolder holder, int position) {
 
         final Model ci = CallDataArrayList.get(position);
-        if (ci.getCallType().equals("incoming"))
-           // holder.calltype.setBackgroundResource(R.drawable.sym_call_incoming);
+        if (ci.getCallType().equals(INCOMING))
             holder.calltype.setBackgroundResource(R.drawable.ic_call_incoming);
-        else if (ci.getCallType().equals("outgoing"))
-           // holder.calltype.setBackgroundResource(R.drawable.sym_call_outgoing);
+        else if (ci.getCallType().equals(OUTGOING))
             holder.calltype.setBackgroundResource(R.drawable.ic_call_outgoing);
-        else if (ci.getCallType().equals("missed"))
-           // holder.calltype.setBackgroundResource(R.drawable.sym_call_missed);
+        else if (ci.getCallType().equals(MISSED)) {
+            holder.iboverflow.setVisibility(View.GONE);
             holder.calltype.setBackgroundResource(R.drawable.ic_call_missed);
+        }
         String sname = null;
 
         try {
@@ -78,7 +77,7 @@ public class NewSpeedDialAdpter extends RecyclerView.Adapter<NewSpeedDialAdpter.
         }
         holder.iboverflow.setOnClickListener(new OnOverflowSelectedListener(context, holder.getAdapterPosition(), CallDataArrayList));
         holder.nameTextView.setText(sname != null ? sname : ci.getPhoneNumber());
-        SimpleDateFormat sdf = new SimpleDateFormat("hh:mm aa" );
+        SimpleDateFormat sdf = new SimpleDateFormat("hh:mm aa");
         //  String stime=sdf.format(new Date(Long.parseLong(c.getString(timeindex))));
         String stime = sdf.format(new Date(Long.parseLong(ci.getTime())));
 
@@ -91,13 +90,13 @@ public class NewSpeedDialAdpter extends RecyclerView.Adapter<NewSpeedDialAdpter.
 
 
     }
-//
+
 
     public String getContactName(String snumber) throws Exception {
         ContentResolver cr = context.getContentResolver();
         Uri uri = Uri.withAppendedPath(ContactsContract.PhoneLookup.CONTENT_FILTER_URI, Uri.encode(snumber));
         Cursor cursor = cr.query(uri, new String[]{ContactsContract.PhoneLookup.DISPLAY_NAME}, null, null, null);
-        cursor.close();
+        // cursor.close();
         if (cursor == null) {
             return null;
         }

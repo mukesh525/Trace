@@ -177,7 +177,7 @@
                 android:layout_alignBottom="@+id/fCallerNameTextView"
                 android:layout_centerHorizontal="true" />
 
-            <ImageView
+            <android.support.v7.widget.AppCompatImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:id="@+id/ivplay"

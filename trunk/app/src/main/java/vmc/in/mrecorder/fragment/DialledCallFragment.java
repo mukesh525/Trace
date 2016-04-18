@@ -52,7 +52,7 @@ public class DialledCallFragment extends Fragment implements TAG {
         super.onActivityCreated(savedInstanceState);
 
         Calllist = CallApplication.getWritabledatabase().getAllOfflineCalls();
-        Calllist = getSortList("outgoing", Calllist);
+        Calllist = getSortList(OUTGOING, Calllist);
         if (Calllist.size() > 0) {
             Collections.sort(Calllist, Collections.reverseOrder());
         }

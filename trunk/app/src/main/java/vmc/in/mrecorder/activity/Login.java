@@ -459,7 +459,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
                 if (code.equals("202")) {
                     btn_login.setText("Get OTP");
                     Snackbar.make(coordinatorLayout, msg, Snackbar.LENGTH_LONG).show();
-                    //tv_otp.setHint("Login");
+                    tv_otp.setHint("");
 
                 } else {
 

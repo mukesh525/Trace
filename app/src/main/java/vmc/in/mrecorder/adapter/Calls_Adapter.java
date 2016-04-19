@@ -96,7 +96,7 @@ public class Calls_Adapter extends RecyclerView.Adapter<Calls_Adapter.CallViewHo
                     }
                 }
             });
-            if (ci.getCalltype().equals("0")) {
+            if (ci.getCalltype().equals("0")||ci.getFilename().equals("")) {
                 holder.img_play.setVisibility(View.GONE);
             } else {
                 holder.img_play.setVisibility(View.VISIBLE);

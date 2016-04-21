@@ -25,6 +25,7 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.ls.directoryselector.DirectoryDialog;
+import com.ls.directoryselector.DirectoryPreference;
 
 import java.io.File;
 import java.util.prefs.Preferences;
@@ -65,7 +66,9 @@ public class Settings extends AppCompatActivity implements TAG {
 
 
     public static class MyPreferenceFragment extends PreferenceFragment implements
-            SharedPreferences.OnSharedPreferenceChangeListener, DirectoryDialog.Listener {
+            SharedPreferences.OnSharedPreferenceChangeListener {
+
+        private Preference storePathPrefs;
 
         @Override
         public void onCreate(final Bundle savedInstanceState) {
@@ -74,7 +77,7 @@ public class Settings extends AppCompatActivity implements TAG {
 
             final SwitchPreference recordingPreference = (SwitchPreference) findPreference("prefRecording");
             final SwitchPreference callPreference = (SwitchPreference) findPreference("prefCallUpdate");
-            Preference storePathPrefs = findPreference("store_path");
+            storePathPrefs = findPreference("store_path");
             storePathPrefs.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
                 @Override
                 public boolean onPreferenceChange(Preference preference, Object newValue) {
@@ -82,8 +85,6 @@ public class Settings extends AppCompatActivity implements TAG {
                     return true;
                 }
             });
-
-
 
 
             SharedPreferences sharedPrefs = PreferenceManager
@@ -109,12 +110,6 @@ public class Settings extends AppCompatActivity implements TAG {
                 public boolean onPreferenceChange(Preference preference, Object newValue) {
 
                     if (newValue instanceof Boolean) {
-//                        boolean selected = Boolean.parseBoolean(newValue.toString());
-//                        if (selected) {
-//                            recordingPreference.setChecked(false);
-//                        } else {
-//                            recordingPreference.setChecked(true);
-//                        }
                         return false;
                     }
                     return false;
@@ -126,11 +121,6 @@ public class Settings extends AppCompatActivity implements TAG {
                 public boolean onPreferenceChange(Preference preference, Object newValue) {
                     if (newValue instanceof Boolean) {
                         boolean selected = Boolean.parseBoolean(newValue.toString());
-//                        if (selected) {
-//                            callPreference.setChecked(false);
-//                        } else {
-//                            callPreference.setChecked(true);
-//                        }
                         return false;
                     }
                     return false;
@@ -149,13 +139,16 @@ public class Settings extends AppCompatActivity implements TAG {
             String storepath = sharedPrefs.getString("store_path", "null");
             if (storepath.equals("null")) {
                 File sampleDir = Environment.getExternalStorageDirectory();
-                File sample = new File(sampleDir.getAbsolutePath() + "/data/tracker");
+                File sample = new File(sampleDir.getAbsolutePath() + "/data");
                 if (!sample.exists()) {
                     sample.mkdirs();
                 }
-                storePathPrefs.setSummary(sample.getAbsolutePath());
+                SharedPreferences.Editor ed = sharedPrefs.edit();
+                ed.putString("store_path", sample.getAbsolutePath());
+                ed.commit();
             } else {
                 storePathPrefs.setSummary(storepath);
+
             }
 
 
@@ -192,8 +185,8 @@ public class Settings extends AppCompatActivity implements TAG {
                 checkPreference.setSummary(checkPreference.getSummary());
                 return;
             }
-//            SharedPreferences sharedPrefs = getPreferenceManager().getSharedPreferences();
-//            preference.setSummary(sharedPrefs.getString(key, "Default"));
+
+
         }
 
 
@@ -215,12 +208,6 @@ public class Settings extends AppCompatActivity implements TAG {
             Preference pref = findPreference(key);
             boolean recording = sharedPreferences.getBoolean("prefRecording", true);
             CallApplication.getInstance().startRecording();
-            if (recording) {
-                //  CallApplication.getInstance().startRecording();
-            } else {
-                //  CallApplication.getInstance().stopRecording();
-            }
-
             updatePreference(pref, key);
             SyncUtils.CreateSyncAccount(getActivity());
             SyncUtils.updateSync();
@@ -228,36 +215,6 @@ public class Settings extends AppCompatActivity implements TAG {
 
         }
 
-
-        @Override
-        public void onDirectorySelected(File dir) {
-
-
-            SharedPreferences sharedPrefs = PreferenceManager
-                    .getDefaultSharedPreferences(getActivity());
-            SharedPreferences.Editor ed = sharedPrefs.edit();
-            ed.putString("choosedirectory", dir.getAbsolutePath());
-            ed.commit();
-        }
-
-        @Override
-        public void onCancelled() {
-            File sampleDir = Environment.getExternalStorageDirectory();
-            final File sample = new File(sampleDir.getAbsolutePath() + "/Call Recorder");
-            if (!sample.exists()) {
-                boolean sucess = sample.mkdir();
-                if (sucess) {
-                    Log.d(TAG, "Folder Created");
-                } else {
-                    Log.d(TAG, "Unable to create Folder");
-                }
-            }
-            SharedPreferences sharedPrefs = PreferenceManager
-                    .getDefaultSharedPreferences(getActivity());
-            SharedPreferences.Editor ed = sharedPrefs.edit();
-            ed.putString("choosedirectory", sample.getAbsolutePath());
-            ed.commit();
-        }
     }
 
 

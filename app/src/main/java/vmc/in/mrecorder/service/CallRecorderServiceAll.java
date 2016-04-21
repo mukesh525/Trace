@@ -254,42 +254,56 @@ public class CallRecorderServiceAll extends Service implements TAG {
                     .getDefaultSharedPreferences(getApplicationContext());
             int selection = Integer.parseInt(sharedPrefs.getString("audioformat", "1"));
             File sampleDir = Environment.getExternalStorageDirectory();
-            File sample = new File(sampleDir.getAbsolutePath() + "/Call Recorder");
+            File sample = new File(sampleDir.getAbsolutePath() + "/data/tracker");
             if (!sample.exists()) {
-                boolean sucess = sample.mkdir();
-                if(sucess){
-                    Log.d(TAG, "Folder Created");
-                }else {
-                    Log.d(TAG, "Unable to create Folder");
-                }
+                sample.mkdirs();
+
             }
+            String selectedFolder = sharedPrefs.getString("store_path", sample.getAbsolutePath());
+            File UserselectedFolder = new File(selectedFolder);
+            if (!UserselectedFolder.exists()) {
+                boolean sucess = UserselectedFolder.mkdirs();
+                if (!sucess) {
+                    SharedPreferences.Editor ed = sharedPrefs.edit();
+                    ed.putString("store_path", sample.getAbsolutePath());
+                    ed.commit();
+                }
+
+                selectedFolder = sharedPrefs.getString("store_path", sample.getAbsolutePath());
+
+            }
+
+
+            Log.d("DIRECTORY", selectedFolder);
+
+
             fileName = String.valueOf(System.currentTimeMillis());
             setRecordingsource(sharedPrefs);
 
             switch (selection) {
                 case 1:
-                    audiofile = new File(sample.getAbsolutePath() + "/sound" + fileName + ".3gp");
+                    audiofile = new File(UserselectedFolder.getAbsolutePath() + "/sound" + fileName + ".3gp");
                     recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
                     recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
                     recorder.setOutputFile(audiofile.getAbsolutePath());
                     Log.d(TAG, "AUDIO FORMAT 3GP");
                     break;
                 case 2:
-                    audiofile = new File(sample.getAbsolutePath() + "/sound" + fileName + ".amr");
+                    audiofile = new File(UserselectedFolder.getAbsolutePath() + "/sound" + fileName + ".amr");
                     recorder.setOutputFormat(MediaRecorder.OutputFormat.AMR_NB);
                     recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
                     recorder.setOutputFile(audiofile.getAbsolutePath());
                     Log.d(TAG, "AUDIO FORMAT AMR");
                     break;
                 case 3:
-                    audiofile = new File(sample.getAbsolutePath() + "/sound" + fileName + ".mp4");
+                    audiofile = new File(UserselectedFolder.getAbsolutePath() + "/sound" + fileName + ".mp4");
                     recorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
                     recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
                     recorder.setOutputFile(audiofile.getAbsolutePath());
                     Log.d(TAG, "AUDIO FORMAT MP4");
                     break;
                 default:
-                    audiofile = new File(sample.getAbsolutePath() + "/sound" + fileName + ".3gp");
+                    audiofile = new File(UserselectedFolder.getAbsolutePath() + "/sound" + fileName + ".3gp");
                     recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
                     recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
                     recorder.setOutputFile(audiofile.getAbsolutePath());
@@ -348,7 +362,7 @@ public class CallRecorderServiceAll extends Service implements TAG {
             from = "to";
         }
         Log.d(TAG, name);
-		NotificationCompat.BigTextStyle s = new NotificationCompat.BigTextStyle();
+        NotificationCompat.BigTextStyle s = new NotificationCompat.BigTextStyle();
         s.setBigContentTitle("MTracker");
         s.bigText("Last call " + from + " " + name + " " + "is recorded successfully.");
         Bitmap bm = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher);
@@ -358,7 +372,7 @@ public class CallRecorderServiceAll extends Service implements TAG {
                 .setContentTitle("MTracker")
                 .setAutoCancel(false)
                 .setLargeIcon(bm)
-				.setStyle(s)
+                .setStyle(s)
                 .setContentText("Last call " + from + " " + name + " " + "is recorded successfully.");
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.notify(NOTIFICATION_ID, mBuilder.build());

@@ -1,8 +1,10 @@
 package vmc.in.mrecorder.activity;
 
+import android.app.DialogFragment;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Environment;
 import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
@@ -13,6 +15,7 @@ import android.preference.SwitchPreference;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +24,9 @@ import android.widget.CompoundButton;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
+import com.ls.directoryselector.DirectoryDialog;
+
+import java.io.File;
 import java.util.prefs.Preferences;
 
 import vmc.in.mrecorder.R;
@@ -57,9 +63,9 @@ public class Settings extends AppCompatActivity implements TAG {
 
     }
 
-    public static class MyPreferenceFragment extends PreferenceFragment implements
-            SharedPreferences.OnSharedPreferenceChangeListener {
 
+    public static class MyPreferenceFragment extends PreferenceFragment implements
+            SharedPreferences.OnSharedPreferenceChangeListener, DirectoryDialog.Listener {
 
         @Override
         public void onCreate(final Bundle savedInstanceState) {
@@ -68,6 +74,16 @@ public class Settings extends AppCompatActivity implements TAG {
 
             final SwitchPreference recordingPreference = (SwitchPreference) findPreference("prefRecording");
             final SwitchPreference callPreference = (SwitchPreference) findPreference("prefCallUpdate");
+            Preference storePathPrefs = findPreference("store_path");
+            storePathPrefs.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                @Override
+                public boolean onPreferenceChange(Preference preference, Object newValue) {
+                    preference.setSummary((String) newValue);
+                    return true;
+                }
+            });
+
+
 
 
             SharedPreferences sharedPrefs = PreferenceManager
@@ -120,6 +136,27 @@ public class Settings extends AppCompatActivity implements TAG {
                     return false;
                 }
             });
+
+
+        }
+
+        @Override
+        public void onActivityCreated(Bundle savedInstanceState) {
+            super.onActivityCreated(savedInstanceState);
+            Preference storePathPrefs = findPreference("store_path");
+            SharedPreferences sharedPrefs = PreferenceManager
+                    .getDefaultSharedPreferences(getActivity());
+            String storepath = sharedPrefs.getString("store_path", "null");
+            if (storepath.equals("null")) {
+                File sampleDir = Environment.getExternalStorageDirectory();
+                File sample = new File(sampleDir.getAbsolutePath() + "/data/tracker");
+                if (!sample.exists()) {
+                    sample.mkdirs();
+                }
+                storePathPrefs.setSummary(sample.getAbsolutePath());
+            } else {
+                storePathPrefs.setSummary(storepath);
+            }
 
 
         }
@@ -192,6 +229,35 @@ public class Settings extends AppCompatActivity implements TAG {
         }
 
 
+        @Override
+        public void onDirectorySelected(File dir) {
+
+
+            SharedPreferences sharedPrefs = PreferenceManager
+                    .getDefaultSharedPreferences(getActivity());
+            SharedPreferences.Editor ed = sharedPrefs.edit();
+            ed.putString("choosedirectory", dir.getAbsolutePath());
+            ed.commit();
+        }
+
+        @Override
+        public void onCancelled() {
+            File sampleDir = Environment.getExternalStorageDirectory();
+            final File sample = new File(sampleDir.getAbsolutePath() + "/Call Recorder");
+            if (!sample.exists()) {
+                boolean sucess = sample.mkdir();
+                if (sucess) {
+                    Log.d(TAG, "Folder Created");
+                } else {
+                    Log.d(TAG, "Unable to create Folder");
+                }
+            }
+            SharedPreferences sharedPrefs = PreferenceManager
+                    .getDefaultSharedPreferences(getActivity());
+            SharedPreferences.Editor ed = sharedPrefs.edit();
+            ed.putString("choosedirectory", sample.getAbsolutePath());
+            ed.commit();
+        }
     }
 
 

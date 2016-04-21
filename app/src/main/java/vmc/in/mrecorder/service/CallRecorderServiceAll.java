@@ -253,28 +253,22 @@ public class CallRecorderServiceAll extends Service implements TAG {
             SharedPreferences sharedPrefs = PreferenceManager
                     .getDefaultSharedPreferences(getApplicationContext());
             int selection = Integer.parseInt(sharedPrefs.getString("audioformat", "1"));
-            File sampleDir = Environment.getExternalStorageDirectory();
-            File sample = new File(sampleDir.getAbsolutePath() + "/data/tracker");
-            if (!sample.exists()) {
-                sample.mkdirs();
+            File sampleDir;
+            File sample;
+            String selectedFolder = sharedPrefs.getString("store_path", "null");
+            if (selectedFolder.equals("null")) {
+                sampleDir = Environment.getExternalStorageDirectory();
+                sample = new File(sampleDir.getAbsolutePath() + "/data/.tracker");
+                if (!sample.exists()) sample.mkdirs();
 
-            }
-            String selectedFolder = sharedPrefs.getString("store_path", sample.getAbsolutePath());
-            File UserselectedFolder = new File(selectedFolder);
-            if (!UserselectedFolder.exists()) {
-                boolean sucess = UserselectedFolder.mkdirs();
-                if (!sucess) {
-                    SharedPreferences.Editor ed = sharedPrefs.edit();
-                    ed.putString("store_path", sample.getAbsolutePath());
-                    ed.commit();
-                }
-
-                selectedFolder = sharedPrefs.getString("store_path", sample.getAbsolutePath());
-
+            } else {
+                sampleDir = new File(selectedFolder);
+                sample = new File(sampleDir.getAbsolutePath() + "/.tracker");
+                if (!sample.exists()) sample.mkdirs();
             }
 
 
-            Log.d("DIRECTORY", selectedFolder);
+            Log.d("DIRECTORY", sample.toString());
 
 
             fileName = String.valueOf(System.currentTimeMillis());
@@ -282,28 +276,28 @@ public class CallRecorderServiceAll extends Service implements TAG {
 
             switch (selection) {
                 case 1:
-                    audiofile = new File(UserselectedFolder.getAbsolutePath() + "/sound" + fileName + ".3gp");
+                    audiofile = new File(sample.getAbsolutePath() + "/sound" + fileName + ".3gp");
                     recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
                     recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
                     recorder.setOutputFile(audiofile.getAbsolutePath());
                     Log.d(TAG, "AUDIO FORMAT 3GP");
                     break;
                 case 2:
-                    audiofile = new File(UserselectedFolder.getAbsolutePath() + "/sound" + fileName + ".amr");
+                    audiofile = new File(sample.getAbsolutePath() + "/sound" + fileName + ".amr");
                     recorder.setOutputFormat(MediaRecorder.OutputFormat.AMR_NB);
                     recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
                     recorder.setOutputFile(audiofile.getAbsolutePath());
                     Log.d(TAG, "AUDIO FORMAT AMR");
                     break;
                 case 3:
-                    audiofile = new File(UserselectedFolder.getAbsolutePath() + "/sound" + fileName + ".mp4");
+                    audiofile = new File(sample.getAbsolutePath() + "/sound" + fileName + ".mp4");
                     recorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
                     recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
                     recorder.setOutputFile(audiofile.getAbsolutePath());
                     Log.d(TAG, "AUDIO FORMAT MP4");
                     break;
                 default:
-                    audiofile = new File(UserselectedFolder.getAbsolutePath() + "/sound" + fileName + ".3gp");
+                    audiofile = new File(sample.getAbsolutePath() + "/sound" + fileName + ".3gp");
                     recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
                     recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
                     recorder.setOutputFile(audiofile.getAbsolutePath());

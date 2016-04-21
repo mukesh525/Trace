@@ -157,10 +157,23 @@ public class Utils implements TAG {
     }
 
     public static void isLogout(Context context) {
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-        prefs.edit().clear().commit();
-        File sampleDir = Environment.getExternalStorageDirectory();
-        List<File> files = getListFiles(new File(sampleDir.getAbsolutePath() + "/Call Recorder"));
+        SharedPreferences sharedPrefs = PreferenceManager
+                .getDefaultSharedPreferences(context);
+        File sampleDir;
+        File sample;
+        String selectedFolder = sharedPrefs.getString("store_path", "null");
+        if (selectedFolder.equals("null")) {
+            sampleDir = Environment.getExternalStorageDirectory();
+            sample = new File(sampleDir.getAbsolutePath() + "/data/.tracker");
+            if (!sample.exists()) sample.mkdirs();
+
+        } else {
+            sampleDir = new File(selectedFolder);
+            sample = new File(sampleDir.getAbsolutePath() + "/.tracker");
+            if (!sample.exists()) sample.mkdirs();
+        }
+        sharedPrefs.edit().clear().commit();
+        List<File> files = getListFiles(sample);
         for (int i = 0; i < files.size(); i++) {
             files.get(i).delete();
         }
@@ -212,7 +225,7 @@ public class Utils implements TAG {
                 .setOngoing(true)
                 .setContentIntent(pendingIntent)
                 .setContentText("You have been logout by admin");
-        NotificationManager notificationManager = (NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
+        NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.notify(NOTIFICATION_ID, mBuilder.build());
     }
 

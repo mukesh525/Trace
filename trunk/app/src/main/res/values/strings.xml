@@ -42,7 +42,7 @@
     <string name="notification">Notification</string>
     <string name="notify">Notify</string>
     <string name="notify_report_summary">Notify while recording</string>
-    <string name="recorsettings">Record Setting (By Admin)</string>
+    <string name="recorsettings">Record Settings (By Admin)</string>
     <string name="pref_record_settings">Enable recording </string>
     <string name="pref_title_record">Recording</string>
     <string name="updatecallList">Update Call List</string>
@@ -68,5 +68,7 @@
     <string name="theme_green">Green</string>
     <string name="theme_solarized_dark">Solarized Dark</string>
     <string name="theme_solarized">Solarized</string>
+    <string name="dir_location">Storage Location</string>
+    <string name="storage">Storage</string>
 
 </resources>

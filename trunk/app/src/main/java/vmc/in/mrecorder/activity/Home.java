@@ -192,7 +192,7 @@ public class Home extends AppCompatActivity
 
     public void showSettingsAlert() {
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(Home.this);
-        alertDialog.setTitle("MTrack");
+        alertDialog.setTitle("MTracker");
         // Setting Dialog Message
         alertDialog.setMessage("Do you want to logout?");
 

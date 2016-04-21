@@ -70,5 +70,6 @@
     <string name="theme_solarized">Solarized</string>
     <string name="dir_location">Storage Location</string>
     <string name="storage">Storage</string>
+    <string name="open">Open</string>
 
 </resources>

@@ -180,7 +180,6 @@ public class CallRecorderServiceAll extends Service implements TAG {
 
                 if (state.equals(TelephonyManager.EXTRA_STATE_RINGING)) {
 
-
                     //Check to see if call was answered later
                     ringing = true;
                     ring = true;

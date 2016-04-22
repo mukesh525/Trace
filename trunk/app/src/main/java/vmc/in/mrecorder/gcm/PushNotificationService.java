@@ -134,7 +134,7 @@ public class PushNotificationService extends GcmListenerService implements vmc.i
         nb.setStyle(s);
 
 //        Intent resultIntent = new Intent(this, MainActivity.class);
-//        TaskStackBuilder TSB = TaskStackBuilder.create(this);
+//        TaskStackBuilder TSB = TaskStackBuilder.create(this);/home/gousebabjan/Desktop/mcube.png
 //        TSB.addParentStack(MainActivity.class);
 
         // Adds the Intent that starts the Activity to the top of the stack

@@ -62,6 +62,12 @@ public class Home extends AppCompatActivity
     private Toolbar mToolbar;
     public FloatingActionButton floatingActionButton, floatingActionButtonSync;
     private String titles[] = {"ALL", "INBOUND", "OUTBOUND", "MISSED"};
+    private int[] tabIcons = {
+            R.drawable.ic_all_home,
+            R.drawable.ic_call_incoming_home,
+            R.drawable.ic_call_outgoing_home,
+            R.drawable.ic_call_missed_home
+    };
     private NavigationView mDrawer;
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle drawerToggle;
@@ -107,6 +113,8 @@ public class Home extends AppCompatActivity
         mViewPager.setAdapter(myPagerAdapter);
         mTabLayout.setTabsFromPagerAdapter(myPagerAdapter);
         mTabLayout.setupWithViewPager(mViewPager);
+
+        setupTabIcons();
         mDrawer.setItemIconTintList(null);
         View header = mDrawer.getHeaderView(0);
 
@@ -188,13 +196,20 @@ public class Home extends AppCompatActivity
         // fabMenu.setBackground(Color.parseColor("#795548"));
 
     }
+    private void setupTabIcons() {
+        mTabLayout.getTabAt(0).setIcon(tabIcons[0]);
+        mTabLayout.getTabAt(1).setIcon(tabIcons[1]);
+        mTabLayout.getTabAt(2).setIcon(tabIcons[2]);
+        mTabLayout.getTabAt(3).setIcon(tabIcons[3]);
+    }
 
 
     public void showSettingsAlert() {
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(Home.this);
         alertDialog.setTitle("MTracker");
+        //alertDialog.setIcon(R.drawable.mcube);
         // Setting Dialog Message
-        alertDialog.setMessage("Do you want to logout?");
+        alertDialog.setMessage("Are you sure you want to logout?");
 
         // On pressing Settings button
         alertDialog.setPositiveButton("Logout", new DialogInterface.OnClickListener() {
@@ -246,12 +261,14 @@ public class Home extends AppCompatActivity
 
         @Override
         public int getCount() {
-            return titles.length;
+           // return titles.length;
+            return tabIcons.length;
         }
 
         @Override
         public CharSequence getPageTitle(int position) {
-            return titles[position];
+          //  return titles[position];
+            return null;
         }
     }
 

@@ -146,6 +146,7 @@ public class Settings extends AppCompatActivity implements TAG {
                 SharedPreferences.Editor ed = sharedPrefs.edit();
                 ed.putString("store_path", sample.getAbsolutePath());
                 ed.commit();
+                storePathPrefs.setSummary(sample.getAbsolutePath());
             } else {
                 storePathPrefs.setSummary(storepath);
 

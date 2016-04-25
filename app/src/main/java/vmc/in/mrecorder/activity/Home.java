@@ -97,7 +97,7 @@ public class Home extends AppCompatActivity
             }
             Utils.saveToPrefs(Home.this, FIRST_TYME, "TRUE");
         }
-
+        showTermsAlert();
         // CallApplication.getInstance().startRecording();
         mDrawer = (NavigationView) findViewById(R.id.nav_view);
         mDrawer.setNavigationItemSelectedListener(this);
@@ -196,6 +196,7 @@ public class Home extends AppCompatActivity
         // fabMenu.setBackground(Color.parseColor("#795548"));
 
     }
+
     private void setupTabIcons() {
         mTabLayout.getTabAt(0).setIcon(tabIcons[0]);
         mTabLayout.getTabAt(1).setIcon(tabIcons[1]);
@@ -223,6 +224,33 @@ public class Home extends AppCompatActivity
         alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 dialog.cancel();
+            }
+        });
+
+        // Showing Alert Message
+        alertDialog.show();
+    }
+
+    public void showTermsAlert() {
+        android.app.AlertDialog.Builder alertDialog = new android.app.AlertDialog.Builder(Home.this);
+        alertDialog.setTitle("MTracker");
+        //alertDialog.setIcon(R.drawable.mcube);
+        // Setting Dialog Message
+        alertDialog.setMessage("I have read and agree to the terms and conditions");
+
+        // On pressing Settings button
+        alertDialog.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+
+            }
+        });
+
+        // on pressing cancel button
+        alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                //dialog.cancel();
+                Utils.isLogout(Home.this);
             }
         });
 
@@ -261,13 +289,13 @@ public class Home extends AppCompatActivity
 
         @Override
         public int getCount() {
-           // return titles.length;
+            // return titles.length;
             return tabIcons.length;
         }
 
         @Override
         public CharSequence getPageTitle(int position) {
-          //  return titles[position];
+            //  return titles[position];
             return null;
         }
     }

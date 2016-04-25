@@ -212,7 +212,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
 
     private void Login() {
 
-
         if (validate()) {
 
             if (OTP_resp != null && OTP_resp.equals(OTP_Sms)) {
@@ -481,6 +480,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
     public void StartLogin() {
         if (Utils.onlineStatus2(Login.this)) {
             new StartLogin().execute();
+
         } else {
 
             Snackbar snack = Snackbar.make(coordinatorLayout, "No Internet Connection", Snackbar.LENGTH_SHORT)
@@ -577,6 +577,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
                         setActionTextColor(ContextCompat.getColor(Login.this, R.color.accent)).show();
             }
             if (code.equals("400")) {
+
                 save();
                 Utils.saveToPrefs(Login.this, AUTHKEY, authcode);
                 Utils.saveToPrefs(Login.this, NAME, username);

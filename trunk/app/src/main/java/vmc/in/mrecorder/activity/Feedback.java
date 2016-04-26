@@ -67,6 +67,7 @@ public class Feedback extends AppCompatActivity implements TAG {
                 feedbackmsg = etFeedback.getText().toString();
                 if (!(feedbackmsg.length() == 0 || feedbackmsg.isEmpty() || feedbackmsg.equals(""))) {
                     UpdateFeedBack();
+                    hideKeyboard();
                 } else {
                     Toast.makeText(getApplication(), "Enter FeedBack Message", Toast.LENGTH_SHORT).show();
                 }
@@ -115,6 +116,7 @@ public class Feedback extends AppCompatActivity implements TAG {
         }
 
     }
+
 
 
     class SubmitUpdateFeedBack extends AsyncTask<Void, Void, String> {

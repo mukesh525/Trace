@@ -45,7 +45,7 @@ public class ContactsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_contacts_layout);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ViewPager mViewPager = (ViewPager) findViewById(R.id.viewpager);
         if (mViewPager != null) {
             initializeFragments(savedInstanceState);
@@ -173,5 +173,6 @@ public class ContactsActivity extends AppCompatActivity {
 
         viewPager.setAdapter(mAdapter);
     }
+
 
 }

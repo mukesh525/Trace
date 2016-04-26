@@ -92,12 +92,13 @@ public class Home extends AppCompatActivity
         coordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordi_layout);
         String Firsttym = Utils.getFromPrefs(Home.this, FIRST_TYME, DEFAULT);
         if (Firsttym.equals(DEFAULT)) {
+            showTermsAlert();
             if (!Utils.isMyServiceRunning(CallRecorderServiceAll.class, Home.this)) {
                 CallApplication.getInstance().startRecording();
             }
             Utils.saveToPrefs(Home.this, FIRST_TYME, "TRUE");
         }
-        showTermsAlert();
+
         // CallApplication.getInstance().startRecording();
         mDrawer = (NavigationView) findViewById(R.id.nav_view);
         mDrawer.setNavigationItemSelectedListener(this);

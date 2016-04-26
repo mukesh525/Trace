@@ -240,7 +240,7 @@ public class Home extends AppCompatActivity
         alertDialog.setMessage("I have read and agree to the terms and conditions");
 
         // On pressing Settings button
-        alertDialog.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+        alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 dialog.cancel();
 
@@ -248,7 +248,7 @@ public class Home extends AppCompatActivity
         });
 
         // on pressing cancel button
-        alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+        alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 //dialog.cancel();
                 Utils.isLogout(Home.this);

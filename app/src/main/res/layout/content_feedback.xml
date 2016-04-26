@@ -34,8 +34,6 @@
         android:gravity="center"
         android:hint="FeedBack Message"
         android:inputType="textMultiLine">
-
-        <requestFocus />
     </EditText>
 
     <Button

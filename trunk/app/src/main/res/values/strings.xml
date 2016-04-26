@@ -28,7 +28,7 @@
     <string name="err_msg_password">Enter the password</string>
     <string name="text_tryAgain">Try again</string>
     <string name="login">Login</string>
-    <string name="title_activity_feedback">Feedback</string>
+    <string name="title_activity_feedback"> Help Feedback</string>
     <string name="title_activity_settings">Settings</string>
     <string name="audiosource">Audio </string>
     <string name="audioformat">Audio Format</string>

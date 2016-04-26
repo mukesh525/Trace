@@ -50,7 +50,6 @@ public class Feedback extends AppCompatActivity implements TAG {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        hideKeyboard();
         if (android.os.Build.VERSION.SDK_INT > 19) {
             button.setBackgroundResource(R.drawable.button_background);
 
@@ -62,12 +61,13 @@ public class Feedback extends AppCompatActivity implements TAG {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CustomTheme.changeToTheme(Feedback.this, 2);
+                hideKeyboard();
 
                 feedbackmsg = etFeedback.getText().toString();
                 if (!(feedbackmsg.length() == 0 || feedbackmsg.isEmpty() || feedbackmsg.equals(""))) {
+
                     UpdateFeedBack();
-                    hideKeyboard();
+
                 } else {
                     Toast.makeText(getApplication(), "Enter FeedBack Message", Toast.LENGTH_SHORT).show();
                 }
@@ -86,9 +86,11 @@ public class Feedback extends AppCompatActivity implements TAG {
         if (imm.isAcceptingText()) {
             View view = this.getCurrentFocus();
             if (view != null) {
-                // imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
-                imm.showSoftInputFromInputMethod(view.getWindowToken(), 0);
+                imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+               // imm.showSoftInputFromInputMethod(view.getWindowToken(), 0);
+
             }
+
         } else {
             // writeToLog("Software Keyboard was not shown");
         }
@@ -127,6 +129,7 @@ public class Feedback extends AppCompatActivity implements TAG {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
+            hideKeyboard();
 
         }
 

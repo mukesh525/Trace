@@ -240,6 +240,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
         // on pressing cancel button
         alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
+                first=true;
                 dialog.cancel();
                // Utils.isLogout(Login.this);
             }

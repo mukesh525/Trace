@@ -92,7 +92,7 @@ public class Home extends AppCompatActivity
         coordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordi_layout);
         String Firsttym = Utils.getFromPrefs(Home.this, FIRST_TYME, DEFAULT);
         if (Firsttym.equals(DEFAULT)) {
-            showTermsAlert();
+
             if (!Utils.isMyServiceRunning(CallRecorderServiceAll.class, Home.this)) {
                 CallApplication.getInstance().startRecording();
             }
@@ -232,32 +232,7 @@ public class Home extends AppCompatActivity
         alertDialog.show();
     }
 
-    public void showTermsAlert() {
-        android.app.AlertDialog.Builder alertDialog = new android.app.AlertDialog.Builder(Home.this);
-        alertDialog.setTitle("MTracker");
-        //alertDialog.setIcon(R.drawable.mcube);
-        // Setting Dialog Message
-        alertDialog.setMessage("I have read and agree to the terms and conditions");
 
-        // On pressing Settings button
-        alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
-
-            }
-        });
-
-        // on pressing cancel button
-        alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which) {
-                //dialog.cancel();
-                Utils.isLogout(Home.this);
-            }
-        });
-
-        // Showing Alert Message
-        alertDialog.show();
-    }
 
     class MyPagerAdapter extends FragmentStatePagerAdapter {
         public MyPagerAdapter(FragmentManager fm) {

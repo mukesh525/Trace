@@ -64,6 +64,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
     private String OTP_Sms = "N/A", OTP_resp, gcmkey;
     private ProgressDialog progressDialog;
     public static final String DEAFULT = "";
+    private boolean first=true;
 
 
     @Override
@@ -186,15 +187,15 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
     @Override
     public void onClick(View v) {
         hideKeyboard();
+
         switch (v.getId()) {
             case R.id.btn_login:
-                if (btn_login.getText().toString().equals("Login")) {
-
-                    Login();
-                } else if (validateOTP()) {
-                    GetOtp();
-
+                if(first && validateOTP()){
+                    showTermsAlert();
+                    first=false;
                 }
+              else
+                {startLogin();}
                 break;
 
             case R.id.btn_get_otp:
@@ -208,6 +209,44 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
                 finish();
                 break;
         }
+    }
+
+    private void startLogin() {
+        if (btn_login.getText().toString().equals("Login")) {
+
+            Login();
+        } else if (validateOTP()) {
+
+            GetOtp();
+
+        }
+    }
+
+    public void showTermsAlert() {
+        android.app.AlertDialog.Builder alertDialog = new android.app.AlertDialog.Builder(Login.this);
+        alertDialog.setTitle("MTracker");
+        //alertDialog.setIcon(R.drawable.mcube);
+        // Setting Dialog Message
+        alertDialog.setMessage("You agree that MTracker will record all calls made through this device. ");
+
+        // On pressing Settings button
+        alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+               // dialog.cancel();
+               startLogin();
+            }
+        });
+
+        // on pressing cancel button
+        alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+               // Utils.isLogout(Login.this);
+            }
+        });
+
+        // Showing Alert Message
+        alertDialog.show();
     }
 
     private void Login() {
@@ -286,6 +325,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
 
         return valid;
     }
+
 
     public boolean validateOTP() {
         boolean valid = true;
@@ -620,6 +660,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
         }
 
     }
+
 
     public static void cancelNotification(Context ctx, int notifyId) {
         String ns = Context.NOTIFICATION_SERVICE;

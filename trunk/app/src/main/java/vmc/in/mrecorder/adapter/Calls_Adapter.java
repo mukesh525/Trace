@@ -108,10 +108,11 @@ public class Calls_Adapter extends RecyclerView.Adapter<Calls_Adapter.CallViewHo
                 Log.d(TAG, e.getMessage().toString());
 
             }
-            holder.groupNameTextView.setText(Utils.isEmpty(ci.getEmail()) ? UNKNOWN : ci.getEmail());
+           // holder.groupNameTextView.setText(Utils.isEmpty(ci.getEmail()) ? UNKNOWN : ci.getEmail());
+            holder.groupNameTextView.setText(Utils.isEmpty(ci.getEmpname()) ? UNKNOWN : ci.getEmpname());
 
             holder.statusTextView.setText(ci.getCalltype().equals("0") ? MISSED : ci.getCalltype().equals("1") ? INCOMING : OUTGOING);
-
+            Log.d(TAG, ""+ci.getCalltype().equals("0"));
             //    holder.contactphoto.setImageBitmap(getFacebookPhoto(ci.getCallto()));
 
 

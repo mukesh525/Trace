@@ -7,14 +7,14 @@ import java.util.Date;
  */
 public interface TAG {
     int MY_PERMISSIONS_CALL = 0;
-    public static final String UNKNOWN = "UnKnown";
+    public static final String UNKNOWN = "Unknown";
    // public static final String DateTimeFormat = "dd-MM-yyyy HH:mm:ss";
     public static final String DateTimeFormat = "yyyy-MM-dd HH:mm:ss";
     public String PROJECT_NUMBER = "596968407103";
-    public String MISSED = "missed";
+    public String MISSED = "Missed";
     public String DEFAULT = "n/a";
-    public String INCOMING = "incoming";
-    public String OUTGOING = "outgoing";
+    public String INCOMING = "Inbound";
+    public String OUTGOING = "Outbound";
 
     public String NUMBER = "Number";
     public String FILEPATH = "FilePath";

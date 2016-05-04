@@ -25,6 +25,8 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
@@ -32,6 +34,7 @@ import android.view.animation.AnimationUtils;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -56,7 +59,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
     Button btn_login, btn_getOtp;
 
     EditText et_email, et_password;
-    CheckBox check_box;
+    CheckBox check_box,check_box_show_password;
     TextView tv_otp, link_forgot_password;
     String email, password;
     private CoordinatorLayout coordinatorLayout;
@@ -80,6 +83,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
         btn_getOtp = (Button) findViewById(R.id.btn_get_otp);
         btn_login = (Button) findViewById(R.id.btn_login);
         check_box = (CheckBox) findViewById(R.id.checkBox_forgot);
+        check_box_show_password = (CheckBox) findViewById(R.id.checkbox_show_password);
         link_forgot_password = (TextView) findViewById(R.id.link_forgot);
         et_email = (EditText) findViewById(R.id.input_email);
         et_password = (EditText) findViewById(R.id.input_password);
@@ -109,6 +113,19 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
             }
 
 
+        });
+
+        check_box_show_password.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (!isChecked) {
+                    // show password
+                    et_password.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                } else {
+                    // hide password
+                    et_password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                }
+            }
         });
 
         // Log.d("android_id", CallApplication.getDeviceId());

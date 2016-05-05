@@ -113,7 +113,7 @@ public class CallRecorderServiceAll extends Service implements TAG {
                             .getDefaultSharedPreferences(getApplicationContext());
 
                     boolean notifyMode = sharedPrefs.getBoolean("prefCallUpdate", false);
-
+                    Log.d(TAG, "Calls No Recording"+notifyMode);
                     if (notifyMode) {
                         if (answered && ringing) {
                             CallApplication.getWritabledatabase().insert(phoneNumber, fileName, "empty", INCOMING);

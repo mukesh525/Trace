@@ -59,7 +59,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
     Button btn_login, btn_getOtp;
 
     EditText et_email, et_password;
-    CheckBox check_box,check_box_show_password;
+    CheckBox check_box, check_box_show_password;
     TextView tv_otp, link_forgot_password;
     String email, password;
     private CoordinatorLayout coordinatorLayout;
@@ -67,7 +67,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
     private String OTP_Sms = "N/A", OTP_resp, gcmkey;
     private ProgressDialog progressDialog;
     public static final String DEAFULT = "";
-    private boolean first=true;
+    private boolean first = true;
 
 
     @Override
@@ -207,12 +207,12 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
 
         switch (v.getId()) {
             case R.id.btn_login:
-                if(first && validateOTP()){
+                if (first && validateOTP()) {
                     showTermsAlert();
-                    first=false;
+                    first = false;
+                } else {
+                    startLogin();
                 }
-              else
-                {startLogin();}
                 break;
 
             case R.id.btn_get_otp:
@@ -249,17 +249,17 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
         // On pressing Settings button
         alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
-               // dialog.cancel();
-               startLogin();
+                // dialog.cancel();
+                startLogin();
             }
         });
 
         // on pressing cancel button
         alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
-                first=true;
+                first = true;
                 dialog.cancel();
-               // Utils.isLogout(Login.this);
+                // Utils.isLogout(Login.this);
             }
         });
 
@@ -354,11 +354,12 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
 
         Drawable drawable = ContextCompat.getDrawable(Login.this, R.drawable.error);
         drawable.setBounds(new Rect(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight()));
-
+        et_email.requestFocus();
 
         if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             et_email.setError("enter a valid email address", drawable);
             //errormsg = "Enter a valid email address";
+
             valid = false;
         } else {
             et_email.setError(null);
@@ -390,7 +391,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
             et_password.setText(password);
         }
         if (password.equals("")) {
-            et_password.requestFocus();
+          //  et_password.requestFocus();
             //  getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
         }
     }
@@ -481,7 +482,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
 
             try {
                 response = JSONParser.getOTP(GET_OTP, email, password);
-
+                Log.d("OTPRes", response.toString());
                 if (response != null) {
                     if (response.has(CODE)) {
                         code = response.getString(CODE);
@@ -561,7 +562,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
     class StartLogin extends AsyncTask<Void, Void, JSONObject> {
         String message = "n";
         String code = "n";
-        String username = "n", recording = "n";
+        String username = "n", recording = "n", mcubeRecording = "n", workhour = "n";
         String authcode = "n", name = "n";
 
         JSONObject response = null;
@@ -601,6 +602,12 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
                 }
                 if (response.has(RECORDING)) {
                     recording = response.getString(RECORDING);
+                }
+                if (response.has(MCUBECALLS)) {
+                    mcubeRecording = response.getString(MCUBECALLS);
+                }
+                if (response.has(WORKHOUR)) {
+                    workhour = response.getString(WORKHOUR);
                 }
                 Log.d("LOG", authcode);
             } catch (Exception e) {
@@ -643,12 +650,34 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
                 SharedPreferences sharedPrefs = PreferenceManager
                         .getDefaultSharedPreferences(getApplicationContext());
                 SharedPreferences.Editor ed = sharedPrefs.edit();
+//                if (recording.equals("1")) {
+//                    ed.putBoolean("prefRecording", true);
+//                    ed.putBoolean("prefOfficeTimeRecording", false);
+//                    ed.putBoolean("prefMcubeRecording", false);
+//                } else if (workhour.equals("1")) {
+//                    ed.putBoolean("prefOfficeTimeRecording", true);
+//                    ed.putBoolean("prefRecording", false);
+//                    ed.putBoolean("prefMcubeRecording", false);
+//                }else if (mcubeRecording.equals("1")) {
+//                    ed.putBoolean("prefMcubeRecording", true);
+//                    ed.putBoolean("prefRecording", false);
+//                    ed.putBoolean("prefOfficeTimeRecording", false);
+//
+//                }
                 if (recording.equals("1")) {
                     ed.putBoolean("prefRecording", true);
-                    ed.putBoolean("prefCallUpdate", false);
-                } else if (recording.equals("0")) {
+                } else {
                     ed.putBoolean("prefRecording", false);
-                    ed.putBoolean("prefCallUpdate", true);
+                }
+                if (workhour.equals("1")) {
+                    ed.putBoolean("prefOfficeTimeRecording", true);
+                } else {
+                    ed.putBoolean("prefOfficeTimeRecording", false);
+                }
+                if (mcubeRecording.equals("1")) {
+                    ed.putBoolean("prefMcubeRecording", true);
+                } else {
+                    ed.putBoolean("prefMcubeRecording", false);
                 }
 
                 ed.commit();
@@ -661,6 +690,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
                         Intent.FLAG_ACTIVITY_NEW_TASK);
                 overridePendingTransition(0, 0);
                 Login.this.startActivity(intent);
+
             }
 
 

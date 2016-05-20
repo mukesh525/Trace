@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
-    tools:context="vmc.mcube.in.fragment.followUp.FollowUp">
+    tools:context="vmc.in.mrecorder.activity.Home">
 
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/SwipefollowUp"

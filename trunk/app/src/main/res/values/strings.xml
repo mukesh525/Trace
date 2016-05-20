@@ -43,11 +43,11 @@
     <string name="notify">Notify</string>
     <string name="notify_report_summary">Notify while recording</string>
     <string name="recorsettings">Record Settings (By Admin)</string>
-    <string name="pref_record_settings">Enable recording </string>
-    <string name="pref_title_record">Recording</string>
+    <string name="pref_record_settings">Record all calls </string>
+    <string name="pref_title_record">All Calls</string>
     <string name="updatecallList">Update Call List</string>
-    <string name="pref_update_call">Monitor Calls (No Recording)</string>
-    <string name="pref_title_updateCall">Call Monitor</string>
+    <string name="pref_update_call">Record office  hour calls</string>
+    <string name="pref_title_updateCall">Office Calls</string>
     <string name="display">Display</string>
     <string name="pref_theme_title">Theme</string>
     <string name="pref_theme">preftheme</string>
@@ -71,5 +71,7 @@
     <string name="dir_location">Storage Location</string>
     <string name="storage">Storage</string>
     <string name="open">Open</string>
+    <string name="pref_mcube__record_settings">Record mcube calls </string>
+    <string name="pref_mcube_title_record">Mcube Calls</string>
 
 </resources>

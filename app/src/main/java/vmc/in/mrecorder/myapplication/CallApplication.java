@@ -130,7 +130,7 @@ public class CallApplication extends Application implements TAG, SharedPreferenc
 
         UUID deviceUuid = new UUID(androidId.hashCode(), ((long) tmDevice.hashCode() << 32) | tmSerial.hashCode());
         String deviceId = deviceUuid.toString();
-        //  Log.d("android_id", deviceId);
+          Log.d("android_id", deviceId);
         return deviceId;
 
     }

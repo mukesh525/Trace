@@ -76,7 +76,8 @@ public class Settings extends AppCompatActivity implements TAG {
             addPreferencesFromResource(R.xml.settings);
 
             final SwitchPreference recordingPreference = (SwitchPreference) findPreference("prefRecording");
-            final SwitchPreference callPreference = (SwitchPreference) findPreference("prefCallUpdate");
+            final SwitchPreference callPreference = (SwitchPreference) findPreference("prefOfficeTimeRecording");
+            final SwitchPreference mcubecallPreference = (SwitchPreference) findPreference("prefMcubeRecording");
             storePathPrefs = findPreference("store_path");
             storePathPrefs.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
                 @Override
@@ -90,18 +91,28 @@ public class Settings extends AppCompatActivity implements TAG {
             SharedPreferences sharedPrefs = PreferenceManager
                     .getDefaultSharedPreferences(getActivity());
 
-            boolean notifyMode = sharedPrefs.getBoolean("prefCallUpdate", false);
+            boolean notifyMode = sharedPrefs.getBoolean("prefOfficeTimeRecording", false);
             boolean recording = sharedPrefs.getBoolean("prefRecording", true);
+            boolean mcuberecording = sharedPrefs.getBoolean("prefMcubeRecording", false);
 
             if (recording) {
                 recordingPreference.setChecked(true);
-                callPreference.setChecked(false);
-            } else if (notifyMode) {
-                recordingPreference.setChecked(false);
-                callPreference.setChecked(true);
+
             } else {
                 recordingPreference.setChecked(false);
+            }
+            if (notifyMode) {
+
+                callPreference.setChecked(true);
+            } else {
                 callPreference.setChecked(false);
+            }
+            if (mcuberecording) {
+                mcubecallPreference.setChecked(true);
+
+            } else {
+
+                mcubecallPreference.setChecked(false);
             }
 
 
@@ -117,6 +128,16 @@ public class Settings extends AppCompatActivity implements TAG {
             });
 
             recordingPreference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                @Override
+                public boolean onPreferenceChange(Preference preference, Object newValue) {
+                    if (newValue instanceof Boolean) {
+                        boolean selected = Boolean.parseBoolean(newValue.toString());
+                        return false;
+                    }
+                    return false;
+                }
+            });
+            mcubecallPreference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
                 @Override
                 public boolean onPreferenceChange(Preference preference, Object newValue) {
                     if (newValue instanceof Boolean) {

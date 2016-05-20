@@ -106,6 +106,7 @@ public class Home extends AppCompatActivity
         drawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, mToolbar, R.string.drawer_open,
                 R.string.drawer_close);
         mDrawerLayout.setDrawerListener(drawerToggle);
+       // mDrawerLayout.addDrawerListener(drawerToggle);
         drawerToggle.syncState();
         mTabLayout = (TabLayout) findViewById(R.id.tabs);
         mTabLayout.setTabMode(TabLayout.MODE_FIXED);
@@ -114,7 +115,7 @@ public class Home extends AppCompatActivity
         mViewPager.setAdapter(myPagerAdapter);
         mTabLayout.setTabsFromPagerAdapter(myPagerAdapter);
         mTabLayout.setupWithViewPager(mViewPager);
-
+       // setupWithViewPager is enough.
         setupTabIcons();
         mDrawer.setItemIconTintList(null);
         View header = mDrawer.getHeaderView(0);

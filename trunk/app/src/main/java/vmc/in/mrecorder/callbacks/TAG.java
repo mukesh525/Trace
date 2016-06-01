@@ -15,6 +15,9 @@ public interface TAG {
     public String DEFAULT = "n/a";
     public String INCOMING = "Inbound";
     public String OUTGOING = "Outbound";
+    public String Outbound = "outbound";
+    public String Inbound = "inbound";
+    public String missed = "missed";
 
 
     public String NUMBER = "Number";
@@ -57,6 +60,7 @@ public interface TAG {
     public String BUSINESS = "business";
     public String ADDRESS = "address";
     public String EMAIL = "email";
+    public String USERTYPE = "usertype";
     public String REMARK = "remark";
 
     public String KEYWORD = "keyword";
@@ -81,21 +85,23 @@ public interface TAG {
     public String TYPE_ALL = "all";
     public String FEEDBACK = "feedback";
 
-   // public String GET_CALL_LIST = "http://mcube.vmctechnologies.com/mtappv2/getList";
-    public String GET_CALL_LIST = "http://mcube.vmctechnologies.com/mtappv2/getList";
-    //public String GET_FEED_BACK_URL = "http://mcube.vmctechnologies.com/mtappv2/feedback_mtrack";
-    public String GET_FEED_BACK_URL = "http://mcube.vmctechnologies.com/mtappv2/feedback_mtrack";
+   // public String GET_CALL_LIST = "http://mcube.vmctechnologies.com/mtappv3/getList";
+    public String GET_CALL_LIST = "http://mcube.vmctechnologies.com/mtappv3/getList";
+    //public String GET_FEED_BACK_URL = "http://mcube.vmctechnologies.com/mtappv3/feedback_mtrack";
+    public String GET_FEED_BACK_URL = "http://mcube.vmctechnologies.com/mtappv3/feedback_mtrack";
     //public static final String STREAM_TRACKER = "http://mcube.vmctechnologies.com/sounds/";
     public static final String STREAM_TRACKER = "http://mcube.vmctechnologies.com/sounds/";
-    //public String UPLOAD_URL = "http://mcube.vmctechnologies.com/mtappv2/insert_calldetail";
-    public String UPLOAD_URL = "http://mcube.vmctechnologies.com/mtappv2/insert_calldetail";
-    //public String GET_OTP = "http://mcube.vmctechnologies.com/mtappv2/login_mtrack";
-    public String GET_OTP = "http://mcube.vmctechnologies.com/mtappv2/login_mtrack";
-    //public String LOGIN_URL = "http://mcube.vmctechnologies.com/mtappv2/check_auth";
-    public String LOGIN_URL = "http://mcube.vmctechnologies.com/mtappv2/check_auth";
+    //public String UPLOAD_URL = "http://mcube.vmctechnologies.com/mtappv3/insert_calldetail";
+    public String UPLOAD_URL = "http://mcube.vmctechnologies.com/mtappv3/insert_calldetail";
+    //public String GET_OTP = "http://mcube.vmctechnologies.com/mtappv3/login_mtrack";
+    public String GET_OTP = "http://mcube.vmctechnologies.com/mtappv3/login_mtrack";
+    //public String LOGIN_URL = "http://mcube.vmctechnologies.com/mtappv3/check_auth";
+    public String LOGIN_URL = "http://mcube.vmctechnologies.com/mtappv3/check_auth";
     public String FORGOT_OTP_URL = "";
     public String CHANGED_PASS = "";
 
+    public String EMPREPORT_URL = "http://mcube.vmctechnologies.com/mtappv3/reportByEmp";
+    public String TYPEREPORT_URL = "http://mcube.vmctechnologies.com/mtappv3/reportBycallType";
 
     //TEMP
     public static final String CALLID = "callid";
@@ -108,6 +114,8 @@ public interface TAG {
     public static final String CALLTIMESTRING = "calltime";
     public static final String STATUS = "status";
     public static final String RECORDS = "records";
+    public static final String REPORTTYPE = "reporttype";
+
     public static final String GROUPS = "groups";
     public static final String VAL = "val";
     public static final String KEY = "key";
@@ -116,13 +124,20 @@ public interface TAG {
     public String WORKHOUR = "workhour";
 
     public static final String FIELDS = "fields";
+
     public static final String COUNT = "count";
+
+
     public static final String DROPDOWN = "dropdown";
     public static final String CHECKBOX = "checkbox";
     public static final String RADIO = "radio";
     public static final String OPTIONS = "options";
 
+
+
+
     //sam did:00000000-0d25-2296-ffff-ffffca494951
+   // 00000000-0d25-2296-ffff-ffffca494951
     //gcm:fCghwArt-YE:APA91bEDZFbX-07Tdd_fhomOmJ30yDRANe_BQySqTE9uTlo3gn_Tnnl43bASf3XrgF45i8fpO4o8q1rgxkKQoEYmKa5fbGZ0ZcelE9x7Vcwi34P-dYzn-FpSJNuaINBVIQIuNMy7CTDB
 
 }

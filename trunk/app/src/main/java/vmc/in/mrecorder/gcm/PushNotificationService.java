@@ -77,9 +77,6 @@ public class PushNotificationService extends GcmListenerService implements vmc.i
             }
 
 
-            //
-
-
         }
 
         if (data.containsKey("message")) {

@@ -45,13 +45,5 @@
         <item name="2">2</item>
         <item name="3">3</item>
     </string-array>
-    <string-array name="recording">
-        <item>Enable</item>
-        <item>Disable</item>
-    </string-array>
-    <string-array name="recordingvalues">
-        <item>0</item>
-        <item>1</item>
-    </string-array>
 
 </resources>

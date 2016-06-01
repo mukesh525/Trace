@@ -1,37 +1,23 @@
 <resources>
     <string name="app_name">MTracker</string>
 
-    <string name="hello_world">Hello world!</string>
     <string name="action_settings">Logout</string>
     <string name="drawer_open">OPEN</string>
     <string name="drawer_close">CLOSE</string>
     <string name="google_app_id">596968407103</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
-    <string name="auth_type">com.cb.callrecorder</string>
-    <string name="content_authority">com.cb.callrecorder</string>
     <string name="title_activity_home">MTracker</string>
 
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="title_activity_main">MainActivity</string>
 
-
-    <string name="hint_name">Full Name</string>
     <string name="hint_email">Email</string>
     <string name="hint_password">Password</string>
-    <string name="btn_sign_up">Login</string>
-    <string name="err_msg_name">Enter your full name</string>
-    <string name="err_msg_email">Enter valid email address</string>
-    <string name="err_msg_password">Enter the password</string>
     <string name="text_tryAgain">Try again</string>
     <string name="login">Login</string>
     <string name="title_activity_feedback"> Help Feedback</string>
     <string name="title_activity_settings">Settings</string>
     <string name="audiosource">Audio </string>
-    <string name="audioformat">Audio Format</string>
     <string name="syncfrequency">Sync Frequency</string>
     <string name="pref_audiosource_summary">Select audio source to record audio.</string>
     <string name="pref_audioformat_summary">Select audio format.</string>
@@ -45,7 +31,6 @@
     <string name="recorsettings">Record Settings (By Admin)</string>
     <string name="pref_record_settings">Record all calls </string>
     <string name="pref_title_record">All Calls</string>
-    <string name="updatecallList">Update Call List</string>
     <string name="pref_update_call">Record office  hour calls</string>
     <string name="pref_title_updateCall">Office Calls</string>
     <string name="display">Display</string>
@@ -56,21 +41,8 @@
     <string name="share">Share</string>
 
 
-
-
-
-
-
-    <string name="theme_light">Light</string>
-    <string name="theme_dark">Dark</string>
-    <string name="theme_black">Black</string>
-    <string name="theme_sepia">Sepia</string>
-    <string name="theme_green">Green</string>
-    <string name="theme_solarized_dark">Solarized Dark</string>
-    <string name="theme_solarized">Solarized</string>
     <string name="dir_location">Storage Location</string>
     <string name="storage">Storage</string>
-    <string name="open">Open</string>
     <string name="pref_mcube__record_settings">Record mcube calls </string>
     <string name="pref_mcube_title_record">Mcube Calls</string>
 

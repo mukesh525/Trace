@@ -37,6 +37,7 @@ import android.widget.Toast;
 
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import vmc.in.mrecorder.R;
 import vmc.in.mrecorder.callbacks.Constants;
 import vmc.in.mrecorder.callbacks.TAG;
@@ -80,6 +81,8 @@ public class Home extends AppCompatActivity
     public FloatingActionsMenu fabMenu;
     public CoordinatorLayout coordinatorLayout;
     private Snackbar snack;
+    private CircleImageView userType;
+    private String usertype;
 
 
     @Override
@@ -105,17 +108,17 @@ public class Home extends AppCompatActivity
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, mToolbar, R.string.drawer_open,
                 R.string.drawer_close);
-        mDrawerLayout.setDrawerListener(drawerToggle);
-       // mDrawerLayout.addDrawerListener(drawerToggle);
+        //mDrawerLayout.setDrawerListener(drawerToggle);
+        mDrawerLayout.addDrawerListener(drawerToggle);
         drawerToggle.syncState();
         mTabLayout = (TabLayout) findViewById(R.id.tabs);
         mTabLayout.setTabMode(TabLayout.MODE_FIXED);
         mViewPager = (ViewPager) findViewById(R.id.viewpager);
         myPagerAdapter = new MyPagerAdapter(getSupportFragmentManager());
         mViewPager.setAdapter(myPagerAdapter);
-        mTabLayout.setTabsFromPagerAdapter(myPagerAdapter);
+      //  mTabLayout.setTabsFromPagerAdapter(myPagerAdapter);
         mTabLayout.setupWithViewPager(mViewPager);
-       // setupWithViewPager is enough.
+        // setupWithViewPager is enough.
         setupTabIcons();
         mDrawer.setItemIconTintList(null);
         View header = mDrawer.getHeaderView(0);
@@ -128,6 +131,14 @@ public class Home extends AppCompatActivity
 
         user = (TextView) header.findViewById(R.id.tv_name);
         email = (TextView) header.findViewById(R.id.tv_email);
+        userType = (CircleImageView) header.findViewById(R.id.usertype);
+
+        usertype = Utils.getFromPrefs(this, USERTYPE, DEFAULT);
+        if (usertype.equals(DEFAULT) || usertype.equals("0")) {
+            userType.setVisibility(View.GONE);
+        }
+
+
         String useremail = Utils.getFromPrefs(this, EMAIL, DEFAULT);
         String username = Utils.getFromPrefs(this, NAME, DEFAULT);
         user.setText("Hi " + username);
@@ -210,7 +221,7 @@ public class Home extends AppCompatActivity
     public void showSettingsAlert() {
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(Home.this);
         alertDialog.setTitle("MTracker");
-        //alertDialog.setIcon(R.drawable.mcube);
+        alertDialog.setIcon(R.mipmap.ic_launcher);
         // Setting Dialog Message
         alertDialog.setMessage("Are you sure you want to logout?");
 
@@ -232,7 +243,6 @@ public class Home extends AppCompatActivity
         // Showing Alert Message
         alertDialog.show();
     }
-
 
 
     class MyPagerAdapter extends FragmentStatePagerAdapter {
@@ -379,6 +389,12 @@ public class Home extends AppCompatActivity
         if (mSelectedId == R.id.settings) {
             startActivity(new Intent(Home.this, Settings.class));
         }
+        if (mSelectedId == R.id.anyl_type) {
+            startActivity(new Intent(Home.this, AnalyticsByType.class));
+        }
+        if (mSelectedId == R.id.anyl_employee) {
+            startActivity(new Intent(Home.this, AnalyticsByEmp.class));
+        }
 
 
         invalidateOptionsMenu();
@@ -390,9 +406,6 @@ public class Home extends AppCompatActivity
         mViewPager.setCurrentItem(item);
     }
 
-    private void showDrawer() {
-        this.mDrawerLayout.openDrawer(GravityCompat.START);
-    }
 
     private void hideDrawer() {
         this.mDrawerLayout.closeDrawer(GravityCompat.START);

@@ -309,8 +309,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
             et_email.setError(null);
         }
 
-        if (password.isEmpty() || password.length() < 4 || password.length() > 10) {
-            et_password.setError("between 4 and 10 alphanumeric characters", drawable);
+        if (password.isEmpty() ) {
+            et_password.setError("Password must not be empty.", drawable);
             // errormsg = "Password must be between 4 and 10 alphanumeric characters";
             valid = false;
         } else {
@@ -365,8 +365,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
             et_email.setError(null);
         }
 
-        if (password.isEmpty() || password.length() < 4 || password.length() > 10) {
-            et_password.setError("between 4 and 10 alphanumeric characters", drawable);
+        if (password.isEmpty() ) {
+            et_password.setError("Password must not be empty.", drawable);
             // errormsg = "Password must be between 4 and 10 alphanumeric characters";
             valid = false;
         } else {
@@ -569,6 +569,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
         String email = et_email.getText().toString();
         String password = et_password.getText().toString();
         private String image;
+        private String usertype;
 
         @Override
         protected void onPreExecute() {
@@ -589,8 +590,11 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
             // TODO Auto-generated method stub
 
             try {
+                Log.d("GCMPRO D",CallApplication.getInstance().getDeviceId());
+
                 response = JSONParser.login(LOGIN_URL, email, password, CallApplication.getInstance().getDeviceId(), gcmkey);
                 Log.d("GCMPRO", response.toString());
+                Log.d("GCMPRO D",CallApplication.getInstance().getDeviceId());
                 if (response.has(CODE))
                     code = response.getString(CODE);
                 if (response.has(MESSAGE))
@@ -599,6 +603,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
                     authcode = response.getString(AUTHKEY);
                 if (response.has(NAME)) {
                     username = response.getString(NAME);
+                } if (response.has(USERTYPE)) {
+                    usertype = response.getString(USERTYPE);
                 }
                 if (response.has(RECORDING)) {
                     recording = response.getString(RECORDING);
@@ -647,23 +653,10 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
                 Utils.saveToPrefs(Login.this, AUTHKEY, authcode);
                 Utils.saveToPrefs(Login.this, NAME, username);
                 Utils.saveToPrefs(Login.this, EMAIL, email);
+                Utils.saveToPrefs(Login.this, USERTYPE, usertype);
                 SharedPreferences sharedPrefs = PreferenceManager
                         .getDefaultSharedPreferences(getApplicationContext());
                 SharedPreferences.Editor ed = sharedPrefs.edit();
-//                if (recording.equals("1")) {
-//                    ed.putBoolean("prefRecording", true);
-//                    ed.putBoolean("prefOfficeTimeRecording", false);
-//                    ed.putBoolean("prefMcubeRecording", false);
-//                } else if (workhour.equals("1")) {
-//                    ed.putBoolean("prefOfficeTimeRecording", true);
-//                    ed.putBoolean("prefRecording", false);
-//                    ed.putBoolean("prefMcubeRecording", false);
-//                }else if (mcubeRecording.equals("1")) {
-//                    ed.putBoolean("prefMcubeRecording", true);
-//                    ed.putBoolean("prefRecording", false);
-//                    ed.putBoolean("prefOfficeTimeRecording", false);
-//
-//                }
                 if (recording.equals("1")) {
                     ed.putBoolean("prefRecording", true);
                 } else {

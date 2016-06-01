@@ -286,6 +286,7 @@ public class AllCalls extends Fragment implements SwipeRefreshLayout.OnRefreshLi
                         CallApplication.getInstance().getDeviceId(), TYPE_ALL);
                 Log.d(TAG, response.toString());
             } catch (Exception e) {
+                Log.d("ERROR",e.getMessage().toString());
             }
             if (response != null) {
 

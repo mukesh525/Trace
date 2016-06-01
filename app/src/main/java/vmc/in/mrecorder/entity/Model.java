@@ -11,6 +11,16 @@ public class Model implements Comparable<Model> {
 
     private String phoneNumber;
     private String time;
+
+    public String getDuration() {
+        return duration;
+    }
+
+    public void setDuration(String duration) {
+        this.duration = duration;
+    }
+
+    private String duration;
     private String filePath;
     private String callType;
     private File file;

@@ -21,6 +21,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.IBinder;
 import android.preference.PreferenceManager;
+import android.provider.CallLog;
 import android.provider.ContactsContract;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.ContextCompat;
@@ -29,10 +30,15 @@ import android.util.Log;
 import android.widget.Toast;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
 
 import vmc.in.mrecorder.R;
 import vmc.in.mrecorder.activity.Login;
 import vmc.in.mrecorder.callbacks.TAG;
+import vmc.in.mrecorder.entity.Model;
 import vmc.in.mrecorder.myapplication.CallApplication;
 import vmc.in.mrecorder.provider.GPSTracker;
 
@@ -259,6 +265,7 @@ public class CallRecorderServiceAll extends Service implements TAG {
 
 
                     if (ring == true && callReceived == false) {
+
                         if (!shown) {
                             String fileName = String.valueOf(System.currentTimeMillis());
                             Log.d(TAG, "Missed call from : " + phoneNumber);
@@ -278,42 +285,45 @@ public class CallRecorderServiceAll extends Service implements TAG {
                     }
 
 
-                    ringing = false;
+                    //deleteing false call
+
+//                    SharedPreferences sharedPrefs = PreferenceManager
+//                            .getDefaultSharedPreferences(getApplicationContext());
+//
+//                    boolean notifyMode = sharedPrefs.getBoolean("prefRecording", false);
+//                    if (notifyMode) {
+//                        ArrayList<Model> Calllist = CallApplication.getWritabledatabase().getAllOfflineCalls();
+//                        Calllist = getSortList(OUTGOING, Calllist);
+//                        if (Calllist.size() > 0) {
+//                            Collections.sort(Calllist, Collections.reverseOrder());
+//                            for (int j = 0; j < Calllist.size(); j++) {
+//                                getCallDetails(Calllist.get(j));
+//                            }
+//
+//                        }
+//                    }
+
+
+
                     interupt = false;
 
 
                     //Stop recording if it was on
                     if (recording == true) {
                         SharedPreferences sharedPrefs = PreferenceManager
-                                .getDefaultSharedPreferences(getApplicationContext());
+                           .getDefaultSharedPreferences(getApplicationContext());
+
                         boolean notificationMode = sharedPrefs.getBoolean("prefNotify", false);
                         if (notificationMode)
                             showRecordNotification(currentnumber != null ? currentnumber : phoneNumber);
                         recorder.stop();
                         recorder.release();
 
-//                            if (recorder != null) { //add this check
-//                                recorder.stop();
-//                                recorder.reset();
-//                                recorder.release();
-//                                recorder = null;
-//                            }
-                        // recorder = new MediaRecorder();
-
-
-//                        try {
-//                            recorder.stop();
-//
-//                            recorder.release();
-//                        } catch (Exception e) {
-//                            //  Log.d(TAG,"RECORDER ERROR "+e.getMessage().toString());
-//
-//                        }
-
                         recording = false;
-
+                        ring=false;
                         answered = false;
                         outgoing = false;
+                        ringing = false;
                         currentnumber = null;
                         phoneNumber = null;
                     }
@@ -428,7 +438,7 @@ public class CallRecorderServiceAll extends Service implements TAG {
     private void showRecordNotification(String number) {
         String name = getContactName(number) != null ? getContactName(number) : number;
         String from = "";
-        if (ringing) {
+        if (ring) {
             from = "from";
         } else {
             from = "to";
@@ -466,6 +476,106 @@ public class CallRecorderServiceAll extends Service implements TAG {
         }
 
         return contactName;
+    }
+
+//outgoing
+    public synchronized String getCallDetails(Model model1) {
+        String whereClause = CallLog.Calls.NUMBER + " = " + model1.getPhoneNumber() + " AND " + CallLog.Calls.TYPE + "=" + CallLog.Calls.OUTGOING_TYPE;
+        StringBuffer sb = new StringBuffer();
+        Cursor managedCursor = getContentResolver().query(CallLog.Calls.CONTENT_URI, null, whereClause,
+                null, CallLog.Calls.DATE + " DESC");
+        int number = managedCursor.getColumnIndex(CallLog.Calls.NUMBER);
+        int type = managedCursor.getColumnIndex(CallLog.Calls.TYPE);
+        int date = managedCursor.getColumnIndex(CallLog.Calls.DATE);
+        int duration = managedCursor.getColumnIndex(CallLog.Calls.DURATION);
+        ArrayList<Model> templog = new ArrayList<Model>();
+
+        sb.append("Call Details :");
+        while (managedCursor.moveToNext()) {
+
+            Model model = new Model();
+            String phNumber = managedCursor.getString(number);
+            model.setPhoneNumber(phNumber);
+            String callType = managedCursor.getString(type);
+            model.setCallType(callType);
+            String callDate = managedCursor.getString(date);
+            model.setTime(callDate);
+            Date callDayTime = new Date(Long.valueOf(callDate));
+            SimpleDateFormat sdf = new SimpleDateFormat("hh:mm aa");
+            String exacttime = sdf.format(callDayTime);
+            //  Log.d("Numbers", exacttime);
+            String callDuration = managedCursor.getString(duration);
+            model.setDuration(callDuration);
+            templog.add(model);
+
+
+//            String dir = null;
+//            int dircode = Integer.parseInt(callType);
+//            switch (dircode) {
+//                case CallLog.Calls.OUTGOING_TYPE:
+//                    dir = "OUTGOING";
+//                    break;
+//
+//                case CallLog.Calls.INCOMING_TYPE:
+//                    dir = "INCOMING";
+//                    break;
+//
+//                case CallLog.Calls.MISSED_TYPE:
+//                    dir = "MISSED";
+//                    break;
+//            }
+//            sb.append("\nPhone Number:--- " + phNumber + " \nCall Type:--- "
+//                    + dir + " \nCall Date:--- " + callDayTime + " \nCall time:--- " + exacttime
+//                    + " \nCall duration in sec :--- " + callDuration);
+//            sb.append("\n----------------------------------");
+        }
+        for (int i = 0; i < templog.size(); i++) {
+
+            Model model = templog.get(i);
+            if (model.getPhoneNumber().equals(model1.getPhoneNumber())) {
+                //     Log.d("Numbers", "Number equal" + model1.getPhoneNumber());
+                Date callDayTime = new Date(Long.valueOf(model.getTime()));
+                Date callDayTime1 = new Date(Long.valueOf(model1.getTime()));
+                SimpleDateFormat sdf = new SimpleDateFormat("hh:mm aa");
+                String time1 = sdf.format(callDayTime);
+                String time2 = sdf.format(callDayTime1);
+
+
+                if (time1.equals(time2)) {
+
+                    if (Integer.parseInt(model.getDuration()) == 0) {
+                        Log.d("Numbers", "Call To be Deleted");
+                        Log.d("Numbers", model1.getPhoneNumber() + " " + time2);
+                        Log.d("Numbers", "Duration " + model.getDuration());
+                        CallApplication.getWritabledatabase().delete(model1.getId());//from db
+                        if (new File(model1.getFilePath()).exists()) {
+                            new File(model1.getFilePath()).delete();//from internal storage
+                            Log.d("Numbers", "FILE DELETED" + ":" + model1.getFile().getName());
+                        }
+                        Log.d("Numbers", "RECODRD DELETED" + ":" + model1.getFile().getName());
+                    }
+                }
+
+
+            }
+
+
+        }
+        managedCursor.close();
+
+
+        return sb.toString();
+
+    }
+
+    public ArrayList<Model> getSortList(String name, ArrayList<Model> list) {
+        ArrayList<Model> temp = new ArrayList<Model>();
+        for (Model model : list) {
+            if (model.getCallType().equals(name)) {
+                temp.add(model);
+            }
+        }
+        return temp;
     }
 
 

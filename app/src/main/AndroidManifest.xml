@@ -30,8 +30,6 @@
     <uses-permission android:name="android.permission.READ_SMS" />
     <uses-permission android:name="android.permission.SEND_SMS" />
 
-
-
     <!-- Required to register a SyncStatusObserver to display a "syncing..." progress indicator. -->
     <uses-permission android:name="android.permission.READ_SYNC_STATS" />
     <!-- Required to enable our SyncAdapter after it's created. -->
@@ -57,18 +55,18 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:supportsRtl="true"
         android:largeHeap="true"
+        android:supportsRtl="true"
         android:theme="@style/MyMaterialTheme">
         <activity
             android:name=".activity.ContactsActivity"
             android:label="Offline Records"
             android:parentActivityName=".activity.Home"
-            android:theme="@style/MyMaterialTheme"
-            android:screenOrientation="portrait">
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value="vmc.in.mrecorder.activity.Home" />
+            android:screenOrientation="portrait"
+            android:theme="@style/MyMaterialTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="vmc.in.mrecorder.activity.Home" />
         </activity>
 
         <provider
@@ -132,7 +130,6 @@
 
         <activity
             android:name=".activity.Welcome"
-            android:launchMode="singleInstance"
             android:noHistory="true"
             android:screenOrientation="portrait"
             android:theme="@style/MyMaterialTheme">
@@ -189,16 +186,24 @@
         <activity
             android:name=".activity.Feedback"
             android:label="@string/title_activity_feedback"
-            android:screenOrientation="portrait"
             android:parentActivityName=".activity.Home"
-            android:theme="@style/MyMaterialTheme">
-        </activity>
+            android:screenOrientation="portrait"
+            android:theme="@style/MyMaterialTheme" />
         <activity
             android:name=".activity.Settings"
             android:label="@string/title_activity_settings"
-            android:screenOrientation="portrait"
             android:parentActivityName=".activity.Home"
-            android:theme="@style/MyMaterialTheme">
+            android:screenOrientation="portrait"
+            android:theme="@style/MyMaterialTheme" />
+
+        <activity android:name=".activity.AnalyticsByType"
+            android:theme="@style/MyMaterialTheme"
+            android:parentActivityName=".activity.Home"/>
+
+        <activity android:name=".activity.AnalyticsByEmp"
+            android:theme="@style/MyMaterialTheme"
+            android:parentActivityName=".activity.Home">
+
         </activity>
     </application>
 

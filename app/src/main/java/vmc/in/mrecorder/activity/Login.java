@@ -242,7 +242,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
     public void showTermsAlert() {
         android.app.AlertDialog.Builder alertDialog = new android.app.AlertDialog.Builder(Login.this);
         alertDialog.setTitle("MTracker");
-        //alertDialog.setIcon(R.drawable.mcube);
+        alertDialog.setIcon(R.mipmap.ic_launcher);
         // Setting Dialog Message
         alertDialog.setMessage("You agree that MTracker will record all calls made through this device. ");
 

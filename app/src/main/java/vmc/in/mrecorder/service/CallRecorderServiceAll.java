@@ -139,7 +139,7 @@ public class CallRecorderServiceAll extends Service implements TAG {
                         } catch (Exception e) {
                             Log.e("exp", " startRecording Method exp " + e);
                             for (int i = 0; i < 2; i++) {
-                                Toast.makeText(getApplicationContext(), "Unable to record try to change audio source in settings", Toast.LENGTH_LONG).show();
+                                Toast.makeText(getApplicationContext(), "Unable to record try to change audio source in MTracker settings", Toast.LENGTH_LONG).show();
                             }
                             e.printStackTrace();
                         }

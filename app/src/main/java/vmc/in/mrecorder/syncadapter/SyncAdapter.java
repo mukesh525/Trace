@@ -138,15 +138,6 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
                         ed.putBoolean("prefRecording", false);
                     }
 
-//                   if (recording.equals("1")) {
-//                        ed.putBoolean("prefRecording", true);
-//                        ed.putBoolean("prefOfficeTimeRecording", false);
-//                        ed.commit();
-//                    } else if (recording.equals("0")) {
-//                        ed.putBoolean("prefRecording", false);
-//                        ed.putBoolean("prefOfficeTimeRecording", true);
-//                        ed.commit();
-//                    }
 
                 }
                 if(response.has(MCUBECALLS))
@@ -196,16 +187,6 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
                         ed.putBoolean("prefRecording", false);
                     }
 
-//                   if (recording.equals("1")) {
-//                        ed.putBoolean("prefRecording", true);
-//                        ed.putBoolean("prefOfficeTimeRecording", false);
-//                        ed.commit();
-//                    } else if (recording.equals("0")) {
-//                        ed.putBoolean("prefRecording", false);
-//                        ed.putBoolean("prefOfficeTimeRecording", true);
-//                        ed.commit();
-//                    }
-
                 }
                 if(response.has(MCUBECALLS))
                 {
@@ -251,16 +232,6 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
                         ed.putBoolean("prefRecording", false);
                     }
 
-//                   if (recording.equals("1")) {
-//                        ed.putBoolean("prefRecording", true);
-//                        ed.putBoolean("prefOfficeTimeRecording", false);
-//                        ed.commit();
-//                    } else if (recording.equals("0")) {
-//                        ed.putBoolean("prefRecording", false);
-//                        ed.putBoolean("prefOfficeTimeRecording", true);
-//                        ed.commit();
-//                    }
-
                 }
                 if(response.has(MCUBECALLS))
                 {
@@ -304,16 +275,6 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
                     }else{
                         ed.putBoolean("prefRecording", false);
                     }
-
-//                   if (recording.equals("1")) {
-//                        ed.putBoolean("prefRecording", true);
-//                        ed.putBoolean("prefOfficeTimeRecording", false);
-//                        ed.commit();
-//                    } else if (recording.equals("0")) {
-//                        ed.putBoolean("prefRecording", false);
-//                        ed.putBoolean("prefOfficeTimeRecording", true);
-//                        ed.commit();
-//                    }
 
                 }
                 if(response.has(MCUBECALLS))
@@ -448,16 +409,6 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
                     }else{
                         ed.putBoolean("prefRecording", false);
                     }
-
-//                   if (recording.equals("1")) {
-//                        ed.putBoolean("prefRecording", true);
-//                        ed.putBoolean("prefOfficeTimeRecording", false);
-//                        ed.commit();
-//                    } else if (recording.equals("0")) {
-//                        ed.putBoolean("prefRecording", false);
-//                        ed.putBoolean("prefOfficeTimeRecording", true);
-//                        ed.commit();
-//                    }
 
                 }
                 if(response.has(MCUBECALLS))

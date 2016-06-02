@@ -113,6 +113,7 @@ public class Home extends AppCompatActivity
         drawerToggle.syncState();
         mTabLayout = (TabLayout) findViewById(R.id.tabs);
         mTabLayout.setTabMode(TabLayout.MODE_FIXED);
+        getSupportActionBar().setDisplayShowTitleEnabled(true);
         mViewPager = (ViewPager) findViewById(R.id.viewpager);
         myPagerAdapter = new MyPagerAdapter(getSupportFragmentManager());
         mViewPager.setAdapter(myPagerAdapter);
@@ -136,6 +137,9 @@ public class Home extends AppCompatActivity
         usertype = Utils.getFromPrefs(this, USERTYPE, DEFAULT);
         if (usertype.equals(DEFAULT) || usertype.equals("0")) {
             userType.setVisibility(View.GONE);
+            getSupportActionBar().setTitle("MTracker User");
+        }else {
+            getSupportActionBar().setTitle("MTracker Admin");
         }
 
 

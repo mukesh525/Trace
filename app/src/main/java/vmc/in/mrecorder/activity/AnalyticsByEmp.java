@@ -62,7 +62,7 @@ public class AnalyticsByEmp extends AppCompatActivity implements vmc.in.mrecorde
     private JSONObject response;
     private JSONArray records;
     private String count;
-    private String reportype;
+    private String reportype="0";
 
 
     @Override

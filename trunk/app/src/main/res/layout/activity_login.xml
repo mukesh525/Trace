@@ -21,10 +21,12 @@
     </android.support.design.widget.AppBarLayout>
 
     <LinearLayout
-        android:background="@drawable/backporttr"
         android:layout_width="fill_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="?attr/actionBarSize"
+        android:background="@drawable/backporttr"
+        android:descendantFocusability="beforeDescendants"
+        android:focusableInTouchMode="true"
         android:orientation="vertical"
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
@@ -36,11 +38,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <EditText
+            <android.support.v7.widget.AppCompatEditText
                 android:id="@+id/input_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/user"
+                android:focusableInTouchMode="true"
                 android:hint="@string/hint_email"
+                android:imeOptions="actionNext"
                 android:inputType="textEmailAddress" />
         </android.support.design.widget.TextInputLayout>
 
@@ -49,11 +54,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <EditText
+            <android.support.v7.widget.AppCompatEditText
                 android:id="@+id/input_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/pass"
+                android:drawableRight="@drawable/invisible"
+                android:focusableInTouchMode="true"
                 android:hint="@string/hint_password"
+                android:imeOptions="actionDone"
                 android:inputType="textPassword" />
         </android.support.design.widget.TextInputLayout>
 
@@ -70,71 +79,48 @@
                 android:layout_weight="7"
                 android:gravity="center"
                 android:textSize="20sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
             <android.support.v7.widget.AppCompatButton
                 android:id="@+id/btn_get_otp"
-                android:visibility="gone"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:padding="0dp"
                 android:text="GET-OTP"
                 android:textColor="@color/white"
-                android:textSize="12sp" />
+                android:textSize="12sp"
+                android:visibility="gone" />
         </LinearLayout>
-    <LinearLayout
-        android:id="@+id/ll_checkbox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
 
-        <CheckBox
-            android:id="@+id/checkBox_forgot"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="10dp"
-            android:buttonTint="#333300"
-            android:text="Remember me"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textColor="#000"
-            android:textStyle="bold"
-            android:textSize="15sp"/>
-        <CheckBox
-            android:id="@+id/checkbox_show_password"
+        <LinearLayout
+            android:id="@+id/ll_checkbox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="10dp"
-            android:buttonTint="#333300"
-            android:text="Show password"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textColor="#000"
-            android:textStyle="bold"
-            android:textSize="15sp"/>
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/checkBox_forgot"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="10dp"
+                android:buttonTint="#333300"
+                android:text="Remember me"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="#000"
+                android:textSize="15sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/btn_login"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="15.0dip"
             android:background="?attr/colorPrimary"
             android:text="Get OTP"
             android:textAllCaps="false"
             android:textColor="@android:color/white" />
-
-        <TextView
-            android:id="@+id/link_forgot"
-            android:visibility="gone"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
-            android:layout_marginTop="25dp"
-            android:gravity="center"
-            android:text="Forgot Password?"
-            android:textColor="#000"
-            android:textSize="16dip" />
 
 
     </LinearLayout>

@@ -24,13 +24,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
+import android.text.InputType;
 import android.text.TextWatcher;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
+import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -83,8 +87,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
         btn_getOtp = (Button) findViewById(R.id.btn_get_otp);
         btn_login = (Button) findViewById(R.id.btn_login);
         check_box = (CheckBox) findViewById(R.id.checkBox_forgot);
-        check_box_show_password = (CheckBox) findViewById(R.id.checkbox_show_password);
-        link_forgot_password = (TextView) findViewById(R.id.link_forgot);
         et_email = (EditText) findViewById(R.id.input_email);
         et_password = (EditText) findViewById(R.id.input_password);
         if (Build.VERSION.SDK_INT == Build.VERSION_CODES.M) {
@@ -96,7 +98,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
         }
         btn_login.setOnClickListener(this);
         btn_getOtp.setOnClickListener(this);
-        link_forgot_password.setOnClickListener(this);
+      //  link_forgot_password.setOnClickListener(this);
         load();
         cancelNotification(Login.this, NOTIFICATION_ID);
 
@@ -115,19 +117,38 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
 
         });
 
-        check_box_show_password.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+        et_password.setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (!isChecked) {
-                    // show password
-                    et_password.setTransformationMethod(PasswordTransformationMethod.getInstance());
-                } else {
-                    // hide password
-                    et_password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+            public boolean onTouch(View v, MotionEvent event) {
+                final int DRAWABLE_LEFT = 0;
+                final int DRAWABLE_TOP = 1;
+                final int DRAWABLE_RIGHT = 2;
+                final int DRAWABLE_BOTTOM = 3;
+
+                if (event.getAction() == MotionEvent.ACTION_UP) {
+                    if (event.getRawX() >= (et_password.getRight() - et_password.getCompoundDrawables()[DRAWABLE_RIGHT].getBounds().width())) {
+                        // your action here
+                        if (et_password.getTransformationMethod() == PasswordTransformationMethod.getInstance()) {
+                            // show password
+                            et_password.setInputType(InputType.TYPE_CLASS_TEXT);
+                            et_password.clearFocus();
+                            et_password.setCompoundDrawablesWithIntrinsicBounds(R.drawable.pass, 0, R.drawable.show, 0);
+                        } else {
+                            // hide password
+                            et_password.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                            et_password.clearFocus();
+                            et_password.setCompoundDrawablesWithIntrinsicBounds(R.drawable.pass, 0, R.drawable.invisible, 0);
+
+                        }
+
+
+                        return false;
+                    }
                 }
+                return false;
             }
         });
-
         // Log.d("android_id", CallApplication.getDeviceId());
     }
 
@@ -204,10 +225,13 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
     @Override
     public void onClick(View v) {
         hideKeyboard();
+        et_password.clearFocus();
+        et_email.clearFocus();
 
         switch (v.getId()) {
             case R.id.btn_login:
                 if (first && validateOTP()) {
+
                     showTermsAlert();
                     first = false;
                 } else {
@@ -221,10 +245,10 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
 //                }
                 break;
 
-            case R.id.link_forgot:
-                startActivity(new Intent(getApplicationContext(), ForgotPasword.class));
-                finish();
-                break;
+//            case R.id.link_forgot:
+//                startActivity(new Intent(getApplicationContext(), ForgotPasword.class));
+//                finish();
+//                break;
         }
     }
 
@@ -309,7 +333,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
             et_email.setError(null);
         }
 
-        if (password.isEmpty() ) {
+        if (password.isEmpty()) {
             et_password.setError("Password must not be empty.", drawable);
             // errormsg = "Password must be between 4 and 10 alphanumeric characters";
             valid = false;
@@ -354,7 +378,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
 
         Drawable drawable = ContextCompat.getDrawable(Login.this, R.drawable.error);
         drawable.setBounds(new Rect(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight()));
-        et_email.requestFocus();
 
         if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             et_email.setError("enter a valid email address", drawable);
@@ -365,7 +388,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
             et_email.setError(null);
         }
 
-        if (password.isEmpty() ) {
+        if (password.isEmpty()) {
             et_password.setError("Password must not be empty.", drawable);
             // errormsg = "Password must be between 4 and 10 alphanumeric characters";
             valid = false;
@@ -389,9 +412,11 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
         if (!email.equals(DEAFULT) || !password.equals(DEAFULT)) {
             et_email.setText(email);
             et_password.setText(password);
+            et_email.clearFocus();
+            et_password.clearFocus();
         }
         if (password.equals("")) {
-          //  et_password.requestFocus();
+            //  et_password.requestFocus();
             //  getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
         }
     }
@@ -590,11 +615,11 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
             // TODO Auto-generated method stub
 
             try {
-                Log.d("GCMPRO D",CallApplication.getInstance().getDeviceId());
+                Log.d("GCMPRO D", CallApplication.getInstance().getDeviceId());
 
                 response = JSONParser.login(LOGIN_URL, email, password, CallApplication.getInstance().getDeviceId(), gcmkey);
                 Log.d("GCMPRO", response.toString());
-                Log.d("GCMPRO D",CallApplication.getInstance().getDeviceId());
+                Log.d("GCMPRO D", CallApplication.getInstance().getDeviceId());
                 if (response.has(CODE))
                     code = response.getString(CODE);
                 if (response.has(MESSAGE))
@@ -603,7 +628,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
                     authcode = response.getString(AUTHKEY);
                 if (response.has(NAME)) {
                     username = response.getString(NAME);
-                } if (response.has(USERTYPE)) {
+                }
+                if (response.has(USERTYPE)) {
                     usertype = response.getString(USERTYPE);
                 }
                 if (response.has(RECORDING)) {

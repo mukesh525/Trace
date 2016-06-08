@@ -23,7 +23,7 @@ import vmc.in.mrecorder.util.Utils;
 
 public class Welcome extends AppCompatActivity implements TAG {
     private static int SPLASH_TIME_OUT = 3000;
-    Button btn;
+    Boolean splashShown;
     private Intent i;
 
     @Override
@@ -32,21 +32,33 @@ public class Welcome extends AppCompatActivity implements TAG {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_welcome);
-      //  startActivity(new Intent(Welcome.this, Home.class));
+        splashShown = Utils.getFromPrefsBoolean(Welcome.this, SHOWN, false);
+        if (splashShown) {
 
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-
-                if (Utils.isLogin(Welcome.this)) {
-                    i = new Intent(Welcome.this, Home.class);
-                } else {
-                    i = new Intent(Welcome.this, Login.class);
-                }
-                startActivity(i);
-
+            if (Utils.isLogin(Welcome.this)) {
+                i = new Intent(Welcome.this, Home.class);
+            } else {
+                i = new Intent(Welcome.this, Login.class);
             }
-        }, SPLASH_TIME_OUT);
+            startActivity(i);
+
+        } else {
+            Utils.saveToPrefs(Welcome.this, SHOWN, true);
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+
+                    if (Utils.isLogin(Welcome.this)) {
+                        i = new Intent(Welcome.this, Home.class);
+                    } else {
+                        i = new Intent(Welcome.this, Login.class);
+                    }
+                    startActivity(i);
+
+                }
+            }, SPLASH_TIME_OUT);
+
+        }
 
     }
 }

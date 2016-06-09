@@ -89,7 +89,7 @@ public class AnalyticsByType extends AppCompatActivity implements vmc.in.mrecord
         tv_noResponse = (TextView) findViewById(R.id.tv_noresponse);
         coordinatorLayout = (RelativeLayout) findViewById(R.id.coordi_layout);
         addItemsToSpinner();
-        getData();
+      //  getData();
         offline.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -103,7 +103,7 @@ public class AnalyticsByType extends AppCompatActivity implements vmc.in.mrecord
         if (pieChart != null) {
             mainLayout.removeView(pieChart);
         }
-        getData();
+        //getData();
     }
 
     @Override

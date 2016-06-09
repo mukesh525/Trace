@@ -87,7 +87,7 @@ public class AnalyticsByEmp extends AppCompatActivity implements vmc.in.mrecorde
 
         addItemsToSpinner();
 
-        getData();
+        //getData();
 
 
         offline.setOnClickListener(new View.OnClickListener() {
@@ -104,7 +104,7 @@ public class AnalyticsByEmp extends AppCompatActivity implements vmc.in.mrecorde
         if (chart != null) {
             mainLayout.removeView(chart);
         }
-        getData();
+        //getData();
     }
 
     @Override

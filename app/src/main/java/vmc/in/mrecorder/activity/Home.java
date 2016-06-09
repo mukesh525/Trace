@@ -103,7 +103,11 @@ public class Home extends AppCompatActivity
             }
             Utils.saveToPrefs(Home.this, FIRST_TYME, "TRUE");
         }
-        getAllPermision();
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+
+            getAllPermision();
+        }
+
         // CallApplication.getInstance().startRecording();
         mDrawer = (NavigationView) findViewById(R.id.nav_view);
         mDrawer.setNavigationItemSelectedListener(this);

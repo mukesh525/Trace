@@ -32,6 +32,13 @@
             android:key="prefSyncFrequency"
             android:summary="@string/pref_sync_frequency"
             android:title="@string/pref_sync_title_frequency" />
+        <ListPreference
+            android:defaultValue="0"
+            android:entries="@array/WhenToDownload"
+            android:entryValues="@array/WhenToDownloadValues"
+            android:key="prefSyncNetwork"
+            android:summary="@string/pref_sync_Network"
+            android:title="@string/pref_sync_Network" />
     </PreferenceCategory>
 
     <PreferenceCategory android:title="@string/recorsettings">

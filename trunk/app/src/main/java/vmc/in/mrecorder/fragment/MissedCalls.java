@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -183,7 +184,7 @@ public class MissedCalls extends Fragment  implements SwipeRefreshLayout.OnRefre
 
                             }
                         })
-                        .setActionTextColor(getResources().getColor(R.color.accent));
+                        .setActionTextColor(ContextCompat.getColor(getActivity(), R.color.accent));
                 TextView tv = (TextView) snack.getView().findViewById(android.support.design.R.id.snackbar_text);
                 tv.setTextColor(Color.WHITE);
                 snack.show();
@@ -211,7 +212,7 @@ public class MissedCalls extends Fragment  implements SwipeRefreshLayout.OnRefre
 
                             }
                         })
-                        .setActionTextColor(getResources().getColor(R.color.accent));
+                        .setActionTextColor(ContextCompat.getColor(getActivity(), R.color.accent));
                 TextView tv = (TextView) snack.getView().findViewById(android.support.design.R.id.snackbar_text);
                 tv.setTextColor(Color.WHITE);
                 snack.show();
@@ -328,7 +329,7 @@ public class MissedCalls extends Fragment  implements SwipeRefreshLayout.OnRefre
 
                                     }
                                 })
-                                .setActionTextColor(getResources().getColor(R.color.accent));
+                                .setActionTextColor(ContextCompat.getColor(getActivity(), R.color.accent));
                         TextView tv = (TextView) snack.getView().findViewById(android.support.design.R.id.snackbar_text);
                         tv.setTextColor(Color.WHITE);
                         snack.show();
@@ -352,7 +353,7 @@ public class MissedCalls extends Fragment  implements SwipeRefreshLayout.OnRefre
 
                                     }
                                 })
-                                .setActionTextColor(getResources().getColor(R.color.accent));
+                                .setActionTextColor(ContextCompat.getColor(getActivity(), R.color.accent));
                         TextView tv = (TextView) snack.getView().findViewById(android.support.design.R.id.snackbar_text);
                         tv.setTextColor(Color.WHITE);
                         snack.show();
@@ -440,7 +441,7 @@ public class MissedCalls extends Fragment  implements SwipeRefreshLayout.OnRefre
 
                                     }
                                 })
-                                .setActionTextColor(getResources().getColor(R.color.accent));
+                                .setActionTextColor(ContextCompat.getColor(getActivity(), R.color.accent));
                         TextView tv = (TextView) snack.getView().findViewById(android.support.design.R.id.snackbar_text);
                         tv.setTextColor(Color.WHITE);
                         snack.show();
@@ -462,7 +463,7 @@ public class MissedCalls extends Fragment  implements SwipeRefreshLayout.OnRefre
 
                                     }
                                 })
-                                .setActionTextColor(getResources().getColor(R.color.accent));
+                                .setActionTextColor(ContextCompat.getColor(getActivity(), R.color.accent));
                         TextView tv = (TextView) snack.getView().findViewById(android.support.design.R.id.snackbar_text);
                         tv.setTextColor(Color.WHITE);
                         snack.show();

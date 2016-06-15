@@ -6,6 +6,15 @@
         <item>1 minute</item>
         <item>1 hour</item>
     </string-array>
+    <string-array name="WhenToDownload">
+        <item>Always</item>
+        <item>Wifi Only</item>
+
+    </string-array>
+    <string-array name="WhenToDownloadValues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
     <string-array name="syncFrequencyValues">
         <item>10</item>
         <item>30</item>

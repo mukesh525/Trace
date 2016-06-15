@@ -1,0 +1,121 @@
+-injars /home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/transforms/proguard/release/jars/3/1f/main.jar
+-outjars /home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/multi-dex/release/componentClasses.jar
+
+-libraryjars /home/mukesh/Android/sdk/build-tools/23.0.1/lib/shrinkedAndroid.jar
+
+-forceprocessing
+-dontoptimize
+-dontobfuscate
+-dontusemixedcaseclassnames
+-dontpreverify
+-dontnote **,com.android.tools.fd.**,android.support.multidex.MultiDexExtractor
+-dontwarn **
+-printconfiguration /home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/multi-dex/release/components.flags
+
+
+-keep class vmc.in.mrecorder.myapplication.CallApplication {
+    <init>();
+    void attachBaseContext(android.content.Context);
+}
+
+-keep class vmc.in.mrecorder.activity.ContactsActivity {
+    <init>();
+}
+
+-keep class vmc.in.mrecorder.provider.FeedProvider {
+    <init>();
+}
+
+-keep class vmc.in.mrecorder.service.SyncService {
+    <init>();
+}
+
+-keep class vmc.in.mrecorder.accounts.GenericAccountService {
+    <init>();
+}
+
+-keep class vmc.in.mrecorder.service.CallRecorderServiceAll {
+    <init>();
+}
+
+-keep class vmc.in.mrecorder.receiver.BootBroadcastReceiver {
+    <init>();
+}
+
+-keep class vmc.in.mrecorder.receiver.IncomingSms {
+    <init>();
+}
+
+-keep class vmc.in.mrecorder.receiver.PhoneStateReceiver {
+    <init>();
+}
+
+-keep class vmc.in.mrecorder.activity.Welcome {
+    <init>();
+}
+
+-keep class vmc.in.mrecorder.activity.Login {
+    <init>();
+}
+
+-keep class vmc.in.mrecorder.activity.Home {
+    <init>();
+}
+
+-keep class vmc.in.mrecorder.activity.SignupActivity {
+    <init>();
+}
+
+-keep class vmc.in.mrecorder.activity.ForgotPasword {
+    <init>();
+}
+
+-keep class vmc.in.mrecorder.gcm.PushNotificationService {
+    <init>();
+}
+
+-keep class com.google.android.gms.gcm.GcmReceiver {
+    <init>();
+}
+
+-keep class vmc.in.mrecorder.activity.Feedback {
+    <init>();
+}
+
+-keep class vmc.in.mrecorder.activity.Settings {
+    <init>();
+}
+
+-keep class vmc.in.mrecorder.activity.AnalyticsByType {
+    <init>();
+}
+
+-keep class vmc.in.mrecorder.activity.AnalyticsByEmp {
+    <init>();
+}
+
+-keep class com.google.android.gms.measurement.AppMeasurementContentProvider {
+    <init>();
+}
+
+-keep class com.google.android.gms.measurement.AppMeasurementReceiver {
+    <init>();
+}
+
+-keep class com.google.android.gms.measurement.AppMeasurementService {
+    <init>();
+}
+
+-keep public class * extends android.app.backup.BackupAgent {
+    <init>();
+}
+
+-keep public class * extends java.lang.annotation.Annotation {
+    <fields>;
+    <methods>;
+}
+
+-keep class com.android.tools.fd.** {
+    <fields>;
+    <methods>;
+}

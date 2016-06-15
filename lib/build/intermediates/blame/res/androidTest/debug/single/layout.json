@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "/home/gousebabjan/AndroidStudioProjects/Tracker/lib/build/intermediates/res/merged/androidTest/debug/layout/edit_text_layout.xml",
+        "source": "/home/gousebabjan/AndroidStudioProjects/Tracker/lib/build/intermediates/bundles/debug/res/layout/edit_text_layout.xml"
+    },
+    {
+        "merged": "/home/gousebabjan/AndroidStudioProjects/Tracker/lib/build/intermediates/res/merged/androidTest/debug/layout/directory_chooser.xml",
+        "source": "/home/gousebabjan/AndroidStudioProjects/Tracker/lib/build/intermediates/bundles/debug/res/layout/directory_chooser.xml"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/Tracker/lib/build/intermediates/res/merged/androidTest/debug/layout/edit_text_layout.xml",
+        "source": "/home/mukesh/AndroidStudioProjects/Tracker/lib/build/intermediates/bundles/debug/res/layout/edit_text_layout.xml"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/Tracker/lib/build/intermediates/res/merged/androidTest/debug/layout/directory_chooser.xml",
+        "source": "/home/mukesh/AndroidStudioProjects/Tracker/lib/build/intermediates/bundles/debug/res/layout/directory_chooser.xml"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/lib/build/intermediates/res/merged/androidTest/debug/layout/directory_chooser.xml",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/lib/build/intermediates/bundles/debug/res/layout/directory_chooser.xml"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/lib/build/intermediates/res/merged/androidTest/debug/layout/edit_text_layout.xml",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/lib/build/intermediates/bundles/debug/res/layout/edit_text_layout.xml"
+    }
+]

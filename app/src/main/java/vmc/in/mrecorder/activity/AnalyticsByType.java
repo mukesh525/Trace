@@ -68,7 +68,7 @@ public class AnalyticsByType extends AppCompatActivity implements vmc.in.mrecord
     final Handler handler = new Handler();
     private Spinner spinner_nav;
     private ArrayList<PieModel> pieModels;
-    private String reportype;
+    private String reportype = "0";
     private JSONObject response;
     private JSONArray records;
     private String count;
@@ -89,7 +89,7 @@ public class AnalyticsByType extends AppCompatActivity implements vmc.in.mrecord
         tv_noResponse = (TextView) findViewById(R.id.tv_noresponse);
         coordinatorLayout = (RelativeLayout) findViewById(R.id.coordi_layout);
         addItemsToSpinner();
-      //  getData();
+
         offline.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -97,13 +97,14 @@ public class AnalyticsByType extends AppCompatActivity implements vmc.in.mrecord
             }
         });
     }
+
     @Override
     protected void onResume() {
         super.onResume();
         if (pieChart != null) {
             mainLayout.removeView(pieChart);
         }
-        //getData();
+
     }
 
     @Override
@@ -178,7 +179,7 @@ public class AnalyticsByType extends AppCompatActivity implements vmc.in.mrecord
                                        int position, long id) {
                 // On selecting a spinner item
                 String item = adapter.getItemAtPosition(position).toString();
-                reportype=position+"";
+                reportype = position + "";
                 getData();
 
             }
@@ -191,7 +192,6 @@ public class AnalyticsByType extends AppCompatActivity implements vmc.in.mrecord
         });
 
     }
-
 
 
     private void setPieChart(ArrayList<PieModel> pieModel) {
@@ -215,7 +215,7 @@ public class AnalyticsByType extends AppCompatActivity implements vmc.in.mrecord
         l.setXEntrySpace(9);
         l.setYEntrySpace(7);
 
-       final ArrayList<String> labels = new ArrayList<String>();
+        final ArrayList<String> labels = new ArrayList<String>();
         ArrayList<Entry> entries = new ArrayList<>();
         for (int i = 0; i < pieModel.size(); i++) {
             labels.add(pieModel.get(i).getCalltype());
@@ -242,7 +242,7 @@ public class AnalyticsByType extends AppCompatActivity implements vmc.in.mrecord
         pieChart.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
             @Override
             public void onValueSelected(Entry e, int dataSetIndex, Highlight h) {
-                Toast.makeText(getApplicationContext(), " " +(int)Math.round(e.getVal())+" "+labels.get(e.getXIndex()) +" calls", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), " " + (int) Math.round(e.getVal()) + " " + labels.get(e.getXIndex()) + " calls", Toast.LENGTH_SHORT).show();
 
                 if (e == null)
                     return;
@@ -276,7 +276,7 @@ public class AnalyticsByType extends AppCompatActivity implements vmc.in.mrecord
                 Log.d("TAG", response.toString());
                 Log.d("TAG", Utils.getFromPrefs(AnalyticsByType.this, AUTHKEY, "n"));
 
-                if(response!=null)
+                if (response != null)
                     pieModels = new ArrayList<PieModel>();
                 if (response.has(CODE))
                     code = response.getString(CODE);
@@ -313,7 +313,6 @@ public class AnalyticsByType extends AppCompatActivity implements vmc.in.mrecord
         }
 
 
-
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -321,7 +320,7 @@ public class AnalyticsByType extends AppCompatActivity implements vmc.in.mrecord
 
         @Override
         protected void onPostExecute(ArrayList<PieModel> models) {
-            if (models != null &&code!=null) {
+            if (models != null && code != null) {
                 if (code.equals("400")) {
                     if (models.size() > 0) {
                         setPieChart(models);
@@ -334,9 +333,9 @@ public class AnalyticsByType extends AppCompatActivity implements vmc.in.mrecord
 
 
                 } else if (code.equals("202") || code.equals("401")) {
-                    Utils.isLogoutBackground(AnalyticsByType.this);
-                }
-                else if(code.equals("404")){
+                    Toast.makeText(getApplicationContext(), "You have been logout login to continue",
+                            Toast.LENGTH_LONG).show();
+                } else if (code.equals("404")) {
                     if (pieChart != null) {
                         mainLayout.removeView(pieChart);
                     }

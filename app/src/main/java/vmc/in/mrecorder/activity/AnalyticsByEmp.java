@@ -83,12 +83,7 @@ public class AnalyticsByEmp extends AppCompatActivity implements vmc.in.mrecorde
         offline = (RelativeLayout) findViewById(R.id.rl_dummy);
         name = (TextView) findViewById(R.id.tv_analy_name);
         name.setText("Analytics By Emp");
-
-
         addItemsToSpinner();
-
-        //getData();
-
 
         offline.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -104,7 +99,6 @@ public class AnalyticsByEmp extends AppCompatActivity implements vmc.in.mrecorde
         if (chart != null) {
             mainLayout.removeView(chart);
         }
-        //getData();
     }
 
     @Override
@@ -335,7 +329,9 @@ public class AnalyticsByEmp extends AppCompatActivity implements vmc.in.mrecorde
 
 
                 } else if (code.equals("202") || code.equals("401")) {
-                    Utils.isLogoutBackground(AnalyticsByEmp.this);
+                    Toast.makeText(getApplicationContext(), "You have been logout login to continue",
+                            Toast.LENGTH_LONG).show();
+                   // Utils.isLogoutBackground(AnalyticsByEmp.this);
                 }
 
 

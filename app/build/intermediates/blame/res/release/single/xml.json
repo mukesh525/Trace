@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/release/xml/syncadapter.xml",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/src/main/res/xml/syncadapter.xml"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/release/xml/authenticator.xml",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/src/main/res/xml/authenticator.xml"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/release/xml/settings.xml",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/src/main/res/xml/settings.xml"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/release/xml/progress.xml",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/src/main/res/xml/progress.xml"
+    }
+]

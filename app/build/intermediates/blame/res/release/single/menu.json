@@ -1,0 +1,30 @@
+[
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/release/menu/activity_home_drawer.xml",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/src/main/res/menu/activity_home_drawer.xml"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/release/menu/popup1.xml",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/src/main/res/menu/popup1.xml"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/release/menu/activity_contacts_menu.xml",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/src/main/res/menu/activity_contacts_menu.xml"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/release/menu/newpopupmenu.xml",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/src/main/res/menu/newpopupmenu.xml"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/release/menu/home.xml",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/src/main/res/menu/home.xml"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/release/menu/popupmenu.xml",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/src/main/res/menu/popupmenu.xml"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/release/menu/popup2.xml",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/src/main/res/menu/popup2.xml"
+    }
+]

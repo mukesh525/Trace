@@ -70,7 +70,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
     private String authkey;
     private int offset = 0;
     private ArrayList<CallData> callDataArrayList;
-    private String code, recording,mcubeRecording,workhour;
+    private String code, recording, mcubeRecording, workhour;
 
 
     public SyncAdapter(Context context, boolean autoInitialize) {
@@ -87,6 +87,10 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
     @Override
     public void onPerformSync(Account account, Bundle extras, String authority,
                               ContentProviderClient provider, SyncResult syncResult) {
+        SharedPreferences sharedPrefs = PreferenceManager
+                .getDefaultSharedPreferences(getContext());
+        int wifionly = Integer.parseInt(sharedPrefs.getString("prefSyncNetwork", "0"));
+
         Log.d(TAG, "Beginning network synchronization");
         // StartOrStopRecording();
         CallApplication.getInstance().isstartRecording();
@@ -97,18 +101,41 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
             }
             //callList = CallApplication.getWritableDatabase().GetAllCalls();
             callList = CallApplication.getWritabledatabase().getAllOfflineCalls();
-            // Log.d(TAG, "offline data Size" + callList.size());
-            for (int i = 0; i < callList.size(); i++) {
-                if (!CallRecorderServiceAll.recording && Utils.isLogin(getContext())) {
 
-                    if (new File(callList.get(i).getFilePath()).exists()) {
-                        uploadMultipartData(callList.get(i), true);
-                    } else {
-                        uploadMultipartData(callList.get(i), false);
+
+            // Log.d(TAG, "offline data Size" + callList.size());
+
+            if (wifionly == 1 && Utils.hasWIFIConnection(getContext())) {
+
+                Log.d(TAG + "WIFI", "Wifi only enabled");
+                for (int i = 0; i < callList.size(); i++) {
+                    if (!CallRecorderServiceAll.recording && Utils.isLogin(getContext())) {
+
+                        if (new File(callList.get(i).getFilePath()).exists()) {
+                            uploadMultipartData(callList.get(i), true);
+                        } else {
+                            uploadMultipartData(callList.get(i), false);
+
+                        }
+
 
                     }
+                }
+            } else if (wifionly == 0) {
+                Log.d(TAG + "WIFI", "Wifi only disabled");
+                for (int i = 0; i < callList.size(); i++) {
+
+                    if (!CallRecorderServiceAll.recording && Utils.isLogin(getContext())) {
+
+                        if (new File(callList.get(i).getFilePath()).exists()) {
+                            uploadMultipartData(callList.get(i), true);
+                        } else {
+                            uploadMultipartData(callList.get(i), false);
+
+                        }
 
 
+                    }
                 }
             }
         } catch (Exception e) {
@@ -132,38 +159,38 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
                 code = response.getString(CODE);
                 if (response.has(RECORDING)) {
                     recording = response.getString(RECORDING);
-                    if(recording.equals("1")){
+                    if (recording.equals("1")) {
                         ed.putBoolean("prefRecording", true);
-                    }else{
+                    } else {
                         ed.putBoolean("prefRecording", false);
                     }
 
 
                 }
-                if(response.has(MCUBECALLS))
-                {
+                if (response.has(MCUBECALLS)) {
                     mcubeRecording = response.getString(MCUBECALLS);
-                    if(mcubeRecording.equals("1")){
+                    if (mcubeRecording.equals("1")) {
                         ed.putBoolean("prefMcubeRecording", true);
-                    }else{
+                    } else {
                         ed.putBoolean("prefMcubeRecording", false);
                     }
 
                 }
-                if(response.has(WORKHOUR)){
+                if (response.has(WORKHOUR)) {
                     workhour = response.getString(WORKHOUR);
-                    if(workhour.equals("1")){
+                    if (workhour.equals("1")) {
                         ed.putBoolean("prefOfficeTimeRecording", true);
-                    }else {
+                    } else {
                         ed.putBoolean("prefOfficeTimeRecording", false);
                     }
                 }
                 ed.commit();
                 if (code.equals("202") || code.equals("401")) {
                     Utils.isLogoutBackground(getContext());
-                } if (code.equals("203")) {
-                   // Utils.isLogoutBackground(getContext());
-                    Log.d("NORECORD","Record is not in Mcube contacts.");
+                }
+                if (code.equals("203")) {
+                    // Utils.isLogoutBackground(getContext());
+                    Log.d("NORECORD", "Record is not in Mcube contacts.");
                 }
 
             }
@@ -172,7 +199,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
             Log.d(TAG, "ALL_CALLS " + callDataArrayList.size());
             CallApplication.getWritabledatabase().insertCallRecords(MDatabase.ALL, callDataArrayList, true);
         } catch (Exception e) {
-            Log.d(TAG,"Error "+e.getMessage().toString());
+            Log.d(TAG, "Error " + e.getMessage().toString());
         }
         try {
             response = JSONParser.getCallsData(GET_CALL_LIST, authkey, "10", offset + "",
@@ -181,28 +208,27 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
                 code = response.getString(CODE);
                 if (response.has(RECORDING)) {
                     recording = response.getString(RECORDING);
-                    if(recording.equals("1")){
+                    if (recording.equals("1")) {
                         ed.putBoolean("prefRecording", true);
-                    }else{
+                    } else {
                         ed.putBoolean("prefRecording", false);
                     }
 
                 }
-                if(response.has(MCUBECALLS))
-                {
+                if (response.has(MCUBECALLS)) {
                     mcubeRecording = response.getString(MCUBECALLS);
-                    if(mcubeRecording.equals("1")){
+                    if (mcubeRecording.equals("1")) {
                         ed.putBoolean("prefMcubeRecording", true);
-                    }else{
+                    } else {
                         ed.putBoolean("prefMcubeRecording", false);
                     }
 
                 }
-                if(response.has(WORKHOUR)){
+                if (response.has(WORKHOUR)) {
                     workhour = response.getString(WORKHOUR);
-                    if(workhour.equals("1")){
+                    if (workhour.equals("1")) {
                         ed.putBoolean("prefOfficeTimeRecording", true);
-                    }else {
+                    } else {
                         ed.putBoolean("prefOfficeTimeRecording", false);
                     }
                 }
@@ -226,24 +252,23 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
                 code = response.getString(CODE);
                 if (response.has(RECORDING)) {
                     recording = response.getString(RECORDING);
-                    if(recording.equals("1")){
+                    if (recording.equals("1")) {
                         ed.putBoolean("prefRecording", true);
-                    }else{
+                    } else {
                         ed.putBoolean("prefRecording", false);
                     }
 
                 }
-                if(response.has(MCUBECALLS))
-                {
+                if (response.has(MCUBECALLS)) {
                     mcubeRecording = response.getString(MCUBECALLS);
-                    if(mcubeRecording.equals("1")){
+                    if (mcubeRecording.equals("1")) {
                         ed.putBoolean("prefMcubeRecording", true);
-                    }else{
+                    } else {
                         ed.putBoolean("prefMcubeRecording", false);
                     }
 
                 }
-                if(response.has(WORKHOUR)) {
+                if (response.has(WORKHOUR)) {
                     workhour = response.getString(WORKHOUR);
                     if (workhour.equals("1")) {
                         ed.putBoolean("prefOfficeTimeRecording", true);
@@ -270,28 +295,27 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
                 code = response.getString(CODE);
                 if (response.has(RECORDING)) {
                     recording = response.getString(RECORDING);
-                    if(recording.equals("1")){
+                    if (recording.equals("1")) {
                         ed.putBoolean("prefRecording", true);
-                    }else{
+                    } else {
                         ed.putBoolean("prefRecording", false);
                     }
 
                 }
-                if(response.has(MCUBECALLS))
-                {
+                if (response.has(MCUBECALLS)) {
                     mcubeRecording = response.getString(MCUBECALLS);
-                    if(mcubeRecording.equals("1")){
+                    if (mcubeRecording.equals("1")) {
                         ed.putBoolean("prefMcubeRecording", true);
-                    }else{
+                    } else {
                         ed.putBoolean("prefMcubeRecording", false);
                     }
 
                 }
-                if(response.has(WORKHOUR)){
+                if (response.has(WORKHOUR)) {
                     workhour = response.getString(WORKHOUR);
-                    if(workhour.equals("1")){
+                    if (workhour.equals("1")) {
                         ed.putBoolean("prefOfficeTimeRecording", true);
-                    }else {
+                    } else {
                         ed.putBoolean("prefOfficeTimeRecording", false);
                     }
                 }
@@ -404,28 +428,27 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
 
                 if (response.has(RECORDING)) {
                     recording = response.getString(RECORDING);
-                    if(recording.equals("1")){
+                    if (recording.equals("1")) {
                         ed.putBoolean("prefRecording", true);
-                    }else{
+                    } else {
                         ed.putBoolean("prefRecording", false);
                     }
 
                 }
-                if(response.has(MCUBECALLS))
-                {
+                if (response.has(MCUBECALLS)) {
                     mcubeRecording = response.getString(MCUBECALLS);
-                    if(mcubeRecording.equals("1")){
+                    if (mcubeRecording.equals("1")) {
                         ed.putBoolean("prefMcubeRecording", true);
-                    }else{
+                    } else {
                         ed.putBoolean("prefMcubeRecording", false);
                     }
 
                 }
-                if(response.has(WORKHOUR)){
+                if (response.has(WORKHOUR)) {
                     workhour = response.getString(WORKHOUR);
-                    if(workhour.equals("1")){
+                    if (workhour.equals("1")) {
                         ed.putBoolean("prefOfficeTimeRecording", true);
-                    }else {
+                    } else {
                         ed.putBoolean("prefOfficeTimeRecording", false);
                     }
                 }

@@ -1,382 +1,874 @@
 [
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\common_google_signin_btn_icon_light_normal.9.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\drawable-xxhdpi\\common_google_signin_btn_icon_light_normal.9.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_list_pressed_holo_dark.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_list_pressed_holo_dark.9.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_menu_hardkey_panel_mtrl_mult.9.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_menu_hardkey_panel_mtrl_mult.9.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_btn_rating_star_off_mtrl_alpha.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_btn_rating_star_off_mtrl_alpha.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_ic_clear_mtrl_alpha.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_ic_clear_mtrl_alpha.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/ic_message.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/generated/res/pngs/debug/drawable-xxhdpi/ic_message.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\common_plus_signin_btn_text_dark_disabled.9.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\drawable-xxhdpi\\common_plus_signin_btn_text_dark_disabled.9.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_list_focused_holo.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable-xxhdpi-v4/abc_list_focused_holo.9.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_menu_send.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_menu_send.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_allfeed.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_allfeed.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_list_pressed_holo_dark.9.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_list_pressed_holo_dark.9.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\common_google_signin_btn_icon_light_focused.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\drawable-xxhdpi\\common_google_signin_btn_icon_light_focused.9.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\common_plus_signin_btn_icon_light_pressed.9.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\drawable-xxhdpi\\common_plus_signin_btn_icon_light_pressed.9.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\common_google_signin_btn_text_light_pressed.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\drawable-xxhdpi\\common_google_signin_btn_text_light_pressed.9.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_btn_rating_star_off_mtrl_alpha.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_btn_rating_star_off_mtrl_alpha.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_message.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_message.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_call_outgoing.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_call_outgoing.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_lock.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_lock.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\common_google_signin_btn_icon_light_disabled.9.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\drawable-xxhdpi\\common_google_signin_btn_icon_light_disabled.9.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/common_google_signin_btn_icon_light_pressed.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/res/drawable-xxhdpi/common_google_signin_btn_icon_light_pressed.9.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_ic_menu_paste_mtrl_am_alpha.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_ic_menu_paste_mtrl_am_alpha.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_ic_menu_cut_mtrl_alpha.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_ic_menu_cut_mtrl_alpha.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\common_google_signin_btn_icon_dark_focused.9.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\drawable-xxhdpi\\common_google_signin_btn_icon_dark_focused.9.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_ic_ab_back_mtrl_am_alpha.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable-xxhdpi-v4/abc_ic_ab_back_mtrl_am_alpha.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\common_google_signin_btn_text_light_normal.9.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\drawable-xxhdpi\\common_google_signin_btn_text_light_normal.9.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/common_plus_signin_btn_icon_light_disabled.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/res/drawable-xxhdpi/common_plus_signin_btn_icon_light_disabled.9.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_popup_background_mtrl_mult.9.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_popup_background_mtrl_mult.9.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_logout.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_logout.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_allfeed.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_allfeed.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/common_google_signin_btn_text_dark_focused.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/res/drawable-xxhdpi/common_google_signin_btn_text_dark_focused.9.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\common_google_signin_btn_text_dark_pressed.9.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\drawable-xxhdpi\\common_google_signin_btn_text_dark_pressed.9.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/ic_menu_send.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/generated/res/pngs/debug/drawable-xxhdpi/ic_menu_send.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_switch_track_mtrl_alpha.9.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_switch_track_mtrl_alpha.9.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/ic_allfeed.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/generated/res/pngs/debug/drawable-xxhdpi/ic_allfeed.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\common_google_signin_btn_icon_light_focused.9.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\drawable-xxhdpi\\common_google_signin_btn_icon_light_focused.9.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_list_divider_mtrl_alpha.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable-xxhdpi-v4/abc_list_divider_mtrl_alpha.9.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\common_google_signin_btn_text_dark_disabled.9.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\drawable-xxhdpi\\common_google_signin_btn_text_dark_disabled.9.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_ic_search_api_mtrl_alpha.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable-xxhdpi-v4/abc_ic_search_api_mtrl_alpha.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\common_google_signin_btn_text_light_pressed.9.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\drawable-xxhdpi\\common_google_signin_btn_text_light_pressed.9.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/common_google_signin_btn_text_dark_normal.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/res/drawable-xxhdpi/common_google_signin_btn_text_dark_normal.9.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_scrubber_control_to_pressed_mtrl_000.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_scrubber_control_to_pressed_mtrl_000.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/common_google_signin_btn_text_light_normal.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/res/drawable-xxhdpi/common_google_signin_btn_text_light_normal.9.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\common_google_signin_btn_icon_light_pressed.9.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\drawable-xxhdpi\\common_google_signin_btn_icon_light_pressed.9.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/error.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/generated/res/pngs/debug/drawable-xxhdpi/error.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_message.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_message.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_btn_check_to_on_mtrl_000.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable-xxhdpi-v4/abc_btn_check_to_on_mtrl_000.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_lock.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_lock.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/common_plus_signin_btn_icon_dark_normal.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/res/drawable-xxhdpi/common_plus_signin_btn_icon_dark_normal.9.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\common_google_signin_btn_text_dark_focused.9.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\drawable-xxhdpi\\common_google_signin_btn_text_dark_focused.9.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_scrubber_primary_mtrl_alpha.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_scrubber_primary_mtrl_alpha.9.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\common_plus_signin_btn_icon_dark_pressed.9.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\drawable-xxhdpi\\common_plus_signin_btn_icon_dark_pressed.9.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_list_pressed_holo_light.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable-xxhdpi-v4/abc_list_pressed_holo_light.9.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\error.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\error.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/settings.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/generated/res/pngs/debug/drawable-xxhdpi/settings.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_ic_go_search_api_mtrl_alpha.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_ic_go_search_api_mtrl_alpha.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_ic_star_black_16dp.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable-xxhdpi-v4/abc_ic_star_black_16dp.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_ic_menu_cut_mtrl_alpha.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_ic_menu_cut_mtrl_alpha.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_scrubber_control_to_pressed_mtrl_000.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable-xxhdpi-v4/abc_scrubber_control_to_pressed_mtrl_000.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_list_divider_mtrl_alpha.9.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_list_divider_mtrl_alpha.9.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_ic_star_half_black_36dp.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable-xxhdpi-v4/abc_ic_star_half_black_36dp.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_textfield_default_mtrl_alpha.9.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_textfield_default_mtrl_alpha.9.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\common_google_signin_btn_text_dark_normal.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\drawable-xxhdpi\\common_google_signin_btn_text_dark_normal.9.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_menu_share.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_menu_share.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\common_plus_signin_btn_text_dark_pressed.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\drawable-xxhdpi\\common_plus_signin_btn_text_dark_pressed.9.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_logout.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_logout.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/common_google_signin_btn_icon_dark_focused.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/res/drawable-xxhdpi/common_google_signin_btn_icon_dark_focused.9.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\common_google_signin_btn_icon_dark_pressed.9.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\drawable-xxhdpi\\common_google_signin_btn_icon_dark_pressed.9.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/ic_call_outgoing.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/generated/res/pngs/debug/drawable-xxhdpi/ic_call_outgoing.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\common_plus_signin_btn_text_light_focused.9.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\drawable-xxhdpi\\common_plus_signin_btn_text_light_focused.9.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_textfield_activated_mtrl_alpha.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable-xxhdpi-v4/abc_textfield_activated_mtrl_alpha.9.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_menu_slideshow.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_menu_slideshow.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_ab_share_pack_mtrl_alpha.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_ab_share_pack_mtrl_alpha.9.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\common_plus_signin_btn_icon_dark_disabled.9.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\drawable-xxhdpi\\common_plus_signin_btn_icon_dark_disabled.9.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\common_google_signin_btn_icon_dark_normal.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\drawable-xxhdpi\\common_google_signin_btn_icon_dark_normal.9.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_list_selector_disabled_holo_dark.9.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_list_selector_disabled_holo_dark.9.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_ic_menu_moreoverflow_mtrl_alpha.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_ic_menu_moreoverflow_mtrl_alpha.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_btn_radio_to_on_mtrl_015.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_btn_radio_to_on_mtrl_015.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/places_ic_clear.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-location/8.4.0/res/drawable-xxhdpi/places_ic_clear.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\common_full_open_on_phone.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\drawable-xxhdpi\\common_full_open_on_phone.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_ic_menu_selectall_mtrl_alpha.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_ic_menu_selectall_mtrl_alpha.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_scrubber_control_off_mtrl_alpha.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_scrubber_control_off_mtrl_alpha.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\common_plus_signin_btn_icon_light_focused.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\drawable-xxhdpi\\common_plus_signin_btn_icon_light_focused.9.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_list_longpressed_holo.9.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_list_longpressed_holo.9.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_ic_menu_copy_mtrl_am_alpha.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable-xxhdpi-v4/abc_ic_menu_copy_mtrl_am_alpha.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\common_google_signin_btn_text_light_disabled.9.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\drawable-xxhdpi\\common_google_signin_btn_text_light_disabled.9.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_btn_switch_to_on_mtrl_00012.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_btn_switch_to_on_mtrl_00012.9.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\common_google_signin_btn_icon_dark_disabled.9.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\drawable-xxhdpi\\common_google_signin_btn_icon_dark_disabled.9.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_btn_radio_to_on_mtrl_000.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_btn_radio_to_on_mtrl_000.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_textfield_activated_mtrl_alpha.9.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_textfield_activated_mtrl_alpha.9.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/common_google_signin_btn_text_dark_disabled.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/res/drawable-xxhdpi/common_google_signin_btn_text_dark_disabled.9.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_overflow.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_overflow.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_btn_switch_to_on_mtrl_00001.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_btn_switch_to_on_mtrl_00001.9.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_cab_background_top_mtrl_alpha.9.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_cab_background_top_mtrl_alpha.9.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_scrubber_track_mtrl_alpha.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_scrubber_track_mtrl_alpha.9.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\common_plus_signin_btn_text_light_normal.9.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\drawable-xxhdpi\\common_plus_signin_btn_text_light_normal.9.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/ic_call_incoming.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/generated/res/pngs/debug/drawable-xxhdpi/ic_call_incoming.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_all.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_all.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_textfield_search_activated_mtrl_alpha.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_textfield_search_activated_mtrl_alpha.9.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\common_plus_signin_btn_icon_light_normal.9.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\drawable-xxhdpi\\common_plus_signin_btn_icon_light_normal.9.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_scrubber_control_off_mtrl_alpha.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable-xxhdpi-v4/abc_scrubber_control_off_mtrl_alpha.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_scrubber_primary_mtrl_alpha.9.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_scrubber_primary_mtrl_alpha.9.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/ic_menu_manage.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/generated/res/pngs/debug/drawable-xxhdpi/ic_menu_manage.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\common_google_signin_btn_text_light_focused.9.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\drawable-xxhdpi\\common_google_signin_btn_text_light_focused.9.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/common_plus_signin_btn_text_dark_normal.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/res/drawable-xxhdpi/common_plus_signin_btn_text_dark_normal.9.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_ic_menu_copy_mtrl_am_alpha.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_ic_menu_copy_mtrl_am_alpha.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/fab_bg_mini.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.getbase/floatingactionbutton/1.10.0/res/drawable-xxhdpi-v4/fab_bg_mini.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\common_plus_signin_btn_icon_dark_focused.9.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\drawable-xxhdpi\\common_plus_signin_btn_icon_dark_focused.9.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\common_plus_signin_btn_text_light_disabled.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\drawable-xxhdpi\\common_plus_signin_btn_text_light_disabled.9.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_ic_commit_search_api_mtrl_alpha.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_ic_commit_search_api_mtrl_alpha.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\common_google_signin_btn_icon_light_normal.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\drawable-xxhdpi\\common_google_signin_btn_icon_light_normal.9.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_person.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_person.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_list_selector_disabled_holo_dark.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable-xxhdpi-v4/abc_list_selector_disabled_holo_dark.9.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_btn_check_to_on_mtrl_015.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_btn_check_to_on_mtrl_015.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_tab_indicator_mtrl_alpha.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable-xxhdpi-v4/abc_tab_indicator_mtrl_alpha.9.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_call.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_call.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/ic_call_missed.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/generated/res/pngs/debug/drawable-xxhdpi/ic_call_missed.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\common_plus_signin_btn_text_dark_focused.9.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\drawable-xxhdpi\\common_plus_signin_btn_text_dark_focused.9.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_menu_hardkey_panel_mtrl_mult.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable-xxhdpi-v4/abc_menu_hardkey_panel_mtrl_mult.9.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\common_google_signin_btn_text_dark_normal.9.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\drawable-xxhdpi\\common_google_signin_btn_text_dark_normal.9.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/common_google_signin_btn_icon_dark_disabled.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/res/drawable-xxhdpi/common_google_signin_btn_icon_dark_disabled.9.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_tab_indicator_mtrl_alpha.9.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_tab_indicator_mtrl_alpha.9.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/navigation_up.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/MTrackerr/lib/unspecified/res/drawable-xxhdpi-v4/navigation_up.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_ic_menu_share_mtrl_alpha.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_ic_menu_share_mtrl_alpha.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\common_google_signin_btn_icon_dark_focused.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\drawable-xxhdpi\\common_google_signin_btn_icon_dark_focused.9.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\common_plus_signin_btn_text_dark_normal.9.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\drawable-xxhdpi\\common_plus_signin_btn_text_dark_normal.9.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\common_google_signin_btn_text_light_normal.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\drawable-xxhdpi\\common_google_signin_btn_text_light_normal.9.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\common_plus_signin_btn_text_dark_pressed.9.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\drawable-xxhdpi\\common_plus_signin_btn_text_dark_pressed.9.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_popup_background_mtrl_mult.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_popup_background_mtrl_mult.9.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_btn_check_to_on_mtrl_000.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_btn_check_to_on_mtrl_000.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\common_google_signin_btn_text_dark_pressed.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\drawable-xxhdpi\\common_google_signin_btn_text_dark_pressed.9.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_call_incoming.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_call_incoming.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\common_google_signin_btn_text_dark_disabled.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\drawable-xxhdpi\\common_google_signin_btn_text_dark_disabled.9.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\common_plus_signin_btn_icon_light_disabled.9.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\drawable-xxhdpi\\common_plus_signin_btn_icon_light_disabled.9.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_list_selector_disabled_holo_light.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable-xxhdpi-v4/abc_list_selector_disabled_holo_light.9.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_menu_camera.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_menu_camera.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_list_pressed_holo_dark.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable-xxhdpi-v4/abc_list_pressed_holo_dark.9.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_list_focused_holo.9.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_list_focused_holo.9.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\error.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\error.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_btn_rating_star_on_mtrl_alpha.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_btn_rating_star_on_mtrl_alpha.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/user.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/generated/res/pngs/debug/drawable-xxhdpi/user.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_ab_share_pack_mtrl_alpha.9.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_ab_share_pack_mtrl_alpha.9.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/ic_share.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/generated/res/pngs/debug/drawable-xxhdpi/ic_share.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_scrubber_control_to_pressed_mtrl_005.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_scrubber_control_to_pressed_mtrl_005.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\common_plus_signin_btn_icon_dark_disabled.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\drawable-xxhdpi\\common_plus_signin_btn_icon_dark_disabled.9.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\common_google_signin_btn_icon_dark_normal.9.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\drawable-xxhdpi\\common_google_signin_btn_icon_dark_normal.9.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/ic_all.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/generated/res/pngs/debug/drawable-xxhdpi/ic_all.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_ic_menu_moreoverflow_mtrl_alpha.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_ic_menu_moreoverflow_mtrl_alpha.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_btn_radio_to_on_mtrl_015.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_btn_radio_to_on_mtrl_015.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_menu_gallery.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_menu_gallery.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_scrubber_control_off_mtrl_alpha.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_scrubber_control_off_mtrl_alpha.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_ic_voice_search_api_mtrl_alpha.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_ic_voice_search_api_mtrl_alpha.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/ic_delete_24dp.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/generated/res/pngs/debug/drawable-xxhdpi/ic_delete_24dp.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_ic_menu_selectall_mtrl_alpha.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_ic_menu_selectall_mtrl_alpha.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/ic_menu_share.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/generated/res/pngs/debug/drawable-xxhdpi/ic_menu_share.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\common_plus_signin_btn_icon_light_focused.9.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\drawable-xxhdpi\\common_plus_signin_btn_icon_light_focused.9.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\common_google_signin_btn_text_light_disabled.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\drawable-xxhdpi\\common_google_signin_btn_text_light_disabled.9.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_ic_search_api_mtrl_alpha.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_ic_search_api_mtrl_alpha.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/powered_by_google_dark.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-location/8.4.0/res/drawable-xxhdpi/powered_by_google_dark.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_list_selector_disabled_holo_light.9.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_list_selector_disabled_holo_light.9.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_scrubber_control_to_pressed_mtrl_005.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable-xxhdpi-v4/abc_scrubber_control_to_pressed_mtrl_005.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_list_pressed_holo_light.9.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_list_pressed_holo_light.9.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_spinner_mtrl_am_alpha.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable-xxhdpi-v4/abc_spinner_mtrl_am_alpha.9.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_btn_switch_to_on_mtrl_00012.9.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_btn_switch_to_on_mtrl_00012.9.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\common_google_signin_btn_text_light_focused.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\drawable-xxhdpi\\common_google_signin_btn_text_light_focused.9.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_textfield_search_default_mtrl_alpha.9.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_textfield_search_default_mtrl_alpha.9.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/common_google_signin_btn_icon_light_focused.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/res/drawable-xxhdpi/common_google_signin_btn_icon_light_focused.9.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_btn_radio_to_on_mtrl_000.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_btn_radio_to_on_mtrl_000.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_ic_commit_search_api_mtrl_alpha.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_ic_commit_search_api_mtrl_alpha.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_btn_switch_to_on_mtrl_00001.9.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_btn_switch_to_on_mtrl_00001.9.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/common_plus_signin_btn_text_light_focused.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/res/drawable-xxhdpi/common_plus_signin_btn_text_light_focused.9.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_call_missed.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_call_missed.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/common_google_signin_btn_icon_light_normal.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/res/drawable-xxhdpi/common_google_signin_btn_icon_light_normal.9.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_scrubber_track_mtrl_alpha.9.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_scrubber_track_mtrl_alpha.9.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_call.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_call.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_spinner_mtrl_am_alpha.9.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_spinner_mtrl_am_alpha.9.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\common_plus_signin_btn_text_dark_focused.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\drawable-xxhdpi\\common_plus_signin_btn_text_dark_focused.9.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\common_plus_signin_btn_icon_dark_normal.9.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\drawable-xxhdpi\\common_plus_signin_btn_icon_dark_normal.9.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_tab_indicator_mtrl_alpha.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_tab_indicator_mtrl_alpha.9.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_textfield_search_activated_mtrl_alpha.9.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_textfield_search_activated_mtrl_alpha.9.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_ic_menu_share_mtrl_alpha.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_ic_menu_share_mtrl_alpha.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\common_plus_signin_btn_text_light_pressed.9.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\drawable-xxhdpi\\common_plus_signin_btn_text_light_pressed.9.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\common_plus_signin_btn_text_dark_normal.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\drawable-xxhdpi\\common_plus_signin_btn_text_dark_normal.9.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_more.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_more.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_call_incoming.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_call_incoming.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\common_plus_signin_btn_text_light_disabled.9.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\drawable-xxhdpi\\common_plus_signin_btn_text_light_disabled.9.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/show.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/generated/res/pngs/debug/drawable-xxhdpi/show.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_menu_manage.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_menu_manage.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/ic_menu_camera.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/generated/res/pngs/debug/drawable-xxhdpi/ic_menu_camera.png"
     },
     {
-        "merged": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_ic_ab_back_mtrl_am_alpha.png",
-        "source": "G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_ic_ab_back_mtrl_am_alpha.png"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\common_plus_signin_btn_icon_light_disabled.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\drawable-xxhdpi\\common_plus_signin_btn_icon_light_disabled.9.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_btn_rating_star_on_mtrl_alpha.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_btn_rating_star_on_mtrl_alpha.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/common_google_signin_btn_icon_dark_pressed.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/res/drawable-xxhdpi/common_google_signin_btn_icon_dark_pressed.9.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/common_plus_signin_btn_icon_light_pressed.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/res/drawable-xxhdpi/common_plus_signin_btn_icon_light_pressed.9.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_ic_voice_search_api_mtrl_alpha.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_ic_voice_search_api_mtrl_alpha.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_ic_menu_share_mtrl_alpha.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable-xxhdpi-v4/abc_ic_menu_share_mtrl_alpha.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_ic_menu_paste_mtrl_am_alpha.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable-xxhdpi-v4/abc_ic_menu_paste_mtrl_am_alpha.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/ic_action_create_light.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/MTrackerr/lib/unspecified/res/drawable-xxhdpi-v4/ic_action_create_light.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_spinner_mtrl_am_alpha.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_spinner_mtrl_am_alpha.9.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\common_plus_signin_btn_text_light_pressed.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\drawable-xxhdpi\\common_plus_signin_btn_text_light_pressed.9.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_more.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_more.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_btn_radio_to_on_mtrl_015.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable-xxhdpi-v4/abc_btn_radio_to_on_mtrl_015.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/common_plus_signin_btn_text_dark_focused.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/res/drawable-xxhdpi/common_plus_signin_btn_text_dark_focused.9.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_menu_manage.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_menu_manage.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/ic_logout.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/generated/res/pngs/debug/drawable-xxhdpi/ic_logout.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_ic_clear_mtrl_alpha.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_ic_clear_mtrl_alpha.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\common_plus_signin_btn_icon_light_pressed.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\drawable-xxhdpi\\common_plus_signin_btn_icon_light_pressed.9.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_scrubber_track_mtrl_alpha.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable-xxhdpi-v4/abc_scrubber_track_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\common_google_signin_btn_icon_light_disabled.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\drawable-xxhdpi\\common_google_signin_btn_icon_light_disabled.9.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_switch_track_mtrl_alpha.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_switch_track_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/ic_all_home.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/generated/res/pngs/debug/drawable-xxhdpi/ic_all_home.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\common_google_signin_btn_icon_light_pressed.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\drawable-xxhdpi\\common_google_signin_btn_icon_light_pressed.9.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/pass.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/generated/res/pngs/debug/drawable-xxhdpi/pass.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/common_google_signin_btn_text_light_disabled.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/res/drawable-xxhdpi/common_google_signin_btn_text_light_disabled.9.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/ic_call.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/generated/res/pngs/debug/drawable-xxhdpi/ic_call.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_ic_voice_search_api_mtrl_alpha.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable-xxhdpi-v4/abc_ic_voice_search_api_mtrl_alpha.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/ic_overflow.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/generated/res/pngs/debug/drawable-xxhdpi/ic_overflow.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_textfield_default_mtrl_alpha.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_textfield_default_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_menu_share.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_menu_share.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/common_plus_signin_btn_text_dark_disabled.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/res/drawable-xxhdpi/common_plus_signin_btn_text_dark_disabled.9.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/navigation_up_light.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/MTrackerr/lib/unspecified/res/drawable-xxhdpi-v4/navigation_up_light.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_menu_slideshow.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_menu_slideshow.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_textfield_search_activated_mtrl_alpha.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable-xxhdpi-v4/abc_textfield_search_activated_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_btn_switch_to_on_mtrl_00001.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable-xxhdpi-v4/abc_btn_switch_to_on_mtrl_00001.9.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\common_full_open_on_phone.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\drawable-xxhdpi\\common_full_open_on_phone.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_btn_radio_to_on_mtrl_000.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable-xxhdpi-v4/abc_btn_radio_to_on_mtrl_000.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_overflow.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_overflow.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_all.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_all.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\common_plus_signin_btn_text_light_normal.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\drawable-xxhdpi\\common_plus_signin_btn_text_light_normal.9.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_cab_background_top_mtrl_alpha.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_cab_background_top_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\common_plus_signin_btn_icon_dark_focused.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\drawable-xxhdpi\\common_plus_signin_btn_icon_dark_focused.9.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_popup_background_mtrl_mult.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable-xxhdpi-v4/abc_popup_background_mtrl_mult.9.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/ic_call_incoming_home.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/generated/res/pngs/debug/drawable-xxhdpi/ic_call_incoming_home.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/common_plus_signin_btn_text_light_normal.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/res/drawable-xxhdpi/common_plus_signin_btn_text_light_normal.9.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_btn_check_to_on_mtrl_015.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_btn_check_to_on_mtrl_015.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/common_google_signin_btn_text_light_pressed.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/res/drawable-xxhdpi/common_google_signin_btn_text_light_pressed.9.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/common_plus_signin_btn_icon_dark_focused.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/res/drawable-xxhdpi/common_plus_signin_btn_icon_dark_focused.9.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/ic_person.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/generated/res/pngs/debug/drawable-xxhdpi/ic_person.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_menu_camera.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_menu_camera.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_menu_gallery.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_menu_gallery.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/ic_play.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/generated/res/pngs/debug/drawable-xxhdpi/ic_play.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_ic_menu_selectall_mtrl_alpha.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable-xxhdpi-v4/abc_ic_menu_selectall_mtrl_alpha.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_list_pressed_holo_light.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_list_pressed_holo_light.9.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_textfield_search_default_mtrl_alpha.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_textfield_search_default_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/common_google_signin_btn_text_dark_pressed.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/res/drawable-xxhdpi/common_google_signin_btn_text_dark_pressed.9.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_call_missed.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_call_missed.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_btn_check_to_on_mtrl_015.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable-xxhdpi-v4/abc_btn_check_to_on_mtrl_015.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/ic_lock.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/generated/res/pngs/debug/drawable-xxhdpi/ic_lock.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/common_google_signin_btn_icon_light_disabled.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/res/drawable-xxhdpi/common_google_signin_btn_icon_light_disabled.9.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_ic_ab_back_mtrl_am_alpha.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_ic_ab_back_mtrl_am_alpha.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_menu_hardkey_panel_mtrl_mult.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_menu_hardkey_panel_mtrl_mult.9.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\common_plus_signin_btn_text_dark_disabled.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\drawable-xxhdpi\\common_plus_signin_btn_text_dark_disabled.9.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_menu_send.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_menu_send.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_call_outgoing.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_call_outgoing.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/fab_bg_normal.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.getbase/floatingactionbutton/1.10.0/res/drawable-xxhdpi-v4/fab_bg_normal.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_ic_menu_paste_mtrl_am_alpha.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_ic_menu_paste_mtrl_am_alpha.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/common_plus_signin_btn_text_light_pressed.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/res/drawable-xxhdpi/common_plus_signin_btn_text_light_pressed.9.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_btn_switch_to_on_mtrl_00012.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable-xxhdpi-v4/abc_btn_switch_to_on_mtrl_00012.9.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/common_plus_signin_btn_icon_dark_pressed.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/res/drawable-xxhdpi/common_plus_signin_btn_icon_dark_pressed.9.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/common_google_signin_btn_text_light_focused.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/res/drawable-xxhdpi/common_google_signin_btn_text_light_focused.9.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_scrubber_control_to_pressed_mtrl_000.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_scrubber_control_to_pressed_mtrl_000.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/common_plus_signin_btn_icon_light_focused.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/res/drawable-xxhdpi/common_plus_signin_btn_icon_light_focused.9.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_ic_menu_moreoverflow_mtrl_alpha.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable-xxhdpi-v4/abc_ic_menu_moreoverflow_mtrl_alpha.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/common_google_signin_btn_icon_dark_normal.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/res/drawable-xxhdpi/common_google_signin_btn_icon_dark_normal.9.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\common_google_signin_btn_text_dark_focused.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\drawable-xxhdpi\\common_google_signin_btn_text_dark_focused.9.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\common_plus_signin_btn_icon_dark_pressed.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\drawable-xxhdpi\\common_plus_signin_btn_icon_dark_pressed.9.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_ic_go_search_api_mtrl_alpha.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_ic_go_search_api_mtrl_alpha.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/places_ic_search.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-location/8.4.0/res/drawable-xxhdpi/places_ic_search.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_list_divider_mtrl_alpha.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_list_divider_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/common_plus_signin_btn_text_dark_pressed.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/res/drawable-xxhdpi/common_plus_signin_btn_text_dark_pressed.9.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/ic_call_outgoing_home.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/generated/res/pngs/debug/drawable-xxhdpi/ic_call_outgoing_home.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\common_google_signin_btn_icon_dark_pressed.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\drawable-xxhdpi\\common_google_signin_btn_icon_dark_pressed.9.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\common_plus_signin_btn_text_light_focused.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\drawable-xxhdpi\\common_plus_signin_btn_text_light_focused.9.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_cab_background_top_mtrl_alpha.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable-xxhdpi-v4/abc_cab_background_top_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_list_selector_disabled_holo_dark.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_list_selector_disabled_holo_dark.9.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_ic_go_search_api_mtrl_alpha.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable-xxhdpi-v4/abc_ic_go_search_api_mtrl_alpha.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/ic_menu_slideshow.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/generated/res/pngs/debug/drawable-xxhdpi/ic_menu_slideshow.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_ic_menu_cut_mtrl_alpha.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable-xxhdpi-v4/abc_ic_menu_cut_mtrl_alpha.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_list_longpressed_holo.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_list_longpressed_holo.9.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/powered_by_google_light.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-location/8.4.0/res/drawable-xxhdpi/powered_by_google_light.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\common_google_signin_btn_icon_dark_disabled.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\drawable-xxhdpi\\common_google_signin_btn_icon_dark_disabled.9.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_textfield_activated_mtrl_alpha.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_textfield_activated_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_list_longpressed_holo.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable-xxhdpi-v4/abc_list_longpressed_holo.9.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\common_plus_signin_btn_icon_light_normal.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\drawable-xxhdpi\\common_plus_signin_btn_icon_light_normal.9.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_ic_menu_copy_mtrl_am_alpha.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_ic_menu_copy_mtrl_am_alpha.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_btn_rating_star_on_mtrl_alpha.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable-xxhdpi-v4/abc_btn_rating_star_on_mtrl_alpha.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/ic_call_missed_home.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/generated/res/pngs/debug/drawable-xxhdpi/ic_call_missed_home.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_person.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_person.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/common_plus_signin_btn_icon_dark_disabled.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/res/drawable-xxhdpi/common_plus_signin_btn_icon_dark_disabled.9.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/ic_menu_gallery.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/generated/res/pngs/debug/drawable-xxhdpi/ic_menu_gallery.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_ic_clear_mtrl_alpha.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable-xxhdpi-v4/abc_ic_clear_mtrl_alpha.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/invisible.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/generated/res/pngs/debug/drawable-xxhdpi/invisible.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/ic_action_create.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/MTrackerr/lib/unspecified/res/drawable-xxhdpi-v4/ic_action_create.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_textfield_default_mtrl_alpha.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable-xxhdpi-v4/abc_textfield_default_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_ic_commit_search_api_mtrl_alpha.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable-xxhdpi-v4/abc_ic_commit_search_api_mtrl_alpha.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_btn_check_to_on_mtrl_000.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_btn_check_to_on_mtrl_000.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_scrubber_primary_mtrl_alpha.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable-xxhdpi-v4/abc_scrubber_primary_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_list_focused_holo.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_list_focused_holo.9.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_ic_star_half_black_16dp.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable-xxhdpi-v4/abc_ic_star_half_black_16dp.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_scrubber_control_to_pressed_mtrl_005.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_scrubber_control_to_pressed_mtrl_005.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/common_plus_signin_btn_text_light_disabled.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/res/drawable-xxhdpi/common_plus_signin_btn_text_light_disabled.9.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_switch_track_mtrl_alpha.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable-xxhdpi-v4/abc_switch_track_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_textfield_search_default_mtrl_alpha.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable-xxhdpi-v4/abc_textfield_search_default_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_ic_star_black_36dp.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable-xxhdpi-v4/abc_ic_star_black_36dp.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_list_selector_disabled_holo_light.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_list_selector_disabled_holo_light.9.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_ic_search_api_mtrl_alpha.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-xxhdpi\\abc_ic_search_api_mtrl_alpha.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/ic_more.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/generated/res/pngs/debug/drawable-xxhdpi/ic_more.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/ic_settings.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/generated/res/pngs/debug/drawable-xxhdpi/ic_settings.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_ab_share_pack_mtrl_alpha.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable-xxhdpi-v4/abc_ab_share_pack_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_btn_rating_star_off_mtrl_alpha.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable-xxhdpi-v4/abc_btn_rating_star_off_mtrl_alpha.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/ic_sync.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/generated/res/pngs/debug/drawable-xxhdpi/ic_sync.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\common_plus_signin_btn_icon_dark_normal.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\drawable-xxhdpi\\common_plus_signin_btn_icon_dark_normal.9.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/common_full_open_on_phone.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/res/drawable-xxhdpi/common_full_open_on_phone.png"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/common_plus_signin_btn_icon_light_normal.9.png",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/res/drawable-xxhdpi/common_plus_signin_btn_icon_light_normal.9.png"
     }
 ]

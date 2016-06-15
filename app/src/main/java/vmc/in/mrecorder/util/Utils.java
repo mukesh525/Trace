@@ -33,6 +33,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONObject;
 
@@ -61,6 +62,28 @@ public class Utils implements TAG {
 
     public static int getTabsHeight(Context context) {
         return (int) context.getResources().getDimension(R.dimen.tabsHeight);
+    }
+
+
+    public static boolean hasWIFIConnection(Context context) {
+        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        if (activeNetwork != null) { // connected to the internet
+            if (activeNetwork.getType() == ConnectivityManager.TYPE_WIFI) {
+                // connected to wifi
+                return true;
+               // Toast.makeText(context, activeNetwork.getTypeName(), Toast.LENGTH_SHORT).show();
+            } else if (activeNetwork.getType() == ConnectivityManager.TYPE_MOBILE) {
+                // connected to the mobile provider's data plan
+                // Toast.makeText(context, activeNetwork.getTypeName(), Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        } else {
+            // not connected to the internet
+            return false;
+        }
+        return false;
+
     }
 
     public static boolean onlineStatus2(Context activityContext) {
@@ -200,7 +223,8 @@ public class Utils implements TAG {
         }
         CallApplication.getWritabledatabase().DeleteAllData();
         CallApplication.getInstance().stopRecording();
-        Log.d("Logout", "Logout on Utils");
+        Log.d("Logout", "Background Logout");
+        // Log.d("Logout", "Logout on Utils");
         showRecordNotification(context);
 
     }
@@ -213,7 +237,7 @@ public class Utils implements TAG {
 
         NotificationCompat.BigTextStyle s = new NotificationCompat.BigTextStyle();
         s.setBigContentTitle("MTracker");
-        s.bigText("You have been logout by admin");
+        s.bigText("You have been logout by Admin.");
         Bitmap bm = BitmapFactory.decodeResource(context.getResources(), R.mipmap.ic_launcher);
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context)
                 .setSmallIcon(R.mipmap.ic_launcher)
@@ -224,7 +248,7 @@ public class Utils implements TAG {
                 .setStyle(s)
                 .setOngoing(true)
                 .setContentIntent(pendingIntent)
-                .setContentText("You have been logout by admin");
+                .setContentText("You have been logout by Admin");
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.notify(NOTIFICATION_ID, mBuilder.build());
     }

@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-
-            <item
-                android:id="@+id/all"
-                android:checked="true"
-                android:icon="@drawable/ic_all"
-                android:title="ALL" />
-            <item
-                android:id="@+id/inbound"
-                android:icon="@drawable/ic_call_incoming"
-                android:title="INBOUND" />
-            <item
-                android:id="@+id/outbound"
-                android:icon="@drawable/ic_call_outgoing"
-                android:title="OUTBOUND" />
-            <item
-                android:id="@+id/missed"
-                android:icon="@drawable/ic_call_missed"
-                android:title="MISSED" />
-
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/all"
+            android:checked="true"
+            android:icon="@drawable/ic_all"
+            android:title="ALL" />
+        <item
+            android:id="@+id/inbound"
+            android:icon="@drawable/ic_call_incoming"
+            android:title="INBOUND" />
+        <item
+            android:id="@+id/outbound"
+            android:icon="@drawable/ic_call_outgoing"
+            android:title="OUTBOUND" />
+        <item
+            android:id="@+id/missed"
+            android:icon="@drawable/ic_call_missed"
+            android:title="MISSED" />
+    </group>
 
     <group android:id="@+id/my_analytics">
         <item android:title="Analytics">
             <menu>
                 <item
                     android:id="@+id/anyl_type"
-                    android:icon="@drawable/pie"
+                    android:icon="@drawable/piechart"
                     android:title="By Calls" />
                 <item
                     android:id="@+id/anyl_employee"

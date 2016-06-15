@@ -1,5 +1,6 @@
 package vmc.in.mrecorder.activity;
 //aaa
+
 import android.Manifest;
 import android.annotation.TargetApi;
 import android.app.AlertDialog;
@@ -103,7 +104,10 @@ public class Home extends AppCompatActivity
             }
             Utils.saveToPrefs(Home.this, FIRST_TYME, "TRUE");
         }
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+
+
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
 
             getAllPermision();
         }
@@ -123,7 +127,7 @@ public class Home extends AppCompatActivity
         mViewPager = (ViewPager) findViewById(R.id.viewpager);
         myPagerAdapter = new MyPagerAdapter(getSupportFragmentManager());
         mViewPager.setAdapter(myPagerAdapter);
-      //  mTabLayout.setTabsFromPagerAdapter(myPagerAdapter);
+        //  mTabLayout.setTabsFromPagerAdapter(myPagerAdapter);
         mTabLayout.setupWithViewPager(mViewPager);
         // setupWithViewPager is enough.
         setupTabIcons();
@@ -144,7 +148,7 @@ public class Home extends AppCompatActivity
         if (usertype.equals(DEFAULT) || usertype.equals("0")) {
             userType.setVisibility(View.GONE);
             getSupportActionBar().setTitle("MTracker User");
-        }else {
+        } else {
             getSupportActionBar().setTitle("MTracker Admin");
         }
 
@@ -440,8 +444,6 @@ public class Home extends AppCompatActivity
     }
 
 
-
-
     final private int REQUEST_CODE_ASK_MULTIPLE_PERMISSIONS = 124;
 
     @TargetApi(Build.VERSION_CODES.M)
@@ -459,7 +461,7 @@ public class Home extends AppCompatActivity
                         Manifest.permission.READ_EXTERNAL_STORAGE,
                         Manifest.permission.WRITE_EXTERNAL_STORAGE,
                         Manifest.permission.RECORD_AUDIO,
-                       },
+                },
                 REQUEST_CODE_ASK_MULTIPLE_PERMISSIONS);
         return;
     }

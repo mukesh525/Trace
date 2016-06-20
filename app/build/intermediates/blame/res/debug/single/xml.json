@@ -1,5 +1,9 @@
 [
     {
+        "merged": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/build/intermediates/res/merged/debug/xml/settings.xml",
+        "source": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/src/main/res/xml/settings.xml"
+    },
+    {
         "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/xml/syncadapter.xml",
         "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/src/main/res/xml/syncadapter.xml"
     },
@@ -12,6 +16,10 @@
         "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/src/main/res/xml/progress.xml"
     },
     {
+        "merged": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/build/intermediates/res/merged/debug/xml/progress.xml",
+        "source": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/src/main/res/xml/progress.xml"
+    },
+    {
         "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/xml/authenticator.xml",
         "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/src/main/res/xml/authenticator.xml"
     },
@@ -20,8 +28,16 @@
         "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\src\\main\\res\\xml\\syncadapter.xml"
     },
     {
+        "merged": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/build/intermediates/res/merged/debug/xml/syncadapter.xml",
+        "source": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/src/main/res/xml/syncadapter.xml"
+    },
+    {
         "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\xml\\progress.xml",
         "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\src\\main\\res\\xml\\progress.xml"
+    },
+    {
+        "merged": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/build/intermediates/res/merged/debug/xml/authenticator.xml",
+        "source": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/src/main/res/xml/authenticator.xml"
     },
     {
         "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\xml\\authenticator.xml",

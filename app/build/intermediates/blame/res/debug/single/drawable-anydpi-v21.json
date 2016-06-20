@@ -8,20 +8,24 @@
         "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/generated/res/pngs/debug/drawable-anydpi-v21/ic_play.xml"
     },
     {
-        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/show.xml",
-        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/generated/res/pngs/debug/drawable-anydpi-v21/show.xml"
+        "merged": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/ic_menu_send.xml",
+        "source": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/build/generated/res/pngs/debug/drawable-anydpi-v21/ic_menu_send.xml"
     },
     {
         "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/ic_more.xml",
         "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/generated/res/pngs/debug/drawable-anydpi-v21/ic_more.xml"
     },
     {
-        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/ic_logout.xml",
-        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/generated/res/pngs/debug/drawable-anydpi-v21/ic_logout.xml"
-    },
-    {
         "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/ic_menu_slideshow.xml",
         "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/generated/res/pngs/debug/drawable-anydpi-v21/ic_menu_slideshow.xml"
+    },
+    {
+        "merged": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/ic_message.xml",
+        "source": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/build/generated/res/pngs/debug/drawable-anydpi-v21/ic_message.xml"
+    },
+    {
+        "merged": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/ic_delete_24dp.xml",
+        "source": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/build/generated/res/pngs/debug/drawable-anydpi-v21/ic_delete_24dp.xml"
     },
     {
         "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/ic_call.xml",
@@ -32,24 +36,32 @@
         "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/generated/res/pngs/debug/drawable-anydpi-v21/ic_call_missed.xml"
     },
     {
-        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/ic_call_missed_home.xml",
-        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/generated/res/pngs/debug/drawable-anydpi-v21/ic_call_missed_home.xml"
-    },
-    {
         "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/ic_menu_share.xml",
         "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/generated/res/pngs/debug/drawable-anydpi-v21/ic_menu_share.xml"
+    },
+    {
+        "merged": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/ic_settings.xml",
+        "source": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/build/generated/res/pngs/debug/drawable-anydpi-v21/ic_settings.xml"
+    },
+    {
+        "merged": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/show.xml",
+        "source": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/build/generated/res/pngs/debug/drawable-anydpi-v21/show.xml"
+    },
+    {
+        "merged": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/ic_share.xml",
+        "source": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/build/generated/res/pngs/debug/drawable-anydpi-v21/ic_share.xml"
     },
     {
         "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/ic_menu_manage.xml",
         "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/generated/res/pngs/debug/drawable-anydpi-v21/ic_menu_manage.xml"
     },
     {
-        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/user.xml",
-        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/generated/res/pngs/debug/drawable-anydpi-v21/user.xml"
+        "merged": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/invisible.xml",
+        "source": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/build/generated/res/pngs/debug/drawable-anydpi-v21/invisible.xml"
     },
     {
-        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/ic_delete_24dp.xml",
-        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/generated/res/pngs/debug/drawable-anydpi-v21/ic_delete_24dp.xml"
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/user.xml",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/generated/res/pngs/debug/drawable-anydpi-v21/user.xml"
     },
     {
         "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/ic_lock.xml",
@@ -60,12 +72,12 @@
         "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/generated/res/pngs/debug/drawable-anydpi-v21/ic_share.xml"
     },
     {
-        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/ic_settings.xml",
-        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/generated/res/pngs/debug/drawable-anydpi-v21/ic_settings.xml"
-    },
-    {
         "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/error.xml",
         "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/generated/res/pngs/debug/drawable-anydpi-v21/error.xml"
+    },
+    {
+        "merged": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/ic_call_incoming.xml",
+        "source": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/build/generated/res/pngs/debug/drawable-anydpi-v21/ic_call_incoming.xml"
     },
     {
         "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/ic_sync.xml",
@@ -76,24 +88,20 @@
         "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/generated/res/pngs/debug/drawable-anydpi-v21/ic_call_outgoing.xml"
     },
     {
+        "merged": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/ic_call_missed_home.xml",
+        "source": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/build/generated/res/pngs/debug/drawable-anydpi-v21/ic_call_missed_home.xml"
+    },
+    {
         "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/ic_call_incoming_home.xml",
         "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/generated/res/pngs/debug/drawable-anydpi-v21/ic_call_incoming_home.xml"
     },
     {
-        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/ic_allfeed.xml",
-        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/generated/res/pngs/debug/drawable-anydpi-v21/ic_allfeed.xml"
+        "merged": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/ic_menu_slideshow.xml",
+        "source": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/build/generated/res/pngs/debug/drawable-anydpi-v21/ic_menu_slideshow.xml"
     },
     {
-        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/settings.xml",
-        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/generated/res/pngs/debug/drawable-anydpi-v21/settings.xml"
-    },
-    {
-        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/pass.xml",
-        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/generated/res/pngs/debug/drawable-anydpi-v21/pass.xml"
-    },
-    {
-        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/invisible.xml",
-        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/generated/res/pngs/debug/drawable-anydpi-v21/invisible.xml"
+        "merged": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/ic_all.xml",
+        "source": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/build/generated/res/pngs/debug/drawable-anydpi-v21/ic_all.xml"
     },
     {
         "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/ic_overflow.xml",
@@ -108,27 +116,151 @@
         "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/generated/res/pngs/debug/drawable-anydpi-v21/ic_all_home.xml"
     },
     {
-        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/ic_menu_gallery.xml",
-        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/generated/res/pngs/debug/drawable-anydpi-v21/ic_menu_gallery.xml"
+        "merged": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/ic_all_home.xml",
+        "source": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/build/generated/res/pngs/debug/drawable-anydpi-v21/ic_all_home.xml"
     },
     {
-        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/ic_menu_camera.xml",
-        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/generated/res/pngs/debug/drawable-anydpi-v21/ic_menu_camera.xml"
+        "merged": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/ic_sync.xml",
+        "source": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/build/generated/res/pngs/debug/drawable-anydpi-v21/ic_sync.xml"
     },
     {
-        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/ic_menu_send.xml",
-        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/generated/res/pngs/debug/drawable-anydpi-v21/ic_menu_send.xml"
+        "merged": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/ic_call_incoming_home.xml",
+        "source": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/build/generated/res/pngs/debug/drawable-anydpi-v21/ic_call_incoming_home.xml"
+    },
+    {
+        "merged": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/settings.xml",
+        "source": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/build/generated/res/pngs/debug/drawable-anydpi-v21/settings.xml"
     },
     {
         "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/ic_person.xml",
         "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/generated/res/pngs/debug/drawable-anydpi-v21/ic_person.xml"
     },
     {
-        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/ic_all.xml",
-        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/generated/res/pngs/debug/drawable-anydpi-v21/ic_all.xml"
-    },
-    {
         "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/ic_call_outgoing_home.xml",
         "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/generated/res/pngs/debug/drawable-anydpi-v21/ic_call_outgoing_home.xml"
+    },
+    {
+        "merged": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/ic_menu_gallery.xml",
+        "source": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/build/generated/res/pngs/debug/drawable-anydpi-v21/ic_menu_gallery.xml"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/show.xml",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/generated/res/pngs/debug/drawable-anydpi-v21/show.xml"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/ic_logout.xml",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/generated/res/pngs/debug/drawable-anydpi-v21/ic_logout.xml"
+    },
+    {
+        "merged": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/ic_play.xml",
+        "source": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/build/generated/res/pngs/debug/drawable-anydpi-v21/ic_play.xml"
+    },
+    {
+        "merged": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/ic_call_outgoing.xml",
+        "source": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/build/generated/res/pngs/debug/drawable-anydpi-v21/ic_call_outgoing.xml"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/ic_call_missed_home.xml",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/generated/res/pngs/debug/drawable-anydpi-v21/ic_call_missed_home.xml"
+    },
+    {
+        "merged": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/ic_menu_manage.xml",
+        "source": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/build/generated/res/pngs/debug/drawable-anydpi-v21/ic_menu_manage.xml"
+    },
+    {
+        "merged": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/ic_more.xml",
+        "source": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/build/generated/res/pngs/debug/drawable-anydpi-v21/ic_more.xml"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/ic_delete_24dp.xml",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/generated/res/pngs/debug/drawable-anydpi-v21/ic_delete_24dp.xml"
+    },
+    {
+        "merged": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/ic_overflow.xml",
+        "source": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/build/generated/res/pngs/debug/drawable-anydpi-v21/ic_overflow.xml"
+    },
+    {
+        "merged": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/error.xml",
+        "source": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/build/generated/res/pngs/debug/drawable-anydpi-v21/error.xml"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/ic_settings.xml",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/generated/res/pngs/debug/drawable-anydpi-v21/ic_settings.xml"
+    },
+    {
+        "merged": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/user.xml",
+        "source": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/build/generated/res/pngs/debug/drawable-anydpi-v21/user.xml"
+    },
+    {
+        "merged": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/ic_call_outgoing_home.xml",
+        "source": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/build/generated/res/pngs/debug/drawable-anydpi-v21/ic_call_outgoing_home.xml"
+    },
+    {
+        "merged": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/ic_call.xml",
+        "source": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/build/generated/res/pngs/debug/drawable-anydpi-v21/ic_call.xml"
+    },
+    {
+        "merged": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/ic_lock.xml",
+        "source": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/build/generated/res/pngs/debug/drawable-anydpi-v21/ic_lock.xml"
+    },
+    {
+        "merged": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/ic_menu_share.xml",
+        "source": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/build/generated/res/pngs/debug/drawable-anydpi-v21/ic_menu_share.xml"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/settings.xml",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/generated/res/pngs/debug/drawable-anydpi-v21/settings.xml"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/ic_allfeed.xml",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/generated/res/pngs/debug/drawable-anydpi-v21/ic_allfeed.xml"
+    },
+    {
+        "merged": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/ic_person.xml",
+        "source": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/build/generated/res/pngs/debug/drawable-anydpi-v21/ic_person.xml"
+    },
+    {
+        "merged": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/ic_menu_camera.xml",
+        "source": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/build/generated/res/pngs/debug/drawable-anydpi-v21/ic_menu_camera.xml"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/pass.xml",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/generated/res/pngs/debug/drawable-anydpi-v21/pass.xml"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/invisible.xml",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/generated/res/pngs/debug/drawable-anydpi-v21/invisible.xml"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/ic_menu_gallery.xml",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/generated/res/pngs/debug/drawable-anydpi-v21/ic_menu_gallery.xml"
+    },
+    {
+        "merged": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/pass.xml",
+        "source": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/build/generated/res/pngs/debug/drawable-anydpi-v21/pass.xml"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/ic_menu_camera.xml",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/generated/res/pngs/debug/drawable-anydpi-v21/ic_menu_camera.xml"
+    },
+    {
+        "merged": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/ic_call_missed.xml",
+        "source": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/build/generated/res/pngs/debug/drawable-anydpi-v21/ic_call_missed.xml"
+    },
+    {
+        "merged": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/ic_logout.xml",
+        "source": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/build/generated/res/pngs/debug/drawable-anydpi-v21/ic_logout.xml"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/ic_menu_send.xml",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/generated/res/pngs/debug/drawable-anydpi-v21/ic_menu_send.xml"
+    },
+    {
+        "merged": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/ic_allfeed.xml",
+        "source": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/build/generated/res/pngs/debug/drawable-anydpi-v21/ic_allfeed.xml"
+    },
+    {
+        "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/ic_all.xml",
+        "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/generated/res/pngs/debug/drawable-anydpi-v21/ic_all.xml"
     }
 ]

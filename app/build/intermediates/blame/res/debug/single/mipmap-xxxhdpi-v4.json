@@ -1,11 +1,19 @@
 [
     {
+        "merged": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi-v4/ic_offlline.png",
+        "source": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/src/main/res/mipmap-xxxhdpi/ic_offlline.png"
+    },
+    {
         "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi-v4\\ic_launcher.png",
         "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/G:\\Dropbox\\AndroidStudioProjects\\VMC\\Tracker\\trunk\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
     },
     {
         "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi-v4/ic_offlline.png",
         "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/src/main/res/mipmap-xxxhdpi/ic_offlline.png"
+    },
+    {
+        "merged": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi-v4/ic_launcher.png",
+        "source": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png"
     },
     {
         "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi-v4/ic_launcher.png",

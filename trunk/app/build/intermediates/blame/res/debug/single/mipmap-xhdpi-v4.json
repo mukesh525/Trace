@@ -4,6 +4,14 @@
         "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/src/main/res/mipmap-xhdpi/ic_offlline.png"
     },
     {
+        "merged": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/build/intermediates/res/merged/debug/mipmap-xhdpi-v4/ic_launcher.png",
+        "source": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/src/main/res/mipmap-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/build/intermediates/res/merged/debug/mipmap-xhdpi-v4/ic_offlline.png",
+        "source": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/src/main/res/mipmap-xhdpi/ic_offlline.png"
+    },
+    {
         "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/mipmap-xhdpi-v4/ic_launcher.png",
         "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/src/main/res/mipmap-xhdpi/ic_launcher.png"
     },

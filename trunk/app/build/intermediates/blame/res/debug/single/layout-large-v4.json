@@ -2,5 +2,9 @@
     {
         "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/build/intermediates/res/merged/debug/layout-large-v4/layout_dialog.xml",
         "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/app/src/main/res/layout-large/layout_dialog.xml"
+    },
+    {
+        "merged": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/build/intermediates/res/merged/debug/layout-large-v4/layout_dialog.xml",
+        "source": "/home/gousebabjan/AndroidStudioProjects/MTracker/app/src/main/res/layout-large/layout_dialog.xml"
     }
 ]

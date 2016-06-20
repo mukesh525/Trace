@@ -8,8 +8,16 @@
         "source": "/home/mukesh/AndroidStudioProjects/Tracker/lib/build/intermediates/bundles/debug/res/drawable-mdpi-v4/navigation_up.png"
     },
     {
+        "merged": "/home/gousebabjan/AndroidStudioProjects/MTracker/lib/build/intermediates/res/merged/androidTest/debug/drawable-mdpi-v4/ic_action_create.png",
+        "source": "/home/gousebabjan/AndroidStudioProjects/MTracker/lib/build/intermediates/bundles/debug/res/drawable-mdpi-v4/ic_action_create.png"
+    },
+    {
         "merged": "/home/gousebabjan/AndroidStudioProjects/Tracker/lib/build/intermediates/res/merged/androidTest/debug/drawable-mdpi-v4/ic_action_create.png",
         "source": "/home/gousebabjan/AndroidStudioProjects/Tracker/lib/build/intermediates/bundles/debug/res/drawable-mdpi-v4/ic_action_create.png"
+    },
+    {
+        "merged": "/home/gousebabjan/AndroidStudioProjects/MTracker/lib/build/intermediates/res/merged/androidTest/debug/drawable-mdpi-v4/navigation_up.png",
+        "source": "/home/gousebabjan/AndroidStudioProjects/MTracker/lib/build/intermediates/bundles/debug/res/drawable-mdpi-v4/navigation_up.png"
     },
     {
         "merged": "/home/mukesh/AndroidStudioProjects/Tracker/lib/build/intermediates/res/merged/androidTest/debug/drawable-mdpi-v4/navigation_up_light.png",
@@ -36,12 +44,20 @@
         "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/lib/build/intermediates/bundles/debug/res/drawable-mdpi-v4/navigation_up.png"
     },
     {
+        "merged": "/home/gousebabjan/AndroidStudioProjects/MTracker/lib/build/intermediates/res/merged/androidTest/debug/drawable-mdpi-v4/ic_action_create_light.png",
+        "source": "/home/gousebabjan/AndroidStudioProjects/MTracker/lib/build/intermediates/bundles/debug/res/drawable-mdpi-v4/ic_action_create_light.png"
+    },
+    {
         "merged": "/home/mukesh/AndroidStudioProjects/Tracker/lib/build/intermediates/res/merged/androidTest/debug/drawable-mdpi-v4/ic_action_create.png",
         "source": "/home/mukesh/AndroidStudioProjects/Tracker/lib/build/intermediates/bundles/debug/res/drawable-mdpi-v4/ic_action_create.png"
     },
     {
         "merged": "/home/mukesh/AndroidStudioProjects/MTrackerr/lib/build/intermediates/res/merged/androidTest/debug/drawable-mdpi-v4/navigation_up_light.png",
         "source": "/home/mukesh/AndroidStudioProjects/MTrackerr/lib/build/intermediates/bundles/debug/res/drawable-mdpi-v4/navigation_up_light.png"
+    },
+    {
+        "merged": "/home/gousebabjan/AndroidStudioProjects/MTracker/lib/build/intermediates/res/merged/androidTest/debug/drawable-mdpi-v4/navigation_up_light.png",
+        "source": "/home/gousebabjan/AndroidStudioProjects/MTracker/lib/build/intermediates/bundles/debug/res/drawable-mdpi-v4/navigation_up_light.png"
     },
     {
         "merged": "/home/mukesh/AndroidStudioProjects/Tracker/lib/build/intermediates/res/merged/androidTest/debug/drawable-mdpi-v4/ic_action_create_light.png",

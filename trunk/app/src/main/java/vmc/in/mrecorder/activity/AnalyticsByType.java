@@ -54,7 +54,7 @@ import vmc.in.mrecorder.util.CustomTheme;
 import vmc.in.mrecorder.util.JSONParser;
 import vmc.in.mrecorder.util.Utils;
 
-public class AnalyticsByType extends AppCompatActivity implements vmc.in.mrecorder.callbacks.TAG {
+public class AnalyticsByType extends AppCompatActivity implements ConnectivityReceiver.ConnectivityReceiverListener, vmc.in.mrecorder.callbacks.TAG {
 
     private Toolbar mToolbar;
     private PieChart pieChart;
@@ -102,6 +102,7 @@ public class AnalyticsByType extends AppCompatActivity implements vmc.in.mrecord
     @Override
     protected void onResume() {
         super.onResume();
+        CallApplication.getInstance().setConnectivityListener(this);
         if (pieChart != null) {
             mainLayout.removeView(pieChart);
         }
@@ -192,6 +193,30 @@ public class AnalyticsByType extends AppCompatActivity implements vmc.in.mrecord
             }
         });
 
+    }
+
+    @Override
+    public void onNetworkConnectionChanged(boolean isConnected) {
+        showSnack(isConnected);
+    }
+
+
+
+    private void showSnack(boolean isConnected) {
+        String message;
+        int color;
+        if (!isConnected) {
+            message = "Sorry! Not connected to internet";
+            color = Color.RED;
+
+            Snackbar snackbar = Snackbar
+                    .make(coordinatorLayout, message, Snackbar.LENGTH_LONG);
+
+            View sbView = snackbar.getView();
+            TextView textView = (TextView) sbView.findViewById(android.support.design.R.id.snackbar_text);
+            textView.setTextColor(color);
+            snackbar.show();
+        }
     }
 
 

@@ -49,6 +49,7 @@ import vmc.in.mrecorder.callbacks.TAG;
 import vmc.in.mrecorder.entity.BarModel;
 import vmc.in.mrecorder.entity.PieModel;
 import vmc.in.mrecorder.myapplication.CallApplication;
+import vmc.in.mrecorder.util.ConnectivityReceiver;
 import vmc.in.mrecorder.util.CustomTheme;
 import vmc.in.mrecorder.util.JSONParser;
 import vmc.in.mrecorder.util.Utils;
@@ -116,7 +117,7 @@ public class AnalyticsByType extends AppCompatActivity implements vmc.in.mrecord
     }
 
     private void getData() {
-        if (Utils.onlineStatus2(AnalyticsByType.this)) {
+        if (ConnectivityReceiver.isConnected()) {
             new GetPieChartData().execute();
             if (offline.getVisibility() == View.VISIBLE) {
                 offline.setVisibility(View.GONE);

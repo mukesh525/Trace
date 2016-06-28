@@ -2,46 +2,41 @@ package vmc.in.mrecorder.activity;
 
 
 import android.Manifest;
-import android.annotation.TargetApi;
 import android.app.NotificationManager;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
-import android.os.Build;
+import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.text.Editable;
 import android.text.InputType;
-import android.text.TextWatcher;
-import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.karumi.dexter.Dexter;
+import com.karumi.dexter.MultiplePermissionsReport;
+import com.karumi.dexter.PermissionToken;
+import com.karumi.dexter.listener.PermissionGrantedResponse;
+import com.karumi.dexter.listener.PermissionRequest;
+import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 
 import org.json.JSONObject;
 
@@ -53,18 +48,18 @@ import vmc.in.mrecorder.callbacks.TAG;
 import vmc.in.mrecorder.fragment.OTPDialogFragment;
 import vmc.in.mrecorder.gcm.GCMClientManager;
 import vmc.in.mrecorder.myapplication.CallApplication;
-import vmc.in.mrecorder.util.CustomTheme;
+import vmc.in.mrecorder.util.ConnectivityReceiver;
 import vmc.in.mrecorder.util.JSONParser;
 import vmc.in.mrecorder.util.Utils;
 
-public class Login extends AppCompatActivity implements View.OnClickListener, OTPDialogFragment.OTPDialogListener, TAG {
+public class Login extends AppCompatActivity implements ConnectivityReceiver.ConnectivityReceiverListener,View.OnClickListener, OTPDialogFragment.OTPDialogListener, TAG {
 
     private static Login inst;
     Button btn_login, btn_getOtp;
 
     EditText et_email, et_password;
     CheckBox check_box, check_box_show_password;
-    TextView tv_otp, link_forgot_password;
+    TextView tv_otp;
     String email, password;
     private CoordinatorLayout coordinatorLayout;
     private Toolbar toolbar;
@@ -77,7 +72,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_login);
         coordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordi_layout);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -89,16 +83,20 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
         check_box = (CheckBox) findViewById(R.id.checkBox_forgot);
         et_email = (EditText) findViewById(R.id.input_email);
         et_password = (EditText) findViewById(R.id.input_password);
-        if (Build.VERSION.SDK_INT == Build.VERSION_CODES.M) {
-            getAllPermision();
-        }
+
+//        if (Build.VERSION.SDK_INT == Build.VERSION_CODES.M) {
+//            getAllPermision();
+//
+//        }
+
+
         if (android.os.Build.VERSION.SDK_INT > 19) {
             btn_login.setBackgroundResource(R.drawable.button_background);
 
         }
         btn_login.setOnClickListener(this);
         btn_getOtp.setOnClickListener(this);
-      //  link_forgot_password.setOnClickListener(this);
+        //  link_forgot_password.setOnClickListener(this);
         load();
         cancelNotification(Login.this, NOTIFICATION_ID);
 
@@ -149,13 +147,15 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
                 return false;
             }
         });
+
+
         // Log.d("android_id", CallApplication.getDeviceId());
     }
 
 
     public void onRegisterGcm(final String regid) {
 
-        if (Utils.onlineStatus2(Login.this)) {
+        if (ConnectivityReceiver.isConnected()) {
             new RegisterGcm(regid).execute();
         } else {
             Toast.makeText(Login.this, "No Internet Connection", Toast.LENGTH_SHORT).show();
@@ -225,6 +225,9 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
     @Override
     public void onClick(View v) {
         hideKeyboard();
+
+        permissions();
+
         et_password.clearFocus();
         et_email.clearFocus();
 
@@ -447,7 +450,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
     public synchronized void GetOtp() {
         email = et_email.getText().toString().trim();
         password = et_password.getText().toString().trim();
-        if (Utils.onlineStatus2(Login.this)) {
+        if (ConnectivityReceiver.isConnected()) {
             if (tv_otp.getText().toString().length() == 0 || tv_otp.getText().toString().equals("")) {
                 btn_login.setText("Resend OTP");
             }
@@ -538,7 +541,11 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
                 }
                 Log.d("OTP", data.toString());
 
+                if (tv_otp.getVisibility() == View.GONE) {
+                    tv_otp.setVisibility(View.VISIBLE);
+                }
                 tv_otp.setHint("Waiting for OTP");
+
                 if (code.equals("202")) {
                     btn_login.setText("Get OTP");
                     Snackbar.make(coordinatorLayout, msg, Snackbar.LENGTH_LONG).show();
@@ -562,10 +569,15 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
 
 
     public void StartLogin() {
-        if (Utils.onlineStatus2(Login.this)) {
-            new StartLogin().execute();
 
-        } else {
+        if(ConnectivityReceiver.isConnected()){
+            new StartLogin().execute();
+        }
+//        if (Utils.onlineStatus2(Login.this)) {
+//            new StartLogin().execute();
+//
+//        }
+        else {
 
             Snackbar snack = Snackbar.make(coordinatorLayout, "No Internet Connection", Snackbar.LENGTH_SHORT)
                     .setAction(getString(R.string.text_tryAgain), new View.OnClickListener() {
@@ -748,107 +760,55 @@ public class Login extends AppCompatActivity implements View.OnClickListener, OT
         }
     }
 
-    final private int REQUEST_CODE_ASK_MULTIPLE_PERMISSIONS = 124;
 
-    @TargetApi(Build.VERSION_CODES.M)
-    private void getAllPermision() {
-        List<String> permissionsNeeded = new ArrayList<String>();
+    @Override
+    protected void onResume() {
+        super.onResume();
+        CallApplication.getInstance().setConnectivityListener(this);
+    }
 
-        final List<String> permissionsList = new ArrayList<String>();
-        if (!addPermission(permissionsList, Manifest.permission.CALL_PHONE))
-            permissionsNeeded.add("CALL PHONE");
-        if (!addPermission(permissionsList, Manifest.permission.RECORD_AUDIO))
-            permissionsNeeded.add("RECORD AUDIO");
-        if (!addPermission(permissionsList, Manifest.permission.PROCESS_OUTGOING_CALLS))
-            permissionsNeeded.add("PROCESS OUTGOING CALLS ");
-        if (!addPermission(permissionsList, Manifest.permission.WRITE_CALL_LOG))
-            permissionsNeeded.add("WRITE CALL LOG");
-        if (!addPermission(permissionsList, Manifest.permission.READ_SMS))
-            permissionsNeeded.add("READ SMS");
-        if (!addPermission(permissionsList, Manifest.permission.READ_CONTACTS))
-            permissionsNeeded.add("READ CONTACTS");
-        if (!addPermission(permissionsList, Manifest.permission.READ_CALL_LOG))
-            permissionsNeeded.add("READ CALL LOG");
-        if (!addPermission(permissionsList, Manifest.permission.ACCESS_NETWORK_STATE))
-            permissionsNeeded.add("ACCESS NETWORK STATE");
-        if (!addPermission(permissionsList, Manifest.permission.ACCESS_WIFI_STATE))
-            permissionsNeeded.add("ACCESS WIFI STATE");
-        if (!addPermission(permissionsList, Manifest.permission.READ_PHONE_STATE))
-            permissionsNeeded.add("READ PHONE STATE");
-        if (!addPermission(permissionsList, Manifest.permission.MODIFY_AUDIO_SETTINGS))
-            permissionsNeeded.add("MODIFY AUDIO SETTINGS");
-        if (!addPermission(permissionsList, Manifest.permission.RECEIVE_BOOT_COMPLETED))
-            permissionsNeeded.add("RECEIVE BOOT COMPLETED");
-        if (!addPermission(permissionsList, Manifest.permission.VIBRATE))
-            permissionsNeeded.add("VIBRATE");
-        if (!addPermission(permissionsList, Manifest.permission.WAKE_LOCK))
-            permissionsNeeded.add("WAKE LOCK");
-        if (!addPermission(permissionsList, Manifest.permission.GET_ACCOUNTS))
-            permissionsNeeded.add("GET ACCOUNTS");
-        if (!addPermission(permissionsList, Manifest.permission.READ_EXTERNAL_STORAGE))
-            permissionsNeeded.add("READ EXTERNAL STORAGE");
-        if (!addPermission(permissionsList, Manifest.permission.WRITE_EXTERNAL_STORAGE))
-            permissionsNeeded.add("WRITE EXTERNAL STORAGE");
-        if (!addPermission(permissionsList, Manifest.permission.ACCESS_LOCATION_EXTRA_COMMANDS))
-            permissionsNeeded.add("ACCESS LOCATION EXTRA COMMANDS");
-        if (!addPermission(permissionsList, Manifest.permission.ACCESS_COARSE_LOCATION))
-            permissionsNeeded.add("ACCESS COARSE LOCATION");
-        if (!addPermission(permissionsList, Manifest.permission.ACCESS_FINE_LOCATION))
-            permissionsNeeded.add("ACCESS FINE LOCATION");
-        if (!addPermission(permissionsList, Manifest.permission.RECEIVE_SMS))
-            permissionsNeeded.add("RECEIVE SMS");
-        if (!addPermission(permissionsList, Manifest.permission.READ_SMS))
-            permissionsNeeded.add("READ SMS");
-        if (!addPermission(permissionsList, Manifest.permission.SEND_SMS))
-            permissionsNeeded.add("SEND SMS");
-        if (!addPermission(permissionsList, Manifest.permission.READ_SYNC_STATS))
-            permissionsNeeded.add("READ SYNC STATS");
-        if (!addPermission(permissionsList, Manifest.permission.WRITE_SYNC_SETTINGS))
-            permissionsNeeded.add("WRITE SYNC SETTINGS");
-        if (!addPermission(permissionsList, Manifest.permission.ACCESS_NETWORK_STATE))
-            permissionsNeeded.add("ACCESS NETWORK STATE");
-
-        if (permissionsList.size() > 0) {
-            if (permissionsNeeded.size() > 0) {
-                // Need Rationale
-                String message = "You need to grant access to " + permissionsNeeded.get(0);
-                for (int i = 1; i < permissionsNeeded.size(); i++)
-                    message = message + ", " + permissionsNeeded.get(i);
-                showMessageOKCancel(message,
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                requestPermissions(permissionsList.toArray(new String[permissionsList.size()]),
-                                        REQUEST_CODE_ASK_MULTIPLE_PERMISSIONS);
-                            }
-                        });
-                return;
+    public void permissions() {
+        Dexter.checkPermissions(new MultiplePermissionsListener() {
+            @Override
+            public void onPermissionsChecked(MultiplePermissionsReport report) {
+                List<String> grantedPermissions = new ArrayList<String>();
+                for (PermissionGrantedResponse response : report.getGrantedPermissionResponses()) {
+                    if (!grantedPermissions.contains(response.getPermissionName())) {
+                        grantedPermissions.add(response.getPermissionName());
+                    }
+                }
+               // Toast.makeText(getApplicationContext(), "Granted permissions:" + grantedPermissions.toString(), Toast.LENGTH_LONG).show();
             }
-            requestPermissions(permissionsList.toArray(new String[permissionsList.size()]),
-                    REQUEST_CODE_ASK_MULTIPLE_PERMISSIONS);
-            return;
-        }
 
-
+            @Override
+            public void onPermissionRationaleShouldBeShown(List<PermissionRequest> permissions, PermissionToken token) {
+                token.continuePermissionRequest();
+            }
+        }, Manifest.permission.READ_SMS, Manifest.permission.READ_CONTACTS, Manifest.permission.RECORD_AUDIO, Manifest.permission.READ_PHONE_STATE, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.ACCESS_COARSE_LOCATION);
     }
 
-    private void showMessageOKCancel(String message, DialogInterface.OnClickListener okListener) {
-        new AlertDialog.Builder(Login.this)
-                .setMessage(message)
-                .setPositiveButton("OK", okListener)
-                .setNegativeButton("Cancel", null)
-                .create()
-                .show();
+
+    @Override
+    public void onNetworkConnectionChanged(boolean isConnected) {
+        showSnack(isConnected);
     }
 
-    @TargetApi(Build.VERSION_CODES.M)
-    private boolean addPermission(List<String> permissionsList, String permission) {
-        if (checkSelfPermission(permission) != PackageManager.PERMISSION_GRANTED) {
-            permissionsList.add(permission);
-            // Check for Rationale Option
-            if (!shouldShowRequestPermissionRationale(permission))
-                return false;
+
+
+    private void showSnack(boolean isConnected) {
+        String message;
+        int color;
+        if (!isConnected) {
+            message = "Sorry! Not connected to internet";
+            color = Color.RED;
+
+            Snackbar snackbar = Snackbar
+                    .make(coordinatorLayout, message, Snackbar.LENGTH_LONG);
+
+            View sbView = snackbar.getView();
+            TextView textView = (TextView) sbView.findViewById(android.support.design.R.id.snackbar_text);
+            textView.setTextColor(color);
+            snackbar.show();
         }
-        return true;
     }
 }

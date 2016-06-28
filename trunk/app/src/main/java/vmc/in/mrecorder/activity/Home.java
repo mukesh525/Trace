@@ -52,6 +52,7 @@ import vmc.in.mrecorder.myapplication.CallApplication;
 import vmc.in.mrecorder.provider.GPSTracker;
 import vmc.in.mrecorder.service.CallRecorderServiceAll;
 import vmc.in.mrecorder.syncadapter.SyncUtils;
+import vmc.in.mrecorder.util.ConnectivityReceiver;
 import vmc.in.mrecorder.util.CustomTheme;
 import vmc.in.mrecorder.util.Utils;
 
@@ -61,7 +62,7 @@ import java.io.File;
 
 
 public class Home extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, TAG {
+        implements  ConnectivityReceiver.ConnectivityReceiverListener,NavigationView.OnNavigationItemSelectedListener, TAG {
 
     private Toolbar mToolbar;
     public FloatingActionButton floatingActionButton, floatingActionButtonSync;
@@ -257,7 +258,29 @@ public class Home extends AppCompatActivity
         // Showing Alert Message
         alertDialog.show();
     }
+    @Override
+    public void onNetworkConnectionChanged(boolean isConnected) {
+        showSnack(isConnected);
+    }
 
+
+
+    private void showSnack(boolean isConnected) {
+        String message;
+        int color;
+        if (!isConnected) {
+            message = "Sorry! Not connected to internet";
+            color = Color.RED;
+
+            Snackbar snackbar = Snackbar
+                    .make(coordinatorLayout, message, Snackbar.LENGTH_LONG);
+
+            View sbView = snackbar.getView();
+            TextView textView = (TextView) sbView.findViewById(android.support.design.R.id.snackbar_text);
+            textView.setTextColor(color);
+            snackbar.show();
+        }
+    }
 
     class MyPagerAdapter extends FragmentStatePagerAdapter {
         public MyPagerAdapter(FragmentManager fm) {
@@ -306,6 +329,7 @@ public class Home extends AppCompatActivity
     protected void onResume() {
         super.onResume();
         showprefrenceValues();
+        CallApplication.getInstance().setConnectivityListener(this);
         if (!Utils.isLogin(Home.this)) {
             Intent intent = new Intent(Home.this, Login.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |

@@ -182,6 +182,7 @@ public class Utils implements TAG {
     public static void isLogout(Context context) {
         SharedPreferences sharedPrefs = PreferenceManager
                 .getDefaultSharedPreferences(context);
+
         File sampleDir;
         File sample;
         String selectedFolder = sharedPrefs.getString("store_path", "null");
@@ -300,22 +301,6 @@ public class Utils implements TAG {
         return msg == null
                 || msg.trim().equals("")
                 || msg.isEmpty();
-    }
-
-    public static boolean onlineStatus1(Context activityContext) {
-        ConnectivityManager cm = (ConnectivityManager)
-                activityContext.getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo[] activeNetInfo = cm.getAllNetworkInfo();
-        boolean isConnected = false;
-        for (NetworkInfo i : activeNetInfo) {
-            if (i.getState() == NetworkInfo.State.CONNECTED) {
-                isConnected = true;
-                break;
-            }
-        }
-
-
-        return isConnected;
     }
 
 

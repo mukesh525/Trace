@@ -43,6 +43,7 @@ import vmc.in.mrecorder.callbacks.TAG;
 import vmc.in.mrecorder.entity.BarModel;
 import vmc.in.mrecorder.entity.PieModel;
 import vmc.in.mrecorder.myapplication.CallApplication;
+import vmc.in.mrecorder.util.ConnectivityReceiver;
 import vmc.in.mrecorder.util.CustomTheme;
 import vmc.in.mrecorder.util.JSONParser;
 import vmc.in.mrecorder.util.Utils;
@@ -162,7 +163,7 @@ public class AnalyticsByEmp extends AppCompatActivity implements vmc.in.mrecorde
 
     private void getData() {
 
-        if (Utils.onlineStatus2(AnalyticsByEmp.this)) {
+        if (ConnectivityReceiver.isConnected()) {
             new GetBarChartData().execute();
             if (offline.getVisibility() == View.VISIBLE) {
                 offline.setVisibility(View.GONE);

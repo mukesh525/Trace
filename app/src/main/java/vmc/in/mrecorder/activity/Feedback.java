@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
@@ -24,12 +25,13 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import vmc.in.mrecorder.R;
 import vmc.in.mrecorder.callbacks.TAG;
+import vmc.in.mrecorder.myapplication.CallApplication;
 import vmc.in.mrecorder.util.ConnectivityReceiver;
 import vmc.in.mrecorder.util.CustomTheme;
 import vmc.in.mrecorder.util.JSONParser;
 import vmc.in.mrecorder.util.Utils;
 
-public class Feedback extends AppCompatActivity implements TAG {
+public class Feedback extends AppCompatActivity implements ConnectivityReceiver.ConnectivityReceiverListener, TAG {
     @InjectView(R.id.etfeedback)
     EditText etFeedback;
     @InjectView(R.id.button)
@@ -39,6 +41,7 @@ public class Feedback extends AppCompatActivity implements TAG {
     String feedbackmsg;
     private Toolbar toolbar;
     private String authkey;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -120,7 +123,35 @@ public class Feedback extends AppCompatActivity implements TAG {
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        CallApplication.getInstance().setConnectivityListener(this);
+    }
 
+    @Override
+    public void onNetworkConnectionChanged(boolean isConnected) {
+        showSnack(isConnected);
+    }
+
+
+
+    private void showSnack(boolean isConnected) {
+        String message;
+        int color;
+        if (!isConnected) {
+            message = "Sorry! Not connected to internet";
+            color = Color.RED;
+
+            Snackbar snackbar = Snackbar
+                    .make(mroot, message, Snackbar.LENGTH_LONG);
+
+            View sbView = snackbar.getView();
+            TextView textView = (TextView) sbView.findViewById(android.support.design.R.id.snackbar_text);
+            textView.setTextColor(color);
+            snackbar.show();
+        }
+    }
 
     class SubmitUpdateFeedBack extends AsyncTask<Void, Void, String> {
         String message = "n";

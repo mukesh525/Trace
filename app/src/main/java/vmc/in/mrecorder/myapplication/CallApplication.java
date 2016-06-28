@@ -9,12 +9,15 @@ import android.content.SharedPreferences.Editor;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 
+import com.karumi.dexter.Dexter;
+
 import java.util.UUID;
 
 import vmc.in.mrecorder.callbacks.TAG;
 import vmc.in.mrecorder.datahandler.MDatabase;
 import vmc.in.mrecorder.service.CallRecorderServiceAll;
 import vmc.in.mrecorder.syncadapter.SyncUtils;
+import vmc.in.mrecorder.util.ConnectivityReceiver;
 import vmc.in.mrecorder.util.Utils;
 
 public class CallApplication extends Application implements TAG, SharedPreferences.OnSharedPreferenceChangeListener {
@@ -29,9 +32,12 @@ public class CallApplication extends Application implements TAG, SharedPreferenc
     public void onCreate() {
         // TODO Auto-generated method stub
         super.onCreate();
+        Dexter.initialize(this);
+        mApplication = this;
+
         SyncUtils.CreateSyncAccount(getBaseContext());
         Log.e("application", "created");
-        mApplication = this;
+
         //try{
         sp = getApplicationContext().getSharedPreferences("com.example.call", Context.MODE_PRIVATE);
 
@@ -172,5 +178,9 @@ public class CallApplication extends Application implements TAG, SharedPreferenc
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         SyncUtils.CreateSyncAccount(getBaseContext());
+    }
+
+    public void setConnectivityListener(ConnectivityReceiver.ConnectivityReceiverListener listener) {
+        ConnectivityReceiver.connectivityReceiverListener = listener;
     }
 }

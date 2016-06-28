@@ -38,6 +38,7 @@ import vmc.in.mrecorder.callbacks.TAG;
 import vmc.in.mrecorder.datahandler.MDatabase;
 import vmc.in.mrecorder.entity.CallData;
 import vmc.in.mrecorder.myapplication.CallApplication;
+import vmc.in.mrecorder.util.ConnectivityReceiver;
 import vmc.in.mrecorder.util.JSONParser;
 import vmc.in.mrecorder.util.Utils;
 
@@ -164,7 +165,7 @@ public class OutboundCalls extends Fragment implements SwipeRefreshLayout.OnRefr
     }
 
     protected void DownloadCalls() {
-        if (Utils.onlineStatus1(getActivity())) {
+        if (ConnectivityReceiver.isConnected()) {
             new DownloadCallData().execute();
         } else {
             if (swipeRefreshLayout.isRefreshing()) {
@@ -195,7 +196,7 @@ public class OutboundCalls extends Fragment implements SwipeRefreshLayout.OnRefr
     }
 
     protected void DownloadMore() {
-        if (Utils.onlineStatus1(getActivity())) {
+        if (ConnectivityReceiver.isConnected()) {
             new DownloadMoreData().execute();
         } else {
             if (swipeRefreshLayout.isRefreshing()) {

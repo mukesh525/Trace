@@ -44,5 +44,7 @@ dependencies {
     compile 'de.hdodenhof:circleimageview:2.0.0'
     compile 'com.getbase:floatingactionbutton:1.10.0'
     compile 'com.github.PhilJay:MPAndroidChart:v2.0.9'
+
+    compile 'com.karumi:dexter:2.2.2'
 }
 

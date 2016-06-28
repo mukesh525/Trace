@@ -32,6 +32,7 @@ import vmc.in.mrecorder.R;
 import vmc.in.mrecorder.activity.Home;
 import vmc.in.mrecorder.callbacks.TAG;
 import vmc.in.mrecorder.entity.CallData;
+import vmc.in.mrecorder.util.ConnectivityReceiver;
 import vmc.in.mrecorder.util.CustomTheme;
 import vmc.in.mrecorder.util.Utils;
 
@@ -87,7 +88,7 @@ public class Calls_Adapter extends RecyclerView.Adapter<Calls_Adapter.CallViewHo
             holder.img_play.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (Utils.onlineStatus1(context)) {
+                    if (ConnectivityReceiver.isConnected()) {
                         if (!Utils.isEmpty(ci.getFilename())) {
                             ((Home) context).playAudio(ci.getFilename());
                         }

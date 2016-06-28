@@ -24,6 +24,7 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import vmc.in.mrecorder.R;
 import vmc.in.mrecorder.callbacks.TAG;
+import vmc.in.mrecorder.util.ConnectivityReceiver;
 import vmc.in.mrecorder.util.CustomTheme;
 import vmc.in.mrecorder.util.JSONParser;
 import vmc.in.mrecorder.util.Utils;
@@ -99,7 +100,7 @@ public class Feedback extends AppCompatActivity implements TAG {
     //
     public void UpdateFeedBack() {
 
-        if (Utils.onlineStatus2(Feedback.this)) {
+        if (ConnectivityReceiver.isConnected()) {
             new SubmitUpdateFeedBack().execute();
         } else {
             Snackbar snack = Snackbar.make(mroot, "No Internet Connection", Snackbar.LENGTH_SHORT)

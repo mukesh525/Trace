@@ -6,6 +6,8 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.WindowManager;
 
+import com.karumi.dexter.Dexter;
+
 import vmc.in.mrecorder.R;
 import vmc.in.mrecorder.callbacks.TAG;
 import vmc.in.mrecorder.util.Utils;

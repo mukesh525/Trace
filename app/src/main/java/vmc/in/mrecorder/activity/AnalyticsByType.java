@@ -20,6 +20,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.RequestQueue;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.Legend;
@@ -49,9 +50,12 @@ import vmc.in.mrecorder.callbacks.TAG;
 import vmc.in.mrecorder.entity.BarModel;
 import vmc.in.mrecorder.entity.PieModel;
 import vmc.in.mrecorder.myapplication.CallApplication;
+import vmc.in.mrecorder.parser.Parser;
+import vmc.in.mrecorder.parser.Requestor;
 import vmc.in.mrecorder.util.ConnectivityReceiver;
 import vmc.in.mrecorder.util.CustomTheme;
 import vmc.in.mrecorder.util.JSONParser;
+import vmc.in.mrecorder.util.SingleTon;
 import vmc.in.mrecorder.util.Utils;
 
 public class AnalyticsByType extends AppCompatActivity implements ConnectivityReceiver.ConnectivityReceiverListener, vmc.in.mrecorder.callbacks.TAG {
@@ -73,6 +77,9 @@ public class AnalyticsByType extends AppCompatActivity implements ConnectivityRe
     private JSONObject response;
     private JSONArray records;
     private String count;
+    private ArrayList<PieModel> pieModel;
+    private RequestQueue requestQueue;
+    private SingleTon volleySingleton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,7 +97,8 @@ public class AnalyticsByType extends AppCompatActivity implements ConnectivityRe
         tv_noResponse = (TextView) findViewById(R.id.tv_noresponse);
         coordinatorLayout = (RelativeLayout) findViewById(R.id.coordi_layout);
         addItemsToSpinner();
-
+        volleySingleton = SingleTon.getInstance();
+        requestQueue = volleySingleton.getRequestQueue();
         offline.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -263,7 +271,7 @@ public class AnalyticsByType extends AppCompatActivity implements ConnectivityRe
 
         pieChart.animateY(5000);
 
-        pieChart.saveToGallery("/sd/mychart.jpg", 85); // 85 is the quality of the image
+     //   pieChart.saveToGallery("/sd/mychart.jpg", 85); // 85 is the quality of the image
 
         pieChart.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
             @Override
@@ -294,42 +302,43 @@ public class AnalyticsByType extends AppCompatActivity implements ConnectivityRe
 
 
             try {
-                Log.d("TAG", reportype);
-                Log.d("TAG", CallApplication.getInstance().getDeviceId());
-                Log.d("TAG", AUTHKEY);
-
-                response = JSONParser.getEmpdata(TYPEREPORT_URL, reportype, CallApplication.getInstance().getDeviceId(), Utils.getFromPrefs(AnalyticsByType.this, AUTHKEY, "n"));
-                Log.d("TAG", response.toString());
-                Log.d("TAG", Utils.getFromPrefs(AnalyticsByType.this, AUTHKEY, "n"));
-
-                if (response != null)
-                    pieModels = new ArrayList<PieModel>();
-                if (response.has(CODE))
-                    code = response.getString(CODE);
-
-                if (response.has(RECORDS)) {
-                    records = response.getJSONArray(RECORDS);
-                    if (records.length() > 0) {
-
-                        for (int i = 0; i < records.length(); i++) {
-                            JSONObject jsonobj = records.getJSONObject(i);
-
-                            PieModel pieModel = new PieModel();
-                            if (jsonobj.has(CALLTYPEE)) {
-
-                                pieModel.setCalltype(jsonobj.getString(CALLTYPEE).equals("0") ? MISSED :
-                                        jsonobj.getString(CALLTYPEE).equals("1") ? INCOMING : OUTGOING);
-                            }
-                            if (jsonobj.has(COUNT)) {
-                                pieModel.setCount(jsonobj.getString(COUNT));
-                            }
-
-
-                            pieModels.add(pieModel);
-                        }
-
-                    }
-                }
+//                Log.d("TAG", reportype);
+//                Log.d("TAG", CallApplication.getInstance().getDeviceId());
+//                Log.d("TAG", AUTHKEY);
+                pieModels = new ArrayList<PieModel>();
+                //response = JSONParser.getEmpdata(TYPEREPORT_URL, reportype, CallApplication.getInstance().getDeviceId(), Utils.getFromPrefs(AnalyticsByType.this, AUTHKEY, "n"));
+                pieModels = Parser.ParseTypeResponse(Requestor.requestByType(requestQueue,TYPEREPORT_URL, reportype, CallApplication.getInstance().getDeviceId(), Utils.getFromPrefs(AnalyticsByType.this, AUTHKEY, "n")));
+//                Log.d("TAG", response.toString());
+//                Log.d("TAG", Utils.getFromPrefs(AnalyticsByType.this, AUTHKEY, "n"));
+//
+//                if (response != null)
+//                    pieModels = new ArrayList<PieModel>();
+//                if (response.has(CODE))
+//                    code = response.getString(CODE);
+//
+//                if (response.has(RECORDS)) {
+//                    records = response.getJSONArray(RECORDS);
+//                    if (records.length() > 0) {
+//
+//                        for (int i = 0; i < records.length(); i++) {
+//                            JSONObject jsonobj = records.getJSONObject(i);
+//
+//                            PieModel pieModel = new PieModel();
+//                            if (jsonobj.has(CALLTYPEE)) {
+//
+//                                pieModel.setCalltype(jsonobj.getString(CALLTYPEE).equals("0") ? MISSED :
+//                                        jsonobj.getString(CALLTYPEE).equals("1") ? INCOMING : OUTGOING);
+//                            }
+//                            if (jsonobj.has(COUNT)) {
+//                                pieModel.setCount(jsonobj.getString(COUNT));
+//                            }
+//
+//
+//                            pieModels.add(pieModel);
+//                        }
+//
+//                    }
+//                }
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -346,8 +355,8 @@ public class AnalyticsByType extends AppCompatActivity implements ConnectivityRe
 
         @Override
         protected void onPostExecute(ArrayList<PieModel> models) {
-            if (models != null && code != null) {
-                if (code.equals("400")) {
+            if (models != null && Parser.code!= null) {
+                if (Parser.code.equals("400")) {
                     if (models.size() > 0) {
                         setPieChart(models);
                     } else {
@@ -358,10 +367,10 @@ public class AnalyticsByType extends AppCompatActivity implements ConnectivityRe
                     }
 
 
-                } else if (code.equals("202") || code.equals("401")) {
+                } else if (Parser.code.equals("202") ||Parser.code.equals("401")) {
                     Toast.makeText(getApplicationContext(), "You have been logout login to continue",
                             Toast.LENGTH_LONG).show();
-                } else if (code.equals("404")) {
+                } else if (Parser.code.equals("404")) {
                     if (pieChart != null) {
                         mainLayout.removeView(pieChart);
                     }

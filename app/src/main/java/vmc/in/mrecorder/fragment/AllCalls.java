@@ -1,17 +1,11 @@
 package vmc.in.mrecorder.fragment;
 
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
-import android.support.design.widget.CoordinatorLayout;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
@@ -21,20 +15,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.android.volley.RequestQueue;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.xml.sax.Parser;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 
 import vmc.in.mrecorder.R;
 import vmc.in.mrecorder.activity.Home;
@@ -46,8 +37,10 @@ import vmc.in.mrecorder.callbacks.TAG;
 import vmc.in.mrecorder.datahandler.MDatabase;
 import vmc.in.mrecorder.entity.CallData;
 import vmc.in.mrecorder.myapplication.CallApplication;
+import vmc.in.mrecorder.parser.Requestor;
 import vmc.in.mrecorder.util.ConnectivityReceiver;
 import vmc.in.mrecorder.util.JSONParser;
+import vmc.in.mrecorder.util.SingleTon;
 import vmc.in.mrecorder.util.Utils;
 
 
@@ -68,7 +61,8 @@ public class AllCalls extends Fragment implements SwipeRefreshLayout.OnRefreshLi
     private String authkey;
     private SharedPreferences prefs;
     private FloatingActionsMenu mroot;
-
+    private RequestQueue requestQueue;
+    private SingleTon volleySingleton;
     public AllCalls() {
         // Required empty public constructor
     }
@@ -95,7 +89,8 @@ public class AllCalls extends Fragment implements SwipeRefreshLayout.OnRefreshLi
         swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.SwipefollowUp);
         //  mroot = (RelativeLayout) view.findViewById(R.id.fragment_followup);
         mroot = ((Home) getActivity()).fabMenu;
-
+        volleySingleton = SingleTon.getInstance();
+        requestQueue = volleySingleton.getRequestQueue();
         mprogressLayout = (LinearLayout) view.findViewById(R.id.mprogressLayout);
         retrylayout = (LinearLayout) view.findViewById(R.id.retryLayout);
         pdloadmore = (LinearLayout) view.findViewById(R.id.loadmorepd1);
@@ -120,6 +115,9 @@ public class AllCalls extends Fragment implements SwipeRefreshLayout.OnRefreshLi
                 }
 
             }
+
+
+
 
             @Override
             public void onLoadUp() {
@@ -284,8 +282,11 @@ public class AllCalls extends Fragment implements SwipeRefreshLayout.OnRefreshLi
             /// TODO Auto-generated method stub
             JSONObject response = null;
             try {
-                response = JSONParser.getCallsData(GET_CALL_LIST, authkey, "10", offset + "",
+
+                response = Requestor.requestGetCalls(requestQueue,GET_CALL_LIST, authkey, "10", offset + "",
                         CallApplication.getInstance().getDeviceId(), TYPE_ALL);
+//                response = JSONParser.getCallsData(GET_CALL_LIST, authkey, "10", offset + "",
+//                        CallApplication.getInstance().getDeviceId(), TYPE_ALL);
                 Log.d(TAG, response.toString());
             } catch (Exception e) {
                 Log.d("ERROR",e.getMessage().toString());
@@ -305,7 +306,7 @@ public class AllCalls extends Fragment implements SwipeRefreshLayout.OnRefreshLi
                         msg = response.getString(MESSAGE);
                     }
 
-                    callDataArrayList = vmc.in.mrecorder.util.Parser.ParseData(response);
+                    callDataArrayList = vmc.in.mrecorder.parser.Parser.ParseData(response);
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -414,8 +415,11 @@ public class AllCalls extends Fragment implements SwipeRefreshLayout.OnRefreshLi
             /// TODO Auto-generated method stub
             JSONObject response = null;
             try {
-                response = JSONParser.getCallsData(GET_CALL_LIST, authkey, "10", offset + "",
+
+                response = Requestor.requestGetCalls(requestQueue,GET_CALL_LIST, authkey, "10", offset + "",
                         CallApplication.getInstance().getDeviceId(), TYPE_ALL);
+//                response = JSONParser.getCallsData(GET_CALL_LIST, authkey, "10", offset + "",
+//                        CallApplication.getInstance().getDeviceId(), TYPE_ALL);
                 Log.d(TAG, response.toString());
             } catch (Exception e) {
             }
@@ -433,7 +437,7 @@ public class AllCalls extends Fragment implements SwipeRefreshLayout.OnRefreshLi
                     }
 
 
-                    data = vmc.in.mrecorder.util.Parser.ParseData(response);
+                    data = vmc.in.mrecorder.parser.Parser.ParseData(response);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

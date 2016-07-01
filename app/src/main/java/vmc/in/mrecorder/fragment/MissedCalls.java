@@ -15,19 +15,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.android.volley.RequestQueue;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 
 import vmc.in.mrecorder.R;
 import vmc.in.mrecorder.activity.Home;
@@ -38,8 +36,11 @@ import vmc.in.mrecorder.callbacks.TAG;
 import vmc.in.mrecorder.datahandler.MDatabase;
 import vmc.in.mrecorder.entity.CallData;
 import vmc.in.mrecorder.myapplication.CallApplication;
+import vmc.in.mrecorder.parser.Parser;
+import vmc.in.mrecorder.parser.Requestor;
 import vmc.in.mrecorder.util.ConnectivityReceiver;
 import vmc.in.mrecorder.util.JSONParser;
+import vmc.in.mrecorder.util.SingleTon;
 import vmc.in.mrecorder.util.Utils;
 
 /**
@@ -59,7 +60,8 @@ public class MissedCalls extends Fragment  implements SwipeRefreshLayout.OnRefre
     private int offset = 0;
     private int totalCount = 0;
     private String authkey;
-
+    private RequestQueue requestQueue;
+    private SingleTon volleySingleton;
     public MissedCalls() {
         // Required empty public constructor
     }
@@ -84,6 +86,8 @@ public class MissedCalls extends Fragment  implements SwipeRefreshLayout.OnRefre
         recyclerView.setLayoutManager(mLayoutManager);
         authkey =Utils.getFromPrefs(getActivity(),AUTHKEY,"N/A");
         Log.d("AUTHKEY",authkey);
+        volleySingleton = SingleTon.getInstance();
+        requestQueue = volleySingleton.getRequestQueue();
         callDataArrayList = new ArrayList<CallData>();
         recyclerView.addOnScrollListener(new EndlessScrollListener() {
             @Override
@@ -258,8 +262,11 @@ public class MissedCalls extends Fragment  implements SwipeRefreshLayout.OnRefre
             /// TODO Auto-generated method stub
             JSONObject response = null;
             try {
-                response = JSONParser.getCallsData(GET_CALL_LIST, authkey, "10", offset + "",
+
+                response = Requestor.requestGetCalls(requestQueue,GET_CALL_LIST, authkey, "10", offset + "",
                         CallApplication.getInstance().getDeviceId(), TYPE_MISSED);
+//                response = JSONParser.getCallsData(GET_CALL_LIST, authkey, "10", offset + "",
+//                        CallApplication.getInstance().getDeviceId(), TYPE_MISSED);
                 Log.d(TAG, response.toString());
             } catch (Exception e) {
             }
@@ -277,7 +284,7 @@ public class MissedCalls extends Fragment  implements SwipeRefreshLayout.OnRefre
                     if (response.has(MESSAGE)) {
                         msg = response.getString(MESSAGE);
                     }
-                    callDataArrayList = vmc.in.mrecorder.util.Parser.ParseData(response);
+                    callDataArrayList = Parser.ParseData(response);
 
 
 
@@ -387,8 +394,11 @@ public class MissedCalls extends Fragment  implements SwipeRefreshLayout.OnRefre
             /// TODO Auto-generated method stub
             JSONObject response = null;
             try {
-                response = JSONParser.getCallsData(GET_CALL_LIST, authkey, "10", offset + "",
+
+                response = Requestor.requestGetCalls(requestQueue,GET_CALL_LIST, authkey, "10", offset + "",
                         CallApplication.getInstance().getDeviceId(), TYPE_MISSED);
+//                response = JSONParser.getCallsData(GET_CALL_LIST, authkey, "10", offset + "",
+//                        CallApplication.getInstance().getDeviceId(), TYPE_MISSED);
                 Log.d(TAG, response.toString());
             } catch (Exception e) {
             }
@@ -405,7 +415,7 @@ public class MissedCalls extends Fragment  implements SwipeRefreshLayout.OnRefre
                     if (response.has(MESSAGE)) {
                         msg = response.getString(MESSAGE);
                     }
-                    data = vmc.in.mrecorder.util.Parser.ParseData(response);
+                    data = Parser.ParseData(response);
 
                 } catch (JSONException e) {
                     e.printStackTrace();

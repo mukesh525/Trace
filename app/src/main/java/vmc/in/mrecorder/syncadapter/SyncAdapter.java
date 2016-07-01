@@ -21,7 +21,6 @@ import android.content.AbstractThreadedSyncAdapter;
 import android.content.ContentProviderClient;
 import android.content.ContentResolver;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SyncResult;
 import android.database.Cursor;
@@ -31,6 +30,8 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.provider.ContactsContract;
 import android.util.Log;
+
+import com.android.volley.RequestQueue;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.entity.ContentType;
@@ -42,7 +43,6 @@ import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
@@ -51,15 +51,17 @@ import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Objects;
 
 import vmc.in.mrecorder.callbacks.TAG;
 import vmc.in.mrecorder.datahandler.MDatabase;
 import vmc.in.mrecorder.entity.CallData;
 import vmc.in.mrecorder.entity.Model;
 import vmc.in.mrecorder.myapplication.CallApplication;
+import vmc.in.mrecorder.parser.Parser;
+import vmc.in.mrecorder.parser.Requestor;
 import vmc.in.mrecorder.service.CallRecorderServiceAll;
 import vmc.in.mrecorder.util.JSONParser;
+import vmc.in.mrecorder.util.SingleTon;
 import vmc.in.mrecorder.util.Utils;
 
 
@@ -72,6 +74,8 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
     private ArrayList<CallData> callDataArrayList;
     private String code, recording, mcubeRecording, workhour;
 
+    private RequestQueue requestQueue;
+    private SingleTon volleySingleton;
 
     public SyncAdapter(Context context, boolean autoInitialize) {
         super(context, autoInitialize);
@@ -146,6 +150,9 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
     }
 
     private synchronized void LoadCalls() {
+        volleySingleton = SingleTon.getInstance();
+        requestQueue = volleySingleton.getRequestQueue();
+
         SharedPreferences sharedPrefs = PreferenceManager
                 .getDefaultSharedPreferences(getContext());
         SharedPreferences.Editor ed = sharedPrefs.edit();
@@ -153,8 +160,11 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
 
         authkey = Utils.getFromPrefs(getContext(), AUTHKEY, "N/A");
         try {
-            response = JSONParser.getCallsData(GET_CALL_LIST, authkey, "10", offset + "",
+            response = Requestor.requestGetCalls(requestQueue,GET_CALL_LIST, authkey, "10", offset + "",
                     CallApplication.getInstance().getDeviceId(), TYPE_ALL);
+            Log.d("GetCalls", ""+response);
+//            response = JSONParser.getCallsData(GET_CALL_LIST, authkey, "10", offset + "",
+//                   CallApplication.getInstance().getDeviceId(), TYPE_ALL);
             if (response.has(CODE)) {
                 code = response.getString(CODE);
                 if (response.has(RECORDING)) {
@@ -195,15 +205,20 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
 
             }
             callDataArrayList = new ArrayList<CallData>();
-            callDataArrayList = vmc.in.mrecorder.util.Parser.ParseData(response);
+            callDataArrayList = Parser.ParseData(response);
             Log.d(TAG, "ALL_CALLS " + callDataArrayList.size());
             CallApplication.getWritabledatabase().insertCallRecords(MDatabase.ALL, callDataArrayList, true);
         } catch (Exception e) {
             Log.d(TAG, "Error " + e.getMessage().toString());
         }
         try {
-            response = JSONParser.getCallsData(GET_CALL_LIST, authkey, "10", offset + "",
+
+
+            response = Requestor.requestGetCalls(requestQueue,GET_CALL_LIST, authkey, "10", offset + "",
                     CallApplication.getInstance().getDeviceId(), TYPE_OUTGOING);
+
+//            response = JSONParser.getCallsData(GET_CALL_LIST, authkey, "10", offset + "",
+//                    CallApplication.getInstance().getDeviceId(), TYPE_OUTGOING);
             if (response.has(CODE)) {
                 code = response.getString(CODE);
                 if (response.has(RECORDING)) {
@@ -239,15 +254,19 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
             }
 
             callDataArrayList = new ArrayList<CallData>();
-            callDataArrayList = vmc.in.mrecorder.util.Parser.ParseData(response);
+            callDataArrayList = Parser.ParseData(response);
             Log.d(TAG, OUTGOING + callDataArrayList.size());
             CallApplication.getWritabledatabase().insertCallRecords(MDatabase.OUTBOUND, callDataArrayList, true);
         } catch (Exception e) {
             e.printStackTrace();
         }
         try {
-            response = JSONParser.getCallsData(GET_CALL_LIST, authkey, "10", offset + "",
+            response = Requestor.requestGetCalls(requestQueue,GET_CALL_LIST, authkey, "10", offset + "",
                     CallApplication.getInstance().getDeviceId(), TYPE_INCOMING);
+
+
+//            response = JSONParser.getCallsData(GET_CALL_LIST, authkey, "10", offset + "",
+//                    CallApplication.getInstance().getDeviceId(), TYPE_INCOMING);
             if (response.has(CODE)) {
                 code = response.getString(CODE);
                 if (response.has(RECORDING)) {
@@ -282,15 +301,19 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
                 }
             }
             callDataArrayList = new ArrayList<CallData>();
-            callDataArrayList = vmc.in.mrecorder.util.Parser.ParseData(response);
+            callDataArrayList = Parser.ParseData(response);
             Log.d(TAG, INCOMING + callDataArrayList.size());
             CallApplication.getWritabledatabase().insertCallRecords(MDatabase.INBOUND, callDataArrayList, true);
         } catch (Exception e) {
             e.printStackTrace();
         }
         try {
-            response = JSONParser.getCallsData(GET_CALL_LIST, authkey, "10", offset + "",
+
+            response = Requestor.requestGetCalls(requestQueue,GET_CALL_LIST, authkey, "10", offset + "",
                     CallApplication.getInstance().getDeviceId(), TYPE_MISSED);
+
+//            response = JSONParser.getCallsData(GET_CALL_LIST, authkey, "10", offset + "",
+//                    CallApplication.getInstance().getDeviceId(), TYPE_MISSED);
             if (response.has(CODE)) {
                 code = response.getString(CODE);
                 if (response.has(RECORDING)) {
@@ -326,7 +349,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
             }
             callDataArrayList = new ArrayList<CallData>();
 
-            callDataArrayList = vmc.in.mrecorder.util.Parser.ParseData(response);
+            callDataArrayList = Parser.ParseData(response);
             CallApplication.getWritabledatabase().insertCallRecords(MDatabase.MISSED, callDataArrayList, true);
             Log.d(TAG, MISSED + callDataArrayList.size());
         } catch (Exception e) {

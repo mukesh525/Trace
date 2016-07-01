@@ -44,6 +44,7 @@ public interface TAG {
 
 
     ///NEw parametre
+    public String DATA = "data";
 
     public String BID = "bid";
     public String THEME = "theme";

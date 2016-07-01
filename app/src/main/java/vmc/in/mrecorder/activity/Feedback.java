@@ -19,6 +19,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.RequestQueue;
+
 import org.json.JSONObject;
 
 import butterknife.ButterKnife;
@@ -26,9 +28,11 @@ import butterknife.InjectView;
 import vmc.in.mrecorder.R;
 import vmc.in.mrecorder.callbacks.TAG;
 import vmc.in.mrecorder.myapplication.CallApplication;
+import vmc.in.mrecorder.parser.Requestor;
 import vmc.in.mrecorder.util.ConnectivityReceiver;
 import vmc.in.mrecorder.util.CustomTheme;
 import vmc.in.mrecorder.util.JSONParser;
+import vmc.in.mrecorder.util.SingleTon;
 import vmc.in.mrecorder.util.Utils;
 
 public class Feedback extends AppCompatActivity implements ConnectivityReceiver.ConnectivityReceiverListener, TAG {
@@ -41,7 +45,8 @@ public class Feedback extends AppCompatActivity implements ConnectivityReceiver.
     String feedbackmsg;
     private Toolbar toolbar;
     private String authkey;
-
+    private RequestQueue requestQueue;
+    private SingleTon volleySingleton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +63,8 @@ public class Feedback extends AppCompatActivity implements ConnectivityReceiver.
             button.setBackgroundResource(R.drawable.button_background);
 
         }
-
+        volleySingleton = SingleTon.getInstance();
+        requestQueue = volleySingleton.getRequestQueue();
 
         //authkey = getIntent().getExtras().getString(AUTHKEY);
         authkey = Utils.getFromPrefs(this, AUTHKEY, "N/A");
@@ -171,7 +177,8 @@ public class Feedback extends AppCompatActivity implements ConnectivityReceiver.
             // TODO Auto-generated method stub
 
             try {
-                response = JSONParser.SubmitFeedBack(GET_FEED_BACK_URL, authkey, feedbackmsg);
+                //response = JSONParser.SubmitFeedBack(GET_FEED_BACK_URL, authkey, feedbackmsg);
+               response = Requestor.requestFeedback(requestQueue,GET_FEED_BACK_URL, authkey, feedbackmsg);
                 Log.d(TAG, response.toString());
 
 

@@ -31,6 +31,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.RequestQueue;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.MultiplePermissionsReport;
 import com.karumi.dexter.PermissionToken;
@@ -45,18 +46,22 @@ import java.util.List;
 
 import vmc.in.mrecorder.R;
 import vmc.in.mrecorder.callbacks.TAG;
+import vmc.in.mrecorder.entity.LoginData;
+
 import vmc.in.mrecorder.fragment.OTPDialogFragment;
 import vmc.in.mrecorder.gcm.GCMClientManager;
 import vmc.in.mrecorder.myapplication.CallApplication;
+import vmc.in.mrecorder.parser.Parser;
+import vmc.in.mrecorder.parser.Requestor;
 import vmc.in.mrecorder.util.ConnectivityReceiver;
 import vmc.in.mrecorder.util.JSONParser;
+import vmc.in.mrecorder.util.SingleTon;
 import vmc.in.mrecorder.util.Utils;
 
-public class Login extends AppCompatActivity implements ConnectivityReceiver.ConnectivityReceiverListener,View.OnClickListener, OTPDialogFragment.OTPDialogListener, TAG {
+public class Login extends AppCompatActivity implements ConnectivityReceiver.ConnectivityReceiverListener, View.OnClickListener, TAG {
 
     private static Login inst;
     Button btn_login, btn_getOtp;
-
     EditText et_email, et_password;
     CheckBox check_box, check_box_show_password;
     TextView tv_otp;
@@ -67,7 +72,10 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
     private ProgressDialog progressDialog;
     public static final String DEAFULT = "";
     private boolean first = true;
-
+    LoginData loginData = new LoginData();
+    private RequestQueue requestQueue;
+    private SingleTon volleySingleton;
+    private JSONObject response;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,11 +92,8 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
         et_email = (EditText) findViewById(R.id.input_email);
         et_password = (EditText) findViewById(R.id.input_password);
 
-//        if (Build.VERSION.SDK_INT == Build.VERSION_CODES.M) {
-//            getAllPermision();
-//
-//        }
-
+        volleySingleton = SingleTon.getInstance();
+        requestQueue = volleySingleton.getRequestQueue();
 
         if (android.os.Build.VERSION.SDK_INT > 19) {
             btn_login.setBackgroundResource(R.drawable.button_background);
@@ -208,7 +213,7 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
     }
 
     public void updateList(final String smsMessage) {
-        //update otp Your one time passwod for Mconnect is: 356958
+
         OTP_Sms = smsMessage.substring(9, 15);
         //  String OTP1=smsMessage.split(": ")[0];
 
@@ -299,8 +304,6 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
         if (validate()) {
 
             if (OTP_resp != null && OTP_resp.equals(OTP_Sms)) {
-                //  startActivity(new Intent(getApplicationContext(), Home.class));
-                //Toast.makeText(getApplicationContext(), "OTP Verfied", Toast.LENGTH_SHORT).show();
                 StartLogin();
             } else {
 
@@ -401,11 +404,6 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
         return valid;
     }
 
-    @Override
-    public void onFinishInputDialog(String inputText) {
-        // Toast.makeText(getApplicationContext(), "key" + inputText, Toast.LENGTH_SHORT).show();
-    }
-
 
     public void load() {
         SharedPreferences pref = getSharedPreferences("Mydata", Context.MODE_PRIVATE);
@@ -474,13 +472,10 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
 
 
     class GetOtp extends AsyncTask<Void, Void, JSONObject> {
-        String message = "No Response from server";
-        String code = "N";
+
         String email = "n";
         String password = "n";
-        String msg, Otp;
-        JSONObject response = null;
-
+        String msg,code;
         public GetOtp(String email, String password) {
             this.email = email;
             this.password = password;
@@ -506,11 +501,10 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
         @Override
         protected JSONObject doInBackground(Void... params) {
             // TODO Auto-generated method stub
-
-
             try {
-                response = JSONParser.getOTP(GET_OTP, email, password);
-                Log.d("OTPRes", response.toString());
+                response = Requestor.requestOTP(requestQueue,GET_OTP, email, password);
+                //response = JSONParser.getOTP(GET_OTP, email, password);
+                Log.d("OTP", response.toString());
                 if (response != null) {
                     if (response.has(CODE)) {
                         code = response.getString(CODE);
@@ -520,11 +514,10 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
                     }
                     if (response.has(OTP)) {
                         OTP_resp = response.getString(OTP);
-                        Log.d("OTP", OTP_resp);
+
                     }
 
                 }
-
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -539,7 +532,6 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
                 if (progressDialog != null && progressDialog.isShowing()) {
                     progressDialog.dismiss();
                 }
-                Log.d("OTP", data.toString());
 
                 if (tv_otp.getVisibility() == View.GONE) {
                     tv_otp.setVisibility(View.VISIBLE);
@@ -570,13 +562,9 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
 
     public void StartLogin() {
 
-        if(ConnectivityReceiver.isConnected()){
+        if (ConnectivityReceiver.isConnected()) {
             new StartLogin().execute();
         }
-//        if (Utils.onlineStatus2(Login.this)) {
-//            new StartLogin().execute();
-//
-//        }
         else {
 
             Snackbar snack = Snackbar.make(coordinatorLayout, "No Internet Connection", Snackbar.LENGTH_SHORT)
@@ -596,17 +584,12 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
         }
     }
 
-    class StartLogin extends AsyncTask<Void, Void, JSONObject> {
-        String message = "n";
-        String code = "n";
-        String username = "n", recording = "n", mcubeRecording = "n", workhour = "n";
-        String authcode = "n", name = "n";
+    class StartLogin extends AsyncTask<Void, Void, LoginData> {
 
-        JSONObject response = null;
-        String email = et_email.getText().toString();
-        String password = et_password.getText().toString();
-        private String image;
-        private String usertype;
+
+        public StartLogin() {
+
+        }
 
         @Override
         protected void onPreExecute() {
@@ -623,47 +606,23 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
 
 
         @Override
-        protected JSONObject doInBackground(Void... params) {
+        protected LoginData doInBackground(Void... params) {
             // TODO Auto-generated method stub
 
             try {
-                Log.d("GCMPRO D", CallApplication.getInstance().getDeviceId());
+                Log.d("GCMPRO", CallApplication.getInstance().getDeviceId());
 
-                response = JSONParser.login(LOGIN_URL, email, password, CallApplication.getInstance().getDeviceId(), gcmkey);
-                Log.d("GCMPRO", response.toString());
-                Log.d("GCMPRO D", CallApplication.getInstance().getDeviceId());
-                if (response.has(CODE))
-                    code = response.getString(CODE);
-                if (response.has(MESSAGE))
-                    message = response.getString(MESSAGE);
-                if (response.has(AUTHKEY))
-                    authcode = response.getString(AUTHKEY);
-                if (response.has(NAME)) {
-                    username = response.getString(NAME);
-                }
-                if (response.has(USERTYPE)) {
-                    usertype = response.getString(USERTYPE);
-                }
-                if (response.has(RECORDING)) {
-                    recording = response.getString(RECORDING);
-                }
-                if (response.has(MCUBECALLS)) {
-                    mcubeRecording = response.getString(MCUBECALLS);
-                }
-                if (response.has(WORKHOUR)) {
-                    workhour = response.getString(WORKHOUR);
-                }
-                Log.d("LOG", authcode);
+                loginData = Parser.ParseLoginResponse(Requestor.requestLogin(requestQueue, LOGIN_URL, email, password, CallApplication.getInstance().getDeviceId(), gcmkey));
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
 
-
-            return response;
+            return loginData;
         }
 
         @Override
-        protected void onPostExecute(JSONObject data) {
+        protected void onPostExecute(LoginData data) {
             if (progressDialog != null && progressDialog.isShowing()) {
                 progressDialog.dismiss();
             }
@@ -672,10 +631,10 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
             }
             btn_login.setEnabled(true);
 
-            if (code.equals("202")) {
+            if (data.getCode().equals("202")) {
                 btn_login.setText("Get OTP");
 
-                Snackbar.make(coordinatorLayout, message, Snackbar.LENGTH_SHORT)
+                Snackbar.make(coordinatorLayout, data.getMessage(), Snackbar.LENGTH_SHORT)
                         .setAction(getString(R.string.text_tryAgain), new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
@@ -685,27 +644,29 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
                         }).
                         setActionTextColor(ContextCompat.getColor(Login.this, R.color.accent)).show();
             }
-            if (code.equals("400")) {
+            if (data.getCode().equals("400")) {
 
                 save();
-                Utils.saveToPrefs(Login.this, AUTHKEY, authcode);
-                Utils.saveToPrefs(Login.this, NAME, username);
+                Utils.saveToPrefs(Login.this, AUTHKEY, data.getAuthcode());
+                Utils.saveToPrefs(Login.this, NAME, data.getUsername());
                 Utils.saveToPrefs(Login.this, EMAIL, email);
-                Utils.saveToPrefs(Login.this, USERTYPE, usertype);
+                Utils.saveToPrefs(Login.this, USERTYPE, data.getUsertype());
                 SharedPreferences sharedPrefs = PreferenceManager
                         .getDefaultSharedPreferences(getApplicationContext());
                 SharedPreferences.Editor ed = sharedPrefs.edit();
-                if (recording.equals("1")) {
+                if (data.getRecording().equals("1")) {
                     ed.putBoolean("prefRecording", true);
+                    Log.d("LOG", "Recording" + data.getRecording());
                 } else {
                     ed.putBoolean("prefRecording", false);
                 }
-                if (workhour.equals("1")) {
+                if (data.getWorkhour().equals("1")) {
                     ed.putBoolean("prefOfficeTimeRecording", true);
+                    Log.d("LOG", "OfficeRecording" + data.getRecording());
                 } else {
                     ed.putBoolean("prefOfficeTimeRecording", false);
                 }
-                if (mcubeRecording.equals("1")) {
+                if (data.getMcuberecording().equals("1")) {
                     ed.putBoolean("prefMcubeRecording", true);
                 } else {
                     ed.putBoolean("prefMcubeRecording", false);
@@ -725,7 +686,7 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
             }
 
 
-            if (code.equals("n")) {
+            if (data.getCode().equals("n")) {
                 Snackbar.make(coordinatorLayout, "No Response From Server", Snackbar.LENGTH_SHORT)
                         .setAction(getString(R.string.text_tryAgain), new View.OnClickListener() {
                             @Override
@@ -777,7 +738,7 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
                         grantedPermissions.add(response.getPermissionName());
                     }
                 }
-               // Toast.makeText(getApplicationContext(), "Granted permissions:" + grantedPermissions.toString(), Toast.LENGTH_LONG).show();
+                // Toast.makeText(getApplicationContext(), "Granted permissions:" + grantedPermissions.toString(), Toast.LENGTH_LONG).show();
             }
 
             @Override
@@ -792,7 +753,6 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
     public void onNetworkConnectionChanged(boolean isConnected) {
         showSnack(isConnected);
     }
-
 
 
     private void showSnack(boolean isConnected) {

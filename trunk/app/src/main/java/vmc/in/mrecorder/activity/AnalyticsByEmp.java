@@ -20,6 +20,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.RequestQueue;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.Legend;
@@ -43,12 +44,15 @@ import vmc.in.mrecorder.callbacks.TAG;
 import vmc.in.mrecorder.entity.BarModel;
 import vmc.in.mrecorder.entity.PieModel;
 import vmc.in.mrecorder.myapplication.CallApplication;
+import vmc.in.mrecorder.parser.Parser;
+import vmc.in.mrecorder.parser.Requestor;
 import vmc.in.mrecorder.util.ConnectivityReceiver;
 import vmc.in.mrecorder.util.CustomTheme;
 import vmc.in.mrecorder.util.JSONParser;
+import vmc.in.mrecorder.util.SingleTon;
 import vmc.in.mrecorder.util.Utils;
 
-public class AnalyticsByEmp extends AppCompatActivity implements  ConnectivityReceiver.ConnectivityReceiverListener,vmc.in.mrecorder.callbacks.TAG {
+public class AnalyticsByEmp extends AppCompatActivity implements ConnectivityReceiver.ConnectivityReceiverListener, vmc.in.mrecorder.callbacks.TAG {
 
     private Toolbar mToolbar;
     private PieChart pieChart;
@@ -63,7 +67,10 @@ public class AnalyticsByEmp extends AppCompatActivity implements  ConnectivityRe
     private JSONObject response;
     private JSONArray records;
     private String count;
-    private String reportype="0";
+    private String reportype = "0";
+    private ArrayList<BarModel> barModel;
+    private RequestQueue requestQueue;
+    private SingleTon volleySingleton;
 
 
     @Override
@@ -85,7 +92,8 @@ public class AnalyticsByEmp extends AppCompatActivity implements  ConnectivityRe
         name = (TextView) findViewById(R.id.tv_analy_name);
         name.setText("Analytics By Emp");
         addItemsToSpinner();
-
+        volleySingleton = SingleTon.getInstance();
+        requestQueue = volleySingleton.getRequestQueue();
         offline.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -255,7 +263,6 @@ public class AnalyticsByEmp extends AppCompatActivity implements  ConnectivityRe
     }
 
 
-
     private void showSnack(boolean isConnected) {
         String message;
         int color;
@@ -285,50 +292,16 @@ public class AnalyticsByEmp extends AppCompatActivity implements  ConnectivityRe
 
                 Log.d("TAG", reportype);
                 Log.d("TAG", CallApplication.getInstance().getDeviceId());
-
-                response = JSONParser.getEmpdata(EMPREPORT_URL, reportype, CallApplication.getInstance().getDeviceId(), Utils.getFromPrefs(AnalyticsByEmp.this, AUTHKEY, "n"));
-                Log.d("TAG", response.toString());
-                if(response!=null)
-                    barModels = new ArrayList<BarModel>();
-                if (response.has(COUNT))
-                    count = response.getString(COUNT);
-                if (response.has(CODE))
-                    code = response.getString(CODE);
-
-                if (response.has(RECORDS)) {
-                    records = response.getJSONArray(RECORDS);
-
-
-                    if (records.length() > 0) {
-                        for (int i = 0; i < records.length(); i++) {
-                            JSONObject jsonobj = records.getJSONObject(i);
-
-                            BarModel barModel = new BarModel();
-                            if (jsonobj.has(EMPNAME)) {
-                                barModel.setEmpname(jsonobj.getString(EMPNAME));
-                            }
-                            if (jsonobj.has(Inbound)) {
-                                barModel.setInbound(jsonobj.getString(Inbound));
-                            }
-                            if (jsonobj.has(Outbound)) {
-                                barModel.setOutbound(jsonobj.getString(Outbound));
-                            }
-                            if (jsonobj.has(missed)) {
-                                barModel.setMissed(jsonobj.getString(missed));
-                            }
-
-                            barModels.add(barModel);
-                        }
-                    }
-                }
-
+                barModel = new ArrayList<>();
+                // response = JSONParser.getEmpdata(EMPREPORT_URL, reportype, CallApplication.getInstance().getDeviceId(), Utils.getFromPrefs(AnalyticsByEmp.this, AUTHKEY, "n"));
+                barModel = Parser.ParseEMPResponse(Requestor.requestByEMP(requestQueue, EMPREPORT_URL, reportype, CallApplication.getInstance().getDeviceId(), Utils.getFromPrefs(AnalyticsByEmp.this, AUTHKEY, "n")));
 
             } catch (Exception e) {
                 e.printStackTrace();
             }
 
 
-            return barModels;
+            return barModel;
         }
 
 
@@ -340,8 +313,9 @@ public class AnalyticsByEmp extends AppCompatActivity implements  ConnectivityRe
         @Override
         protected void onPostExecute(ArrayList<BarModel> models) {
 
-            if (models != null &&code!=null) {
-                if (code.equals("400")) {
+            if (models != null && Parser.code != null) {
+
+                if (Parser.code.equals("400")) {
                     if (models.size() > 0) {
                         setBarChart(models);
                     } else {
@@ -353,10 +327,10 @@ public class AnalyticsByEmp extends AppCompatActivity implements  ConnectivityRe
                     }
 
 
-                } else if (code.equals("202") || code.equals("401")) {
+                } else if (Parser.code.equals("202") || Parser.code.equals("401")) {
                     Toast.makeText(getApplicationContext(), "You have been logout login to continue",
                             Toast.LENGTH_LONG).show();
-                   // Utils.isLogoutBackground(AnalyticsByEmp.this);
+                    // Utils.isLogoutBackground(AnalyticsByEmp.this);
                 }
 
 

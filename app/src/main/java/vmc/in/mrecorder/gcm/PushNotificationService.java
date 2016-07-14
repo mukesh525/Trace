@@ -91,7 +91,7 @@ public class PushNotificationService extends GcmListenerService implements vmc.i
                     CallApplication.getInstance().stopRecording();
                     SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                     prefs.edit().clear().commit();
-                    Log.d("Logout", "LOgout on gcm");
+                    Log.d("Logout", "Logout on gcm");
 
                 }
 
@@ -174,7 +174,7 @@ public class PushNotificationService extends GcmListenerService implements vmc.i
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this)
                 .setSmallIcon(R.mipmap.ic_launcher)
                 .setColor(ContextCompat.getColor(getApplicationContext(), R.color.accent))
-                .setContentTitle("MTrack")
+                .setContentTitle("MTracker")
                 .setAutoCancel(false)
                 .setOngoing(true)
                 .setSound(defaultSoundUri)

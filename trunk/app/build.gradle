@@ -12,8 +12,8 @@ android {
         applicationId "vmc.in.mrecorder"
         minSdkVersion 15
         targetSdkVersion 23
-        versionCode 26
-        versionName "2.6"
+        versionCode 27
+        versionName "2.7"
     }
     buildTypes {
         release {
@@ -47,5 +47,9 @@ dependencies {
     compile 'com.github.PhilJay:MPAndroidChart:v2.0.9'
     compile 'com.mcxiaoke.volley:library-aar:1.0.0'
     compile 'com.karumi:dexter:2.2.2'
+    compile 'com.google.maps.android:android-maps-utils:0.3+'
+    compile 'com.google.android.gms:play-services-maps:7.8.0'
+    compile 'com.google.code.gson:gson:2.2.+'
+
 }
 

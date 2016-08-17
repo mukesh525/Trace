@@ -3,6 +3,7 @@ package vmc.in.mrecorder.adapter;
 import android.content.ContentResolver;
 import android.content.ContentUris;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -23,6 +24,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+
 import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.text.SimpleDateFormat;
@@ -30,6 +33,7 @@ import java.util.ArrayList;
 
 import vmc.in.mrecorder.R;
 import vmc.in.mrecorder.activity.Home;
+import vmc.in.mrecorder.activity.LocationActivity;
 import vmc.in.mrecorder.callbacks.TAG;
 import vmc.in.mrecorder.entity.CallData;
 import vmc.in.mrecorder.util.ConnectivityReceiver;
@@ -164,6 +168,15 @@ public class Calls_Adapter extends RecyclerView.Adapter<Calls_Adapter.CallViewHo
                                 Toast.makeText(mContext, "Invalid Number", Toast.LENGTH_SHORT).show();
                             }
                             return true;
+                        case R.id.location:
+                            Gson gson = new Gson();
+                            String TrackInfo = gson.toJson(callDatas.get(position));
+                            Intent intent = new Intent(mContext, LocationActivity.class);
+                            intent.putExtra("DATA", TrackInfo);
+                            mContext.startActivity(intent);
+                           // mContext.startActivityForResult(intent, 0);
+
+                            return true;
                         default:
                             return super.onMenuItemSelected(menu, item);
                     }
@@ -196,7 +209,12 @@ public class Calls_Adapter extends RecyclerView.Adapter<Calls_Adapter.CallViewHo
                 return;
             }
 
-            popupMenu.inflate(R.menu.popupmenu);
+            if(callDatas.get(position).getLocation().length()>3){
+                popupMenu.inflate(R.menu.popupmenu_location);
+            }else{
+                popupMenu.inflate(R.menu.popupmenu);
+            }
+
             popupMenu.show();
 
 

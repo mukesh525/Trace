@@ -106,8 +106,8 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
             //callList = CallApplication.getWritableDatabase().GetAllCalls();
             callList = CallApplication.getWritabledatabase().getAllOfflineCalls();
 
-
-            // Log.d(TAG, "offline data Size" + callList.size());
+            Log.d(TAG, "offline data Size" + callList.size());
+            Log.d(TAG, "Location" + callList.get(0).getLocation());
 
             if (wifionly == 1 && Utils.hasWIFIConnection(getContext())) {
 
@@ -414,6 +414,9 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
         builder.addPart(CONTACTNAME, new StringBody(getContactName(model.getPhoneNumber()), ContentType.TEXT_PLAIN));
         Log.d(TAG, CALLTYPEE + ":" + model.getCallType());
         Log.d(TAG, "CONTACTNAME" + ":" + getContactName(model.getPhoneNumber()));
+
+       builder.addPart(LOCATION, new StringBody(model.getLocation(), ContentType.TEXT_PLAIN));
+        Log.d(TAG, LOCATION + ":" + model.getLocation());
         if (!fileExist) {
             builder.addPart(ENDTIME, new StringBody("0000000", ContentType.TEXT_PLAIN));
             Log.d(TAG, ENDTIME + ":" + "0000000");

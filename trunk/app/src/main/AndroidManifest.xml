@@ -58,6 +58,14 @@
         android:largeHeap="true"
         android:supportsRtl="true"
         android:theme="@style/MyMaterialTheme">
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyA_c2wR6vV9ki64AVz0aHf-K9siRqU9zdU" />
+
         <activity
             android:name=".activity.ContactsActivity"
             android:label="Offline Records"
@@ -210,6 +218,12 @@
             android:parentActivityName=".activity.Home"/>
 
         <activity android:name=".activity.AnalyticsByEmp"
+            android:theme="@style/MyMaterialTheme"
+            android:parentActivityName=".activity.Home">
+
+        </activity>
+
+        <activity android:name=".activity.LocationActivity"
             android:theme="@style/MyMaterialTheme"
             android:parentActivityName=".activity.Home">
 

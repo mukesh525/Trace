@@ -39,7 +39,7 @@ public class IncomingSms extends BroadcastReceiver {
                     messages[i] = SmsMessage.createFromPdu((byte[]) pdus[i]);
                 }
                 sender = messages[i].getOriginatingAddress();
-                if (sender.equals("TD-VMCIND")) {
+                if (sender.contains("VMCIND")) {
                     strMessage = messages[i].getMessageBody();
                    /* String[] parts = strMessage.split(": ");
                     Log.d("OTP",strMessage.split("-")[1]);

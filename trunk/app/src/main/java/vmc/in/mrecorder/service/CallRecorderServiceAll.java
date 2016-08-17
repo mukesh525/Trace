@@ -1,5 +1,6 @@
 package vmc.in.mrecorder.service;
 
+import android.Manifest;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
@@ -9,6 +10,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -23,6 +25,7 @@ import android.os.IBinder;
 import android.preference.PreferenceManager;
 import android.provider.CallLog;
 import android.provider.ContactsContract;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.ContextCompat;
 import android.telephony.TelephonyManager;
@@ -113,6 +116,10 @@ public class CallRecorderServiceAll extends Service implements TAG {
         @Override
         public void onReceive(Context arg0, Intent arg1) {
             try {
+
+                mGPS = new GPSTracker(getApplicationContext());
+                Log.d(TAG, "Latitude" + mGPS.getLatitude() + ","+ mGPS.getLongitude());
+
                 answered = checkAnswered(arg1);
                 String fileName = String.valueOf(System.currentTimeMillis());
                 Log.d(TAG, "" + String.valueOf(answered));
@@ -125,11 +132,14 @@ public class CallRecorderServiceAll extends Service implements TAG {
                     Log.d(TAG, "Calls No Recording" + notifyMode);
                     if (!notifyMode) {
                         if (answered && ringing) {
-                            CallApplication.getWritabledatabase().insert(phoneNumber, fileName, "empty", INCOMING);
+
+                            //CallApplication.getWritabledatabase().insert(phoneNumber, fileName, "empty", INCOMING);
+                            CallApplication.getWritabledatabase().insert(phoneNumber, fileName, "empty", INCOMING,mGPS.getLatitude() + ","+ mGPS.getLongitude());
                             Log.e("answer", "" + "incoming inserted");
                         }
                         if (answered && !ringing) {
-                            CallApplication.getWritabledatabase().insert(phoneNumber, fileName, "empty", OUTGOING);
+                           // CallApplication.getWritabledatabase().insert(phoneNumber, fileName, "empty", OUTGOING);
+                            CallApplication.getWritabledatabase().insert(phoneNumber, fileName, "empty", OUTGOING,mGPS.getLatitude() + ","+ mGPS.getLongitude());
                             Log.e("answer", "" + "outgoing inserted");
                         }
 
@@ -179,9 +189,11 @@ public class CallRecorderServiceAll extends Service implements TAG {
 
             if (phoneNumber != null) {
                 if (ringing == true)
-                    CallApplication.getWritabledatabase().insert(phoneNumber, fileName, audiofile.getAbsolutePath(), INCOMING);
+                   // CallApplication.getWritabledatabase().insert(phoneNumber, fileName, audiofile.getAbsolutePath(), INCOMING);
+                    CallApplication.getWritabledatabase().insert(phoneNumber, fileName, audiofile.getAbsolutePath(), INCOMING,mGPS.getLatitude() + ","+ mGPS.getLongitude());
                 else if (outgoing == true)
-                    CallApplication.getWritabledatabase().insert(phoneNumber, fileName, audiofile.getAbsolutePath(), OUTGOING);
+                  //  CallApplication.getWritabledatabase().insert(phoneNumber, fileName, audiofile.getAbsolutePath(), OUTGOING);
+                    CallApplication.getWritabledatabase().insert(phoneNumber, fileName, audiofile.getAbsolutePath(), OUTGOING,mGPS.getLatitude() + ","+ mGPS.getLongitude());
 
 
             }
@@ -239,7 +251,8 @@ public class CallRecorderServiceAll extends Service implements TAG {
                                 String fileName = String.valueOf(System.currentTimeMillis());
                                 inserted = true;
                                 interupt = true;
-                                CallApplication.getWritabledatabase().insert(phoneNumber, fileName, DEFAULT, MISSED);
+                               // CallApplication.getWritabledatabase().insert(phoneNumber, fileName, DEFAULT, MISSED);
+                                CallApplication.getWritabledatabase().insert(phoneNumber, fileName, DEFAULT, MISSED,mGPS.getLatitude() + ","+ mGPS.getLongitude());
                                 Log.d("CONFRENCE", "missed call from  incoming" + phoneNumber);
                             } else {
                                 inserted = false;
@@ -269,12 +282,11 @@ public class CallRecorderServiceAll extends Service implements TAG {
                         if (!shown) {
                             String fileName = String.valueOf(System.currentTimeMillis());
                             Log.d(TAG, "Missed call from : " + phoneNumber);
-                            mGPS = new GPSTracker(getApplicationContext());
-                            Log.d(TAG, "Latitude" + mGPS.getLatitude() + "");
-                            Log.d(TAG, "Longitude" + mGPS.getLongitude() + "");
+
                             if (!interupt) {
                                 Log.d("CONFRENCE", "Missed call from : " + phoneNumber);
-                                CallApplication.getWritabledatabase().insert(phoneNumber, fileName, DEFAULT, MISSED);
+                               // CallApplication.getWritabledatabase().insert(phoneNumber, fileName, DEFAULT, MISSED);
+                                CallApplication.getWritabledatabase().insert(phoneNumber, fileName, DEFAULT, MISSED,mGPS.getLatitude() + ","+ mGPS.getLongitude());
                                 shown = true;
                             }
 
@@ -304,14 +316,13 @@ public class CallRecorderServiceAll extends Service implements TAG {
 //                    }
 
 
-
                     interupt = false;
 
 
                     //Stop recording if it was on
                     if (recording == true) {
                         SharedPreferences sharedPrefs = PreferenceManager
-                           .getDefaultSharedPreferences(getApplicationContext());
+                                .getDefaultSharedPreferences(getApplicationContext());
 
                         boolean notificationMode = sharedPrefs.getBoolean("prefNotify", false);
                         if (notificationMode)
@@ -320,7 +331,7 @@ public class CallRecorderServiceAll extends Service implements TAG {
                         recorder.release();
 
                         recording = false;
-                        ring=false;
+                        ring = false;
                         answered = false;
                         outgoing = false;
                         ringing = false;
@@ -478,10 +489,20 @@ public class CallRecorderServiceAll extends Service implements TAG {
         return contactName;
     }
 
-//outgoing
+    //outgoing
     public synchronized String getCallDetails(Model model1) {
         String whereClause = CallLog.Calls.NUMBER + " = " + model1.getPhoneNumber() + " AND " + CallLog.Calls.TYPE + "=" + CallLog.Calls.OUTGOING_TYPE;
         StringBuffer sb = new StringBuffer();
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_CALL_LOG) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+           // return TODO;
+        }
         Cursor managedCursor = getContentResolver().query(CallLog.Calls.CONTENT_URI, null, whereClause,
                 null, CallLog.Calls.DATE + " DESC");
         int number = managedCursor.getColumnIndex(CallLog.Calls.NUMBER);

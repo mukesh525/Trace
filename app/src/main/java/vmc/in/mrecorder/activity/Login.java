@@ -2,11 +2,13 @@ package vmc.in.mrecorder.activity;
 
 
 import android.Manifest;
+import android.app.Activity;
 import android.app.NotificationManager;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentSender;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Rect;
@@ -14,6 +16,8 @@ import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
@@ -32,6 +36,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.PendingResult;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.Status;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.location.LocationSettingsRequest;
+import com.google.android.gms.location.LocationSettingsResult;
+import com.google.android.gms.location.LocationSettingsStatusCodes;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.MultiplePermissionsReport;
 import com.karumi.dexter.PermissionToken;
@@ -58,7 +72,8 @@ import vmc.in.mrecorder.util.JSONParser;
 import vmc.in.mrecorder.util.SingleTon;
 import vmc.in.mrecorder.util.Utils;
 
-public class Login extends AppCompatActivity implements ConnectivityReceiver.ConnectivityReceiverListener, View.OnClickListener, TAG {
+public class Login extends AppCompatActivity implements ConnectivityReceiver.ConnectivityReceiverListener,
+        View.OnClickListener, TAG {
 
     private static Login inst;
     Button btn_login, btn_getOtp;
@@ -77,6 +92,8 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
     private SingleTon volleySingleton;
     private JSONObject response;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,6 +111,8 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
 
         volleySingleton = SingleTon.getInstance();
         requestQueue = volleySingleton.getRequestQueue();
+
+        // Dexter.continuePendingRequestsIfPossible(permissionsListener); to support configuration changes based on screen rotation
 
         if (android.os.Build.VERSION.SDK_INT > 19) {
             btn_login.setBackgroundResource(R.drawable.button_background);
@@ -158,6 +177,7 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
     }
 
 
+
     public void onRegisterGcm(final String regid) {
 
         if (ConnectivityReceiver.isConnected()) {
@@ -176,6 +196,7 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
         System.exit(0);
 
     }
+
 
 
     class RegisterGcm extends AsyncTask<Void, Void, String> {
@@ -217,7 +238,7 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
         OTP_Sms = smsMessage.substring(9, 15);
         //  String OTP1=smsMessage.split(": ")[0];
 
-        // Log.d("SMS", OTP1+" "+OTP);
+         Log.d("SMS", OTP_Sms+" "+OTP);
         tv_otp.setText(OTP_Sms);
         btn_login.setText("Login");
         if (progressDialog != null && progressDialog.isShowing()) {
@@ -239,7 +260,6 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
         switch (v.getId()) {
             case R.id.btn_login:
                 if (first && validateOTP()) {
-
                     showTermsAlert();
                     first = false;
                 } else {
@@ -475,7 +495,8 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
 
         String email = "n";
         String password = "n";
-        String msg,code;
+        String msg, code;
+
         public GetOtp(String email, String password) {
             this.email = email;
             this.password = password;
@@ -502,7 +523,7 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
         protected JSONObject doInBackground(Void... params) {
             // TODO Auto-generated method stub
             try {
-                response = Requestor.requestOTP(requestQueue,GET_OTP, email, password);
+                response = Requestor.requestOTP(requestQueue, GET_OTP, email, password);
                 //response = JSONParser.getOTP(GET_OTP, email, password);
                 Log.d("OTP", response.toString());
                 if (response != null) {
@@ -564,8 +585,7 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
 
         if (ConnectivityReceiver.isConnected()) {
             new StartLogin().execute();
-        }
-        else {
+        } else {
 
             Snackbar snack = Snackbar.make(coordinatorLayout, "No Internet Connection", Snackbar.LENGTH_SHORT)
                     .setAction(getString(R.string.text_tryAgain), new View.OnClickListener() {

@@ -3,22 +3,29 @@ package vmc.in.mrecorder.activity;
 
 import android.Manifest;
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentSender;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.location.Location;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Parcelable;
 import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -57,12 +64,27 @@ import vmc.in.mrecorder.util.CustomTheme;
 import vmc.in.mrecorder.util.Utils;
 
 import com.getbase.floatingactionbutton.FloatingActionButton;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.PendingResult;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.Status;
+import com.google.android.gms.location.LocationListener;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.location.LocationSettingsRequest;
+import com.google.android.gms.location.LocationSettingsResult;
+import com.google.android.gms.location.LocationSettingsStatusCodes;
 
 import java.io.File;
+import java.text.DateFormat;
+import java.util.Date;
 
 
 public class Home extends AppCompatActivity
-        implements  ConnectivityReceiver.ConnectivityReceiverListener,NavigationView.OnNavigationItemSelectedListener, TAG {
+        implements ConnectivityReceiver.ConnectivityReceiverListener, NavigationView.OnNavigationItemSelectedListener, TAG,
+        GoogleApiClient.ConnectionCallbacks,
+        GoogleApiClient.OnConnectionFailedListener {
 
     private Toolbar mToolbar;
     public FloatingActionButton floatingActionButton, floatingActionButtonSync;
@@ -88,6 +110,11 @@ public class Home extends AppCompatActivity
     private CircleImageView userType;
     private String usertype;
 
+    LocationRequest mLocationRequest;
+    GoogleApiClient mGoogleApiClient;
+    PendingResult<LocationSettingsResult> result;
+    final static int REQUEST_LOCATION = 199;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,11 +134,11 @@ public class Home extends AppCompatActivity
         }
 
 
-
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
 
             getAllPermision();
         }
+
 
         // CallApplication.getInstance().startRecording();
         mDrawer = (NavigationView) findViewById(R.id.nav_view);
@@ -222,7 +249,7 @@ public class Home extends AppCompatActivity
             }
         });
         // fabMenu.setBackground(Color.parseColor("#795548"));
-
+        GoogleApiClient();
     }
 
     private void setupTabIcons() {
@@ -231,6 +258,103 @@ public class Home extends AppCompatActivity
         mTabLayout.getTabAt(2).setIcon(tabIcons[2]);
         mTabLayout.getTabAt(3).setIcon(tabIcons[3]);
     }
+
+  private void GoogleApiClient(){
+      mGoogleApiClient = new GoogleApiClient.Builder(Home.this)
+              .addApi(LocationServices.API)
+              .addConnectionCallbacks(this)
+              .addOnConnectionFailedListener(this).build();
+      mGoogleApiClient.connect();
+  }
+
+    @Override
+    public void onConnected(@Nullable Bundle bundle) {
+        mLocationRequest = LocationRequest.create();
+        mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+        mLocationRequest.setInterval(30 * 1000);
+        mLocationRequest.setFastestInterval(5 * 1000);
+
+        LocationSettingsRequest.Builder builder = new LocationSettingsRequest.Builder()
+                .addLocationRequest(mLocationRequest);
+        builder.setAlwaysShow(true);
+
+        result = LocationServices.SettingsApi.checkLocationSettings(mGoogleApiClient, builder.build());
+
+        result.setResultCallback(new ResultCallback<LocationSettingsResult>() {
+            @Override
+            public void onResult(LocationSettingsResult result) {
+                final Status status = result.getStatus();
+                //final LocationSettingsStates state = result.getLocationSettingsStates();
+                switch (status.getStatusCode()) {
+                    case LocationSettingsStatusCodes.SUCCESS:
+                        // All location settings are satisfied. The client can initialize location
+                        // requests here.
+                        //...
+                        break;
+                    case LocationSettingsStatusCodes.RESOLUTION_REQUIRED:
+                        // Location settings are not satisfied. But could be fixed by showing the user
+                        // a dialog.
+                        try {
+                            // Show the dialog by calling startResolutionForResult(),
+                            // and check the result in onActivityResult().
+                            status.startResolutionForResult(
+                                    Home.this,
+                                    REQUEST_LOCATION);
+                        } catch (IntentSender.SendIntentException e) {
+                            // Ignore the error.
+                        }
+                        break;
+                    case LocationSettingsStatusCodes.SETTINGS_CHANGE_UNAVAILABLE:
+                        // Location settings are not satisfied. However, we have no way to fix the
+                        // settings so we won't show the dialog.
+                        //...
+                        break;
+                }
+            }
+        });
+
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Log.d("onActivityResult()", Integer.toString(resultCode));
+
+        //final LocationSettingsStates states = LocationSettingsStates.fromIntent(data);
+        switch (requestCode) {
+            case REQUEST_LOCATION:
+                switch (resultCode) {
+                    case Activity.RESULT_OK: {
+                        // All required changes were successfully made
+                        Toast.makeText(Home.this, "Location enabled by user!", Toast.LENGTH_LONG).show();
+
+                        break;
+                    }
+                    case Activity.RESULT_CANCELED: {
+                        // The user was asked to change settings, but chose not to
+                        Toast.makeText(Home.this, "Location not enabled, user cancelled.", Toast.LENGTH_LONG).show();
+                        break;
+                    }
+                    default: {
+                        break;
+                    }
+                }
+                break;
+        }
+    }
+
+    @Override
+    public void onConnectionSuspended(int i) {
+
+    }
+
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+
+    }
+
+
+
+
 
 
     public void showSettingsAlert() {

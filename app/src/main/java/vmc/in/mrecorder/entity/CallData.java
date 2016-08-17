@@ -29,8 +29,17 @@ public class CallData {
     private String source;
     private String last_modified;
     private String empname;
+    private String location;
     private Date StartTime;
     private Date EndTime;
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
 
     public Date getStartTime() {
         return StartTime;

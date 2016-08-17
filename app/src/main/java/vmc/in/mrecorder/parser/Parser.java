@@ -132,7 +132,6 @@ public class Parser implements TAG {
                             Log.d("CALLTYPE", jsonobj.getString(CALLTYPEE) + "");
                         }
 
-
                         if (jsonobj.has(COUNT)) {
                             pieModel.setCount(jsonobj.getString(COUNT));
                         }
@@ -198,7 +197,11 @@ public class Parser implements TAG {
                     Log.d(TAG,callData.getFilename());
                 }
 
-
+                if (record.has(LOCATION)) {
+                   callData.setLocation(record.getString(LOCATION));
+                   // callData.setLocation("r,77.7509338");
+                   // callData.setLocation("0,0");
+                }
                 Date startTime = null;
                 Date endTime = null;
                 try {

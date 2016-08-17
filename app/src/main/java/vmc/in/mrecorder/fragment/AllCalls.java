@@ -159,6 +159,7 @@ public class AllCalls extends Fragment implements SwipeRefreshLayout.OnRefreshLi
         callDataArrayList = CallApplication.getWritabledatabase().getAllCalls(MDatabase.ALL);
         if (callDataArrayList != null && callDataArrayList.size() > 0) {
             Log.d("TABLE", callDataArrayList.size() + "");
+            Log.d("TABLE", callDataArrayList.get(0).getLocation() + "");
             adapter = new Calls_Adapter(getActivity(), callDataArrayList, mroot, AllCalls.this);
             adapter.setClickedListner(AllCalls.this);
             recyclerView.setAdapter(adapter);
@@ -340,6 +341,7 @@ public class AllCalls extends Fragment implements SwipeRefreshLayout.OnRefreshLi
                 CallApplication.getWritabledatabase().insertCallRecords(MDatabase.ALL, data, true);
                 adapter.setClickedListner(AllCalls.this);
                 callDataArrayList = data;
+
                 // MyApplication.getWritableDatabase().insertFollowup(data, true);
                 recyclerView.setAdapter(adapter);
 

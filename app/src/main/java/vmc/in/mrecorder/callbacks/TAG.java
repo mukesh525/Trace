@@ -58,6 +58,7 @@ public interface TAG {
     public String CALLTYPEE = "calltype";
     public String CALLTYPE = "CallType";
     public String FILENAME = "filename";
+    public String LOCATION = "location";
     public String NAME = "name";
     public String BUSINESS = "business";
     public String ADDRESS = "address";
@@ -140,6 +141,7 @@ public interface TAG {
 
     //sam did:00000000-0d25-2296-ffff-ffffca494951
    // 00000000-0d25-2296-ffff-ffffca494951
+    //Authkey:1.1.52636037dd2e5
     //gcm:fCghwArt-YE:APA91bEDZFbX-07Tdd_fhomOmJ30yDRANe_BQySqTE9uTlo3gn_Tnnl43bASf3XrgF45i8fpO4o8q1rgxkKQoEYmKa5fbGZ0ZcelE9x7Vcwi34P-dYzn-FpSJNuaINBVIQIuNMy7CTDB
 
 }

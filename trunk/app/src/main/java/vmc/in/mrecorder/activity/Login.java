@@ -10,6 +10,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
@@ -18,6 +19,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -36,20 +38,10 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.android.volley.RequestQueue;
-import com.karumi.dexter.Dexter;
-import com.karumi.dexter.MultiplePermissionsReport;
-import com.karumi.dexter.PermissionToken;
-import com.karumi.dexter.listener.PermissionGrantedResponse;
-import com.karumi.dexter.listener.PermissionRequest;
-import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
-
 import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import vmc.in.mrecorder.R;
 import vmc.in.mrecorder.callbacks.TAG;
 import vmc.in.mrecorder.entity.LoginData;
@@ -57,8 +49,6 @@ import vmc.in.mrecorder.entity.OTPData;
 import vmc.in.mrecorder.fragment.LoginTask;
 import vmc.in.mrecorder.gcm.GCMClientManager;
 import vmc.in.mrecorder.myapplication.CallApplication;
-import vmc.in.mrecorder.parser.Parser;
-import vmc.in.mrecorder.parser.Requestor;
 import vmc.in.mrecorder.util.ConnectivityReceiver;
 import vmc.in.mrecorder.util.SingleTon;
 import vmc.in.mrecorder.util.Utils;
@@ -87,6 +77,7 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
     private static final String TAG_TASK_FRAGMENT = "task_fragment";
     private android.app.AlertDialog.Builder alertDialog;
     public DialogInterface Dialog;
+    public static final int REQUEST_ID_MULTIPLE_PERMISSIONS = 1;
     public ArrayList<OTPData> otps = new ArrayList<>();
 
     @Override
@@ -484,12 +475,10 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
     @Override
     public void onClick(View v) {
         hideKeyboard();
-
-        permissions();
+        Utils.checkAndRequestPermissions(Login.this);
 
         et_password.clearFocus();
         et_email.clearFocus();
-
         switch (v.getId()) {
             case R.id.btn_login:
                 if (first && validateOTP()) {
@@ -800,25 +789,45 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
         CallApplication.getInstance().setConnectivityListener(this);
     }
 
-    public void permissions() {
-        Dexter.checkPermissions(new MultiplePermissionsListener() {
-            @Override
-            public void onPermissionsChecked(MultiplePermissionsReport report) {
-                List<String> grantedPermissions = new ArrayList<String>();
-                for (PermissionGrantedResponse response : report.getGrantedPermissionResponses()) {
-                    if (!grantedPermissions.contains(response.getPermissionName())) {
-                        grantedPermissions.add(response.getPermissionName());
-                    }
-                }
-                // Toast.makeText(getApplicationContext(), "Granted permissions:" + grantedPermissions.toString(), Toast.LENGTH_LONG).show();
-            }
+//    private  boolean checkAndRequestPermissions() {
+//        int readConractsPermission = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS);
+//        int readSmsConractsPermission = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_SMS);
+//        int recordAudioPermission = ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO);
+//        int readPhoneStatePermission = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE);
+//        int writeExternalPermission = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+//        int locationPermission = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION);
+//        List<String> listPermissionsNeeded = new ArrayList<>();
+//
+//        if (readConractsPermission != PackageManager.PERMISSION_GRANTED) {
+//            listPermissionsNeeded.add(Manifest.permission.READ_CONTACTS);
+//        }
+//        if (readSmsConractsPermission != PackageManager.PERMISSION_GRANTED) {
+//            listPermissionsNeeded.add(Manifest.permission.READ_SMS);
+//        }
+//
+//
+//        if (recordAudioPermission != PackageManager.PERMISSION_GRANTED) {
+//            listPermissionsNeeded.add(Manifest.permission.RECORD_AUDIO);
+//
+//
+//        }if (readPhoneStatePermission != PackageManager.PERMISSION_GRANTED) {
+//            listPermissionsNeeded.add(Manifest.permission.READ_PHONE_STATE);
+//        }
+//
+//        if (writeExternalPermission != PackageManager.PERMISSION_GRANTED) {
+//            listPermissionsNeeded.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
+//        }
+//        if (locationPermission != PackageManager.PERMISSION_GRANTED) {
+//            listPermissionsNeeded.add(Manifest.permission.ACCESS_COARSE_LOCATION);
+//        }
+//
+//        if (!listPermissionsNeeded.isEmpty()) {
+//            ActivityCompat.requestPermissions(this, listPermissionsNeeded.toArray(new String[listPermissionsNeeded.size()]),REQUEST_ID_MULTIPLE_PERMISSIONS);
+//            return false;
+//        }
+//        return true;
+//    }
 
-            @Override
-            public void onPermissionRationaleShouldBeShown(List<PermissionRequest> permissions, PermissionToken token) {
-                token.continuePermissionRequest();
-            }
-        }, Manifest.permission.READ_SMS, Manifest.permission.READ_CONTACTS, Manifest.permission.RECORD_AUDIO, Manifest.permission.READ_PHONE_STATE, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.ACCESS_COARSE_LOCATION);
-    }
 
 
     @Override

@@ -4,6 +4,7 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.IntentSender;
+import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -82,7 +83,8 @@ public class LocationActivity extends AppCompatActivity implements vmc.in.mrecor
         if (!isGooglePlayServicesAvailable()) {
             finish();
         }
-
+        if (Utils.tabletSize(LocationActivity.this) < 6.0)
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.location_activity);
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);

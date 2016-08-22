@@ -53,6 +53,8 @@ import vmc.in.mrecorder.service.CallRecorderServiceAll;
  */
 public class Utils implements TAG {
 
+    private static final int REQUEST_ID_MULTIPLE_PERMISSIONS = 1;
+
     public static int getToolbarHeight(Context context) {
         final TypedArray styledAttributes = context.getTheme().obtainStyledAttributes(
                 new int[]{R.attr.actionBarSize});
@@ -402,6 +404,48 @@ public class Utils implements TAG {
             }
         });
         dialog.show();
+    }
+
+
+
+
+    public static boolean checkAndRequestPermissions(Context context) {
+        int readConractsPermission = ContextCompat.checkSelfPermission(context, Manifest.permission.READ_CONTACTS);
+        int readSmsConractsPermission = ContextCompat.checkSelfPermission(context, Manifest.permission.READ_SMS);
+        int recordAudioPermission = ContextCompat.checkSelfPermission(context, Manifest.permission.RECORD_AUDIO);
+        int readPhoneStatePermission = ContextCompat.checkSelfPermission(context, Manifest.permission.READ_PHONE_STATE);
+        int writeExternalPermission = ContextCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        int locationPermission = ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION);
+        List<String> listPermissionsNeeded = new ArrayList<>();
+
+        if (readConractsPermission != PackageManager.PERMISSION_GRANTED) {
+            listPermissionsNeeded.add(Manifest.permission.READ_CONTACTS);
+        }
+        if (readSmsConractsPermission != PackageManager.PERMISSION_GRANTED) {
+            listPermissionsNeeded.add(Manifest.permission.READ_SMS);
+        }
+
+
+        if (recordAudioPermission != PackageManager.PERMISSION_GRANTED) {
+            listPermissionsNeeded.add(Manifest.permission.RECORD_AUDIO);
+
+
+        }if (readPhoneStatePermission != PackageManager.PERMISSION_GRANTED) {
+            listPermissionsNeeded.add(Manifest.permission.READ_PHONE_STATE);
+        }
+
+        if (writeExternalPermission != PackageManager.PERMISSION_GRANTED) {
+            listPermissionsNeeded.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        }
+        if (locationPermission != PackageManager.PERMISSION_GRANTED) {
+            listPermissionsNeeded.add(Manifest.permission.ACCESS_COARSE_LOCATION);
+        }
+
+        if (!listPermissionsNeeded.isEmpty()) {
+            ActivityCompat.requestPermissions((Activity) context, listPermissionsNeeded.toArray(new String[listPermissionsNeeded.size()]),REQUEST_ID_MULTIPLE_PERMISSIONS);
+            return false;
+        }
+        return true;
     }
 
 }

@@ -1,6 +1,7 @@
 package vmc.in.mrecorder.activity;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Handler;
@@ -72,7 +73,6 @@ public class AnalyticsByType extends AppCompatActivity implements ConnectivityRe
     TimerTask timerTask;
     final Handler handler = new Handler();
     private Spinner spinner_nav;
-    private ArrayList<PieModel> pieModels;
     private String reportype = "0";
     private JSONObject response;
     private JSONArray records;
@@ -80,11 +80,14 @@ public class AnalyticsByType extends AppCompatActivity implements ConnectivityRe
     private ArrayList<PieModel> pieModel;
     private RequestQueue requestQueue;
     private SingleTon volleySingleton;
+    private  Boolean rotate = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         CustomTheme.onActivityCreateSetTheme(this);
         super.onCreate(savedInstanceState);
+        if(Utils.tabletSize(AnalyticsByType.this)< 6.0)
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_analytics_by_emp);
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
@@ -96,6 +99,12 @@ public class AnalyticsByType extends AppCompatActivity implements ConnectivityRe
         offline = (RelativeLayout) findViewById(R.id.rl_dummy);
         tv_noResponse = (TextView) findViewById(R.id.tv_noresponse);
         coordinatorLayout = (RelativeLayout) findViewById(R.id.coordi_layout);
+        if (savedInstanceState != null) {
+            pieModel = savedInstanceState.getParcelableArrayList("DATA");
+            rotate=true;
+            setPieChart(pieModel);
+         }
+
         addItemsToSpinner();
         volleySingleton = SingleTon.getInstance();
         requestQueue = volleySingleton.getRequestQueue();
@@ -111,12 +120,24 @@ public class AnalyticsByType extends AppCompatActivity implements ConnectivityRe
     protected void onResume() {
         super.onResume();
         CallApplication.getInstance().setConnectivityListener(this);
-        if (pieChart != null) {
-            mainLayout.removeView(pieChart);
+        if(pieModel!=null){
+            setPieChart(pieModel);
+        }else{
+            getData();
         }
 
-    }
+        Log.d("RESUME","RESUME CALLED");
 
+    }
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        //save the movie list to a parcelable prior to rotation or configuration change
+        if(pieModel!=null && pieModel.size()> 0)
+        outState.putParcelableArrayList("DATA", pieModel);
+
+
+    }
     @Override
     protected void onPause() {
         super.onPause();
@@ -190,7 +211,11 @@ public class AnalyticsByType extends AppCompatActivity implements ConnectivityRe
                 // On selecting a spinner item
                 String item = adapter.getItemAtPosition(position).toString();
                 reportype = position + "";
-                getData();
+                if(!rotate) {
+                    getData();
+                }else{
+                    rotate=false;
+                }
 
             }
 
@@ -226,6 +251,8 @@ public class AnalyticsByType extends AppCompatActivity implements ConnectivityRe
             snackbar.show();
         }
     }
+
+
 
 
     private void setPieChart(ArrayList<PieModel> pieModel) {
@@ -302,49 +329,14 @@ public class AnalyticsByType extends AppCompatActivity implements ConnectivityRe
 
 
             try {
-//                Log.d("TAG", reportype);
-//                Log.d("TAG", CallApplication.getInstance().getDeviceId());
-//                Log.d("TAG", AUTHKEY);
-                pieModels = new ArrayList<PieModel>();
-                //response = JSONParser.getEmpdata(TYPEREPORT_URL, reportype, CallApplication.getInstance().getDeviceId(), Utils.getFromPrefs(AnalyticsByType.this, AUTHKEY, "n"));
-                pieModels = Parser.ParseTypeResponse(Requestor.requestByType(requestQueue,TYPEREPORT_URL, reportype, CallApplication.getInstance().getDeviceId(), Utils.getFromPrefs(AnalyticsByType.this, AUTHKEY, "n")));
-//                Log.d("TAG", response.toString());
-//                Log.d("TAG", Utils.getFromPrefs(AnalyticsByType.this, AUTHKEY, "n"));
-//
-//                if (response != null)
-//                    pieModels = new ArrayList<PieModel>();
-//                if (response.has(CODE))
-//                    code = response.getString(CODE);
-//
-//                if (response.has(RECORDS)) {
-//                    records = response.getJSONArray(RECORDS);
-//                    if (records.length() > 0) {
-//
-//                        for (int i = 0; i < records.length(); i++) {
-//                            JSONObject jsonobj = records.getJSONObject(i);
-//
-//                            PieModel pieModel = new PieModel();
-//                            if (jsonobj.has(CALLTYPEE)) {
-//
-//                                pieModel.setCalltype(jsonobj.getString(CALLTYPEE).equals("0") ? MISSED :
-//                                        jsonobj.getString(CALLTYPEE).equals("1") ? INCOMING : OUTGOING);
-//                            }
-//                            if (jsonobj.has(COUNT)) {
-//                                pieModel.setCount(jsonobj.getString(COUNT));
-//                            }
-//
-//
-//                            pieModels.add(pieModel);
-//                        }
-//
-//                    }
-//                }
+                pieModel = new ArrayList<PieModel>();
+                pieModel = Parser.ParseTypeResponse(Requestor.requestByType(requestQueue,TYPEREPORT_URL, reportype, CallApplication.getInstance().getDeviceId(), Utils.getFromPrefs(AnalyticsByType.this, AUTHKEY, "n")));
             } catch (Exception e) {
                 e.printStackTrace();
             }
 
 
-            return pieModels;
+            return pieModel;
         }
 
 

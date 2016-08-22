@@ -103,7 +103,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
             if (!CallRecorderServiceAll.recording && Utils.isLogin(getContext())) {
                 LoadCalls();
             }
-            //callList = CallApplication.getWritableDatabase().GetAllCalls();
+
             callList = CallApplication.getWritabledatabase().getAllOfflineCalls();
 
             Log.d(TAG, "offline data Size" + callList.size());
@@ -143,7 +143,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
                 }
             }
         } catch (Exception e) {
-            Log.d(TAG, e.getMessage().toString());
+            // Log.d(TAG, e.getMessage().toString());
         }
 
 
@@ -160,11 +160,10 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
 
         authkey = Utils.getFromPrefs(getContext(), AUTHKEY, "N/A");
         try {
-            response = Requestor.requestGetCalls(requestQueue,GET_CALL_LIST, authkey, "10", offset + "",
+            response = Requestor.requestGetCalls(requestQueue, GET_CALL_LIST, authkey, "10", offset + "",
                     CallApplication.getInstance().getDeviceId(), TYPE_ALL);
-            Log.d("GetCalls", ""+response);
-//            response = JSONParser.getCallsData(GET_CALL_LIST, authkey, "10", offset + "",
-//                   CallApplication.getInstance().getDeviceId(), TYPE_ALL);
+            Log.d("GetCalls", "" + response);
+
             if (response.has(CODE)) {
                 code = response.getString(CODE);
                 if (response.has(RECORDING)) {
@@ -214,11 +213,9 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
         try {
 
 
-            response = Requestor.requestGetCalls(requestQueue,GET_CALL_LIST, authkey, "10", offset + "",
+            response = Requestor.requestGetCalls(requestQueue, GET_CALL_LIST, authkey, "10", offset + "",
                     CallApplication.getInstance().getDeviceId(), TYPE_OUTGOING);
 
-//            response = JSONParser.getCallsData(GET_CALL_LIST, authkey, "10", offset + "",
-//                    CallApplication.getInstance().getDeviceId(), TYPE_OUTGOING);
             if (response.has(CODE)) {
                 code = response.getString(CODE);
                 if (response.has(RECORDING)) {
@@ -261,12 +258,9 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
             e.printStackTrace();
         }
         try {
-            response = Requestor.requestGetCalls(requestQueue,GET_CALL_LIST, authkey, "10", offset + "",
+            response = Requestor.requestGetCalls(requestQueue, GET_CALL_LIST, authkey, "10", offset + "",
                     CallApplication.getInstance().getDeviceId(), TYPE_INCOMING);
 
-
-//            response = JSONParser.getCallsData(GET_CALL_LIST, authkey, "10", offset + "",
-//                    CallApplication.getInstance().getDeviceId(), TYPE_INCOMING);
             if (response.has(CODE)) {
                 code = response.getString(CODE);
                 if (response.has(RECORDING)) {
@@ -309,11 +303,9 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
         }
         try {
 
-            response = Requestor.requestGetCalls(requestQueue,GET_CALL_LIST, authkey, "10", offset + "",
+            response = Requestor.requestGetCalls(requestQueue, GET_CALL_LIST, authkey, "10", offset + "",
                     CallApplication.getInstance().getDeviceId(), TYPE_MISSED);
 
-//            response = JSONParser.getCallsData(GET_CALL_LIST, authkey, "10", offset + "",
-//                    CallApplication.getInstance().getDeviceId(), TYPE_MISSED);
             if (response.has(CODE)) {
                 code = response.getString(CODE);
                 if (response.has(RECORDING)) {
@@ -414,12 +406,12 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
         builder.addPart(CONTACTNAME, new StringBody(getContactName(model.getPhoneNumber()), ContentType.TEXT_PLAIN));
         Log.d(TAG, CALLTYPEE + ":" + model.getCallType());
         Log.d(TAG, "CONTACTNAME" + ":" + getContactName(model.getPhoneNumber()));
-
-       builder.addPart(LOCATION, new StringBody(model.getLocation(), ContentType.TEXT_PLAIN));
+        builder.addPart(LOCATION, new StringBody(model.getLocation(), ContentType.TEXT_PLAIN));
         Log.d(TAG, LOCATION + ":" + model.getLocation());
         if (!fileExist) {
-            builder.addPart(ENDTIME, new StringBody("0000000", ContentType.TEXT_PLAIN));
-            Log.d(TAG, ENDTIME + ":" + "0000000");
+          //  builder.addPart(ENDTIME, new StringBody("0000000", ContentType.TEXT_PLAIN));
+            builder.addPart(ENDTIME, new StringBody(sdf.format(new Date(Long.parseLong(model.getTime()))), ContentType.TEXT_PLAIN));
+            Log.d(TAG, ENDTIME + ":" + sdf.format(new Date(Long.parseLong(model.getTime()))));
         }
         HttpEntity entity = builder.build();
 

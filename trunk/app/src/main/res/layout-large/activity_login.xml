@@ -19,13 +19,34 @@
             app:layout_scrollFlags="scroll|enterAlways"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light" >
 
-        </android.support.v7.widget.Toolbar>
+       <!--<RelativeLayout-->
+        <!--android:layout_width="match_parent"-->
+
+        <!--android:layout_height="wrap_content">-->
+
+
+        <!--<TextView-->
+            <!--android:text="@string/app_name"-->
+            <!--android:gravity="center"-->
+            <!--android:textColor="@color/white"-->
+            <!--android:textAppearance="?android:attr/textAppearanceLarge"-->
+            <!--android:layout_centerHorizontal="true"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content" />-->
+    <!--</RelativeLayout>-->
+
+
+
+
+
+
+
+    </android.support.v7.widget.Toolbar>
     </android.support.design.widget.AppBarLayout>
 
     <RelativeLayout
         android:background="#50E64A19"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
+        android:orientation="vertical" android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <LinearLayout
@@ -34,8 +55,8 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginLeft="150dp"
+            android:layout_marginRight="150dp"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true">
             <de.hdodenhof.circleimageview.CircleImageView

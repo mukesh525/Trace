@@ -3,7 +3,6 @@
     android:id="@+id/fragment_followup"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     tools:context="vmc.in.mrecorder.activity.Home">
 
     <android.support.v4.widget.SwipeRefreshLayout
@@ -53,7 +52,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-
         android:layout_centerVertical="true"
         android:gravity="center"
         android:orientation="vertical"

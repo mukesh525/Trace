@@ -1,6 +1,7 @@
 package vmc.in.mrecorder.activity;
 
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.preference.PreferenceManager;
@@ -71,13 +72,15 @@ public class AnalyticsByEmp extends AppCompatActivity implements ConnectivityRec
     private ArrayList<BarModel> barModel;
     private RequestQueue requestQueue;
     private SingleTon volleySingleton;
+    private  Boolean rotate = false;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         CustomTheme.onActivityCreateSetTheme(this);
         super.onCreate(savedInstanceState);
-
+        if(Utils.tabletSize(AnalyticsByEmp.this)< 6.0)
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_analytics_by_emp);
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         //mToolbar.setTitle("Analytics By Employee");
@@ -91,6 +94,11 @@ public class AnalyticsByEmp extends AppCompatActivity implements ConnectivityRec
         offline = (RelativeLayout) findViewById(R.id.rl_dummy);
         name = (TextView) findViewById(R.id.tv_analy_name);
         name.setText("Analytics By Emp");
+        if (savedInstanceState != null) {
+            barModel = savedInstanceState.getParcelableArrayList("DATA");
+            rotate=true;
+            setBarChart(barModel);
+        }
         addItemsToSpinner();
         volleySingleton = SingleTon.getInstance();
         requestQueue = volleySingleton.getRequestQueue();
@@ -103,12 +111,24 @@ public class AnalyticsByEmp extends AppCompatActivity implements ConnectivityRec
     }
 
     @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        //save the movie list to a parcelable prior to rotation or configuration change
+        if(barModel!=null && barModel.size()> 0)
+            outState.putParcelableArrayList("DATA", barModel);
+
+
+    }
+    @Override
     protected void onResume() {
         super.onResume();
         CallApplication.getInstance().setConnectivityListener(this);
-        if (chart != null) {
-            mainLayout.removeView(chart);
+        if(barModel!=null){
+            setBarChart(barModel);
+        }else{
+            getData();
         }
+
     }
 
     @Override
@@ -155,7 +175,11 @@ public class AnalyticsByEmp extends AppCompatActivity implements ConnectivityRec
 //                String item = adapter.getItemAtPosition(position).toString();
 //
                 reportype = position + "";
-                getData();
+                if(!rotate) {
+                    getData();
+                }else{
+                    rotate=false;
+                }
 
 
             }
@@ -287,20 +311,15 @@ public class AnalyticsByEmp extends AppCompatActivity implements ConnectivityRec
         @Override
         protected ArrayList<BarModel> doInBackground(Void... params) {
 
-
             try {
-
                 Log.d("TAG", reportype);
                 Log.d("TAG", CallApplication.getInstance().getDeviceId());
                 barModel = new ArrayList<>();
-                // response = JSONParser.getEmpdata(EMPREPORT_URL, reportype, CallApplication.getInstance().getDeviceId(), Utils.getFromPrefs(AnalyticsByEmp.this, AUTHKEY, "n"));
                 barModel = Parser.ParseEMPResponse(Requestor.requestByEMP(requestQueue, EMPREPORT_URL, reportype, CallApplication.getInstance().getDeviceId(), Utils.getFromPrefs(AnalyticsByEmp.this, AUTHKEY, "n")));
 
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
-
             return barModel;
         }
 

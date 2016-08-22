@@ -2,6 +2,7 @@ package vmc.in.mrecorder.activity;
 
 import android.app.Fragment;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -41,7 +42,9 @@ public class ContactsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         CustomTheme.onActivityCreateSetTheme(this);
         super.onCreate(savedInstanceState);
-
+        if (Utils.tabletSize(ContactsActivity.this) < 6.0) {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }
         setContentView(R.layout.activity_contacts_layout);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -169,8 +172,6 @@ public class ContactsActivity extends AppCompatActivity {
         mAdapter.addFragment(mDialledCallsFragment, "DIALLED");
         mAdapter.addFragment(mReceivedCallsFragment, "RECEIVED");
         mAdapter.addFragment(missedCallsFragment, "MISSED");
-
-
         viewPager.setAdapter(mAdapter);
     }
 

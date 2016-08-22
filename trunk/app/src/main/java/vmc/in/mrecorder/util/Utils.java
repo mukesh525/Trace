@@ -27,6 +27,7 @@ import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.text.Html;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -154,6 +155,30 @@ public class Utils implements TAG {
                 .setNegativeButton("Cancel", null)
                 .create()
                 .show();
+    }
+    public static double tabletSize(Context context) {
+
+        double size = 0;
+        try {
+
+            // Compute screen size
+
+            DisplayMetrics dm = context.getResources().getDisplayMetrics();
+
+            float screenWidth = dm.widthPixels / dm.xdpi;
+
+            float screenHeight = dm.heightPixels / dm.ydpi;
+
+            size = Math.sqrt(Math.pow(screenWidth, 2) +
+
+                    Math.pow(screenHeight, 2));
+
+        } catch (Throwable t) {
+
+        }
+
+        return size;
+
     }
 
     public static void sendSms(String number, Activity mActivity) {

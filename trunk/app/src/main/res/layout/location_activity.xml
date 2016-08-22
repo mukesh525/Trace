@@ -30,6 +30,7 @@
         android:layout_height="match_parent"
         class="com.google.android.gms.maps.SupportMapFragment"
         android:layout_above="@+id/latlongLocation"
+        android:layout_below="@+id/appbar"
         />
     <include
         android:id="@+id/location_display_incl"
@@ -37,7 +38,6 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/appbar"
         android:layout_centerHorizontal="true"
-        android:layout_margin="7dp"
         layout="@layout/location_display_view" />
 
     <TextView

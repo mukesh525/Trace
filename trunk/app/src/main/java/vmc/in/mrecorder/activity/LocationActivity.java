@@ -165,7 +165,15 @@ public class LocationActivity extends AppCompatActivity implements vmc.in.mrecor
 
                     // Getting view from the layout file info_window_layout
                     View v = getLayoutInflater().inflate(R.layout.info_window_layout, null);
-                    v.setLayoutParams(new LinearLayout.LayoutParams(200, 180));
+
+                    if(Utils.tabletSize(LocationActivity.this)>6.0){
+                        v.setLayoutParams(new LinearLayout.LayoutParams(200, 180));
+                    }else if(Utils.tabletSize(LocationActivity.this)>5.0){
+                        v.setLayoutParams(new LinearLayout.LayoutParams(280, 300));
+                    }
+                    else{
+                        v.setLayoutParams(new LinearLayout.LayoutParams(220, 210));
+                    }
 
                     // Getting the position from the marker
                     LatLng latLng = arg0.getPosition();
@@ -197,7 +205,7 @@ public class LocationActivity extends AppCompatActivity implements vmc.in.mrecor
             markerName = googleMap.addMarker(new MarkerOptions().position(latLng).title("Call Location").snippet(""));
             markerName.setDraggable(true);
             markerName.showInfoWindow();
-            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 20));
+            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 18));
             updateLocation(latLng);
             TextView locationTv = (TextView) findViewById(R.id.latlongLocation);
             locationTv.setText("LAT:" + Lat + " LONG:" + Long);

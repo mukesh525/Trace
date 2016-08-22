@@ -209,7 +209,7 @@ public class Calls_Adapter extends RecyclerView.Adapter<Calls_Adapter.CallViewHo
                 return;
             }
 
-            if(callDatas.get(position).getLocation().length()>3){
+            if(callDatas.get(position).getLocation().length()>7){
                 popupMenu.inflate(R.menu.popupmenu_location);
             }else{
                 popupMenu.inflate(R.menu.popupmenu);

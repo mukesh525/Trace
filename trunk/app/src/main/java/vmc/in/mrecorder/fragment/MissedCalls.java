@@ -73,7 +73,6 @@ public class MissedCalls extends Fragment  implements SwipeRefreshLayout.OnRefre
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_all_calls, container, false);
         swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.SwipefollowUp);
-       // mroot = (RelativeLayout) view.findViewById(R.id.fragment_followup);
         mroot = ((Home) getActivity()).fabMenu;
         mprogressLayout = (LinearLayout) view.findViewById(R.id.mprogressLayout);
         retrylayout = (LinearLayout) view.findViewById(R.id.retryLayout);
@@ -92,7 +91,6 @@ public class MissedCalls extends Fragment  implements SwipeRefreshLayout.OnRefre
         recyclerView.addOnScrollListener(new EndlessScrollListener() {
             @Override
             public void onLoadMore() {
-               // ((Home) getActivity()).floatingActionButton.hide();
                 if (pdloadmore.getVisibility() == View.GONE) {
                     pdloadmore.setVisibility(View.VISIBLE);
                 }
@@ -265,8 +263,6 @@ public class MissedCalls extends Fragment  implements SwipeRefreshLayout.OnRefre
 
                 response = Requestor.requestGetCalls(requestQueue,GET_CALL_LIST, authkey, "10", offset + "",
                         CallApplication.getInstance().getDeviceId(), TYPE_MISSED);
-//                response = JSONParser.getCallsData(GET_CALL_LIST, authkey, "10", offset + "",
-//                        CallApplication.getInstance().getDeviceId(), TYPE_MISSED);
                 Log.d(TAG, response.toString());
             } catch (Exception e) {
             }
@@ -319,7 +315,6 @@ public class MissedCalls extends Fragment  implements SwipeRefreshLayout.OnRefre
                 adapter = new Calls_Adapter(getActivity(), data, mroot, MissedCalls.this);
                 adapter.setClickedListner(MissedCalls.this);
                 callDataArrayList = data;
-                // MyApplication.getWritableDatabase().insertFollowup(data, true);
                 CallApplication.getWritabledatabase().insertCallRecords(MDatabase.MISSED, data, true);
                 recyclerView.setAdapter(adapter);
 
@@ -397,8 +392,6 @@ public class MissedCalls extends Fragment  implements SwipeRefreshLayout.OnRefre
 
                 response = Requestor.requestGetCalls(requestQueue,GET_CALL_LIST, authkey, "10", offset + "",
                         CallApplication.getInstance().getDeviceId(), TYPE_MISSED);
-//                response = JSONParser.getCallsData(GET_CALL_LIST, authkey, "10", offset + "",
-//                        CallApplication.getInstance().getDeviceId(), TYPE_MISSED);
                 Log.d(TAG, response.toString());
             } catch (Exception e) {
             }
@@ -435,7 +428,6 @@ public class MissedCalls extends Fragment  implements SwipeRefreshLayout.OnRefre
 
             if (data != null && getActivity() != null && data.size() > 0) {
                 callDataArrayList.addAll(data);
-                // MyApplication.getWritableDatabase().insertFollowup(data, false);
                 CallApplication.getWritabledatabase().insertCallRecords(MDatabase.MISSED, data, true);
                 adapter.notifyDataSetChanged();
 

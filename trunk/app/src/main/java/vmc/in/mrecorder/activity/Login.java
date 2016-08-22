@@ -2,22 +2,20 @@ package vmc.in.mrecorder.activity;
 
 
 import android.Manifest;
-import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.NotificationManager;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.IntentSender;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
@@ -26,8 +24,12 @@ import android.support.v7.widget.Toolbar;
 import android.text.InputType;
 import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.animation.BounceInterpolator;
+import android.view.animation.TranslateAnimation;
+import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -36,16 +38,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.common.api.PendingResult;
-import com.google.android.gms.common.api.ResultCallback;
-import com.google.android.gms.common.api.Status;
-import com.google.android.gms.location.LocationRequest;
-import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.location.LocationSettingsRequest;
-import com.google.android.gms.location.LocationSettingsResult;
-import com.google.android.gms.location.LocationSettingsStatusCodes;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.MultiplePermissionsReport;
 import com.karumi.dexter.PermissionToken;
@@ -61,19 +53,18 @@ import java.util.List;
 import vmc.in.mrecorder.R;
 import vmc.in.mrecorder.callbacks.TAG;
 import vmc.in.mrecorder.entity.LoginData;
-
-import vmc.in.mrecorder.fragment.OTPDialogFragment;
+import vmc.in.mrecorder.entity.OTPData;
+import vmc.in.mrecorder.fragment.LoginTask;
 import vmc.in.mrecorder.gcm.GCMClientManager;
 import vmc.in.mrecorder.myapplication.CallApplication;
 import vmc.in.mrecorder.parser.Parser;
 import vmc.in.mrecorder.parser.Requestor;
 import vmc.in.mrecorder.util.ConnectivityReceiver;
-import vmc.in.mrecorder.util.JSONParser;
 import vmc.in.mrecorder.util.SingleTon;
 import vmc.in.mrecorder.util.Utils;
 
 public class Login extends AppCompatActivity implements ConnectivityReceiver.ConnectivityReceiverListener,
-        View.OnClickListener, TAG {
+        View.OnClickListener, TAG, LoginTask.TaskCallbacks {
 
     private static Login inst;
     Button btn_login, btn_getOtp;
@@ -83,7 +74,7 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
     String email, password;
     private CoordinatorLayout coordinatorLayout;
     private Toolbar toolbar;
-    private String OTP_Sms = "N/A", OTP_resp, gcmkey;
+    private String OTP_Sms = "N/A", OTP_resp = "0000", gcmkey;
     private ProgressDialog progressDialog;
     public static final String DEAFULT = "";
     private boolean first = true;
@@ -91,13 +82,19 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
     private RequestQueue requestQueue;
     private SingleTon volleySingleton;
     private JSONObject response;
-
-
+    private LoginTask mTaskFragment;
+    private Boolean showDialog = false;
+    private static final String TAG_TASK_FRAGMENT = "task_fragment";
+    private android.app.AlertDialog.Builder alertDialog;
+    public DialogInterface Dialog;
+    public ArrayList<OTPData> otps = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        if (Utils.tabletSize(Login.this) < 6.0)
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         coordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordi_layout);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -108,12 +105,35 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
         check_box = (CheckBox) findViewById(R.id.checkBox_forgot);
         et_email = (EditText) findViewById(R.id.input_email);
         et_password = (EditText) findViewById(R.id.input_password);
-
         volleySingleton = SingleTon.getInstance();
         requestQueue = volleySingleton.getRequestQueue();
 
-        // Dexter.continuePendingRequestsIfPossible(permissionsListener); to support configuration changes based on screen rotation
+        mTaskFragment = (LoginTask) getSupportFragmentManager().findFragmentByTag(TAG_TASK_FRAGMENT);
 
+        if (savedInstanceState != null) {
+            OTP_resp = savedInstanceState.getString("OTP");
+            OTP_Sms = savedInstanceState.getString("OTPS");
+            String btn = savedInstanceState.getString("btn");
+            Boolean show = savedInstanceState.getBoolean("show");
+            otps = savedInstanceState.getParcelableArrayList("otps");
+            first = savedInstanceState.getBoolean("first");
+            if (show) {
+                showTermsAlert();
+                showDialog = show;
+            }
+            btn_login.setText(btn);
+            if (OTP_resp.length() > 5) {
+                if (tv_otp.getVisibility() == View.GONE) {
+                    tv_otp.setVisibility(View.VISIBLE);
+                    if (!OTP_Sms.equals("N/A")) {
+                        tv_otp.setText(OTP_Sms);
+                    } else {
+                        tv_otp.setHint("Waiting for OTP");
+                    }
+
+                }
+            }
+        }
         if (android.os.Build.VERSION.SDK_INT > 19) {
             btn_login.setBackgroundResource(R.drawable.button_background);
 
@@ -171,12 +191,70 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
                 return false;
             }
         });
+        et_email.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                Drawable drawable = ContextCompat.getDrawable(Login.this, R.drawable.error);
+                drawable.setBounds(new Rect(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight()));
+                String email = et_email.getText().toString().trim();
+                if (actionId == EditorInfo.IME_ACTION_NEXT) {
+                    if (email.isEmpty() || (email.length() < 8 && !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches())) {
+                        et_email.setError("Enter a valid email address.", drawable);
+                    }
+                    return false;
+                }
+                return false;
+            }
+        });
+        et_password.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                Drawable drawable = ContextCompat.getDrawable(Login.this, R.drawable.error);
+                drawable.setBounds(new Rect(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight()));
+
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                    if (validateOTP()) {
+                        hideKeyboard();
+                    }
+                    return true;
+                }
+                return false;
+            }
+        });
 
 
-        // Log.d("android_id", CallApplication.getDeviceId());
+        TranslateAnimation translation;
+        translation = new TranslateAnimation(0f, 0F, 100f, 0f);
+        translation.setStartOffset(500);
+        translation.setDuration(2000);
+        translation.setFillAfter(true);
+        translation.setInterpolator(new BounceInterpolator());
+
+        findViewById(R.id.logo).startAnimation(translation);
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (progressDialog != null && progressDialog.isShowing()) {
+            progressDialog.cancel();
+        }
+    }
 
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        if (Dialog != null && showDialog) {
+            Dialog.cancel();
+        }
+        outState.putString("OTP", OTP_resp);
+        outState.putString("OTPS", OTP_Sms);
+        outState.putBoolean("show", showDialog);
+        outState.putBoolean("first", first);
+        outState.putParcelableArrayList("otps", otps);
+        outState.putString("btn", btn_login.getText().toString());
+
+    }
 
     public void onRegisterGcm(final String regid) {
 
@@ -197,6 +275,154 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
 
     }
 
+    @Override
+    public void onPreExecute() {
+
+        progressDialog = new ProgressDialog(Login.this,
+                R.style.AppTheme_Dark_Dialog);
+        progressDialog.setIndeterminate(true);
+        progressDialog.setMessage("Generating OTP...");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+
+
+    }
+
+    @Override
+    public void onProgressUpdate(int percent) {
+
+    }
+
+    @Override
+    public void onCancelled() {
+
+    }
+
+
+    @Override
+    public void onTimerFinish() {
+        btn_login.setEnabled(true);
+        btn_login.setText("Resend OTP");
+        Log.d("timer", "Btn enable true");
+    }
+
+    @Override
+    public void onTimerUpdate(String time) {
+        btn_login.setEnabled(false);
+        btn_login.setText(time);
+        Log.d("timer", "Time :" + time);
+        Log.d("timer", "Btn enable false");
+    }
+
+    @Override
+    public void onPostExecute(OTPData otpData) {
+        if (otpData != null) {
+            if (progressDialog != null && progressDialog.isShowing()) {
+                progressDialog.dismiss();
+            }
+
+            if (tv_otp.getVisibility() == View.GONE) {
+                tv_otp.setVisibility(View.VISIBLE);
+            }
+            tv_otp.setHint("Waiting for OTP");
+            OTP_resp = otpData.getOtp();
+            if (otpData.getCode().equals("202")) {
+                btn_login.setText("Get OTP");
+                Snackbar.make(coordinatorLayout, otpData.getMsg(), Snackbar.LENGTH_LONG).show();
+                tv_otp.setHint("");
+
+            } else {
+                OTP_resp = otpData.getOtp();
+                otps.add(otpData);
+
+            }
+
+        } else {
+            if (progressDialog != null && progressDialog.isShowing()) {
+                progressDialog.dismiss();
+            }
+        }
+    }
+
+
+    @Override
+    public void onPostExecute(LoginData data) {
+
+        if (progressDialog != null && progressDialog.isShowing()) {
+            progressDialog.dismiss();
+        }
+        if (data != null) {
+            Log.d("LOG", data.toString());
+        }
+        btn_login.setEnabled(true);
+
+        if (data.getCode().equals("202")) {
+            btn_login.setText("Get OTP");
+
+            Snackbar.make(coordinatorLayout, data.getMessage(), Snackbar.LENGTH_SHORT)
+                    .setAction(getString(R.string.text_tryAgain), new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            StartLogin();
+
+                        }
+                    }).
+                    setActionTextColor(ContextCompat.getColor(Login.this, R.color.accent)).show();
+        }
+        if (data.getCode().equals("400")) {
+
+            save();
+            Utils.saveToPrefs(Login.this, AUTHKEY, data.getAuthcode());
+            Utils.saveToPrefs(Login.this, NAME, data.getUsername());
+            Utils.saveToPrefs(Login.this, EMAIL, email);
+            Utils.saveToPrefs(Login.this, USERTYPE, data.getUsertype());
+            SharedPreferences sharedPrefs = PreferenceManager
+                    .getDefaultSharedPreferences(getApplicationContext());
+            SharedPreferences.Editor ed = sharedPrefs.edit();
+            if (data.getRecording().equals("1")) {
+                ed.putBoolean("prefRecording", true);
+                Log.d("LOG", "Recording" + data.getRecording());
+            } else {
+                ed.putBoolean("prefRecording", false);
+            }
+            if (data.getWorkhour().equals("1")) {
+                ed.putBoolean("prefOfficeTimeRecording", true);
+                Log.d("LOG", "OfficeRecording" + data.getRecording());
+            } else {
+                ed.putBoolean("prefOfficeTimeRecording", false);
+            }
+            if (data.getMcuberecording().equals("1")) {
+                ed.putBoolean("prefMcubeRecording", true);
+            } else {
+                ed.putBoolean("prefMcubeRecording", false);
+            }
+
+            ed.commit();
+            CallApplication.getInstance().startRecording();
+
+
+            Intent intent = new Intent(Login.this, Home.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |
+                    Intent.FLAG_ACTIVITY_CLEAR_TASK |
+                    Intent.FLAG_ACTIVITY_NEW_TASK);
+            overridePendingTransition(0, 0);
+            Login.this.startActivity(intent);
+
+        }
+
+
+        if (data.getCode().equals("n")) {
+            Snackbar.make(coordinatorLayout, "No Response From Server", Snackbar.LENGTH_SHORT)
+                    .setAction(getString(R.string.text_tryAgain), new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            StartLogin();
+
+                        }
+                    }).
+                    setActionTextColor(ContextCompat.getColor(Login.this, R.color.primary_dark)).show();
+        }
+    }
 
 
     class RegisterGcm extends AsyncTask<Void, Void, String> {
@@ -234,12 +460,19 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
     }
 
     public void updateList(final String smsMessage) {
-
+        btn_login.setEnabled(true);
+        if (mTaskFragment != null) {
+            mTaskFragment.cancelTimer();
+        }
         OTP_Sms = smsMessage.substring(9, 15);
         //  String OTP1=smsMessage.split(": ")[0];
-
-         Log.d("SMS", OTP_Sms+" "+OTP);
+        Log.d("OTP test", OTP_resp);
+        Log.d("SMS", OTP_Sms + " " + OTP);
         tv_otp.setText(OTP_Sms);
+        if (tv_otp.getVisibility() == View.GONE) {
+            tv_otp.setVisibility(View.VISIBLE);
+        }
+        // Log.d("OTP", tv_otp.getText().toString());
         btn_login.setText("Login");
         if (progressDialog != null && progressDialog.isShowing()) {
             progressDialog.dismiss();
@@ -261,22 +494,14 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
             case R.id.btn_login:
                 if (first && validateOTP()) {
                     showTermsAlert();
+                    // showDialog=true;
                     first = false;
                 } else {
+                    // showDialog=false;
                     startLogin();
                 }
                 break;
 
-            case R.id.btn_get_otp:
-//                if (validateOTP()) {
-//                    GetOtp();
-//                }
-                break;
-
-//            case R.id.link_forgot:
-//                startActivity(new Intent(getApplicationContext(), ForgotPasword.class));
-//                finish();
-//                break;
         }
     }
 
@@ -292,7 +517,9 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
     }
 
     public void showTermsAlert() {
-        android.app.AlertDialog.Builder alertDialog = new android.app.AlertDialog.Builder(Login.this);
+        showDialog = true;
+
+        alertDialog = new AlertDialog.Builder(Login.this);
         alertDialog.setTitle("MTracker");
         alertDialog.setIcon(R.mipmap.ic_launcher);
         // Setting Dialog Message
@@ -303,6 +530,8 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
             public void onClick(DialogInterface dialog, int which) {
                 // dialog.cancel();
                 startLogin();
+                showDialog = false;
+
             }
         });
 
@@ -310,6 +539,8 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
         alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 first = true;
+                //  showDialog=true;
+                Dialog = dialog;
                 dialog.cancel();
                 // Utils.isLogout(Login.this);
             }
@@ -317,14 +548,21 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
 
         // Showing Alert Message
         alertDialog.show();
+
     }
 
     private void Login() {
 
         if (validate()) {
 
-            if (OTP_resp != null && OTP_resp.equals(OTP_Sms)) {
-                StartLogin();
+            //  if (OTP_resp != null && OTP_resp.equals(OTP_Sms)) {
+            if (OTP_resp != null && otps.size() > 0) {
+                for (OTPData data : otps) {
+                    if (data.getOtp().equals(OTP_Sms)) {
+                        StartLogin();
+                    }
+
+                }
             } else {
 
                 btn_login.setEnabled(false);
@@ -343,16 +581,16 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
     public boolean validate() {
         boolean valid = true;
 
-        String email = et_email.getText().toString();
-        String password = et_password.getText().toString();
+        String email = et_email.getText().toString().trim();
+        String password = et_password.getText().toString().trim();
         String OTP = tv_otp.getText().toString();
 
         Drawable drawable = ContextCompat.getDrawable(Login.this, R.drawable.error);
         drawable.setBounds(new Rect(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight()));
 
 
-        if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            et_email.setError("enter a valid email address", drawable);
+        if (email.isEmpty() || (email.length() < 8 && !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches())) {
+            et_email.setError("Enter a valid email address.", drawable);
             //errormsg = "Enter a valid email address";
             valid = false;
         } else {
@@ -398,15 +636,15 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
     public boolean validateOTP() {
         boolean valid = true;
 
-        String email = et_email.getText().toString();
-        String password = et_password.getText().toString();
+        String email = et_email.getText().toString().trim();
+        String password = et_password.getText().toString().trim();
         String OTP = tv_otp.getText().toString();
 
         Drawable drawable = ContextCompat.getDrawable(Login.this, R.drawable.error);
         drawable.setBounds(new Rect(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight()));
 
-        if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            et_email.setError("enter a valid email address", drawable);
+        if (email.isEmpty() || (email.length() < 8 && !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches())) {
+            et_email.setError("Enter a valid email address", drawable);
             //errormsg = "Enter a valid email address";
 
             valid = false;
@@ -470,9 +708,19 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
         password = et_password.getText().toString().trim();
         if (ConnectivityReceiver.isConnected()) {
             if (tv_otp.getText().toString().length() == 0 || tv_otp.getText().toString().equals("")) {
-                btn_login.setText("Resend OTP");
+                //btn_login.setText("Resend OTP");
+
             }
-            new GetOtp(email, password).execute();
+            // new GetOtp(email, password).execute();
+
+            Bundle bundle = new Bundle();
+            bundle.putString("email", email);
+            bundle.putString("password", password);
+            bundle.putBoolean("ISOTP", true);
+            mTaskFragment = new LoginTask();
+            mTaskFragment.setArguments(bundle);
+            getSupportFragmentManager().beginTransaction().add(mTaskFragment, TAG_TASK_FRAGMENT).commit();
+
         } else {
             Snackbar snack = Snackbar.make(coordinatorLayout, "No Internet Connection", Snackbar.LENGTH_SHORT)
                     .setAction(getString(R.string.text_tryAgain), new View.OnClickListener() {
@@ -491,100 +739,21 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
     }
 
 
-    class GetOtp extends AsyncTask<Void, Void, JSONObject> {
-
-        String email = "n";
-        String password = "n";
-        String msg, code;
-
-        public GetOtp(String email, String password) {
-            this.email = email;
-            this.password = password;
-        }
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-//             showProgress("Login Please Wait.."); progressDialog.setIndeterminate(true);
-//             progressDialog.setMessage("Generating OTP...");
-//               progressDialog.show();
-            progressDialog = new ProgressDialog(Login.this,
-                    R.style.AppTheme_Dark_Dialog);
-            progressDialog.setIndeterminate(true);
-            progressDialog.setMessage("Generating OTP...");
-            progressDialog.setCancelable(false);
-            progressDialog.show();
-
-
-        }
-
-
-        @Override
-        protected JSONObject doInBackground(Void... params) {
-            // TODO Auto-generated method stub
-            try {
-                response = Requestor.requestOTP(requestQueue, GET_OTP, email, password);
-                //response = JSONParser.getOTP(GET_OTP, email, password);
-                Log.d("OTP", response.toString());
-                if (response != null) {
-                    if (response.has(CODE)) {
-                        code = response.getString(CODE);
-                    }
-                    if (response.has(MESSAGE)) {
-                        msg = response.getString(MESSAGE);
-                    }
-                    if (response.has(OTP)) {
-                        OTP_resp = response.getString(OTP);
-
-                    }
-
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-
-            return response;
-        }
-
-        @Override
-        protected void onPostExecute(JSONObject data) {
-            if (data != null) {
-                if (progressDialog != null && progressDialog.isShowing()) {
-                    progressDialog.dismiss();
-                }
-
-                if (tv_otp.getVisibility() == View.GONE) {
-                    tv_otp.setVisibility(View.VISIBLE);
-                }
-                tv_otp.setHint("Waiting for OTP");
-
-                if (code.equals("202")) {
-                    btn_login.setText("Get OTP");
-                    Snackbar.make(coordinatorLayout, msg, Snackbar.LENGTH_LONG).show();
-                    tv_otp.setHint("");
-
-                } else {
-
-                    //showOTPDialog();
-
-                }
-
-            } else {
-                if (progressDialog != null && progressDialog.isShowing()) {
-                    progressDialog.dismiss();
-                }
-            }
-        }
-
-
-    }
-
-
     public void StartLogin() {
 
         if (ConnectivityReceiver.isConnected()) {
-            new StartLogin().execute();
+            // new StartLogin().execute();
+            email = et_email.getText().toString().trim();
+            password = et_password.getText().toString().trim();
+            Bundle bundle = new Bundle();
+            bundle.putString("email", email);
+            bundle.putString("password", password);
+            bundle.putString("gcm", gcmkey);
+            bundle.putBoolean("ISOTP", false);
+            mTaskFragment = new LoginTask();
+            mTaskFragment.setArguments(bundle);
+            getSupportFragmentManager().beginTransaction().add(mTaskFragment, TAG_TASK_FRAGMENT).commit();
+
         } else {
 
             Snackbar snack = Snackbar.make(coordinatorLayout, "No Internet Connection", Snackbar.LENGTH_SHORT)
@@ -602,123 +771,6 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
             tv.setTextColor(Color.WHITE);
             snack.show();
         }
-    }
-
-    class StartLogin extends AsyncTask<Void, Void, LoginData> {
-
-
-        public StartLogin() {
-
-        }
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            progressDialog = new ProgressDialog(Login.this,
-                    R.style.AppTheme_Dark_Dialog);
-            progressDialog.setIndeterminate(true);
-            progressDialog.setMessage("Authenticating...");
-            progressDialog.setCancelable(false);
-            progressDialog.show();
-
-
-        }
-
-
-        @Override
-        protected LoginData doInBackground(Void... params) {
-            // TODO Auto-generated method stub
-
-            try {
-                Log.d("GCMPRO", CallApplication.getInstance().getDeviceId());
-
-                loginData = Parser.ParseLoginResponse(Requestor.requestLogin(requestQueue, LOGIN_URL, email, password, CallApplication.getInstance().getDeviceId(), gcmkey));
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-            return loginData;
-        }
-
-        @Override
-        protected void onPostExecute(LoginData data) {
-            if (progressDialog != null && progressDialog.isShowing()) {
-                progressDialog.dismiss();
-            }
-            if (data != null) {
-                Log.d("LOG", data.toString());
-            }
-            btn_login.setEnabled(true);
-
-            if (data.getCode().equals("202")) {
-                btn_login.setText("Get OTP");
-
-                Snackbar.make(coordinatorLayout, data.getMessage(), Snackbar.LENGTH_SHORT)
-                        .setAction(getString(R.string.text_tryAgain), new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                StartLogin();
-
-                            }
-                        }).
-                        setActionTextColor(ContextCompat.getColor(Login.this, R.color.accent)).show();
-            }
-            if (data.getCode().equals("400")) {
-
-                save();
-                Utils.saveToPrefs(Login.this, AUTHKEY, data.getAuthcode());
-                Utils.saveToPrefs(Login.this, NAME, data.getUsername());
-                Utils.saveToPrefs(Login.this, EMAIL, email);
-                Utils.saveToPrefs(Login.this, USERTYPE, data.getUsertype());
-                SharedPreferences sharedPrefs = PreferenceManager
-                        .getDefaultSharedPreferences(getApplicationContext());
-                SharedPreferences.Editor ed = sharedPrefs.edit();
-                if (data.getRecording().equals("1")) {
-                    ed.putBoolean("prefRecording", true);
-                    Log.d("LOG", "Recording" + data.getRecording());
-                } else {
-                    ed.putBoolean("prefRecording", false);
-                }
-                if (data.getWorkhour().equals("1")) {
-                    ed.putBoolean("prefOfficeTimeRecording", true);
-                    Log.d("LOG", "OfficeRecording" + data.getRecording());
-                } else {
-                    ed.putBoolean("prefOfficeTimeRecording", false);
-                }
-                if (data.getMcuberecording().equals("1")) {
-                    ed.putBoolean("prefMcubeRecording", true);
-                } else {
-                    ed.putBoolean("prefMcubeRecording", false);
-                }
-
-                ed.commit();
-                CallApplication.getInstance().startRecording();
-
-
-                Intent intent = new Intent(Login.this, Home.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |
-                        Intent.FLAG_ACTIVITY_CLEAR_TASK |
-                        Intent.FLAG_ACTIVITY_NEW_TASK);
-                overridePendingTransition(0, 0);
-                Login.this.startActivity(intent);
-
-            }
-
-
-            if (data.getCode().equals("n")) {
-                Snackbar.make(coordinatorLayout, "No Response From Server", Snackbar.LENGTH_SHORT)
-                        .setAction(getString(R.string.text_tryAgain), new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                StartLogin();
-
-                            }
-                        }).
-                        setActionTextColor(ContextCompat.getColor(Login.this, R.color.primary_dark)).show();
-            }
-        }
-
     }
 
 

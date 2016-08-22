@@ -2,6 +2,7 @@ package vmc.in.mrecorder.activity;
 
 import android.app.DialogFragment;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Environment;
@@ -51,7 +52,8 @@ public class Settings extends AppCompatActivity implements TAG {
     protected void onCreate(Bundle savedInstanceState) {
         CustomTheme.onActivityCreateSetTheme(this);
         super.onCreate(savedInstanceState);
-
+        if(Utils.tabletSize(Settings.this)< 6.0){
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);}
         setContentView(R.layout.activity_settings);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

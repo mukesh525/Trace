@@ -10,9 +10,11 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.location.Location;
+import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -75,10 +77,18 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.LocationSettingsRequest;
 import com.google.android.gms.location.LocationSettingsResult;
 import com.google.android.gms.location.LocationSettingsStatusCodes;
+import com.karumi.dexter.Dexter;
+import com.karumi.dexter.MultiplePermissionsReport;
+import com.karumi.dexter.PermissionToken;
+import com.karumi.dexter.listener.PermissionGrantedResponse;
+import com.karumi.dexter.listener.PermissionRequest;
+import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 
 import java.io.File;
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 
 public class Home extends AppCompatActivity
@@ -121,6 +131,8 @@ public class Home extends AppCompatActivity
         CustomTheme.onActivityCreateSetTheme(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        if(Utils.tabletSize(Home.this)< 6.0){
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);}
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
         coordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordi_layout);
@@ -136,7 +148,8 @@ public class Home extends AppCompatActivity
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
 
-            getAllPermision();
+        //    getAllPermision();
+            permissions();
         }
 
 
@@ -249,6 +262,7 @@ public class Home extends AppCompatActivity
             }
         });
         // fabMenu.setBackground(Color.parseColor("#795548"));
+
         GoogleApiClient();
     }
 
@@ -259,13 +273,13 @@ public class Home extends AppCompatActivity
         mTabLayout.getTabAt(3).setIcon(tabIcons[3]);
     }
 
-  private void GoogleApiClient(){
-      mGoogleApiClient = new GoogleApiClient.Builder(Home.this)
-              .addApi(LocationServices.API)
-              .addConnectionCallbacks(this)
-              .addOnConnectionFailedListener(this).build();
-      mGoogleApiClient.connect();
-  }
+    private void GoogleApiClient() {
+        mGoogleApiClient = new GoogleApiClient.Builder(Home.this)
+                .addApi(LocationServices.API)
+                .addConnectionCallbacks(this)
+                .addOnConnectionFailedListener(this).build();
+        mGoogleApiClient.connect();
+    }
 
     @Override
     public void onConnected(@Nullable Bundle bundle) {
@@ -325,13 +339,13 @@ public class Home extends AppCompatActivity
                 switch (resultCode) {
                     case Activity.RESULT_OK: {
                         // All required changes were successfully made
-                        Toast.makeText(Home.this, "Location enabled by user!", Toast.LENGTH_LONG).show();
+                        //Toast.makeText(Home.this, "Location enabled by user!", Toast.LENGTH_LONG).show();
 
                         break;
                     }
                     case Activity.RESULT_CANCELED: {
                         // The user was asked to change settings, but chose not to
-                        Toast.makeText(Home.this, "Location not enabled, user cancelled.", Toast.LENGTH_LONG).show();
+                        //  Toast.makeText(Home.this, "Location not enabled, user cancelled.", Toast.LENGTH_LONG).show();
                         break;
                     }
                     default: {
@@ -351,10 +365,6 @@ public class Home extends AppCompatActivity
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
     }
-
-
-
-
 
 
     public void showSettingsAlert() {
@@ -382,11 +392,11 @@ public class Home extends AppCompatActivity
         // Showing Alert Message
         alertDialog.show();
     }
+
     @Override
     public void onNetworkConnectionChanged(boolean isConnected) {
         showSnack(isConnected);
     }
-
 
 
     private void showSnack(boolean isConnected) {
@@ -594,24 +604,43 @@ public class Home extends AppCompatActivity
 
     final private int REQUEST_CODE_ASK_MULTIPLE_PERMISSIONS = 124;
 
-    @TargetApi(Build.VERSION_CODES.M)
-    private void getAllPermision() {
+//    @TargetApi(Build.VERSION_CODES.M)
+//    private void getAllPermision() {
+//
+//        requestPermissions(new String[]{
+//                        Manifest.permission.CALL_PHONE,
+//                        Manifest.permission.PROCESS_OUTGOING_CALLS,
+//                        Manifest.permission.READ_SMS,
+//                        Manifest.permission.READ_PHONE_STATE,
+//                        Manifest.permission.ACCESS_COARSE_LOCATION,
+//                        Manifest.permission.ACCESS_FINE_LOCATION,
+//                        Manifest.permission.READ_CONTACTS,
+//                        Manifest.permission.WRITE_CONTACTS,
+//                        Manifest.permission.READ_EXTERNAL_STORAGE,
+//                        Manifest.permission.WRITE_EXTERNAL_STORAGE,
+//                        Manifest.permission.RECORD_AUDIO,
+//                },
+//                REQUEST_CODE_ASK_MULTIPLE_PERMISSIONS);
+//        return;
+//    }
+    public void permissions() {
+        Dexter.checkPermissions(new MultiplePermissionsListener() {
+            @Override
+            public void onPermissionsChecked(MultiplePermissionsReport report) {
+                List<String> grantedPermissions = new ArrayList<String>();
+                for (PermissionGrantedResponse response : report.getGrantedPermissionResponses()) {
+                    if (!grantedPermissions.contains(response.getPermissionName())) {
+                        grantedPermissions.add(response.getPermissionName());
+                    }
+                }
+                // Toast.makeText(getApplicationContext(), "Granted permissions:" + grantedPermissions.toString(), Toast.LENGTH_LONG).show();
+            }
 
-        requestPermissions(new String[]{
-                        Manifest.permission.CALL_PHONE,
-                        Manifest.permission.PROCESS_OUTGOING_CALLS,
-                        Manifest.permission.READ_SMS,
-                        Manifest.permission.READ_PHONE_STATE,
-                        Manifest.permission.ACCESS_COARSE_LOCATION,
-                        Manifest.permission.ACCESS_FINE_LOCATION,
-                        Manifest.permission.READ_CONTACTS,
-                        Manifest.permission.WRITE_CONTACTS,
-                        Manifest.permission.READ_EXTERNAL_STORAGE,
-                        Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                        Manifest.permission.RECORD_AUDIO,
-                },
-                REQUEST_CODE_ASK_MULTIPLE_PERMISSIONS);
-        return;
+            @Override
+            public void onPermissionRationaleShouldBeShown(List<PermissionRequest> permissions, PermissionToken token) {
+                token.continuePermissionRequest();
+            }
+        }, Manifest.permission.READ_SMS, Manifest.permission.READ_CONTACTS, Manifest.permission.RECORD_AUDIO, Manifest.permission.READ_PHONE_STATE, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.ACCESS_COARSE_LOCATION);
     }
 
 }

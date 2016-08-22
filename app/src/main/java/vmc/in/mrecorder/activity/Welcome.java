@@ -16,7 +16,7 @@ public class Welcome extends AppCompatActivity implements TAG {
     private static int SPLASH_TIME_OUT = 3000;
     Boolean splashShown;
     private Intent i;
-//xcx
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

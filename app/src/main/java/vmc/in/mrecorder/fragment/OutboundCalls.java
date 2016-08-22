@@ -394,8 +394,6 @@ public class OutboundCalls extends Fragment implements SwipeRefreshLayout.OnRefr
             try {
                 response = Requestor.requestGetCalls(requestQueue,GET_CALL_LIST, authkey, "10", offset + "",
                         CallApplication.getInstance().getDeviceId(), TYPE_OUTGOING);
-//                response = JSONParser.getCallsData(GET_CALL_LIST, authkey, "10", offset + "",
-//                        CallApplication.getInstance().getDeviceId(), TYPE_OUTGOING);
                 Log.d(TAG ,response.toString());
             } catch (Exception e) {
             }
@@ -433,7 +431,6 @@ public class OutboundCalls extends Fragment implements SwipeRefreshLayout.OnRefr
 
             if (data != null && getActivity() != null && data.size() > 0) {
                 callDataArrayList.addAll(data);
-                // MyApplication.getWritableDatabase().insertFollowup(data, false);
                 CallApplication.getWritabledatabase().insertCallRecords(MDatabase.OUTBOUND, data, true);
                 adapter.notifyDataSetChanged();
 

@@ -286,8 +286,6 @@ public class AllCalls extends Fragment implements SwipeRefreshLayout.OnRefreshLi
 
                 response = Requestor.requestGetCalls(requestQueue,GET_CALL_LIST, authkey, "10", offset + "",
                         CallApplication.getInstance().getDeviceId(), TYPE_ALL);
-//                response = JSONParser.getCallsData(GET_CALL_LIST, authkey, "10", offset + "",
-//                        CallApplication.getInstance().getDeviceId(), TYPE_ALL);
                 Log.d(TAG, response.toString());
             } catch (Exception e) {
                 Log.d("ERROR",e.getMessage().toString());
@@ -420,8 +418,6 @@ public class AllCalls extends Fragment implements SwipeRefreshLayout.OnRefreshLi
 
                 response = Requestor.requestGetCalls(requestQueue,GET_CALL_LIST, authkey, "10", offset + "",
                         CallApplication.getInstance().getDeviceId(), TYPE_ALL);
-//                response = JSONParser.getCallsData(GET_CALL_LIST, authkey, "10", offset + "",
-//                        CallApplication.getInstance().getDeviceId(), TYPE_ALL);
                 Log.d(TAG, response.toString());
             } catch (Exception e) {
             }

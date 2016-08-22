@@ -58,7 +58,6 @@
         android:largeHeap="true"
         android:supportsRtl="true"
         android:theme="@style/MyMaterialTheme">
-
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
@@ -70,7 +69,6 @@
             android:name=".activity.ContactsActivity"
             android:label="Offline Records"
             android:parentActivityName=".activity.Home"
-            android:screenOrientation="portrait"
             android:theme="@style/MyMaterialTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -139,7 +137,6 @@
         <activity
             android:name=".activity.Welcome"
             android:noHistory="true"
-            android:screenOrientation="portrait"
             android:theme="@style/MyMaterialTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -149,22 +146,11 @@
         </activity>
         <activity
             android:name=".activity.Login"
-            android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboardHidden"
             android:theme="@style/MyMaterialTheme" />
         <activity
             android:name=".activity.Home"
             android:label="@string/title_activity_home"
-            android:screenOrientation="portrait"
-            android:theme="@style/MyMaterialTheme" />
-        <activity
-            android:name=".activity.SignupActivity"
-            android:noHistory="true"
-            android:screenOrientation="portrait"
-            android:theme="@style/MyMaterialTheme" />
-        <activity
-            android:name=".activity.ForgotPasword"
-            android:noHistory="true"
-            android:screenOrientation="portrait"
             android:theme="@style/MyMaterialTheme" />
 
         <service
@@ -175,7 +161,6 @@
             </intent-filter>
         </service>
 
-
         <receiver
             android:name=".util.ConnectivityReceiver"
             android:enabled="true">
@@ -183,8 +168,6 @@
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
             </intent-filter>
         </receiver>
-
-
         <receiver
             android:name="com.google.android.gms.gcm.GcmReceiver"
             android:exported="true"
@@ -204,30 +187,28 @@
             android:name=".activity.Feedback"
             android:label="@string/title_activity_feedback"
             android:parentActivityName=".activity.Home"
-            android:screenOrientation="portrait"
             android:theme="@style/MyMaterialTheme" />
         <activity
             android:name=".activity.Settings"
             android:label="@string/title_activity_settings"
             android:parentActivityName=".activity.Home"
-            android:screenOrientation="portrait"
             android:theme="@style/MyMaterialTheme" />
-
-        <activity android:name=".activity.AnalyticsByType"
-            android:theme="@style/MyMaterialTheme"
-            android:parentActivityName=".activity.Home"/>
-
-        <activity android:name=".activity.AnalyticsByEmp"
-            android:theme="@style/MyMaterialTheme"
-            android:parentActivityName=".activity.Home">
-
-        </activity>
-
-        <activity android:name=".activity.LocationActivity"
-            android:theme="@style/MyMaterialTheme"
-            android:parentActivityName=".activity.Home">
-
-        </activity>
+        <activity
+            android:name=".activity.AnalyticsByType"
+            android:parentActivityName=".activity.Home"
+            android:theme="@style/MyMaterialTheme" />
+        <activity
+            android:name=".activity.AnalyticsByEmp"
+            android:parentActivityName=".activity.Home"
+            android:theme="@style/MyMaterialTheme"></activity>
+        <activity
+            android:name=".activity.LocationActivity"
+            android:parentActivityName=".activity.Home"
+            android:theme="@style/MyMaterialTheme"></activity>
+        <activity
+            android:name=".activity.MainActivity"
+            android:label="@string/title_activity_main"
+            android:theme="@style/MyMaterialTheme"></activity>
     </application>
 
 </manifest>

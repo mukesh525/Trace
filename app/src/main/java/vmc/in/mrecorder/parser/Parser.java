@@ -16,20 +16,21 @@ import vmc.in.mrecorder.entity.BarModel;
 import vmc.in.mrecorder.entity.CallData;
 import vmc.in.mrecorder.entity.LoginData;
 
+import vmc.in.mrecorder.entity.OTPData;
 import vmc.in.mrecorder.entity.PieModel;
 
 /**
  * Created by gousebabjan on 30/3/16.
  */
 public class Parser implements TAG {
-  public static  String code;
+    public static String code;
 
 
     public synchronized static LoginData ParseLoginResponse(JSONObject response) throws JSONException {
         LoginData loginData = new LoginData();
 
-        if (response.has(CODE)){
-          loginData.setCode(response.getString(CODE));
+        if (response.has(CODE)) {
+            loginData.setCode(response.getString(CODE));
         }
         if (response.has(MESSAGE)) {
             loginData.setMessage(response.getString(MESSAGE));
@@ -41,106 +42,110 @@ public class Parser implements TAG {
             loginData.setUsername(response.getString(NAME));
         }
         if (response.has(USERTYPE)) {
-           loginData.setUsertype(response.getString(USERTYPE));
+            loginData.setUsertype(response.getString(USERTYPE));
         }
         if (response.has(RECORDING)) {
             loginData.setRecording(response.getString(RECORDING));
         }
         if (response.has(MCUBECALLS)) {
-           loginData.setMcuberecording(response.getString(MCUBECALLS));
+            loginData.setMcuberecording(response.getString(MCUBECALLS));
         }
         if (response.has(WORKHOUR)) {
-           loginData.setWorkhour(response.getString(WORKHOUR));
+            loginData.setWorkhour(response.getString(WORKHOUR));
 
         }
 
         return loginData;
     }
+    public synchronized static OTPData ParseOTPResponse(JSONObject response) throws JSONException {
+        OTPData OtpData = new OTPData();
 
+        if (response.has(CODE)) {
+            OtpData.setCode(response.getString(CODE));
+        }
+        if (response.has(MESSAGE)) {
+            OtpData.setMsg(response.getString(MESSAGE));
+        }
+        if (response.has(OTP)) {
+            OtpData.setOtp(response.getString(OTP));
+        }
 
+        return OtpData;
+    }
 
+    public synchronized static ArrayList<BarModel> ParseEMPResponse(JSONObject response) throws JSONException {
 
-//    public synchronized static OTPData ParseOTPResponse(JSONObject response) throws JSONException {
-//        OTPData otpData = new OTPData();
-//
-//        if (response.has(CODE)){
-//            otpData.setCode(response.getString(CODE));
-//        }
-//        if (response.has(MESSAGE)) {
-//            otpData.setMessage(response.getString(MESSAGE));
-//        }
-//        if (response.has(OTP)) {
-//            otpData.setOtp(response.getString(OTP));
-//        }
-//
-//        return otpData;
-//    }
-
-
-    public synchronized static  ArrayList<BarModel> ParseEMPResponse(JSONObject response) throws JSONException {
-
-        ArrayList<BarModel>  barModels = new ArrayList<BarModel>();
+        ArrayList<BarModel> barModels = new ArrayList<BarModel>();
         BarModel barModel;
+        JSONArray records=null;
         if (response != null) {
 
-            if (response.has(CODE))
-                code=response.getString(CODE);
+            if (response.has(CODE)) {
+                code = response.getString(CODE);
+            }
+            if (response.has(RECORDS)) {
+                records = response.getJSONArray(RECORDS);
+            }
 
-                if (response.getJSONArray(RECORDS).length() > 0) {
-                    for (int i = 0; i < response.getJSONArray(RECORDS).length(); i++) {
-                        JSONObject jsonobj = response.getJSONArray(RECORDS).getJSONObject(i);
-                        barModel = new BarModel();
-                        if (jsonobj.has(EMPNAME)) {
-                            barModel.setEmpname(jsonobj.getString(EMPNAME));
-                        }
-                        if (jsonobj.has(Inbound)) {
-                            barModel.setInbound(jsonobj.getString(Inbound));
-                        }
-                        if (jsonobj.has(Outbound)) {
-                            barModel.setOutbound(jsonobj.getString(Outbound));
-                        }
-                        if (jsonobj.has(missed)) {
-                            barModel.setMissed(jsonobj.getString(missed));
-                        }
-
-                        barModels.add(barModel);
+            if (records!=null) {
+                for (int i = 0; i < records.length(); i++) {
+                    JSONObject jsonobj = response.getJSONArray(RECORDS).getJSONObject(i);
+                    barModel = new BarModel();
+                    if (jsonobj.has(EMPNAME)) {
+                        barModel.setEmpname(jsonobj.getString(EMPNAME));
                     }
+                    if (jsonobj.has(Inbound)) {
+                        barModel.setInbound(jsonobj.getString(Inbound));
+                    }
+                    if (jsonobj.has(Outbound)) {
+                        barModel.setOutbound(jsonobj.getString(Outbound));
+                    }
+                    if (jsonobj.has(missed)) {
+                        barModel.setMissed(jsonobj.getString(missed));
+                    }
+
+                    barModels.add(barModel);
                 }
             }
+        }
 
         return barModels;
     }
 
 
-    public synchronized static  ArrayList<PieModel> ParseTypeResponse(JSONObject response) throws JSONException {
+    public synchronized static ArrayList<PieModel> ParseTypeResponse(JSONObject response) throws JSONException {
 
-        ArrayList<PieModel>   pieModels= new ArrayList<>();;
+        ArrayList<PieModel> pieModels = new ArrayList<>();
+        JSONArray records=null;
         PieModel pieModel;
         if (response != null)
-            if (response.has(CODE))
-                code=response.getString(CODE);
-
-            if (response.getJSONArray(RECORDS).length() > 0) {
-
-                    for (int i = 0; i < response.getJSONArray(RECORDS).length(); i++) {
-                        JSONObject jsonobj = response.getJSONArray(RECORDS).getJSONObject(i);
-                        pieModel = new PieModel();
-                        if (jsonobj.has(CALLTYPEE)) {
-
-                            pieModel.setCalltype(jsonobj.getString(CALLTYPEE).equals("0") ? MISSED :
-                                    jsonobj.getString(CALLTYPEE).equals("1") ? INCOMING : OUTGOING);
-                            Log.d("CALLTYPE", jsonobj.getString(CALLTYPEE) + "");
-                        }
-
-                        if (jsonobj.has(COUNT)) {
-                            pieModel.setCount(jsonobj.getString(COUNT));
-                        }
+            if (response.has(CODE)) {
+                code = response.getString(CODE);
+            }
+        if (response.has(RECORDS)) {
+            records = response.getJSONArray(RECORDS);
+        }
 
 
-                        pieModels.add(pieModel);
-                    }
+        if(records !=null) {
+            for (int i = 0; i < records.length(); i++) {
+                JSONObject jsonobj = response.getJSONArray(RECORDS).getJSONObject(i);
+                pieModel = new PieModel();
+                if (jsonobj.has(CALLTYPEE)) {
 
+                    pieModel.setCalltype(jsonobj.getString(CALLTYPEE).equals("0") ? MISSED :
+                            jsonobj.getString(CALLTYPEE).equals("1") ? INCOMING : OUTGOING);
+                    Log.d("CALLTYPE", jsonobj.getString(CALLTYPEE) + "");
                 }
+
+                if (jsonobj.has(COUNT)) {
+                    pieModel.setCount(jsonobj.getString(COUNT));
+                }
+
+
+                pieModels.add(pieModel);
+            }
+        }
 
 
 
@@ -148,15 +153,12 @@ public class Parser implements TAG {
     }
 
 
-
-
-
     public static ArrayList<CallData> ParseData(JSONObject response) throws JSONException {
         ArrayList<CallData> CallList = new ArrayList<CallData>();
         JSONArray recordsArray = null;
         SimpleDateFormat sdf = new SimpleDateFormat(DateTimeFormat);
         if (response.has(RECORDS)) {
-            Log.d("RESPONSE",response.toString());
+            Log.d("RESPONSE", response.toString());
             recordsArray = response.getJSONArray(RECORDS);
             for (int i = 0; i < recordsArray.length(); i++) {
                 CallData callData = new CallData();
@@ -194,13 +196,12 @@ public class Parser implements TAG {
                 }
                 if (record.has(FILENAME)) {
                     callData.setFilename(record.getString(FILENAME));
-                    Log.d(TAG,callData.getFilename());
+                    Log.d(TAG, callData.getFilename());
                 }
 
                 if (record.has(LOCATION)) {
-                   callData.setLocation(record.getString(LOCATION));
-                   // callData.setLocation("r,77.7509338");
-                   // callData.setLocation("0,0");
+                    callData.setLocation(record.getString(LOCATION));
+                    // callData.setLocation("0,0");
                 }
                 Date startTime = null;
                 Date endTime = null;

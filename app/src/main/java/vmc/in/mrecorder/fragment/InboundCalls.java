@@ -266,8 +266,6 @@ public class InboundCalls extends Fragment implements SwipeRefreshLayout.OnRefre
 
                 response = Requestor.requestGetCalls(requestQueue,GET_CALL_LIST, authkey, "10", offset + "",
                         CallApplication.getInstance().getDeviceId(), TYPE_INCOMING);
-//                response = JSONParser.getCallsData(GET_CALL_LIST, authkey, "10", offset + "",
-//                        CallApplication.getInstance().getDeviceId(), TYPE_INCOMING);
                 Log.d(TAG, response.toString());
             } catch (Exception e) {
             }
@@ -321,7 +319,6 @@ public class InboundCalls extends Fragment implements SwipeRefreshLayout.OnRefre
                 CallApplication.getWritabledatabase().insertCallRecords(MDatabase.INBOUND, data, true);
                 adapter.setClickedListner(InboundCalls.this);
                 callDataArrayList = data;
-                // MyApplication.getWritableDatabase().insertFollowup(data, true);
                 recyclerView.setAdapter(adapter);
 
             } else if (code.equals("202") || code.equals("401")) {
@@ -397,8 +394,6 @@ public class InboundCalls extends Fragment implements SwipeRefreshLayout.OnRefre
             try {
                 response = Requestor.requestGetCalls(requestQueue,GET_CALL_LIST, authkey, "10", offset + "",
                         CallApplication.getInstance().getDeviceId(), TYPE_INCOMING);
-//                response = JSONParser.getCallsData(GET_CALL_LIST, authkey, "10", offset + "",
-//                        CallApplication.getInstance().getDeviceId(), TYPE_INCOMING);
                 Log.d(TAG, response.toString());
             } catch (Exception e) {
             }
@@ -436,7 +431,6 @@ public class InboundCalls extends Fragment implements SwipeRefreshLayout.OnRefre
             }
 
             if (data != null && getActivity() != null && data.size() > 0) {
-                // MyApplication.getWritableDatabase().insertFollowup(data, false);
                 callDataArrayList.addAll(data);
                 CallApplication.getWritabledatabase().insertCallRecords(MDatabase.INBOUND, data, true);
                 adapter.notifyDataSetChanged();

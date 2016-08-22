@@ -13,8 +13,6 @@ import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
-import android.location.Location;
-import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -31,6 +29,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
@@ -43,12 +42,9 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.FrameLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
-
 import de.hdodenhof.circleimageview.CircleImageView;
 import vmc.in.mrecorder.R;
 import vmc.in.mrecorder.callbacks.Constants;
@@ -58,36 +54,23 @@ import vmc.in.mrecorder.fragment.InboundCalls;
 import vmc.in.mrecorder.fragment.MissedCalls;
 import vmc.in.mrecorder.fragment.OutboundCalls;
 import vmc.in.mrecorder.myapplication.CallApplication;
-import vmc.in.mrecorder.provider.GPSTracker;
 import vmc.in.mrecorder.service.CallRecorderServiceAll;
 import vmc.in.mrecorder.syncadapter.SyncUtils;
 import vmc.in.mrecorder.util.ConnectivityReceiver;
 import vmc.in.mrecorder.util.CustomTheme;
 import vmc.in.mrecorder.util.Utils;
-
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.PendingResult;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
-import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.LocationSettingsRequest;
 import com.google.android.gms.location.LocationSettingsResult;
 import com.google.android.gms.location.LocationSettingsStatusCodes;
-import com.karumi.dexter.Dexter;
-import com.karumi.dexter.MultiplePermissionsReport;
-import com.karumi.dexter.PermissionToken;
-import com.karumi.dexter.listener.PermissionGrantedResponse;
-import com.karumi.dexter.listener.PermissionRequest;
-import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
-
-import java.io.File;
-import java.text.DateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 
@@ -124,6 +107,7 @@ public class Home extends AppCompatActivity
     GoogleApiClient mGoogleApiClient;
     PendingResult<LocationSettingsResult> result;
     final static int REQUEST_LOCATION = 199;
+    public static final int REQUEST_ID_MULTIPLE_PERMISSIONS = 1;
 
 
     @Override
@@ -147,9 +131,8 @@ public class Home extends AppCompatActivity
 
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            Utils.checkAndRequestPermissions(Home.this);
 
-        //    getAllPermision();
-            permissions();
         }
 
 
@@ -602,45 +585,5 @@ public class Home extends AppCompatActivity
     }
 
 
-    final private int REQUEST_CODE_ASK_MULTIPLE_PERMISSIONS = 124;
-
-//    @TargetApi(Build.VERSION_CODES.M)
-//    private void getAllPermision() {
-//
-//        requestPermissions(new String[]{
-//                        Manifest.permission.CALL_PHONE,
-//                        Manifest.permission.PROCESS_OUTGOING_CALLS,
-//                        Manifest.permission.READ_SMS,
-//                        Manifest.permission.READ_PHONE_STATE,
-//                        Manifest.permission.ACCESS_COARSE_LOCATION,
-//                        Manifest.permission.ACCESS_FINE_LOCATION,
-//                        Manifest.permission.READ_CONTACTS,
-//                        Manifest.permission.WRITE_CONTACTS,
-//                        Manifest.permission.READ_EXTERNAL_STORAGE,
-//                        Manifest.permission.WRITE_EXTERNAL_STORAGE,
-//                        Manifest.permission.RECORD_AUDIO,
-//                },
-//                REQUEST_CODE_ASK_MULTIPLE_PERMISSIONS);
-//        return;
-//    }
-    public void permissions() {
-        Dexter.checkPermissions(new MultiplePermissionsListener() {
-            @Override
-            public void onPermissionsChecked(MultiplePermissionsReport report) {
-                List<String> grantedPermissions = new ArrayList<String>();
-                for (PermissionGrantedResponse response : report.getGrantedPermissionResponses()) {
-                    if (!grantedPermissions.contains(response.getPermissionName())) {
-                        grantedPermissions.add(response.getPermissionName());
-                    }
-                }
-                // Toast.makeText(getApplicationContext(), "Granted permissions:" + grantedPermissions.toString(), Toast.LENGTH_LONG).show();
-            }
-
-            @Override
-            public void onPermissionRationaleShouldBeShown(List<PermissionRequest> permissions, PermissionToken token) {
-                token.continuePermissionRequest();
-            }
-        }, Manifest.permission.READ_SMS, Manifest.permission.READ_CONTACTS, Manifest.permission.RECORD_AUDIO, Manifest.permission.READ_PHONE_STATE, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.ACCESS_COARSE_LOCATION);
-    }
 
 }

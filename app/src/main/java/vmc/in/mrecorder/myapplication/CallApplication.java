@@ -8,11 +8,7 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.telephony.TelephonyManager;
 import android.util.Log;
-
-import com.karumi.dexter.Dexter;
-
 import java.util.UUID;
-
 import vmc.in.mrecorder.callbacks.TAG;
 import vmc.in.mrecorder.datahandler.MDatabase;
 import vmc.in.mrecorder.service.CallRecorderServiceAll;
@@ -32,15 +28,12 @@ public class CallApplication extends Application implements TAG, SharedPreferenc
     public void onCreate() {
         // TODO Auto-generated method stub
         super.onCreate();
-        Dexter.initialize(this);
         mApplication = this;
 
         SyncUtils.CreateSyncAccount(getBaseContext());
         Log.e("application", "created");
 
-        //try{
         sp = getApplicationContext().getSharedPreferences("com.example.call", Context.MODE_PRIVATE);
-
         e = sp.edit();
 
         try {

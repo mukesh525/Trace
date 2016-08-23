@@ -24,8 +24,8 @@
 
 
     <string-array name="audiosource">
-        <item name="1">VOICE CALL</item>
-        <item name="2">DEFAULT</item>
+        <item name="1">DEFAULT</item>
+        <item name="2">VOICE CALL</item>
         <item name="3">MIC</item>
         <item name="4">VOICE_COMMUNICATION</item>
         <item name="5">VOICE_RECOGNITION</item>

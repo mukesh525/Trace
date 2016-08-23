@@ -59,7 +59,6 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
     private static Login inst;
     Button btn_login, btn_getOtp;
     EditText et_email, et_password;
-    CheckBox check_box, check_box_show_password;
     TextView tv_otp;
     String email, password;
     private CoordinatorLayout coordinatorLayout;
@@ -68,17 +67,13 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
     private ProgressDialog progressDialog;
     public static final String DEAFULT = "";
     private boolean first = true;
-    LoginData loginData = new LoginData();
-    private RequestQueue requestQueue;
-    private SingleTon volleySingleton;
-    private JSONObject response;
     private LoginTask mTaskFragment;
     private Boolean showDialog = false;
     private static final String TAG_TASK_FRAGMENT = "task_fragment";
     private android.app.AlertDialog.Builder alertDialog;
     public DialogInterface Dialog;
-    public static final int REQUEST_ID_MULTIPLE_PERMISSIONS = 1;
     public ArrayList<OTPData> otps = new ArrayList<>();
+    private CheckBox check_box;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,9 +91,6 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
         check_box = (CheckBox) findViewById(R.id.checkBox_forgot);
         et_email = (EditText) findViewById(R.id.input_email);
         et_password = (EditText) findViewById(R.id.input_password);
-        volleySingleton = SingleTon.getInstance();
-        requestQueue = volleySingleton.getRequestQueue();
-
         mTaskFragment = (LoginTask) getSupportFragmentManager().findFragmentByTag(TAG_TASK_FRAGMENT);
 
         if (savedInstanceState != null) {
@@ -113,7 +105,7 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
                 showDialog = show;
             }
             btn_login.setText(btn);
-            if (OTP_resp.length() > 5) {
+            if (OTP_resp!=null && OTP_resp.length() > 5) {
                 if (tv_otp.getVisibility() == View.GONE) {
                     tv_otp.setVisibility(View.VISIBLE);
                     if (!OTP_Sms.equals("N/A")) {
@@ -131,7 +123,6 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
         }
         btn_login.setOnClickListener(this);
         btn_getOtp.setOnClickListener(this);
-        //  link_forgot_password.setOnClickListener(this);
         load();
         cancelNotification(Login.this, NOTIFICATION_ID);
 
@@ -312,15 +303,18 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
                 progressDialog.dismiss();
             }
 
-            if (tv_otp.getVisibility() == View.GONE) {
-                tv_otp.setVisibility(View.VISIBLE);
-            }
+//            if (tv_otp.getVisibility() == View.GONE) {
+//                tv_otp.setVisibility(View.VISIBLE);
+//            }
+
             tv_otp.setHint("Waiting for OTP");
             OTP_resp = otpData.getOtp();
             if (otpData.getCode().equals("202")) {
                 btn_login.setText("Get OTP");
                 Snackbar.make(coordinatorLayout, otpData.getMsg(), Snackbar.LENGTH_LONG).show();
-                tv_otp.setHint("");
+                if (tv_otp.getVisibility() == View.VISIBLE) {
+                    tv_otp.setVisibility(View.GONE);
+                }
 
             } else {
                 OTP_resp = otpData.getOtp();
@@ -789,44 +783,6 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
         CallApplication.getInstance().setConnectivityListener(this);
     }
 
-//    private  boolean checkAndRequestPermissions() {
-//        int readConractsPermission = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS);
-//        int readSmsConractsPermission = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_SMS);
-//        int recordAudioPermission = ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO);
-//        int readPhoneStatePermission = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE);
-//        int writeExternalPermission = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
-//        int locationPermission = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION);
-//        List<String> listPermissionsNeeded = new ArrayList<>();
-//
-//        if (readConractsPermission != PackageManager.PERMISSION_GRANTED) {
-//            listPermissionsNeeded.add(Manifest.permission.READ_CONTACTS);
-//        }
-//        if (readSmsConractsPermission != PackageManager.PERMISSION_GRANTED) {
-//            listPermissionsNeeded.add(Manifest.permission.READ_SMS);
-//        }
-//
-//
-//        if (recordAudioPermission != PackageManager.PERMISSION_GRANTED) {
-//            listPermissionsNeeded.add(Manifest.permission.RECORD_AUDIO);
-//
-//
-//        }if (readPhoneStatePermission != PackageManager.PERMISSION_GRANTED) {
-//            listPermissionsNeeded.add(Manifest.permission.READ_PHONE_STATE);
-//        }
-//
-//        if (writeExternalPermission != PackageManager.PERMISSION_GRANTED) {
-//            listPermissionsNeeded.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
-//        }
-//        if (locationPermission != PackageManager.PERMISSION_GRANTED) {
-//            listPermissionsNeeded.add(Manifest.permission.ACCESS_COARSE_LOCATION);
-//        }
-//
-//        if (!listPermissionsNeeded.isEmpty()) {
-//            ActivityCompat.requestPermissions(this, listPermissionsNeeded.toArray(new String[listPermissionsNeeded.size()]),REQUEST_ID_MULTIPLE_PERMISSIONS);
-//            return false;
-//        }
-//        return true;
-//    }
 
 
 

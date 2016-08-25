@@ -5,6 +5,8 @@ import android.Manifest;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -16,6 +18,7 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Parcelable;
 import android.preference.PreferenceManager;
@@ -37,6 +40,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -44,12 +48,16 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
+
 import de.hdodenhof.circleimageview.CircleImageView;
 import vmc.in.mrecorder.R;
 import vmc.in.mrecorder.callbacks.Constants;
 import vmc.in.mrecorder.callbacks.TAG;
+import vmc.in.mrecorder.entity.Model;
 import vmc.in.mrecorder.fragment.AllCalls;
+import vmc.in.mrecorder.fragment.DownloadFile;
 import vmc.in.mrecorder.fragment.InboundCalls;
 import vmc.in.mrecorder.fragment.MissedCalls;
 import vmc.in.mrecorder.fragment.OutboundCalls;
@@ -59,6 +67,7 @@ import vmc.in.mrecorder.syncadapter.SyncUtils;
 import vmc.in.mrecorder.util.ConnectivityReceiver;
 import vmc.in.mrecorder.util.CustomTheme;
 import vmc.in.mrecorder.util.Utils;
+
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -70,6 +79,8 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.LocationSettingsRequest;
 import com.google.android.gms.location.LocationSettingsResult;
 import com.google.android.gms.location.LocationSettingsStatusCodes;
+
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -77,7 +88,7 @@ import java.util.List;
 public class Home extends AppCompatActivity
         implements ConnectivityReceiver.ConnectivityReceiverListener, NavigationView.OnNavigationItemSelectedListener, TAG,
         GoogleApiClient.ConnectionCallbacks,
-        GoogleApiClient.OnConnectionFailedListener {
+        GoogleApiClient.OnConnectionFailedListener, DownloadFile.DownloadFileTask {
 
     private Toolbar mToolbar;
     public FloatingActionButton floatingActionButton, floatingActionButtonSync;
@@ -102,21 +113,27 @@ public class Home extends AppCompatActivity
     private Snackbar snack;
     private CircleImageView userType;
     private String usertype;
-
+    private ProgressDialog mProgressDialog;
     LocationRequest mLocationRequest;
     GoogleApiClient mGoogleApiClient;
     PendingResult<LocationSettingsResult> result;
     final static int REQUEST_LOCATION = 199;
     public static final int REQUEST_ID_MULTIPLE_PERMISSIONS = 1;
+    private DownloadFile downloadFragment;
+    private static final String TAG_TASK_FRAGMENT = "task_fragment";
+    private String fileName;
 
+    private int completed = 0;
+    private AlertDialog alertDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         CustomTheme.onActivityCreateSetTheme(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        if(Utils.tabletSize(Home.this)< 6.0){
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);}
+        if (Utils.tabletSize(Home.this) < 6.0) {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
         coordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordi_layout);
@@ -135,8 +152,6 @@ public class Home extends AppCompatActivity
 
         }
 
-
-        // CallApplication.getInstance().startRecording();
         mDrawer = (NavigationView) findViewById(R.id.nav_view);
         mDrawer.setNavigationItemSelectedListener(this);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -249,6 +264,35 @@ public class Home extends AppCompatActivity
         GoogleApiClient();
     }
 
+
+    public void onShareFile(final String fileName) {
+        if (ConnectivityReceiver.isConnected()) {
+            downloadFragment = (DownloadFile) getSupportFragmentManager().findFragmentByTag(TAG_TASK_FRAGMENT);
+            downloadFragment = new DownloadFile();
+            Bundle bundle = new Bundle();
+            bundle.putString("FILE", fileName);
+            downloadFragment.setArguments(bundle);
+            getSupportFragmentManager().beginTransaction().add(downloadFragment, TAG_TASK_FRAGMENT).commit();
+        } else {
+            Snackbar snack = Snackbar.make(coordinatorLayout, "No Internet Connection", Snackbar.LENGTH_SHORT)
+                    .setAction(getString(R.string.text_tryAgain), new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                            onShareFile(fileName);
+
+                        }
+                    })
+                    .setActionTextColor(ContextCompat.getColor(Home.this, R.color.primary));
+            View view = snack.getView();
+            TextView tv = (TextView) view.findViewById(android.support.design.R.id.snackbar_text);
+            tv.setTextColor(Color.WHITE);
+            snack.show();
+        }
+
+    }
+
+
     private void setupTabIcons() {
         mTabLayout.getTabAt(0).setIcon(tabIcons[0]);
         mTabLayout.getTabAt(1).setIcon(tabIcons[1]);
@@ -315,6 +359,7 @@ public class Home extends AppCompatActivity
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         Log.d("onActivityResult()", Integer.toString(resultCode));
+        Log.d("onActivityResult()", Integer.toString(requestCode));
 
         //final LocationSettingsStates states = LocationSettingsStates.fromIntent(data);
         switch (requestCode) {
@@ -336,6 +381,11 @@ public class Home extends AppCompatActivity
                     }
                 }
                 break;
+            case SHARE_CALL: {
+                Log.d("onActivityResult()", "SHARE SUCCESS");
+                deleteFiles();
+                break;
+            }
         }
     }
 
@@ -378,6 +428,12 @@ public class Home extends AppCompatActivity
 
     @Override
     public void onNetworkConnectionChanged(boolean isConnected) {
+        if (!isConnected) {
+            if (mProgressDialog != null && mProgressDialog.isShowing()) {
+                mProgressDialog.dismiss();
+            }
+        }
+
         showSnack(isConnected);
     }
 
@@ -398,6 +454,77 @@ public class Home extends AppCompatActivity
             snackbar.show();
         }
     }
+
+
+    @Override
+    public void ondownloadFilePreExecute() {
+
+
+        initProgress();
+
+
+    }
+
+    private void initProgress() {
+        mProgressDialog = new ProgressDialog(Home.this) {
+            @Override
+            public void onBackPressed() {
+                mProgressDialog.dismiss();
+                showDowanlodAlert();
+            }
+        };
+        mProgressDialog.setMessage("Loading");
+        mProgressDialog.setCancelable(false);
+        mProgressDialog.setMessage("Downloading file..");
+        mProgressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+        mProgressDialog.setCancelable(false);
+        mProgressDialog.setIndeterminate(false);
+        mProgressDialog.setProgress(0);
+        mProgressDialog.setMax(100);
+        mProgressDialog.show();
+    }
+
+    @Override
+    public void ondownloadFileProgressUpdate(int percent) {
+        if (mProgressDialog == null) {
+            initProgress();
+        }
+        completed = percent;
+        mProgressDialog.setProgress(percent);
+    }
+
+
+    @Override
+    public void ondownloadFileCancelled() {
+        if (mProgressDialog != null && mProgressDialog.isShowing()) {
+            mProgressDialog.dismiss();
+        }
+        Log.d("SHARE", "Download Cancelled");
+
+
+    }
+
+    @Override
+    public void ondownloadFilePostExecute(File file) {
+        Log.d("PATH", file.getAbsolutePath());
+        if (alertDialog != null && alertDialog.isShowing()) {
+            alertDialog.dismiss();
+        }
+        if (mProgressDialog != null && mProgressDialog.isShowing()) {
+            mProgressDialog.dismiss();
+        }
+
+        if (file.exists()) {
+            Uri uri = Uri.parse("file://" + file);
+            Intent share = new Intent(Intent.ACTION_SEND);
+            share.putExtra(Intent.EXTRA_STREAM, uri);
+            share.setType("audio/*");
+            share.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            this.startActivityForResult(Intent.createChooser(share, "Share MTracker Record "), SHARE_CALL);
+
+        }
+    }
+
 
     class MyPagerAdapter extends FragmentStatePagerAdapter {
         public MyPagerAdapter(FragmentManager fm) {
@@ -446,6 +573,11 @@ public class Home extends AppCompatActivity
     protected void onResume() {
         super.onResume();
         showprefrenceValues();
+        deleteFiles();
+        if (mProgressDialog != null && mProgressDialog.isShowing()) {
+            mProgressDialog.dismiss();
+            Log.d("DIALOG", "DIALOG DISMISS");
+        }
         CallApplication.getInstance().setConnectivityListener(this);
         if (!Utils.isLogin(Home.this)) {
             Intent intent = new Intent(Home.this, Login.class);
@@ -453,8 +585,43 @@ public class Home extends AppCompatActivity
                     Intent.FLAG_ACTIVITY_CLEAR_TASK |
                     Intent.FLAG_ACTIVITY_NEW_TASK);
             Home.this.startActivity(intent);
-            Log.d("Logout", "LOgout on resume");
+            Log.d("Logout", "Logout on resume");
         }
+
+    }
+
+    public void showDowanlodAlert() {
+        alertDialog = new AlertDialog.Builder(Home.this).create();
+        alertDialog.setTitle("MTracker");
+        alertDialog.setIcon(R.mipmap.ic_launcher);
+        alertDialog.setMessage("Cancel Downloading ?");
+        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Yes",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface arg0, int arg1) {
+                        if (downloadFragment != null) {
+                            downloadFragment.onCancelTask();
+                        }
+
+
+                    }
+                });
+
+        alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "No",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int arg1) {
+
+                        dialog.dismiss();
+                        if ((mProgressDialog != null && !mProgressDialog.isShowing()) && completed < 100) {
+                            mProgressDialog.show();
+                        }
+                    }
+                });
+
+
+        alertDialog.show();
+
 
     }
 
@@ -462,6 +629,10 @@ public class Home extends AppCompatActivity
     public void onBackPressed() {
         if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
             mDrawerLayout.closeDrawer(GravityCompat.START);
+        }
+        if (mProgressDialog != null && mProgressDialog.isShowing()) {
+            mProgressDialog.dismiss();
+            showDowanlodAlert();
         } else {
             if (doubleBackToExitPressedOnce) {
                 super.onBackPressed();
@@ -512,6 +683,7 @@ public class Home extends AppCompatActivity
     public void playAudio(String url) {
         if (url != null && url.length() > 4) {
             Log.d("AUDIO", url);
+            // fileName=url;
             // Toast.makeText(HomeActivity.this, url, Toast.LENGTH_LONG).show();
             //Uri myUri = Uri.parse("http://mcube.vmctechnologies.com/sounds/99000220411460096169.wav");
             Uri myUri = Uri.parse(STREAM_TRACKER + url);
@@ -584,6 +756,29 @@ public class Home extends AppCompatActivity
         Log.d("SETTINGS", builder.toString());
     }
 
+    public void deleteFiles() {
+        SharedPreferences sharedPrefs = PreferenceManager
+                .getDefaultSharedPreferences(Home.this);
 
+        File sampleDir;
+        File sample;
+        String selectedFolder = sharedPrefs.getString("store_path", "null");
+        if (selectedFolder.equals("null")) {
+            sampleDir = Environment.getExternalStorageDirectory();
+            sample = new File(sampleDir.getAbsolutePath() + "/data/share/");
+            if (!sample.exists()) sample.mkdirs();
+
+        } else {
+            sampleDir = new File(selectedFolder);
+            sample = new File(sampleDir.getAbsolutePath() + "/data/share/");
+            if (!sample.exists()) sample.mkdirs();
+        }
+
+        List<File> files = Utils.getListFiles(sample);
+        for (int i = 0; i < files.size(); i++) {
+            files.get(i).delete();
+            Log.d("SHARE", files.get(i).getName() + " Deleted..");
+        }
+    }
 
 }

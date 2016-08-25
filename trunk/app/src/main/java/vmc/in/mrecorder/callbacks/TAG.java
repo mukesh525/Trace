@@ -7,6 +7,7 @@ import java.util.Date;
  */
 public interface TAG {
     int MY_PERMISSIONS_CALL = 0;
+    int SHARE_CALL = 14;
     public static final String UNKNOWN = "Unknown";
     // public static final String DateTimeFormat = "dd-MM-yyyy HH:mm:ss";
     public static final String DateTimeFormat = "yyyy-MM-dd HH:mm:ss";

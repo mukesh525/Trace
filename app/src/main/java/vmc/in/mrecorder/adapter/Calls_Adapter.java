@@ -1,15 +1,9 @@
 package vmc.in.mrecorder.adapter;
 
-import android.content.ContentResolver;
-import android.content.ContentUris;
 import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
-import android.net.Uri;
-import android.provider.ContactsContract;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.view.menu.MenuBuilder;
 import android.support.v7.widget.PopupMenu;
@@ -26,7 +20,6 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 
-import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -36,8 +29,9 @@ import vmc.in.mrecorder.activity.Home;
 import vmc.in.mrecorder.activity.LocationActivity;
 import vmc.in.mrecorder.callbacks.TAG;
 import vmc.in.mrecorder.entity.CallData;
+import vmc.in.mrecorder.fragment.DownloadFile;
+import vmc.in.mrecorder.fragment.LoginTask;
 import vmc.in.mrecorder.util.ConnectivityReceiver;
-import vmc.in.mrecorder.util.CustomTheme;
 import vmc.in.mrecorder.util.Utils;
 
 /**
@@ -53,6 +47,7 @@ public class Calls_Adapter extends RecyclerView.Adapter<Calls_Adapter.CallViewHo
     private int previousPosition = 0;
     public View mroot;
     public Fragment fragment;
+
 
 
     public Calls_Adapter(Context context, ArrayList<CallData> CallDataArrayList, View mroot, Fragment fragment) {
@@ -79,10 +74,6 @@ public class Calls_Adapter extends RecyclerView.Adapter<Calls_Adapter.CallViewHo
     public void onBindViewHolder(CallViewHolder holder, int position) {
         try {
             final CallData ci = CallDataArrayList.get(position);
-          //  setTextTheme(holder.callFromTextView);
-          //  setTextTheme(holder.callerNameTextView);
-           // setTextTheme(holder.dateTextView);
-         //   setTextTheme(holder.timeTextView);
 
             holder.callerNameTextView.setText(Utils.isEmpty(ci.getName()) ? UNKNOWN : ci.getName());
             holder.callFromTextView.setText(Utils.isEmpty(ci.getCallto()) ? UNKNOWN : ci.getCallto());
@@ -95,6 +86,7 @@ public class Calls_Adapter extends RecyclerView.Adapter<Calls_Adapter.CallViewHo
                     if (ConnectivityReceiver.isConnected()) {
                         if (!Utils.isEmpty(ci.getFilename())) {
                             ((Home) context).playAudio(ci.getFilename());
+                            Log.d(TAG,ci.getFilename());
                         }
                     } else {
                         Toast.makeText(context, "Check Internet Connection..", Toast.LENGTH_SHORT).show();
@@ -139,7 +131,8 @@ public class Calls_Adapter extends RecyclerView.Adapter<Calls_Adapter.CallViewHo
         private Context mContext;
         private int position;
         private ArrayList<CallData> callDatas;
-
+        private DownloadFile fileDownloadFragment;
+        private DownloadFile mTaskFragment;
 
         public OnOverflowSelectedListener(Context context, int pos, ArrayList<CallData> callDatas) {
             mContext = context;
@@ -177,6 +170,11 @@ public class Calls_Adapter extends RecyclerView.Adapter<Calls_Adapter.CallViewHo
                            // mContext.startActivityForResult(intent, 0);
 
                             return true;
+
+                        case R.id.share:
+                            ((Home) mContext).onShareFile(callDatas.get(position).getFilename());
+                            return true;
+
                         default:
                             return super.onMenuItemSelected(menu, item);
                     }
@@ -209,15 +207,23 @@ public class Calls_Adapter extends RecyclerView.Adapter<Calls_Adapter.CallViewHo
                 return;
             }
 
-            if(callDatas.get(position).getLocation().length()>7){
-                popupMenu.inflate(R.menu.popupmenu_location);
-            }else{
+
+            if(!Utils.isEmpty(callDatas.get(position).getFilename())&& callDatas.get(position).getLocation().length()>7){
+                popupMenu.inflate(R.menu.popupmenu_cmsl);
+            }
+
+           else  if(!Utils.isEmpty(callDatas.get(position).getFilename())&& callDatas.get(position).getLocation().length()<=7){
+                popupMenu.inflate(R.menu.popupmenu_cms);
+            }
+
+           else if(Utils.isEmpty(callDatas.get(position).getFilename())&& callDatas.get(position).getLocation().length()>7){
+                popupMenu.inflate(R.menu.popupmenu_cml);
+            }
+            else{
                 popupMenu.inflate(R.menu.popupmenu);
             }
 
             popupMenu.show();
-
-
         }
     }
 

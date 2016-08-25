@@ -66,6 +66,11 @@ public class MDatabase implements TAG {
         mDatabase.execSQL("delete from " + CallHelper.TABLE_CALLRECORDS + " where " + ID + "='" + id + "';");
 
     }
+    public void update(String id,String duration) {
+        mDatabase.execSQL("delete from " + CallHelper.TABLE_CALLRECORDS + " where " + ID + "='" + id + "';");
+
+
+    }
 
 
     public void deleteCallRecords(int table) {

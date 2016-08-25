@@ -60,7 +60,7 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
     Button btn_login, btn_getOtp;
     EditText et_email, et_password;
     TextView tv_otp;
-    String email, password;
+    String email, password,msgprogress;
     private CoordinatorLayout coordinatorLayout;
     private Toolbar toolbar;
     private String OTP_Sms = "N/A", OTP_resp = "0000", gcmkey;
@@ -263,7 +263,7 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
         progressDialog = new ProgressDialog(Login.this,
                 R.style.AppTheme_Dark_Dialog);
         progressDialog.setIndeterminate(true);
-        progressDialog.setMessage("Generating OTP...");
+        progressDialog.setMessage(msgprogress);
         progressDialog.setCancelable(false);
         progressDialog.show();
 
@@ -303,9 +303,9 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
                 progressDialog.dismiss();
             }
 
-//            if (tv_otp.getVisibility() == View.GONE) {
-//                tv_otp.setVisibility(View.VISIBLE);
-//            }
+            if (tv_otp.getVisibility() == View.GONE) {
+                tv_otp.setVisibility(View.VISIBLE);
+            }
 
             tv_otp.setHint("Waiting for OTP");
             OTP_resp = otpData.getOtp();
@@ -477,11 +477,12 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
             case R.id.btn_login:
                 if (first && validateOTP()) {
                     showTermsAlert();
-                    // showDialog=true;
+                    msgprogress="Generating OTP..";
                     first = false;
                 } else {
-                    // showDialog=false;
+                    msgprogress="Authenticating..";;
                     startLogin();
+
                 }
                 break;
 
@@ -490,10 +491,10 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
 
     private void startLogin() {
         if (btn_login.getText().toString().equals("Login")) {
-
+            msgprogress="Authenticating..";
             Login();
         } else if (validateOTP()) {
-
+            msgprogress="Generating OTP..";
             GetOtp();
 
         }

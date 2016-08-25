@@ -281,7 +281,7 @@ public class Utils implements TAG {
         notificationManager.notify(NOTIFICATION_ID, mBuilder.build());
     }
 
-    private static List<File> getListFiles(File parentDir) {
+    public static List<File> getListFiles(File parentDir) {
         ArrayList<File> inFiles = new ArrayList<File>();
 
         File[] files = parentDir.listFiles();

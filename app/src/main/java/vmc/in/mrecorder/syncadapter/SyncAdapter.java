@@ -16,6 +16,7 @@
 
 package vmc.in.mrecorder.syncadapter;
 
+import android.Manifest;
 import android.accounts.Account;
 import android.content.AbstractThreadedSyncAdapter;
 import android.content.ContentProviderClient;
@@ -23,12 +24,15 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SyncResult;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.provider.CallLog;
 import android.provider.ContactsContract;
+import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 
 import com.android.volley.RequestQueue;
@@ -68,6 +72,7 @@ import vmc.in.mrecorder.util.Utils;
 public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
     private final ContentResolver mContentResolver;
     private ArrayList<Model> callList;
+    private ArrayList<Model> FiltercallList;
     private JSONObject response;
     private String authkey;
     private int offset = 0;
@@ -104,21 +109,27 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
                 LoadCalls();
             }
 
-            callList = CallApplication.getWritabledatabase().getAllOfflineCalls();
+          //  callList = CallApplication.getWritabledatabase().getAllOfflineCalls();
+            FiltercallList=CallApplication.getWritabledatabase().getAllOfflineCalls();
+//            FiltercallList=new ArrayList<Model>();
+//            for(int i =0 ;i<callList.size();i++){
+//                FiltercallList.add(getFilterCallDetail(callList.get(i)));
+//            }
 
-            Log.d(TAG, "offline data Size" + callList.size());
-            Log.d(TAG, "Location" + callList.get(0).getLocation());
+
+            Log.d(TAG, "offline data Size" + FiltercallList.size());
+            Log.d(TAG, "Location" + FiltercallList.get(0).getLocation());
 
             if (wifionly == 1 && Utils.hasWIFIConnection(getContext())) {
 
                 Log.d(TAG + "WIFI", "Wifi only enabled");
-                for (int i = 0; i < callList.size(); i++) {
+                for (int i = 0; i < FiltercallList.size(); i++) {
                     if (!CallRecorderServiceAll.recording && Utils.isLogin(getContext())) {
 
-                        if (new File(callList.get(i).getFilePath()).exists()) {
-                            uploadMultipartData(callList.get(i), true);
+                        if (new File(FiltercallList.get(i).getFilePath()).exists()) {
+                            uploadMultipartData(FiltercallList.get(i), true);
                         } else {
-                            uploadMultipartData(callList.get(i), false);
+                            uploadMultipartData(FiltercallList.get(i), false);
 
                         }
 
@@ -127,14 +138,14 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
                 }
             } else if (wifionly == 0) {
                 Log.d(TAG + "WIFI", "Wifi only disabled");
-                for (int i = 0; i < callList.size(); i++) {
+                for (int i = 0; i < FiltercallList.size(); i++) {
 
                     if (!CallRecorderServiceAll.recording && Utils.isLogin(getContext())) {
 
-                        if (new File(callList.get(i).getFilePath()).exists()) {
-                            uploadMultipartData(callList.get(i), true);
+                        if (new File(FiltercallList.get(i).getFilePath()).exists()) {
+                            uploadMultipartData(FiltercallList.get(i), true);
                         } else {
-                            uploadMultipartData(callList.get(i), false);
+                            uploadMultipartData(FiltercallList.get(i), false);
 
                         }
 
@@ -409,7 +420,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
         builder.addPart(LOCATION, new StringBody(model.getLocation(), ContentType.TEXT_PLAIN));
         Log.d(TAG, LOCATION + ":" + model.getLocation());
         if (!fileExist) {
-          //  builder.addPart(ENDTIME, new StringBody("0000000", ContentType.TEXT_PLAIN));
+            //  builder.addPart(ENDTIME, new StringBody("0000000", ContentType.TEXT_PLAIN));
             builder.addPart(ENDTIME, new StringBody(sdf.format(new Date(Long.parseLong(model.getTime()))), ContentType.TEXT_PLAIN));
             Log.d(TAG, ENDTIME + ":" + sdf.format(new Date(Long.parseLong(model.getTime()))));
         }
@@ -494,6 +505,107 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
         } catch (Exception e) {
             Log.d(TAG, e.getMessage());
         }
+
+    }
+
+    //outgoing
+    public synchronized Model getFilterCallDetail(Model model1) {
+        String whereClause = CallLog.Calls.NUMBER + " = " + model1.getPhoneNumber() + " AND " + CallLog.Calls.TYPE + "=" + CallLog.Calls.OUTGOING_TYPE;
+        StringBuffer sb = new StringBuffer();
+
+        if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.READ_CALL_LOG) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+           // return ;
+        }
+        Cursor managedCursor = getContext().getContentResolver().query(CallLog.Calls.CONTENT_URI, null, whereClause,
+                null, CallLog.Calls.DATE + " DESC");
+        int number = managedCursor.getColumnIndex(CallLog.Calls.NUMBER);
+        int type = managedCursor.getColumnIndex(CallLog.Calls.TYPE);
+        int date = managedCursor.getColumnIndex(CallLog.Calls.DATE);
+        int duration = managedCursor.getColumnIndex(CallLog.Calls.DURATION);
+        ArrayList<Model> templog = new ArrayList<Model>();
+
+        sb.append("Call Details :");
+        while (managedCursor.moveToNext()) {
+
+            Model model = new Model();
+            String phNumber = managedCursor.getString(number);
+            model.setPhoneNumber(phNumber);
+            String callType = managedCursor.getString(type);
+            model.setCallType(callType);
+            String callDate = managedCursor.getString(date);
+            model.setTime(callDate);
+            Date callDayTime = new Date(Long.valueOf(callDate));
+            SimpleDateFormat sdf = new SimpleDateFormat("hh:mm aa");
+            String exacttime = sdf.format(callDayTime);
+            //  Log.d("Numbers", exacttime);
+            String callDuration = managedCursor.getString(duration);
+            model.setDuration(callDuration);
+            templog.add(model);
+
+
+//            String dir = null;
+//            int dircode = Integer.parseInt(callType);
+//            switch (dircode) {
+//                case CallLog.Calls.OUTGOING_TYPE:
+//                    dir = "OUTGOING";
+//                    break;
+//
+//                case CallLog.Calls.INCOMING_TYPE:
+//                    dir = "INCOMING";
+//                    break;
+//
+//                case CallLog.Calls.MISSED_TYPE:
+//                    dir = "MISSED";
+//                    break;
+//            }
+//            sb.append("\nPhone Number:--- " + phNumber + " \nCall Type:--- "
+//                    + dir + " \nCall Date:--- " + callDayTime + " \nCall time:--- " + exacttime
+//                    + " \nCall duration in sec :--- " + callDuration);
+//            sb.append("\n----------------------------------");
+        }
+        for (int i = 0; i < templog.size(); i++) {
+
+            Model model = templog.get(i);
+            if (model.getPhoneNumber().equals(model1.getPhoneNumber())) {
+                //     Log.d("Numbers", "Number equal" + model1.getPhoneNumber());
+                Date callDayTime = new Date(Long.valueOf(model.getTime()));
+                Date callDayTime1 = new Date(Long.valueOf(model1.getTime()));
+                SimpleDateFormat sdf = new SimpleDateFormat("hh:mm aa");
+                String time1 = sdf.format(callDayTime);
+                String time2 = sdf.format(callDayTime1);
+
+
+                if (time1.equals(time2)) {
+
+                    if (Integer.parseInt(model.getDuration()) == 0) {
+                        Log.d("Numbers", "Call To be Deleted");
+                        Log.d("Numbers", model1.getPhoneNumber() + " " + time2);
+                        Log.d("Numbers", "Duration " + model.getDuration());
+                       // CallApplication.getWritabledatabase().delete(model1.getId());//from db
+                        if (new File(model1.getFilePath()).exists()) {
+                            new File(model1.getFilePath()).delete();//from internal storage
+                            Log.d("Numbers", "FILE DELETED" + ":" + model1.getFile().getName());
+                        }
+                        Log.d("Numbers", "RECODRD DELETED" + ":" + model1.getFile().getName());
+                    }
+                }
+
+
+            }
+
+
+        }
+        managedCursor.close();
+
+
+        return model1;
 
     }
 

@@ -85,7 +85,6 @@ public class LoginTask extends Fragment implements vmc.in.mrecorder.callbacks.TA
         gcmkey = getArguments().getString("gcm");
         mTask = new Login();
         countDownTimer = new Timer(startTime, interval);
-
         mTask.execute();
     }
 

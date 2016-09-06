@@ -81,6 +81,7 @@ public class AnalyticsByType extends AppCompatActivity implements ConnectivityRe
     private RequestQueue requestQueue;
     private SingleTon volleySingleton;
     private  Boolean rotate = false;
+    private boolean FirstLoad=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,8 +103,11 @@ public class AnalyticsByType extends AppCompatActivity implements ConnectivityRe
         if (savedInstanceState != null) {
             pieModel = savedInstanceState.getParcelableArrayList("DATA");
             rotate=true;
+            FirstLoad=false;
             setPieChart(pieModel);
-         }
+         } else {
+            FirstLoad = true;
+        }
 
         addItemsToSpinner();
         volleySingleton = SingleTon.getInstance();
@@ -211,10 +215,11 @@ public class AnalyticsByType extends AppCompatActivity implements ConnectivityRe
                 // On selecting a spinner item
                 String item = adapter.getItemAtPosition(position).toString();
                 reportype = position + "";
-                if(!rotate) {
+                if (!rotate && !FirstLoad) {
                     getData();
-                }else{
-                    rotate=false;
+                } else {
+                    rotate = false;
+                    FirstLoad = false;
                 }
 
             }
@@ -330,7 +335,7 @@ public class AnalyticsByType extends AppCompatActivity implements ConnectivityRe
 
             try {
                 pieModel = new ArrayList<PieModel>();
-                pieModel = Parser.ParseTypeResponse(Requestor.requestByType(requestQueue,TYPEREPORT_URL, reportype, CallApplication.getInstance().getDeviceId(), Utils.getFromPrefs(AnalyticsByType.this, AUTHKEY, "n")));
+                pieModel = Parser.ParseTypeResponse(Requestor.requestByType(requestQueue,TYPEREPORT_URL, reportype,  Utils.getFromPrefs(AnalyticsByType.this,SESSION_ID,UNKNOWN), Utils.getFromPrefs(AnalyticsByType.this, AUTHKEY, "n")));
             } catch (Exception e) {
                 e.printStackTrace();
             }

@@ -4,6 +4,7 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.provider.ContactsContract;
 import android.support.v7.view.menu.MenuBuilder;
@@ -75,7 +76,24 @@ public class NewSpeedDialAdpter extends RecyclerView.Adapter<NewSpeedDialAdpter.
         } catch (Exception e) {
             e.printStackTrace();
         }
-        holder.iboverflow.setOnClickListener(new OnOverflowSelectedListener(context, holder.getAdapterPosition(), CallDataArrayList));
+        int duration;
+        try {
+            MediaPlayer mp = MediaPlayer.create(context, Uri.fromFile(ci.getFile()));
+            duration = mp.getDuration();
+        } catch (Exception e) {
+            duration = 0;
+        }
+        if (new File(ci.getFilePath()).exists() && duration > 0) {
+            if (holder.iboverflow.getVisibility() == View.GONE) {
+                holder.iboverflow.setVisibility(View.VISIBLE);
+            }
+            holder.iboverflow.setOnClickListener(new OnOverflowSelectedListener(context, holder.getAdapterPosition(), CallDataArrayList));
+        } else {
+            if (holder.iboverflow.getVisibility() == View.VISIBLE) {
+                holder.iboverflow.setVisibility(View.GONE);
+            }
+        }
+
         holder.nameTextView.setText(sname != null ? sname : ci.getPhoneNumber());
         SimpleDateFormat sdf = new SimpleDateFormat("hh:mm aa");
         //  String stime=sdf.format(new Date(Long.parseLong(c.getString(timeindex))));

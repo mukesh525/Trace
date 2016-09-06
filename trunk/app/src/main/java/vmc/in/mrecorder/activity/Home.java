@@ -1,5 +1,5 @@
 package vmc.in.mrecorder.activity;
-//aaa
+
 
 import android.Manifest;
 import android.annotation.TargetApi;
@@ -15,12 +15,14 @@ import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Parcelable;
+import android.os.PersistableBundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -125,12 +127,16 @@ public class Home extends AppCompatActivity
 
     private int completed = 0;
     private AlertDialog alertDialog;
+    private boolean fileShare=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         CustomTheme.onActivityCreateSetTheme(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        if(savedInstanceState!=null){
+            fileShare=savedInstanceState.getBoolean("SHARE");
+        }
         if (Utils.tabletSize(Home.this) < 6.0) {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
@@ -152,12 +158,16 @@ public class Home extends AppCompatActivity
 
         }
 
+        if(!Utils.isLocationEnabled(Home.this)){
+            GoogleApiClient();
+        }
+
         mDrawer = (NavigationView) findViewById(R.id.nav_view);
         mDrawer.setNavigationItemSelectedListener(this);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, mToolbar, R.string.drawer_open,
                 R.string.drawer_close);
-        //mDrawerLayout.setDrawerListener(drawerToggle);
+
         mDrawerLayout.addDrawerListener(drawerToggle);
         drawerToggle.syncState();
         mTabLayout = (TabLayout) findViewById(R.id.tabs);
@@ -166,9 +176,8 @@ public class Home extends AppCompatActivity
         mViewPager = (ViewPager) findViewById(R.id.viewpager);
         myPagerAdapter = new MyPagerAdapter(getSupportFragmentManager());
         mViewPager.setAdapter(myPagerAdapter);
-        //  mTabLayout.setTabsFromPagerAdapter(myPagerAdapter);
         mTabLayout.setupWithViewPager(mViewPager);
-        // setupWithViewPager is enough.
+
         setupTabIcons();
         mDrawer.setItemIconTintList(null);
         View header = mDrawer.getHeaderView(0);
@@ -177,8 +186,6 @@ public class Home extends AppCompatActivity
             header.setBackgroundResource(R.drawable.side_nav_bar);
 
         }
-
-
         user = (TextView) header.findViewById(R.id.tv_name);
         email = (TextView) header.findViewById(R.id.tv_email);
         userType = (CircleImageView) header.findViewById(R.id.usertype);
@@ -203,7 +210,6 @@ public class Home extends AppCompatActivity
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //  Utils.setRecording(Home.this);
                 startActivity(new Intent(Home.this, Settings.class));
                 fabMenu.collapse();
             }
@@ -259,10 +265,8 @@ public class Home extends AppCompatActivity
                 frameLayout.setOnTouchListener(null);
             }
         });
-        // fabMenu.setBackground(Color.parseColor("#795548"));
-
-        GoogleApiClient();
     }
+
 
 
     public void onShareFile(final String fileName) {
@@ -274,7 +278,7 @@ public class Home extends AppCompatActivity
             downloadFragment.setArguments(bundle);
             getSupportFragmentManager().beginTransaction().add(downloadFragment, TAG_TASK_FRAGMENT).commit();
         } else {
-            Snackbar snack = Snackbar.make(coordinatorLayout, "No Internet Connection", Snackbar.LENGTH_SHORT)
+            Snackbar snack = Snackbar.make(fabMenu, "No Internet Connection", Snackbar.LENGTH_SHORT)
                     .setAction(getString(R.string.text_tryAgain), new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -383,6 +387,7 @@ public class Home extends AppCompatActivity
                 break;
             case SHARE_CALL: {
                 Log.d("onActivityResult()", "SHARE SUCCESS");
+                fileShare=false;
                 deleteFiles();
                 break;
             }
@@ -400,7 +405,7 @@ public class Home extends AppCompatActivity
     }
 
 
-    public void showSettingsAlert() {
+    public void showLogoutAlert() {
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(Home.this);
         alertDialog.setTitle("MTracker");
         alertDialog.setIcon(R.mipmap.ic_launcher);
@@ -434,7 +439,7 @@ public class Home extends AppCompatActivity
             }
         }
 
-        showSnack(isConnected);
+        //showSnack(isConnected);
     }
 
 
@@ -446,7 +451,7 @@ public class Home extends AppCompatActivity
             color = Color.RED;
 
             Snackbar snackbar = Snackbar
-                    .make(coordinatorLayout, message, Snackbar.LENGTH_LONG);
+                    .make(fabMenu, message, Snackbar.LENGTH_LONG);
 
             View sbView = snackbar.getView();
             TextView textView = (TextView) sbView.findViewById(android.support.design.R.id.snackbar_text);
@@ -459,7 +464,7 @@ public class Home extends AppCompatActivity
     @Override
     public void ondownloadFilePreExecute() {
 
-
+        fileShare=true;
         initProgress();
 
 
@@ -498,6 +503,7 @@ public class Home extends AppCompatActivity
     public void ondownloadFileCancelled() {
         if (mProgressDialog != null && mProgressDialog.isShowing()) {
             mProgressDialog.dismiss();
+            mProgressDialog=null;
         }
         Log.d("SHARE", "Download Cancelled");
 
@@ -519,6 +525,7 @@ public class Home extends AppCompatActivity
             Intent share = new Intent(Intent.ACTION_SEND);
             share.putExtra(Intent.EXTRA_STREAM, uri);
             share.setType("audio/*");
+            fileShare=true;
             share.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
             this.startActivityForResult(Intent.createChooser(share, "Share MTracker Record "), SHARE_CALL);
 
@@ -568,16 +575,27 @@ public class Home extends AppCompatActivity
         }
     }
 
+    @Override
+    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
+        super.onSaveInstanceState(outState, outPersistentState);
+        outState.putBoolean("SHARED",fileShare);
+    }
 
     @Override
     protected void onResume() {
         super.onResume();
         showprefrenceValues();
-        deleteFiles();
         if (mProgressDialog != null && mProgressDialog.isShowing()) {
             mProgressDialog.dismiss();
-            Log.d("DIALOG", "DIALOG DISMISS");
+
         }
+//        if(!fileShare)
+//            deleteFiles();
+        if (downloadFragment != null) {
+            downloadFragment.onCancelTask();
+        }
+
+
         CallApplication.getInstance().setConnectivityListener(this);
         if (!Utils.isLogin(Home.this)) {
             Intent intent = new Intent(Home.this, Login.class);
@@ -586,6 +604,20 @@ public class Home extends AppCompatActivity
                     Intent.FLAG_ACTIVITY_NEW_TASK);
             Home.this.startActivity(intent);
             Log.d("Logout", "Logout on resume");
+        }
+
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+       // deleteFiles();
+        if (mProgressDialog != null && mProgressDialog.isShowing()) {
+            mProgressDialog.dismiss();
+
+        }
+        if (downloadFragment != null) {
+            downloadFragment.onCancelTask();
         }
 
     }
@@ -602,7 +634,7 @@ public class Home extends AppCompatActivity
                         if (downloadFragment != null) {
                             downloadFragment.onCancelTask();
                         }
-
+                        mProgressDialog=null;
 
                     }
                 });
@@ -632,6 +664,7 @@ public class Home extends AppCompatActivity
         }
         if (mProgressDialog != null && mProgressDialog.isShowing()) {
             mProgressDialog.dismiss();
+
             showDowanlodAlert();
         } else {
             if (doubleBackToExitPressedOnce) {
@@ -663,7 +696,7 @@ public class Home extends AppCompatActivity
 
         int id = item.getItemId();
         if (id == R.id.action_settings) {
-            showSettingsAlert();
+            showLogoutAlert();
 
             return true;
         }
@@ -683,9 +716,6 @@ public class Home extends AppCompatActivity
     public void playAudio(String url) {
         if (url != null && url.length() > 4) {
             Log.d("AUDIO", url);
-            // fileName=url;
-            // Toast.makeText(HomeActivity.this, url, Toast.LENGTH_LONG).show();
-            //Uri myUri = Uri.parse("http://mcube.vmctechnologies.com/sounds/99000220411460096169.wav");
             Uri myUri = Uri.parse(STREAM_TRACKER + url);
             Intent intent = new Intent(android.content.Intent.ACTION_VIEW);
             intent.setDataAndType(myUri, "audio/*");

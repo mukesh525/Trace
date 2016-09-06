@@ -72,14 +72,15 @@ public class AnalyticsByEmp extends AppCompatActivity implements ConnectivityRec
     private ArrayList<BarModel> barModel;
     private RequestQueue requestQueue;
     private SingleTon volleySingleton;
-    private  Boolean rotate = false;
+    private Boolean rotate = false;
+    private Boolean FirstLoad = false;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         CustomTheme.onActivityCreateSetTheme(this);
         super.onCreate(savedInstanceState);
-        if(Utils.tabletSize(AnalyticsByEmp.this)< 6.0)
+        if (Utils.tabletSize(AnalyticsByEmp.this) < 6.0)
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_analytics_by_emp);
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -96,8 +97,11 @@ public class AnalyticsByEmp extends AppCompatActivity implements ConnectivityRec
         name.setText("Analytics By Emp");
         if (savedInstanceState != null) {
             barModel = savedInstanceState.getParcelableArrayList("DATA");
-            rotate=true;
+            rotate = true;
+            FirstLoad=false;
             setBarChart(barModel);
+        } else {
+            FirstLoad = true;
         }
         addItemsToSpinner();
         volleySingleton = SingleTon.getInstance();
@@ -114,18 +118,19 @@ public class AnalyticsByEmp extends AppCompatActivity implements ConnectivityRec
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         //save the movie list to a parcelable prior to rotation or configuration change
-        if(barModel!=null && barModel.size()> 0)
+        if (barModel != null && barModel.size() > 0)
             outState.putParcelableArrayList("DATA", barModel);
 
 
     }
+
     @Override
     protected void onResume() {
         super.onResume();
         CallApplication.getInstance().setConnectivityListener(this);
-        if(barModel!=null){
+        if (barModel != null) {
             setBarChart(barModel);
-        }else{
+        } else {
             getData();
         }
 
@@ -175,10 +180,11 @@ public class AnalyticsByEmp extends AppCompatActivity implements ConnectivityRec
 //                String item = adapter.getItemAtPosition(position).toString();
 //
                 reportype = position + "";
-                if(!rotate) {
+                if (!rotate && !FirstLoad) {
                     getData();
-                }else{
-                    rotate=false;
+                } else {
+                    rotate = false;
+                    FirstLoad = false;
                 }
 
 
@@ -313,9 +319,9 @@ public class AnalyticsByEmp extends AppCompatActivity implements ConnectivityRec
 
             try {
                 Log.d("TAG", reportype);
-                Log.d("TAG", CallApplication.getInstance().getDeviceId());
+                Log.d("TAG", Utils.getFromPrefs(AnalyticsByEmp.this,SESSION_ID,UNKNOWN));
                 barModel = new ArrayList<>();
-                barModel = Parser.ParseEMPResponse(Requestor.requestByEMP(requestQueue, EMPREPORT_URL, reportype, CallApplication.getInstance().getDeviceId(), Utils.getFromPrefs(AnalyticsByEmp.this, AUTHKEY, "n")));
+                barModel = Parser.ParseEMPResponse(Requestor.requestByEMP(requestQueue, EMPREPORT_URL, reportype, Utils.getFromPrefs(AnalyticsByEmp.this,SESSION_ID,UNKNOWN), Utils.getFromPrefs(AnalyticsByEmp.this, AUTHKEY, "n")));
 
             } catch (Exception e) {
                 e.printStackTrace();

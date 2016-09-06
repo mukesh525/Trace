@@ -1,19 +1,27 @@
 package vmc.in.mrecorder.myapplication;
 
 
+import android.app.AlarmManager;
 import android.app.Application;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.telephony.TelephonyManager;
 import android.util.Log;
+
 import java.util.UUID;
+
+import vmc.in.mrecorder.callbacks.Constants;
 import vmc.in.mrecorder.callbacks.TAG;
 import vmc.in.mrecorder.datahandler.MDatabase;
+import vmc.in.mrecorder.receiver.AlarmReceiver;
 import vmc.in.mrecorder.service.CallRecorderServiceAll;
+import vmc.in.mrecorder.service.TelephonyInfo;
 import vmc.in.mrecorder.syncadapter.SyncUtils;
 import vmc.in.mrecorder.util.ConnectivityReceiver;
+import vmc.in.mrecorder.util.SessionIdentifierGenerator;
 import vmc.in.mrecorder.util.Utils;
 
 public class CallApplication extends Application implements TAG, SharedPreferences.OnSharedPreferenceChangeListener {
@@ -21,7 +29,10 @@ public class CallApplication extends Application implements TAG, SharedPreferenc
     public static SharedPreferences sp;//to prevent concurrent creation of shared pref and editor
     public static Editor e;
     private static MDatabase mdatabase;
-    public Intent all;
+//    public Intent all;
+    private PendingIntent pendingIntent;
+    private AlarmManager manager;
+    private Intent all;
 
 
     @Override
@@ -29,28 +40,9 @@ public class CallApplication extends Application implements TAG, SharedPreferenc
         // TODO Auto-generated method stub
         super.onCreate();
         mApplication = this;
-
+        setAlarm();
         SyncUtils.CreateSyncAccount(getBaseContext());
-        Log.e("application", "created");
-
-        sp = getApplicationContext().getSharedPreferences("com.example.call", Context.MODE_PRIVATE);
-        e = sp.edit();
-
-        try {
-
-
-            all = new Intent(this, CallRecorderServiceAll.class);
-            //  Intent opt = new Intent(this, CallRecorderServiceOptional.class);
-            if (sp.getInt(TYPE, 0) == 0) {
-                startService(all);
-            } else if (sp.getInt(TYPE, 0) == 1) {
-                stopService(all);
-                //  stopService(opt);
-            }
-
-        } catch (Exception e) {
-            Log.e("application", "service");
-        }
+        startRecording();
 
     }
 
@@ -60,31 +52,12 @@ public class CallApplication extends Application implements TAG, SharedPreferenc
         return GetDeviceId();
 
     }
+    public synchronized String getSessionID() {
 
+        return new SessionIdentifierGenerator().nextSessionId();
 
-    public void isstartRecording() {
-        sp = getApplicationContext().getSharedPreferences("com.example.call", Context.MODE_PRIVATE);
-
-        e = sp.edit();
-        all = new Intent(this, CallRecorderServiceAll.class);
-        //  Intent opt = new Intent(this, CallRecorderServiceOptional.class);
-        if (sp.getInt(TYPE, 0) == 0) {
-            if (!Utils.isMyServiceRunning(CallRecorderServiceAll.class, getAplicationContext())) {
-                startService(all);
-                Log.d("SERVICE", "Service Started by CallApplication");
-            } else {
-                Log.d("SERVICE", "Service  already Started by CallApplication");
-            }
-        } else if (sp.getInt(TYPE, 0) == 1) {
-            if (Utils.isMyServiceRunning(CallRecorderServiceAll.class, getAplicationContext())) {
-                stopService(all);
-                Log.d("SERVICE", "Service Stopped by CallApplication");
-            } else {
-                Log.d("SERVICE", "Service  already stopped by CallApplication");
-            }
-            //  stopService(opt);
-        }
     }
+
 
     public static Context getAplicationContext() {
         return mApplication.getApplicationContext();
@@ -96,7 +69,7 @@ public class CallApplication extends Application implements TAG, SharedPreferenc
     }
 
 
-    public void resetService() {
+    public void resetServicee() {
         try {
 
             Intent all = new Intent(this, CallRecorderServiceAll.class);
@@ -129,37 +102,72 @@ public class CallApplication extends Application implements TAG, SharedPreferenc
 
         UUID deviceUuid = new UUID(androidId.hashCode(), ((long) tmDevice.hashCode() << 32) | tmSerial.hashCode());
         String deviceId = deviceUuid.toString();
-          Log.d("android_id", deviceId);
+        Log.d("android_id", deviceId);
         return deviceId;
 
     }
 
-    public void startRecording() {
-        CallApplication.sp.edit().putInt(TYPE, 0).commit();
-        if (CallApplication.sp.getInt(TYPE, 0) == 0) {
-            if (!Utils.isMyServiceRunning(CallRecorderServiceAll.class, getAplicationContext())) {
-                startService(all);
-            }
-        } else if (CallApplication.sp.getInt(TYPE, 0) == 1) {
-            if (Utils.isMyServiceRunning(CallRecorderServiceAll.class, getAplicationContext())) {
-                stopService(all);
-            }
+
+    public void setAlarm() {
+
+        Intent alarmIntent = new Intent(getAplicationContext(), AlarmReceiver.class);
+        pendingIntent = getPendinIntent(alarmIntent);
+        manager = (AlarmManager) getAplicationContext().getSystemService(Context.ALARM_SERVICE);
+        int interval = 20; // 0.02 seconds
+        boolean alarmUp = (PendingIntent.getBroadcast(getAplicationContext(), 0, alarmIntent, PendingIntent.FLAG_NO_CREATE) != null);
+        if (!alarmUp) {
+            manager.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), interval, pendingIntent);
         }
     }
 
-    public void stopRecording() {
-        CallApplication.sp.edit().putInt(TYPE, 1).commit();
-        if (CallApplication.sp.getInt(TYPE, 0) == 0) {
-            if (!Utils.isMyServiceRunning(CallRecorderServiceAll.class, getAplicationContext())) {
-                startService(all);
-            }
-        } else if (CallApplication.sp.getInt(TYPE, 0) == 1) {
-            if (Utils.isMyServiceRunning(CallRecorderServiceAll.class, getAplicationContext())) {
-                stopService(all);
-            }
-            //  stopService(opt);
+    public PendingIntent getPendinIntent(Intent intent) {
+        return PendingIntent.getBroadcast(getAplicationContext(), 0, intent, 0);
+    }
+
+    public void startRecording() {
+//        all = new Intent(this, CallRecorderServiceAll.class);
+//        if (!Utils.isMyServiceRunning(CallRecorderServiceAll.class, getAplicationContext())) {
+//            all.setAction(Constants.ACTION.STARTFOREGROUND_ACTION);
+//            startService(all);
+//        }
+
+        Intent service = new Intent(this, CallRecorderServiceAll.class);
+        if (!CallRecorderServiceAll.IS_SERVICE_RUNNING) {
+            service.setAction(Constants.ACTION.STARTFOREGROUND_ACTION);
+            CallRecorderServiceAll.IS_SERVICE_RUNNING = true;
+            startService(service);
         }
     }
+
+
+    public void stopRecording() {
+//        all = new Intent(this, CallRecorderServiceAll.class);
+//        if (Utils.isMyServiceRunning(CallRecorderServiceAll.class, getAplicationContext())) {
+//            all.setAction(Constants.ACTION.STOPFOREGROUND_ACTION);
+//            stopService(all);
+//        }
+
+
+        Intent service = new Intent(this, CallRecorderServiceAll.class);
+        if (CallRecorderServiceAll.IS_SERVICE_RUNNING) {
+            service.setAction(Constants.ACTION.STOPFOREGROUND_ACTION);
+            CallRecorderServiceAll.IS_SERVICE_RUNNING = false;
+            startService(service);
+        }
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+
 
     public synchronized static MDatabase getWritabledatabase() {
         if (mdatabase == null) {
@@ -176,4 +184,27 @@ public class CallApplication extends Application implements TAG, SharedPreferenc
     public void setConnectivityListener(ConnectivityReceiver.ConnectivityReceiverListener listener) {
         ConnectivityReceiver.connectivityReceiverListener = listener;
     }
+
+    public static String getSimId() {
+        TelephonyInfo telephonyInfo = TelephonyInfo.getInstance(getAplicationContext());
+        String sim;
+        if (telephonyInfo.isDualSIM()) {
+            String sim1 = telephonyInfo.isSIM1Ready() ? telephonyInfo.getImsiSIM1() : UNKNOWN;
+            String sim2 = telephonyInfo.isSIM2Ready() ? telephonyInfo.getImsiSIM1() : UNKNOWN;
+            sim = sim1 + "," + sim2;
+        } else {
+            sim = telephonyInfo.isSIM1Ready() ? telephonyInfo.getImsiSIM1() : UNKNOWN;
+        }
+
+        return sim;
+    }
+
+    public static boolean isSimChanged() {
+        String sim1 = getSimId();
+        String sim2 = Utils.getFromPrefs(getAplicationContext(), SIM, UNKNOWN);
+        return !sim1.equals(sim2);
+
+    }
+
+
 }

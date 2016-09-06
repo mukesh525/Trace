@@ -16,7 +16,7 @@ public class PhoneStateReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         Log.d("SERVICE", "PhoneStateReceiver");
         if (Utils.isLogin(context)) {
-            CallApplication.getInstance().isstartRecording();
+            CallApplication.getInstance().startRecording();
             Log.d("SERVICE", "PhoneStateReceiver Login");
 
         } else {

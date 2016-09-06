@@ -76,6 +76,7 @@ public interface TAG {
     public String EMPNAME = "empname";
 
     public String AUTHKEY = "authkey";
+    public String SESSION_ID = "sessionid";
     public String TAG = "TEST_LOG";
     public String OFFSET = "offset";
     public String LIMIT = "limit";
@@ -88,6 +89,7 @@ public interface TAG {
     public String TYPE_OUTGOING = "2";
     public String TYPE_ALL = "all";
     public String FEEDBACK = "feedback";
+    public String SIM = "sim";
 
    // public String GET_CALL_LIST = "http://mcube.vmctechnologies.com/mtappv3/getList";
     public String GET_CALL_LIST = "http://mcube.vmctechnologies.com/mtappv3/getList";

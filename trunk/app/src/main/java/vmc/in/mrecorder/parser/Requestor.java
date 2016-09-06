@@ -51,7 +51,7 @@ public class Requestor implements vmc.in.mrecorder.callbacks.TAG {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        Log.d("LOG",response.toString());
+      //  Log.d("LOG",response.toString());
         return response;
     }
 
@@ -87,7 +87,7 @@ public class Requestor implements vmc.in.mrecorder.callbacks.TAG {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-       Log.d("LOG",response.toString());
+      // Log.d("LOG",response.toString());
         return response;
     }
 
@@ -121,7 +121,8 @@ public class Requestor implements vmc.in.mrecorder.callbacks.TAG {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        Log.d("LOG",response.toString());
+        if(response!=null)
+            Log.d("LOG",response.toString());
         return response;
     }
 
@@ -153,6 +154,7 @@ public class Requestor implements vmc.in.mrecorder.callbacks.TAG {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+        if(response!=null)
         Log.d("LOG",response.toString());
         return response;
     }
@@ -188,7 +190,7 @@ public class Requestor implements vmc.in.mrecorder.callbacks.TAG {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        Log.d("LOG",response.toString());
+       // Log.d("LOG",response.toString());
         return response;
     }
 

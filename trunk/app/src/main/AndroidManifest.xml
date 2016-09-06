@@ -115,6 +115,11 @@
             android:name=".service.CallRecorderServiceAll"
             android:protectionLevel="signature" />
 
+
+        <receiver android:name=".receiver.AlarmReceiver"></receiver>
+
+
+
         <receiver
             android:name=".receiver.BootBroadcastReceiver"
             android:enabled="true"
@@ -151,6 +156,7 @@
         <activity
             android:name=".activity.Home"
             android:label="@string/title_activity_home"
+            android:exported="true"
             android:theme="@style/MyMaterialTheme" />
 
         <service
@@ -205,10 +211,7 @@
             android:name=".activity.LocationActivity"
             android:parentActivityName=".activity.Home"
             android:theme="@style/MyMaterialTheme"></activity>
-        <activity
-            android:name=".activity.MainActivity"
-            android:label="@string/title_activity_main"
-            android:theme="@style/MyMaterialTheme"></activity>
+
     </application>
 
 </manifest>

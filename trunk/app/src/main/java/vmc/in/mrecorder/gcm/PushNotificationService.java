@@ -84,18 +84,18 @@ public class PushNotificationService extends GcmListenerService implements vmc.i
 
             Log.d(TAG, message);
             //   sendStickyNotification(message);
-            if (message != null && message.length() > 5) {
-                if (Utils.isLogin(getApplicationContext())) {
-                    sendStickyNotification(message);
-                    CallApplication.getWritabledatabase().DeleteAllData();
-                    CallApplication.getInstance().stopRecording();
-                    SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-                    prefs.edit().clear().commit();
-                    Log.d("Logout", "Logout on gcm");
-
-                }
-
-            }
+//            if (message != null && message.length() > 5) {
+//                if (Utils.isLogin(getApplicationContext())) {
+//                    sendStickyNotification(message);
+//                    CallApplication.getWritabledatabase().DeleteAllData();
+//                    CallApplication.getInstance().stopRecording();
+//                    SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+//                    prefs.edit().clear().commit();
+//                    Log.d("Logout", "Logout on gcm");
+//
+//                }
+//
+//            }
         }
 
     }
@@ -171,6 +171,10 @@ public class PushNotificationService extends GcmListenerService implements vmc.i
     private void sendStickyNotification(String message) {
         Bitmap bm = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher);
         Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        NotificationCompat.BigTextStyle s = new NotificationCompat.BigTextStyle();
+        s.setBigContentTitle("MTracker");
+        //  s.bigText("You have been logout by Admin.");
+        s.bigText(message);
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this)
                 .setSmallIcon(R.mipmap.ic_launcher)
                 .setColor(ContextCompat.getColor(getApplicationContext(), R.color.accent))
@@ -179,6 +183,7 @@ public class PushNotificationService extends GcmListenerService implements vmc.i
                 .setOngoing(true)
                 .setSound(defaultSoundUri)
                 .setLargeIcon(bm)
+                .setStyle(s)
                 .setContentText(message)
                 .setContentIntent(PendingIntent.getActivity(this, 0, new Intent(this, Login.class), 0));
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);

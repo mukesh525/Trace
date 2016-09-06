@@ -46,7 +46,7 @@ import vmc.in.mrecorder.util.Utils;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class InboundCalls extends Fragment implements SwipeRefreshLayout.OnRefreshListener, TAG, Calls_Adapter.CallClickedListner {
+public class InboundCalls extends Fragment implements SwipeRefreshLayout.OnRefreshListener, TAG, Calls_Adapter.CallClickedListner,ConnectivityReceiver.ConnectivityReceiverListener {
     private Calls_Adapter adapter;
     public RecyclerView recyclerView;
     private SwipeRefreshLayout swipeRefreshLayout;
@@ -62,6 +62,8 @@ public class InboundCalls extends Fragment implements SwipeRefreshLayout.OnRefre
     private String authkey;
     private RequestQueue requestQueue;
     private SingleTon volleySingleton;
+    private String sessionID;
+
     public InboundCalls() {
         // Required empty public constructor
     }
@@ -89,6 +91,8 @@ public class InboundCalls extends Fragment implements SwipeRefreshLayout.OnRefre
         volleySingleton = SingleTon.getInstance();
         requestQueue = volleySingleton.getRequestQueue();
         callDataArrayList = new ArrayList<CallData>();
+        sessionID = Utils.getFromPrefs(getContext(), SESSION_ID, UNKNOWN);
+        Log.d("SESSION_ID", "Inbound Calls OncCreate " + sessionID);
         recyclerView.addOnScrollListener(new EndlessScrollListener() {
             @Override
             public void onLoadMore() {
@@ -234,6 +238,31 @@ public class InboundCalls extends Fragment implements SwipeRefreshLayout.OnRefre
 
     }
 
+    @Override
+    public void onNetworkConnectionChanged(boolean isConnected) {
+
+        if (getActivity() != null) {
+            showSnack(isConnected);
+        }
+
+
+
+    }
+    private void showSnack(boolean isConnected) {
+        String message;
+        int color;
+        if (!isConnected) {
+            message = "Sorry! Not connected to internet";
+            color = Color.RED;
+
+            Snackbar snackbar = Snackbar
+                    .make(mroot, message, Snackbar.LENGTH_LONG);
+            View sbView = snackbar.getView();
+            TextView textView = (TextView) sbView.findViewById(android.support.design.R.id.snackbar_text);
+            textView.setTextColor(color);
+            snackbar.show();
+        }
+    }
     class DownloadCallData extends AsyncTask<Void, Void, ArrayList<CallData>> {
          private String code="n/a", msg="n/a";
 
@@ -265,7 +294,7 @@ public class InboundCalls extends Fragment implements SwipeRefreshLayout.OnRefre
             try {
 
                 response = Requestor.requestGetCalls(requestQueue,GET_CALL_LIST, authkey, "10", offset + "",
-                        CallApplication.getInstance().getDeviceId(), TYPE_INCOMING);
+                       sessionID, TYPE_INCOMING);
                 Log.d(TAG, response.toString());
             } catch (Exception e) {
             }
@@ -324,6 +353,9 @@ public class InboundCalls extends Fragment implements SwipeRefreshLayout.OnRefre
             } else if (code.equals("202") || code.equals("401")) {
                 if (retrylayout.getVisibility() == View.GONE) {
                     retrylayout.setVisibility(View.VISIBLE);
+                }
+                if (recyclerView.getVisibility() == View.VISIBLE) {
+                    recyclerView.setVisibility(View.GONE);
                 }
                 if (getActivity() != null && Constants.position == 1) {
                     try {
@@ -393,7 +425,7 @@ public class InboundCalls extends Fragment implements SwipeRefreshLayout.OnRefre
             JSONObject response = null;
             try {
                 response = Requestor.requestGetCalls(requestQueue,GET_CALL_LIST, authkey, "10", offset + "",
-                        CallApplication.getInstance().getDeviceId(), TYPE_INCOMING);
+                        sessionID, TYPE_INCOMING);
                 Log.d(TAG, response.toString());
             } catch (Exception e) {
             }
@@ -437,7 +469,12 @@ public class InboundCalls extends Fragment implements SwipeRefreshLayout.OnRefre
 
 
             } else if (code.equals("202") || code.equals("401")) {
-
+                if (retrylayout.getVisibility() == View.GONE) {
+                    retrylayout.setVisibility(View.VISIBLE);
+                }
+                if (recyclerView.getVisibility() == View.VISIBLE) {
+                    recyclerView.setVisibility(View.GONE);
+                }
                 if (getActivity() != null && Constants.position == 1) {
                     try {
                         Snackbar snack = Snackbar.make(((Home)getActivity()).fabMenu, "Login to Continue", Snackbar.LENGTH_SHORT)

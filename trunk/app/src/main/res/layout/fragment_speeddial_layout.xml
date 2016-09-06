@@ -14,7 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:text="No Calls Recorded.."
+        android:text="All Records are up to date."
         android:textColor="?attr/colorPrimary"
         android:textSize="20dp"
         android:background="@drawable/edittext_background"

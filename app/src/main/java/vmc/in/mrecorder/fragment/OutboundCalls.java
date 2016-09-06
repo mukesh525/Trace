@@ -46,7 +46,7 @@ import vmc.in.mrecorder.util.Utils;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class OutboundCalls extends Fragment implements SwipeRefreshLayout.OnRefreshListener, TAG, Calls_Adapter.CallClickedListner{
+public class OutboundCalls extends Fragment implements SwipeRefreshLayout.OnRefreshListener, TAG, Calls_Adapter.CallClickedListner,ConnectivityReceiver.ConnectivityReceiverListener{
     private Calls_Adapter adapter;
     public RecyclerView recyclerView;
     private SwipeRefreshLayout swipeRefreshLayout;
@@ -62,6 +62,8 @@ public class OutboundCalls extends Fragment implements SwipeRefreshLayout.OnRefr
     private String authkey;
     private RequestQueue requestQueue;
     private SingleTon volleySingleton;
+    private String sessionID;
+
     public OutboundCalls() {
         // Required empty public constructor
     }
@@ -89,6 +91,8 @@ public class OutboundCalls extends Fragment implements SwipeRefreshLayout.OnRefr
         volleySingleton = SingleTon.getInstance();
         requestQueue = volleySingleton.getRequestQueue();
         callDataArrayList = new ArrayList<CallData>();
+        sessionID = Utils.getFromPrefs(getContext(), SESSION_ID, UNKNOWN);
+        Log.d("SESSION_ID", "Outbound Calls OnCreate " + sessionID);
         recyclerView.addOnScrollListener(new EndlessScrollListener() {
 
 
@@ -234,6 +238,32 @@ public class OutboundCalls extends Fragment implements SwipeRefreshLayout.OnRefr
 
     }
 
+    @Override
+    public void onNetworkConnectionChanged(boolean isConnected) {
+
+        if (getActivity() != null) {
+            showSnack(isConnected);
+        }
+
+
+
+    }
+    private void showSnack(boolean isConnected) {
+        String message;
+        int color;
+        if (!isConnected) {
+            message = "Sorry! Not connected to internet";
+            color = Color.RED;
+
+            Snackbar snackbar = Snackbar
+                    .make(mroot, message, Snackbar.LENGTH_LONG);
+            View sbView = snackbar.getView();
+            TextView textView = (TextView) sbView.findViewById(android.support.design.R.id.snackbar_text);
+            textView.setTextColor(color);
+            snackbar.show();
+        }
+    }
+
     class DownloadCallData extends AsyncTask<Void, Void, ArrayList<CallData>> {
         private String code="n/a", msg="n/a";
 
@@ -264,9 +294,7 @@ public class OutboundCalls extends Fragment implements SwipeRefreshLayout.OnRefr
             JSONObject response = null;
             try {
                 response = Requestor.requestGetCalls(requestQueue,GET_CALL_LIST, authkey, "10", offset + "",
-                        CallApplication.getInstance().getDeviceId(), TYPE_OUTGOING);
-//                response = JSONParser.getCallsData(GET_CALL_LIST, authkey, "10", offset + "",
-//                        CallApplication.getInstance().getDeviceId(), TYPE_OUTGOING);
+                        sessionID, TYPE_OUTGOING);
                 Log.d(TAG, response.toString());
             } catch (Exception e) {
             }
@@ -318,12 +346,14 @@ public class OutboundCalls extends Fragment implements SwipeRefreshLayout.OnRefr
                 CallApplication.getWritabledatabase().insertCallRecords(MDatabase.OUTBOUND, data, true);
                 adapter.setClickedListner(OutboundCalls.this);
                 callDataArrayList = data;
-                // MyApplication.getWritableDatabase().insertFollowup(data, true);
                 recyclerView.setAdapter(adapter);
 
             } else if (code.equals("202") || code.equals("401")) {
                 if (retrylayout.getVisibility() == View.GONE) {
                     retrylayout.setVisibility(View.VISIBLE);
+                }
+                if (recyclerView.getVisibility() == View.VISIBLE) {
+                    recyclerView.setVisibility(View.GONE);
                 }
                 if (getActivity() != null && Constants.position == 2) {
                     try {
@@ -393,7 +423,7 @@ public class OutboundCalls extends Fragment implements SwipeRefreshLayout.OnRefr
             JSONObject response = null;
             try {
                 response = Requestor.requestGetCalls(requestQueue,GET_CALL_LIST, authkey, "10", offset + "",
-                        CallApplication.getInstance().getDeviceId(), TYPE_OUTGOING);
+                        sessionID, TYPE_OUTGOING);
                 Log.d(TAG ,response.toString());
             } catch (Exception e) {
             }
@@ -436,7 +466,12 @@ public class OutboundCalls extends Fragment implements SwipeRefreshLayout.OnRefr
 
 
             } else if (code.equals("202") || code.equals("401")) {
-
+                if (retrylayout.getVisibility() == View.GONE) {
+                    retrylayout.setVisibility(View.VISIBLE);
+                }
+                if (recyclerView.getVisibility() == View.VISIBLE) {
+                    recyclerView.setVisibility(View.GONE);
+                }
                 if (getActivity() != null && Constants.position == 2) {
                     try {
                         Snackbar snack = Snackbar.make(mroot, "Login to Continue", Snackbar.LENGTH_SHORT)

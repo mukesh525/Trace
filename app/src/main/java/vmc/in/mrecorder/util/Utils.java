@@ -43,6 +43,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import vmc.in.mrecorder.R;
+import vmc.in.mrecorder.activity.Home;
 import vmc.in.mrecorder.activity.Login;
 import vmc.in.mrecorder.callbacks.TAG;
 import vmc.in.mrecorder.myapplication.CallApplication;
@@ -240,8 +241,37 @@ public class Utils implements TAG {
 
 
     }
+    public static void isSimLogout(Context context) {
+        SharedPreferences sharedPrefs = PreferenceManager
+                .getDefaultSharedPreferences(context);
 
-    public static void isLogoutBackground(Context context) {
+        File sampleDir;
+        File sample;
+        String selectedFolder = sharedPrefs.getString("store_path", "null");
+        if (selectedFolder.equals("null")) {
+            sampleDir = Environment.getExternalStorageDirectory();
+            sample = new File(sampleDir.getAbsolutePath() + "/data/.tracker");
+            if (!sample.exists()) sample.mkdirs();
+
+        } else {
+            sampleDir = new File(selectedFolder);
+            sample = new File(sampleDir.getAbsolutePath() + "/.tracker");
+            if (!sample.exists()) sample.mkdirs();
+        }
+        sharedPrefs.edit().clear().commit();
+        List<File> files = getListFiles(sample);
+        for (int i = 0; i < files.size(); i++) {
+            files.get(i).delete();
+        }
+        CallApplication.getWritabledatabase().DeleteAllData();
+       // CallApplication.getInstance().stopRecording();
+        Log.d("Logout", "Logout onSim Changed");
+
+
+    }
+
+
+    public static void isLogoutBackground(Context context,String msg) {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         prefs.edit().clear().commit();
         File sampleDir = Environment.getExternalStorageDirectory();
@@ -253,11 +283,38 @@ public class Utils implements TAG {
         CallApplication.getInstance().stopRecording();
         Log.d("Logout", "Background Logout");
         // Log.d("Logout", "Logout on Utils");
-        showRecordNotification(context);
+        showRecordNotification(context,msg);
 
     }
 
-    public static void showRecordNotification(Context context) {
+    public static void cancelNotification(Context ctx, int notifyId) {
+        String ns = Context.NOTIFICATION_SERVICE;
+        NotificationManager nMgr = (NotificationManager) ctx.getSystemService(ns);
+        nMgr.cancel(notifyId);
+    }
+
+
+
+    public static void showRecordNotificationService(Context context) {
+        Intent intent = new Intent(context, Home.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0 /* Request code */, intent,
+                PendingIntent.FLAG_ONE_SHOT);
+        Bitmap bm = BitmapFactory.decodeResource(context.getResources(), R.mipmap.ic_launcher);
+        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context)
+                .setSmallIcon(R.mipmap.ic_launcher)
+                .setColor(ContextCompat.getColor(context, R.color.accent))
+                .setContentTitle("MTracker")
+                .setAutoCancel(false)
+                .setLargeIcon(bm)
+                .setOngoing(true)
+                .setContentIntent(pendingIntent)
+                .setContentText("MTracker Running");
+        NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationManager.notify(1, mBuilder.build());
+    }
+
+    public static void showRecordNotification(Context context,String msg) {
         Intent intent = new Intent(context, Login.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(context, 0 /* Request code */, intent,
@@ -265,7 +322,8 @@ public class Utils implements TAG {
 
         NotificationCompat.BigTextStyle s = new NotificationCompat.BigTextStyle();
         s.setBigContentTitle("MTracker");
-        s.bigText("You have been logout by Admin.");
+      //  s.bigText("You have been logout by Admin.");
+        s.bigText(msg);
         Bitmap bm = BitmapFactory.decodeResource(context.getResources(), R.mipmap.ic_launcher);
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context)
                 .setSmallIcon(R.mipmap.ic_launcher)
@@ -276,7 +334,7 @@ public class Utils implements TAG {
                 .setStyle(s)
                 .setOngoing(true)
                 .setContentIntent(pendingIntent)
-                .setContentText("You have been logout by Admin");
+                .setContentText(msg);
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.notify(NOTIFICATION_ID, mBuilder.build());
     }
@@ -399,7 +457,7 @@ public class Utils implements TAG {
             public void onClick(View v) {
                 // TODO Auto-generated method stub
                 CallApplication.e.commit();
-                CallApplication.getInstance().resetService();
+                CallApplication.getInstance().resetServicee();
                 dialog.dismiss();
             }
         });
@@ -448,4 +506,11 @@ public class Utils implements TAG {
         return true;
     }
 
+    public static boolean isLocationEnabled(Context context) {
+        return getLocationMode(context) != android.provider.Settings.Secure.LOCATION_MODE_OFF;
+    }
+
+    private static int getLocationMode(Context context) {
+        return android.provider.Settings.Secure.getInt(context.getContentResolver(), android.provider.Settings.Secure.LOCATION_MODE, android.provider.Settings.Secure.LOCATION_MODE_OFF);
+    }
 }

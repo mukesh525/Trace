@@ -39,6 +39,7 @@ public class LoginTask extends Fragment implements vmc.in.mrecorder.callbacks.TA
     private boolean isOTP;
     private JSONObject response;
     private Timer countDownTimer;
+    private String sessionID;
 
     public interface TaskCallbacks {
         void onPreExecute();
@@ -83,6 +84,7 @@ public class LoginTask extends Fragment implements vmc.in.mrecorder.callbacks.TA
         password = getArguments().getString("password");
         isOTP = getArguments().getBoolean("ISOTP");
         gcmkey = getArguments().getString("gcm");
+        sessionID = getArguments().getString(SESSION_ID);
         mTask = new Login();
         countDownTimer = new Timer(startTime, interval);
         mTask.execute();
@@ -144,10 +146,19 @@ public class LoginTask extends Fragment implements vmc.in.mrecorder.callbacks.TA
 
             try {
                 if(isOTP) {
-                    otpData = Parser.ParseOTPResponse(Requestor.requestOTP(requestQueue, GET_OTP, email, password));
+                    JSONObject jsonObject=null;
+                    jsonObject=Requestor.requestOTP(requestQueue, GET_OTP, email, password);
+                    if(jsonObject!=null){
+                                otpData = Parser.ParseOTPResponse(jsonObject);
+                    }
+                    //otpData = Parser.ParseOTPResponse(Requestor.requestOTP(requestQueue, GET_OTP, email, password));
                 }
                 else {
-                    loginData = Parser.ParseLoginResponse(Requestor.requestLogin(requestQueue, LOGIN_URL, email, password, CallApplication.getInstance().getDeviceId(), gcmkey));
+
+                    JSONObject jsonObject=null;
+                    jsonObject= Requestor.requestLogin(requestQueue, LOGIN_URL, email, password,sessionID , gcmkey);
+                          if(jsonObject!=null)
+                    loginData = Parser.ParseLoginResponse(jsonObject);
                 }
 
             } catch (JSONException e) {
@@ -175,12 +186,13 @@ public class LoginTask extends Fragment implements vmc.in.mrecorder.callbacks.TA
         @Override
         protected void onPostExecute(Void ignore) {
             if (mCallbacks != null) {
-            if(isOTP && otpData!=null){
+            if(isOTP ){
                 mCallbacks.onPostExecute(otpData);
-                if(otpData.getCode().equals("400"))
+
+                if(otpData!=null && otpData.getCode().equals("400"))
                 countDownTimer.start();
               }
-             else if(loginData!=null){
+             else {
                 mCallbacks.onPostExecute(loginData);
             }
             }

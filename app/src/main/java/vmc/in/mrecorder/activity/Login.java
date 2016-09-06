@@ -74,11 +74,13 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
     public DialogInterface Dialog;
     public ArrayList<OTPData> otps = new ArrayList<>();
     private CheckBox check_box;
+    private String sessionID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        sessionID=CallApplication.getInstance().getSessionID();
         if (Utils.tabletSize(Login.this) < 6.0)
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         coordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordi_layout);
@@ -91,14 +93,16 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
         check_box = (CheckBox) findViewById(R.id.checkBox_forgot);
         et_email = (EditText) findViewById(R.id.input_email);
         et_password = (EditText) findViewById(R.id.input_password);
+        cancelNotification(this,NOTIFICATION_ID);
         mTaskFragment = (LoginTask) getSupportFragmentManager().findFragmentByTag(TAG_TASK_FRAGMENT);
-
+        Log.d("SESSION_ID", "Login " + sessionID);
         if (savedInstanceState != null) {
             OTP_resp = savedInstanceState.getString("OTP");
             OTP_Sms = savedInstanceState.getString("OTPS");
             String btn = savedInstanceState.getString("btn");
             Boolean show = savedInstanceState.getBoolean("show");
             otps = savedInstanceState.getParcelableArrayList("otps");
+            sessionID = savedInstanceState.getString(SESSION_ID);
             first = savedInstanceState.getBoolean("first");
             if (show) {
                 showTermsAlert();
@@ -111,7 +115,7 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
                     if (!OTP_Sms.equals("N/A")) {
                         tv_otp.setText(OTP_Sms);
                     } else {
-                        tv_otp.setHint("Waiting for OTP");
+                        tv_otp.setHint("Waiting for OTP..");
                     }
 
                 }
@@ -230,6 +234,7 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
             Dialog.cancel();
         }
         outState.putString("OTP", OTP_resp);
+        outState.putString(SESSION_ID,sessionID);
         outState.putString("OTPS", OTP_Sms);
         outState.putBoolean("show", showDialog);
         outState.putBoolean("first", first);
@@ -323,6 +328,8 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
             }
 
         } else {
+            Snackbar.make(coordinatorLayout,"Something went wrong try again later",Snackbar.LENGTH_SHORT).show();
+
             if (progressDialog != null && progressDialog.isShowing()) {
                 progressDialog.dismiss();
             }
@@ -338,62 +345,66 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
         }
         if (data != null) {
             Log.d("LOG", data.toString());
-        }
-        btn_login.setEnabled(true);
 
-        if (data.getCode().equals("202")) {
-            btn_login.setText("Get OTP");
+            btn_login.setEnabled(true);
 
-            Snackbar.make(coordinatorLayout, data.getMessage(), Snackbar.LENGTH_SHORT)
-                    .setAction(getString(R.string.text_tryAgain), new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            StartLogin();
+            if (data.getCode().equals("202")) {
+                btn_login.setText("Get OTP");
 
-                        }
-                    }).
-                    setActionTextColor(ContextCompat.getColor(Login.this, R.color.accent)).show();
-        }
-        if (data.getCode().equals("400")) {
+                Snackbar.make(coordinatorLayout, data.getMessage(), Snackbar.LENGTH_SHORT)
+                        .setAction(getString(R.string.text_tryAgain), new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                StartLogin();
 
-            save();
-            Utils.saveToPrefs(Login.this, AUTHKEY, data.getAuthcode());
-            Utils.saveToPrefs(Login.this, NAME, data.getUsername());
-            Utils.saveToPrefs(Login.this, EMAIL, email);
-            Utils.saveToPrefs(Login.this, USERTYPE, data.getUsertype());
-            SharedPreferences sharedPrefs = PreferenceManager
-                    .getDefaultSharedPreferences(getApplicationContext());
-            SharedPreferences.Editor ed = sharedPrefs.edit();
-            if (data.getRecording().equals("1")) {
-                ed.putBoolean("prefRecording", true);
-                Log.d("LOG", "Recording" + data.getRecording());
-            } else {
-                ed.putBoolean("prefRecording", false);
+                            }
+                        }).
+                        setActionTextColor(ContextCompat.getColor(Login.this, R.color.accent)).show();
             }
-            if (data.getWorkhour().equals("1")) {
-                ed.putBoolean("prefOfficeTimeRecording", true);
-                Log.d("LOG", "OfficeRecording" + data.getRecording());
-            } else {
-                ed.putBoolean("prefOfficeTimeRecording", false);
+            if (data.getCode().equals("400")) {
+
+                save();
+
+                Utils.saveToPrefs(Login.this,SESSION_ID, sessionID);
+                Utils.saveToPrefs(Login.this,DEVICE_ID, CallApplication.getInstance().getDeviceId());
+                Utils.saveToPrefs(Login.this, AUTHKEY, data.getAuthcode());
+                Utils.saveToPrefs(Login.this, NAME, data.getUsername());
+                Utils.saveToPrefs(Login.this, EMAIL, email);
+                Utils.saveToPrefs(Login.this, USERTYPE, data.getUsertype());
+                SharedPreferences sharedPrefs = PreferenceManager
+                        .getDefaultSharedPreferences(getApplicationContext());
+                SharedPreferences.Editor ed = sharedPrefs.edit();
+                if (data.getRecording().equals("1")) {
+                    ed.putBoolean("prefRecording", true);
+                    Log.d("LOG", "Recording" + data.getRecording());
+                } else {
+                    ed.putBoolean("prefRecording", false);
+                }
+                if (data.getWorkhour().equals("1")) {
+                    ed.putBoolean("prefOfficeTimeRecording", true);
+                    Log.d("LOG", "OfficeRecording" + data.getRecording());
+                } else {
+                    ed.putBoolean("prefOfficeTimeRecording", false);
+                }
+                if (data.getMcuberecording().equals("1")) {
+                    ed.putBoolean("prefMcubeRecording", true);
+                } else {
+                    ed.putBoolean("prefMcubeRecording", false);
+                }
+
+                ed.commit();
+                CallApplication.getInstance().startRecording();
+
+                cancelNotification(this,NOTIFICATION_ID);
+
+                Intent intent = new Intent(Login.this, Home.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |
+                        Intent.FLAG_ACTIVITY_CLEAR_TASK |
+                        Intent.FLAG_ACTIVITY_NEW_TASK);
+                overridePendingTransition(0, 0);
+                Login.this.startActivity(intent);
+
             }
-            if (data.getMcuberecording().equals("1")) {
-                ed.putBoolean("prefMcubeRecording", true);
-            } else {
-                ed.putBoolean("prefMcubeRecording", false);
-            }
-
-            ed.commit();
-            CallApplication.getInstance().startRecording();
-
-
-            Intent intent = new Intent(Login.this, Home.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |
-                    Intent.FLAG_ACTIVITY_CLEAR_TASK |
-                    Intent.FLAG_ACTIVITY_NEW_TASK);
-            overridePendingTransition(0, 0);
-            Login.this.startActivity(intent);
-
-        }
 
 
         if (data.getCode().equals("n")) {
@@ -406,6 +417,9 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
                         }
                     }).
                     setActionTextColor(ContextCompat.getColor(Login.this, R.color.primary_dark)).show();
+        }
+        }else {
+            Snackbar.make(coordinatorLayout,"Something went wrong try again later",Snackbar.LENGTH_SHORT).show();
         }
     }
 
@@ -701,6 +715,7 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
             bundle.putString("email", email);
             bundle.putString("password", password);
             bundle.putBoolean("ISOTP", true);
+            bundle.putString(SESSION_ID, sessionID);
             mTaskFragment = new LoginTask();
             mTaskFragment.setArguments(bundle);
             getSupportFragmentManager().beginTransaction().add(mTaskFragment, TAG_TASK_FRAGMENT).commit();
@@ -734,6 +749,7 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
             bundle.putString("password", password);
             bundle.putString("gcm", gcmkey);
             bundle.putBoolean("ISOTP", false);
+            bundle.putString(SESSION_ID, sessionID);
             mTaskFragment = new LoginTask();
             mTaskFragment.setArguments(bundle);
             getSupportFragmentManager().beginTransaction().add(mTaskFragment, TAG_TASK_FRAGMENT).commit();
@@ -809,4 +825,5 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
             snackbar.show();
         }
     }
+
 }

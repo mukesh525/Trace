@@ -44,7 +44,7 @@ import vmc.in.mrecorder.util.SingleTon;
 import vmc.in.mrecorder.util.Utils;
 
 
-public class AllCalls extends Fragment implements SwipeRefreshLayout.OnRefreshListener, TAG, Calls_Adapter.CallClickedListner {
+public class AllCalls extends Fragment implements SwipeRefreshLayout.OnRefreshListener, TAG, Calls_Adapter.CallClickedListner,ConnectivityReceiver.ConnectivityReceiverListener {
     private Calls_Adapter adapter;
     public RecyclerView recyclerView;
     private SwipeRefreshLayout swipeRefreshLayout;
@@ -63,6 +63,8 @@ public class AllCalls extends Fragment implements SwipeRefreshLayout.OnRefreshLi
     private FloatingActionsMenu mroot;
     private RequestQueue requestQueue;
     private SingleTon volleySingleton;
+    private String sessionID;
+
     public AllCalls() {
         // Required empty public constructor
     }
@@ -102,6 +104,9 @@ public class AllCalls extends Fragment implements SwipeRefreshLayout.OnRefreshLi
         recyclerView.setLayoutManager(mLayoutManager);
         callDataArrayList = new ArrayList<CallData>();
         authkey = Utils.getFromPrefs(getActivity(), AUTHKEY, "N/A");
+
+        sessionID = Utils.getFromPrefs(getContext(), SESSION_ID, UNKNOWN);
+        Log.d("SESSION_ID", "All Calls OncCreate " + sessionID);
         Log.d("AUTHKEY", authkey);
         recyclerView.addOnScrollListener(new EndlessScrollListener() {
             @Override
@@ -115,8 +120,6 @@ public class AllCalls extends Fragment implements SwipeRefreshLayout.OnRefreshLi
                 }
 
             }
-
-
 
 
             @Override
@@ -254,6 +257,32 @@ public class AllCalls extends Fragment implements SwipeRefreshLayout.OnRefreshLi
 
     }
 
+    @Override
+    public void onNetworkConnectionChanged(boolean isConnected) {
+
+        if (getActivity() != null) {
+            showSnack(isConnected);
+        }
+
+
+
+    }
+    private void showSnack(boolean isConnected) {
+        String message;
+        int color;
+        if (!isConnected) {
+            message = "Sorry! Not connected to internet";
+            color = Color.RED;
+
+            Snackbar snackbar = Snackbar
+                    .make(mroot, message, Snackbar.LENGTH_LONG);
+            View sbView = snackbar.getView();
+            TextView textView = (TextView) sbView.findViewById(android.support.design.R.id.snackbar_text);
+            textView.setTextColor(color);
+            snackbar.show();
+        }
+    }
+
     class DownloadCallData extends AsyncTask<Void, Void, ArrayList<CallData>> {
         private String code = "n/a", msg = "n/a";
 
@@ -284,11 +313,11 @@ public class AllCalls extends Fragment implements SwipeRefreshLayout.OnRefreshLi
             JSONObject response = null;
             try {
 
-                response = Requestor.requestGetCalls(requestQueue,GET_CALL_LIST, authkey, "10", offset + "",
-                        CallApplication.getInstance().getDeviceId(), TYPE_ALL);
+                response = Requestor.requestGetCalls(requestQueue, GET_CALL_LIST, authkey, "10", offset + "",
+                       sessionID, TYPE_ALL);
                 Log.d(TAG, response.toString());
             } catch (Exception e) {
-                Log.d("ERROR",e.getMessage().toString());
+                Log.d("ERROR", e.getMessage().toString());
             }
             if (response != null) {
 
@@ -346,6 +375,9 @@ public class AllCalls extends Fragment implements SwipeRefreshLayout.OnRefreshLi
             } else if (code.equals("202") || code.equals("401")) {
                 if (retrylayout.getVisibility() == View.GONE) {
                     retrylayout.setVisibility(View.VISIBLE);
+                }
+                if (recyclerView.getVisibility() == View.VISIBLE) {
+                    recyclerView.setVisibility(View.GONE);
                 }
                 if (getActivity() != null && Constants.position == 0) {
                     try {
@@ -416,8 +448,8 @@ public class AllCalls extends Fragment implements SwipeRefreshLayout.OnRefreshLi
             JSONObject response = null;
             try {
 
-                response = Requestor.requestGetCalls(requestQueue,GET_CALL_LIST, authkey, "10", offset + "",
-                        CallApplication.getInstance().getDeviceId(), TYPE_ALL);
+                response = Requestor.requestGetCalls(requestQueue, GET_CALL_LIST, authkey, "10", offset + "",
+                      sessionID, TYPE_ALL);
                 Log.d(TAG, response.toString());
             } catch (Exception e) {
             }
@@ -463,7 +495,12 @@ public class AllCalls extends Fragment implements SwipeRefreshLayout.OnRefreshLi
 
 
             } else if (code.equals("202") || code.equals("401")) {
-
+                if (retrylayout.getVisibility() == View.GONE) {
+                    retrylayout.setVisibility(View.VISIBLE);
+                }
+                if (recyclerView.getVisibility() == View.VISIBLE) {
+                    recyclerView.setVisibility(View.GONE);
+                }
                 if (getActivity() != null && Constants.position == 0) {
                     try {
                         Snackbar snack = Snackbar.make(mroot, "Login to Continue", Snackbar.LENGTH_SHORT)

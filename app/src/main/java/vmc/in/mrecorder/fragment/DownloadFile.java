@@ -90,10 +90,12 @@ public class DownloadFile extends Fragment implements vmc.in.mrecorder.callbacks
     }
     public void onCancelTask () {
 
-        DCallbacks = null;
+       // DCallbacks = null;
         if(!mTask.isCancelled()) {
             mTask.cancel(true);
+           // Log.d("SHARE","DOWNLOAD CANCELLED");
         }
+        DCallbacks.ondownloadFileCancelled();
     }
 
 
@@ -143,7 +145,7 @@ public class DownloadFile extends Fragment implements vmc.in.mrecorder.callbacks
 
                 while ((count = input.read(data)) != -1) {
                     total += count;
-                  // Thread.sleep(500);
+                  Thread.sleep(500);
                     publishProgress("" + (int) ((total * 100) / lenghtOfFile));
                     output.write(data, 0, count);
                 }

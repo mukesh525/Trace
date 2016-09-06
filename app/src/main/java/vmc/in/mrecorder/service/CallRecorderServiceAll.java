@@ -130,7 +130,7 @@ public class CallRecorderServiceAll extends Service implements TAG {
                 .setOngoing(true)
                 .setContentIntent(contentIntent)
                 .setWhen(0)
-                .setContentText("MTracker Running");
+                .setContentText("Running");
         mBuilder.build().flags|=Notification.FLAG_AUTO_CANCEL;
         startForeground(Constants.NOTIFICATION_ID.FOREGROUND_SERVICE,
                 mBuilder.build());

@@ -439,7 +439,7 @@ public class Home extends AppCompatActivity
             }
         }
 
-        //showSnack(isConnected);
+       // showSnack(isConnected);
     }
 
 

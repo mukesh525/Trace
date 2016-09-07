@@ -1,0 +1,55 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="10dp"
+    tools:context="vmc.in.mrecorder.fragment.RateFragment"
+    android:weightSum="1">
+
+
+    <RatingBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:numStars="5"
+        android:rating="1.5"
+        android:stepSize="0.5"
+        android:id="@+id/rate"
+        android:layout_gravity="center" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="?attr/colorAccent"
+        android:id="@+id/rateComment"
+        android:layout_gravity="center_horizontal" />
+
+    <EditText
+        android:layout_marginTop="5dp"
+        android:hint="Title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText2" />
+
+    <EditText
+        android:hint="Description"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:inputType="textMultiLine"
+        android:ems="10"
+        android:gravity="top"
+        android:id="@+id/editText3"
+        android:layout_weight="0.25" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:text="Rate Now"
+        android:id="@+id/button"
+        android:textColor="#fff"
+        android:background="@drawable/button_background"
+        android:layout_gravity="center_horizontal" />
+</LinearLayout>

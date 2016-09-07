@@ -42,11 +42,13 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.Window;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -63,6 +65,7 @@ import vmc.in.mrecorder.fragment.DownloadFile;
 import vmc.in.mrecorder.fragment.InboundCalls;
 import vmc.in.mrecorder.fragment.MissedCalls;
 import vmc.in.mrecorder.fragment.OutboundCalls;
+import vmc.in.mrecorder.fragment.ReferDialogFragment;
 import vmc.in.mrecorder.myapplication.CallApplication;
 import vmc.in.mrecorder.service.CallRecorderServiceAll;
 import vmc.in.mrecorder.syncadapter.SyncUtils;
@@ -94,7 +97,7 @@ public class Home extends AppCompatActivity
 
     private Toolbar mToolbar;
     public FloatingActionButton floatingActionButton, floatingActionButtonSync;
-    private String titles[] = {"ALL", "INBOUND", "OUTBOUND", "MISSED"};
+  //  private String titles[] = {"ALL", "INBOUND", "OUTBOUND", "MISSED"};
     private int[] tabIcons = {
             R.drawable.ic_all_home,
             R.drawable.ic_call_incoming_home,
@@ -128,6 +131,7 @@ public class Home extends AppCompatActivity
     private int completed = 0;
     private AlertDialog alertDialog;
     private boolean fileShare=false;
+    private ReferDialogFragment referDialogFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -294,6 +298,16 @@ public class Home extends AppCompatActivity
             snack.show();
         }
 
+    }
+    public void onRatingsClick() {
+     showRatingDailog();
+    }
+
+    public void showRatingDailog() {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        referDialogFragment = new ReferDialogFragment();
+        referDialogFragment.setCancelable(true);
+        referDialogFragment.show(fragmentManager, "Rating Dialog");
     }
 
 
@@ -605,6 +619,9 @@ public class Home extends AppCompatActivity
             Home.this.startActivity(intent);
             Log.d("Logout", "Logout on resume");
         }
+
+
+
 
     }
 

@@ -167,12 +167,13 @@ public class Calls_Adapter extends RecyclerView.Adapter<Calls_Adapter.CallViewHo
                             Intent intent = new Intent(mContext, LocationActivity.class);
                             intent.putExtra("DATA", TrackInfo);
                             mContext.startActivity(intent);
-                           // mContext.startActivityForResult(intent, 0);
-
                             return true;
 
                         case R.id.share:
                             ((Home) mContext).onShareFile(callDatas.get(position).getFilename());
+                            return true;
+                        case R.id.rate:
+                            ((Home) mContext).onRatingsClick();
                             return true;
 
                         default:

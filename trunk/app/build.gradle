@@ -12,8 +12,8 @@ android {
         applicationId "vmc.in.mrecorder"
         minSdkVersion 15
         targetSdkVersion 23
-        versionCode 37
-        versionName "3.7"
+        versionCode 38
+        versionName "3.8"
     }
     buildTypes {
         release {
@@ -49,6 +49,7 @@ dependencies {
     compile 'com.google.maps.android:android-maps-utils:0.3+'
     compile 'com.google.android.gms:play-services-maps:7.8.0'
     compile 'com.google.code.gson:gson:2.2.+'
+    compile 'org.ocpsoft.prettytime:prettytime:4.0.1.Final'
 
 }
 

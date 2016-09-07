@@ -156,6 +156,7 @@
         <activity
             android:name=".activity.Home"
             android:label="@string/title_activity_home"
+            android:launchMode="singleInstance"
             android:exported="true"
             android:theme="@style/MyMaterialTheme" />
 

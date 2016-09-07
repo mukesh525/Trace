@@ -42,7 +42,6 @@
                     android:layout_height="wrap_content" app:tabGravity="fill"
                     app:tabMaxWidth="0dp"
                     app:tabMode="fixed"
-
                     app:tabTextAppearance="@style/MyTabLayoutTextAppearance"
                     app:tabTextColor="@color/white" />
 

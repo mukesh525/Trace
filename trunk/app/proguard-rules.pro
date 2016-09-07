@@ -2,7 +2,7 @@
 -keep interface android.support.v4.app.** { *; }
 -keep class android.support.v7.app.** { *; }
 -keep interface android.support.v7.app.** { *; }
-
+-keep class org.ocpsoft.prettytime.i18n.**
 -keep class org.apache.http.** { *; }
 -dontwarn org.apache.http.**
 -keep class android.net.http.** { *; }

@@ -17,6 +17,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.location.LocationManager;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
@@ -53,12 +54,14 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.RequestQueue;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import vmc.in.mrecorder.R;
 import vmc.in.mrecorder.callbacks.Constants;
 import vmc.in.mrecorder.callbacks.TAG;
+import vmc.in.mrecorder.entity.CallData;
 import vmc.in.mrecorder.entity.Model;
 import vmc.in.mrecorder.fragment.AllCalls;
 import vmc.in.mrecorder.fragment.DownloadFile;
@@ -67,10 +70,12 @@ import vmc.in.mrecorder.fragment.MissedCalls;
 import vmc.in.mrecorder.fragment.OutboundCalls;
 import vmc.in.mrecorder.fragment.ReferDialogFragment;
 import vmc.in.mrecorder.myapplication.CallApplication;
+import vmc.in.mrecorder.parser.Requestor;
 import vmc.in.mrecorder.service.CallRecorderServiceAll;
 import vmc.in.mrecorder.syncadapter.SyncUtils;
 import vmc.in.mrecorder.util.ConnectivityReceiver;
 import vmc.in.mrecorder.util.CustomTheme;
+import vmc.in.mrecorder.util.SingleTon;
 import vmc.in.mrecorder.util.Utils;
 
 import com.getbase.floatingactionbutton.FloatingActionButton;
@@ -85,6 +90,8 @@ import com.google.android.gms.location.LocationSettingsRequest;
 import com.google.android.gms.location.LocationSettingsResult;
 import com.google.android.gms.location.LocationSettingsStatusCodes;
 
+import org.json.JSONObject;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -97,7 +104,7 @@ public class Home extends AppCompatActivity
 
     private Toolbar mToolbar;
     public FloatingActionButton floatingActionButton, floatingActionButtonSync;
-  //  private String titles[] = {"ALL", "INBOUND", "OUTBOUND", "MISSED"};
+    //  private String titles[] = {"ALL", "INBOUND", "OUTBOUND", "MISSED"};
     private int[] tabIcons = {
             R.drawable.ic_all_home,
             R.drawable.ic_call_incoming_home,
@@ -130,16 +137,18 @@ public class Home extends AppCompatActivity
 
     private int completed = 0;
     private AlertDialog alertDialog;
-    private boolean fileShare=false;
+    private boolean fileShare = false;
     private ReferDialogFragment referDialogFragment;
+    private RequestQueue requestQueue;
+    private SingleTon volleySingleton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         CustomTheme.onActivityCreateSetTheme(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        if(savedInstanceState!=null){
-            fileShare=savedInstanceState.getBoolean("SHARE");
+        if (savedInstanceState != null) {
+            fileShare = savedInstanceState.getBoolean("SHARE");
         }
         if (Utils.tabletSize(Home.this) < 6.0) {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
@@ -162,10 +171,11 @@ public class Home extends AppCompatActivity
 
         }
 
-        if(!Utils.isLocationEnabled(Home.this)){
+        if (!Utils.isLocationEnabled(Home.this)) {
             GoogleApiClient();
         }
-
+        volleySingleton = SingleTon.getInstance();
+        requestQueue = volleySingleton.getRequestQueue();
         mDrawer = (NavigationView) findViewById(R.id.nav_view);
         mDrawer.setNavigationItemSelectedListener(this);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -272,7 +282,6 @@ public class Home extends AppCompatActivity
     }
 
 
-
     public void onShareFile(final String fileName) {
         if (ConnectivityReceiver.isConnected()) {
             downloadFragment = (DownloadFile) getSupportFragmentManager().findFragmentByTag(TAG_TASK_FRAGMENT);
@@ -299,8 +308,9 @@ public class Home extends AppCompatActivity
         }
 
     }
+
     public void onRatingsClick() {
-     showRatingDailog();
+        showRatingDailog();
     }
 
     public void showRatingDailog() {
@@ -401,7 +411,7 @@ public class Home extends AppCompatActivity
                 break;
             case SHARE_CALL: {
                 Log.d("onActivityResult()", "SHARE SUCCESS");
-                fileShare=false;
+                fileShare = false;
                 deleteFiles();
                 break;
             }
@@ -453,7 +463,7 @@ public class Home extends AppCompatActivity
             }
         }
 
-       // showSnack(isConnected);
+        // showSnack(isConnected);
     }
 
 
@@ -478,7 +488,7 @@ public class Home extends AppCompatActivity
     @Override
     public void ondownloadFilePreExecute() {
 
-        fileShare=true;
+        fileShare = true;
         initProgress();
 
 
@@ -517,7 +527,7 @@ public class Home extends AppCompatActivity
     public void ondownloadFileCancelled() {
         if (mProgressDialog != null && mProgressDialog.isShowing()) {
             mProgressDialog.dismiss();
-            mProgressDialog=null;
+            mProgressDialog = null;
         }
         Log.d("SHARE", "Download Cancelled");
 
@@ -539,7 +549,7 @@ public class Home extends AppCompatActivity
             Intent share = new Intent(Intent.ACTION_SEND);
             share.putExtra(Intent.EXTRA_STREAM, uri);
             share.setType("audio/*");
-            fileShare=true;
+            fileShare = true;
             share.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
             this.startActivityForResult(Intent.createChooser(share, "Share MTracker Record "), SHARE_CALL);
 
@@ -592,7 +602,7 @@ public class Home extends AppCompatActivity
     @Override
     public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
         super.onSaveInstanceState(outState, outPersistentState);
-        outState.putBoolean("SHARED",fileShare);
+        outState.putBoolean("SHARED", fileShare);
     }
 
     @Override
@@ -621,14 +631,12 @@ public class Home extends AppCompatActivity
         }
 
 
-
-
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-       // deleteFiles();
+        // deleteFiles();
         if (mProgressDialog != null && mProgressDialog.isShowing()) {
             mProgressDialog.dismiss();
 
@@ -651,7 +659,7 @@ public class Home extends AppCompatActivity
                         if (downloadFragment != null) {
                             downloadFragment.onCancelTask();
                         }
-                        mProgressDialog=null;
+                        mProgressDialog = null;
 
                     }
                 });
@@ -730,14 +738,9 @@ public class Home extends AppCompatActivity
         return true;
     }
 
-    public void playAudio(String url) {
-        if (url != null && url.length() > 4) {
-            Log.d("AUDIO", url);
-            Uri myUri = Uri.parse(STREAM_TRACKER + url);
-            Intent intent = new Intent(android.content.Intent.ACTION_VIEW);
-            intent.setDataAndType(myUri, "audio/*");
-            startActivity(intent);
-        }
+    public void playAudio( CallData callData) {
+
+        new MarkSeen(callData).execute();
     }
 
 
@@ -828,4 +831,52 @@ public class Home extends AppCompatActivity
         }
     }
 
+
+    class MarkSeen extends AsyncTask<Void, Void, String> {
+        private String  msg;
+        private CallData callData;
+        private String code;
+        public MarkSeen(CallData callData) {
+            this.callData = callData;
+        }
+
+
+
+        @Override
+        protected String doInBackground(Void... params) {
+            JSONObject response = null;
+            try {
+                response = Requestor.requestSeen(requestQueue, SET_SEEN_URL, Utils.getFromPrefs(Home.this, AUTHKEY, "N/A"), callData.getCallid());
+                Log.d("TEST", response.toString());
+                if (response != null) {
+                    if (response.has(CODE)) {
+                        code = response.getString(CODE);
+                    }
+                    if (response.has(MESSAGE)) {
+                        msg = response.getString(MESSAGE);
+                    }
+                }
+            } catch (Exception e) {
+            }
+            return code;
+        }
+
+
+        @Override
+        protected void onPostExecute(String code) {
+            super.onPostExecute(code);
+            if (callData.getFilename() != null && callData.getFilename().length() > 4) {
+                Log.d("AUDIO", callData.getFilename());
+                Uri myUri = Uri.parse(STREAM_TRACKER + callData.getFilename());
+                Intent intent = new Intent(android.content.Intent.ACTION_VIEW);
+                intent.setDataAndType(myUri, "audio/*");
+                startActivity(intent);
+            }
+
+            if (code != null && msg != null) {
+                Log.d("AUDIO", code + "" + msg);
+
+            }
+        }
+    }
 }

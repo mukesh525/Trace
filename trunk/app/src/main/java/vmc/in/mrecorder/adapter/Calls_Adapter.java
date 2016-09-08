@@ -2,13 +2,17 @@ package vmc.in.mrecorder.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.TypedArray;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.view.menu.MenuBuilder;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -49,7 +53,6 @@ public class Calls_Adapter extends RecyclerView.Adapter<Calls_Adapter.CallViewHo
     public Fragment fragment;
 
 
-
     public Calls_Adapter(Context context, ArrayList<CallData> CallDataArrayList, View mroot, Fragment fragment) {
         this.context = context;
         this.CallDataArrayList = CallDataArrayList;
@@ -85,17 +88,24 @@ public class Calls_Adapter extends RecyclerView.Adapter<Calls_Adapter.CallViewHo
                 public void onClick(View v) {
                     if (ConnectivityReceiver.isConnected()) {
                         if (!Utils.isEmpty(ci.getFilename())) {
-                            ((Home) context).playAudio(ci.getFilename());
-                            Log.d(TAG,ci.getFilename());
+                            ((Home) context).playAudio(ci);
+                            Log.d(TAG, ci.getFilename());
                         }
                     } else {
                         Toast.makeText(context, "Check Internet Connection..", Toast.LENGTH_SHORT).show();
                     }
                 }
             });
-            if (ci.getCalltype().equals("0")||ci.getFilename().equals("")) {
+            if (ci.getCalltype().equals("0") || ci.getFilename().equals("")) {
                 holder.img_play.setVisibility(View.GONE);
             } else {
+                if (ci.getSeen() != null && ci.getSeen().equals("1")) {
+                    //if api 17  drwle with red image
+                    holder.img_play.getBackground().setColorFilter(ContextCompat.getColor(context, R.color.red), PorterDuff.Mode.SRC_ATOP);
+                } else {
+                    //if api 17 normaldrwle with red image
+                    holder.img_play.getBackground().setColorFilter(fetchAccentColor(), PorterDuff.Mode.SRC_ATOP);
+                }
                 holder.img_play.setVisibility(View.VISIBLE);
             }
             try {
@@ -105,11 +115,11 @@ public class Calls_Adapter extends RecyclerView.Adapter<Calls_Adapter.CallViewHo
                 Log.d(TAG, e.getMessage().toString());
 
             }
-           // holder.groupNameTextView.setText(Utils.isEmpty(ci.getEmail()) ? UNKNOWN : ci.getEmail());
+            // holder.groupNameTextView.setText(Utils.isEmpty(ci.getEmail()) ? UNKNOWN : ci.getEmail());
             holder.groupNameTextView.setText(Utils.isEmpty(ci.getEmpname()) ? UNKNOWN : ci.getEmpname());
 
             holder.statusTextView.setText(ci.getCalltype().equals("0") ? MISSED : ci.getCalltype().equals("1") ? INCOMING : OUTGOING);
-            Log.d(TAG, ""+ci.getCalltype().equals("0"));
+            Log.d(TAG, "" + ci.getCalltype().equals("0"));
             //    holder.contactphoto.setImageBitmap(getFacebookPhoto(ci.getCallto()));
 
 
@@ -121,6 +131,16 @@ public class Calls_Adapter extends RecyclerView.Adapter<Calls_Adapter.CallViewHo
 
     }
 
+    private int fetchAccentColor() {
+        TypedValue typedValue = new TypedValue();
+
+        TypedArray a = context.obtainStyledAttributes(typedValue.data, new int[]{R.attr.colorAccent});
+        int color = a.getColor(0, 0);
+
+        a.recycle();
+
+        return color;
+    }
 
     @Override
     public int getItemCount() {
@@ -209,18 +229,13 @@ public class Calls_Adapter extends RecyclerView.Adapter<Calls_Adapter.CallViewHo
             }
 
 
-            if(!Utils.isEmpty(callDatas.get(position).getFilename())&& callDatas.get(position).getLocation().length()>7){
+            if (!Utils.isEmpty(callDatas.get(position).getFilename()) && callDatas.get(position).getLocation().length() > 7) {
                 popupMenu.inflate(R.menu.popupmenu_cmsl);
-            }
-
-           else  if(!Utils.isEmpty(callDatas.get(position).getFilename())&& callDatas.get(position).getLocation().length()<=7){
+            } else if (!Utils.isEmpty(callDatas.get(position).getFilename()) && callDatas.get(position).getLocation().length() <= 7) {
                 popupMenu.inflate(R.menu.popupmenu_cms);
-            }
-
-           else if(Utils.isEmpty(callDatas.get(position).getFilename())&& callDatas.get(position).getLocation().length()>7){
+            } else if (Utils.isEmpty(callDatas.get(position).getFilename()) && callDatas.get(position).getLocation().length() > 7) {
                 popupMenu.inflate(R.menu.popupmenu_cml);
-            }
-            else{
+            } else {
                 popupMenu.inflate(R.menu.popupmenu);
             }
 

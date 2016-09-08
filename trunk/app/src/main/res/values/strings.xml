@@ -31,7 +31,7 @@
     <string name="notify_report_summary">Notify while recording</string>
     <string name="recorsettings">Record Settings (By Admin)</string>
     <string name="pref_record_settings">Record all calls </string>
-    <string name="pref_title_record">All Calls</string>
+    <string name="pref_title_record">Recording</string>
     <string name="pref_update_call">Record office  hour calls</string>
     <string name="pref_title_updateCall">Office Calls</string>
     <string name="display">Display</string>

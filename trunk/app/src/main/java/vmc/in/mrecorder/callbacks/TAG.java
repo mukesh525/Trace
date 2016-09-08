@@ -55,6 +55,7 @@ public interface TAG {
     public String STARTTIME = "starttime";
 
     public String ENDTIME = "endtime";
+    public String SEEN = "seen";
     public String PULSE = "pulse";
     public String CALLTYPEE = "calltype";
     public String CALLTYPE = "CallType";
@@ -108,6 +109,8 @@ public interface TAG {
 
     public String EMPREPORT_URL = "http://mcube.vmctechnologies.com/mtappv3/reportByEmp";
     public String TYPEREPORT_URL = "http://mcube.vmctechnologies.com/mtappv3/reportBycallType";
+    public String GET_RATE_URL = "";
+    public String SET_SEEN_URL = "";
 
     //TEMP
     public static final String CALLID = "callid";
@@ -139,7 +142,9 @@ public interface TAG {
     public static final String RADIO = "radio";
     public static final String OPTIONS = "options";
 
-
+    public static final String TITLE = "title";
+    public static final String DESCRIPTION = "description";
+    public static final String RATING = "rating";
 
 
     //sam did:00000000-0d25-2296-ffff-ffffca494951

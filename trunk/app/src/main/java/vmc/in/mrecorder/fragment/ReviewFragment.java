@@ -1,8 +1,11 @@
 package vmc.in.mrecorder.fragment;
 
 
+import android.graphics.Color;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -10,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -17,6 +21,7 @@ import java.util.Date;
 import vmc.in.mrecorder.R;
 import vmc.in.mrecorder.adapter.Ratings_Adapter;
 import vmc.in.mrecorder.entity.RateData;
+import vmc.in.mrecorder.util.ConnectivityReceiver;
 
 
 /**
@@ -27,13 +32,11 @@ public class ReviewFragment extends Fragment implements SwipeRefreshLayout.OnRef
     private Ratings_Adapter adapter;
     public RecyclerView recyclerView;
     private SwipeRefreshLayout swipeRefreshLayout;
-    private String recordLimit;
     private LinearLayout mprogressLayout, retrylayout;
     private LinearLayout pdloadmore;
     private LinearLayoutManager mLayoutManager;
-
     private ArrayList<RateData> callDataArrayList;
-
+    public ArrayList<RateData> rateData;
 
     public ReviewFragment() {
         // Required empty public constructor
@@ -76,9 +79,12 @@ public class ReviewFragment extends Fragment implements SwipeRefreshLayout.OnRef
             callDataArrayList.add(rateData);
         }
 
+        swipeRefreshLayout.setColorSchemeResources(
+                R.color.refresh_progress_1,
+                R.color.refresh_progress_2,
+                R.color.refresh_progress_3);
 
         adapter = new Ratings_Adapter(getActivity(), callDataArrayList);
-
         recyclerView.setAdapter(adapter);
 
 
@@ -87,7 +93,6 @@ public class ReviewFragment extends Fragment implements SwipeRefreshLayout.OnRef
 
     @Override
     public void onRefresh() {
-
 
         if (swipeRefreshLayout.isRefreshing()) {
             swipeRefreshLayout.setRefreshing(false);

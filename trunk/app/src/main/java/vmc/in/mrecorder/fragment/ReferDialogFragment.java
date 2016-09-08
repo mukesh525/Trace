@@ -2,6 +2,7 @@ package vmc.in.mrecorder.fragment;
 
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
+import android.graphics.Point;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -10,6 +11,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.view.Display;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,6 +35,7 @@ public class ReferDialogFragment extends DialogFragment {
     private ViewPager mViewPager;
     private MyPagerAdapter myPagerAdapter;
     private TabLayout mTabLayout;
+    private int width,height;
 
 
     //---empty constructor required
@@ -52,6 +55,11 @@ public class ReferDialogFragment extends DialogFragment {
         mTabLayout.setupWithViewPager(mViewPager);
         getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         getDialog().getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+        Display display = getActivity().getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+         width = size.x;
+         height = size.y;
         return view;
     }
 
@@ -59,13 +67,14 @@ public class ReferDialogFragment extends DialogFragment {
     public void onResume() {
         super.onResume();
         Window window = getDialog().getWindow();
-        if (Utils.tabletSize(getContext()) < 5.0) {
-            window.setLayout(440, 520);
-        } else if (Utils.tabletSize(getContext()) < 6.0){
-            window.setLayout(650, 700);
-        }else{
-            window.setLayout(550, 550);
-        }
+        window.setLayout(width-((width/100)*15),height-((height/100)*40));
+//        if (Utils.tabletSize(getContext()) < 5.0) {
+//            window.setLayout(440, 520);
+//        } else if (Utils.tabletSize(getContext()) < 6.0){
+//            window.setLayout(650, 700);
+//        }else{
+//            window.setLayout(550, 600);
+//        }
 
         window.setGravity(Gravity.CENTER);
     }
@@ -99,7 +108,7 @@ public class ReferDialogFragment extends DialogFragment {
         @Override
         public CharSequence getPageTitle(int position) {
             return titles[position];
-            //  return null;
+
         }
     }
 }

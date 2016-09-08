@@ -16,6 +16,15 @@ public class Model implements Comparable<Model> {
     private String filePath;
     private String callType;
     private File file;
+    private String seen;
+
+    public String getSeen() {
+        return seen;
+    }
+
+    public void setSeen(String seen) {
+        this.seen = seen;
+    }
 
     public String getLocation() {
         return location;

@@ -30,8 +30,17 @@ public class CallData {
     private String last_modified;
     private String empname;
     private String location;
+    private String seen;
     private Date StartTime;
     private Date EndTime;
+
+    public String getSeen() {
+        return seen;
+    }
+
+    public void setSeen(String seen) {
+        this.seen = seen;
+    }
 
     public String getLocation() {
         return location;

@@ -55,6 +55,7 @@
     <color name="indigo_primary">#3F51B5</color>
     <color name="indigo_primary_dark">#303F9F</color>
     <color name="indigo_accent">#9E9E9E</color>
+    <color name="red">#FFB41822</color>
 
 
     <!--lightblue_ attribute-->

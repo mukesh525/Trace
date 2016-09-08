@@ -38,7 +38,7 @@ public class MDatabase implements TAG {
         if (clearPrevious) {
             deleteCallRecords(table);
         }
-        String sql = "INSERT INTO " + (table == ALL ? CallHelper.TABLE_ALL : table == INBOUND ? CallHelper.TABLE_INBOUND : table == OUTBOUND ? CallHelper.TABLE_OUTBOUND : CallHelper.TABLE_MISSED) + " VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?);";
+        String sql = "INSERT INTO " + (table == ALL ? CallHelper.TABLE_ALL : table == INBOUND ? CallHelper.TABLE_INBOUND : table == OUTBOUND ? CallHelper.TABLE_OUTBOUND : CallHelper.TABLE_MISSED) + " VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
         SQLiteStatement statement = mDatabase.compileStatement(sql);
         mDatabase.beginTransaction();
         for (int i = 0; i < listCalls.size(); i++) {
@@ -56,6 +56,7 @@ public class MDatabase implements TAG {
             statement.bindString(11, calldata.getEndtime());
             statement.bindString(12, calldata.getFilename());
             statement.bindString(13, calldata.getLocation());
+            statement.bindString(14, calldata.getSeen());
             statement.execute();
         }
         mDatabase.setTransactionSuccessful();
@@ -143,7 +144,8 @@ public class MDatabase implements TAG {
                 CallHelper.COLUMN_STARTTIME,
                 CallHelper.COLUMN_ENDTIME,
                 CallHelper.COLUMN_FILENAME,
-                CallHelper.COLUMN_LOCATION
+                CallHelper.COLUMN_LOCATION,
+                CallHelper.COLUMN_SEEN
 
         };
         Cursor cursor = mDatabase.query((table == ALL ? CallHelper.TABLE_ALL : table == INBOUND ? CallHelper.TABLE_INBOUND : table == OUTBOUND ? CallHelper.TABLE_OUTBOUND : CallHelper.TABLE_MISSED), null, null, null, null, null, null);
@@ -162,6 +164,7 @@ public class MDatabase implements TAG {
                 calldata.setEndtime(cursor.getString(cursor.getColumnIndex(CallHelper.COLUMN_ENDTIME)));
                 calldata.setFilename(cursor.getString(cursor.getColumnIndex(CallHelper.COLUMN_FILENAME)));
                 calldata.setLocation(cursor.getString(cursor.getColumnIndex(CallHelper.COLUMN_LOCATION)));
+                calldata.setSeen(cursor.getString(cursor.getColumnIndex(CallHelper.COLUMN_SEEN)));
 
                 Date startTime = null;
                 Date endTime = null;
@@ -185,7 +188,7 @@ public class MDatabase implements TAG {
 
     private static class CallHelper extends SQLiteOpenHelper implements TAG {
         private static final String DB_NAME = "Database";
-        private static final int DB_VERSION = 15;
+        private static final int DB_VERSION = 16;
 
         public static final String TABLE_CALLRECORDS = "CallRecords";
         public static final String TABLE_ALL = "all_calls";
@@ -205,6 +208,7 @@ public class MDatabase implements TAG {
         public static final String COLUMN_ENDTIME = ENDTIME;
         public static final String COLUMN_FILENAME = FILENAME;
         public static final String COLUMN_LOCATION = LOCATION;
+        public static final String COLUMN_SEEN = SEEN;
 
 
         private static final String CREATE_TABLE_ALL_CALLS = "CREATE TABLE " + TABLE_ALL + " (" +
@@ -220,7 +224,8 @@ public class MDatabase implements TAG {
                 COLUMN_STARTTIME + " TEXT," +
                 COLUMN_ENDTIME + " TEXT," +
                 COLUMN_FILENAME + " TEXT," +
-                COLUMN_LOCATION + " TEXT" +
+                COLUMN_LOCATION + " TEXT," +
+                COLUMN_SEEN + " TEXT" +
                 ");";
 
         private static final String CREATE_TABLE_INBOUND = "CREATE TABLE " + TABLE_INBOUND + " (" +
@@ -236,7 +241,8 @@ public class MDatabase implements TAG {
                 COLUMN_STARTTIME + " TEXT," +
                 COLUMN_ENDTIME + " TEXT," +
                 COLUMN_FILENAME + " TEXT," +
-                COLUMN_LOCATION + " TEXT" +
+                COLUMN_LOCATION + " TEXT," +
+                COLUMN_SEEN + " TEXT" +
                 ");";
 
         private static final String CREATE_TABLE_OUTBOUND = "CREATE TABLE " + TABLE_OUTBOUND + " (" +
@@ -252,7 +258,8 @@ public class MDatabase implements TAG {
                 COLUMN_STARTTIME + " TEXT," +
                 COLUMN_ENDTIME + " TEXT," +
                 COLUMN_FILENAME + " TEXT," +
-                COLUMN_LOCATION + " TEXT" +
+                COLUMN_LOCATION + " TEXT," +
+                COLUMN_SEEN + " TEXT" +
                 ");";
 
         private static final String CREATE_TABLE_MISSED = "CREATE TABLE " + TABLE_MISSED + " (" +
@@ -268,7 +275,8 @@ public class MDatabase implements TAG {
                 COLUMN_STARTTIME + " TEXT," +
                 COLUMN_ENDTIME + " TEXT," +
                 COLUMN_FILENAME + " TEXT," +
-                COLUMN_LOCATION + " TEXT" +
+                COLUMN_LOCATION + " TEXT," +
+                COLUMN_SEEN + " TEXT" +
                 ");";
         private final Context mContext;
         private static final String CREATE_TABLE = "CREATE TABLE " + TABLE_CALLRECORDS + " (" +

@@ -55,7 +55,68 @@ public class Requestor implements vmc.in.mrecorder.callbacks.TAG {
         return response;
     }
 
+    public static JSONObject requestRating(RequestQueue requestQueue, String url, final String rateValue, final String title,final String desc) {
+        JSONObject response = null;
+        String resp;
+        RequestFuture<String> requestFuture = RequestFuture.newFuture();
+        StringRequest request = new StringRequest(Request.Method.POST, url, requestFuture, requestFuture) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put(RATING, rateValue);
+                params.put(TITLE, title);
+                params.put(DESCRIPTION, desc);
+                return params;
+            }
+        };
 
+        requestQueue.add(request);
+        try {
+            resp = requestFuture.get(30000, TimeUnit.MILLISECONDS);
+            response = new JSONObject(resp);
+        } catch (InterruptedException e) {
+            //L.m(e + "");
+        } catch (ExecutionException e) {
+            // L.m(e + "");
+        } catch (TimeoutException e) {
+            //L.m(e + "");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        //  Log.d("LOG",response.toString());
+        return response;
+    }
+
+    public static JSONObject requestSeen(RequestQueue requestQueue, String url, final String authkey,final String callid) {
+        JSONObject response = null;
+        String resp;
+        RequestFuture<String> requestFuture = RequestFuture.newFuture();
+        StringRequest request = new StringRequest(Request.Method.POST, url, requestFuture, requestFuture) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put(AUTHKEY, authkey);
+                params.put(CALLID, callid);
+                return params;
+            }
+        };
+
+        requestQueue.add(request);
+        try {
+            resp = requestFuture.get(30000, TimeUnit.MILLISECONDS);
+            response = new JSONObject(resp);
+        } catch (InterruptedException e) {
+            //L.m(e + "");
+        } catch (ExecutionException e) {
+            // L.m(e + "");
+        } catch (TimeoutException e) {
+            //L.m(e + "");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        //  Log.d("LOG",response.toString());
+        return response;
+    }
 
 
     public static JSONObject requestLogin(RequestQueue requestQueue, String url, final String email, final String password, final String deviceid, final String gcmkey) {

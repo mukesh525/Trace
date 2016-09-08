@@ -27,51 +27,51 @@ public class Parser implements TAG {
 
     public synchronized static LoginData ParseLoginResponse(JSONObject response) throws JSONException {
         LoginData loginData = new LoginData();
-       if(response!=null) {
-           if (response.has(CODE)) {
-               loginData.setCode(response.getString(CODE));
-           }
-           if (response.has(MESSAGE)) {
-               loginData.setMessage(response.getString(MESSAGE));
-           }
-           if (response.has(AUTHKEY)) {
-               loginData.setAuthcode(response.getString(AUTHKEY));
-           }
-           if (response.has(NAME)) {
-               loginData.setUsername(response.getString(NAME));
-           }
-           if (response.has(USERTYPE)) {
-               loginData.setUsertype(response.getString(USERTYPE));
-           }
-           if (response.has(RECORDING)) {
-               loginData.setRecording(response.getString(RECORDING));
-           }
-           if (response.has(MCUBECALLS)) {
-               loginData.setMcuberecording(response.getString(MCUBECALLS));
-           }
-           if (response.has(WORKHOUR)) {
-               loginData.setWorkhour(response.getString(WORKHOUR));
+        if (response != null) {
+            if (response.has(CODE)) {
+                loginData.setCode(response.getString(CODE));
+            }
+            if (response.has(MESSAGE)) {
+                loginData.setMessage(response.getString(MESSAGE));
+            }
+            if (response.has(AUTHKEY)) {
+                loginData.setAuthcode(response.getString(AUTHKEY));
+            }
+            if (response.has(NAME)) {
+                loginData.setUsername(response.getString(NAME));
+            }
+            if (response.has(USERTYPE)) {
+                loginData.setUsertype(response.getString(USERTYPE));
+            }
+            if (response.has(RECORDING)) {
+                loginData.setRecording(response.getString(RECORDING));
+            }
+            if (response.has(MCUBECALLS)) {
+                loginData.setMcuberecording(response.getString(MCUBECALLS));
+            }
+            if (response.has(WORKHOUR)) {
+                loginData.setWorkhour(response.getString(WORKHOUR));
 
-           }
-           return loginData;
-       }
-       return null;
+            }
+            return loginData;
+        }
+        return null;
     }
 
     public synchronized static OTPData ParseOTPResponse(JSONObject response) throws JSONException {
         OTPData OtpData = new OTPData();
-          if(response!=null) {
-              if (response.has(CODE)) {
-                  OtpData.setCode(response.getString(CODE));
-              }
-              if (response.has(MESSAGE)) {
-                  OtpData.setMsg(response.getString(MESSAGE));
-              }
-              if (response.has(OTP)) {
-                  OtpData.setOtp(response.getString(OTP));
-              }
-              return OtpData;
-          }
+        if (response != null) {
+            if (response.has(CODE)) {
+                OtpData.setCode(response.getString(CODE));
+            }
+            if (response.has(MESSAGE)) {
+                OtpData.setMsg(response.getString(MESSAGE));
+            }
+            if (response.has(OTP)) {
+                OtpData.setOtp(response.getString(OTP));
+            }
+            return OtpData;
+        }
         return null;
     }
 
@@ -79,7 +79,7 @@ public class Parser implements TAG {
 
         ArrayList<BarModel> barModels = new ArrayList<BarModel>();
         BarModel barModel;
-        JSONArray records=null;
+        JSONArray records = null;
         if (response != null) {
 
             if (response.has(CODE)) {
@@ -89,7 +89,7 @@ public class Parser implements TAG {
                 records = response.getJSONArray(RECORDS);
             }
 
-            if (records!=null) {
+            if (records != null) {
                 for (int i = 0; i < records.length(); i++) {
                     JSONObject jsonobj = response.getJSONArray(RECORDS).getJSONObject(i);
                     barModel = new BarModel();
@@ -117,7 +117,7 @@ public class Parser implements TAG {
     public synchronized static ArrayList<PieModel> ParseTypeResponse(JSONObject response) throws JSONException {
 
         ArrayList<PieModel> pieModels = new ArrayList<>();
-        JSONArray records=null;
+        JSONArray records = null;
         PieModel pieModel;
         if (response != null) {
             if (response.has(CODE)) {
@@ -155,7 +155,7 @@ public class Parser implements TAG {
         ArrayList<CallData> CallList = new ArrayList<CallData>();
         JSONArray recordsArray = null;
         SimpleDateFormat sdf = new SimpleDateFormat(DateTimeFormat);
-        if(response!=null) {
+        if (response != null) {
             if (response.has(RECORDS)) {
                 Log.d("RESPONSE", response.toString());
                 recordsArray = response.getJSONArray(RECORDS);
@@ -200,6 +200,13 @@ public class Parser implements TAG {
 
                     if (record.has(LOCATION)) {
                         callData.setLocation(record.getString(LOCATION));
+                    }
+                    if (record.has(CALLTYPEE)) {
+                        if(i%2==0) {
+                            callData.setSeen("1");
+                        }else{
+                            callData.setSeen("0");
+                        }
                     }
                     Date startTime = null;
                     Date endTime = null;

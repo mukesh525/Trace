@@ -57,8 +57,6 @@ public class RateFragment extends Fragment implements View.OnClickListener, vmc.
     public RateFragment() {
         // Required empty public constructor
     }
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

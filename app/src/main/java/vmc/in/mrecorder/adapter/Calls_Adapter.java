@@ -98,14 +98,24 @@ public class Calls_Adapter extends RecyclerView.Adapter<Calls_Adapter.CallViewHo
             });
             if (ci.getCalltype().equals("0") || ci.getFilename().equals("")) {
                 holder.img_play.setVisibility(View.GONE);
+                holder.review.setVisibility(View.GONE);
             } else {
                 if (ci.getSeen() != null && ci.getSeen().equals("1")) {
                     //if api 17  drwle with red image
                     holder.img_play.getBackground().setColorFilter(ContextCompat.getColor(context, R.color.red), PorterDuff.Mode.SRC_ATOP);
+
                 } else {
                     //if api 17 normaldrwle with red image
                     holder.img_play.getBackground().setColorFilter(fetchAccentColor(), PorterDuff.Mode.SRC_ATOP);
+                    holder.review.setVisibility(View.GONE);
                 }
+                if(!ci.getReview().equals("0")) {
+                    holder.review.setVisibility(View.VISIBLE);
+                }
+                else {
+                    holder.review.setVisibility(View.GONE);
+                }
+                holder.review.setText("Reviews : "+ci.getReview());
                 holder.img_play.setVisibility(View.VISIBLE);
             }
             try {
@@ -246,7 +256,7 @@ public class Calls_Adapter extends RecyclerView.Adapter<Calls_Adapter.CallViewHo
     public static class CallViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private final ImageView overflow;
         protected TextView callFromTextView, callerNameTextView,
-                groupNameTextView, dateTextView, timeTextView, statusTextView, callFrom;
+                groupNameTextView, dateTextView, timeTextView, statusTextView, callFrom,review;
         protected ImageButton ibcall, ibmessage;
         private ArrayList<CallData> CallDataArrayList;
         private CallClickedListner callClickedListner;
@@ -257,6 +267,7 @@ public class Calls_Adapter extends RecyclerView.Adapter<Calls_Adapter.CallViewHo
 
             callFromTextView = (TextView) v.findViewById(R.id.fCallFromTextView);
             callFrom = (TextView) v.findViewById(R.id.fCallFromLabel);
+            review = (TextView) v.findViewById(R.id.review);
             img_play = (ImageView) v.findViewById(R.id.ivplay);
             callerNameTextView = (TextView) v.findViewById(R.id.fCallerNameTextView);
             groupNameTextView = (TextView) v.findViewById(R.id.fGroupNameTextView);

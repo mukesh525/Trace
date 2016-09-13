@@ -22,32 +22,32 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import vmc.in.mrecorder.R;
+import vmc.in.mrecorder.entity.CallData;
 import vmc.in.mrecorder.util.Utils;
 
 /**
  * Created by mukesh on 2/12/15.
  */
 public class ReferDialogFragment extends DialogFragment {
-    static String DialogboxTitle;
-    EditText txtname, txtemail, txtmessage, txtnum;
-    Button btnsubmit, btnCancel;
-    String siteID;
+    private CallData callData;
     private ViewPager mViewPager;
     private MyPagerAdapter myPagerAdapter;
     private TabLayout mTabLayout;
     private int width,height;
 
-
-    //---empty constructor required
     public ReferDialogFragment() {
 
+    }
+    public  void  setCallid(CallData callData)
+    {
+        this.callData=callData;
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle saveInstanceState) {
 
         View view = inflater.inflate(
                 R.layout.referal, container);
-        mViewPager = (ViewPager) view.findViewById(R.id.viewpager);
+        mViewPager = (ViewPager) view.findViewById(R.id.viewpagerr);
         myPagerAdapter = new MyPagerAdapter(getChildFragmentManager());
         mViewPager.setAdapter(myPagerAdapter);
         mTabLayout = (TabLayout) view.findViewById(R.id.tabs);
@@ -68,14 +68,6 @@ public class ReferDialogFragment extends DialogFragment {
         super.onResume();
         Window window = getDialog().getWindow();
         window.setLayout(width-((width/100)*15),height-((height/100)*40));
-//        if (Utils.tabletSize(getContext()) < 5.0) {
-//            window.setLayout(440, 520);
-//        } else if (Utils.tabletSize(getContext()) < 6.0){
-//            window.setLayout(650, 700);
-//        }else{
-//            window.setLayout(550, 600);
-//        }
-
         window.setGravity(Gravity.CENTER);
     }
 
@@ -91,10 +83,10 @@ public class ReferDialogFragment extends DialogFragment {
             Fragment myFragment = null;
             switch (position) {
                 case 0:
-                    myFragment = new RateFragment();
+                    myFragment = RateFragment.newInstance(callData.getCallid());
                     break;
                 case 1:
-                    myFragment = new ReviewFragment();
+                    myFragment = ReviewFragment.newInstance(callData.getCallid());
                     break;
             }
             return myFragment;

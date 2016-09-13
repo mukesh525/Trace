@@ -3,6 +3,7 @@ package vmc.in.mrecorder.fragment;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
@@ -20,6 +21,7 @@ import java.util.Date;
 
 import vmc.in.mrecorder.R;
 import vmc.in.mrecorder.adapter.Ratings_Adapter;
+import vmc.in.mrecorder.callbacks.TAG;
 import vmc.in.mrecorder.entity.RateData;
 import vmc.in.mrecorder.util.ConnectivityReceiver;
 
@@ -27,7 +29,7 @@ import vmc.in.mrecorder.util.ConnectivityReceiver;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ReviewFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
+public class ReviewFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener, vmc.in.mrecorder.callbacks.TAG {
 
     private Ratings_Adapter adapter;
     public RecyclerView recyclerView;
@@ -37,10 +39,28 @@ public class ReviewFragment extends Fragment implements SwipeRefreshLayout.OnRef
     private LinearLayoutManager mLayoutManager;
     private ArrayList<RateData> callDataArrayList;
     public ArrayList<RateData> rateData;
+    private String callid;
 
     public ReviewFragment() {
         // Required empty public constructor
     }
+
+    public static ReviewFragment newInstance(String callData) {
+        ReviewFragment fragment = new ReviewFragment();
+        Bundle args = new Bundle();
+        args.putString(CALLID, callData);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            callid = getArguments().getString(CALLID);
+        }
+    }
+
 
 
     @Override

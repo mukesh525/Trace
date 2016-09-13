@@ -50,6 +50,7 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -68,6 +69,7 @@ import vmc.in.mrecorder.fragment.DownloadFile;
 import vmc.in.mrecorder.fragment.InboundCalls;
 import vmc.in.mrecorder.fragment.MissedCalls;
 import vmc.in.mrecorder.fragment.OutboundCalls;
+import vmc.in.mrecorder.fragment.ReferDialogFragment;
 import vmc.in.mrecorder.fragment.ReferDialogFragment;
 import vmc.in.mrecorder.myapplication.CallApplication;
 import vmc.in.mrecorder.parser.Requestor;
@@ -138,7 +140,7 @@ public class Home extends AppCompatActivity
     private int completed = 0;
     private AlertDialog alertDialog;
     private boolean fileShare = false;
-    private ReferDialogFragment referDialogFragment;
+    private ReferDialogFragment ratingDialogFragment;
     private RequestQueue requestQueue;
     private SingleTon volleySingleton;
 
@@ -309,16 +311,15 @@ public class Home extends AppCompatActivity
 
     }
 
-    public void onRatingsClick() {
-        showRatingDailog();
+    public void onRatingsClick(CallData callData) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        ratingDialogFragment = new ReferDialogFragment();
+        ratingDialogFragment.setCancelable(true);
+        ratingDialogFragment.setCallid(callData);
+        ratingDialogFragment.show(fragmentManager, "Rating Dialog");
     }
 
-    public void showRatingDailog() {
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        referDialogFragment = new ReferDialogFragment();
-        referDialogFragment.setCancelable(true);
-        referDialogFragment.show(fragmentManager, "Rating Dialog");
-    }
+
 
 
     private void setupTabIcons() {
@@ -783,6 +784,18 @@ public class Home extends AppCompatActivity
         mViewPager.setCurrentItem(item);
     }
 
+    public void hideKeyboard() {
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+
+        if (imm.isAcceptingText()) {
+            View view = this.getCurrentFocus();
+            if (view != null) {
+                imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+            }
+        } else {
+            // writeToLog("Software Keyboard was not shown");
+        }
+    }
 
     private void hideDrawer() {
         this.mDrawerLayout.closeDrawer(GravityCompat.START);

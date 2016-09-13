@@ -11,6 +11,8 @@ import com.android.volley.toolbox.StringRequest;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
@@ -55,17 +57,21 @@ public class Requestor implements vmc.in.mrecorder.callbacks.TAG {
         return response;
     }
 
-    public static JSONObject requestRating(RequestQueue requestQueue, String url, final String rateValue, final String title,final String desc) {
+    public static JSONObject requestRating(RequestQueue requestQueue, final String authey, String url, final String rateValue, final String title, final String desc, final String callid) {
         JSONObject response = null;
         String resp;
+        final SimpleDateFormat sdfDate = new SimpleDateFormat("dd-MM-yyyy hh:mm aa");
         RequestFuture<String> requestFuture = RequestFuture.newFuture();
         StringRequest request = new StringRequest(Request.Method.POST, url, requestFuture, requestFuture) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
+                params.put(AUTHKEY, authey);
                 params.put(RATING, rateValue);
                 params.put(TITLE, title);
                 params.put(DESCRIPTION, desc);
+                params.put(CALLID, callid);
+                Log.d("test",sdfDate.format(new Date()));
                 return params;
             }
         };

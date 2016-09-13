@@ -201,12 +201,8 @@ public class Parser implements TAG {
                     if (record.has(LOCATION)) {
                         callData.setLocation(record.getString(LOCATION));
                     }
-                    if (record.has(CALLTYPEE)) {
-                        if(i%2==0) {
-                            callData.setSeen("1");
-                        }else{
-                            callData.setSeen("0");
-                        }
+                    if (record.has(LISTEN)) {
+                        callData.setSeen(record.getString(LISTEN));
                     }
                     Date startTime = null;
                     Date endTime = null;

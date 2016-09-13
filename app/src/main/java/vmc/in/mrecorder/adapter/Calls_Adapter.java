@@ -193,7 +193,7 @@ public class Calls_Adapter extends RecyclerView.Adapter<Calls_Adapter.CallViewHo
                             ((Home) mContext).onShareFile(callDatas.get(position).getFilename());
                             return true;
                         case R.id.rate:
-                            ((Home) mContext).onRatingsClick();
+                            ((Home) mContext).onRatingsClick(callDatas.get(position));
                             return true;
 
                         default:

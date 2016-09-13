@@ -21,7 +21,6 @@
             android:layout_weight="5"
             android:padding="10dp">
 
-
             <TextView
 
                 android:id="@+id/fCallFromLabel"
@@ -185,6 +184,18 @@
                 android:id="@+id/ivplay"
                 android:background="@drawable/ic_play"
                 android:layout_alignTop="@+id/fDateTextView"
+                android:layout_centerHorizontal="true" />
+
+            <TextView
+                android:id="@+id/review"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Reviews : 3"
+                android:padding="2dp"
+
+                android:textColor="@color/red"
+                android:layout_alignTop="@+id/fStatusTextView"
                 android:layout_centerHorizontal="true" />
 
         </RelativeLayout>

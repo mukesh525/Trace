@@ -92,6 +92,12 @@ public class InboundCalls extends Fragment implements SwipeRefreshLayout.OnRefre
         requestQueue = volleySingleton.getRequestQueue();
         callDataArrayList = new ArrayList<CallData>();
         sessionID = Utils.getFromPrefs(getContext(), SESSION_ID, UNKNOWN);
+        retrylayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DownloadCalls();
+            }
+        });
         Log.d("SESSION_ID", "Inbound Calls OncCreate " + sessionID);
         recyclerView.addOnScrollListener(new EndlessScrollListener() {
             @Override

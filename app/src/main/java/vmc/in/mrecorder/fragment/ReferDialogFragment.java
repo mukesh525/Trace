@@ -50,6 +50,7 @@ public class ReferDialogFragment extends DialogFragment {
         mViewPager = (ViewPager) view.findViewById(R.id.viewpagerr);
         myPagerAdapter = new MyPagerAdapter(getChildFragmentManager());
         mViewPager.setAdapter(myPagerAdapter);
+        mViewPager.setOffscreenPageLimit(0);
         mTabLayout = (TabLayout) view.findViewById(R.id.tabs);
         mTabLayout.setTabMode(TabLayout.MODE_FIXED);
         mTabLayout.setupWithViewPager(mViewPager);

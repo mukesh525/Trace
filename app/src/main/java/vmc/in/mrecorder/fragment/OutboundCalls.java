@@ -93,6 +93,12 @@ public class OutboundCalls extends Fragment implements SwipeRefreshLayout.OnRefr
         callDataArrayList = new ArrayList<CallData>();
         sessionID = Utils.getFromPrefs(getContext(), SESSION_ID, UNKNOWN);
         Log.d("SESSION_ID", "Outbound Calls OnCreate " + sessionID);
+        retrylayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DownloadCalls();
+            }
+        });
         recyclerView.addOnScrollListener(new EndlessScrollListener() {
 
 

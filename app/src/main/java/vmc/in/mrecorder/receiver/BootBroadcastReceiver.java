@@ -31,22 +31,17 @@ public class BootBroadcastReceiver extends BroadcastReceiver implements vmc.in.m
     @Override
     public void onReceive(final Context context, Intent intent) {
 
-
         Intent alarmIntent = new Intent(context, AlarmReceiver.class);
         pendingIntent = PendingIntent.getBroadcast(context, 1, alarmIntent, 0);
-        //pendingIntent = CallApplication.getInstance().getPendinIntent(alarmIntent);
         manager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-        int interval = 10; // 0.02 seconds
+        int interval = 10;
         manager.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), interval, pendingIntent);
-        // Toast.makeText(context, "Alarm Set", Toast.LENGTH_SHORT).show();
         if(CallApplication.getInstance().getDeviceId().equals(Utils.getFromPrefs(context,DEVICE_ID,UNKNOWN))) {
             if (Utils.isLogin(context)) {
                 CallApplication.getInstance().startRecording();
-                // context.startService(new Intent(context, CallRecorderServiceAll.class));
-                Log.d("SyncAdapter", "BootBroadcastReceiver");
+               Log.d("SyncAdapter", "BootBroadcastReceiver");
             } else {
-
-                CallApplication.getInstance().stopRecording();
+          CallApplication.getInstance().stopRecording();
             }
         }else {
             Utils.isLogoutBackground(context,"Login to MTracker.");

@@ -217,7 +217,7 @@ public class RateFragment extends Fragment implements View.OnClickListener, vmc.
         protected String doInBackground(Void... params) {
             JSONObject response = null;
             try {
-                response = Requestor.requestRating(requestQueue, Utils.getFromPrefs(getActivity(), AUTHKEY, "N/A"), GET_RATE_URL,rateValue+"",tile,description,callid);
+                response = Requestor.requestRating(requestQueue, Utils.getFromPrefs(getActivity(), AUTHKEY, "N/A"), SET_RATE_URL,rateValue+"",tile,description,callid);
                 Log.d("TEST", response.toString());
                 if(response!=null){
                     if(response.has(CODE)){

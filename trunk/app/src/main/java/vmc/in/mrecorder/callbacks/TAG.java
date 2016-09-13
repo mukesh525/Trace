@@ -109,11 +109,12 @@ public interface TAG {
 
     public String EMPREPORT_URL = "http://mcube.vmctechnologies.com/mtappv3/reportByEmp";
     public String TYPEREPORT_URL = "http://mcube.vmctechnologies.com/mtappv3/reportBycallType";
-    public String GET_RATE_URL = "";
-    public String SET_SEEN_URL = "";
+    public String GET_RATE_URL = "http://mcube.vmctechnologies.com/mtappv3/insert_rating";
+    public String SET_SEEN_URL = "http://mcube.vmctechnologies.com/mtappv3/recording_status";
 
     //TEMP
     public static final String CALLID = "callid";
+    public static final String LISTEN = "recordlisten";
     public static final String DATETIME = "datetime";
     public static final String CALLEREMAIL = "caller_email";
     public static final String CALLFROM = "callfrom";

@@ -1,6 +1,7 @@
 package vmc.in.mrecorder.fragment;
 
 
+import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
@@ -10,6 +11,7 @@ import android.graphics.drawable.LayerDrawable;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
@@ -18,6 +20,8 @@ import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RatingBar;
@@ -32,11 +36,14 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 import vmc.in.mrecorder.R;
+import vmc.in.mrecorder.activity.Home;
 import vmc.in.mrecorder.callbacks.TAG;
+import vmc.in.mrecorder.entity.CallData;
 import vmc.in.mrecorder.entity.RateData;
 import vmc.in.mrecorder.parser.Requestor;
 import vmc.in.mrecorder.util.ConnectivityReceiver;
 import vmc.in.mrecorder.util.SingleTon;
+import vmc.in.mrecorder.util.Utils;
 
 
 /**
@@ -53,10 +60,20 @@ public class RateFragment extends Fragment implements View.OnClickListener, vmc.
     Float rateValue;
     private RequestQueue requestQueue;
     private SingleTon volleySingleton;
+    private String callid;
 
     public RateFragment() {
         // Required empty public constructor
     }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            callid = getArguments().getString(CALLID);
+        }
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -85,9 +102,16 @@ public class RateFragment extends Fragment implements View.OnClickListener, vmc.
         return view;
 
     }
-
+    public static RateFragment newInstance(String callData) {
+        RateFragment fragment = new RateFragment();
+        Bundle args = new Bundle();
+        args.putString(CALLID, callData);
+        fragment.setArguments(args);
+        return fragment;
+    }
 
     public void onClick(View v) {
+        hideKeyboard();
         switch (v.getId()) {
             case R.id.submit:
                 if (validateRating())
@@ -107,14 +131,14 @@ public class RateFragment extends Fragment implements View.OnClickListener, vmc.
         description = desc.getText().toString().trim();
         Drawable drawable = ContextCompat.getDrawable(getActivity(), R.drawable.error);
         drawable.setBounds(new Rect(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight()));
-        if (tile.isEmpty() || (tile.length() > 4)) {
+        if (tile.isEmpty() || (tile.length() < 4)) {
             title.setError("Enter title", drawable);
             valid = false;
         } else {
             title.setError(null);
         }
 
-        if (description.isEmpty() && description.length() > 4) {
+        if (description.isEmpty() && description.length() < 4) {
             desc.setError("Enter description.", drawable);
             valid = false;
         } else {
@@ -193,7 +217,7 @@ public class RateFragment extends Fragment implements View.OnClickListener, vmc.
         protected String doInBackground(Void... params) {
             JSONObject response = null;
             try {
-                response = Requestor.requestRating(requestQueue, GET_RATE_URL,rateValue+"",tile,description);
+                response = Requestor.requestRating(requestQueue, Utils.getFromPrefs(getActivity(), AUTHKEY, "N/A"), GET_RATE_URL,rateValue+"",tile,description,callid);
                 Log.d("TEST", response.toString());
                 if(response!=null){
                     if(response.has(CODE)){
@@ -215,4 +239,16 @@ public class RateFragment extends Fragment implements View.OnClickListener, vmc.
 
         }
     }
+
+
+
+    public void hideKeyboard() {
+        View view = getActivity().getCurrentFocus();
+        if (view != null) {
+            InputMethodManager imm = (InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
+
+    }
+
 }

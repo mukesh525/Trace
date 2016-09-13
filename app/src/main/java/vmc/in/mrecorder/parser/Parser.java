@@ -205,6 +205,12 @@ public class Parser implements TAG {
                     if (record.has(LISTEN)) {
                         callData.setSeen(record.getString(LISTEN));
                     }
+                    if (record.has(LISTEN)) {
+                        if(i%2==0)
+                        callData.setReview("0");
+                        else
+                        callData.setReview("5");
+                    }
                     Date startTime = null;
                     Date endTime = null;
                     try {

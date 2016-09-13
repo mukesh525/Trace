@@ -184,7 +184,6 @@
                 android:layout_marginTop="15dp"
                 android:id="@+id/ivplay"
                 android:background="@drawable/ic_play"
-                android:backgroundTint="?attr/colorAccent"
                 android:layout_alignTop="@+id/fDateTextView"
                 android:layout_centerHorizontal="true" />
 

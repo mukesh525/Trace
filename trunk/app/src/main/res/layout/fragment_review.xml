@@ -16,33 +16,8 @@
             android:layout_height="match_parent"
             android:alpha="0.8" />
 
+
     </android.support.v4.widget.SwipeRefreshLayout>
-
-    <LinearLayout
-        android:visibility="gone"
-        android:id="@+id/loadmorepd1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:orientation="vertical">
-
-        <ProgressBar
-            android:id="@+id/loadmorepd"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_gravity="center_horizontal"
-            android:indeterminate="true"
-            />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:gravity="center"
-            android:layout_height="wrap_content"
-            android:text="Loading data" />
-
-
-    </LinearLayout>
 
 
     <LinearLayout
@@ -95,16 +70,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_vertical|center_horizontal"
-            android:text="No Data Present"
+            android:text="No Reviews Found"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/click"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="swipe to refresh"
+            android:text="click to refresh"
+            android:textColor="@color/accent"
             android:textAppearance="?android:attr/textAppearanceSmall"
            />
     </LinearLayout>

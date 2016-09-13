@@ -92,6 +92,12 @@ public class MissedCalls extends Fragment  implements SwipeRefreshLayout.OnRefre
         callDataArrayList = new ArrayList<CallData>();
         sessionID = Utils.getFromPrefs(getContext(), SESSION_ID, UNKNOWN);
         Log.d("SESSION_ID", "Missed OncCreate " + sessionID);
+        retrylayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DownloadCalls();
+            }
+        });
         recyclerView.addOnScrollListener(new EndlessScrollListener() {
             @Override
             public void onLoadMore() {

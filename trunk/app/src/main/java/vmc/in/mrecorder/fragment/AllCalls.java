@@ -108,6 +108,12 @@ public class AllCalls extends Fragment implements SwipeRefreshLayout.OnRefreshLi
         sessionID = Utils.getFromPrefs(getContext(), SESSION_ID, UNKNOWN);
         Log.d("SESSION_ID", "All Calls OncCreate " + sessionID);
         Log.d("AUTHKEY", authkey);
+        retrylayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DownloadCalls();
+            }
+        });
         recyclerView.addOnScrollListener(new EndlessScrollListener() {
             @Override
             public void onLoadMore() {

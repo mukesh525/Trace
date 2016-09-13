@@ -75,6 +75,7 @@ public interface TAG {
     public String SOURCE = "source";
     public String LASTMODIFIED = "last_modified";
     public String EMPNAME = "empname";
+    public String EMPLOYEE = "employee";
 
     public String AUTHKEY = "authkey";
     public String SESSION_ID = "sessionid";
@@ -91,6 +92,10 @@ public interface TAG {
     public String TYPE_ALL = "all";
     public String FEEDBACK = "feedback";
     public String SIM = "sim";
+    public String RATING_TITLE = "rating_title";
+    public String COMMENT = "comment";
+    public String DATE = "date";
+
 
    // public String GET_CALL_LIST = "http://mcube.vmctechnologies.com/mtappv3/getList";
     public String GET_CALL_LIST = "http://mcube.vmctechnologies.com/mtappv3/getList";
@@ -109,8 +114,9 @@ public interface TAG {
 
     public String EMPREPORT_URL = "http://mcube.vmctechnologies.com/mtappv3/reportByEmp";
     public String TYPEREPORT_URL = "http://mcube.vmctechnologies.com/mtappv3/reportBycallType";
-    public String GET_RATE_URL = "http://mcube.vmctechnologies.com/mtappv3/insert_rating";
+    public String SET_RATE_URL = "http://mcube.vmctechnologies.com/mtappv3/insert_rating";
     public String SET_SEEN_URL = "http://mcube.vmctechnologies.com/mtappv3/recording_status";
+    public String GET_RATE_URL = "http://mcube.vmctechnologies.com/mtappv3/getList_rating";
 
     //TEMP
     public static final String CALLID = "callid";
@@ -146,6 +152,7 @@ public interface TAG {
     public static final String TITLE = "title";
     public static final String DESCRIPTION = "description";
     public static final String RATING = "rating";
+    public static final String RATING_LIST = "ratinglist";
 
 
     //sam did:00000000-0d25-2296-ffff-ffffca494951

@@ -18,6 +18,7 @@ import vmc.in.mrecorder.entity.LoginData;
 
 import vmc.in.mrecorder.entity.OTPData;
 import vmc.in.mrecorder.entity.PieModel;
+import vmc.in.mrecorder.entity.RateData;
 
 /**
  * Created by gousebabjan on 30/3/16.
@@ -216,6 +217,51 @@ public class Parser implements TAG {
                     callData.setEndTime(endTime);
 
                     CallList.add(callData);
+
+                }
+            }
+            return CallList;
+        }
+        return null;
+    }
+
+
+    public static ArrayList<RateData> ParseReview(JSONObject response) throws JSONException {
+        ArrayList<RateData> CallList = new ArrayList<RateData>();
+        JSONArray recordsArray = null;
+        SimpleDateFormat sdf = new SimpleDateFormat(DateTimeFormat);
+        if (response != null) {
+            if (response.has(RATING_LIST)) {
+                Log.d("RESPONSE", response.toString());
+                recordsArray = response.getJSONArray(RATING_LIST);
+                for (int i = 0; i < recordsArray.length(); i++) {
+                    RateData rateData = new RateData();
+                    JSONObject record = (JSONObject) recordsArray.get(i);
+                    if (record.has(COMMENT)) {
+                        rateData.setDesc(record.getString(COMMENT));
+                    }
+                    if (record.has(EMPLOYEE)) {
+                        rateData.setName(record.getString(EMPLOYEE));
+                    }
+                    if (record.has(RATING)) {
+                        rateData.setRate(record.getString(RATING));
+                    }
+                    if (record.has(RATING_TITLE)) {
+                        rateData.setTitle(record.getString(RATING_TITLE));
+                    }
+
+                    if (record.has(DATE)) {
+                        Date startTime = null;
+                     try {
+                        startTime = sdf.parse(record.getString(DATE));
+
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+                    rateData.setDate(startTime);
+
+                    }
+                    CallList.add(rateData);
 
                 }
             }

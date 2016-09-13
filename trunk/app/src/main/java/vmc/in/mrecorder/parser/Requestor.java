@@ -60,7 +60,6 @@ public class Requestor implements vmc.in.mrecorder.callbacks.TAG {
     public static JSONObject requestRating(RequestQueue requestQueue, final String authey, String url, final String rateValue, final String title, final String desc, final String callid) {
         JSONObject response = null;
         String resp;
-        final SimpleDateFormat sdfDate = new SimpleDateFormat("dd-MM-yyyy hh:mm aa");
         RequestFuture<String> requestFuture = RequestFuture.newFuture();
         StringRequest request = new StringRequest(Request.Method.POST, url, requestFuture, requestFuture) {
             @Override
@@ -68,10 +67,9 @@ public class Requestor implements vmc.in.mrecorder.callbacks.TAG {
                 Map<String, String> params = new HashMap<String, String>();
                 params.put(AUTHKEY, authey);
                 params.put(RATING, rateValue);
-                params.put(TITLE, title);
-                params.put(DESCRIPTION, desc);
+                params.put(RATING_TITLE, title);
+                params.put(COMMENT, desc);
                 params.put(CALLID, callid);
-                Log.d("test",sdfDate.format(new Date()));
                 return params;
             }
         };
@@ -240,6 +238,37 @@ public class Requestor implements vmc.in.mrecorder.callbacks.TAG {
                 params.put(OFFSET, offset);
                 params.put(LIMIT, limit);
                 params.put(DEVICE_ID, deviceid);
+                return params;
+            }
+        };
+
+        requestQueue.add(request);
+        try {
+            resp = requestFuture.get(30000, TimeUnit.MILLISECONDS);
+            response = new JSONObject(resp);
+        } catch (InterruptedException e) {
+            //L.m(e + "");
+        } catch (ExecutionException e) {
+            // L.m(e + "");
+        } catch (TimeoutException e) {
+            //L.m(e + "");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+       // Log.d("LOG",response.toString());
+        return response;
+    }
+  public static JSONObject requestGetRating(RequestQueue requestQueue, String url,final String authKey, final String callid) {
+        JSONObject response = null;
+        String resp;
+        RequestFuture<String> requestFuture = RequestFuture.newFuture();
+        StringRequest request = new StringRequest(Request.Method.POST, url, requestFuture, requestFuture) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put(AUTHKEY, authKey);
+                params.put(CALLID, callid);
+
                 return params;
             }
         };

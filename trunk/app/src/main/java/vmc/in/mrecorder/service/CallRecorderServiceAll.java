@@ -98,7 +98,7 @@ public class CallRecorderServiceAll extends Service implements TAG {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        if (intent.getAction() != null) {
+        if (intent!=null &&intent.getAction() != null) {
             if (intent.getAction().equals(Constants.ACTION.STARTFOREGROUND_ACTION)) {
                 Log.i(TAG, "Received Start Foreground Intent ");
                 showRecordNotificationService(getApplicationContext());

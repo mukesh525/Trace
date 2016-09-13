@@ -31,9 +31,17 @@ public class CallData {
     private String empname;
     private String location;
     private String seen;
+    private String review;
     private Date StartTime;
     private Date EndTime;
 
+    public String getReview() {
+        return review;
+    }
+
+    public void setReview(String review) {
+        this.review = review;
+    }
     public String getSeen() {
         return seen;
     }

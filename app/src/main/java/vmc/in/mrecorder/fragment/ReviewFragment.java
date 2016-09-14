@@ -2,10 +2,10 @@ package vmc.in.mrecorder.fragment;
 
 
 import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -16,27 +16,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.android.volley.RequestQueue;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 
 import vmc.in.mrecorder.R;
-import vmc.in.mrecorder.adapter.Calls_Adapter;
 import vmc.in.mrecorder.adapter.Ratings_Adapter;
-import vmc.in.mrecorder.callbacks.Constants;
-import vmc.in.mrecorder.callbacks.TAG;
-import vmc.in.mrecorder.datahandler.MDatabase;
-import vmc.in.mrecorder.entity.CallData;
 import vmc.in.mrecorder.entity.RateData;
-import vmc.in.mrecorder.myapplication.CallApplication;
 import vmc.in.mrecorder.parser.Parser;
 import vmc.in.mrecorder.parser.Requestor;
 import vmc.in.mrecorder.util.ConnectivityReceiver;
@@ -60,6 +52,7 @@ public class ReviewFragment extends Fragment implements SwipeRefreshLayout.OnRef
     private SingleTon volleySingleton;
     private RequestQueue requestQueue;
     private TextView click;
+    private ProgressBar progressBar;
 
     public ReviewFragment() {
         // Required empty public constructor
@@ -93,6 +86,7 @@ public class ReviewFragment extends Fragment implements SwipeRefreshLayout.OnRef
         //  mroot = (RelativeLayout) view.findViewById(R.id.fragment_followup);
 
         mprogressLayout = (LinearLayout) view.findViewById(R.id.mprogressLayout);
+        progressBar= (ProgressBar) view.findViewById(R.id.progressBar);
         click = (TextView) view.findViewById(R.id.click);
         retrylayout = (LinearLayout) view.findViewById(R.id.retryLayout);
         swipeRefreshLayout.setOnRefreshListener(this);
@@ -101,6 +95,9 @@ public class ReviewFragment extends Fragment implements SwipeRefreshLayout.OnRef
         mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(mLayoutManager);
         volleySingleton = SingleTon.getInstance();
+        progressBar.getIndeterminateDrawable().setColorFilter(
+                Color.RED, PorterDuff.Mode.MULTIPLY);
+     //   progressBar.setProgressDrawable(ContextCompat.getDrawable(getActivity(),R.drawable.progressbarcolors));
         requestQueue = volleySingleton.getRequestQueue();
         retrylayout.setOnClickListener(new View.OnClickListener() {
        @Override

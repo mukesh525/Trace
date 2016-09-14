@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
@@ -102,10 +103,16 @@ public class Calls_Adapter extends RecyclerView.Adapter<Calls_Adapter.CallViewHo
             } else {
                 if (ci.getSeen() != null && ci.getSeen().equals("1")) {
                     //if api 17  drwle with red image
+                    if(Build.VERSION.SDK_INT<18) {
+                      holder.img_play.setImageDrawable(ContextCompat.getDrawable(context,R.drawable.ic_play_seen17));
+                    }else
                     holder.img_play.getBackground().setColorFilter(ContextCompat.getColor(context, R.color.red), PorterDuff.Mode.SRC_ATOP);
 
                 } else {
                     //if api 17 normaldrwle with red image
+//                    if(Build.VERSION.SDK_INT<18) {
+//                        holder.img_play.setImageDrawable(ContextCompat.getDrawable(context,R.drawable.ic_play));
+//                    }else
                     holder.img_play.getBackground().setColorFilter(fetchAccentColor(), PorterDuff.Mode.SRC_ATOP);
                     holder.review.setVisibility(View.GONE);
                 }

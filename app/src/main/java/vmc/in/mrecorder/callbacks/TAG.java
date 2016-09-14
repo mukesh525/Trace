@@ -142,6 +142,7 @@ public interface TAG {
     public static final String FIELDS = "fields";
 
     public static final String COUNT = "count";
+    public static final String RATING_COUNT = "ratingcount";
 
 
     public static final String DROPDOWN = "dropdown";

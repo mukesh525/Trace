@@ -191,9 +191,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="Reviews : 3"
                 android:padding="2dp"
-
                 android:textColor="@color/red"
                 android:layout_alignTop="@+id/fStatusTextView"
                 android:layout_centerHorizontal="true" />

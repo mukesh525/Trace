@@ -57,7 +57,7 @@ public class MDatabase implements TAG {
             statement.bindString(12, calldata.getFilename());
             statement.bindString(13, calldata.getLocation());
             statement.bindString(14, calldata.getSeen());
-            statement.bindString(15, calldata.getReview());
+            statement.bindString(15, calldata.getReview()==null?"0":calldata.getReview());
             statement.execute();
         }
         mDatabase.setTransactionSuccessful();

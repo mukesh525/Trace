@@ -320,8 +320,6 @@ public class Home extends AppCompatActivity
     }
 
 
-
-
     private void setupTabIcons() {
         mTabLayout.getTabAt(0).setIcon(tabIcons[0]);
         mTabLayout.getTabAt(1).setIcon(tabIcons[1]);
@@ -739,9 +737,13 @@ public class Home extends AppCompatActivity
         return true;
     }
 
-    public void playAudio( CallData callData) {
-
-        new MarkSeen(callData).execute();
+    public void playAudio(CallData callData) {
+        //For Admin user
+        if (!(usertype.equals(DEFAULT) || usertype.equals("0"))) {
+            new MarkSeen(callData).execute();
+        } else {
+            playaudio(callData);
+        }
     }
 
 
@@ -846,13 +848,13 @@ public class Home extends AppCompatActivity
 
 
     class MarkSeen extends AsyncTask<Void, Void, String> {
-        private String  msg;
+        private String msg;
         private CallData callData;
         private String code;
+
         public MarkSeen(CallData callData) {
             this.callData = callData;
         }
-
 
 
         @Override
@@ -878,18 +880,24 @@ public class Home extends AppCompatActivity
         @Override
         protected void onPostExecute(String code) {
             super.onPostExecute(code);
-            if (callData.getFilename() != null && callData.getFilename().length() > 4) {
-                Log.d("AUDIO", callData.getFilename());
-                Uri myUri = Uri.parse(STREAM_TRACKER + callData.getFilename());
-                Intent intent = new Intent(android.content.Intent.ACTION_VIEW);
-                intent.setDataAndType(myUri, "audio/*");
-                startActivity(intent);
-            }
+            playaudio(callData);
 
             if (code != null && msg != null) {
                 Log.d("AUDIO", code + "" + msg);
 
             }
+        }
+
+
+    }
+
+    private void playaudio(CallData callData) {
+        if (callData.getFilename() != null && callData.getFilename().length() > 4) {
+            Log.d("AUDIO", callData.getFilename());
+            Uri myUri = Uri.parse(STREAM_TRACKER + callData.getFilename());
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setDataAndType(myUri, "audio/*");
+            startActivity(intent);
         }
     }
 }

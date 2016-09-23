@@ -192,7 +192,7 @@ public class MDatabase implements TAG {
 
     private static class CallHelper extends SQLiteOpenHelper implements TAG {
         private static final String DB_NAME = "Database";
-        private static final int DB_VERSION = 17;
+        private static final int DB_VERSION = 18;
 
         public static final String TABLE_CALLRECORDS = "CallRecords";
         public static final String TABLE_ALL = "all_calls";
@@ -213,8 +213,8 @@ public class MDatabase implements TAG {
         public static final String COLUMN_FILENAME = FILENAME;
         public static final String COLUMN_LOCATION = LOCATION;
         public static final String COLUMN_SEEN = SEEN;
-        public static final String COLUMN_REVIEW = "review";
-
+        public static final String COLUMN_REVIEW = REVIEW;
+        public final String TABLE_NAMES[]={TABLE_ALL,TABLE_INBOUND,TABLE_OUTBOUND,TABLE_MISSED};
 
         private static final String CREATE_TABLE_ALL_CALLS = "CREATE TABLE " + TABLE_ALL + " (" +
                 COLUMN_UID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
@@ -234,59 +234,6 @@ public class MDatabase implements TAG {
                 COLUMN_REVIEW + " TEXT" +
                 ");";
 
-        private static final String CREATE_TABLE_INBOUND = "CREATE TABLE " + TABLE_INBOUND + " (" +
-                COLUMN_UID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-                COLUMN_CALLID + " TEXT," +
-                COLUMN_BID + " TEXT," +
-                COLUMN_EID + " TEXT," +
-                COLUMN_CALLFROM + " TEXT," +
-                COLUMN_CALLTO + " TEXT," +
-                COLUMN_EMPNAME + " TEXT," +
-                COLUMN_CALLTYPEE + " TEXT," +
-                COLUMN_NAME + " TEXT," +
-                COLUMN_STARTTIME + " TEXT," +
-                COLUMN_ENDTIME + " TEXT," +
-                COLUMN_FILENAME + " TEXT," +
-                COLUMN_LOCATION + " TEXT," +
-                COLUMN_SEEN + " TEXT," +
-                COLUMN_REVIEW + " TEXT" +
-                ");";
-
-        private static final String CREATE_TABLE_OUTBOUND = "CREATE TABLE " + TABLE_OUTBOUND + " (" +
-                COLUMN_UID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-                COLUMN_CALLID + " TEXT," +
-                COLUMN_BID + " TEXT," +
-                COLUMN_EID + " TEXT," +
-                COLUMN_CALLFROM + " TEXT," +
-                COLUMN_CALLTO + " TEXT," +
-                COLUMN_EMPNAME + " TEXT," +
-                COLUMN_CALLTYPEE + " TEXT," +
-                COLUMN_NAME + " TEXT," +
-                COLUMN_STARTTIME + " TEXT," +
-                COLUMN_ENDTIME + " TEXT," +
-                COLUMN_FILENAME + " TEXT," +
-                COLUMN_LOCATION + " TEXT," +
-                COLUMN_SEEN + " TEXT," +
-                COLUMN_REVIEW + " TEXT" +
-                ");";
-
-        private static final String CREATE_TABLE_MISSED = "CREATE TABLE " + TABLE_MISSED + " (" +
-                COLUMN_UID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-                COLUMN_CALLID + " TEXT," +
-                COLUMN_BID + " TEXT," +
-                COLUMN_EID + " TEXT," +
-                COLUMN_CALLFROM + " TEXT," +
-                COLUMN_CALLTO + " TEXT," +
-                COLUMN_EMPNAME + " TEXT," +
-                COLUMN_CALLTYPEE + " TEXT," +
-                COLUMN_NAME + " TEXT," +
-                COLUMN_STARTTIME + " TEXT," +
-                COLUMN_ENDTIME + " TEXT," +
-                COLUMN_FILENAME + " TEXT," +
-                COLUMN_LOCATION + " TEXT," +
-                COLUMN_SEEN + " TEXT," +
-                COLUMN_REVIEW + " TEXT" +
-                ");";
         private final Context mContext;
         private static final String CREATE_TABLE = "CREATE TABLE " + TABLE_CALLRECORDS + " (" +
                 ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
@@ -302,25 +249,53 @@ public class MDatabase implements TAG {
             mContext = context;
         }
 
+
+
+        public String getTableName(String table){
+            return  "CREATE TABLE " + table + " (" +
+                    COLUMN_UID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+                    COLUMN_CALLID + " TEXT," +
+                    COLUMN_BID + " TEXT," +
+                    COLUMN_EID + " TEXT," +
+                    COLUMN_CALLFROM + " TEXT," +
+                    COLUMN_CALLTO + " TEXT," +
+                    COLUMN_EMPNAME + " TEXT," +
+                    COLUMN_CALLTYPEE + " TEXT," +
+                    COLUMN_NAME + " TEXT," +
+                    COLUMN_STARTTIME + " TEXT," +
+                    COLUMN_ENDTIME + " TEXT," +
+                    COLUMN_FILENAME + " TEXT," +
+                    COLUMN_LOCATION + " TEXT," +
+                    COLUMN_SEEN + " TEXT," +
+                    COLUMN_REVIEW + " TEXT" +
+                    ");";
+        }
+
+
+
         @Override
         public void onCreate(SQLiteDatabase db) {
-
+            try{
+            for(int i =0;i<TABLE_NAMES.length;i++) {
+                db.execSQL(getTableName(TABLE_NAMES[i]));
+            }
             db.execSQL(CREATE_TABLE);
-            db.execSQL(CREATE_TABLE_ALL_CALLS);
-            db.execSQL(CREATE_TABLE_INBOUND);
-            db.execSQL(CREATE_TABLE_OUTBOUND);
-            db.execSQL(CREATE_TABLE_MISSED);
-            Log.d("database", "onCreate Called");
+//            db.execSQL(CREATE_TABLE_ALL_CALLS);
+                Log.d("database", "onCreate Called");
+        }catch (Exception e){
+                Log.d("database", e.getMessage());
+            }
         }
 
         @Override
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
             try {
+
+                for(int i =0;i<TABLE_NAMES.length;i++) {
+                    db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAMES[i]);
+                }
                 db.execSQL(" DROP TABLE IF EXISTS " + TABLE_CALLRECORDS);
-                db.execSQL(" DROP TABLE IF EXISTS " + TABLE_ALL);
-                db.execSQL(" DROP TABLE IF EXISTS " + TABLE_INBOUND);
-                db.execSQL(" DROP TABLE IF EXISTS " + TABLE_OUTBOUND);
-                db.execSQL(" DROP TABLE IF EXISTS " + TABLE_MISSED);
+//                db.execSQL(" DROP TABLE IF EXISTS " + TABLE_ALL);
                 Log.d("database", "table dropped");
                 onCreate(db);
             } catch (Exception e) {

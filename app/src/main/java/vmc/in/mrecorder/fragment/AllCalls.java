@@ -35,6 +35,7 @@ import vmc.in.mrecorder.callbacks.Constants;
 import vmc.in.mrecorder.callbacks.EndlessScrollListener;
 import vmc.in.mrecorder.callbacks.TAG;
 import vmc.in.mrecorder.datahandler.MDatabase;
+import vmc.in.mrecorder.download.DownloadCalls;
 import vmc.in.mrecorder.entity.CallData;
 import vmc.in.mrecorder.myapplication.CallApplication;
 import vmc.in.mrecorder.parser.Requestor;
@@ -44,7 +45,8 @@ import vmc.in.mrecorder.util.SingleTon;
 import vmc.in.mrecorder.util.Utils;
 
 
-public class AllCalls extends Fragment implements SwipeRefreshLayout.OnRefreshListener, TAG, Calls_Adapter.CallClickedListner,ConnectivityReceiver.ConnectivityReceiverListener {
+public class AllCalls extends Fragment implements SwipeRefreshLayout.OnRefreshListener, TAG, Calls_Adapter.CallClickedListner,
+        ConnectivityReceiver.ConnectivityReceiverListener, DownloadCalls.CallReportFinish {
     private Calls_Adapter adapter;
     public RecyclerView recyclerView;
     private SwipeRefreshLayout swipeRefreshLayout;
@@ -57,29 +59,32 @@ public class AllCalls extends Fragment implements SwipeRefreshLayout.OnRefreshLi
     private ArrayList<CallData> callDataArrayList;
     private int offset = 0;
     private int totalCount = 0;
-
     private String authkey;
     private SharedPreferences prefs;
     private FloatingActionsMenu mroot;
     private RequestQueue requestQueue;
     private SingleTon volleySingleton;
-    private String sessionID;
+    private String sessionID, CallType;
+    private boolean FirstLoaded = false;
 
     public AllCalls() {
         // Required empty public constructor
     }
 
-    public static AllCalls newInstance(String param1, String param2) {
+    public static AllCalls newInstance(String type) {
         AllCalls fragment = new AllCalls();
         Bundle args = new Bundle();
-
+        args.putString("TYPE", type);
+        fragment.setArguments(args);
         return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        if (getArguments() != null) {
+            CallType = getArguments().getString("TYPE");
+        }
 
     }
 
@@ -104,7 +109,6 @@ public class AllCalls extends Fragment implements SwipeRefreshLayout.OnRefreshLi
         recyclerView.setLayoutManager(mLayoutManager);
         callDataArrayList = new ArrayList<CallData>();
         authkey = Utils.getFromPrefs(getActivity(), AUTHKEY, "N/A");
-
         sessionID = Utils.getFromPrefs(getContext(), SESSION_ID, UNKNOWN);
         Log.d("SESSION_ID", "All Calls OncCreate " + sessionID);
         Log.d("AUTHKEY", authkey);
@@ -165,19 +169,24 @@ public class AllCalls extends Fragment implements SwipeRefreshLayout.OnRefreshLi
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        callDataArrayList = CallApplication.getWritabledatabase().getAllCalls(MDatabase.ALL);
+        callDataArrayList = CallApplication.getWritabledatabase().getAllCalls(getTable(CallType));
         if (callDataArrayList != null && callDataArrayList.size() > 0) {
             Log.d("TABLE", callDataArrayList.size() + "");
             Log.d("TABLE", callDataArrayList.get(0).getLocation() + "");
             adapter = new Calls_Adapter(getActivity(), callDataArrayList, mroot, AllCalls.this);
             adapter.setClickedListner(AllCalls.this);
             recyclerView.setAdapter(adapter);
+            FirstLoaded = true;
         } else {
             DownloadCalls();
         }
 
     }
 
+    public int getTable(String type) {
+
+        return type.equals(TYPE_ALL) ? MDatabase.ALL : type.equals(TYPE_INCOMING) ? MDatabase.INBOUND : type.equals(TYPE_OUTGOING) ? MDatabase.OUTBOUND : MDatabase.MISSED;
+    }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
@@ -188,26 +197,62 @@ public class AllCalls extends Fragment implements SwipeRefreshLayout.OnRefreshLi
     @Override
     public void onRefresh() {
         offset = 0;
-        //  ((Home) getActivity()).floatingActionButton.show();
+        callDataArrayList.clear();
         if (swipeRefreshLayout.isRefreshing()) {
             swipeRefreshLayout.setRefreshing(false);
 
         }
-        DownloadCalls();
+        if (!ConnectivityReceiver.isConnected()) {
+            Snackbar snack = Snackbar.make(mroot, "No Internet Connection", Snackbar.LENGTH_SHORT)
+                    .setAction(getString(R.string.text_tryAgain), new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            DownloadCalls();
+
+                        }
+                    })
+                    .setActionTextColor(getResources().getColor(R.color.accent));
+
+            TextView tv = (TextView) snack.getView().findViewById(android.support.design.R.id.snackbar_text);
+            tv.setTextColor(Color.WHITE);
+            snack.show();
+        } else {
+            DownloadCalls();
+
+        }
     }
 
     protected void DownloadCalls() {
         if (ConnectivityReceiver.isConnected()) {
-            new DownloadCallData().execute();
-        } else {
-            if (swipeRefreshLayout.isRefreshing()) {
-                swipeRefreshLayout.setRefreshing(false);
-            }
-            if (retrylayout.getVisibility() == View.GONE) {
-                retrylayout.setVisibility(View.VISIBLE);
+
+            if (mprogressLayout.getVisibility() == View.GONE) {
+                mprogressLayout.setVisibility(View.VISIBLE);
             }
             if (recyclerView.getVisibility() == View.VISIBLE) {
                 recyclerView.setVisibility(View.GONE);
+            }
+            if (retrylayout.getVisibility() == View.VISIBLE) {
+                retrylayout.setVisibility(View.GONE);
+            }
+            if (pdloadmore.getVisibility() == View.VISIBLE) {
+                pdloadmore.setVisibility(View.GONE);
+            }
+            loading = true;
+
+            new DownloadCalls(this, getActivity(), CallType, offset + "", false).execute();
+        } else {
+
+            if (swipeRefreshLayout.isRefreshing()) {
+                swipeRefreshLayout.setRefreshing(false);
+            }
+            if (recyclerView.getVisibility() == View.VISIBLE) {
+                recyclerView.setVisibility(View.GONE);
+            }
+            if (pdloadmore.getVisibility() == View.VISIBLE) {
+                pdloadmore.setVisibility(View.GONE);
+            }
+            if (retrylayout.getVisibility() == View.VISIBLE) {
+                retrylayout.setVisibility(View.GONE);
             }
             if (getActivity() != null) {
                 Snackbar snack = Snackbar.make(mroot, "No Internet Connection", Snackbar.LENGTH_SHORT)
@@ -223,21 +268,29 @@ public class AllCalls extends Fragment implements SwipeRefreshLayout.OnRefreshLi
                 tv.setTextColor(Color.WHITE);
                 snack.show();
             }
-
         }
     }
 
     protected void DownloadMore() {
         if (ConnectivityReceiver.isConnected()) {
-            new DownloadMoreData().execute();
+            if (pdloadmore.getVisibility() == View.GONE) {
+                pdloadmore.setVisibility(View.VISIBLE);
+            }
+            loading = true;
+            offset = callDataArrayList.size();
+            Log.d("DATA",callDataArrayList.size()+"");
+            new DownloadCalls(this, getActivity(), CallType, offset + "", true).execute();
         } else {
             if (swipeRefreshLayout.isRefreshing()) {
                 swipeRefreshLayout.setRefreshing(false);
             }
-
             if (pdloadmore.getVisibility() == View.VISIBLE) {
                 pdloadmore.setVisibility(View.GONE);
             }
+            if (retrylayout.getVisibility() == View.VISIBLE) {
+                retrylayout.setVisibility(View.GONE);
+            }
+
             if (getActivity() != null) {
                 Snackbar snack = Snackbar.make(mroot, "No Internet Connection", Snackbar.LENGTH_SHORT)
                         .setAction(getString(R.string.text_tryAgain), new View.OnClickListener() {
@@ -270,9 +323,8 @@ public class AllCalls extends Fragment implements SwipeRefreshLayout.OnRefreshLi
             showSnack(isConnected);
         }
 
-
-
     }
+
     private void showSnack(boolean isConnected) {
         String message;
         int color;
@@ -289,264 +341,75 @@ public class AllCalls extends Fragment implements SwipeRefreshLayout.OnRefreshLi
         }
     }
 
-    class DownloadCallData extends AsyncTask<Void, Void, ArrayList<CallData>> {
-        private String code = "n/a", msg = "n/a";
+    @Override
+    public void onCallReportDownLoadFinished(ArrayList<CallData> data, final boolean isMore) {
 
-        @Override
-        protected void onPreExecute() {
-            if (mprogressLayout.getVisibility() == View.GONE) {
-                mprogressLayout.setVisibility(View.VISIBLE);
-            }
-            offset = 0;
-            if (recyclerView.getVisibility() == View.VISIBLE) {
-                recyclerView.setVisibility(View.GONE);
-            }
 
-            loading = true;
-            if (retrylayout.getVisibility() == View.VISIBLE) {
-                retrylayout.setVisibility(View.GONE);
-            }
-            if (pdloadmore.getVisibility() == View.VISIBLE) {
-                pdloadmore.setVisibility(View.GONE);
-            }
-            super.onPreExecute();
+        if (recyclerView.getVisibility() == View.GONE) {
+            recyclerView.setVisibility(View.VISIBLE);
         }
 
+        if (mprogressLayout.getVisibility() == View.VISIBLE) {
+            mprogressLayout.setVisibility(View.GONE);
+        }
 
-        @Override
-        protected ArrayList<CallData> doInBackground(Void... params) {
-            /// TODO Auto-generated method stub
-            JSONObject response = null;
-            try {
+        if (swipeRefreshLayout.isRefreshing()) {
+            swipeRefreshLayout.setRefreshing(false);
+        }
 
-                response = Requestor.requestGetCalls(requestQueue, GET_CALL_LIST, authkey, "10", offset + "",
-                       sessionID, TYPE_ALL);
-                Log.d(TAG, response.toString());
-            } catch (Exception e) {
-                Log.d("ERROR", e.getMessage().toString());
+        loading = false;
+
+
+        if (data != null && data.size() > 0 && getActivity() != null) {
+            callDataArrayList.addAll(data);
+            adapter = new Calls_Adapter(getActivity(), callDataArrayList, mroot, AllCalls.this);
+            adapter.setClickedListner(AllCalls.this);
+            if (!isMore) {
+                FirstLoaded = true;
             }
-            if (response != null) {
+            adapter.notifyDataSetChanged();
+            recyclerView.setAdapter(adapter);
 
-
-                System.out.println(response);
-                JSONArray recordsArray = null;
-                SimpleDateFormat sdf = new SimpleDateFormat(DateTimeFormat);
+        } else {
+            if (!isMore) {
+                if (retrylayout.getVisibility() == View.GONE) {
+                    retrylayout.setVisibility(View.VISIBLE);
+                }
+                if (pdloadmore.getVisibility() == View.VISIBLE) {
+                    pdloadmore.setVisibility(View.GONE);
+                }
+            }
+            if (getActivity() != null && getView() != null) {
                 try {
-
-                    if (response.has(CODE)) {
-                        code = response.getString(CODE);
+                    if (pdloadmore.getVisibility() == View.VISIBLE) {
+                        pdloadmore.setVisibility(View.GONE);
                     }
-                    if (response.has(MESSAGE)) {
-                        msg = response.getString(MESSAGE);
+                    if (retrylayout.getVisibility() == View.VISIBLE) {
+                        retrylayout.setVisibility(View.GONE);
                     }
-
-                    callDataArrayList = vmc.in.mrecorder.parser.Parser.ParseData(response);
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-            }
-
-            return callDataArrayList;
-        }
-
-        @Override
-        protected void onPostExecute(ArrayList<CallData> data) {
-
-            if (recyclerView.getVisibility() == View.GONE) {
-                recyclerView.setVisibility(View.VISIBLE);
-            }
-
-            if (mprogressLayout.getVisibility() == View.VISIBLE) {
-                mprogressLayout.setVisibility(View.GONE);
-            }
-
-            if (swipeRefreshLayout.isRefreshing()) {
-                swipeRefreshLayout.setRefreshing(false);
-
-            }
-            loading = false;
-
-
-            if (data != null && getActivity() != null && data.size() > 0) {
-                adapter = new Calls_Adapter(getActivity(), data, mroot, AllCalls.this);
-                CallApplication.getWritabledatabase().insertCallRecords(MDatabase.ALL, data, true);
-                adapter.setClickedListner(AllCalls.this);
-                callDataArrayList = data;
-
-                // MyApplication.getWritableDatabase().insertFollowup(data, true);
-                recyclerView.setAdapter(adapter);
-
-            } else if (code.equals("202") || code.equals("401")) {
-                if (retrylayout.getVisibility() == View.GONE) {
-                    retrylayout.setVisibility(View.VISIBLE);
-                }
-                if (recyclerView.getVisibility() == View.VISIBLE) {
-                    recyclerView.setVisibility(View.GONE);
-                }
-                if (getActivity() != null && Constants.position == 0) {
-                    try {
-                        Snackbar snack = Snackbar.make(mroot, "Login to Continue", Snackbar.LENGTH_SHORT)
-                                .setAction(getString(R.string.login), new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
-                                        Utils.isLogout(getActivity());
-
-                                    }
-                                })
-                                .setActionTextColor(ContextCompat.getColor(getActivity(), R.color.accent));
-                        TextView tv = (TextView) snack.getView().findViewById(android.support.design.R.id.snackbar_text);
-                        tv.setTextColor(Color.WHITE);
-                        snack.show();
-                    } catch (Exception e) {
-
-                    }
-                }
-
-            } else {
-
-                if (retrylayout.getVisibility() == View.GONE) {
-                    retrylayout.setVisibility(View.VISIBLE);
-                }
-                if (getActivity() != null && Constants.position == 0) {
-                    try {
-                        Snackbar snack = Snackbar.make(mroot, "No Data Available", Snackbar.LENGTH_SHORT)
-                                .setAction(getString(R.string.text_tryAgain), new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
+                    Snackbar snack = Snackbar.make(mroot, "No Data Available", Snackbar.LENGTH_SHORT)
+                            .setAction(getString(R.string.text_tryAgain), new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    if (!isMore) {
                                         DownloadCalls();
+                                    } else {
 
+                                        DownloadMore();
                                     }
-                                })
-                                .setActionTextColor(ContextCompat.getColor(getActivity(), R.color.accent));
-                        TextView tv = (TextView) snack.getView().findViewById(android.support.design.R.id.snackbar_text);
-                        tv.setTextColor(Color.WHITE);
-                        snack.show();
-                    } catch (Exception e) {
 
-                    }
+                                }
+                            })
+                            .setActionTextColor(getResources().getColor(R.color.accent));
+                    TextView tv = (TextView) snack.getView().findViewById(android.support.design.R.id.snackbar_text);
+                    tv.setTextColor(Color.WHITE);
+                    snack.show();
+                } catch (Exception e) {
+
                 }
             }
         }
 
-    }
-
-    class DownloadMoreData extends AsyncTask<Void, Void, ArrayList<CallData>> {
-        private String code = "n/a", msg = "n/a";
-        private ArrayList<CallData> data;
-
-        @Override
-        protected void onPreExecute() {
-            offset = callDataArrayList.size();
-            if (pdloadmore.getVisibility() == View.GONE) {
-                pdloadmore.setVisibility(View.VISIBLE);
-            }
-            loading = true;
-
-            super.onPreExecute();
-        }
-
-
-        @Override
-        protected ArrayList<CallData> doInBackground(Void... params) {
-            /// TODO Auto-generated method stub
-            JSONObject response = null;
-            try {
-
-                response = Requestor.requestGetCalls(requestQueue, GET_CALL_LIST, authkey, "10", offset + "",
-                      sessionID, TYPE_ALL);
-                Log.d(TAG, response.toString());
-            } catch (Exception e) {
-            }
-            if (response != null) {
-                data = new ArrayList<CallData>();
-                System.out.println(response);
-                SimpleDateFormat sdf = new SimpleDateFormat(DateTimeFormat);
-                try {
-
-                    if (response.has(CODE)) {
-                        code = response.getString(CODE);
-                    }
-                    if (response.has(MESSAGE)) {
-                        msg = response.getString(MESSAGE);
-                    }
-
-
-                    data = vmc.in.mrecorder.parser.Parser.ParseData(response);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-            }
-
-            return data;
-        }
-
-        @Override
-        protected void onPostExecute(ArrayList<CallData> data) {
-
-            loading = false;
-
-            if (pdloadmore.getVisibility() == View.VISIBLE) {
-                pdloadmore.setVisibility(View.GONE);
-            }
-
-            if (data != null && getActivity() != null && data.size() > 0) {
-
-                callDataArrayList.addAll(data);
-                // MyApplication.getWritableDatabase().insertFollowup(data, false);
-                CallApplication.getWritabledatabase().insertCallRecords(MDatabase.ALL, data, false);
-                adapter.notifyDataSetChanged();
-
-
-            } else if (code.equals("202") || code.equals("401")) {
-                if (retrylayout.getVisibility() == View.GONE) {
-                    retrylayout.setVisibility(View.VISIBLE);
-                }
-                if (recyclerView.getVisibility() == View.VISIBLE) {
-                    recyclerView.setVisibility(View.GONE);
-                }
-                if (getActivity() != null && Constants.position == 0) {
-                    try {
-                        Snackbar snack = Snackbar.make(mroot, "Login to Continue", Snackbar.LENGTH_SHORT)
-                                .setAction(getString(R.string.login), new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
-                                        Utils.isLogout(getActivity());
-
-                                    }
-                                })
-                                .setActionTextColor(ContextCompat.getColor(getActivity(), R.color.accent));
-                        TextView tv = (TextView) snack.getView().findViewById(android.support.design.R.id.snackbar_text);
-                        tv.setTextColor(Color.WHITE);
-                        snack.show();
-                    } catch (Exception e) {
-
-                    }
-                }
-
-            } else {
-                if (getActivity() != null && Constants.position == 0) {
-                    try {
-                        Snackbar snack = Snackbar.make(mroot, "No Data Available", Snackbar.LENGTH_SHORT)
-                                .setAction(getString(R.string.text_tryAgain), new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
-                                        DownloadCalls();
-
-                                    }
-                                })
-                                .setActionTextColor(ContextCompat.getColor(getActivity(), R.color.accent));
-                        TextView tv = (TextView) snack.getView().findViewById(android.support.design.R.id.snackbar_text);
-                        tv.setTextColor(Color.WHITE);
-                        snack.show();
-                    } catch (Exception e) {
-
-                    }
-                }
-            }
-        }
 
     }
 

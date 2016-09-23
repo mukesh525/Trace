@@ -74,13 +74,12 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
     private  String sessionID;
 
     private ArrayList<Model> callList;
-    private ArrayList<Model> FiltercallList;
     private JSONObject response;
     private String authkey;
     private int offset = 0;
     private ArrayList<CallData> callDataArrayList;
     private String code, recording, mcubeRecording, workhour;
-    public String TAG1 = "TEST_LOG1";
+    public String TAG1 = "syncadapter";
     private RequestQueue requestQueue;
     private SingleTon volleySingleton;
 
@@ -121,25 +120,25 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
             }
 
             callList = CallApplication.getWritabledatabase().getAllOfflineCalls();
-            FiltercallList=new ArrayList<Model>();
-            for(int i =0 ;i<callList.size();i++){
-                FiltercallList.add(getFilterCallDetail(callList.get(i)));
-            }
+//            FiltercallList=new ArrayList<Model>();
+//            for(int i =0 ;i<callList.size();i++){
+//                FiltercallList.add(getFilterCallDetail(callList.get(i)));
+//            }
 
 
-            Log.d(TAG, "offline data Size" + FiltercallList.size());
-            Log.d(TAG, "Location" + FiltercallList.get(0).getLocation());
+            Log.d(TAG1, "offline data Size" + callList.size());
+            Log.d(TAG1, "Location" + callList.get(0).getLocation());
 
             if (wifionly == 1 && Utils.hasWIFIConnection(getContext())) {
 
-                Log.d(TAG + "WIFI", "Wifi only enabled");
-                for (int i = 0; i < FiltercallList.size(); i++) {
+                Log.d(TAG1 + "WIFI", "Wifi only enabled");
+                for (int i = 0; i < callList.size(); i++) {
                     if (!CallRecorderServiceAll.recording && Utils.isLogin(getContext())) {
 
-                        if (new File(FiltercallList.get(i).getFilePath()).exists()) {
-                            uploadMultipartData(FiltercallList.get(i), true);
+                        if (new File(callList.get(i).getFilePath()).exists()) {
+                            uploadMultipartData(callList.get(i), true);
                         } else {
-                            uploadMultipartData(FiltercallList.get(i), false);
+                            uploadMultipartData(callList.get(i), false);
 
                         }
 
@@ -147,15 +146,15 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
                     }
                 }
             } else if (wifionly == 0) {
-                Log.d(TAG + "WIFI", "Wifi only disabled");
-                for (int i = 0; i < FiltercallList.size(); i++) {
+                Log.d(TAG1 + "WIFI", "Wifi only disabled");
+                for (int i = 0; i < callList.size(); i++) {
 
                     if (!CallRecorderServiceAll.recording && Utils.isLogin(getContext())) {
 
-                        if (new File(FiltercallList.get(i).getFilePath()).exists()) {
-                            uploadMultipartData(FiltercallList.get(i), true);
+                        if (new File(callList.get(i).getFilePath()).exists()) {
+                            uploadMultipartData(callList.get(i), true);
                         } else {
-                            uploadMultipartData(FiltercallList.get(i), false);
+                            uploadMultipartData(callList.get(i), false);
 
                         }
 
@@ -164,7 +163,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
                 }
             }
         } catch (Exception e) {
-            // Log.d(TAG, e.getMessage().toString());
+
         }
 
 
@@ -227,11 +226,11 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
 
             callDataArrayList = new ArrayList<CallData>();
             callDataArrayList = Parser.ParseData(response);
-            Log.d(TAG, "ALL_CALLS " + callDataArrayList.size());
+            Log.d(TAG1, "ALL_CALLS " + callDataArrayList.size());
             CallApplication.getWritabledatabase().insertCallRecords(MDatabase.ALL, callDataArrayList, true);
            }
         } catch (Exception e) {
-            Log.d(TAG, "Error " + e.getMessage().toString());
+            Log.d(TAG1, "Error " + e.getMessage().toString());
         }
         try {
 
@@ -276,7 +275,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
 
             callDataArrayList = new ArrayList<CallData>();
             callDataArrayList = Parser.ParseData(response);
-            Log.d(TAG, OUTGOING + callDataArrayList.size());
+            Log.d(TAG1, OUTGOING + callDataArrayList.size());
             CallApplication.getWritabledatabase().insertCallRecords(MDatabase.OUTBOUND, callDataArrayList, true);
         } catch (Exception e) {
             e.printStackTrace();
@@ -320,7 +319,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
             }
             callDataArrayList = new ArrayList<CallData>();
             callDataArrayList = Parser.ParseData(response);
-            Log.d(TAG, INCOMING + callDataArrayList.size());
+            Log.d(TAG1, INCOMING + callDataArrayList.size());
             CallApplication.getWritabledatabase().insertCallRecords(MDatabase.INBOUND, callDataArrayList, true);
         } catch (Exception e) {
             e.printStackTrace();
@@ -368,7 +367,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
 
             callDataArrayList = Parser.ParseData(response);
             CallApplication.getWritabledatabase().insertCallRecords(MDatabase.MISSED, callDataArrayList, true);
-            Log.d(TAG, MISSED + callDataArrayList.size());
+            Log.d(TAG1, MISSED + callDataArrayList.size());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -381,7 +380,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
         if (Utils.isLogin(getContext())) {
             if (!Utils.isMyServiceRunning(CallRecorderServiceAll.class, getContext())) {
                 CallApplication.getInstance().startRecording();
-                Log.d(TAG, "service started");
+                Log.d(TAG1, "service started");
             } else {
                 Log.d(TAG, "service already started");
             }
@@ -399,6 +398,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
         SharedPreferences sharedPrefs = PreferenceManager
                 .getDefaultSharedPreferences(getContext());
         SharedPreferences.Editor ed = sharedPrefs.edit();
+        Log.d(TAG1, "uploadMultipartData:" + model.getPhoneNumber());
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss.SS");
         MultipartEntityBuilder builder = MultipartEntityBuilder.create();
         builder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE);
@@ -417,22 +417,22 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
             Long time = Long.valueOf(model.getTime()).longValue();
             long endtime = time + duration;
             builder.addPart(ENDTIME, new StringBody(sdf.format(new Date(endtime)), ContentType.TEXT_PLAIN));
-            Log.d(TAG, ENDTIME + ":" + sdf.format(new Date(endtime)));
+            Log.d(TAG1, ENDTIME + ":" + sdf.format(new Date(endtime)));
         }
         builder.addPart(AUTHKEY, new StringBody(Utils.getFromPrefs(getContext(), AUTHKEY, "n"), ContentType.TEXT_PLAIN));
-        Log.d(TAG, AUTHKEY + ":" + Utils.getFromPrefs(getContext(), AUTHKEY, "n"));
+        Log.d(TAG1, AUTHKEY + ":" + Utils.getFromPrefs(getContext(), AUTHKEY, "n"));
         builder.addPart(DEVICE_ID, new StringBody( Utils.getFromPrefs(getContext(),SESSION_ID,UNKNOWN), ContentType.TEXT_PLAIN));
-        Log.d(TAG, DEVICE_ID + ":" +  Utils.getFromPrefs(getContext(),SESSION_ID,UNKNOWN));
+        Log.d(TAG1, DEVICE_ID + ":" +  Utils.getFromPrefs(getContext(),SESSION_ID,UNKNOWN));
         builder.addPart(CALLTO, new StringBody(model.getPhoneNumber(), ContentType.TEXT_PLAIN));
-        Log.d(TAG, CALLTO + ":" + model.getPhoneNumber());
+        Log.d(TAG1, CALLTO + ":" + model.getPhoneNumber());
         builder.addPart(STARTTIME, new StringBody(sdf.format(new Date(Long.parseLong(model.getTime()))), ContentType.TEXT_PLAIN));
         Log.d(TAG1, STARTTIME + ":" + sdf.format(new Date(Long.parseLong(model.getTime()))));
         builder.addPart(CALLTYPEE, new StringBody(model.getCallType(), ContentType.TEXT_PLAIN));
         builder.addPart(CONTACTNAME, new StringBody(getContactName(model.getPhoneNumber()), ContentType.TEXT_PLAIN));
         Log.d(TAG1, CALLTYPEE + ":" + model.getCallType());
-        Log.d(TAG, "CONTACTNAME" + ":" + getContactName(model.getPhoneNumber()));
+        Log.d(TAG1, "CONTACTNAME" + ":" + getContactName(model.getPhoneNumber()));
         builder.addPart(LOCATION, new StringBody(model.getLocation(), ContentType.TEXT_PLAIN));
-        Log.d(TAG, LOCATION + ":" + model.getLocation());
+        Log.d(TAG1, LOCATION + ":" + model.getLocation());
         if (!fileExist) {
             //  builder.addPart(ENDTIME, new StringBody("0000000", ContentType.TEXT_PLAIN));
             builder.addPart(ENDTIME, new StringBody(sdf.format(new Date(Long.parseLong(model.getTime()))), ContentType.TEXT_PLAIN));
@@ -496,14 +496,14 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
                     }
                 }
                 ed.commit();
-                Log.d(TAG, "RESPONSE CODE:" + code);
+                Log.d(TAG1, "RESPONSE CODE:" + code);
                 if (code.equals("400")) {
                     CallApplication.getWritabledatabase().delete(model.getId());//from db
                     if (new File(model.getFilePath()).exists()) {
                         new File(model.getFilePath()).delete();//from internal storage
-                        Log.d(TAG, "FILE DELETED" + ":" + model.getFile().getName());
+                        Log.d(TAG1, "FILE DELETED" + ":" + model.getFile().getName());
                     }
-                    Log.d(TAG, "RECODRD DELETED" + ":" + model.getFile().getName());
+                    Log.d(TAG1, "RECODRD DELETED" + ":" + model.getFile().getName());
                 }
                 if (!code.equals("400")) {
                     if(response.has(MESSAGE))
@@ -514,17 +514,17 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
             }
 
 
-            Log.d(TAG, "Response :" + serverResponseMessage);
+            Log.d(TAG1, "Response :" + serverResponseMessage);
 
 
         } catch (Exception e) {
-            Log.d(TAG, e.getMessage());
+            Log.d(TAG1, e.getMessage());
         }
 
     }
 
     //outgoing
-    public synchronized Model getFilterCallDetail(Model model1) {
+    public synchronized Model getFilterCallDetai(Model model1) {
         String whereClause = CallLog.Calls.NUMBER + " = " + model1.getPhoneNumber() + " AND " + CallLog.Calls.TYPE + "=" + CallLog.Calls.OUTGOING_TYPE;
         StringBuffer sb = new StringBuffer();
 

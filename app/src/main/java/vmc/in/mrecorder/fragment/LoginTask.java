@@ -7,8 +7,10 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.SystemClock;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 
 import com.android.volley.RequestQueue;
+import com.jaredrummler.android.device.DeviceName;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -19,12 +21,13 @@ import vmc.in.mrecorder.entity.OTPData;
 import vmc.in.mrecorder.myapplication.CallApplication;
 import vmc.in.mrecorder.parser.Parser;
 import vmc.in.mrecorder.parser.Requestor;
+import vmc.in.mrecorder.util.ConnectivityReceiver;
 import vmc.in.mrecorder.util.SingleTon;
 
 /**
  * Created by gousebabjan on 19/8/16.
  */
-public class LoginTask extends Fragment implements vmc.in.mrecorder.callbacks.TAG{
+public class LoginTask extends Fragment implements vmc.in.mrecorder.callbacks.TAG {
 
     private final long startTime = 60000;
     private final long interval = 1000;
@@ -33,21 +36,28 @@ public class LoginTask extends Fragment implements vmc.in.mrecorder.callbacks.TA
     private Login mTask;
     private SingleTon volleySingleton;
 
-    private String email,password,gcmkey;
+    private String email, password, gcmkey;
     private LoginData loginData;
     private OTPData otpData;
     private boolean isOTP;
     private JSONObject response;
     private Timer countDownTimer;
     private String sessionID;
+    private boolean isOnline;
 
     public interface TaskCallbacks {
         void onPreExecute();
+
         void onProgressUpdate(int percent);
+
         void onCancelled();
+
         void onTimerFinish();
+
         void onTimerUpdate(String time);
+
         void onPostExecute(OTPData otp);
+
         void onPostExecute(LoginData loginData);
 
     }
@@ -56,8 +66,8 @@ public class LoginTask extends Fragment implements vmc.in.mrecorder.callbacks.TA
     }
 
 
-    public  void cancelTimer(){
-        if(countDownTimer!=null) {
+    public void cancelTimer() {
+        if (countDownTimer != null) {
             countDownTimer.cancel();
         }
     }
@@ -107,15 +117,15 @@ public class LoginTask extends Fragment implements vmc.in.mrecorder.callbacks.TA
         @Override
         public void onFinish() {
 
-         mCallbacks.onTimerFinish();
+            mCallbacks.onTimerFinish();
         }
 
         @Override
         public void onTick(long millisUntilFinished) {
             //  text.setText("Time remain:" + millisUntilFinished);
-           // timeElapsed = startTime - millisUntilFinished;
+            // timeElapsed = startTime - millisUntilFinished;
 
-             mCallbacks.onTimerUpdate(convertMilisecToHMmSs(millisUntilFinished));
+            mCallbacks.onTimerUpdate(convertMilisecToHMmSs(millisUntilFinished));
         }
     }
 
@@ -131,38 +141,37 @@ public class LoginTask extends Fragment implements vmc.in.mrecorder.callbacks.TA
     private class Login extends AsyncTask<Void, Integer, Void> {
 
 
-
-
         @Override
         protected void onPreExecute() {
             if (mCallbacks != null) {
-          mCallbacks.onPreExecute();
+                mCallbacks.onPreExecute();
             }
         }
 
 
         @Override
         protected Void doInBackground(Void... ignore) {
+            isOnline = ConnectivityReceiver.isOnline();
+            if(isOnline) {
+                try {
+                    if (isOTP) {
+                        JSONObject jsonObject = null;
+                        jsonObject = Requestor.requestOTP(requestQueue, GET_OTP, email, password);
+                        if (jsonObject != null) {
+                            otpData = Parser.ParseOTPResponse(jsonObject);
+                        }
+                    } else {
 
-            try {
-                if(isOTP) {
-                    JSONObject jsonObject=null;
-                    jsonObject=Requestor.requestOTP(requestQueue, GET_OTP, email, password);
-                    if(jsonObject!=null){
-                                otpData = Parser.ParseOTPResponse(jsonObject);
+                        JSONObject jsonObject = null;
+                        jsonObject = Requestor.requestLogin(requestQueue, LOGIN_URL, email, password, sessionID, gcmkey, DeviceName.getDeviceName());
+                        if (jsonObject != null)
+                            loginData = Parser.ParseLoginResponse(jsonObject);
                     }
-                    //otpData = Parser.ParseOTPResponse(Requestor.requestOTP(requestQueue, GET_OTP, email, password));
-                }
-                else {
 
-                    JSONObject jsonObject=null;
-                    jsonObject= Requestor.requestLogin(requestQueue, LOGIN_URL, email, password,sessionID , gcmkey);
-                          if(jsonObject!=null)
-                    loginData = Parser.ParseLoginResponse(jsonObject);
-                }
 
-            } catch (JSONException e) {
-                e.printStackTrace();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             }
 
 
@@ -186,15 +195,14 @@ public class LoginTask extends Fragment implements vmc.in.mrecorder.callbacks.TA
         @Override
         protected void onPostExecute(Void ignore) {
             if (mCallbacks != null) {
-            if(isOTP ){
-                mCallbacks.onPostExecute(otpData);
+                if (isOTP) {
+                    mCallbacks.onPostExecute(otpData);
 
-                if(otpData!=null && otpData.getCode().equals("400"))
-                countDownTimer.start();
-              }
-             else {
-                mCallbacks.onPostExecute(loginData);
-            }
+                    if (otpData != null && otpData.getCode().equals("400"))
+                        countDownTimer.start();
+                } else {
+                    mCallbacks.onPostExecute(loginData);
+                }
             }
         }
 

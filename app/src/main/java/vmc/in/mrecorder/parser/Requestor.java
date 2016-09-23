@@ -53,7 +53,8 @@ public class Requestor implements vmc.in.mrecorder.callbacks.TAG {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-      //  Log.d("LOG",response.toString());
+        if(response!=null)
+            Log.d(TAG,response.toString());
         return response;
     }
 
@@ -87,7 +88,8 @@ public class Requestor implements vmc.in.mrecorder.callbacks.TAG {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        //  Log.d("LOG",response.toString());
+        if(response!=null)
+            Log.d(TAG,response.toString());
         return response;
     }
 
@@ -118,14 +120,15 @@ public class Requestor implements vmc.in.mrecorder.callbacks.TAG {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        //  Log.d("LOG",response.toString());
+        if(response!=null)
+            Log.d(TAG,response.toString());
         return response;
     }
 
 
-    public static JSONObject requestLogin(RequestQueue requestQueue, String url, final String email, final String password, final String deviceid, final String gcmkey) {
+    public static JSONObject requestLogin(RequestQueue requestQueue, String url, final String email, final String password, final String deviceid, final String gcmkey,final String model) {
         JSONObject response = null;
-        String resp;
+        String resp=null;
         RequestFuture<String> requestFuture = RequestFuture.newFuture();
         StringRequest request = new StringRequest(Request.Method.POST, url, requestFuture, requestFuture) {
             @Override
@@ -135,6 +138,8 @@ public class Requestor implements vmc.in.mrecorder.callbacks.TAG {
                 params.put(PASSWORD, password);
                 params.put(DEVICE_ID, deviceid);
                 params.put(GCM_KEY, gcmkey);
+                params.put(DEVICE, model);
+                Log.d("MODEL",model);
                 return params;
             }
         };
@@ -152,7 +157,8 @@ public class Requestor implements vmc.in.mrecorder.callbacks.TAG {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-      // Log.d("LOG",response.toString());
+        if(response!=null)
+            Log.d(TAG,response.toString());
         return response;
     }
 
@@ -187,7 +193,7 @@ public class Requestor implements vmc.in.mrecorder.callbacks.TAG {
             e.printStackTrace();
         }
         if(response!=null)
-            Log.d("LOG",response.toString());
+            Log.d(TAG,response.toString());
         return response;
     }
 
@@ -220,7 +226,7 @@ public class Requestor implements vmc.in.mrecorder.callbacks.TAG {
             e.printStackTrace();
         }
         if(response!=null)
-        Log.d("LOG",response.toString());
+        Log.d(TAG,response.toString());
         return response;
     }
 
@@ -247,15 +253,16 @@ public class Requestor implements vmc.in.mrecorder.callbacks.TAG {
             resp = requestFuture.get(30000, TimeUnit.MILLISECONDS);
             response = new JSONObject(resp);
         } catch (InterruptedException e) {
-            //L.m(e + "");
+           Log.d("EXCEPTION",e.getMessage().toString());
         } catch (ExecutionException e) {
-            // L.m(e + "");
+            Log.d("EXCEPTION",e.getMessage().toString());
         } catch (TimeoutException e) {
-            //L.m(e + "");
+            Log.d("EXCEPTION",e.getMessage().toString());
         } catch (JSONException e) {
-            e.printStackTrace();
+            Log.d("EXCEPTION",e.getMessage().toString());
         }
-       // Log.d("LOG",response.toString());
+        if(response!=null)
+            Log.d(TAG,response.toString());
         return response;
     }
   public static JSONObject requestGetRating(RequestQueue requestQueue, String url,final String authKey, final String callid) {
@@ -286,7 +293,8 @@ public class Requestor implements vmc.in.mrecorder.callbacks.TAG {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-       // Log.d("LOG",response.toString());
+      if(response!=null)
+          Log.d(TAG,response.toString());
         return response;
     }
 
@@ -318,7 +326,8 @@ public class Requestor implements vmc.in.mrecorder.callbacks.TAG {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
+        if(response!=null)
+            Log.d(TAG,response.toString());
         return response;
     }
 

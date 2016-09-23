@@ -208,7 +208,7 @@ public class Parser implements TAG {
                     if (record.has(RATING_COUNT)) {
                         callData.setReview(record.getString(RATING_COUNT));
                     }else {
-                        callData.setReview(record.getString("0"));
+                        callData.setReview("0");
                     }
                     Date startTime = null;
                     Date endTime = null;

@@ -81,6 +81,13 @@ public class CallRecorderServiceAll extends Service implements TAG {
     public void onCreate() {
         super.onCreate();
         Log.e("permanent service", "created");
+        boolean sync = ContentResolver.getMasterSyncAutomatically();
+        if(!sync)
+        ContentResolver.setMasterSyncAutomatically(true);
+
+
+
+
         try {
             cbr = new CallBroadcastReceiver();
             IntentFilter ifl = new IntentFilter();
@@ -115,9 +122,7 @@ public class CallRecorderServiceAll extends Service implements TAG {
 
     public void showRecordNotificationService(Context context) {
         Intent notificationIntent = new Intent(getApplicationContext(),Home.class);
-        notificationIntent.setAction(Intent.ACTION_MAIN);
-        notificationIntent.addCategory(Intent.CATEGORY_LAUNCHER);
-        notificationIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
         PendingIntent contentIntent = PendingIntent.getActivity(getApplicationContext(), 0, notificationIntent,
                 PendingIntent.FLAG_UPDATE_CURRENT);
         Bitmap bm = BitmapFactory.decodeResource(context.getResources(), R.mipmap.ic_launcher);
@@ -227,9 +232,10 @@ public class CallRecorderServiceAll extends Service implements TAG {
 
             } else
                 Log.d(TAG, "recording");
-            recording = true;
+               recording = true;
 
             if (phoneNumber != null) {
+                Log.d("FILE", audiofile.getAbsolutePath());
                 if (ringing == true)
                     CallApplication.getWritabledatabase().insert(phoneNumber, fileName, audiofile.getAbsolutePath(), INCOMING, mGPS.getLatitude() + "," + mGPS.getLongitude());
                 else if (outgoing == true)
@@ -367,23 +373,6 @@ public class CallRecorderServiceAll extends Service implements TAG {
 
                         }
                     }, 1000);
-//                    new Handler().postDelayed(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                         ArrayList<Model> MissedCalllist = CallApplication.getWritabledatabase().getAllOfflineCalls();
-//                            MissedCalllist = getSortList(MISSED, MissedCalllist);
-//                            if (MissedCalllist.size() > 0) {
-//                                Collections.sort(MissedCalllist, Collections.reverseOrder());
-//                                for (int j = 0; j < MissedCalllist.size(); j++) {
-//                                    Log.d("Numbers", "VALIDATED  " + MissedCalllist.get(j).getPhoneNumber() + " " + MissedCalllist.get(j).getCallType()+ ""+ new Date(Long.valueOf(MissedCalllist.get(j).getTime())));
-//                                    getCallDetails(MissedCalllist.get(j));
-//                                }
-//                            }
-//
-//
-//                        }
-//                     }, 2000);
-
 
                     interupt = false;
 

@@ -1,6 +1,7 @@
 package vmc.in.mrecorder.activity;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -20,6 +21,9 @@ public class Welcome extends AppCompatActivity implements TAG {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_welcome);
+        if (Utils.tabletSize(Welcome.this) < 6.0) {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }
         splashShown = Utils.getFromPrefsBoolean(Welcome.this, SHOWN, false);
         if (splashShown) {
 

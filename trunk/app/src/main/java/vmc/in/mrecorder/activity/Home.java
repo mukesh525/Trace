@@ -1,11 +1,8 @@
 package vmc.in.mrecorder.activity;
 
 
-import android.Manifest;
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -13,9 +10,7 @@ import android.content.Intent;
 import android.content.IntentSender;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
-import android.content.pm.PackageManager;
 import android.graphics.Color;
-import android.location.LocationManager;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -31,7 +26,6 @@ import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -43,33 +37,29 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.Gravity;
-import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
+
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+
+import hotchemi.android.rate.AppRate;
+import hotchemi.android.rate.OnClickButtonListener;
 import vmc.in.mrecorder.R;
 import vmc.in.mrecorder.callbacks.Constants;
 import vmc.in.mrecorder.callbacks.TAG;
 import vmc.in.mrecorder.entity.CallData;
-import vmc.in.mrecorder.entity.Model;
 import vmc.in.mrecorder.fragment.AllCalls;
 import vmc.in.mrecorder.fragment.DownloadFile;
-import vmc.in.mrecorder.fragment.InboundCalls;
-import vmc.in.mrecorder.fragment.MissedCalls;
-import vmc.in.mrecorder.fragment.OutboundCalls;
-import vmc.in.mrecorder.fragment.ReferDialogFragment;
 import vmc.in.mrecorder.fragment.ReferDialogFragment;
 import vmc.in.mrecorder.myapplication.CallApplication;
 import vmc.in.mrecorder.parser.Requestor;
@@ -92,10 +82,12 @@ import com.google.android.gms.location.LocationSettingsRequest;
 import com.google.android.gms.location.LocationSettingsResult;
 import com.google.android.gms.location.LocationSettingsStatusCodes;
 
+import com.jaredrummler.android.device.DeviceName;
+import com.rampo.updatechecker.UpdateChecker;
+
 import org.json.JSONObject;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -143,15 +135,22 @@ public class Home extends AppCompatActivity
     private ReferDialogFragment ratingDialogFragment;
     private RequestQueue requestQueue;
     private SingleTon volleySingleton;
+    private String deviceName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         CustomTheme.onActivityCreateSetTheme(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        new UpdateChecker(this).start();
+        setUpReview();
         if (savedInstanceState != null) {
             fileShare = savedInstanceState.getBoolean("SHARE");
+
+        } else {
+            deleteFiles();
         }
+
         if (Utils.tabletSize(Home.this) < 6.0) {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
@@ -237,7 +236,7 @@ public class Home extends AppCompatActivity
                 fabMenu.collapse();
             }
         });
-
+        downloadFragment = (DownloadFile) getSupportFragmentManager().findFragmentByTag(TAG_TASK_FRAGMENT);
         showprefrenceValues();
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -286,7 +285,7 @@ public class Home extends AppCompatActivity
 
     public void onShareFile(final String fileName) {
         if (ConnectivityReceiver.isConnected()) {
-            downloadFragment = (DownloadFile) getSupportFragmentManager().findFragmentByTag(TAG_TASK_FRAGMENT);
+            // downloadFragment = (DownloadFile) getSupportFragmentManager().findFragmentByTag(TAG_TASK_FRAGMENT);
             downloadFragment = new DownloadFile();
             Bundle bundle = new Bundle();
             bundle.putString("FILE", fileName);
@@ -566,16 +565,20 @@ public class Home extends AppCompatActivity
             Fragment myFragment = null;
             switch (position) {
                 case 0:
-                    myFragment = new AllCalls();
+                    myFragment = AllCalls.newInstance(TYPE_ALL);
+                    // myFragment = new AllCalls();
                     break;
                 case 1:
-                    myFragment = new InboundCalls();
+                    //myFragment = new InboundCalls();
+                    myFragment = AllCalls.newInstance(TYPE_INCOMING);
                     break;
                 case 2:
-                    myFragment = new OutboundCalls();
+                    //  myFragment = new OutboundCalls();
+                    myFragment = AllCalls.newInstance(TYPE_OUTGOING);
                     break;
                 case 3:
-                    myFragment = new MissedCalls();
+                    // myFragment = new MissedCalls();
+                    myFragment = AllCalls.newInstance(TYPE_MISSED);
                     break;
             }
             return myFragment;
@@ -601,22 +604,22 @@ public class Home extends AppCompatActivity
     @Override
     public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
         super.onSaveInstanceState(outState, outPersistentState);
-        outState.putBoolean("SHARED", fileShare);
+        outState.putBoolean("SHARE", fileShare);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         showprefrenceValues();
-        if (mProgressDialog != null && mProgressDialog.isShowing()) {
-            mProgressDialog.dismiss();
-
-        }
-//        if(!fileShare)
-//            deleteFiles();
-        if (downloadFragment != null) {
-            downloadFragment.onCancelTask();
-        }
+//        if (mProgressDialog != null && mProgressDialog.isShowing()) {
+//            mProgressDialog.dismiss();
+//
+//        }
+////        if(!fileShare)
+////            deleteFiles();
+//        if (downloadFragment != null) {
+//            downloadFragment.onCancelTask();
+//        }
 
 
         CallApplication.getInstance().setConnectivityListener(this);
@@ -632,19 +635,19 @@ public class Home extends AppCompatActivity
 
     }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        // deleteFiles();
-        if (mProgressDialog != null && mProgressDialog.isShowing()) {
-            mProgressDialog.dismiss();
-
-        }
-        if (downloadFragment != null) {
-            downloadFragment.onCancelTask();
-        }
-
-    }
+//    @Override
+//    protected void onPause() {
+//        super.onPause();
+//        // deleteFiles();
+//        if (mProgressDialog != null && mProgressDialog.isShowing()) {
+//            mProgressDialog.dismiss();
+//
+//        }
+//        if (downloadFragment != null) {
+//            downloadFragment.onCancelTask();
+//        }
+//
+//    }
 
     public void showDowanlodAlert() {
         alertDialog = new AlertDialog.Builder(Home.this).create();
@@ -658,6 +661,7 @@ public class Home extends AppCompatActivity
                         if (downloadFragment != null) {
                             downloadFragment.onCancelTask();
                         }
+                        deleteFiles();
                         mProgressDialog = null;
 
                     }
@@ -900,4 +904,27 @@ public class Home extends AppCompatActivity
             startActivity(intent);
         }
     }
+
+
+    public void setUpReview() {
+
+        AppRate.with(this)
+               // .setInstallDays(0) // default 10, 0 means install day.
+              //  .setLaunchTimes(2) // default 10
+                .setRemindInterval(1) // default 1
+                .setDebug(false) // default false
+                .setOnClickButtonListener(new OnClickButtonListener() { // callback listener.
+                    @Override
+                    public void onClickButton(int which) {
+                        Log.d(Home.class.getName(), Integer.toString(which));
+                    }
+                })
+                .monitor();
+
+        // Show a dialog if meets conditions
+        AppRate.showRateDialogIfMeetsConditions(this);
+
+    }
+
+
 }

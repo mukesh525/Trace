@@ -35,6 +35,9 @@ public class SyncUtils {
         if (accountManager.addAccountExplicitly(account, null, null)) {
             ContentResolver.setIsSyncable(account, CONTENT_AUTHORITY, 1);
             ContentResolver.setSyncAutomatically(account, CONTENT_AUTHORITY, true);
+            if (!ContentResolver.getMasterSyncAutomatically())
+                ContentResolver.setMasterSyncAutomatically(true);
+
             ContentResolver.addPeriodicSync(
                     account, CONTENT_AUTHORITY, new Bundle(), SYNC_FREQUENCY);
             newAccount = true;

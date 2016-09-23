@@ -103,26 +103,21 @@ public class Calls_Adapter extends RecyclerView.Adapter<Calls_Adapter.CallViewHo
             } else {
                 if (ci.getSeen() != null && ci.getSeen().equals("1")) {
                     //if api 17  drwle with red image
-                    if(Build.VERSION.SDK_INT<18) {
-                      holder.img_play.setImageDrawable(ContextCompat.getDrawable(context,R.drawable.ic_play_seen17));
-                    }else
-                    holder.img_play.getBackground().setColorFilter(ContextCompat.getColor(context, R.color.red), PorterDuff.Mode.SRC_ATOP);
+                    if (Build.VERSION.SDK_INT < 18) {
+                        holder.img_play.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_play_seen));
+                    } else
+                        holder.img_play.getBackground().setColorFilter(ContextCompat.getColor(context, R.color.red), PorterDuff.Mode.SRC_ATOP);
 
                 } else {
-                    //if api 17 normaldrwle with red image
-//                    if(Build.VERSION.SDK_INT<18) {
-//                        holder.img_play.setImageDrawable(ContextCompat.getDrawable(context,R.drawable.ic_play));
-//                    }else
                     holder.img_play.getBackground().setColorFilter(fetchAccentColor(), PorterDuff.Mode.SRC_ATOP);
                     holder.review.setVisibility(View.GONE);
                 }
-                if(!ci.getReview().equals("0")) {
+                if (!ci.getReview().equals("0")) {
                     holder.review.setVisibility(View.VISIBLE);
-                }
-                else {
+                } else {
                     holder.review.setVisibility(View.GONE);
                 }
-                holder.review.setText("Reviews : "+ci.getReview());
+                holder.review.setText("Reviews : " + ci.getReview());
                 holder.img_play.setVisibility(View.VISIBLE);
             }
             try {
@@ -141,7 +136,7 @@ public class Calls_Adapter extends RecyclerView.Adapter<Calls_Adapter.CallViewHo
 
 
         } catch (Exception e) {
-            Log.d("TAG", e.getMessage());
+           // Log.d("TAG", e.getMessage());
         }
         ;
         previousPosition = position;
@@ -199,11 +194,15 @@ public class Calls_Adapter extends RecyclerView.Adapter<Calls_Adapter.CallViewHo
                             }
                             return true;
                         case R.id.location:
-                            Gson gson = new Gson();
-                            String TrackInfo = gson.toJson(callDatas.get(position));
-                            Intent intent = new Intent(mContext, LocationActivity.class);
-                            intent.putExtra("DATA", TrackInfo);
-                            mContext.startActivity(intent);
+                            if (ConnectivityReceiver.isConnected()) {
+                                Gson gson = new Gson();
+                                String TrackInfo = gson.toJson(callDatas.get(position));
+                                Intent intent = new Intent(mContext, LocationActivity.class);
+                                intent.putExtra("DATA", TrackInfo);
+                                mContext.startActivity(intent);
+                            } else {
+                                Toast.makeText(mContext, "No Internet Connection.", Toast.LENGTH_SHORT).show();
+                            }
                             return true;
 
                         case R.id.share:
@@ -245,25 +244,30 @@ public class Calls_Adapter extends RecyclerView.Adapter<Calls_Adapter.CallViewHo
                 return;
             }
 
+            try {
+                if (!Utils.isEmpty(callDatas.get(position).getFilename()) && callDatas.get(position).getLocation().length() > 7) {
+                    popupMenu.inflate(R.menu.popupmenu_cmsl);
+                } else if (!Utils.isEmpty(callDatas.get(position).getFilename()) && callDatas.get(position).getLocation().length() <= 7) {
+                    popupMenu.inflate(R.menu.popupmenu_cms);
+                } else if (Utils.isEmpty(callDatas.get(position).getFilename()) && callDatas.get(position).getLocation().length() > 7) {
+                    popupMenu.inflate(R.menu.popupmenu_cml);
+                } else {
+                    popupMenu.inflate(R.menu.popupmenu);
+                }
 
-            if (!Utils.isEmpty(callDatas.get(position).getFilename()) && callDatas.get(position).getLocation().length() > 7) {
-                popupMenu.inflate(R.menu.popupmenu_cmsl);
-            } else if (!Utils.isEmpty(callDatas.get(position).getFilename()) && callDatas.get(position).getLocation().length() <= 7) {
-                popupMenu.inflate(R.menu.popupmenu_cms);
-            } else if (Utils.isEmpty(callDatas.get(position).getFilename()) && callDatas.get(position).getLocation().length() > 7) {
-                popupMenu.inflate(R.menu.popupmenu_cml);
-            } else {
-                popupMenu.inflate(R.menu.popupmenu);
+                popupMenu.show();
+            } catch (Exception e) {
+                if (e.getMessage().toString() != null) {
+                    Log.d("ERROR", e.getMessage().toString());
+                }
             }
-
-            popupMenu.show();
         }
     }
 
     public static class CallViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private final ImageView overflow;
         protected TextView callFromTextView, callerNameTextView,
-                groupNameTextView, dateTextView, timeTextView, statusTextView, callFrom,review;
+                groupNameTextView, dateTextView, timeTextView, statusTextView, callFrom, review;
         protected ImageButton ibcall, ibmessage;
         private ArrayList<CallData> CallDataArrayList;
         private CallClickedListner callClickedListner;

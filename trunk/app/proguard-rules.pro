@@ -15,7 +15,9 @@
 }
 
 
-
+-keep public class org.jsoup.** {
+    public *;
+}
 -keep class butterknife.** { *; }
 -dontwarn butterknife.internal.**
 -keep class **$$ViewInjector { *; }

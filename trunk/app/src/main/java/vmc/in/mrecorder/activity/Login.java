@@ -1,7 +1,7 @@
 package vmc.in.mrecorder.activity;
 
 
-import android.Manifest;
+
 import android.app.AlertDialog;
 import android.app.NotificationManager;
 import android.app.ProgressDialog;
@@ -10,7 +10,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
-import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
@@ -19,7 +18,6 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -38,10 +36,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.android.volley.RequestQueue;
-import org.json.JSONObject;
 import java.util.ArrayList;
-import java.util.List;
 import vmc.in.mrecorder.R;
 import vmc.in.mrecorder.callbacks.TAG;
 import vmc.in.mrecorder.entity.LoginData;
@@ -50,7 +45,6 @@ import vmc.in.mrecorder.fragment.LoginTask;
 import vmc.in.mrecorder.gcm.GCMClientManager;
 import vmc.in.mrecorder.myapplication.CallApplication;
 import vmc.in.mrecorder.util.ConnectivityReceiver;
-import vmc.in.mrecorder.util.SingleTon;
 import vmc.in.mrecorder.util.Utils;
 
 public class Login extends AppCompatActivity implements ConnectivityReceiver.ConnectivityReceiverListener,
@@ -208,17 +202,20 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
             }
         });
 
+        logoAnimation();
 
+    }
+    public void logoAnimation(){
         TranslateAnimation translation;
         translation = new TranslateAnimation(0f, 0F, 100f, 0f);
         translation.setStartOffset(500);
         translation.setDuration(2000);
         translation.setFillAfter(true);
         translation.setInterpolator(new BounceInterpolator());
-
         findViewById(R.id.logo).startAnimation(translation);
-    }
 
+
+    }
     @Override
     public void onDestroy() {
         super.onDestroy();
@@ -459,24 +456,26 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
     }
 
     public void updateList(final String smsMessage) {
-        btn_login.setEnabled(true);
-        if (mTaskFragment != null) {
-            mTaskFragment.cancelTimer();
-        }
-        OTP_Sms = smsMessage.substring(9, 15);
-        //  String OTP1=smsMessage.split(": ")[0];
-        Log.d("OTP test", OTP_resp);
-        Log.d("SMS", OTP_Sms + " " + OTP);
-        tv_otp.setText(OTP_Sms);
-        if (tv_otp.getVisibility() == View.GONE) {
-            tv_otp.setVisibility(View.VISIBLE);
-        }
-        // Log.d("OTP", tv_otp.getText().toString());
-        btn_login.setText("Login");
-        if (progressDialog != null && progressDialog.isShowing()) {
-            progressDialog.dismiss();
-        }
+         if(smsMessage.substring(9, 15).matches("[0-9]+")) {
 
+            btn_login.setEnabled(true);
+            if (mTaskFragment != null) {
+                mTaskFragment.cancelTimer();
+            }
+            OTP_Sms = smsMessage.substring(9, 15);
+            //  String OTP1=smsMessage.split(": ")[0];
+            Log.d("OTP test", OTP_resp);
+            Log.d("SMS", OTP_Sms + " " + OTP);
+            tv_otp.setText(OTP_Sms);
+            if (tv_otp.getVisibility() == View.GONE) {
+                tv_otp.setVisibility(View.VISIBLE);
+            }
+            // Log.d("OTP", tv_otp.getText().toString());
+            btn_login.setText("Login");
+            if (progressDialog != null && progressDialog.isShowing()) {
+                progressDialog.dismiss();
+            }
+        }
 
     }
 

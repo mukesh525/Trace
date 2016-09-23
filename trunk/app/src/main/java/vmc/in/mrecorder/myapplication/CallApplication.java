@@ -4,6 +4,7 @@ package vmc.in.mrecorder.myapplication;
 import android.app.AlarmManager;
 import android.app.Application;
 import android.app.PendingIntent;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -41,6 +42,9 @@ public class CallApplication extends Application implements TAG, SharedPreferenc
         super.onCreate();
         mApplication = this;
         setAlarm();
+        boolean sync = ContentResolver.getMasterSyncAutomatically();
+        if(!sync)
+            ContentResolver.setMasterSyncAutomatically(true);
         SyncUtils.CreateSyncAccount(getBaseContext());
         startRecording();
 

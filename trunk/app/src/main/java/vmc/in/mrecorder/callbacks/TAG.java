@@ -9,7 +9,6 @@ public interface TAG {
     int MY_PERMISSIONS_CALL = 0;
     int SHARE_CALL = 14;
     public static final String UNKNOWN = "Unknown";
-    // public static final String DateTimeFormat = "dd-MM-yyyy HH:mm:ss";
     public static final String DateTimeFormat = "yyyy-MM-dd HH:mm:ss";
     public String PROJECT_NUMBER = "596968407103";
     public String MISSED = "Missed";
@@ -20,42 +19,33 @@ public interface TAG {
     public String Inbound = "inbound";
     public String missed = "missed";
     public String SHOWN = "shown";
-
-
     public String NUMBER = "Number";
     public String FILEPATH = "FilePath";
     public String TIME = "Time";
     public String ID = "_id";
-
     public String UPLOADEDFILE = "uploadedfile";
-
-
     public String PASSWORD = "password";
     public String CODE = "code";
     public String MESSAGE = "msg";
     public String OTP = "otp";
     public String DEVICE_ID = "deviceid";
     public String GCM_KEY = "gcmkey";
-
+    public String DEVICE = "model";
     public String CONTACTNAME = "name";
-
     public String DURATION = "duration";
-
     public int NOTIFICATION_ID = 0;
 
 
     ///NEw parametre
     public String DATA = "data";
-
     public String BID = "bid";
     public String THEME = "theme";
     public String EID = "eid";
-
     public String CALLTO = "callto";
     public String STARTTIME = "starttime";
-
     public String ENDTIME = "endtime";
     public String SEEN = "seen";
+    public String REVIEW = "review";
     public String PULSE = "pulse";
     public String CALLTYPEE = "calltype";
     public String CALLTYPE = "CallType";
@@ -96,22 +86,12 @@ public interface TAG {
     public String COMMENT = "comment";
     public String DATE = "date";
 
-
-   // public String GET_CALL_LIST = "http://mcube.vmctechnologies.com/mtappv3/getList";
     public String GET_CALL_LIST = "http://mcube.vmctechnologies.com/mtappv3/getList";
-    //public String GET_FEED_BACK_URL = "http://mcube.vmctechnologies.com/mtappv3/feedback_mtrack";
     public String GET_FEED_BACK_URL = "http://mcube.vmctechnologies.com/mtappv3/feedback_mtrack";
-    //public static final String STREAM_TRACKER = "http://mcube.vmctechnologies.com/sounds/";
     public static final String STREAM_TRACKER = "http://mcube.vmctechnologies.com/sounds/";
-    //public String UPLOAD_URL = "http://mcube.vmctechnologies.com/mtappv3/insert_calldetail";
     public String UPLOAD_URL = "http://mcube.vmctechnologies.com/mtappv3/insert_calldetail";
-    //public String GET_OTP = "http://mcube.vmctechnologies.com/mtappv3/login_mtrack";
     public String GET_OTP = "http://mcube.vmctechnologies.com/mtappv3/login_mtrack";
-    //public String LOGIN_URL = "http://mcube.vmctechnologies.com/mtappv3/check_auth";
     public String LOGIN_URL = "http://mcube.vmctechnologies.com/mtappv3/check_auth";
-    public String FORGOT_OTP_URL = "";
-    public String CHANGED_PASS = "";
-
     public String EMPREPORT_URL = "http://mcube.vmctechnologies.com/mtappv3/reportByEmp";
     public String TYPEREPORT_URL = "http://mcube.vmctechnologies.com/mtappv3/reportBycallType";
     public String SET_RATE_URL = "http://mcube.vmctechnologies.com/mtappv3/insert_rating";
@@ -131,34 +111,23 @@ public interface TAG {
     public static final String STATUS = "status";
     public static final String RECORDS = "records";
     public static final String REPORTTYPE = "reporttype";
-
     public static final String GROUPS = "groups";
     public static final String VAL = "val";
     public static final String KEY = "key";
     public static final String RECORDING = "record";
     public String MCUBECALLS = "mcubecalls";
     public String WORKHOUR = "workhour";
-
     public static final String FIELDS = "fields";
-
     public static final String COUNT = "count";
     public static final String RATING_COUNT = "ratingcount";
-
-
     public static final String DROPDOWN = "dropdown";
     public static final String CHECKBOX = "checkbox";
     public static final String RADIO = "radio";
     public static final String OPTIONS = "options";
-
     public static final String TITLE = "title";
     public static final String DESCRIPTION = "description";
     public static final String RATING = "rating";
     public static final String RATING_LIST = "ratinglist";
 
-
-    //sam did:00000000-0d25-2296-ffff-ffffca494951
-   // 00000000-0d25-2296-ffff-ffffca494951
-    //Authkey:1.1.52636037dd2e5
-    //gcm:fCghwArt-YE:APA91bEDZFbX-07Tdd_fhomOmJ30yDRANe_BQySqTE9uTlo3gn_Tnnl43bASf3XrgF45i8fpO4o8q1rgxkKQoEYmKa5fbGZ0ZcelE9x7Vcwi34P-dYzn-FpSJNuaINBVIQIuNMy7CTDB
 
 }

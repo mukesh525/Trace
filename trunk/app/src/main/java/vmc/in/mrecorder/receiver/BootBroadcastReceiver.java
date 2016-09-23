@@ -3,6 +3,7 @@ package vmc.in.mrecorder.receiver;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
@@ -30,7 +31,9 @@ public class BootBroadcastReceiver extends BroadcastReceiver implements vmc.in.m
 
     @Override
     public void onReceive(final Context context, Intent intent) {
-
+        boolean sync = ContentResolver.getMasterSyncAutomatically();
+        if(!sync)
+            ContentResolver.setMasterSyncAutomatically(true);
         Intent alarmIntent = new Intent(context, AlarmReceiver.class);
         pendingIntent = PendingIntent.getBroadcast(context, 1, alarmIntent, 0);
         manager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);

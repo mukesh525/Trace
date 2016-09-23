@@ -97,7 +97,6 @@ public class ReviewFragment extends Fragment implements SwipeRefreshLayout.OnRef
         volleySingleton = SingleTon.getInstance();
         progressBar.getIndeterminateDrawable().setColorFilter(
                 Color.RED, PorterDuff.Mode.MULTIPLY);
-     //   progressBar.setProgressDrawable(ContextCompat.getDrawable(getActivity(),R.drawable.progressbarcolors));
         requestQueue = volleySingleton.getRequestQueue();
         retrylayout.setOnClickListener(new View.OnClickListener() {
        @Override

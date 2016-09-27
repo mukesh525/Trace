@@ -52,8 +52,9 @@ public class Settings extends AppCompatActivity implements TAG {
     protected void onCreate(Bundle savedInstanceState) {
         CustomTheme.onActivityCreateSetTheme(this);
         super.onCreate(savedInstanceState);
-        if(Utils.tabletSize(Settings.this)< 6.0){
-            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);}
+        if (Utils.tabletSize(Settings.this) < 6.0) {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }
         setContentView(R.layout.activity_settings);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -80,6 +81,7 @@ public class Settings extends AppCompatActivity implements TAG {
             final SwitchPreference recordingPreference = (SwitchPreference) findPreference("prefRecording");
             final SwitchPreference callPreference = (SwitchPreference) findPreference("prefOfficeTimeRecording");
             final SwitchPreference mcubecallPreference = (SwitchPreference) findPreference("prefMcubeRecording");
+            final SwitchPreference debug = (SwitchPreference) findPreference("prefDebug");
             storePathPrefs = findPreference("store_path");
             storePathPrefs.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
                 @Override
@@ -96,6 +98,8 @@ public class Settings extends AppCompatActivity implements TAG {
             boolean notifyMode = sharedPrefs.getBoolean("prefOfficeTimeRecording", false);
             boolean recording = sharedPrefs.getBoolean("prefRecording", true);
             boolean mcuberecording = sharedPrefs.getBoolean("prefMcubeRecording", false);
+            boolean debugEnable = sharedPrefs.getBoolean("prefDebug", false);
+
 
             if (recording) {
                 recordingPreference.setChecked(true);
@@ -115,6 +119,13 @@ public class Settings extends AppCompatActivity implements TAG {
             } else {
 
                 mcubecallPreference.setChecked(false);
+            }
+            if (debugEnable) {
+                debug.setChecked(true);
+
+            } else {
+
+                debug.setChecked(false);
             }
 
 

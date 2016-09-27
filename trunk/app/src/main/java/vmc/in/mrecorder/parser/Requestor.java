@@ -138,7 +138,7 @@ public class Requestor implements vmc.in.mrecorder.callbacks.TAG {
                 params.put(PASSWORD, password);
                 params.put(DEVICE_ID, deviceid);
                 params.put(GCM_KEY, gcmkey);
-                params.put(DEVICE, model);
+             //   params.put(DEVICE, model);
                 Log.d("MODEL",model);
                 return params;
             }

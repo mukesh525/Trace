@@ -197,7 +197,6 @@ public class AllCalls extends Fragment implements SwipeRefreshLayout.OnRefreshLi
     @Override
     public void onRefresh() {
         offset = 0;
-        callDataArrayList.clear();
         if (swipeRefreshLayout.isRefreshing()) {
             swipeRefreshLayout.setRefreshing(false);
 
@@ -238,7 +237,7 @@ public class AllCalls extends Fragment implements SwipeRefreshLayout.OnRefreshLi
                 pdloadmore.setVisibility(View.GONE);
             }
             loading = true;
-
+            callDataArrayList.clear();
             new DownloadCalls(this, getActivity(), CallType, offset + "", false).execute();
         } else {
 
@@ -343,7 +342,9 @@ public class AllCalls extends Fragment implements SwipeRefreshLayout.OnRefreshLi
 
     @Override
     public void onCallReportDownLoadFinished(ArrayList<CallData> data, final boolean isMore) {
-
+        if (pdloadmore.getVisibility() == View.VISIBLE) {
+            pdloadmore.setVisibility(View.GONE);
+        }
 
         if (recyclerView.getVisibility() == View.GONE) {
             recyclerView.setVisibility(View.VISIBLE);
@@ -362,13 +363,16 @@ public class AllCalls extends Fragment implements SwipeRefreshLayout.OnRefreshLi
 
         if (data != null && data.size() > 0 && getActivity() != null) {
             callDataArrayList.addAll(data);
-            adapter = new Calls_Adapter(getActivity(), callDataArrayList, mroot, AllCalls.this);
-            adapter.setClickedListner(AllCalls.this);
             if (!isMore) {
+                adapter = new Calls_Adapter(getActivity(), callDataArrayList, mroot, AllCalls.this);
+                adapter.setClickedListner(AllCalls.this);
                 FirstLoaded = true;
+                recyclerView.setAdapter(adapter);
+            }else{
+                adapter.notifyDataSetChanged();
             }
-            adapter.notifyDataSetChanged();
-            recyclerView.setAdapter(adapter);
+
+
 
         } else {
             if (!isMore) {

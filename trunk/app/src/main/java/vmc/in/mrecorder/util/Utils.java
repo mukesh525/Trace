@@ -237,7 +237,7 @@ public class Utils implements TAG {
                 Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
 
-        Log.d("Logout", "Logout on Utils");
+        Log.d("Logout", "User Logout ");
 
 
     }

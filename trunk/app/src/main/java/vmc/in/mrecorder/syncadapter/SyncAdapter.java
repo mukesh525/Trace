@@ -29,11 +29,14 @@ import android.database.Cursor;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.preference.PreferenceManager;
 import android.provider.CallLog;
 import android.provider.ContactsContract;
 import android.support.v4.app.ActivityCompat;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 
@@ -71,7 +74,8 @@ import vmc.in.mrecorder.util.Utils;
 
 public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
     private final ContentResolver mContentResolver;
-    private  String sessionID;
+    private Context mContext;
+    private String sessionID;
 
     private ArrayList<Model> callList;
     private JSONObject response;
@@ -82,11 +86,13 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
     public String TAG1 = "syncadapter";
     private RequestQueue requestQueue;
     private SingleTon volleySingleton;
+    private boolean debugEnable;
 
     public SyncAdapter(Context context, boolean autoInitialize) {
         super(context, autoInitialize);
         mContentResolver = context.getContentResolver();
-        sessionID=Utils.getFromPrefs(context,SESSION_ID,UNKNOWN);
+        mContext = context;
+        sessionID = Utils.getFromPrefs(context, SESSION_ID, UNKNOWN);
         Log.d("SESSION_ID", "Syncadapeter Constructor " + sessionID);
 
     }
@@ -102,16 +108,25 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
                               ContentProviderClient provider, SyncResult syncResult) {
         SharedPreferences sharedPrefs = PreferenceManager
                 .getDefaultSharedPreferences(getContext());
-        sessionID=Utils.getFromPrefs(getContext(),SESSION_ID,UNKNOWN);
+        sessionID = Utils.getFromPrefs(getContext(), SESSION_ID, UNKNOWN);
+        debugEnable = sharedPrefs.getBoolean("prefDebug", false);
         Log.d("SESSION_ID", "Syncadapeter onPerformSync " + sessionID);
+
+
+        if (debugEnable) {
+            Message msg = handler.obtainMessage();
+            msg.obj="onPerformSync";
+            handler.sendMessage(msg);
+        }
+
 
         int wifionly = Integer.parseInt(sharedPrefs.getString("prefSyncNetwork", "0"));
 
         Log.d(TAG1, "Beginning network synchronization");
-         if (Utils.isLogin(getContext())) {
+        if (Utils.isLogin(getContext())) {
             CallApplication.getInstance().startRecording();
-        }else {
-           CallApplication.getInstance().stopRecording();
+        } else {
+            CallApplication.getInstance().stopRecording();
         }
 
         try {
@@ -180,55 +195,55 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
 
         authkey = Utils.getFromPrefs(getContext(), AUTHKEY, "N/A");
         try {
-            response = Requestor.requestGetCalls(requestQueue, GET_CALL_LIST, authkey, "10", offset + "",sessionID, TYPE_ALL);
+            response = Requestor.requestGetCalls(requestQueue, GET_CALL_LIST, authkey, "10", offset + "", sessionID, TYPE_ALL);
             Log.d("GetCalls", "" + response);
-           if(response!=null) {
-               if (response.has(CODE)) {
-                   code = response.getString(CODE);
-                   if (response.has(RECORDING)) {
-                       recording = response.getString(RECORDING);
-                       if (recording.equals("1")) {
-                           ed.putBoolean("prefRecording", true);
-                       } else {
-                           ed.putBoolean("prefRecording", false);
-                       }
+            if (response != null) {
+                if (response.has(CODE)) {
+                    code = response.getString(CODE);
+                    if (response.has(RECORDING)) {
+                        recording = response.getString(RECORDING);
+                        if (recording.equals("1")) {
+                            ed.putBoolean("prefRecording", true);
+                        } else {
+                            ed.putBoolean("prefRecording", false);
+                        }
 
 
-                   }
-                   if (response.has(MCUBECALLS)) {
-                       mcubeRecording = response.getString(MCUBECALLS);
-                       if (mcubeRecording.equals("1")) {
-                           ed.putBoolean("prefMcubeRecording", true);
-                       } else {
-                           ed.putBoolean("prefMcubeRecording", false);
-                       }
+                    }
+                    if (response.has(MCUBECALLS)) {
+                        mcubeRecording = response.getString(MCUBECALLS);
+                        if (mcubeRecording.equals("1")) {
+                            ed.putBoolean("prefMcubeRecording", true);
+                        } else {
+                            ed.putBoolean("prefMcubeRecording", false);
+                        }
 
-                   }
-                   if (response.has(WORKHOUR)) {
-                       workhour = response.getString(WORKHOUR);
-                       if (workhour.equals("1")) {
-                           ed.putBoolean("prefOfficeTimeRecording", true);
-                       } else {
-                           ed.putBoolean("prefOfficeTimeRecording", false);
-                       }
-                   }
-                   ed.commit();
-                   if (!code.equals("400")) {
-                       if (response.has(MESSAGE))
-                           Utils.isLogoutBackground(getContext(), response.getString(MESSAGE));
-                   }
-                   if (code.equals("203")) {
-                       // Utils.isLogoutBackground(getContext());
-                       Log.d("NORECORD", "Record is not in Mcube contacts.");
-                   }
+                    }
+                    if (response.has(WORKHOUR)) {
+                        workhour = response.getString(WORKHOUR);
+                        if (workhour.equals("1")) {
+                            ed.putBoolean("prefOfficeTimeRecording", true);
+                        } else {
+                            ed.putBoolean("prefOfficeTimeRecording", false);
+                        }
+                    }
+                    ed.commit();
+                    if (!code.equals("400")) {
+                        if (response.has(MESSAGE))
+                            Utils.isLogoutBackground(getContext(), response.getString(MESSAGE));
+                    }
+                    if (code.equals("203")) {
+                        // Utils.isLogoutBackground(getContext());
+                        Log.d("NORECORD", "Record is not in Mcube contacts.");
+                    }
 
-               }
+                }
 
-            callDataArrayList = new ArrayList<CallData>();
-            callDataArrayList = Parser.ParseData(response);
-            Log.d(TAG1, "ALL_CALLS " + callDataArrayList.size());
-            CallApplication.getWritabledatabase().insertCallRecords(MDatabase.ALL, callDataArrayList, true);
-           }
+                callDataArrayList = new ArrayList<CallData>();
+                callDataArrayList = Parser.ParseData(response);
+                Log.d(TAG1, "ALL_CALLS " + callDataArrayList.size());
+                CallApplication.getWritabledatabase().insertCallRecords(MDatabase.ALL, callDataArrayList, true);
+            }
         } catch (Exception e) {
             Log.d(TAG1, "Error " + e.getMessage().toString());
         }
@@ -236,7 +251,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
 
 
             response = Requestor.requestGetCalls(requestQueue, GET_CALL_LIST, authkey, "10", offset + "",
-                   sessionID, TYPE_OUTGOING);
+                    sessionID, TYPE_OUTGOING);
 
             if (response.has(CODE)) {
                 code = response.getString(CODE);
@@ -268,8 +283,8 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
                 }
                 ed.commit();
                 if (!code.equals("400")) {
-                    if(response.has(MESSAGE))
-                        Utils.isLogoutBackground(getContext(),response.getString(MESSAGE));
+                    if (response.has(MESSAGE))
+                        Utils.isLogoutBackground(getContext(), response.getString(MESSAGE));
                 }
             }
 
@@ -282,7 +297,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
         }
         try {
             response = Requestor.requestGetCalls(requestQueue, GET_CALL_LIST, authkey, "10", offset + "",
-                   sessionID, TYPE_INCOMING);
+                    sessionID, TYPE_INCOMING);
 
             if (response.has(CODE)) {
                 code = response.getString(CODE);
@@ -314,7 +329,8 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
                 }
                 ed.commit();
                 if (!code.equals("400")) {
-                    if(response.has(MESSAGE)) Utils.isLogoutBackground(getContext(),response.getString(MESSAGE));
+                    if (response.has(MESSAGE))
+                        Utils.isLogoutBackground(getContext(), response.getString(MESSAGE));
                 }
             }
             callDataArrayList = new ArrayList<CallData>();
@@ -327,7 +343,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
         try {
 
             response = Requestor.requestGetCalls(requestQueue, GET_CALL_LIST, authkey, "10", offset + "",
-                   sessionID, TYPE_MISSED);
+                    sessionID, TYPE_MISSED);
 
             if (response.has(CODE)) {
                 code = response.getString(CODE);
@@ -359,8 +375,8 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
                 }
                 ed.commit();
                 if (!code.equals("400")) {
-                    if(response.has(MESSAGE))
-                        Utils.isLogoutBackground(getContext(),response.getString(MESSAGE));
+                    if (response.has(MESSAGE))
+                        Utils.isLogoutBackground(getContext(), response.getString(MESSAGE));
                 }
             }
             callDataArrayList = new ArrayList<CallData>();
@@ -403,6 +419,11 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
         MultipartEntityBuilder builder = MultipartEntityBuilder.create();
         builder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE);
         int duration;
+        if (debugEnable) {
+            Message msg = handler.obtainMessage();
+            msg.obj="Upload Started "+model.getPhoneNumber();
+            handler.sendMessage(msg);
+        }
         if (fileExist) {
             try {
                 MediaPlayer mp = MediaPlayer.create(getContext(), Uri.fromFile(model.getFile()));
@@ -421,8 +442,8 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
         }
         builder.addPart(AUTHKEY, new StringBody(Utils.getFromPrefs(getContext(), AUTHKEY, "n"), ContentType.TEXT_PLAIN));
         Log.d(TAG1, AUTHKEY + ":" + Utils.getFromPrefs(getContext(), AUTHKEY, "n"));
-        builder.addPart(DEVICE_ID, new StringBody( Utils.getFromPrefs(getContext(),SESSION_ID,UNKNOWN), ContentType.TEXT_PLAIN));
-        Log.d(TAG1, DEVICE_ID + ":" +  Utils.getFromPrefs(getContext(),SESSION_ID,UNKNOWN));
+        builder.addPart(DEVICE_ID, new StringBody(Utils.getFromPrefs(getContext(), SESSION_ID, UNKNOWN), ContentType.TEXT_PLAIN));
+        Log.d(TAG1, DEVICE_ID + ":" + Utils.getFromPrefs(getContext(), SESSION_ID, UNKNOWN));
         builder.addPart(CALLTO, new StringBody(model.getPhoneNumber(), ContentType.TEXT_PLAIN));
         Log.d(TAG1, CALLTO + ":" + model.getPhoneNumber());
         builder.addPart(STARTTIME, new StringBody(sdf.format(new Date(Long.parseLong(model.getTime()))), ContentType.TEXT_PLAIN));
@@ -504,10 +525,22 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
                         Log.d(TAG1, "FILE DELETED" + ":" + model.getFile().getName());
                     }
                     Log.d(TAG1, "RECODRD DELETED" + ":" + model.getFile().getName());
+
+                    if (debugEnable) {
+                        Message msg = handler.obtainMessage();
+                        msg.obj="Upload Success.";
+                        handler.sendMessage(msg);
+
+                    }
                 }
                 if (!code.equals("400")) {
-                    if(response.has(MESSAGE))
-                        Utils.isLogoutBackground(getContext(),response.getString(MESSAGE));
+                    if (debugEnable) {
+                        Message msg = handler.obtainMessage();
+                        msg.obj="Upload Error " + code;
+                        handler.sendMessage(msg);
+                    }
+                    if (response.has(MESSAGE))
+                        Utils.isLogoutBackground(getContext(), response.getString(MESSAGE));
                 }
 
 
@@ -518,6 +551,11 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
 
 
         } catch (Exception e) {
+            if (debugEnable) {  Message msg = handler.obtainMessage();
+                msg.obj="Upload Exception " + e.getMessage().toString();
+                handler.sendMessage(msg);
+
+            }
             Log.d(TAG1, e.getMessage());
         }
 
@@ -536,7 +574,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
             //                                          int[] grantResults)
             // to handle the case where the user grants the permission. See the documentation
             // for ActivityCompat#requestPermissions for more details.
-           // return ;
+            // return ;
         }
         Cursor managedCursor = getContext().getContentResolver().query(CallLog.Calls.CONTENT_URI, null, whereClause,
                 null, CallLog.Calls.DATE + " DESC");
@@ -574,16 +612,16 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
                 SimpleDateFormat sdf = new SimpleDateFormat("hh:mm:ss aa");
                 String time1 = sdf.format(callDayTime);
                 String time2 = sdf.format(callDayTime1);
-                long seconds = (callDayTime1.getTime()-callDayTime.getTime())/1000;
-               // Log.d("Numbers1", model1.getPhoneNumber() + " " +"Actual Time"+ time2 +" Log Time " +time1 +" Diffrence in Sec " +seconds);
+                long seconds = (callDayTime1.getTime() - callDayTime.getTime()) / 1000;
+                // Log.d("Numbers1", model1.getPhoneNumber() + " " +"Actual Time"+ time2 +" Log Time " +time1 +" Diffrence in Sec " +seconds);
 
-                if (seconds<5) {
+                if (seconds < 5) {
                     model1.setDuration(model.getDuration());
                     if (Integer.parseInt(model.getDuration()) == 0) {
                         if (new File(model1.getFilePath()).exists()) {
-                        Log.d("Numbers1", "Call To be Deleted");
-                        Log.d("Numbers1", model1.getPhoneNumber() + " " +"Actual Time"+ time2 +" Log Time " +time1 +" Diffrence in Sec " +seconds);
-                        Log.d("Numbers1", "Duration " + model.getDuration());
+                            Log.d("Numbers1", "Call To be Deleted");
+                            Log.d("Numbers1", model1.getPhoneNumber() + " " + "Actual Time" + time2 + " Log Time " + time1 + " Diffrence in Sec " + seconds);
+                            Log.d("Numbers1", "Duration " + model.getDuration());
                             new File(model1.getFilePath()).delete();//from internal storage
                             Log.d("Numbers1", "FILE DELETED" + ":" + model1.getFile().getName());
                         }
@@ -620,4 +658,13 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
 
         return contactName;
     }
+
+    private final Handler handler = new Handler() {
+        public void handleMessage(Message msg) {
+            String message = (String) msg.obj;
+            Toast.makeText(getContext(), message, Toast.LENGTH_LONG).show();
+        }
+    };
+
+
 }

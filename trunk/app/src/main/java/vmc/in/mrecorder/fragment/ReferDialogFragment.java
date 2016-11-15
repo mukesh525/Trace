@@ -1,6 +1,6 @@
 package vmc.in.mrecorder.fragment;
 
-import android.content.pm.ActivityInfo;
+
 import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.drawable.ColorDrawable;
@@ -17,13 +17,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.EditText;
-
 import vmc.in.mrecorder.R;
+import vmc.in.mrecorder.callbacks.Constants;
 import vmc.in.mrecorder.entity.CallData;
-import vmc.in.mrecorder.util.Utils;
+
 
 /**
  * Created by mukesh on 2/12/15.
@@ -33,14 +30,15 @@ public class ReferDialogFragment extends DialogFragment {
     private ViewPager mViewPager;
     private MyPagerAdapter myPagerAdapter;
     private TabLayout mTabLayout;
-    private int width,height;
+    private int width, height;
+    private String titles[] = {"RATE", "REVIEWS"};
 
     public ReferDialogFragment() {
 
     }
-    public  void  setCallid(CallData callData)
-    {
-        this.callData=callData;
+
+    public void setCallid(CallData callData) {
+        this.callData = callData;
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle saveInstanceState) {
@@ -59,8 +57,12 @@ public class ReferDialogFragment extends DialogFragment {
         Display display = getActivity().getWindowManager().getDefaultDisplay();
         Point size = new Point();
         display.getSize(size);
-         width = size.x;
-         height = size.y;
+        if(Constants.isRate){
+        mViewPager.setCurrentItem(1);
+            Constants.isRate=false;
+        }
+        width = size.x;
+        height = size.y;
         return view;
     }
 
@@ -68,15 +70,16 @@ public class ReferDialogFragment extends DialogFragment {
     public void onResume() {
         super.onResume();
         Window window = getDialog().getWindow();
-        window.setLayout(width-((width/100)*15),height-((height/100)*40));
+        window.setLayout(width - ((width / 100) * 15), height - ((height / 100) * 40));
         window.setGravity(Gravity.CENTER);
     }
 
     class MyPagerAdapter extends FragmentStatePagerAdapter {
-        private String titles[] = {"RATE", "REVIEWS"};
+
 
         public MyPagerAdapter(FragmentManager fm) {
             super(fm);
+
         }
 
         @Override
@@ -90,6 +93,7 @@ public class ReferDialogFragment extends DialogFragment {
                     myFragment = ReviewFragment.newInstance(callData.getCallid());
                     break;
             }
+
             return myFragment;
         }
 
@@ -103,5 +107,6 @@ public class ReferDialogFragment extends DialogFragment {
             return titles[position];
 
         }
+
     }
 }

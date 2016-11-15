@@ -34,7 +34,7 @@ public interface TAG {
     public String CONTACTNAME = "name";
     public String DURATION = "duration";
     public int NOTIFICATION_ID = 0;
-
+    public String APP_VERSION="version";
 
     ///NEw parametre
     public String DATA = "data";

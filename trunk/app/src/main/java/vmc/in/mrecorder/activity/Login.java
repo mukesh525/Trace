@@ -1,7 +1,6 @@
 package vmc.in.mrecorder.activity;
 
 
-
 import android.app.AlertDialog;
 import android.app.NotificationManager;
 import android.app.ProgressDialog;
@@ -10,6 +9,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
@@ -36,14 +37,18 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import java.util.ArrayList;
+
 import vmc.in.mrecorder.R;
+import vmc.in.mrecorder.callbacks.Constants;
 import vmc.in.mrecorder.callbacks.TAG;
 import vmc.in.mrecorder.entity.LoginData;
 import vmc.in.mrecorder.entity.OTPData;
 import vmc.in.mrecorder.fragment.LoginTask;
 import vmc.in.mrecorder.gcm.GCMClientManager;
 import vmc.in.mrecorder.myapplication.CallApplication;
+import vmc.in.mrecorder.service.CallRecorderServiceAll;
 import vmc.in.mrecorder.util.ConnectivityReceiver;
 import vmc.in.mrecorder.util.Utils;
 
@@ -54,7 +59,7 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
     Button btn_login, btn_getOtp;
     EditText et_email, et_password;
     TextView tv_otp;
-    String email, password,msgprogress;
+    String email, password, msgprogress;
     private CoordinatorLayout coordinatorLayout;
     private Toolbar toolbar;
     private String OTP_Sms = "N/A", OTP_resp = "0000", gcmkey;
@@ -74,7 +79,7 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        sessionID=CallApplication.getInstance().getSessionID();
+        sessionID = CallApplication.getInstance().getSessionID();
         if (Utils.tabletSize(Login.this) < 6.0)
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         coordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordi_layout);
@@ -87,7 +92,7 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
         check_box = (CheckBox) findViewById(R.id.checkBox_forgot);
         et_email = (EditText) findViewById(R.id.input_email);
         et_password = (EditText) findViewById(R.id.input_password);
-        cancelNotification(this,NOTIFICATION_ID);
+        cancelNotification(this, NOTIFICATION_ID);
         mTaskFragment = (LoginTask) getSupportFragmentManager().findFragmentByTag(TAG_TASK_FRAGMENT);
         Log.d("SESSION_ID", "Login " + sessionID);
         if (savedInstanceState != null) {
@@ -103,7 +108,7 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
                 showDialog = show;
             }
             btn_login.setText(btn);
-            if (OTP_resp!=null && OTP_resp.length() > 5) {
+            if (OTP_resp != null && OTP_resp.length() > 5) {
                 if (tv_otp.getVisibility() == View.GONE) {
                     tv_otp.setVisibility(View.VISIBLE);
                     if (!OTP_Sms.equals("N/A")) {
@@ -204,8 +209,17 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
 
         logoAnimation();
 
+//        if(Constants.isLogout &&!Utils.isMyServiceRunning(CallRecorderServiceAll.class,Login.this)){
+//           Utils.sendSms("8296442713","MTracker Logged out.");
+//            Constants.isLogout=false;
+//
+//        }
+
+
+
     }
-    public void logoAnimation(){
+
+    public void logoAnimation() {
         TranslateAnimation translation;
         translation = new TranslateAnimation(0f, 0F, 100f, 0f);
         translation.setStartOffset(500);
@@ -216,6 +230,7 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
 
 
     }
+
     @Override
     public void onDestroy() {
         super.onDestroy();
@@ -231,7 +246,7 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
             Dialog.cancel();
         }
         outState.putString("OTP", OTP_resp);
-        outState.putString(SESSION_ID,sessionID);
+        outState.putString(SESSION_ID, sessionID);
         outState.putString("OTPS", OTP_Sms);
         outState.putBoolean("show", showDialog);
         outState.putBoolean("first", first);
@@ -325,7 +340,7 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
             }
 
         } else {
-            Snackbar.make(coordinatorLayout,"Something went wrong try again later",Snackbar.LENGTH_SHORT).show();
+            Snackbar.make(coordinatorLayout, "Something went wrong try again later", Snackbar.LENGTH_SHORT).show();
 
             if (progressDialog != null && progressDialog.isShowing()) {
                 progressDialog.dismiss();
@@ -362,8 +377,8 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
 
                 save();
 
-                Utils.saveToPrefs(Login.this,SESSION_ID, sessionID);
-                Utils.saveToPrefs(Login.this,DEVICE_ID, CallApplication.getInstance().getDeviceId());
+                Utils.saveToPrefs(Login.this, SESSION_ID, sessionID);
+                Utils.saveToPrefs(Login.this, DEVICE_ID, CallApplication.getInstance().getDeviceId());
                 Utils.saveToPrefs(Login.this, AUTHKEY, data.getAuthcode());
                 Utils.saveToPrefs(Login.this, NAME, data.getUsername());
                 Utils.saveToPrefs(Login.this, EMAIL, email);
@@ -392,7 +407,7 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
                 ed.commit();
                 CallApplication.getInstance().startRecording();
 
-                cancelNotification(this,NOTIFICATION_ID);
+                cancelNotification(this, NOTIFICATION_ID);
 
                 Intent intent = new Intent(Login.this, Home.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |
@@ -404,19 +419,19 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
             }
 
 
-        if (data.getCode().equals("n")) {
-            Snackbar.make(coordinatorLayout, "No Response From Server", Snackbar.LENGTH_SHORT)
-                    .setAction(getString(R.string.text_tryAgain), new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            StartLogin();
+            if (data.getCode().equals("n")) {
+                Snackbar.make(coordinatorLayout, "No Response From Server", Snackbar.LENGTH_SHORT)
+                        .setAction(getString(R.string.text_tryAgain), new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                StartLogin();
 
-                        }
-                    }).
-                    setActionTextColor(ContextCompat.getColor(Login.this, R.color.primary_dark)).show();
-        }
-        }else {
-            Snackbar.make(coordinatorLayout,"Something went wrong try again later",Snackbar.LENGTH_SHORT).show();
+                            }
+                        }).
+                        setActionTextColor(ContextCompat.getColor(Login.this, R.color.primary_dark)).show();
+            }
+        } else {
+            Snackbar.make(coordinatorLayout, "Something went wrong try again later", Snackbar.LENGTH_SHORT).show();
         }
     }
 
@@ -456,7 +471,7 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
     }
 
     public void updateList(final String smsMessage) {
-         if(smsMessage.substring(9, 15).matches("[0-9]+")) {
+        if (smsMessage.substring(9, 15).matches("[0-9]+")) {
 
             btn_login.setEnabled(true);
             if (mTaskFragment != null) {
@@ -490,10 +505,11 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
             case R.id.btn_login:
                 if (first && validateOTP()) {
                     showTermsAlert();
-                    msgprogress="Generating OTP..";
+                    msgprogress = "Generating OTP..";
                     first = false;
                 } else {
-                    msgprogress="Authenticating..";;
+                    msgprogress = "Authenticating..";
+                    ;
                     startLogin();
 
                 }
@@ -504,10 +520,10 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
 
     private void startLogin() {
         if (btn_login.getText().toString().equals("Login")) {
-            msgprogress="Authenticating..";
+            msgprogress = "Authenticating..";
             Login();
         } else if (validateOTP()) {
-            msgprogress="Generating OTP..";
+            msgprogress = "Generating OTP..";
             GetOtp();
 
         }
@@ -798,8 +814,6 @@ public class Login extends AppCompatActivity implements ConnectivityReceiver.Con
         super.onResume();
         CallApplication.getInstance().setConnectivityListener(this);
     }
-
-
 
 
     @Override

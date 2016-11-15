@@ -20,6 +20,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,6 +33,7 @@ import java.util.ArrayList;
 import vmc.in.mrecorder.R;
 import vmc.in.mrecorder.activity.Home;
 import vmc.in.mrecorder.activity.LocationActivity;
+import vmc.in.mrecorder.callbacks.Constants;
 import vmc.in.mrecorder.callbacks.TAG;
 import vmc.in.mrecorder.entity.CallData;
 import vmc.in.mrecorder.fragment.DownloadFile;
@@ -70,20 +72,32 @@ public class Calls_Adapter extends RecyclerView.Adapter<Calls_Adapter.CallViewHo
     @Override
     public CallViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.call_item, parent, false);
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.callitem, parent, false);
         return new CallViewHolder(itemView, CallDataArrayList, callClickedListner);
     }
 
     @Override
-    public void onBindViewHolder(CallViewHolder holder, int position) {
+    public void onBindViewHolder(final CallViewHolder holder, int position) {
         try {
             final CallData ci = CallDataArrayList.get(position);
 
             holder.callerNameTextView.setText(Utils.isEmpty(ci.getName()) ? UNKNOWN : ci.getName());
             holder.callFromTextView.setText(Utils.isEmpty(ci.getCallto()) ? UNKNOWN : ci.getCallto());
-            holder.overflow.setOnClickListener(new OnOverflowSelectedListener(context, holder.getAdapterPosition(), CallDataArrayList));
-            holder.callFrom.setText(ci.getCalltype().equals("0") ? "Call From" : ci.getCalltype().equals("1") ? "Call From" : "Call To");
+            try {
+                holder.dateTextView.setText(sdfDate.format(ci.getStartTime()));
+                holder.timeTextView.setText(sdfTime.format(ci.getStartTime()));
+            } catch (Exception e) {
+                Log.d(TAG, e.getMessage().toString());
 
+            }
+            holder.groupNameTextView.setText(Utils.isEmpty(ci.getEmpname()) ? UNKNOWN : ci.getEmpname());
+            holder.overflow.setOnClickListener(new OnOverflowSelectedListener(context, holder.getAdapterPosition(), CallDataArrayList));
+            holder.overflowMenu.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    holder.overflow.performClick();
+                }
+            });
             holder.img_play.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -97,46 +111,79 @@ public class Calls_Adapter extends RecyclerView.Adapter<Calls_Adapter.CallViewHo
                     }
                 }
             });
-            if (ci.getCalltype().equals("0") || ci.getFilename().equals("")) {
-                holder.img_play.setVisibility(View.GONE);
+            holder.rate.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Constants.isRate=true;
+                    ((Home) context).onRatingsClick(ci);
+                }
+            });
+
+            if(ci.getCalltype().equals("0")){
+                holder.call_img.setImageResource(R.drawable.ic_call_missed);
+            }else if(ci.getCalltype().equals("1")){
+                holder.call_img.setImageResource(R.drawable.ic_call_incoming);
+            }else {
+                holder.call_img.setImageResource(R.drawable.ic_call_outgoing);
+            }
+
+
+            if (!ci.getReview().equals("0")) {
+                holder.review.setVisibility(View.VISIBLE);
+                holder.rate.setVisibility(View.VISIBLE);
+                holder.review.setText(ci.getReview());
+
+            } else {
                 holder.review.setVisibility(View.GONE);
+                holder.rate.setVisibility(View.GONE);
+            }
+            holder.img_play.setVisibility(View.VISIBLE);
+
+           // holder.callFrom.setText(ci.getCalltype().equals("0") ? "Call From" : ci.getCalltype().equals("1") ? "Call From" : "Call To");
+
+            if (ci.getCalltype().equals("0") || ci.getFilename().equals("")) {
+                holder.img_play.setVisibility(View.INVISIBLE);
+                holder.review.setVisibility(View.GONE);
+                holder.rate.setVisibility(View.GONE);
             } else {
                 if (ci.getSeen() != null && ci.getSeen().equals("1")) {
                     //if api 17  drwle with red image
                     if (Build.VERSION.SDK_INT < 18) {
                         holder.img_play.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_play_seen));
                     } else
-                        holder.img_play.getBackground().setColorFilter(ContextCompat.getColor(context, R.color.red), PorterDuff.Mode.SRC_ATOP);
+                        holder.img_play.getDrawable().setColorFilter(ContextCompat.getColor(context, R.color.red), PorterDuff.Mode.SRC_ATOP);
 
                 } else {
                     holder.img_play.getBackground().setColorFilter(fetchAccentColor(), PorterDuff.Mode.SRC_ATOP);
                     holder.review.setVisibility(View.GONE);
+                    holder.rate.setVisibility(View.GONE);
                 }
-                if (!ci.getReview().equals("0")) {
-                    holder.review.setVisibility(View.VISIBLE);
-                } else {
-                    holder.review.setVisibility(View.GONE);
-                }
-                holder.review.setText("Reviews : " + ci.getReview());
-                holder.img_play.setVisibility(View.VISIBLE);
+//                if (!ci.getReview().equals("0")) {
+//                    holder.review.setVisibility(View.VISIBLE);
+//                    holder.rate.setVisibility(View.VISIBLE);
+//                } else {
+//                    holder.review.setVisibility(View.GONE);
+//                    holder.rate.setVisibility(View.GONE);
+//                }
+//
+//                holder.review.setText(ci.getReview());
+//                holder.img_play.setVisibility(View.VISIBLE);
             }
-            try {
-                holder.dateTextView.setText(sdfDate.format(ci.getStartTime()));
-                holder.timeTextView.setText(sdfTime.format(ci.getStartTime()));
-            } catch (Exception e) {
-                Log.d(TAG, e.getMessage().toString());
 
-            }
             // holder.groupNameTextView.setText(Utils.isEmpty(ci.getEmail()) ? UNKNOWN : ci.getEmail());
-            holder.groupNameTextView.setText(Utils.isEmpty(ci.getEmpname()) ? UNKNOWN : ci.getEmpname());
 
-            holder.statusTextView.setText(ci.getCalltype().equals("0") ? MISSED : ci.getCalltype().equals("1") ? INCOMING : OUTGOING);
+          //  holder.statusTextView.setText(ci.getCalltype().equals("0") ? MISSED : ci.getCalltype().equals("1") ? INCOMING : OUTGOING);
             Log.d(TAG, "" + ci.getCalltype().equals("0"));
             //    holder.contactphoto.setImageBitmap(getFacebookPhoto(ci.getCallto()));
 
 
+
+
+
+
+
         } catch (Exception e) {
-           // Log.d("TAG", e.getMessage());
+            // Log.d("TAG", e.getMessage());
         }
         ;
         previousPosition = position;
@@ -254,7 +301,14 @@ public class Calls_Adapter extends RecyclerView.Adapter<Calls_Adapter.CallViewHo
                 } else {
                     popupMenu.inflate(R.menu.popupmenu);
                 }
-
+//                if (Utils.getFromPrefs(mContext, USERTYPE, DEFAULT).equals("0")) {
+//                    if(popupMenu.getMenu().findItem(R.id.share)!=null)
+//                    popupMenu.getMenu().findItem(R.id.share).setVisible(false);
+//                } else {
+//                    if(popupMenu.getMenu().findItem(R.id.share)!=null)
+//                    popupMenu.getMenu().findItem(R.id.share).setVisible(true);
+//                    //popupMenu.getMenu().findItem(R.id.share).setTitle("Share Edit");
+//                }
                 popupMenu.show();
             } catch (Exception e) {
                 if (e.getMessage().toString() != null) {
@@ -265,21 +319,26 @@ public class Calls_Adapter extends RecyclerView.Adapter<Calls_Adapter.CallViewHo
     }
 
     public static class CallViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        private final ImageView overflow;
+        private final ImageView overflow, rate, home;
         protected TextView callFromTextView, callerNameTextView,
                 groupNameTextView, dateTextView, timeTextView, statusTextView, callFrom, review;
         protected ImageButton ibcall, ibmessage;
         private ArrayList<CallData> CallDataArrayList;
         private CallClickedListner callClickedListner;
-        public ImageView contactphoto, img_play;
+        public ImageView contactphoto, img_play,call_img;
+        private LinearLayout overflowMenu,ratelayout;
 
         public CallViewHolder(View v, ArrayList<CallData> callDataArrayList, CallClickedListner callClickedListner) {
             super(v);
-
+            overflowMenu = (LinearLayout) v.findViewById(R.id.overflowmenu);
+            ratelayout = (LinearLayout) v.findViewById(R.id.rateLayout);
             callFromTextView = (TextView) v.findViewById(R.id.fCallFromTextView);
-            callFrom = (TextView) v.findViewById(R.id.fCallFromLabel);
+            //callFrom = (TextView) v.findViewById(R.id.fCallFromLabel);
             review = (TextView) v.findViewById(R.id.review);
             img_play = (ImageView) v.findViewById(R.id.ivplay);
+            rate = (ImageView) v.findViewById(R.id.rate);
+            call_img = (ImageView) v.findViewById(R.id.call_img);
+            home = (ImageView) v.findViewById(R.id.home);
             callerNameTextView = (TextView) v.findViewById(R.id.fCallerNameTextView);
             groupNameTextView = (TextView) v.findViewById(R.id.fGroupNameTextView);
             dateTextView = (TextView) v.findViewById(R.id.fDateTextView);
@@ -306,7 +365,7 @@ public class Calls_Adapter extends RecyclerView.Adapter<Calls_Adapter.CallViewHo
 
 
     public interface CallClickedListner {
-        public void OnItemClick(CallData callData, int position);
+         void OnItemClick(CallData callData, int position);
     }
 
     public void setTextTheme(TextView view) {

@@ -437,7 +437,9 @@ public class Home extends AppCompatActivity
         // On pressing Settings button
         alertDialog.setPositiveButton("Logout", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
+                Constants.isLogout=true;
                 Utils.isLogout(Home.this);
+
 
             }
         });

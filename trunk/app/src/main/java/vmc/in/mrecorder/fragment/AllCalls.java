@@ -277,7 +277,7 @@ public class AllCalls extends Fragment implements SwipeRefreshLayout.OnRefreshLi
             }
             loading = true;
             offset = callDataArrayList.size();
-            Log.d("DATA",callDataArrayList.size()+"");
+            Log.d("DATA", callDataArrayList.size() + "");
             new DownloadCalls(this, getActivity(), CallType, offset + "", true).execute();
         } else {
             if (swipeRefreshLayout.isRefreshing()) {
@@ -359,8 +359,6 @@ public class AllCalls extends Fragment implements SwipeRefreshLayout.OnRefreshLi
         }
 
         loading = false;
-
-
         if (data != null && data.size() > 0 && getActivity() != null) {
             callDataArrayList.addAll(data);
             if (!isMore) {
@@ -368,10 +366,9 @@ public class AllCalls extends Fragment implements SwipeRefreshLayout.OnRefreshLi
                 adapter.setClickedListner(AllCalls.this);
                 FirstLoaded = true;
                 recyclerView.setAdapter(adapter);
-            }else{
+            } else {
                 adapter.notifyDataSetChanged();
             }
-
 
 
         } else {
@@ -383,7 +380,7 @@ public class AllCalls extends Fragment implements SwipeRefreshLayout.OnRefreshLi
                     pdloadmore.setVisibility(View.GONE);
                 }
             }
-            if (getActivity() != null && getView() != null) {
+            if (getActivity() != null && data != null && data.size() <= 0) {
                 try {
                     if (pdloadmore.getVisibility() == View.VISIBLE) {
                         pdloadmore.setVisibility(View.GONE);
@@ -391,6 +388,7 @@ public class AllCalls extends Fragment implements SwipeRefreshLayout.OnRefreshLi
                     if (retrylayout.getVisibility() == View.VISIBLE) {
                         retrylayout.setVisibility(View.GONE);
                     }
+
                     Snackbar snack = Snackbar.make(mroot, "No Data Available", Snackbar.LENGTH_SHORT)
                             .setAction(getString(R.string.text_tryAgain), new View.OnClickListener() {
                                 @Override
@@ -408,6 +406,7 @@ public class AllCalls extends Fragment implements SwipeRefreshLayout.OnRefreshLi
                     TextView tv = (TextView) snack.getView().findViewById(android.support.design.R.id.snackbar_text);
                     tv.setTextColor(Color.WHITE);
                     snack.show();
+
                 } catch (Exception e) {
 
                 }

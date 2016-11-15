@@ -169,12 +169,12 @@ public class LocationActivity extends AppCompatActivity implements vmc.in.mrecor
                     View v = getLayoutInflater().inflate(R.layout.info_window_layout, null);
 
                     if(Utils.tabletSize(LocationActivity.this)>6.0){
-                        v.setLayoutParams(new LinearLayout.LayoutParams(200, 180));
+                        v.setLayoutParams(new LinearLayout.LayoutParams(240, 180));
                     }else if(Utils.tabletSize(LocationActivity.this)>5.0){
-                        v.setLayoutParams(new LinearLayout.LayoutParams(280, 300));
+                        v.setLayoutParams(new LinearLayout.LayoutParams(360, 300));
                     }
                     else{
-                        v.setLayoutParams(new LinearLayout.LayoutParams(220, 210));
+                        v.setLayoutParams(new LinearLayout.LayoutParams(280, 220));
                     }
 
                     // Getting the position from the marker
@@ -186,13 +186,13 @@ public class LocationActivity extends AppCompatActivity implements vmc.in.mrecor
                     TextView tvTime = (TextView) v.findViewById(R.id.tv3);
                     TextView tvType = (TextView) v.findViewById(R.id.tv4);
                     TextView tvName = (TextView) v.findViewById(R.id.tv5);
+//                    String name=Utils.isEmpty(callData.getName()) ? UNKNOWN : callData.getName();
+//                     tvName.setText(name.substring(0,20));
                     tvName.setText(Utils.isEmpty(callData.getName()) ? UNKNOWN : callData.getName());
                     tvFrom.setText(callData.getCallto());
                     tvDate.setText(sdfDate.format(callData.getStartTime()));
                     tvTime.setText(sdfTime.format(callData.getStartTime()));
                     tvType.setText(callData.getCalltype().equals("0") ? MISSED : callData.getCalltype().equals("1") ? INCOMING : OUTGOING);
-
-
 
                     return v;
 

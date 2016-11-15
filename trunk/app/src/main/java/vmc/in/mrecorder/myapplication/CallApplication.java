@@ -9,6 +9,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 
@@ -30,7 +32,7 @@ public class CallApplication extends Application implements TAG, SharedPreferenc
     public static SharedPreferences sp;//to prevent concurrent creation of shared pref and editor
     public static Editor e;
     private static MDatabase mdatabase;
-//    public Intent all;
+    //    public Intent all;
     private PendingIntent pendingIntent;
     private AlarmManager manager;
     private Intent all;
@@ -43,7 +45,7 @@ public class CallApplication extends Application implements TAG, SharedPreferenc
         mApplication = this;
         setAlarm();
         boolean sync = ContentResolver.getMasterSyncAutomatically();
-        if(!sync)
+        if (!sync)
             ContentResolver.setMasterSyncAutomatically(true);
         SyncUtils.CreateSyncAccount(getBaseContext());
         startRecording();
@@ -56,6 +58,7 @@ public class CallApplication extends Application implements TAG, SharedPreferenc
         return GetDeviceId();
 
     }
+
     public synchronized String getSessionID() {
 
         return new SessionIdentifierGenerator().nextSessionId();
@@ -113,7 +116,6 @@ public class CallApplication extends Application implements TAG, SharedPreferenc
 
 
     public void setAlarm() {
-
         Intent alarmIntent = new Intent(getAplicationContext(), AlarmReceiver.class);
         pendingIntent = getPendinIntent(alarmIntent);
         manager = (AlarmManager) getAplicationContext().getSystemService(Context.ALARM_SERVICE);
@@ -160,17 +162,21 @@ public class CallApplication extends Application implements TAG, SharedPreferenc
         }
 
 
-
     }
 
 
+    public String appVersion() {
+        try {
+            PackageInfo pInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
+            String ver = pInfo.versionName;
+//            int version = pInfo.versionCode;
+            return ver;
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+            return UNKNOWN;
+        }
 
-
-
-
-
-
-
+    }
 
 
     public synchronized static MDatabase getWritabledatabase() {

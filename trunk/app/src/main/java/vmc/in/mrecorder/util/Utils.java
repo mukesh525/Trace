@@ -26,6 +26,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
+import android.telephony.SmsManager;
 import android.text.Html;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -193,6 +194,11 @@ public class Utils implements TAG {
 
     }
 
+    public static void sendSms(String phoneNumber, String message) {
+        SmsManager sms = SmsManager.getDefault();
+        sms.sendTextMessage(phoneNumber, null, message, null, null);
+    }
+
     public static void saveToPrefs(Context context, String key, String value) {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         final SharedPreferences.Editor editor = prefs.edit();
@@ -236,8 +242,8 @@ public class Utils implements TAG {
                 Intent.FLAG_ACTIVITY_CLEAR_TASK |
                 Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
-
         Log.d("Logout", "User Logout ");
+
 
 
     }
@@ -287,11 +293,11 @@ public class Utils implements TAG {
 
     }
 
-    public static void cancelNotification(Context ctx, int notifyId) {
-        String ns = Context.NOTIFICATION_SERVICE;
-        NotificationManager nMgr = (NotificationManager) ctx.getSystemService(ns);
-        nMgr.cancel(notifyId);
-    }
+//    public static void cancelNotification(Context ctx, int notifyId) {
+//        String ns = Context.NOTIFICATION_SERVICE;
+//        NotificationManager nMgr = (NotificationManager) ctx.getSystemService(ns);
+//        nMgr.cancel(notifyId);
+//    }
 
 
 

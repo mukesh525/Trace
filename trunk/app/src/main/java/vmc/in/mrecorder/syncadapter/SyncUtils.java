@@ -50,8 +50,12 @@ public class SyncUtils {
             TriggerRefresh();
             PreferenceManager.getDefaultSharedPreferences(context).edit()
                     .putBoolean(PREF_SETUP_COMPLETE, true).commit();
-
         }
+
+//        if(ContentResolver.isSyncActive(account, FeedProvider.CONTENT_AUTHORITY)){
+//            // sync is enable
+//            Log.d("SYNC", "Sync is Enable");
+//        }
     }
 
     public static void TriggerRefresh() {

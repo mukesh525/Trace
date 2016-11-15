@@ -5,6 +5,9 @@ package vmc.in.mrecorder.callbacks;
  */
 public class Constants {
     public static int position=0;
+    public static boolean isRate;
+    public static boolean isLogout;
+    public static String appVersion;
     public interface ACTION {
         public static String MAIN_ACTION = "vmc.in.mrecorder.action.main";
         public static String PREV_ACTION = "vmc.in.mrecorder.action.prev";

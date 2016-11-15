@@ -47,6 +47,7 @@ public class BootBroadcastReceiver extends BroadcastReceiver implements vmc.in.m
             @Override
             public void run() {
 
+                Log.d("DEVICEID"," "+Utils.getFromPrefs(context,DEVICE_ID,UNKNOWN)+ CallApplication.getInstance().getDeviceId());
                 if(CallApplication.getInstance().getDeviceId().equals(Utils.getFromPrefs(context,DEVICE_ID,UNKNOWN))) {
 
                     if (Utils.isLogin(context)) {
@@ -70,8 +71,6 @@ public class BootBroadcastReceiver extends BroadcastReceiver implements vmc.in.m
 
             }
         }, SPLASH_TIME_OUT);
-
-
 
         Intent alarmIntent = new Intent(context, AlarmReceiver.class);
         pendingIntent = PendingIntent.getBroadcast(context, 1, alarmIntent, 0);

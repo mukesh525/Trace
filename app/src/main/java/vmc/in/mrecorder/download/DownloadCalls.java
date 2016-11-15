@@ -54,7 +54,7 @@ public class DownloadCalls extends AsyncTask<Void, Void, ArrayList<CallData>> im
         JSONObject response = null;
         callDataArrayList = new ArrayList<CallData>();
         isOnline = ConnectivityReceiver.isOnline();
-        if(isOnline) {
+        //if(isOnline) {
             try {
 
                 response = Requestor.requestGetCalls(requestQueue, GET_CALL_LIST, Utils.getFromPrefs(context, AUTHKEY, "N/A"), "10", offset + "",
@@ -66,7 +66,7 @@ public class DownloadCalls extends AsyncTask<Void, Void, ArrayList<CallData>> im
             } catch (Exception e) {
                 // Log.d("ERROR", e.getMessage().toString());
             }
-        }
+       // }
         return callDataArrayList;
     }
 

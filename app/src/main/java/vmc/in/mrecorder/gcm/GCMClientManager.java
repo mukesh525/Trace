@@ -151,13 +151,15 @@ public class GCMClientManager {
      * the Google Play Store or enable it in the device's system settings.
      */
     private boolean checkPlayServices() {
-       // int res=GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(getContext());
-        int resultCode = GooglePlayServicesUtil.isGooglePlayServicesAvailable(getContext());
+        GoogleApiAvailability googleApiAvailability = GoogleApiAvailability.getInstance();
+        int resultCode = googleApiAvailability.isGooglePlayServicesAvailable(getContext());
+       //int resultCode = GooglePlayServicesUtil.isGooglePlayServicesAvailable(getContext());
         if (resultCode != ConnectionResult.SUCCESS) {
-            if (GooglePlayServicesUtil.isUserRecoverableError(resultCode)) {
-                GooglePlayServicesUtil.getErrorDialog(resultCode, getActivity(),
+            if (googleApiAvailability.isUserResolvableError(resultCode)) {
+                googleApiAvailability.getErrorDialog(getActivity(),resultCode,
                         PLAY_SERVICES_RESOLUTION_REQUEST).show();
-            } else {
+            }
+            else {
                 Log.i(TAG, "This device is not supported.");
             }
             return false;

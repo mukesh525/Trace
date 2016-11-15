@@ -15,6 +15,7 @@ import com.jaredrummler.android.device.DeviceName;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import vmc.in.mrecorder.callbacks.Constants;
 import vmc.in.mrecorder.callbacks.TAG;
 import vmc.in.mrecorder.entity.LoginData;
 import vmc.in.mrecorder.entity.OTPData;
@@ -152,7 +153,7 @@ public class LoginTask extends Fragment implements vmc.in.mrecorder.callbacks.TA
         @Override
         protected Void doInBackground(Void... ignore) {
             isOnline = ConnectivityReceiver.isOnline();
-            if(isOnline) {
+           // if (isOnline) {
                 try {
                     if (isOTP) {
                         JSONObject jsonObject = null;
@@ -171,7 +172,7 @@ public class LoginTask extends Fragment implements vmc.in.mrecorder.callbacks.TA
 
                 } catch (JSONException e) {
                     e.printStackTrace();
-                }
+               // }
             }
 
 

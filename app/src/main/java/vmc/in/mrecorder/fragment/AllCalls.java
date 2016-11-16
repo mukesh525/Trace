@@ -341,79 +341,105 @@ public class AllCalls extends Fragment implements SwipeRefreshLayout.OnRefreshLi
     }
 
     @Override
-    public void onCallReportDownLoadFinished(ArrayList<CallData> data, final boolean isMore) {
+    public void onCallReportDownLoadFinished(ArrayList<CallData> data, final boolean isMore,String code,String msg) {
+
         if (pdloadmore.getVisibility() == View.VISIBLE) {
-            pdloadmore.setVisibility(View.GONE);
-        }
+                pdloadmore.setVisibility(View.GONE);
+            }
 
-        if (recyclerView.getVisibility() == View.GONE) {
-            recyclerView.setVisibility(View.VISIBLE);
-        }
+            if (recyclerView.getVisibility() == View.GONE) {
+                recyclerView.setVisibility(View.VISIBLE);
+            }
 
-        if (mprogressLayout.getVisibility() == View.VISIBLE) {
-            mprogressLayout.setVisibility(View.GONE);
-        }
+            if (mprogressLayout.getVisibility() == View.VISIBLE) {
+                mprogressLayout.setVisibility(View.GONE);
+            }
 
-        if (swipeRefreshLayout.isRefreshing()) {
-            swipeRefreshLayout.setRefreshing(false);
-        }
+            if (swipeRefreshLayout.isRefreshing()) {
+                swipeRefreshLayout.setRefreshing(false);
+            }
 
-        loading = false;
-        if (data != null && data.size() > 0 && getActivity() != null) {
-            callDataArrayList.addAll(data);
-            if (!isMore) {
-                adapter = new Calls_Adapter(getActivity(), callDataArrayList, mroot, AllCalls.this);
-                adapter.setClickedListner(AllCalls.this);
-                FirstLoaded = true;
-                recyclerView.setAdapter(adapter);
+            loading = false;
+
+        if (code!=null && code.equals("400")) {
+            if (data != null && data.size() > 0 && getActivity() != null) {
+                callDataArrayList.addAll(data);
+                if (!isMore) {
+                    adapter = new Calls_Adapter(getActivity(), callDataArrayList, mroot, AllCalls.this);
+                    adapter.setClickedListner(AllCalls.this);
+                    FirstLoaded = true;
+                    recyclerView.setAdapter(adapter);
+                } else {
+                    adapter.notifyDataSetChanged();
+                }
+
+
             } else {
-                adapter.notifyDataSetChanged();
-            }
-
-
-        } else {
-            if (!isMore) {
-                if (retrylayout.getVisibility() == View.GONE) {
-                    retrylayout.setVisibility(View.VISIBLE);
-                }
-                if (pdloadmore.getVisibility() == View.VISIBLE) {
-                    pdloadmore.setVisibility(View.GONE);
-                }
-            }
-            if (getActivity() != null && data != null && data.size() <= 0) {
-                try {
+                if (!isMore) {
+                    if (retrylayout.getVisibility() == View.GONE) {
+                        retrylayout.setVisibility(View.VISIBLE);
+                    }
                     if (pdloadmore.getVisibility() == View.VISIBLE) {
                         pdloadmore.setVisibility(View.GONE);
                     }
-                    if (retrylayout.getVisibility() == View.VISIBLE) {
-                        retrylayout.setVisibility(View.GONE);
-                    }
+                }
+                if (getActivity() != null && data != null && data.size() <= 0) {
+                    try {
+                        if (pdloadmore.getVisibility() == View.VISIBLE) {
+                            pdloadmore.setVisibility(View.GONE);
+                        }
+                        if (retrylayout.getVisibility() == View.VISIBLE) {
+                            retrylayout.setVisibility(View.GONE);
+                        }
 
-                    Snackbar snack = Snackbar.make(mroot, "No Data Available", Snackbar.LENGTH_SHORT)
-                            .setAction(getString(R.string.text_tryAgain), new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    if (!isMore) {
-                                        DownloadCalls();
-                                    } else {
+                        Snackbar snack = Snackbar.make(mroot, "No Data Available", Snackbar.LENGTH_SHORT)
+                                .setAction(getString(R.string.text_tryAgain), new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        if (!isMore) {
+                                            DownloadCalls();
+                                        } else {
 
-                                        DownloadMore();
+                                            DownloadMore();
+                                        }
+
                                     }
+                                })
+                                .setActionTextColor(ContextCompat.getColor(getActivity(), R.color.accent));
+                        TextView tv = (TextView) snack.getView().findViewById(android.support.design.R.id.snackbar_text);
+                        tv.setTextColor(Color.WHITE);
+                        snack.getView().setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.primary));
+                        snack.show();
 
-                                }
-                            })
-                            .setActionTextColor(getResources().getColor(R.color.accent));
-                    TextView tv = (TextView) snack.getView().findViewById(android.support.design.R.id.snackbar_text);
-                    tv.setTextColor(Color.WHITE);
-                    snack.show();
+                    } catch (Exception e) {
 
-                } catch (Exception e) {
-
+                    }
                 }
             }
+
+
+        }else{
+            Snackbar snack = Snackbar.make(mroot, msg, Snackbar.LENGTH_SHORT);
+//                    .setAction(getString(R.string.text_tryAgain), new View.OnClickListener() {
+//                        @Override
+//                        public void onClick(View v) {
+//                            if (!isMore) {
+//                                DownloadCalls();
+//                            } else {
+//
+//                                DownloadMore();
+//                            }
+//
+//                        }
+//                    })
+//                    .setActionTextColor(getResources().getColor(R.color.accent));
+            TextView tv = (TextView) snack.getView().findViewById(android.support.design.R.id.snackbar_text);
+            tv.setTextColor(Color.WHITE);
+            snack.getView().setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.primary));
+            snack.show();
+
         }
-
-
     }
+
 
 }

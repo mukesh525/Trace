@@ -32,9 +32,10 @@ public class DownloadCalls extends AsyncTask<Void, Void, ArrayList<CallData>> im
     private boolean isMore;
     private Context context;
     private boolean isOnline;
+    private String code,msg;
 
     public interface CallReportFinish {
-        void onCallReportDownLoadFinished(ArrayList<CallData> result, boolean isMore);
+        void onCallReportDownLoadFinished(ArrayList<CallData> result, boolean isMore,String code,String msg);
     }
 
 
@@ -62,6 +63,12 @@ public class DownloadCalls extends AsyncTask<Void, Void, ArrayList<CallData>> im
                 Log.d(TAG, response.toString());
                 if (response != null) {
                     callDataArrayList = vmc.in.mrecorder.parser.Parser.ParseData(response);
+                    if (response.has(CODE)) {
+                        code=response.getString(CODE);
+                    }
+                    if (response.has(MESSAGE)) {
+                        msg=response.getString(MESSAGE);
+                    }
                 }
             } catch (Exception e) {
                 // Log.d("ERROR", e.getMessage().toString());
@@ -82,7 +89,7 @@ public class DownloadCalls extends AsyncTask<Void, Void, ArrayList<CallData>> im
                                     MDatabase.MISSED, callData, !isMore);
         }
         if (downloadFininshed != null)
-            downloadFininshed.onCallReportDownLoadFinished(callData, isMore);
+            downloadFininshed.onCallReportDownLoadFinished(callData, isMore,code,msg);
     }
 }
 

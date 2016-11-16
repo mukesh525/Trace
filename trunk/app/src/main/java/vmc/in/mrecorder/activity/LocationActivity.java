@@ -186,9 +186,10 @@ public class LocationActivity extends AppCompatActivity implements vmc.in.mrecor
                     TextView tvTime = (TextView) v.findViewById(R.id.tv3);
                     TextView tvType = (TextView) v.findViewById(R.id.tv4);
                     TextView tvName = (TextView) v.findViewById(R.id.tv5);
-//                    String name=Utils.isEmpty(callData.getName()) ? UNKNOWN : callData.getName();
-//                     tvName.setText(name.substring(0,20));
-                    tvName.setText(Utils.isEmpty(callData.getName()) ? UNKNOWN : callData.getName());
+                    String Name=(Utils.isEmpty(callData.getName()) ? UNKNOWN : callData.getName());
+                    String name[]=Name.split("[-\\s]");
+                    tvName.setText(name[0]);
+                   // tvName.setText(Utils.isEmpty(callData.getName()) ? UNKNOWN : callData.getName());
                     tvFrom.setText(callData.getCallto());
                     tvDate.setText(sdfDate.format(callData.getStartTime()));
                     tvTime.setText(sdfTime.format(callData.getStartTime()));

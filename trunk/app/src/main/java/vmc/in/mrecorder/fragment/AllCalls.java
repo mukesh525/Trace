@@ -210,7 +210,7 @@ public class AllCalls extends Fragment implements SwipeRefreshLayout.OnRefreshLi
 
                         }
                     })
-                    .setActionTextColor(getResources().getColor(R.color.accent));
+                    .setActionTextColor(ContextCompat.getColor(getActivity(), R.color.accent));
 
             TextView tv = (TextView) snack.getView().findViewById(android.support.design.R.id.snackbar_text);
             tv.setTextColor(Color.WHITE);

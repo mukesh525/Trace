@@ -59,6 +59,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import vmc.in.mrecorder.callbacks.CallList;
 import vmc.in.mrecorder.callbacks.TAG;
 import vmc.in.mrecorder.datahandler.MDatabase;
 import vmc.in.mrecorder.entity.CallData;
@@ -67,16 +68,15 @@ import vmc.in.mrecorder.myapplication.CallApplication;
 import vmc.in.mrecorder.parser.Parser;
 import vmc.in.mrecorder.parser.Requestor;
 import vmc.in.mrecorder.service.CallRecorderServiceAll;
-import vmc.in.mrecorder.util.JSONParser;
 import vmc.in.mrecorder.util.SingleTon;
 import vmc.in.mrecorder.util.Utils;
 
 
-public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
+public class SyncAdapter extends AbstractThreadedSyncAdapter implements  TAG {
+
     private final ContentResolver mContentResolver;
     private Context mContext;
     private String sessionID;
-
     private ArrayList<Model> callList;
     private JSONObject response;
     private String authkey;
@@ -87,6 +87,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
     private RequestQueue requestQueue;
     private SingleTon volleySingleton;
     private boolean debugEnable;
+    private static  CallList mListener;
 
     public SyncAdapter(Context context, boolean autoInitialize) {
         super(context, autoInitialize);
@@ -243,6 +244,12 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
                 callDataArrayList = Parser.ParseData(response);
                 Log.d(TAG1, "ALL_CALLS " + callDataArrayList.size());
                 CallApplication.getWritabledatabase().insertCallRecords(MDatabase.ALL, callDataArrayList, true);
+
+                if (callDataArrayList.size()>0) {
+                    mListener.allCalls(callDataArrayList);
+                }
+
+
             }
         } catch (Exception e) {
             Log.d(TAG1, "Error " + e.getMessage().toString());
@@ -665,6 +672,11 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements TAG {
             Toast.makeText(getContext(), message, Toast.LENGTH_LONG).show();
         }
     };
+
+
+    public static void bindListener(CallList listener) {
+        mListener = listener;
+    }
 
 
 }

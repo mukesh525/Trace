@@ -382,8 +382,6 @@ public class Utils implements TAG {
         String authKey = sharedPrefs.getString(AUTHKEY, "n");
         String email = sharedPrefs.getString(EMAIL, "n");
         String password = sharedPrefs.getString(PASSWORD, "n");
-
-
         return !(authKey.equals("n") && email.equals("n") && password.equals("n"));
 
     }

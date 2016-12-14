@@ -36,6 +36,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -69,6 +70,7 @@ import vmc.in.mrecorder.util.ConnectivityReceiver;
 import vmc.in.mrecorder.util.CustomTheme;
 import vmc.in.mrecorder.util.SingleTon;
 import vmc.in.mrecorder.util.Utils;
+import vmc.in.mrecorder.widget.WidgetProvider;
 
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.google.android.gms.common.ConnectionResult;
@@ -144,6 +146,23 @@ public class Home extends AppCompatActivity
         setContentView(R.layout.activity_home);
         new UpdateChecker(this).start();
         setUpReview();
+
+        String play=getIntent().getStringExtra(WidgetProvider.AUDIO_LINK);
+        if (play==null || play.equals("")) {
+            play="We did not get a link to play!";
+           // Toast.makeText(Home.this,play,Toast.LENGTH_SHORT).show();
+        }
+        else {
+           // Toast.makeText(Home.this,play,Toast.LENGTH_SHORT).show();
+            Uri myUri = Uri.parse(STREAM_TRACKER + play);
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setDataAndType(myUri, "audio/*");
+            startActivity(intent);
+        }
+
+
+
+
         if (savedInstanceState != null) {
             fileShare = savedInstanceState.getBoolean("SHARE");
 
@@ -429,10 +448,12 @@ public class Home extends AppCompatActivity
 
     public void showLogoutAlert() {
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(Home.this);
-        alertDialog.setTitle("MTracker");
+       // alertDialog.setTitle("MTracker");
+        alertDialog.setTitle(Html.fromHtml("<font size='30' color='#FF5722'>MTracker</font>"));
         alertDialog.setIcon(R.mipmap.ic_launcher);
         // Setting Dialog Message
-        alertDialog.setMessage("Are you sure you want to logout?");
+        //alertDialog.setMessage("Are you sure you want to logout?");
+        alertDialog.setMessage(Html.fromHtml("<h4><font size='20' color='#63c3ef'>Are you sure you want to logout?</font></h4>"));
 
         // On pressing Settings button
         alertDialog.setPositiveButton("Logout", new DialogInterface.OnClickListener() {
